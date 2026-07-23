@@ -54,13 +54,11 @@ function Header({ crumbs }) {
   return (
     <header className="site-header">
       <div className="container inner">
-        <div className="eyebrow">A community list · open for submissions</div>
         <h1 className="title">Open Problems in Quantum Mechanics for AI Agents</h1>
         <p className="subtitle">
           A curated, sourced catalogue of open problems in theoretical quantum
-          theory — from spectral theory to complexity and foundations — framed so
-          that human researchers and AI agents can attack them, record progress,
-          and submit improvements or solutions.
+          theory, framed so that human researchers and AI agents can attack
+          them, record progress, and submit improvements or solutions.
         </p>
         {crumbs && (
           <nav className="crumbs">
@@ -122,7 +120,7 @@ function Home() {
               };
               return (
                 <div className="card" key={c.slug} onClick={() => go(`c/${c.slug}`)}>
-                  <div className="code">{c.code} · {ps.length} problems</div>
+                  <div className="code">{ps.length} problems · IDs {c.code}1–{c.code}{ps.length}</div>
                   <h3>{c.name}</h3>
                   <p>{c.blurb}</p>
                   <div className="foot">
