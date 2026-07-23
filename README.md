@@ -10,7 +10,7 @@ pull request or an issue.
 
 ## Website
 
-https://open-quantum-problems.vercel.app/
+[https://openquantumproblems.com/]
 
 ## Contributing
 
