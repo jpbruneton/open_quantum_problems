@@ -198,8 +198,55 @@ td.stmt .katex { font-size: 1em; }
 
 .site-footer { border-top: 1px solid var(--border); padding: 24px 0; color: var(--muted-2); font-size: 13px; }
 
-@media (max-width: 600px) {
-  .stat { min-width: 0; flex: 1 1 40%; }
-  .gh-link { position: static; margin-bottom: 14px; }
-  h1.title { margin-top: 0; }
+/* Mobile optimizations — desktop layout above is untouched */
+@media (max-width: 640px) {
+  .container { padding: 0 16px; }
+
+  .site-header .inner { padding: 20px 0 18px; }
+  .gh-link {
+    position: static; display: inline-flex; margin-bottom: 16px;
+    padding: 7px 12px; font-size: 12.5px;
+  }
+  h1.title { margin-top: 0; font-size: 24px; }
+  .subtitle { font-size: 14px; }
+  .crumbs { margin-top: 14px; }
+
+  section.body { padding: 20px 0 56px; }
+
+  .stats-row { flex-direction: column; align-items: stretch; gap: 12px; margin-top: 18px; }
+  .stats { width: 100%; }
+  .stat { min-width: 0; flex: 1 1 40%; padding: 8px 10px; }
+  .stat .n { font-size: 18px; }
+  .cta-sharp { width: 100%; justify-content: center; padding: 13px 16px; font-size: 15px; }
+
+  .intro { font-size: 14.5px; }
+  .legend { gap: 10px 16px; font-size: 12.5px; margin: 14px 0 22px; }
+
+  .grid { grid-template-columns: 1fr; gap: 12px; }
+  .card { padding: 16px; }
+  .card:hover { transform: none; }
+
+  .toolbar { flex-direction: column; align-items: stretch; gap: 10px; }
+  .toolbar input { width: 100%; min-width: 0; padding: 10px 12px; font-size: 16px; }
+  .toolbar .chip {
+    display: inline-block; padding: 7px 14px; font-size: 13px;
+  }
+
+  .table-wrap { border-radius: 10px; -webkit-overflow-scrolling: touch; }
+  th, td { padding: 10px 12px; font-size: 13.5px; }
+  td.stmt { min-width: 220px; }
+
+  .badge { font-size: 10.5px; padding: 3px 8px; }
+  .badge-row { gap: 6px; }
+
+  .detail h2 { font-size: 22px; }
+  .detail .statement { padding: 14px 15px; font-size: 15px; margin: 14px 0; }
+  .detail h4 { margin: 20px 0 6px; }
+
+  .note { margin-top: 28px; padding: 12px 14px; font-size: 12.5px; }
+  .site-footer { padding: 18px 0; font-size: 12px; }
+}
+
+@media (max-width: 380px) {
+  .stat { flex: 1 1 100%; }
 }
