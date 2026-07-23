@@ -24,6 +24,7 @@ function useHashRoute() {
   const parts = hash.split("/").filter(Boolean);
   if (parts[0] === "c" && parts[1]) return { view: "category", slug: parts[1] };
   if (parts[0] === "p" && parts[1]) return { view: "problem", id: parts[1] };
+  if (parts[0] === "sharp") return { view: "sharp" };
   return { view: "home" };
 }
 function go(to) {
@@ -88,12 +89,17 @@ function Home() {
       <Header />
       <section className="body">
         <div className="container">
-          <div className="stats">
-            <div className="stat"><div className="n">{total}</div><div className="l">Problems</div></div>
-            <div className="stat"><div className="n">{CATEGORIES.length}</div><div className="l">Areas</div></div>
-            <div className="stat"><div className="n">{nSharp}</div><div className="l">Sharp (solvable)</div></div>
-            <div className="stat"><div className="n">{nImproved}</div><div className="l">Improved</div></div>
-            <div className="stat"><div className="n">{nSolved}</div><div className="l">Solved</div></div>
+          <div className="stats-row">
+            <div className="stats">
+              <div className="stat"><div className="n">{total}</div><div className="l">Problems</div></div>
+              <div className="stat"><div className="n">{CATEGORIES.length}</div><div className="l">Areas</div></div>
+              <div className="stat"><div className="n">{nSharp}</div><div className="l">Sharp (solvable)</div></div>
+              <div className="stat"><div className="n">{nImproved}</div><div className="l">Improved</div></div>
+              <div className="stat"><div className="n">{nSolved}</div><div className="l">Solved</div></div>
+            </div>
+            <button className="cta-sharp" onClick={() => go("sharp")}>
+              ⚡ See all {nSharp} sharp problems
+            </button>
           </div>
 
           <p className="intro" style={{ marginTop: 26 }}>
@@ -234,6 +240,79 @@ function CategoryView({ slug }) {
   );
 }
 
+// ---------- sharp problems (all categories) ----------
+function SharpView() {
+  const [q, setQ] = useState("");
+
+  const rows = useMemo(() => {
+    let ps = PROBLEMS.filter((p) => p.horizon === "sharp");
+    if (q.trim()) {
+      const s = q.toLowerCase();
+      ps = ps.filter(
+        (p) =>
+          p.title.toLowerCase().includes(s) ||
+          p.id.toLowerCase().includes(s) ||
+          p.statement.toLowerCase().includes(s)
+      );
+    }
+    return ps;
+  }, [q]);
+
+  return (
+    <>
+      <Header crumbs={[{ label: "Sharp problems" }]} />
+      <section className="body">
+        <div className="container">
+          <p className="intro">
+            Sharp problems: a single proof or counterexample closes them.
+            These are the cleanest targets for a solution.
+          </p>
+
+          <div className="toolbar">
+            <input
+              placeholder="Filter by keyword…"
+              value={q}
+              onChange={(e) => setQ(e.target.value)}
+            />
+          </div>
+
+          <div className="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th style={{ width: 56 }}>ID</th>
+                  <th style={{ width: 170 }}>Area</th>
+                  <th>Problem</th>
+                  <th style={{ width: 110 }}>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {rows.map((p) => (
+                  <tr key={p.id} onClick={() => go(`p/${p.id}`)}>
+                    <td className="id">{p.id}</td>
+                    <td style={{ color: "var(--muted)", fontSize: 13 }}>{getCategory(p.cat).name}</td>
+                    <td className="stmt">
+                      <div style={{ fontWeight: 600, marginBottom: 4 }}>{p.title}</div>
+                      <div style={{ color: "var(--muted)", fontSize: 13 }}>
+                        <MathText text={truncate(p.statement, 150)} />
+                      </div>
+                    </td>
+                    <td><StatusBadge s={p.status} /></td>
+                  </tr>
+                ))}
+                {rows.length === 0 && (
+                  <tr><td colSpan={4} style={{ color: "var(--muted)" }}>No problems match the filter.</td></tr>
+                )}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+      <Footer />
+    </>
+  );
+}
+
 // ---------- problem detail ----------
 function ProblemView({ id }) {
   const p = getProblem(id);
@@ -347,5 +426,6 @@ export default function Page() {
   const route = useHashRoute();
   if (route.view === "category") return <CategoryView slug={route.slug} />;
   if (route.view === "problem") return <ProblemView id={route.id} />;
+  if (route.view === "sharp") return <SharpView />;
   return <Home />;
 }
