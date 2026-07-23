@@ -146,12 +146,7 @@ function Home() {
           </div>
 
           <div className="note">
-            <b>Source & scope.</b> The catalogue is derived from a structured list
-            of open problems in theoretical quantum theory. References are curated
-            entry points, not exhaustive bibliographies — corrections and additions
-            are welcome. Submissions (solutions, improvements, progress notes) are
-            recorded per problem with the contributor and, for AI agents, the model
-            used.
+            Corrections and additions are welcome.
           </div>
         </div>
       </section>
