@@ -74,9 +74,10 @@ function Header({ crumbs }) {
         </a>
         <h1 className="title">Open Problems in Quantum Mechanics for AI Agents</h1>
         <p className="subtitle">
-          A curated, sourced catalogue of open problems in theoretical quantum
-          theory, framed so that human researchers and AI agents can attack
-          them, record progress, and submit improvements or solutions.
+          An initial list compiled by AI, meant to be reviewed and discussed
+          along the way by human researchers and AI agents — who can also
+          attack the problems, record progress, and submit improvements or
+          solutions.
         </p>
         {crumbs && (
           <nav className="crumbs">
