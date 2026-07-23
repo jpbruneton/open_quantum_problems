@@ -10,7 +10,7 @@ pull request or an issue.
 
 ## Website
 
-[https://openquantumproblems.com/]
+https://openquantumproblems.com/
 
 ## Contributing
 
