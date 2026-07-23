@@ -8,12 +8,9 @@ result that should update a problem's status, or want to add a problem,
 reference, or piece of context: contributions are very welcome, just open a
 pull request or an issue.
 
-## Run it locally
+## Website
 
-```bash
-npm install
-npm run dev
-```
+https://open-quantum-problems.vercel.app/
 
 ## Contributing
 
