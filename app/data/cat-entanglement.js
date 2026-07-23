@@ -1,0 +1,198 @@
+const r = String.raw;
+
+export const ENTANGLEMENT = [
+  { id: "E1", cat: "entanglement", horizon: "sharp",
+    title: "NPT bound entanglement",
+    statement: r`Determine whether every bipartite state with negative partial transpose is distillable, or construct an NPT state whose distillable entanglement is zero.`,
+    context: r`Entanglement distillation converts many copies of a noisy entangled state into fewer near-perfect Bell pairs by LOCC. The Peres–Horodecki criterion shows a positive partial transpose (PPT) state cannot be distilled, giving 'PPT bound entanglement'. The reverse question — whether NPT (negative partial transpose) always implies distillability — is one of the oldest open problems in entanglement theory.
+
+What is known: All NPT states in $2\times2$ and $2\times n$ systems are distillable. The general question reduces to a concrete family (see E2): DiVincenzo–Shor–Smolin–Terhal–Thapliyal and the Horodeccy independently gave strong numerical evidence that certain NPT Werner states are NOT distillable, which would prove NPT bound entanglement exists and refute the conjecture that NPT = distillable. The undistillability has been verified for many copies but never for all.
+
+If NPT bound entanglement exists, distillability is non-additive and non-convex in striking ways (two undistillable states can become distillable together — 'activation'). The problem is sharp: a single explicit NPT undistillable state, or a proof that none exists, resolves it. Related: E2, E5.`,
+    refs: [
+      { label: "DiVincenzo, Shor, Smolin, Terhal, Thapliyal, 'Evidence for bound entangled states with negative partial transpose', PRA 61, 062312 (2000)" },
+      { label: "Horodecki, Horodecki, Horodecki, Horodecki, 'Quantum entanglement', Rev. Mod. Phys. 81, 865 (2009)" },
+    ] },
+
+  { id: "E2", cat: "entanglement", horizon: "sharp",
+    title: "Distillability of NPT Werner states",
+    statement: r`For the unresolved range of NPT Werner states, decide whether there exist $n$ and a Schmidt-rank-two vector $|\psi\rangle$ with $\langle\psi|(\rho_W^{T_B})^{\otimes n}|\psi\rangle<0$.`,
+    context: r`This is the concrete computational core of E1. Distillability of a state is equivalent to 'n-copy distillability' for some $n$, which for the one-parameter family of Werner states reduces to whether some Schmidt-rank-two vector gives a negative expectation value of $(\rho_W^{T_B})^{\otimes n}$. If no such vector exists for any $n$, the state is undistillable despite being NPT.
+
+What is known: The problem has been checked and confirmed distillable-or-not for small $n$; the difficulty is uniform control over all $n$. Pankowski–Piani–Horodecki–Horodecki reformulated it as a question about tensor powers and gave bounds. It has been connected to positivity of certain bi-quadratic forms and to the existence of specific positive maps, and reformulated as a question in real algebraic geometry, but no method decides all $n$ at once.
+
+A resolution of this specific family settles E1. Related: E1.`,
+    refs: [
+      { label: "Pankowski, Piani, Horodecki, Horodecki, 'A few steps more towards NPT bound entanglement', IEEE Trans. Inf. Theory 56 (2010)" },
+      { label: "DiVincenzo et al., PRA 61, 062312 (2000)" },
+    ] },
+
+  { id: "E3", cat: "entanglement", horizon: "incremental",
+    title: "Effective separability criteria",
+    statement: r`Find complete, computationally useful separability criteria for nontrivial families beyond $2\times2$ and $2\times3$, and identify the maximal tractable classes.`,
+    context: r`Deciding whether a bipartite mixed state is separable or entangled is fundamental but hard. The positive partial transpose (Peres–Horodecki) criterion is necessary and sufficient only in $2\times2$ and $2\times3$; in higher dimensions PPT-entangled (bound) states exist and evade it.
+
+What is known: Gurvits proved that deciding separability is NP-hard, so no efficient general algorithm is expected. A hierarchy of complete tests exists: the Doherty–Parrilo–Spedalieri (DPS) semidefinite-programming hierarchy of symmetric extensions converges to the separable set, and each level is efficiently checkable, but the level needed can grow with dimension. Many one-sided criteria (realignment/CCNR, covariance-matrix, entanglement witnesses, k-symmetric extensions) detect large classes. For specific structured families (low rank, symmetric states, Gaussian states via PPT) separability is decidable.
+
+The incremental frontier is to enlarge the families with complete, low-cost criteria and to understand how the required DPS level scales — a quantitative leaderboard. Related: E12.`,
+    refs: [
+      { label: "Gurvits, 'Classical deterministic complexity of Edmonds' problem and quantum entanglement', STOC 2003" },
+      { label: "Doherty, Parrilo, Spedalieri, 'Complete family of separability criteria', PRA 69, 022308 (2004)" },
+    ] },
+
+  { id: "E4", cat: "entanglement", horizon: "incremental",
+    title: "Exact characterization of LOCC",
+    statement: r`Characterize the closure and boundary of the set of transformations implementable by local operations and classical communication, and give an effective membership criterion.`,
+    context: r`LOCC is the physically natural free operation of entanglement theory, but it is mathematically awkward: the set of LOCC maps is not topologically closed, and it sits strictly between local operations with shared randomness and the larger, well-behaved class of separable operations (SEP). There exist separable operations that are provably not LOCC ('nonlocality without entanglement').
+
+What is known: Chitambar–Leung–Mančinska–Ozols–Winter gave a careful framework distinguishing LOCC, its closure LOCC-bar, and SEP, and proved these are all different, including gaps that require infinitely many rounds of communication. For pure bipartite states, Nielsen's theorem gives an exact majorization criterion for single-copy LOCC convertibility, and the theory of catalysis and multi-copy conversions is well developed there.
+
+For general (mixed, multipartite, multi-round) transformations there is no effective membership test for LOCC, and the boundary of the set — including how the number of communication rounds affects power — is not characterized. This is an incremental structural problem. Related: E5, E11.`,
+    refs: [
+      { label: "Chitambar, Leung, Mančinska, Ozols, Winter, 'Everything you always wanted to know about LOCC', Comm. Math. Phys. 328 (2014)" },
+      { label: "Nielsen, 'Conditions for a class of entanglement transformations', PRL 83, 436 (1999)" },
+    ] },
+
+  { id: "E5", cat: "entanglement", horizon: "incremental",
+    title: "Asymptotic mixed-state entanglement conversion",
+    statement: r`Determine the optimal asymptotic LOCC rate $R(\rho\to\sigma)$ for general bipartite mixed states, including the role of catalysts and sublinear auxiliary resources.`,
+    context: r`The asymptotic conversion rate is how many copies of target $\sigma$ can be produced per copy of source $\rho$ under LOCC in the many-copy limit. For pure states this rate is simply the ratio of entanglement entropies, and pure-state entanglement is reversible with the Bell pair as universal currency.
+
+What is known: For mixed states the theory is fragmentary. The extreme rates are the distillable entanglement $E_D$ (rate to Bell pairs) and the reciprocal of the entanglement cost $E_C$ (rate from Bell pairs); $E_C=E_F^\infty$, the regularized entanglement of formation. General $\rho\to\sigma$ rates are bounded by ratios of entanglement measures but are not known exactly, and computing $E_D$, $E_C$ themselves is open (E9). Catalysis and small (sublinear) auxiliary resources can change what is achievable, as in embezzlement and catalytic transformations.
+
+Determining the exact conversion rates for general mixed states, and the precise power of catalysts and sublinear side-resources, is an open incremental problem tightly linked to E6 (irreversibility). Related: E6, E9, E11.`,
+    refs: [
+      { label: "Bennett, DiVincenzo, Smolin, Wootters, 'Mixed-state entanglement and quantum error correction', PRA 54, 3824 (1996)" },
+      { label: "Horodecki⁴, Rev. Mod. Phys. 81, 865 (2009)" },
+    ] },
+
+  { id: "E6", cat: "entanglement", horizon: "sharp",
+    title: "Irreversibility of mixed-state entanglement",
+    statement: r`Characterize exactly when entanglement cost equals distillable entanglement, $E_C(\rho)=E_D(\rho)$.`,
+    context: r`Pure-state entanglement is reversible: the entropy of entanglement governs both formation and distillation, so no entanglement is lost in a dilution-then-distillation cycle. Generic mixed states are irreversible — $E_C(\rho)>E_D(\rho)$ — so entanglement is genuinely 'wasted', and bound entangled states have $E_D=0$ while $E_C>0$, the extreme case.
+
+What is known: Vidal and Cirac gave explicit irreversible states and clarified the general phenomenon; the gap $E_C-E_D$ is a fundamental irreversibility measure. Under the larger class of PPT or non-entangling operations, a reversible theory with a unique measure can sometimes be restored, and the recent work on a 'second law' of entanglement / general resource theories (Brandão–Plenio, and later results, including a 2023 counterexample by Lami–Regula to reversibility under all non-entangling operations) has sharpened exactly when reversibility can and cannot hold.
+
+Characterizing precisely the set of states with $E_C=E_D$ under LOCC — a clean structural criterion — remains open and sharp. Related: E5, E9.`,
+    refs: [
+      { label: "Vidal & Cirac, 'Irreversibility in asymptotic manipulations of entanglement', PRL 86, 5803 (2001)" },
+      { label: "Lami & Regula, 'No second law of entanglement manipulation after all', Nat. Phys. 19 (2023)" },
+    ] },
+
+  { id: "E7", cat: "entanglement", horizon: "sharp",
+    title: "Minimal reversible entanglement-generating set",
+    statement: r`Determine whether there exists a finite minimal reversible entanglement-generating set (MREGS) for asymptotic multipartite LOCC transformations.`,
+    context: r`For bipartite pure states, a single resource — the Bell pair — is a reversible 'currency' from which any state can be made and into which any can be distilled. In the multipartite setting one asks for an analogous finite set of standard states (an MREGS) from which every multipartite pure state can be reversibly generated under asymptotic LOCC.
+
+What is known: Even for three parties, no finite MREGS is known. Bennett–Popescu–Rohrlich–Smolin–Thapliyal introduced the concept and showed the obvious candidate set (the three EPR pairs plus the GHZ state) is not sufficient — there are states, such as certain 'GHZ-like' resources, whose reversible generation seems to require ever more standard states. Linden–Popescu–Schumacher–Westmoreland and Acín–Vidal–Cirac showed the GHZ state cannot be reversibly interconverted with EPR pairs, exhibiting genuine multipartite irreversibility.
+
+Whether any finite MREGS exists at all, even for three parties, is open — and there is a real possibility the answer is no. Related: E8.`,
+    refs: [
+      { label: "Bennett, Popescu, Rohrlich, Smolin, Thapliyal, 'Exact and asymptotic measures of multipartite pure-state entanglement', PRA 63, 012307 (2000)" },
+      { label: "Acín, Vidal, Cirac, 'On the structure of a reversible entanglement generating set for tripartite states', QIC 3 (2003)" },
+    ] },
+
+  { id: "E8", cat: "entanglement", horizon: "programme",
+    title: "Multipartite entanglement classification",
+    statement: r`Find a scalable classification of multipartite mixed states under LOCC or SLOCC, organizing the infinitely many inequivalent families that appear as the number of parties grows.`,
+    context: r`For three qubits, SLOCC (stochastic LOCC) equivalence gives finitely many classes — notably the inequivalent GHZ and W classes (Dür–Vidal–Cirac). Beyond that the structure explodes.
+
+What is known: For four qubits there are already infinitely many SLOCC classes, organized by Verstraete–Dehaene–De Moor–Verschelde into nine families. The general problem connects to the algebraic geometry of tensors, hyperdeterminants, and the orbits of the local-unitary / local-invertible group actions; invariant-theoretic descriptions exist for small cases. For mixed multipartite states the classification is far less developed. Coarser organizing tools — entanglement polytopes (Walter–Doran–Gross–Christandl), tensor rank and border rank, and the SLOCC monotones — give partial, scalable structure.
+
+A genuinely scalable classification, usable for many parties and for mixed states, is a broad open programme rather than a single conjecture. Related: E7.`,
+    refs: [
+      { label: "Dür, Vidal, Cirac, 'Three qubits can be entangled in two inequivalent ways', PRA 62, 062314 (2000)" },
+      { label: "Verstraete, Dehaene, De Moor, Verschelde, 'Four qubits can be entangled in nine different ways', PRA 65, 052112 (2002)" },
+    ] },
+
+  { id: "E9", cat: "entanglement", horizon: "incremental",
+    title: "Computability of regularized entanglement measures",
+    statement: r`Determine which quantities — $E_C$, $E_D$, $E_R^\infty$, $E_P^\infty$ — are computable or approximable with certified error for general finite-dimensional states.`,
+    context: r`Many operationally meaningful entanglement measures are defined by a regularization — a limit over many copies — because the single-copy version is not additive. Entanglement cost $E_C=E_F^\infty$, distillable entanglement $E_D$, the regularized relative entropy of entanglement $E_R^\infty$, and the regularized entanglement of purification $E_P^\infty$ are all of this form, which obstructs direct evaluation.
+
+What is known: Non-additivity is established for several measures — Hastings famously disproved additivity of the minimum output entropy (hence of the Holevo capacity), and the entanglement of formation is non-additive, so $E_C\ne E_F$ in general. This means single-letter formulas fail and the regularized limits are genuinely needed. Some measures are known to be hard: computing the entanglement of formation and related quantities is NP-hard in the dimension (Huang). Bound entanglement gives $E_D=0$ states that are provably entangled, complicating any general algorithm.
+
+Which of these regularized measures are computable, approximable to certified accuracy, or provably uncomputable is largely open — an incremental classification with links to complexity theory. Related: E5, E6, E10, U4.`,
+    refs: [
+      { label: "Hastings, 'Superadditivity of communication capacity using entangled inputs', Nat. Phys. 5 (2009)" },
+      { label: "Huang, 'Computing quantum discord is NP-complete', New J. Phys. 16 (2014)" },
+    ] },
+
+  { id: "E10", cat: "entanglement", horizon: "sharp",
+    title: "Additivity of entanglement of purification",
+    statement: r`Determine whether $E_P(\rho\otimes\sigma)=E_P(\rho)+E_P(\sigma)$, or construct an explicit counterexample, and determine the regularized $E_P^\infty$.`,
+    context: r`The entanglement of purification $E_P(\rho)$ measures the total (quantum plus classical) correlations needed to prepare $\rho$, defined as the minimal entanglement of a pure state whose reduction gives $\rho$. Whether $E_P$ is additive under tensor products is a clean, long-standing question, and its regularization $E_P^\infty$ governs an operational task (the entanglement cost of preparing correlations under asymptotically vanishing communication).
+
+What is known: Terhal–Horodecki–Leung–DiVincenzo introduced $E_P$ and showed it is not an entanglement monotone (it can increase under LOCC) and gave bounds. Additivity is generally conjectured to fail — $E_P$ is expected to be strictly subadditive for some states — but no clean explicit counterexample settling it is known, and the regularized $E_P^\infty$ is not determined even for simple families. The quantity has resurfaced in holography as the conjectured dual of the entanglement wedge cross-section, intensifying interest.
+
+A single explicit pair of states violating additivity (or a proof of additivity) resolves the sharp question. Related: E9.`,
+    refs: [
+      { label: "Terhal, Horodecki, Leung, DiVincenzo, 'The entanglement of purification', J. Math. Phys. 43, 4286 (2002)" },
+      { label: "Bagchi & Pati, 'Monogamy, polygamy, and other properties of entanglement of purification', PRA 91 (2015)" },
+    ] },
+
+  { id: "E11", cat: "entanglement", horizon: "incremental",
+    title: "Entanglement catalysis",
+    statement: r`Give necessary and sufficient conditions for catalytic state conversion when states and catalysts may be mixed, multipartite or correlated, and determine the resources required of the catalyst.`,
+    context: r`A catalyst is an auxiliary entangled state that enables an otherwise-impossible LOCC conversion $\rho\to\sigma$ and is returned unchanged. Catalysis reveals that the ordering of entangled states is richer than single-copy majorization suggests.
+
+What is known: For pure bipartite states, Jonathan–Plenio discovered catalysis, and the achievable conversions are exactly characterized by trumping / the theory of 'catalytic majorization', related to Ky Fan-type and Rényi-entropy inequalities (Klimesh; Turgut): $\rho\to\sigma$ is catalytically possible iff a family of Rényi-entropy inequalities holds. Recent 'catalytic' results are striking: entropy is a complete monotone for correlated-catalytic transformations (Kondra–Datta–Streltsov; Lipka-Bartosik–Skrzypczyk), and embezzlement (van Dam–Hayden) shows arbitrarily good conversion using a slightly perturbed catalyst.
+
+For mixed, multipartite, or correlated catalysts the necessary-and-sufficient conditions, and the minimal resources a catalyst must have, are only partially known — an active incremental area. Related: E4, E5.`,
+    refs: [
+      { label: "Jonathan & Plenio, 'Entanglement-assisted local manipulation of pure quantum states', PRL 83, 3566 (1999)" },
+      { label: "Kondra, Datta, Streltsov, 'Catalytic transformations of pure entangled states', PRL 127, 150503 (2021)" },
+    ] },
+
+  { id: "E12", cat: "entanglement", horizon: "incremental",
+    title: "Quantum marginal problem",
+    statement: r`Give a complete, effectively usable characterization of collections $\{\rho_{A_i}\}$ that arise as compatible reduced states of one global state, beyond representation-theoretic solutions.`,
+    context: r`The quantum marginal (or N-representability) problem asks which collections of reduced density matrices are consistent — i.e. arise as marginals of a single global state. It generalizes the classical marginal problem and is central to quantum chemistry (the fermionic N-representability problem) and to entanglement theory.
+
+What is known: The one-body pure-state case is solved: Klyachko, building on Berenstein–Sjamaan and the geometry of moment maps, gave the compatibility conditions for the eigenvalues of single-party marginals of a global pure state as a finite set of linear inequalities (generalizing the Horn problem); Christandl–Mitchison and Daftuar–Hayden developed the representation-theoretic picture. The famous Pauli-exclusion 'generalized' constraints for fermionic one-body marginals (Klyachko, Altunbulak–Klyachko) are of this type.
+
+But the general problem is hard: deciding consistency of overlapping marginals is QMA-complete (Liu; Broadbent–Grilo-adjacent results), so no simple universal characterization is expected. Extending effective criteria beyond the representation-theoretic one-body case is the incremental target. Related: E3.`,
+    refs: [
+      { label: "Klyachko, 'Quantum marginal problem and N-representability', J. Phys. Conf. Ser. 36 (2006)" },
+      { label: "Liu, Christandl, Verstraete, 'Quantum computational complexity of the N-representability problem', PRL 98, 110503 (2007)" },
+    ] },
+
+  { id: "E13", cat: "entanglement", horizon: "sharp",
+    title: "Quantum entropy cone",
+    statement: r`Characterize the closure of $\{(S(\rho_I))_{\varnothing\neq I\subseteq[n]}\}$ for $n\ge4$, including whether new independent linear entropy inequalities exist beyond the known universal ones.`,
+    context: r`The entropy cone is the region of achievable entropy vectors as the subsystem ranges over all subsets of $n$ parties. It encodes all universal linear inequalities among von Neumann entropies of the marginals of a state.
+
+What is known: For $n\le3$ the quantum entropy cone is completely characterized by subadditivity, strong subadditivity (Lieb–Ruskai) and weak monotonicity — these are the only constraints, and the cone is exactly their intersection. Strong subadditivity is the deep inequality here. For the classical (Shannon) entropy cone, by contrast, Zhang and Yeung discovered 'non-Shannon' inequalities for $n\ge4$, and infinitely many independent ones are now known, so the classical cone is not polyhedral.
+
+Whether the quantum entropy cone for $n\ge4$ has new independent (constrained) inequalities beyond the known ones is open. Partial results (Linden–Winter; Cadney–Linden–Winter; Linden–Matúš–Ruskai–Winter) found constrained inequalities and some new structure, but the cone is not determined. A resolution — either a new provable inequality or a proof that none exist — is sharp. Related: E12.`,
+    refs: [
+      { label: "Pippenger, 'The inequalities of quantum information theory', IEEE Trans. Inf. Theory 49 (2003)" },
+      { label: "Linden & Winter, 'A new inequality for the von Neumann entropy', Comm. Math. Phys. 259 (2005)" },
+    ] },
+
+  { id: "E14", cat: "entanglement", horizon: "sharp",
+    title: "Absolutely maximally entangled states",
+    statement: r`Classify the pairs $(n,d)$ for which an $\mathrm{AME}(n,d)$ state exists, and give constructive existence or nonexistence proofs.`,
+    context: r`An AME(n,d) state of $n$ parties with local dimension $d$ is maximally entangled across every bipartition — every reduction to at most half the parties is maximally mixed. AME states are the ideal resources for perfect quantum secret sharing, holographic codes, and quantum error correction; they correspond to optimal (MDS) quantum codes and to certain combinatorial designs.
+
+What is known: The AME question is equivalent to the existence of certain maximum-distance-separable codes and orthogonal arrays. For qubits ($d=2$), AME states exist for $n=2,3,5,6$ but famously NOT for $n=4$ (Higuchi–Sudbery) and not for $n=7$ (a hard nonexistence, proved by Huber–Gühne–Siewert via a link to codes and later confirmed by exhaustive/algebraic arguments). For larger $d$ many constructions exist via classical MDS codes when $d$ is a prime power and $d\ge n-1$. The AME(4,d) case (a perfect tensor / 'planar maximally entangled' state) exists for all $d\ge3$.
+
+A complete table of admissible $(n,d)$ — with constructive existence or nonexistence proofs — is still missing, and connects directly to open questions on MDS codes. Related: N1 (design-type structures).`,
+    refs: [
+      { label: "Huber, Gühne, Siewert, 'Absolutely maximally entangled states of seven qubits do not exist', PRL 118, 200502 (2017)" },
+      { label: "Goyeneche, Alsina, Latorre, Riera, Życzkowski, 'Absolutely maximally entangled states, combinatorial designs, and multiunitary matrices', PRA 92 (2015)" },
+    ] },
+
+  { id: "E15", cat: "entanglement", horizon: "incremental",
+    title: "Entanglement of identical particles",
+    statement: r`Establish a common operational framework reconciling mode entanglement, particle entanglement, superselection rules and exchange correlations for bosons and fermions.`,
+    context: r`For distinguishable subsystems, entanglement is defined relative to a tensor-product structure. For identical particles there is no natural tensor factorization into 'particles', and the (anti)symmetrization of the wavefunction produces exchange correlations that are not usable as entanglement. Multiple inequivalent definitions coexist: mode entanglement (relative to a choice of single-particle modes), particle entanglement, and definitions that respect particle-number superselection rules.
+
+What is known: Several frameworks are well developed. Mode entanglement is operationally meaningful but basis-dependent and constrained by superselection (which limits accessible entanglement). Particle-based measures (e.g. via the reduced single-particle density matrix, or fermionic/bosonic 'quantum correlations') exist, and for fermions the relevant free operations and monotones have been formulated. The role of superselection rules in restricting extractable entanglement is understood in specific settings (Wiseman–Vaccaro; Bartlett–Wiseman).
+
+A single operational framework unifying mode entanglement, particle entanglement, exchange effects, and superselection for both statistics — with agreed measures tied to concrete tasks — is still missing. This is an incremental, conceptual-cleanup problem. Related: F7.`,
+    refs: [
+      { label: "Benatti, Floreanini, Franchini, Marzolino, 'Entanglement in indistinguishable particle systems', Phys. Rep. 878 (2020)" },
+      { label: "Wiseman & Vaccaro, 'Entanglement of indistinguishable particles shared between two parties', PRL 91, 097902 (2003)" },
+    ] },
+];

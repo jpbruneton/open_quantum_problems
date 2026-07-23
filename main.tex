@@ -1,0 +1,719 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+
+\title{qmpbs}
+\author{jpbruneton }
+\date{July 2026}
+
+\begin{document}
+
+\maketitle
+
+% Requires:
+% \usepackage{enumitem}
+% \usepackage{xcolor}
+%
+% \newcommand{\precise}{\textcolor{blue!70!black}{\textsf{[P]}}}
+% \newcommand{\formalism}{\textcolor{orange!80!black}{\textsf{[F]}}}
+
+\section{Open problems in theoretical quantum theory}
+
+The label \precise{} denotes a problem that can be formulated as a
+mathematical conjecture, decision problem, or classification problem.
+The label \formalism{} denotes a sharply identifiable gap in the
+formalism, even when no unique conjectural statement has yet emerged.
+
+\subsection{Mathematical quantum mechanics and spectral theory}
+
+\begin{enumerate}[label=\textbf{M\arabic*.},leftmargin=*]
+
+\item \precise{} \textbf{Ionization conjecture for atoms.}
+For the nonrelativistic Coulomb Hamiltonian of a nucleus of charge \(Z\),
+prove that the maximal number \(N_{\mathrm c}(Z)\) of electrons which can
+be bound satisfies
+\[
+    N_{\mathrm c}(Z)\leq Z+C
+\]
+with a universal constant \(C\), independent of \(Z\).  The corresponding
+statement is known for several mean-field models, but not for the full
+many-electron Schrödinger Hamiltonian.
+
+\item \precise{} \textbf{Delocalization in the three-dimensional Anderson model.}
+Prove the existence of an absolutely continuous spectral regime and of
+extended states for the standard random Schrödinger operator on
+\(\mathbb Z^{3}\) at sufficiently weak disorder, and establish rigorously
+the localization--delocalization transition.
+
+\item \precise{} \textbf{Mobility edges.}
+For a natural random Schrödinger operator, prove the existence and
+determine the location or regularity of an energy separating localized
+from delocalized states.
+
+\item \precise{} \textbf{Many-body localization.}
+Prove or disprove the existence of a stable many-body-localized phase for
+a physically natural interacting lattice Hamiltonian in the
+thermodynamic limit, including stability under generic sufficiently
+small local perturbations.
+
+\item \precise{} \textbf{The Haldane gap for the Heisenberg chain.}
+Prove that the translation-invariant antiferromagnetic spin-\(1\)
+Heisenberg Hamiltonian
+\[
+    H=\sum_{j\in\mathbb Z}\vec S_j\cdot\vec S_{j+1}
+\]
+has a nonzero spectral gap above its ground state in the thermodynamic
+limit.  More generally, settle the integer-spin part of Haldane's
+conjecture for the standard Heisenberg chains.
+
+\item \precise{} \textbf{Gap stability beyond the presently controlled classes.}
+Find general, checkable hypotheses under which the bulk spectral gap of
+an interacting infinite quantum system is stable under local
+perturbations, including systems with long-range interactions,
+degenerate ground spaces, or gapless boundary modes.
+
+\item \precise{} \textbf{Spectral gaps of PEPS parent Hamiltonians.}
+Develop effective criteria deciding whether the parent Hamiltonian of a
+specified family of projected entangled-pair states is uniformly
+gapped in the thermodynamic limit.
+
+\item \precise{} \textbf{Quantum unique ergodicity for chaotic systems.}
+Determine natural conditions under which every high-energy sequence of
+eigenfunctions of a classically ergodic Hamiltonian becomes
+equidistributed, rather than merely a density-one subsequence.
+
+\item \precise{} \textbf{Bohigas--Giannoni--Schmit conjecture.}
+Prove that the local spectral statistics of a generic quantum system
+whose classical limit is chaotic converge to the appropriate random
+matrix ensemble.
+
+\item \precise{} \textbf{Scars in the semiclassical limit.}
+Characterize the possible semiclassical measures supported partly on
+unstable periodic orbits and determine when positive-density or
+exceptional scarred subsequences can exist.
+
+\item \formalism{} \textbf{Infinite-dimensional quantum information.}
+Develop a unified theory of states, channels, entropies and resource
+conversion on infinite-dimensional Hilbert spaces which handles domain
+questions, unbounded observables and energy constraints without
+reducing every result to an ad hoc finite-dimensional truncation.
+
+\end{enumerate}
+
+
+\subsection{Quantum many-body theory}
+
+\begin{enumerate}[label=\textbf{B\arabic*.},leftmargin=*]
+
+\item \precise{} \textbf{Area law in two spatial dimensions.}
+Prove that the ground state of every sufficiently local,
+finite-dimensional, gapped two-dimensional Hamiltonian satisfies
+\[
+    S(\rho_A)\leq C\,|\partial A|
+\]
+up to a precisely controlled correction, without assuming frustration
+freeness or an adiabatic connection to a trivial phase.
+
+\item \precise{} \textbf{Efficient tensor-network approximation in two dimensions.}
+Determine whether every gapped two-dimensional ground state admits a
+PEPS or another efficiently describable tensor-network approximation
+with polynomial bond dimension for local observables.
+
+\item \precise{} \textbf{Efficient contraction of physically restricted PEPS.}
+Identify the largest natural class of gapped or injective PEPS for which
+norms and local expectation values can be approximated in polynomial
+time.
+
+\item \precise{} \textbf{Eigenstate thermalization hypothesis.}
+Give checkable hypotheses on a nonintegrable local Hamiltonian implying
+the diagonal and off-diagonal ETH estimates for individual
+finite-energy-density eigenstates.
+
+\item \precise{} \textbf{Unitary derivation of thermalization.}
+Prove thermalization, with quantitative time scales and finite-size
+errors, for a nonintegrable translation-invariant many-body Hamiltonian
+and a broad class of nonequilibrium initial states.
+
+\item \precise{} \textbf{Derivation of quantum hydrodynamics.}
+Starting from local unitary many-body dynamics, derive diffusion,
+ballistic transport or nonlinear fluctuating hydrodynamics, including
+explicit error bounds in an appropriate scaling limit.
+
+\item \formalism{} \textbf{Classification of failures of thermalization.}
+Construct a common framework encompassing integrability, many-body
+localization, Hilbert-space fragmentation, quantum scars and conserved
+pseudolocal charges, and determine which mechanisms are stable phases
+rather than fine-tuned exceptions.
+
+\item \precise{} \textbf{Classification of gapped phases in \(d\geq2\).}
+Classify gapped local Hamiltonians up to gap-preserving local
+deformations, including intrinsic topological order, symmetry-enriched
+phases, chiral phases and anomalous boundaries.
+
+\item \precise{} \textbf{Completeness of topological invariants.}
+Determine whether known invariants---anyon data, fusion and braiding
+categories, chiral central charge, symmetry fractionalization and
+higher-form data---completely classify the corresponding gapped phases.
+
+\item \precise{} \textbf{Two-dimensional Hubbard model.}
+Determine rigorously the zero-temperature phase diagram of the
+repulsive Hubbard Hamiltonian on the square lattice, in particular the
+existence and relation of antiferromagnetism, pseudogap behaviour and
+superconducting order away from half filling.
+
+\item \precise{} \textbf{Intrinsic sign problem.}
+Characterize which local Hamiltonians can be transformed, by an
+efficiently describable local or quasilocal change of basis, into a
+stoquastic Hamiltonian.
+
+\item \precise{} \textbf{Optimal Lieb--Robinson bounds for long-range systems.}
+Determine the sharp effective causal region and information-propagation
+speed for interactions decaying as \(r^{-\alpha}\), in all regimes of
+\(\alpha\) and spatial dimension.
+
+\end{enumerate}
+
+
+\subsection{Mathematical quantum field theory}
+
+\begin{enumerate}[label=\textbf{QF\arabic*.},leftmargin=*]
+
+\item \precise{} \textbf{Yang--Mills existence and mass gap.}
+For every compact simple gauge group \(G\), construct a nontrivial
+quantum Yang--Mills theory on \(\mathbb R^{4}\) satisfying suitable
+axioms and prove that its Hamiltonian has a mass gap
+\[
+    \Delta>0 .
+\]
+
+\item \precise{} \textbf{Confinement in four-dimensional Yang--Mills theory.}
+Prove an appropriate confinement criterion, such as an area law for
+large Wilson loops, and connect it rigorously with the physical
+spectrum and colour-singlet structure.
+
+\item \precise{} \textbf{Construction of four-dimensional QED.}
+Construct continuum quantum electrodynamics nonperturbatively and prove
+that it satisfies a precise set of relativistic QFT axioms, while
+controlling charge renormalization, infrared sectors and the possible
+Landau-pole problem.
+
+\item \precise{} \textbf{Nonperturbative construction of the Standard Model.}
+Give a mathematically complete continuum definition of the chiral gauge
+theory underlying the Standard Model and establish its consistency
+beyond formal perturbation theory.
+
+\item \precise{} \textbf{Chiral gauge theories on the lattice.}
+Construct a general nonperturbative lattice regularization of
+anomaly-free chiral gauge theories whose continuum limit has the
+required locality, gauge symmetry and fermion content.
+
+\item \precise{} \textbf{Asymptotic completeness in interacting relativistic QFT.}
+For a nontrivial \(3+1\)-dimensional interacting QFT, prove that its
+physical Hilbert space is exhausted by the vacuum, stable particles and
+their scattering states, with a suitable treatment of massless
+particles and infraparticles.
+
+\item \formalism{} \textbf{Infrared sectors and infraparticles.}
+Develop a complete scattering formalism for theories such as QED in
+which charged states are accompanied by infinitely many soft quanta and
+do not belong to ordinary sharp-mass Wigner particle sectors.
+
+\item \formalism{} \textbf{Entanglement in continuum QFT.}
+Give a regulator-independent and operationally meaningful general
+formalism for entanglement and resource conversion when local
+observable algebras are type III and density matrices for sharp spatial
+regions do not exist.
+
+\item \formalism{} \textbf{Subsystems in gauge theories.}
+Find a canonical treatment of spatial subsystems, edge modes, centres
+of local algebras and gauge constraints, clarifying which definitions
+of entanglement correspond to distinct operational tasks.
+
+\item \precise{} \textbf{Interacting QFT on curved spacetime.}
+Construct nonperturbative interacting quantum fields on broad classes
+of curved globally hyperbolic spacetimes and characterize physically
+distinguished states without relying on a preferred vacuum.
+
+\end{enumerate}
+
+
+\subsection{Entanglement theory}
+
+\begin{enumerate}[label=\textbf{E\arabic*.},leftmargin=*]
+
+\item \precise{} \textbf{NPT bound entanglement.}
+Determine whether every bipartite state with negative partial transpose
+is distillable, or construct an NPT state whose distillable
+entanglement is zero.
+
+\item \precise{} \textbf{Distillability of NPT Werner states.}
+For the unresolved range of NPT Werner states, decide whether there
+exist an integer \(n\) and a Schmidt-rank-two vector
+\(\lvert\psi\rangle\) such that
+\[
+ \langle\psi|(\rho_W^{T_B})^{\otimes n}|\psi\rangle<0 .
+\]
+
+\item \precise{} \textbf{Effective separability criteria.}
+Find complete and computationally useful separability criteria for
+nontrivial families beyond \(2\times2\) and \(2\times3\), while
+identifying the maximal classes for which separability is tractable.
+
+\item \precise{} \textbf{Exact characterization of LOCC.}
+Characterize the closure and boundary of the set of transformations
+implementable by local operations and classical communication, and
+give an effective membership criterion.
+
+\item \precise{} \textbf{Asymptotic mixed-state entanglement conversion.}
+Determine the optimal asymptotic rate
+\[
+    R(\rho\to\sigma)
+\]
+for general bipartite mixed states under LOCC, including the possible
+role of catalysts and sublinear auxiliary resources.
+
+\item \precise{} \textbf{Irreversibility of mixed-state entanglement.}
+Characterize exactly when entanglement cost and distillable
+entanglement coincide:
+\[
+    E_{\mathrm C}(\rho)=E_{\mathrm D}(\rho).
+\]
+
+\item \precise{} \textbf{Minimal reversible entanglement-generating set.}
+Determine whether there exists a finite minimal reversible
+entanglement-generating set for asymptotic multipartite LOCC
+transformations.
+
+\item \precise{} \textbf{Multipartite entanglement classification.}
+Find a scalable classification of multipartite mixed states under LOCC
+or SLOCC, including a useful organization of the infinitely many
+inequivalent families that appear as the number of parties grows.
+
+\item \precise{} \textbf{Computability of regularized entanglement measures.}
+Determine which quantities such as
+\[
+ E_{\mathrm C},\qquad E_{\mathrm D},\qquad
+ E_R^\infty,\qquad E_P^\infty
+\]
+are computable or approximable with certified error for general
+finite-dimensional states.
+
+\item \precise{} \textbf{Additivity of entanglement of purification.}
+Determine whether
+\[
+    E_P(\rho\otimes\sigma)
+      =E_P(\rho)+E_P(\sigma)
+\]
+holds, or construct an explicit counterexample and determine the
+regularized quantity \(E_P^\infty\).
+
+\item \precise{} \textbf{Entanglement catalysis.}
+Give necessary and sufficient conditions for catalytic state conversion
+when the states and catalysts may be mixed, multipartite or correlated,
+and determine the resources required of the catalyst.
+
+\item \precise{} \textbf{Quantum marginal problem.}
+Give a complete, effectively usable characterization of collections
+\(\{\rho_{A_i}\}\) that arise as compatible reduced states of one global
+state, beyond the cases already covered by representation-theoretic
+solutions.
+
+\item \precise{} \textbf{Quantum entropy cone.}
+Characterize the closure of the set
+\[
+ \bigl\{(S(\rho_I))_{\varnothing\neq I\subseteq[n]}\bigr\}
+\]
+for \(n\geq4\), including whether there exist new independent linear
+entropy inequalities beyond the presently known universal ones.
+
+\item \precise{} \textbf{Absolutely maximally entangled states.}
+Classify the pairs \((n,d)\) for which an
+\(\operatorname{AME}(n,d)\) state exists, and give constructive
+existence or nonexistence proofs.
+
+\item \formalism{} \textbf{Entanglement of identical particles.}
+Establish a common operational framework reconciling mode
+entanglement, particle entanglement, superselection rules and
+exchange correlations for bosons and fermions.
+
+\end{enumerate}
+
+
+\subsection{Quantum measurements, nonlocality and contextuality}
+
+\begin{enumerate}[label=\textbf{N\arabic*.},leftmargin=*]
+
+\item \precise{} \textbf{Existence of SIC-POVMs.}
+Prove or disprove that for every \(d\geq2\) there exist \(d^{2}\) unit
+vectors \(\{\lvert\psi_j\rangle\}\subset\mathbb C^d\) satisfying
+\[
+    |\langle\psi_j|\psi_k\rangle|^2=\frac{1}{d+1},
+    \qquad j\neq k .
+\]
+
+\item \precise{} \textbf{Mutually unbiased bases in dimension six.}
+Determine the maximal number \(M(6)\) of mutually unbiased orthonormal
+bases in \(\mathbb C^6\).  In particular, decide whether
+\[
+    M(6)=3
+\]
+or whether a set of four or more such bases exists.
+
+\item \precise{} \textbf{MUBs in non-prime-power dimensions.}
+Determine the maximal number \(M(d)\) of mutually unbiased bases when
+\(d\) is not a prime power, and decide whether complete sets of
+\(d+1\) bases can exist in any such dimension.
+
+\item \precise{} \textbf{Minimal separation of quantum correlation models.}
+Find the smallest Bell scenario in which finite-dimensional,
+approximately finite-dimensional and commuting-operator quantum
+correlation sets differ.
+
+\item \precise{} \textbf{Dimension required for nonlocal correlations.}
+Given a Bell correlation and accuracy \(\varepsilon\), bound or
+determine the minimal local Hilbert-space dimension needed to realize
+it within \(\varepsilon\).
+
+\item \precise{} \textbf{Restricted decidability of nonlocal games.}
+Although the general problem is undecidable, classify the natural
+families of nonlocal games for which the quantum value is computable,
+semidecidable or efficiently approximable.
+
+\item \precise{} \textbf{Classification of self-testing correlations.}
+Characterize which states and measurements can be uniquely certified,
+up to local isometries, from their correlations alone.
+
+\item \precise{} \textbf{Optimal robustness of self-testing.}
+For standard self-tests, determine the sharp relation between the
+deviation of a Bell value from its optimum and the distance from the
+ideal state and measurements.
+
+\item \precise{} \textbf{Quantum maxima of Bell and contextuality inequalities.}
+Develop exact methods for calculating the quantum maximum and the
+minimal realizing dimension of a general inequality, beyond
+convergent but potentially nonterminating semidefinite hierarchies.
+
+\item \formalism{} \textbf{Contextuality as a computational resource.}
+Find necessary and sufficient conditions under which contextuality
+provides an actual quantum computational advantage, rather than merely
+being present in a computation.
+
+\end{enumerate}
+
+
+\subsection{Quantum channels and quantum Shannon theory}
+
+\begin{enumerate}[label=\textbf{C\arabic*.},leftmargin=*]
+
+\item \precise{} \textbf{Computable classes of quantum capacities.}
+Because no general single-letter formula can exist in full generality,
+identify maximal natural classes of channels for which the quantum
+capacity
+\[
+    Q(\mathcal N)
+      =\lim_{n\to\infty}\frac1n
+       \max_{\rho} I_{\mathrm c}(\rho,\mathcal N^{\otimes n})
+\]
+is computable or admits a finite-letter expression.
+
+\item \precise{} \textbf{Quantum capacity of the thermal attenuator.}
+Determine the energy-constrained quantum and private capacities of a
+general bosonic thermal-loss channel outside the degradable and
+antidegradable regimes.
+
+\item \precise{} \textbf{Two-way capacities of Gaussian channels.}
+Determine the exact entanglement-distribution and secret-key
+capacities assisted by unlimited two-way classical communication for
+thermal attenuators, amplifiers and additive-noise channels.
+
+\item \precise{} \textbf{Strong converse for quantum capacity.}
+Determine for which channels communication above \(Q(\mathcal N)\)
+forces the fidelity to converge to zero, and settle the general
+finite-dimensional case or provide a counterexample.
+
+\item \precise{} \textbf{Private versus quantum capacity.}
+Characterize channels for which
+\[
+    P(\mathcal N)>Q(\mathcal N),
+\]
+determine the maximal possible separation, and decide when either
+capacity is additive.
+
+\item \precise{} \textbf{Zero-error quantum capacities.}
+Characterize zero-error classical and quantum capacity, their
+superactivation, and the channel classes for which the required
+regularization can be evaluated effectively.
+
+\item \precise{} \textbf{Quantum broadcast-channel capacity region.}
+Determine the full classical--quantum--entanglement capacity region of
+a general quantum broadcast channel.
+
+\item \precise{} \textbf{Quantum interference-channel capacity region.}
+Find matching inner and outer bounds, or an exact characterization, for
+general quantum interference channels.
+
+\item \precise{} \textbf{Capacities of channels with memory.}
+Develop computable capacity formulas for broad non-Markovian channel
+families with correlated noise, including a precise operational
+classification of forgetful and nonforgetful memory.
+
+\item \formalism{} \textbf{Quantum Shannon theory in infinite dimensions.}
+Extend coding theorems, strong converses and resource inequalities to
+bosonic and other infinite-dimensional systems under physically
+natural energy constraints, with controlled compactness and continuity
+assumptions.
+
+\end{enumerate}
+
+
+\subsection{Quantum algorithms and complexity}
+
+\begin{enumerate}[label=\textbf{A\arabic*.},leftmargin=*]
+
+\item \precise{} \textbf{\(\mathsf{BQP}\) versus classical computation.}
+Prove an unrelativized separation such as
+\[
+    \mathsf{BPP}\neq\mathsf{BQP},
+\]
+or otherwise characterize exactly which classical complexity class
+captures efficient quantum computation.
+
+\item \precise{} \textbf{\(\mathsf{NP}\) versus \(\mathsf{BQP}\).}
+Determine whether
+\[
+    \mathsf{NP}\subseteq\mathsf{BQP},
+\]
+and in particular whether quantum computers can solve
+\(\mathsf{NP}\)-complete problems in polynomial time.
+
+\item \precise{} \textbf{\(\mathsf{QMA}\) versus \(\mathsf{QCMA}\).}
+Determine whether quantum witnesses are strictly more powerful than
+classical witnesses for polynomial-time quantum verification:
+\[
+    \mathsf{QMA}\stackrel{?}{=}\mathsf{QCMA}.
+\]
+
+\item \precise{} \textbf{Perfect completeness for QMA.}
+Determine whether
+\[
+    \mathsf{QMA}_1=\mathsf{QMA}.
+\]
+
+\item \precise{} \textbf{Multiple unentangled quantum proofs.}
+Determine whether
+\[
+    \mathsf{QMA}(2)=\mathsf{QMA},
+\]
+or whether two unentangled witnesses strictly increase verification
+power.
+
+\item \precise{} \textbf{Quantum PCP conjecture.}
+Prove or disprove that approximating the ground-state energy of a local
+Hamiltonian to constant extensive precision is
+\(\mathsf{QMA}\)-hard.
+
+\item \precise{} \textbf{Good quantum locally testable codes.}
+Construct, or rule out, quantum locally testable codes having
+simultaneously constant rate, linear distance and constant soundness
+with bounded-weight checks.
+
+\item \precise{} \textbf{Commuting local Hamiltonian problem.}
+Determine the complexity of the commuting local Hamiltonian problem
+for general fixed local dimension and interaction geometry, and whether
+all relevant cases admit succinct classical witnesses.
+
+\item \precise{} \textbf{Stoquastic Hamiltonian complexity.}
+Determine the relation between \(\mathsf{StoqMA}\), \(\mathsf{MA}\) and
+related classical classes; in particular, settle whether general
+error amplification is possible for \(\mathsf{StoqMA}\).
+
+\item \precise{} \textbf{Quantum search-to-decision reductions.}
+Determine whether a general accepting quantum witness can be prepared
+efficiently using only polynomially many queries to a decision oracle
+for the corresponding \(\mathsf{QMA}\) problem.
+
+\item \precise{} \textbf{Aaronson--Ambainis conjecture.}
+Prove that every bounded low-degree polynomial on the Boolean cube has
+an influential variable of polynomially bounded influence, with the
+conjectured consequences for classical simulation of quantum query
+algorithms on most inputs.
+
+\item \precise{} \textbf{Average-case hardness of BosonSampling.}
+Complete the worst-to-average-case reduction and anticoncentration
+arguments needed to establish approximate classical sampling hardness
+under standard complexity assumptions.
+
+\item \precise{} \textbf{Average-case hardness of random-circuit sampling.}
+Prove approximate sampling hardness for natural random-circuit
+ensembles using assumptions no stronger than standard worst-case
+complexity conjectures.
+
+\item \precise{} \textbf{Graph isomorphism and quantum algorithms.}
+Determine whether graph isomorphism belongs to \(\mathsf{BQP}\), or
+prove meaningful quantum lower bounds ruling out broad classes of
+quantum algorithms.
+
+\item \precise{} \textbf{Lattice problems and quantum computation.}
+Determine the exact quantum complexity of standard lattice problems
+such as approximate shortest vector and closest vector problems in the
+parameter regimes relevant to classical and post-quantum cryptography.
+
+\item \formalism{} \textbf{A criterion for genuine quantum speedup.}
+Develop structural conditions on a computational problem that predict
+whether it admits more than a polynomial quantum advantage, while
+excluding speedups caused only by input, output or data-access models.
+
+\end{enumerate}
+
+
+\subsection{Computability and undecidability}
+
+\begin{enumerate}[label=\textbf{U\arabic*.},leftmargin=*]
+
+\item \precise{} \textbf{Boundary between decidable and undecidable gap problems.}
+Classify the restrictions on dimension, translation invariance, local
+dimension, interaction range and frustration under which the
+thermodynamic spectral-gap problem becomes decidable.
+
+\item \precise{} \textbf{Computability of phase diagrams.}
+Determine which families of local Hamiltonians have computable phase
+boundaries and order parameters, given that unrestricted phase
+questions can encode undecidable problems.
+
+\item \precise{} \textbf{Computability of thermalization.}
+Classify the local Hamiltonian families for which long-time averages,
+thermalization and equilibration are decidable or effectively
+approximable.
+
+\item \precise{} \textbf{Computability of channel capacities.}
+Classify quantum channels according to whether their classical,
+private, quantum and zero-error capacities are computable,
+semicomputable or noncomputable.
+
+\item \formalism{} \textbf{Computable analysis for quantum mechanics.}
+Develop a physically appropriate computability framework for
+unbounded operators, continuous spectra, generalized eigenstates and
+infinite tensor products, including a clear account of how input data
+are specified with finite information.
+
+\end{enumerate}
+
+
+\subsection{Open quantum systems and quantum thermodynamics}
+
+\begin{enumerate}[label=\textbf{O\arabic*.},leftmargin=*]
+
+\item \precise{} \textbf{Unbounded Lindblad generators.}
+Give necessary and sufficient conditions characterizing the
+generators of completely positive, trace-preserving semigroups on
+infinite-dimensional systems when the Hamiltonian and jump operators
+are unbounded.
+
+\item \precise{} \textbf{Controlled derivation of master equations.}
+Derive Markovian or non-Markovian reduced dynamics from a microscopic
+system--environment Hamiltonian with explicit error bounds valid on
+specified time scales.
+
+\item \formalism{} \textbf{Strong-coupling open-system dynamics.}
+Construct a general reduced-dynamics formalism valid beyond weak
+coupling, secular approximations and initially factorized states,
+while preserving positivity and thermodynamic consistency.
+
+\item \precise{} \textbf{Initial system--environment correlations.}
+Characterize exactly which reduced dynamical maps are physically
+admissible for specified families of initially correlated
+system--environment states.
+
+\item \formalism{} \textbf{Quantum non-Markovianity.}
+Find an operational definition of memory that unifies or clearly
+relates divisibility, information backflow, process tensors,
+multi-time correlations and simulation cost.
+
+\item \precise{} \textbf{Thermal operations with coherence.}
+Give necessary and sufficient conditions for state conversion under
+thermal operations when the states contain coherence between energy
+eigenspaces, with and without correlated catalysts.
+
+\item \precise{} \textbf{Autonomous quantum machines.}
+Determine the exact performance limits of clocks, batteries,
+refrigerators and engines implemented by time-independent finite
+Hamiltonians, including the cost of control and degradation of the
+auxiliary systems.
+
+\item \formalism{} \textbf{Work and heat at strong coupling.}
+Construct an operational decomposition of energy changes into work and
+heat that is consistent for strongly coupled, correlated and
+non-Markovian quantum systems.
+
+\end{enumerate}
+
+
+\subsection{Foundations and missing formalism}
+
+\begin{enumerate}[label=\textbf{F\arabic*.},leftmargin=*]
+
+\item \formalism{} \textbf{Measurement problem.}
+Give a mathematically precise account of individual definite outcomes
+that is compatible with the successful unitary dynamics of quantum
+theory and does not introduce an undefined boundary between system,
+apparatus and observer.
+
+\item \formalism{} \textbf{Born rule from explicit assumptions.}
+Derive the Born probability rule from a minimal set of clearly stated
+physical or decision-theoretic assumptions without presupposing
+probabilistic, noncontextual or branch-weight structure equivalent to
+the desired conclusion.
+
+\item \formalism{} \textbf{Operational reconstruction of quantum theory.}
+Find a minimal and conceptually compelling set of operational
+principles which uniquely produces complex Hilbert spaces, tensor
+products, completely positive maps and the Born rule, while explaining
+why real and quaternionic alternatives are excluded.
+
+\item \formalism{} \textbf{Wigner's-friend scenarios.}
+Provide a consistent multi-agent probability calculus specifying when
+different agents may combine statements about outcomes, including
+cases where laboratories and observers are treated quantum
+mechanically.
+
+\item \formalism{} \textbf{Emergence of classical outcomes.}
+Explain quantitatively how a preferred set of stable classical records
+and effectively Boolean events emerges from unitary quantum dynamics,
+including the role of decoherence, redundancy and coarse graining.
+
+\item \formalism{} \textbf{Classical limit.}
+State and prove sufficiently general conditions under which quantum
+dynamics, probabilities and histories converge to an appropriate
+classical theory, including chaotic and macroscopic systems.
+
+\item \formalism{} \textbf{Definition of a quantum subsystem.}
+Characterize when a tensor-product factorization
+\[
+    \mathcal H\simeq\mathcal H_A\otimes\mathcal H_B
+\]
+has physical significance, how it is selected by observable algebras
+and interactions, and when inequivalent factorizations describe
+different notions of locality and entanglement.
+
+\item \formalism{} \textbf{Quantum reference frames.}
+Develop a fully compositional formalism for changing between quantum
+reference frames, including imperfect, finite, entangled and
+relativistic frames and systems subject to gauge constraints.
+
+\item \formalism{} \textbf{Physical boundary of indefinite causal order.}
+Characterize which mathematically valid process matrices can arise
+from ordinary quantum systems embedded in spacetime and which require
+a genuine extension of standard quantum theory.
+
+\item \formalism{} \textbf{Quantum causal models.}
+Find a general quantum analogue of classical causal inference that
+combines interventions, latent quantum systems, indefinite order and
+noncommuting observables while retaining identifiable causal
+statements.
+
+\item \formalism{} \textbf{Time observables and quantum clocks.}
+Give a unified treatment of time as an external parameter, a POVM, a
+dynamical clock and a relational observable, including the limitations
+caused by finite clock energy and backreaction.
+
+\end{enumerate}
+\end{document}
