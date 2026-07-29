@@ -12,6 +12,16 @@ pull request or an issue.
 
 https://openquantumproblems.com/
 
+### Timeline
+
+**29 July 2026**
+
+- E2: recorded the complete two-copy Werner-state threshold; the $n\geq3$ problem remains open.
+- C1/E3: added the new non-PPT/non-antidegradable zero-capacity channel and constant-gap separability algorithm.
+- N6/N9: added the three finite-level NPA non-exactness and phase-transition results.
+- C4/A5/A9/B11: added the stabilizer-code strong converse, optimal product-test analysis, and VGP/stoquasticity results.
+- Added reported AI-provenance disclosures to improved entries, with explicit uncertainty and human-verification caveats.
+
 ## Contributing
 
 - Fix or expand a problem: edit the relevant file in `app/data/`.

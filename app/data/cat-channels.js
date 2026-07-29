@@ -1,17 +1,22 @@
 const r = String.raw;
 
 export const CHANNELS = [
-  { id: "C1", cat: "channels", horizon: "incremental",
+  { id: "C1", cat: "channels", horizon: "incremental", status: "improved",
     title: "Computable classes of quantum capacities",
     statement: r`Since no general single-letter formula can exist, identify maximal natural channel classes for which $Q(\mathcal{N})=\lim_n \tfrac1n \max_\rho I_c(\rho,\mathcal{N}^{\otimes n})$ is computable or finite-letter.`,
     context: r`The quantum capacity $Q(\mathcal{N})$ is the optimal rate of reliable qubit transmission through a noisy channel. Unlike Shannon's classical capacity, it is given by a regularized (many-copy) coherent-information formula that is generally not computable in closed form.
 
 What is known: The Lloyd–Shor–Devetak theorem establishes the regularized coherent-information formula. For degradable channels (Devetak–Shor) the coherent information is additive, giving a single-letter capacity — this covers dephasing channels, amplitude damping, and certain bosonic channels. But the formula is badly non-additive in general: Smith–Yard exhibited superactivation, where two channels each with zero quantum capacity have positive capacity together, and DiVincenzo–Shor–Smolin showed superadditivity of coherent information. Cubitt et al. and Elkouss–Strelchuk showed that the regularization can require an unbounded number of copies, so no fixed-letter formula suffices in general.
 
+New progress (2026): Zhu and Wang constructed an explicit qutrit channel with exactly zero quantum and private capacities which is neither PPT nor antidegradable. Their all-blocklength relative-entropy argument establishes a mechanism for quantum and private incapacity beyond the two standard PPT and no-cloning mechanisms. This resolves the existence question for zero-capacity channels outside those classes, while leaving the broader classification and computability programme open.
+
+**Authors' statement (unverified):** According to the paper's disclosure, the authors would have formulated the question, selected the candidate channels and directed the work, while QudeLeap's AI Scientist harness and several frontier language models would have suggested the key signed-lift mechanism. The authors say they reformulated that suggestion as precise mathematics and take responsibility for the result.
+
 The open, incremental task is to enlarge the classes — beyond degradable/antidegradable/PPT — for which $Q$ is computable or single-letter, and to understand the structure that makes capacity tractable. Related: C4, C5, U4.`,
     refs: [
       { label: "Devetak & Shor, 'The capacity of a quantum channel for simultaneous transmission of classical and quantum information', Comm. Math. Phys. 256 (2005)" },
       { label: "Smith & Yard, 'Quantum communication with zero-capacity channels', Science 321 (2008)" },
+      { label: "Zhu & Wang, 'Quantum Incapacity beyond No-Cloning and PPT Mechanisms' (2026)", url: "https://arxiv.org/abs/2607.24693" },
     ] },
 
   { id: "C2", cat: "channels", horizon: "sharp",
@@ -40,17 +45,22 @@ Closing these gaps — exact two-way capacities for the full Gaussian family —
       { label: "Wilde, Tomamichel, Berta, 'Converse bounds for private communication over quantum channels', IEEE Trans. Inf. Theory 63 (2017)" },
     ] },
 
-  { id: "C4", cat: "channels", horizon: "sharp",
+  { id: "C4", cat: "channels", horizon: "sharp", status: "improved",
     title: "Strong converse for quantum capacity",
     statement: r`Determine for which channels communication above $Q(\mathcal{N})$ forces the fidelity to converge to zero, and settle the general finite-dimensional case or give a counterexample.`,
     context: r`A strong converse says the capacity is a sharp threshold: at any rate above $Q(\mathcal{N})$ the transmission fidelity does not merely fail to reach 1, it decays to 0 as the block length grows. A weak converse only forbids fidelity 1. Strong converses make the capacity operationally sharp.
 
 What is known: The strong converse holds for several structured classes. For degradable channels and for the classical capacity of entanglement-breaking and other channels, strong converses are established (Wilde–Winter–Yang via Rényi/sandwiched divergences; Tomamichel–Wilde–Winter for the quantum capacity of certain channels, e.g. dephasing and generalized dephasing). The Rains bound and its regularizations provide strong-converse upper bounds for many channels.
 
+New progress (2026): Tomamichel proved a strong converse for stabilizer codes over Pauli channels. Above the coherent information of the code input, entanglement fidelity decays exponentially; for memoryless Pauli channels this fixes the $\varepsilon$-quantum capacity within the full-joint-eigenspace stabilizer-code class for every $\varepsilon<1$. The proof also isolates an encoder-side statement whose extension would cover unrestricted codes. This is a substantial restricted-class result, not a proof of the general strong converse.
+
+**Author's statement (unverified):** According to the paper's disclosure, Claude would have originated and executed the proof ideas, drafted and typeset the manuscript, and carried out the literature search under Tomamichel's direction, corrections and verification. Other Claude models would have handled revisions, while ChatGPT would have acted as an adversarial referee. Tomamichel says he checked the statements, proofs and references and takes responsibility for the paper.
+
 Whether a strong converse for the quantum capacity holds for all finite-dimensional channels is open — no general proof and no counterexample. Given the non-additivity phenomena (C1), a counterexample is conceivable. This is a sharp yes/no problem. Related: C1, C5.`,
     refs: [
       { label: "Tomamichel, Wilde, Winter, 'Strong converse rates for quantum communication', IEEE Trans. Inf. Theory 63 (2017)" },
       { label: "Wilde, Winter, Yang, 'Strong converse for the classical capacity of entanglement-breaking and Hadamard channels', Comm. Math. Phys. 331 (2014)" },
+      { label: "Tomamichel, 'A strong converse for stabilizer codes over Pauli channels via the blowing-up lemma' (2026)", url: "https://arxiv.org/abs/2607.23450" },
     ] },
 
   { id: "C5", cat: "channels", horizon: "incremental",

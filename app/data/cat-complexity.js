@@ -53,17 +53,22 @@ The unrelativized question is open. This is a sharp problem. Related: A3, A8.`,
       { label: "Kobayashi, Le Gall, Nishimura, 'Stronger methods of making quantum interactive proofs perfectly complete', SIAM J. Comput. 44 (2015)" },
     ] },
 
-  { id: "A5", cat: "complexity", horizon: "sharp",
+  { id: "A5", cat: "complexity", horizon: "sharp", status: "improved",
     title: "Multiple unentangled quantum proofs",
     statement: r`Determine whether $\mathsf{QMA}(2)=\mathsf{QMA}$, or whether two unentangled witnesses strictly increase verification power.`,
     context: r`QMA(2) is QMA with two proofs guaranteed to be unentangled with each other. Surprisingly, this promise of unentanglement can seemingly add power, because the verifier can rely on the product structure. Whether $\mathsf{QMA}(2)=\mathsf{QMA}$ is a central open problem.
 
 What is known: QMA(k) collapses to QMA(2) for any $k\ge2$ (Harrow–Montanaro), so two provers capture the whole hierarchy. QMA(2) admits surprisingly short proofs for some problems — Blier–Tapp and Aaronson et al. showed NP-complete problems have QMA(2) proofs of only polylogarithmic-ish or $\tilde O(\sqrt n)$ size, hinting QMA(2) may be strictly stronger than QMA. The best known upper bound is $\mathsf{QMA}(2)\subseteq\mathsf{NEXP}$; even $\mathsf{QMA}(2)\subseteq\mathsf{EXP}$ is not known, a striking gap. The difficulty is the best separable-state optimization, tied to the hardness of detecting entanglement (E3).
 
+New progress (2026): Beckey, Jeronimo and Wu determined the exact worst-case acceptance curve of the multipartite product test for every product overlap and arbitrary finite local dimensions. Besides resolving the previously open low-overlap regime, the result improves the one-shot soundness of the Harrow–Montanaro reduction from $\mathsf{QMA}(k)$ to $\mathsf{QMA}(2)$. It sharpens a central verification tool but does not settle whether unentangled witnesses add computational power.
+
+**Authors' statement (unverified):** According to the disclosure, ChatGPT 5.5 Pro would have helped explore the analysis, ChatGPT and Claude would have assisted with writing, and Codex would have supported an exploratory Lean auto-formalization. The authors say they rewrote and revised the exposition and citations, performed human verification, and take responsibility for the final manuscript.
+
 Whether QMA(2) equals QMA, or lies strictly between QMA and NEXP, is wide open. Sharp problem. Related: A3, E3.`,
     refs: [
       { label: "Harrow & Montanaro, 'Testing product states, quantum Merlin-Arthur games and tensor optimization', J. ACM 60 (2013)" },
       { label: "Aaronson, Beigi, Drucker, Fefferman, Shor, 'The power of unentanglement', Theory of Computing 5 (2009)" },
+      { label: "Beckey, Jeronimo & Wu, 'An Optimal Analysis of the Product Test' (2026)", url: "https://arxiv.org/abs/2607.21477" },
     ] },
 
   { id: "A6", cat: "complexity", horizon: "sharp",
@@ -105,17 +110,22 @@ Whether the general CLH problem (higher locality, higher local dimension, genera
       { label: "Aharonov, Kenneth, Vigdorovich, 'On the complexity of two dimensional commuting local Hamiltonians', TQC 2018" },
     ] },
 
-  { id: "A9", cat: "complexity", horizon: "incremental",
+  { id: "A9", cat: "complexity", horizon: "incremental", status: "improved",
     title: "Stoquastic Hamiltonian complexity",
     statement: r`Determine the relation between $\mathsf{StoqMA}$, $\mathsf{MA}$ and related classical classes; in particular settle whether general error amplification is possible for $\mathsf{StoqMA}$.`,
     context: r`Stoquastic Hamiltonians (nonpositive off-diagonal elements) are sign-problem-free and physically ubiquitous (bosonic, ferromagnetic, transverse-field Ising). Their ground-state energy problem defines the class StoqMA, sitting between MA and QMA: $\mathsf{MA}\subseteq\mathsf{StoqMA}\subseteq\mathsf{QMA}$ (and within $\mathsf{SBP}\subseteq\mathsf{AM}$).
 
 What is known: Bravyi–DiVincenzo–Oliveira–Terhal introduced StoqMA and showed the stoquastic local Hamiltonian problem is StoqMA-complete. StoqMA has unusual features: it is not known to be closed under error amplification (the completeness–soundness gap cannot obviously be boosted), unlike QMA and MA, which is a genuine structural obstruction. Aharonov–Grilo and others related StoqMA to approximate counting and to the polynomial hierarchy, and Aharonov–Grilo–Liu studied whether StoqMA = MA. Adiabatic quantum computation with stoquastic Hamiltonians and the sign problem (B11) are directly connected.
 
+New progress (2026): Karakashian and Hen proposed vanishing geometric phase (VGP), a condition on the Hamiltonian transition graph, as a broader computational boundary than literal stoquasticity. They construct VGP 3-local Hamiltonians that are hard to stoquastize, prove VGP local Hamiltonian StoqMA-complete and its frustration-free variant in MA, identify natural polynomial-time recognizable VGP families, and show that recognizing VGP is PSPACE-complete in general for geometrically local Hamiltonians. This refines the structural landscape without resolving $\mathsf{MA}$ versus $\mathsf{StoqMA}$ or error amplification.
+
+**Authors' statement (unverified):** The manuscript contains no disclosure of generative-AI use and thanks Milad Marvian and Michael Jarret for discussions. In the absence of a declaration, the work would appear human-authored, but this catalogue cannot independently establish that no AI tools were used.
+
 Pinning down StoqMA's exact relationship to MA and the classical hierarchy, and whether error amplification is possible, are open incremental problems. Related: B11.`,
     refs: [
       { label: "Bravyi, DiVincenzo, Oliveira, Terhal, 'The complexity of stoquastic local Hamiltonian problems', Quantum Inf. Comput. 8 (2008)" },
       { label: "Aharonov & Grilo, 'Stoquastic PCP vs. randomness', FOCS 2019" },
+      { label: "Karakashian & Hen, 'Dismantling the Stoquastic Dichotomy' (2026)", url: "https://arxiv.org/abs/2607.18596" },
     ] },
 
   { id: "A10", cat: "complexity", horizon: "sharp",

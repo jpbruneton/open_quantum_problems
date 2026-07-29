@@ -73,6 +73,11 @@ h1.title {
 .crumbs .sep { margin: 0 8px; color: var(--muted-2); }
 
 /* Stats row */
+.last-updated {
+  margin: 0 0 8px;
+  color: var(--muted);
+  font-size: 13px;
+}
 .stats-row {
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
   gap: 14px; margin-top: 22px;
@@ -86,6 +91,16 @@ h1.title {
 }
 .stat .n { font-size: 20px; font-weight: 700; }
 .stat .l { font-size: 12px; color: var(--muted); }
+
+.disclaimer {
+  max-width: 920px;
+  margin: 12px 0 24px;
+  padding: 11px 13px;
+  border-left: 3px solid var(--border);
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
 
 .cta-sharp {
   display: inline-flex; align-items: center; gap: 6px;

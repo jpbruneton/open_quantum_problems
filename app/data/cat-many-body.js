@@ -134,17 +134,22 @@ The full doped phase diagram — whether and where the model superconducts, the 
       { label: "Lieb, 'Two theorems on the Hubbard model', PRL 62, 1201 (1989)" },
     ] },
 
-  { id: "B11", cat: "many-body", horizon: "incremental",
+  { id: "B11", cat: "many-body", horizon: "incremental", status: "improved",
     title: "Intrinsic sign problem",
     statement: r`Characterize which local Hamiltonians can be transformed, by an efficiently describable local or quasilocal change of basis, into a stoquastic Hamiltonian.`,
     context: r`The sign problem is the exponential obstruction that blocks quantum Monte Carlo for many fermionic and frustrated systems. A Hamiltonian is 'stoquastic' (sign-problem-free in a given basis) if its off-diagonal matrix elements are nonpositive. The question is which systems are only 'basis-dependently' cursed — curable by a local basis change — versus intrinsically sign-problematic.
 
 What is known: Deciding stoquasticity in a fixed basis is easy, but allowing local basis changes makes it subtle. Recent breakthroughs prove that certain phases have an intrinsic sign problem: Hastings, and Ringel–Kovrizhin, and then Smith–Kim–Pollmann–Knolle, showed that specific topological phases (e.g. those with nonzero chiral central charge, and certain time-reversal-invariant topological matter) admit no local sign-free basis — the sign problem is a robust property of the phase. This links the sign problem to topology and to complexity class StoqMA (A9).
 
+New progress (2026): Karakashian and Hen separated stoquastizability from vanishing geometric phase (VGP). They exhibit VGP 3-local Hamiltonians which are formally hard to stoquastize yet retain StoqMA-type complexity, give polynomial-time recognition in several natural settings, and prove general VGP recognition PSPACE-complete for geometrically local Hamiltonians. The result suggests that the tractable/sign-free boundary is not captured by the existence of a stoquastizing basis alone; it does not provide the sought necessary-and-sufficient quasilocal basis-change criterion.
+
+**Authors' statement (unverified):** The manuscript contains no disclosure of generative-AI use and thanks Milad Marvian and Michael Jarret for discussions. In the absence of a declaration, the work would appear human-authored, but this catalogue cannot independently establish that no AI tools were used.
+
 A general characterization — necessary and sufficient conditions for a local Hamiltonian to be curable by a quasilocal basis change — is open and being extended phase by phase. Related: A9, B10.`,
     refs: [
       { label: "Hastings, 'How quantum are non-negative wavefunctions?', J. Math. Phys. 57, 015210 (2016)" },
       { label: "Smith, Kim, Pollmann, Knolle, 'Simulating quantum many-body dynamics on a current digital quantum computer' / Hangleiter et al., 'Easing the sign problem'; Ringel & Kovrizhin, Sci. Adv. 3 (2017)" },
+      { label: "Karakashian & Hen, 'Dismantling the Stoquastic Dichotomy' (2026)", url: "https://arxiv.org/abs/2607.18596" },
     ] },
 
   { id: "B12", cat: "many-body", horizon: "incremental",

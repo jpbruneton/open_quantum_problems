@@ -67,17 +67,25 @@ Sharp, general bounds relating a correlation and $\varepsilon$ to the necessary 
       { label: "Brunner, Pironio, Acín, Gisin, Méthot, Scarani, 'Testing the dimension of Hilbert spaces', PRL 100, 210503 (2008)" },
     ] },
 
-  { id: "N6", cat: "nonlocality", horizon: "incremental",
+  { id: "N6", cat: "nonlocality", horizon: "incremental", status: "improved",
     title: "Restricted decidability of nonlocal games",
     statement: r`Although the general problem is undecidable, classify the natural families of nonlocal games whose quantum value is computable, semidecidable or efficiently approximable.`,
     context: r`A nonlocal game has a quantum value — the supremum winning probability over all quantum strategies. MIP*=RE shows that approximating this value is undecidable in general (as hard as the halting problem), and there is no algorithm computing it for arbitrary games.
 
 What is known: On the tractable side, XOR games are fully understood — Tsirelson's theorem gives their quantum value via a semidefinite program, so it is efficiently computable. The Navascués–Pironio–Acín (NPA) hierarchy provides a converging sequence of SDP upper bounds on the commuting-operator value of any game, and lower bounds come from explicit strategies; for many structured games these meet. Unique games, synchronous games (linked to the existence of tracial states on a game algebra), and certain group-theoretic games have partial characterizations of computability.
 
+New progress (2026): work on the doubly-tilted CHSH family sharply mapped a boundary of finite NPA decidability. Pakhunov proved that no fixed finite NPA level is exact on any neighbourhood of the critical tilt, while a companion analysis identifies a phase transition: explicit finite certificates work throughout the supercritical region, whereas every fixed level overshoots on the subcritical side near the boundary. Independently, Chaturvedi proved that no finite standard NPA level characterizes the complete quantum set even in the bipartite two-input, two-output scenario. These results delimit NPA termination but do not decide the quantum value of arbitrary nonlocal games.
+
+**Authors' statements (unverified):** Pakhunov's manuscripts contain no AI disclosure, but he reportedly described his research process as using AI to search the literature and attempt open problems, and reportedly used Claude for this work; the papers also provide exact-arithmetic verification code. Chaturvedi's manuscript contains no AI disclosure, but he reportedly said that ChatGPT was used to write up results developed through several years of human research. These external accounts are not independently verified by this catalogue.
+
 The open, incremental task is to map the decidable/approximable islands: which natural families (by symmetry, number of questions, answer structure) have computable or semidecidable quantum values, and when the NPA hierarchy terminates or gives efficient bounds. Related: N4, N9, U-category.`,
     refs: [
       { label: "Cleve, Høyer, Toner, Watrous, 'Consequences and limits of nonlocal strategies', CCC 2004" },
       { label: "Ji et al., 'MIP* = RE', Comm. ACM 64 (2021)" },
+      { label: "Pakhunov, 'No finite level of the NPA hierarchy is exact for the doubly-tilted CHSH functional near the critical tilt' (2026)", url: "https://arxiv.org/abs/2607.13762" },
+      { label: "Pakhunov, 'A phase transition in the exactness of the NPA hierarchy at the critical doubly-tilted CHSH functional' (2026)", url: "https://arxiv.org/abs/2607.13774" },
+      { label: "Chaturvedi, 'No Finite NPA Level Characterizes the Complete Quantum Set in the Simplest Bell Scenario' (2026)", url: "https://arxiv.org/abs/2607.14569" },
+      { label: "Araújo, 'A strange affair in the nonlocality community' (reported provenance and timeline, 2026)", url: "https://mateusaraujo.info/2026/07/19/a-strange-affair-in-the-nonlocality-community/" },
     ] },
 
   { id: "N7", cat: "nonlocality", horizon: "incremental",
@@ -106,17 +114,25 @@ Determining the optimal (tight) robustness for standard self-tests, and general 
       { label: "Šupić & Bowles, Quantum 4, 337 (2020)" },
     ] },
 
-  { id: "N9", cat: "nonlocality", horizon: "incremental",
+  { id: "N9", cat: "nonlocality", horizon: "incremental", status: "improved",
     title: "Quantum maxima of Bell and contextuality inequalities",
     statement: r`Develop exact methods for the quantum maximum and the minimal realizing dimension of a general inequality, beyond convergent but potentially nonterminating semidefinite hierarchies.`,
     context: r`Computing the maximal quantum violation (Tsirelson bound) of a general Bell or noncontextuality inequality, and the minimal Hilbert-space dimension achieving it, is a basic task with no general closed-form solution.
 
 What is known: The NPA hierarchy (Navascués–Pironio–Acín) gives a converging sequence of semidefinite-programming outer bounds on the commuting-operator quantum value, and it is complete (converges to the true value) — but it need not terminate at any finite level, and there is no general certificate of when it has converged. For XOR / two-outcome correlation inequalities, Tsirelson's theorem gives the exact value via a single SDP. Contextuality has an analogous graph-theoretic bound: the Lovász theta function of the exclusivity graph (Cabello–Severini–Winter) upper-bounds the quantum value, exactly for a class of inequalities.
 
+New progress (2026): three closely timed works make the nontermination statement concrete in the smallest Bell setting. For symmetric doubly-tilted CHSH near its critical tilt, Pakhunov proved that every fixed NPA level strictly overshoots the true quantum maximum on some interval; the companion paper locates an exactness phase transition and relates finite convergence to the order of contact at the self-tested optimum. Chaturvedi independently gave a fully analytical obstruction showing that no finite standard NPA level equals the complete quantum behavior set in the bipartite two-binary-measurement scenario. Thus finite-level exactness for CHSH and one-sided tilted CHSH does not extend to the full minimal behavior set. These are negative resolutions for finite NPA certification, not a general method for exact Bell maxima.
+
+**Authors' statements (unverified):** Pakhunov's manuscripts contain no AI disclosure, but he reportedly described his research process as using AI to search the literature and attempt open problems, and reportedly used Claude for this work; the papers also provide exact-arithmetic verification code. Chaturvedi's manuscript contains no AI disclosure, but he reportedly said that ChatGPT was used to write up results developed through several years of human research. These external accounts are not independently verified by this catalogue.
+
 Exact or finitely-terminating methods for the quantum maximum, together with the minimal realizing dimension, for general inequalities are open, and connect to N4/N6 undecidability limits: no algorithm can compute all quantum values. Related: N4, N6, N8.`,
     refs: [
       { label: "Navascués, Pironio, Acín, 'A convergent hierarchy of semidefinite programs characterizing the set of quantum correlations', New J. Phys. 10, 073013 (2008)" },
       { label: "Cabello, Severini, Winter, 'Graph-theoretic approach to quantum correlations', PRL 112, 040401 (2014)" },
+      { label: "Pakhunov, 'No finite level of the NPA hierarchy is exact for the doubly-tilted CHSH functional near the critical tilt' (2026)", url: "https://arxiv.org/abs/2607.13762" },
+      { label: "Pakhunov, 'A phase transition in the exactness of the NPA hierarchy at the critical doubly-tilted CHSH functional' (2026)", url: "https://arxiv.org/abs/2607.13774" },
+      { label: "Chaturvedi, 'No Finite NPA Level Characterizes the Complete Quantum Set in the Simplest Bell Scenario' (2026)", url: "https://arxiv.org/abs/2607.14569" },
+      { label: "Araújo, 'A strange affair in the nonlocality community' (reported provenance and timeline, 2026)", url: "https://mateusaraujo.info/2026/07/19/a-strange-affair-in-the-nonlocality-community/" },
     ] },
 
   { id: "N10", cat: "nonlocality", horizon: "incremental",

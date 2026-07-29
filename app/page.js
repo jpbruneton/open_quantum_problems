@@ -107,6 +107,7 @@ function Home() {
       <Header />
       <section className="body">
         <div className="container">
+          <p className="last-updated">Last updated: 29 July 2026</p>
           <div className="stats-row">
             <div className="stats">
               <div className="stat"><div className="n">{total}</div><div className="l">Problems</div></div>
@@ -132,6 +133,12 @@ function Home() {
               </span>
             ))}
           </div>
+          <p className="disclaimer">
+            <b>Disclaimer:</b> We do not claim that the solutions or improvements
+            listed here are all AI-generated. Provenance notes reproduce author
+            disclosures or attributed public accounts where available; they are
+            not independent determinations by this catalogue.
+          </p>
 
           <div className="grid">
             {CATEGORIES.map((c) => {
