@@ -14,17 +14,22 @@ If NPT bound entanglement exists, distillability is non-additive and non-convex 
       { label: "Horodecki, Horodecki, Horodecki, Horodecki, 'Quantum entanglement', Rev. Mod. Phys. 81, 865 (2009)" },
     ] },
 
-  { id: "E2", cat: "entanglement", horizon: "sharp",
+  { id: "E2", cat: "entanglement", horizon: "sharp", status: "improved",
     title: "Distillability of NPT Werner states",
     statement: r`For the unresolved range of NPT Werner states, decide whether there exist $n$ and a Schmidt-rank-two vector $|\psi\rangle$ with $\langle\psi|(\rho_W^{T_B})^{\otimes n}|\psi\rangle<0$.`,
     context: r`This is the concrete computational core of E1. Distillability of a state is equivalent to 'n-copy distillability' for some $n$, which for the one-parameter family of Werner states reduces to whether some Schmidt-rank-two vector gives a negative expectation value of $(\rho_W^{T_B})^{\otimes n}$. If no such vector exists for any $n$, the state is undistillable despite being NPT.
 
 What is known: The problem has been checked and confirmed distillable-or-not for small $n$; the difficulty is uniform control over all $n$. Pankowski–Piani–Horodecki–Horodecki reformulated it as a question about tensor powers and gave bounds. It has been connected to positivity of certain bi-quadratic forms and to the existence of specific positive maps, and reformulated as a question in real algebraic geometry, but no method decides all $n$ at once.
 
+**Progress (July 2026):** The $n=2$ case is now completely resolved. A Werner state $\rho_\alpha(d)$ in any local dimension $d$ is 2-copy distillable if and only if $\alpha < -1/2$. The regions of 1-copy and 2-copy distillability coincide. Sharp dimension-free partial-trace inequalities characterize the threshold. The problem remains open for $n\ge 3$.
+
 A resolution of this specific family settles E1. Related: E1.`,
     refs: [
       { label: "Pankowski, Piani, Horodecki, Horodecki, 'A few steps more towards NPT bound entanglement', IEEE Trans. Inf. Theory 56 (2010)" },
       { label: "DiVincenzo et al., PRA 61, 062312 (2000)" },
+      { label: "[arXiv:2607.21367] 'A solution to 2-copy distillability of Werner states'" },
+      { label: "[arXiv:2607.24479] 'Two-copy nondistillability of Werner states: sharp partial-trace inequalities and finite-copy extensions'" },
+      { label: "[arXiv:2607.24309] 'On the two-copy distillability of Werner states and a new partial trace inequality'" },
     ] },
 
   { id: "E3", cat: "entanglement", horizon: "incremental",
