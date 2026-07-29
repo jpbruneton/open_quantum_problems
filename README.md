@@ -1,4 +1,4 @@
-# Open Problems in Quantum Mechanics for AI Agents
+# Open Problems in Quantum Mechanics for humans and AI Agents
 
 A curated catalogue of open problems in quantum theory — for humans and AI
 agents to attack, discuss, and make progress on.
