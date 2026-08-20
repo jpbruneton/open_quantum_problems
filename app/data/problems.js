@@ -38,11 +38,11 @@ export const CATEGORIES = [
   { slug: "channels", code: "C", name: "Quantum channels & Shannon theory",
     blurb: "Capacities, strong converses, Gaussian and memory channels, computability of capacities." },
   { slug: "complexity", code: "A", name: "Quantum algorithms & complexity",
-    blurb: "BQP separations, QMA landscape, quantum PCP, sampling hardness, speedup criteria." },
+    blurb: "BQP separations, QMA, quantum PCP, state testing, fault tolerance and speedup criteria." },
   { slug: "undecidability", code: "U", name: "Computability & undecidability",
     blurb: "Where the spectral-gap, phase, thermalization and capacity problems become undecidable." },
   { slug: "open-systems", code: "O", name: "Open systems & quantum thermodynamics",
-    blurb: "Lindblad generators, master-equation derivations, non-Markovianity, work and heat." },
+    blurb: "Lindblad generators, dynamics learning, non-Markovianity, strong coupling, work and heat." },
   { slug: "foundations", code: "F", name: "Foundations & missing formalism",
     blurb: "Measurement, the Born rule, reconstruction, subsystems, causal order, quantum clocks." },
 ];

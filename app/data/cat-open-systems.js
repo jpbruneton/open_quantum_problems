@@ -104,4 +104,21 @@ A single operational decomposition of energy into work and heat, valid and consi
       { label: "Talkner & Hänggi, 'Colloquium: Statistical mechanics and thermodynamics at strong coupling', Rev. Mod. Phys. 92, 041002 (2020)" },
       { label: "Seifert, 'First and second law of thermodynamics at strong coupling', PRL 116, 020601 (2016)" },
     ] },
+
+  { id: "O9", cat: "open-systems", horizon: "incremental", status: "improved",
+    title: "Learning open-system dynamics",
+    statement: r`Determine the optimal experimental and computational resources needed to identify unknown quantum dynamical generators and multi-time processes from feasible preparations and measurements.`,
+    context: r`Characterizing an unknown open-system evolution is essential for calibration, verification and control. Full process tomography scales exponentially and treats each time independently, whereas a physical model may be specified compactly by a Hamiltonian, a Lindblad generator, or a finite-memory process tensor. The learning problem is to exploit that structure without assuming it in a way that hides important noise.
+
+What is known: Efficient algorithms exist for local or sparse Hamiltonians, Pauli channels and several structured Lindbladians, while process-tensor tomography can reconstruct non-Markovian multi-time statistics at a cost governed by memory and temporal complexity. General learnability depends on access assumptions — short-time evolution, ancillas, coherent control, adaptivity and the available state preparations and measurements — and robustness to state-preparation and measurement errors is often decisive.
+
+New progress (July 2026): Chen and Yu gave a nearly optimal algorithm for learning an arbitrary bounded-strength Pauli-expanded Lindbladian from its physical time evolution. It is nonadaptive, ancilla-free and control-free, uses product or stabilizer preparations and feasible measurements, and matches experiment-count and evolution-time lower bounds up to logarithmic factors. This substantially settles the stated finite-dimensional Markovian access model, but not time-dependent, non-Markovian, infinite-dimensional or imperfect-control settings; even whether memory or control helps in some restricted Lindbladian tasks remains open.
+
+**Authors' statement (unverified):** The authors state that ChatGPT would have been used interactively to check proofs, identify references and polish the manuscript. They say that all writing, mathematical statements and reasoning were completed by the human authors.
+
+The incremental frontier is a unified resource theory of learning dynamics that covers realistic access, structured many-body generators and finite-memory non-Markovian processes with matching upper and lower bounds. Related: O1, O2, O5.`,
+    refs: [
+      { label: "Pollock et al., 'Non-Markovian quantum processes: complete framework and efficient characterization', PRA 97 (2018)" },
+      { label: "Chen & Yu, 'Learning Arbitrary Lindbladians from Time Evolution' (2026)", url: "https://arxiv.org/abs/2607.28610" },
+    ] },
 ];

@@ -223,4 +223,40 @@ A general, predictive structural criterion — telling in advance whether a prob
       { label: "Aaronson, 'Read the fine print', Nat. Phys. 11 (2015)" },
       { label: "Blanc, Docter, Strassle & Tan, 'Quantum Speedups Require Structure or Depth' (FOCS 2026)", url: "https://arxiv.org/abs/2608.19158" },
     ] },
+
+  { id: "A17", cat: "complexity", horizon: "incremental", status: "improved",
+    title: "Quantum property testing under measurement constraints",
+    statement: r`Determine the optimal sample, query and computational complexity of testing or estimating properties of unknown quantum states under experimentally meaningful restrictions on the allowed measurements.`,
+    context: r`Full quantum-state tomography reconstructs an entire density matrix, but many applications ask only for a property: purity, entropy, rank, fidelity, trace distance, spectrum, or closeness to a target family. Property testing asks when this can be done with far fewer copies. The answer depends strongly on whether measurements may be collective across copies, adaptive, entangled with a quantum memory, or restricted to local Pauli measurements.
+
+What is known: Sample-optimal tomography is understood in several norms and rank regimes, while spectrum testing, shadow tomography and classical shadows show that many observables or invariant properties can be estimated without full reconstruction. Yet collective-measurement bounds can be unattainable on realistic devices, and sharp trade-offs among locality, adaptivity, memory, state structure, error norm and classical running time remain fragmentary.
+
+New progress (August 2026): Wang developed a common lower-bound framework giving nearly tight sample and query lower bounds for a broad range of spectral functionals, including fidelity, trace distance, several entropies, spectrum and rank testing. Acharya, Dharmavarapu, Liu and Yu nearly determined the copy complexity of mixedness testing with single-qubit Pauli measurements, obtaining $\widetilde\Theta(\sqrt{10}^{N}/\varepsilon^2)$ for $N$ qubits. Open targets include arbitrary reference states, rank- or instance-dependent bounds, other local measurement models, and tight resource trade-offs beyond mixedness.
+
+**Authors' statements (unverified):** Wang states that ChatGPT 5.5 and 5.6 would have assisted in exploring proof strategies, with substantial human input, and in calculations; the author takes responsibility for the manuscript. The mixedness-testing manuscript contains no declaration of generative-AI use and would therefore appear human-authored, although this catalogue cannot establish that no AI tools were used.
+
+The incremental goal is a measurement-model-sensitive theory predicting exactly when a quantum property can be learned substantially more cheaply than the state itself. Related: E3, A16.`,
+    refs: [
+      { label: "Haah, Harrow, Ji, Wu & Yu, 'Sample-optimal tomography of quantum states', IEEE Trans. Inf. Theory 69 (2023)" },
+      { label: "Wang, 'A Lower Bound Framework for Quantum Functional Estimation' (2026)", url: "https://arxiv.org/abs/2608.02600" },
+      { label: "Acharya, Dharmavarapu, Liu & Yu, 'Quantum Mixedness Testing with Pauli Measurements' (2026)", url: "https://arxiv.org/abs/2608.18839" },
+    ] },
+
+  { id: "A18", cat: "complexity", horizon: "programme", status: "improved",
+    title: "Fault tolerance beyond local stochastic noise",
+    statement: r`Establish fault-tolerance theorems with useful thresholds and low overhead for spatially or temporally correlated, non-Markovian and adversarial noise, together with efficient fault-tolerant decoding and control.`,
+    context: r`The quantum threshold theorem shows that arbitrarily long computation is possible below a constant physical error rate, but its cleanest forms assume local stochastic or sufficiently weakly correlated noise. Real devices exhibit crosstalk, leakage, coherent drift, burst errors and temporal correlations, so understanding which correlations fault tolerance can genuinely withstand is both a foundational and architectural problem.
+
+What is known: Threshold theorems cover local stochastic noise and several non-Markovian models under quantitative locality or norm bounds. Topological and quantum-LDPC codes have greatly improved asymptotic code parameters, while single-shot correction and fault-tolerant gadgets reduce time overhead. There remains a large gap between existential constructions and schemes with constant-dimensional geometry, practical decoding, realistic thresholds and modest space-time overhead under correlated noise.
+
+New progress (August 2026): Breuckmann, Golowich and Vazirani proved fault tolerance against a global adversary that may corrupt an almost-linear number $N^{1-o(1)}$ of physical qudits at every time step, with polynomial space and subpolynomial multiplicative depth overhead. Their construction demonstrates robustness even for worst-case non-Markovian errors, but leaves major efficiency questions open, including reducing the alphabet and space overhead and translating the theorem into practical architectures and noise models.
+
+**Authors' statement (unverified):** The authors state that all proofs and writing would be their own work, with ChatGPT used only to check the final draft for typographical and minor presentation issues.
+
+The broader programme is to map the exact boundary between correctable and fatal correlations while retaining implementable overhead and decoding. Related: A6, A7, O5.`,
+    refs: [
+      { label: "Aharonov & Ben-Or, 'Fault-tolerant quantum computation with constant error rate', STOC 1997" },
+      { label: "Terhal, 'Quantum error correction for quantum memories', Rev. Mod. Phys. 87 (2015)" },
+      { label: "Breuckmann, Golowich & Vazirani, 'Fault-Tolerant Quantum Computation with Adversarial Errors' (2026)", url: "https://arxiv.org/abs/2608.16857" },
+    ] },
 ];

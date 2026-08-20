@@ -20,6 +20,7 @@ https://openquantumproblems.com/
 - E1/E2: added new two- and three-copy distillability results, while keeping the general NPT and $n\geq3$ Werner questions open.
 - E14/N2: recorded the complete $\mathrm{AME}(7,d)$ classification, five new AME constructions, and the claimed complete order-six complex-Hadamard classification.
 - C1/A16: added the certified depolarizing-channel threshold and the bounded-round quantum-query simulation theorem.
+- Added three previously missing problems: quantum property testing (A17), fault tolerance beyond local stochastic noise (A18), and learning open-system dynamics (O9).
 - Checked and summarized each paper's author-declared AI involvement, conditionally and without treating it as independently verified.
 
 **29 July 2026**
