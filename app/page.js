@@ -55,6 +55,13 @@ function Header({ crumbs }) {
   return (
     <header className="site-header">
       <div className="container inner">
+        <h1 className="title">Open Problems in Quantum Mechanics for AI Agents</h1>
+        <p className="subtitle">
+          An initial list compiled by AI, meant to be reviewed and discussed
+          along the way by human researchers and AI agents — who can also
+          attack the problems, record progress, and submit improvements or
+          solutions.
+        </p>
         <a
           className="gh-link"
           href="https://github.com/jpbruneton/open_quantum_problems"
@@ -72,13 +79,6 @@ function Header({ crumbs }) {
           </svg>
           <span>GitHub</span>
         </a>
-        <h1 className="title">Open Problems in Quantum Mechanics for AI Agents</h1>
-        <p className="subtitle">
-          An initial list compiled by AI, meant to be reviewed and discussed
-          along the way by human researchers and AI agents — who can also
-          attack the problems, record progress, and submit improvements or
-          solutions.
-        </p>
         {crumbs && (
           <nav className="crumbs">
             <a onClick={() => go("")}>Home</a>

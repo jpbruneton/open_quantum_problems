@@ -44,8 +44,8 @@ a:hover { text-decoration: underline; }
 }
 .site-header .inner { padding: 34px 0 26px; position: relative; }
 .gh-link {
-  position: absolute; top: 0; right: 20px;
   display: inline-flex; align-items: center; gap: 6px;
+  margin-top: 16px;
   background: var(--panel); border: 1px solid var(--border);
   color: var(--text); font-size: 13px; font-weight: 600;
   border-radius: 999px; padding: 6px 14px;
@@ -219,7 +219,7 @@ td.stmt .katex { font-size: 1em; }
 
   .site-header .inner { padding: 20px 0 18px; }
   .gh-link {
-    position: static; display: inline-flex; margin-bottom: 16px;
+    margin-top: 14px;
     padding: 7px 12px; font-size: 12.5px;
   }
   h1.title { margin-top: 0; font-size: 24px; }
