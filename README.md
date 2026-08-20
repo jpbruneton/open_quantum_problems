@@ -14,6 +14,14 @@ https://openquantumproblems.com/
 
 ### Timeline
 
+**20 August 2026**
+
+- C4: added exponential strong converses for all finite-dimensional degradable and antidegradable channels.
+- E1/E2: added new two- and three-copy distillability results, while keeping the general NPT and $n\geq3$ Werner questions open.
+- E14/N2: recorded the complete $\mathrm{AME}(7,d)$ classification, five new AME constructions, and the claimed complete order-six complex-Hadamard classification.
+- C1/A16: added the certified depolarizing-channel threshold and the bounded-round quantum-query simulation theorem.
+- Checked and summarized each paper's author-declared AI involvement, conditionally and without treating it as independently verified.
+
 **29 July 2026**
 
 - E2: recorded the complete two-copy Werner-state threshold; the $n\geq3$ problem remains open.

@@ -15,17 +15,22 @@ Most strikingly, Appleby, Flammia, Kopp, Yard and others uncovered a deep link t
       { label: "Scott & Grassl, 'SIC-POVMs: A new computer study', J. Math. Phys. 51 (2010)" },
     ] },
 
-  { id: "N2", cat: "nonlocality", horizon: "sharp",
+  { id: "N2", cat: "nonlocality", horizon: "sharp", status: "improved",
     title: "Mutually unbiased bases in dimension six",
     statement: r`Determine the maximal number $M(6)$ of mutually unbiased bases in $\mathbb{C}^6$; in particular decide whether $M(6)=3$ or whether four or more exist.`,
     context: r`Two orthonormal bases are mutually unbiased (MU) if $|\langle e_i|f_j\rangle|^2=1/d$ for all $i,j$ — measuring in one gives no information about the other. The maximal number of pairwise MU bases $M(d)$ is $d+1$ when $d$ is a prime power. Dimension six is the smallest non-prime-power case, and $M(6)$ is a notorious open problem.
 
-What is known: One can always construct 3 MU bases in $\mathbb{C}^6$ (from a prime-power factor), so $M(6)\ge3$, and the upper bound is $M(6)\le7$. Extensive numerical optimization, computer-algebra, and Gröbner-basis searches (Butterley–Hall; Brierley–Weigert; Raynal–Lü–Englert; Jaming et al.) have never found a fourth MU basis, and strong evidence — including studies of the Fourier family of complex Hadamard matrices and the 'Zauner conjecture for MUBs' — points to $M(6)=3$. The problem is connected to the classification of $6\times6$ complex Hadamard matrices, which is itself incomplete.
+What is known: One can always construct 3 MU bases in $\mathbb{C}^6$ (from a prime-power factor), so $M(6)\ge3$, and the upper bound is $M(6)\le7$. Extensive numerical optimization, computer-algebra, and Gröbner-basis searches (Butterley–Hall; Brierley–Weigert; Raynal–Lü–Englert; Jaming et al.) have never found a fourth MU basis, and strong evidence — including studies of the Fourier family of complex Hadamard matrices and the 'Zauner conjecture for MUBs' — points to $M(6)=3$. The problem is closely connected to classifying $6\times6$ complex Hadamard matrices.
+
+New progress (August 2026): Cárdenes Wuttig and Tindall give a claimed complete, exact finite-incidence classification of order-six complex Hadamard matrices up to standard equivalence, including a proof of Szöllősi's conjecture. If the preprint withstands scrutiny, it removes a major auxiliary classification problem and supplies a rigorous framework for the MUB search. It does not determine $M(6)$ or prove that a fourth basis cannot exist.
+
+**Authors' statement (unverified):** The authors state that ChatGPT Sol 5.6 Pro, Codex 5.6 Sol and Claude Opus 5.0 would have assisted interactively with proof strategies, counterexample searches, algebra, symbolic and formal-verification code, and revision. They also report discarding or repairing incorrect model proposals, independently checking all retained material and taking full responsibility. Their declaration therefore describes mixed human–AI work, not a purely autonomous AI result.
 
 Despite overwhelming numerical evidence for $M(6)=3$, there is no proof even that a fourth basis does not exist. A rigorous determination of $M(6)$ is the sharp target. Related: N3.`,
     refs: [
       { label: "Durt, Englert, Bengtsson, Życzkowski, 'On mutually unbiased bases', Int. J. Quantum Inf. 8 (2010)" },
       { label: "Brierley & Weigert, 'Maximal sets of mutually unbiased quantum states in dimension six', PRA 78 (2008)" },
+      { label: "Cárdenes Wuttig & Tindall, 'A Complete Classification of Complex Hadamard Matrices of Order Six' (2026)", url: "https://arxiv.org/abs/2608.18053" },
     ] },
 
   { id: "N3", cat: "nonlocality", horizon: "sharp",

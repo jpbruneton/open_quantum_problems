@@ -10,13 +10,18 @@ What is known: The Lloyd–Shor–Devetak theorem establishes the regularized co
 
 New progress (2026): Zhu and Wang constructed an explicit qutrit channel with exactly zero quantum and private capacities which is neither PPT nor antidegradable. Their all-blocklength relative-entropy argument establishes a mechanism for quantum and private incapacity beyond the two standard PPT and no-cloning mechanisms. This resolves the existence question for zero-capacity channels outside those classes, while leaving the broader classification and computability programme open.
 
-**Authors' statement (unverified):** According to the paper's disclosure, the authors would have formulated the question, selected the candidate channels and directed the work, while QudeLeap's AI Scientist harness and several frontier language models would have suggested the key signed-lift mechanism. The authors say they reformulated that suggestion as precise mathematics and take responsibility for the result.
+Additional progress (August 2026): Krohn-Grimberghe supplied an exact-arithmetic, independently checkable certificate that the qubit depolarizing channel has positive coherent information at per-Pauli noise $p=0.064956$. The explicit 45-copy rank-two input improves the previous numerical lower bound on the positive-capacity threshold. This is a certified quantitative advance, not a capacity formula or a resolution of the regularization problem.
+
+**Authors' statement (unverified, July paper):** According to the paper's disclosure, the authors would have formulated the question, selected the candidate channels and directed the work, while QudeLeap's AI Scientist harness and several frontier language models would have suggested the key signed-lift mechanism. The authors say they reformulated that suggestion as precise mathematics and take responsibility for the result.
+
+**Author's statement (unverified, August paper):** According to the contribution statement, an AI-driven numerical search would have found the input state, and AI systems would also have assisted with code, calculations, mechanical proof derivations and drafting under the author's direction. The author takes full responsibility; the published verification chain is designed to check the computational claims independently of how the witness was found.
 
 The open, incremental task is to enlarge the classes — beyond degradable/antidegradable/PPT — for which $Q$ is computable or single-letter, and to understand the structure that makes capacity tractable. Related: C4, C5, U4.`,
     refs: [
       { label: "Devetak & Shor, 'The capacity of a quantum channel for simultaneous transmission of classical and quantum information', Comm. Math. Phys. 256 (2005)" },
       { label: "Smith & Yard, 'Quantum communication with zero-capacity channels', Science 321 (2008)" },
       { label: "Zhu & Wang, 'Quantum Incapacity beyond No-Cloning and PPT Mechanisms' (2026)", url: "https://arxiv.org/abs/2607.24693" },
+      { label: "Krohn-Grimberghe, 'A certified lower bound on the quantum-capacity threshold of the depolarizing channel' (2026)", url: "https://arxiv.org/abs/2608.15870" },
     ] },
 
   { id: "C2", cat: "channels", horizon: "sharp",
@@ -54,13 +59,18 @@ What is known: The strong converse holds for several structured classes. For deg
 
 New progress (2026): Tomamichel proved a strong converse for stabilizer codes over Pauli channels. Above the coherent information of the code input, entanglement fidelity decays exponentially; for memoryless Pauli channels this fixes the $\varepsilon$-quantum capacity within the full-joint-eigenspace stabilizer-code class for every $\varepsilon<1$. The proof also isolates an encoder-side statement whose extension would cover unrestricted codes. This is a substantial restricted-class result, not a proof of the general strong converse.
 
-**Author's statement (unverified):** According to the paper's disclosure, Claude would have originated and executed the proof ideas, drafted and typeset the manuscript, and carried out the literature search under Tomamichel's direction, corrections and verification. Other Claude models would have handled revisions, while ChatGPT would have acted as an adversarial referee. Tomamichel says he checked the statements, proofs and references and takes responsibility for the paper.
+**Author's statement (unverified, July paper):** According to the paper's disclosure, Claude would have originated and executed the proof ideas, drafted and typeset the manuscript, and carried out the literature search under Tomamichel's direction, corrections and verification. Other Claude models would have handled revisions, while ChatGPT would have acted as an adversarial referee. Tomamichel says he checked the statements, proofs and references and takes responsibility for the paper.
+
+Further progress (August 2026): Kondra, Brinster, Kampermann, Bruß and Wyderka proved an exponential strong converse for every finite-dimensional degradable and antidegradable channel, covering all codes. Consequences include the first all-code exponential strong converse for the quantum erasure channel over its full parameter range, SDP strong-converse bounds for arbitrary finite-dimensional channels, and an exact result for a nondegradable multilevel amplitude-damping family. The unrestricted finite-dimensional problem remains open.
+
+**Authors' statement (unverified, August paper):** The authors state that some technical proof steps would have been developed with ChatGPT 5.6 Sol. They say the initial draft was written by hand and later improved with ChatGPT 5.6 Sol and Claude Opus 4.8, and that all AI-assisted material was reviewed and revised by the authors, who take responsibility for it.
 
 Whether a strong converse for the quantum capacity holds for all finite-dimensional channels is open — no general proof and no counterexample. Given the non-additivity phenomena (C1), a counterexample is conceivable. This is a sharp yes/no problem. Related: C1, C5.`,
     refs: [
       { label: "Tomamichel, Wilde, Winter, 'Strong converse rates for quantum communication', IEEE Trans. Inf. Theory 63 (2017)" },
       { label: "Wilde, Winter, Yang, 'Strong converse for the classical capacity of entanglement-breaking and Hadamard channels', Comm. Math. Phys. 331 (2014)" },
       { label: "Tomamichel, 'A strong converse for stabilizer codes over Pauli channels via the blowing-up lemma' (2026)", url: "https://arxiv.org/abs/2607.23450" },
+      { label: "Kondra et al., 'Sharp Quantum Capacity Thresholds: Exponential Strong Converses for Degradable and Antidegradable Channels' (2026)", url: "https://arxiv.org/abs/2608.01308" },
     ] },
 
   { id: "C5", cat: "channels", horizon: "incremental",

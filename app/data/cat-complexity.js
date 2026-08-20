@@ -206,16 +206,21 @@ Pinning down the true quantum complexity of these lattice problems, in the crypt
       { label: "Micciancio & Regev, 'Lattice-based cryptography', in Post-Quantum Cryptography (Springer, 2009)" },
     ] },
 
-  { id: "A16", cat: "complexity", horizon: "incremental",
+  { id: "A16", cat: "complexity", horizon: "incremental", status: "improved",
     title: "A criterion for genuine quantum speedup",
     statement: r`Develop structural conditions on a problem that predict whether it admits more than polynomial quantum advantage, excluding speedups caused only by input, output or data-access models.`,
     context: r`Many claimed exponential quantum speedups turn out to depend on unfair comparisons — a favorable quantum input model, an amplitude-encoded output that cannot be read out, or a data-access assumption not granted to the classical competitor. A predictive criterion for when a genuine super-polynomial speedup exists is missing.
 
 What is known: The cautionary evidence is strong. Aaronson's 'read the fine print' analysis showed the HHL linear-systems and quantum-recommendation speedups hinge on state-preparation and readout assumptions. Then Tang's 'dequantization' (2019), using classical sampling analogues of quantum state preparation (Kerenidis–Prakash-style access), collapsed the exponential advantage of quantum recommendation systems and a cascade of QML algorithms (PCA, clustering, low-rank regression) to polynomial. The Aaronson–Ambainis conjecture (A11) provides one rigorous handle for total functions in the query model. Structural results distinguish speedups that survive fair comparison (factoring, simulation) from those that do not.
 
+New progress (August 2026): Blanc, Docter, Strassle and Tan settled the "structure is necessary" conjecture for parallel quantum query algorithms. Every $t$-query, $d$-round quantum algorithm can be simulated on most inputs using $t^{O(d^2)}$ classical queries. Thus, for unstructured problems in this model, a superpolynomial speedup requires superconstant depth and an exponential speedup requires polynomial depth. This is a strong structural criterion for bounded-round query algorithms, not a model-independent characterization of quantum advantage.
+
+**Authors' statement (unverified):** The authors state that ChatGPT 5.4 would have been used for literature search, converting handwritten notes to electronic form, proof checking and copyediting. The manuscript otherwise identifies the four human authors and does not describe autonomous generation of the central result.
+
 A general, predictive structural criterion — telling in advance whether a problem admits genuine super-polynomial quantum advantage, model-independently — is open. Related: A11, N10.`,
     refs: [
       { label: "Tang, 'A quantum-inspired classical algorithm for recommendation systems', STOC 2019" },
       { label: "Aaronson, 'Read the fine print', Nat. Phys. 11 (2015)" },
+      { label: "Blanc, Docter, Strassle & Tan, 'Quantum Speedups Require Structure or Depth' (FOCS 2026)", url: "https://arxiv.org/abs/2608.19158" },
     ] },
 ];

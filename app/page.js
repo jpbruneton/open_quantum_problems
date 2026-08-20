@@ -107,7 +107,7 @@ function Home() {
       <Header />
       <section className="body">
         <div className="container">
-          <p className="last-updated">Last updated: 29 July 2026</p>
+          <p className="last-updated">Last updated: 20 August 2026</p>
           <div className="stats-row">
             <div className="stats">
               <div className="stat"><div className="n">{total}</div><div className="l">Problems</div></div>
