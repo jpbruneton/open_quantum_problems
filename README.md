@@ -14,6 +14,16 @@ https://openquantumproblems.com/
 
 ### Timeline
 
+**4 September 2026**
+
+- A5: added the first quantum-oracle separation between $\mathsf{QMA}(2)$ and $\mathsf{QMA}$ and the resulting constant-error no-disentanglers theorem.
+- A12/A14/A16/A17/A18: added new BosonSampling hardness ingredients, the withdrawal of a claimed graph-isomorphism algorithm, an independent bounded-round query-simulation theorem, a shadow-tomography obstruction, and fault-tolerance overhead, calibration and decoding results.
+- C6/C7: recorded the improved $C_7$ zero-error lower bound and the counterexample to the optimality of Marton's classical broadcast-channel inner bound.
+- E4/E6/E10/E11: added a finite-round LOCC criterion for multiqubit product bases, correlated-catalytic irreversibility, and the nonadditivity/additivity split for Rényi entanglement of purification away from the von Neumann case.
+- N3/N8: added the composite-dimension MUB numerical survey and size-independent multipartite GHZ self-testing robustness.
+- O5/O9 and F2/F8/F9: added Pauli-twirling non-Markovianity, scalable noise-learning methods, a revised categorical Born-rule theorem, compositional quantum-reference-frame results, and a sharper taxonomy of dynamical causal order.
+- All headline problems remain open; status changes mark partial progress only. AI-provenance statements were checked in the papers and are reported conditionally.
+
 **20 August 2026**
 
 - C4: added exponential strong converses for all finite-dimensional degradable and antidegradable channels.

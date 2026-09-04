@@ -64,11 +64,16 @@ New progress (2026): Beckey, Jeronimo and Wu determined the exact worst-case acc
 
 **Authors' statement (unverified):** According to the disclosure, ChatGPT 5.5 Pro would have helped explore the analysis, ChatGPT and Claude would have assisted with writing, and Codex would have supported an exploratory Lean auto-formalization. The authors say they rewrote and revised the exposition and citations, performed human verification, and take responsibility for the final manuscript.
 
+Further progress (September 2026): Bostanci, Grewal, Haferkamp, Huang, Hwang, Natarajan and Nirkhe constructed a quantum oracle relative to which $\mathsf{QMA}(2)\neq\mathsf{QMA}$. The same argument proves the no-disentanglers conjecture at every constant error with $\varepsilon+\delta<1$: an approximate disentangler needs exponentially many input qubits in the number of output qubits. This is the first oracle separation between the two proof systems and closes a major geometric consequence, but it is a quantum-oracle result; a classical-oracle separation and the unrelativized question remain open.
+
+**Authors' statement (unverified, September paper):** The authors state that ChatGPT 5.6 Sol generated the proof idea underlying the main theorem after prompts directing it to the work of She and Yuen. They say they subsequently verified, simplified and developed the argument and take full responsibility for its correctness and exposition.
+
 Whether QMA(2) equals QMA, or lies strictly between QMA and NEXP, is wide open. Sharp problem. Related: A3, E3.`,
     refs: [
       { label: "Harrow & Montanaro, 'Testing product states, quantum Merlin-Arthur games and tensor optimization', J. ACM 60 (2013)" },
       { label: "Aaronson, Beigi, Drucker, Fefferman, Shor, 'The power of unentanglement', Theory of Computing 5 (2009)" },
       { label: "Beckey, Jeronimo & Wu, 'An Optimal Analysis of the Product Test' (2026)", url: "https://arxiv.org/abs/2607.21477" },
+      { label: "Bostanci et al., 'A quantum oracle separation between QMA(2) and QMA' (2026)", url: "https://arxiv.org/abs/2609.02865" },
     ] },
 
   { id: "A6", cat: "complexity", horizon: "sharp",
@@ -154,17 +159,23 @@ The full conjecture is open, and it is one of the cleanest concrete analytic pro
       { label: "O'Donnell, 'Analysis of Boolean Functions' (CUP, 2014)" },
     ] },
 
-  { id: "A12", cat: "complexity", horizon: "sharp",
+  { id: "A12", cat: "complexity", horizon: "sharp", status: "improved",
     title: "Average-case hardness of BosonSampling",
     statement: r`Complete the worst-to-average-case reduction and anticoncentration arguments needed to establish approximate classical sampling hardness under standard complexity assumptions.`,
     context: r`BosonSampling (Aaronson–Arkhipov) samples from the output distribution of non-interacting photons through a linear-optical network. Its output probabilities are permanents of Gaussian random matrices. Approximate classical simulation would collapse the polynomial hierarchy IF two conjectures hold: the permanent-of-Gaussians is #P-hard to approximate on average, and the output distribution anticoncentrates.
 
 What is known: Exact-sampling hardness (collapse of PH) is proved unconditionally-modulo-standard-assumptions. Anticoncentration of the permanent for Gaussian matrices has been established in the relevant regime. The missing piece is the average-case hardness of approximating the permanent of a Gaussian random matrix: worst-case #P-hardness of the permanent is classical (Valiant), but a worst-to-average-case reduction robust enough for approximate sampling is not known — the polynomial-interpolation reductions that work for exact evaluation degrade under approximation. Bouland et al. and others have made partial progress and given evidence.
 
+New progress (August 2026): Shou, Gorshkov, Galitski and Miller completed the hiding conjecture for Gaussian BosonSampling with an arbitrary number $K$ of equally squeezed inputs in the regime $N=o(\sqrt K)$, supplying a missing part of the usual average-case hardness reduction for that model. Independently, Go, Jeong and Oh proved average-case #P-hardness of estimating typical output probabilities for threshold and parity BosonSampling in the experimentally relevant linear-mode regime. These results extend and strengthen the hardness toolkit for Gaussian and coarse-grained variants; they do not prove the approximate-sampling hardness of standard BosonSampling or the required permanent-of-Gaussians conjecture.
+
+**Authors' statements (unverified):** Shou et al. state that GPT-5.5 Thinking and Pro and GPT-5.6 Sol were used for proof ideas and methods as well as checking and proofreading; they say the authors wrote the paper and checked every result and proof. The threshold/parity manuscript contains no declaration of generative-AI use; this catalogue cannot establish that no such tools were used.
+
 Completing the average-case hardness and tying it to approximate sampling hardness under standard assumptions is the open sharp problem. Related: A13.`,
     refs: [
       { label: "Aaronson & Arkhipov, 'The computational complexity of linear optics', Theory of Computing 9 (2013)" },
       { label: "Bouland, Fefferman, Landau, Liu, 'Noise and the frontier of quantum supremacy', FOCS 2021" },
+      { label: "Shou et al., 'Proof of the hiding conjecture for Gaussian boson sampling with an arbitrary number of squeezed input modes' (2026)", url: "https://arxiv.org/abs/2608.19314" },
+      { label: "Go, Jeong & Oh, 'Threshold and Parity BosonSampling in the Linear-Mode Regime' (2026)", url: "https://arxiv.org/abs/2608.24008" },
     ] },
 
   { id: "A13", cat: "complexity", horizon: "sharp",
@@ -187,10 +198,15 @@ Establishing approximate-sampling hardness for natural random-circuit ensembles 
 
 What is known: Classically, Babai (2016) gave a quasipolynomial-time algorithm for GI, a landmark result, so GI is 'almost' in P and the pressure for a quantum algorithm has lessened. Quantumly, the HSP-over-$S_n$ route faces strong obstructions: Moore–Russell–Schulman and Hallgren–Moore–Rötteler–Russell–Sen proved that the natural strategies (in particular, measurements of single or few coset states, and even certain highly-entangled 'joint' measurements) cannot efficiently solve the $S_n$ HSP — the required measurements are prohibitively complex. So the obvious quantum path is essentially blocked.
 
+Withdrawal notice (September 2026): Li and Chen withdrew their 2019 preprint claiming a polynomial-time quantum algorithm for graph isomorphism after identifying substantial errors. It therefore supplies no evidence that GI is in BQP and does not change the status of A14.
+
+**Authors' statement (unverified):** The withdrawn manuscript contains no declaration of generative-AI use; this catalogue cannot establish that no such tools were used.
+
 Whether GI is in BQP by some other route, or whether stronger quantum lower bounds hold, is open. Sharp problem. Related: A15.`,
     refs: [
       { label: "Hallgren, Moore, Rötteler, Russell, Sen, 'Limitations of quantum coset states for graph isomorphism', J. ACM 57 (2010)" },
       { label: "Babai, 'Graph isomorphism in quasipolynomial time', STOC 2016" },
+      { label: "Li & Chen, 'The quantum algorithm for graph isomorphism problem' (withdrawn after substantial errors, 2026 notice)", url: "https://arxiv.org/abs/1901.06530" },
     ] },
 
   { id: "A15", cat: "complexity", horizon: "incremental",
@@ -217,11 +233,16 @@ New progress (August 2026): Blanc, Docter, Strassle and Tan settled the "structu
 
 **Authors' statement (unverified):** The authors state that ChatGPT 5.4 would have been used for literature search, converting handwritten notes to electronic form, proof checking and copyediting. The manuscript otherwise identifies the four human authors and does not describe autonomous generation of the central result.
 
+Concurrent progress (August 2026): Liu and Mutreja independently proved simulation theorems for massively parallel queries, for several limited-adaptivity extensions, and for constant-round quantum query algorithms. Together with Blanc et al., this gives two independent routes to the conclusion that bounded-round quantum advantage on most unstructured inputs is classically simulable, with different quantitative bounds and intermediate statements.
+
+**Authors' statement (unverified, concurrent paper):** Liu and Mutreja state that conversations with ChatGPT 5.5 Pro helped them prove their constant-depth version of the conjecture and that the model assisted with the proofs of one of their main theorems.
+
 A general, predictive structural criterion — telling in advance whether a problem admits genuine super-polynomial quantum advantage, model-independently — is open. Related: A11, N10.`,
     refs: [
       { label: "Tang, 'A quantum-inspired classical algorithm for recommendation systems', STOC 2019" },
       { label: "Aaronson, 'Read the fine print', Nat. Phys. 11 (2015)" },
       { label: "Blanc, Docter, Strassle & Tan, 'Quantum Speedups Require Structure or Depth' (FOCS 2026)", url: "https://arxiv.org/abs/2608.19158" },
+      { label: "Liu & Mutreja, 'Parallel Quantum Advantage with Limited Adaptivity Requires Structure' (2026)", url: "https://arxiv.org/abs/2608.20297" },
     ] },
 
   { id: "A17", cat: "complexity", horizon: "incremental", status: "improved",
@@ -235,11 +256,16 @@ New progress (August 2026): Wang developed a common lower-bound framework giving
 
 **Authors' statements (unverified):** Wang states that ChatGPT 5.5 and 5.6 would have assisted in exploring proof strategies, with substantial human input, and in calculations; the author takes responsibility for the manuscript. The mixedness-testing manuscript contains no declaration of generative-AI use and would therefore appear human-authored, although this catalogue cannot establish that no AI tools were used.
 
+Further progress (August 2026): Stempin, Llorens and Huber disproved a fractional-colouring conjecture that would have implied a triply efficient Pauli shadow-tomography algorithm for every observable set. Their explicit families make $\chi_f\varepsilon^2$ unbounded, ruling out that proposed universal route while leaving open efficient schemes for more structured measurement families.
+
+**Authors' statement (unverified, fractional-colouring paper):** The manuscript contains no declaration of generative-AI use; this catalogue cannot establish that no such tools were used.
+
 The incremental goal is a measurement-model-sensitive theory predicting exactly when a quantum property can be learned substantially more cheaply than the state itself. Related: E3, A16.`,
     refs: [
       { label: "Haah, Harrow, Ji, Wu & Yu, 'Sample-optimal tomography of quantum states', IEEE Trans. Inf. Theory 69 (2023)" },
       { label: "Wang, 'A Lower Bound Framework for Quantum Functional Estimation' (2026)", url: "https://arxiv.org/abs/2608.02600" },
       { label: "Acharya, Dharmavarapu, Liu & Yu, 'Quantum Mixedness Testing with Pauli Measurements' (2026)", url: "https://arxiv.org/abs/2608.18839" },
+      { label: "Stempin, Llorens & Huber, 'Counterexamples to the fractional coloring conjecture for triply efficient shadow tomography' (2026)", url: "https://arxiv.org/abs/2608.20113" },
     ] },
 
   { id: "A18", cat: "complexity", horizon: "programme", status: "improved",
@@ -253,10 +279,18 @@ New progress (August 2026): Breuckmann, Golowich and Vazirani proved fault toler
 
 **Authors' statement (unverified):** The authors state that all proofs and writing would be their own work, with ChatGPT used only to check the final draft for typographical and minor presentation issues.
 
+Further progress (August 2026): Bharti, Haug and Tanggara proved that even an idealized quantum memory with general adaptive recovery has an unavoidable logarithmic reliability contribution to cumulative spacetime cost. For a fixed small logical register the relative overhead therefore grows logarithmically with storage duration, whereas sufficiently wide computations can amortize the cost and retain constant relative overhead. Gong and Hu proved efficient online self-calibration from the syndrome stream for a broad class of control errors, including drift-tracking guarantees and code-distance-independent convergence for qLDPC codes. On decoding, Bazzi and Khater proved polynomial additive inapproximability gaps for minimum-weight decoding of toric, planar-surface and $4.8.8$ colour codes unless $\mathsf{P}=\mathsf{NP}$, while Krishnamoorthy et al. recast degenerate maximum-likelihood decoding of arbitrary CSS codes as partition-function inference and introduced decoders with probabilistic or, when combined with constant-factor estimators, exact optimality certificates.
+
+**Authors' statements (unverified, further papers):** Bharti et al. state that generative-AI tools assisted with ideation, editing, organization and preparation of portions of the manuscript. Gong and Hu acknowledge ChatGPT and Claude for discussing and refining proof ideas and improving presentation, while taking sole responsibility for the proofs and results. Bazzi and Khater state that ChatGPT assisted only with editing, notation checks and literature search and that the output was reviewed. Krishnamoorthy et al. state that large language models were used to optimize the text.
+
 The broader programme is to map the exact boundary between correctable and fatal correlations while retaining implementable overhead and decoding. Related: A6, A7, O5.`,
     refs: [
       { label: "Aharonov & Ben-Or, 'Fault-tolerant quantum computation with constant error rate', STOC 1997" },
       { label: "Terhal, 'Quantum error correction for quantum memories', Rev. Mod. Phys. 87 (2015)" },
       { label: "Breuckmann, Golowich & Vazirani, 'Fault-Tolerant Quantum Computation with Adversarial Errors' (2026)", url: "https://arxiv.org/abs/2608.16857" },
+      { label: "Bharti, Haug & Tanggara, 'Fault-tolerant quantum computation cannot be achieved with constant spacetime overhead' (2026)", url: "https://arxiv.org/abs/2608.26272" },
+      { label: "Gong & Hu, 'Provably Efficient Self-Calibrating Quantum Fault Tolerance' (revised 2026)", url: "https://arxiv.org/abs/2608.05686" },
+      { label: "Bazzi & Khater, 'Hardness of approximation for minimum-weight decoding of two-dimensional topological quantum codes' (2026)", url: "https://arxiv.org/abs/2608.17109" },
+      { label: "Krishnamoorthy et al., 'Certified decoding of quantum LDPC codes' (2026)", url: "https://arxiv.org/abs/2608.25545" },
     ] },
 ];

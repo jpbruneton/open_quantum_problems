@@ -40,10 +40,15 @@ Despite overwhelming numerical evidence for $M(6)=3$, there is no proof even tha
 
 What is known: General bounds are weak. Lower bounds come from the prime-power factorization: writing $d=\prod p_i^{k_i}$, one has $M(d)\ge \min_i(p_i^{k_i})+1$, which for $d=6$ gives only 3. It is known that $M(d)\ge3$ for all $d$, and the upper bound is $d+1$. The MUB problem is tightly linked to combinatorial designs: complete sets of MU bases are equivalent to certain finite affine planes / complete sets of mutually orthogonal Latin squares, and the existence of $d-1$ MOLS (hence of a projective plane of order $d$) is a famous open combinatorial question for many composite $d$ (e.g. $d=10,12$).
 
+New numerical evidence (August 2026): Wu, Liu and Wu built and verified the standard tensor-product MUB sets in all 64 non-prime-power dimensions up to 100, then ran 107,374 extension searches across every such dimension up to 30 while comparing twelve optimizers and publishing the per-run data and code. No extension was found. The authors explicitly stress that failure of local optimization is not a nonexistence proof, and that the relevant maximally entangled target occupies a measure-zero structured submanifold. The status of every sharp existence question is therefore unchanged.
+
+**Authors' statement (unverified):** The article contains no declaration of generative-AI use; this catalogue cannot establish that no such tools were used.
+
 Determining $M(d)$ for composite $d$, and whether complete sets ever exist outside prime powers, is a sharp problem sitting at the crossroads of quantum information and combinatorics. Related: N1, N2.`,
     refs: [
       { label: "Boykin, Sitharam, Tarifi, Wocjan, 'Mutually unbiased bases and orthogonal decompositions of Lie algebras', QIC 7 (2007)" },
       { label: "Bengtsson & Życzkowski, 'Geometry of Quantum States' (CUP, 2nd ed. 2017)" },
+      { label: "Wu, Liu & Wu, 'Numerical Search for Extensions of Tensor-Product Mutually Unbiased Bases in Non-Prime-Power Composite Dimensions up to 100' (2026)", url: "https://doi.org/10.3390/info17080796" },
     ] },
 
   { id: "N4", cat: "nonlocality", horizon: "incremental",
@@ -106,17 +111,22 @@ A general characterization — necessary and sufficient conditions for a state (
       { label: "Coladangelo, Goh, Scarani, 'All pure bipartite entangled states can be self-tested', Nat. Commun. 8, 15485 (2017)" },
     ] },
 
-  { id: "N8", cat: "nonlocality", horizon: "incremental",
+  { id: "N8", cat: "nonlocality", horizon: "incremental", status: "improved",
     title: "Optimal robustness of self-testing",
     statement: r`For standard self-tests, determine the sharp relation between the deviation of a Bell value from its optimum and the distance from the ideal state and measurements.`,
     context: r`Real experiments never reach the exact optimal Bell violation, so self-testing must be robust: a small deviation $\varepsilon$ from the ideal value should certify a state within some distance $\delta(\varepsilon)$ of the reference. The robustness function $\delta(\varepsilon)$ controls how demanding a device-independent protocol is experimentally.
 
 What is known: Robust self-testing bounds exist for CHSH and many other tests, obtained via operator (sum-of-squares) methods, the 'swap' isometry technique, and numerical SDP relaxations (Yang–Vértesi–Bancal–Scarani–Navascués; Bancal et al.). Typical proven bounds scale like $\delta\sim\sqrt{\varepsilon}$ or worse and are usually far from tight; for CHSH the optimal robustness has been progressively improved but the sharp constant/scaling is generally not known.
 
+New progress (August 2026): Cao, Zhang, Shi and Zhao derived a fully analytic, device-independent self-testing bound for $n$-qubit GHZ states whose robustness is independent of $n$, scales linearly with the observed violation error, and stays within a factor of two of a theoretical upper bound. They also reduce the conjectured optimal bound to an efficient numerical check verified through $n=100$. This removes the usual system-size degradation for one central multipartite family, while the exact optimum and a general method for other self-tests remain open.
+
+**Authors' statement (unverified):** The manuscript contains no declaration of generative-AI use; this catalogue cannot establish that no such tools were used.
+
 Determining the optimal (tight) robustness for standard self-tests, and general methods that achieve it, is a quantitative, leaderboard-style open problem directly affecting the feasibility of device-independent cryptography and certified randomness. Related: N7.`,
     refs: [
       { label: "Yang, Vértesi, Bancal, Scarani, Navascués, 'Robust and versatile black-box certification of quantum devices', PRL 113, 040401 (2014)" },
       { label: "Šupić & Bowles, Quantum 4, 337 (2020)" },
+      { label: "Cao et al., 'Size-Independent Robustness in Multipartite Bell Self-Testing' (2026)", url: "https://arxiv.org/abs/2608.30851" },
     ] },
 
   { id: "N9", cat: "nonlocality", horizon: "incremental", status: "improved",

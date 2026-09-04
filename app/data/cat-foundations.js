@@ -14,17 +14,22 @@ A mathematically precise, universally compelling account — no ad hoc cut, comp
       { label: "Bell, 'Against measurement', Physics World (1990); 'Speakable and Unspeakable in Quantum Mechanics' (CUP)" },
     ] },
 
-  { id: "F2", cat: "foundations", horizon: "conceptual",
+  { id: "F2", cat: "foundations", horizon: "conceptual", status: "improved",
     title: "Born rule from explicit assumptions",
     statement: r`Derive the Born probability rule from a minimal set of clearly stated physical or decision-theoretic assumptions, without presupposing probabilistic or branch-weight structure equivalent to the conclusion.`,
     context: r`The Born rule — probabilities equal $|\langle\psi|\phi\rangle|^2$ — is an independent postulate of standard quantum mechanics. Whether it can be derived from more basic assumptions, especially within unitary-only (Everettian) quantum mechanics where probability is not obviously meaningful, is a long-debated question.
 
 What is known: Several derivations exist, each resting on assumptions critics find to smuggle in the conclusion. Gleason's theorem shows that any non-contextual probability measure on projections in dimension $\ge3$ must be Born — powerful, but it assumes non-contextuality and the full projection structure. Deutsch and Wallace gave a decision-theoretic derivation within Everettian QM (rational agents must weight branches by $|\psi|^2$), which relies on rationality axioms and a branching ontology that opponents dispute. Zurek's envariance derivation uses environment-assisted symmetry, but is argued to presuppose probabilistic structure. Masanes–Galley–Müller derived the Born rule and the measurement postulates from operational assumptions about the existence of an outcome-probability rule.
 
+Revised progress (August 2026): Ustun proved a local uniqueness theorem in quiver-generated categories with complex-weighted morphisms. Nonnegativity, bounded-degree invariance, global phase invariance, additivity for categorically exclusive paths and normalization force $P(z)=|z|^2$, without assuming a Hilbert-space framework. The result isolates an explicit alternative axiom set, but polynomiality and classical-limit additivity remain substantive assumptions, and extension from local consistency to global coherence under composition is open; it therefore does not provide a consensus derivation.
+
+**Author's statement (unverified):** The manuscript contains no declaration of generative-AI use; this catalogue cannot establish that no such tools were used.
+
 A derivation from minimal, clearly non-question-begging assumptions that commands consensus is still lacking. Related: F1, F3.`,
     refs: [
       { label: "Gleason, 'Measures on the closed subspaces of a Hilbert space', J. Math. Mech. 6 (1957)" },
       { label: "Wallace, 'The Emergent Multiverse' (OUP, 2012); Masanes, Galley, Müller, Nat. Commun. 10, 1361 (2019)" },
+      { label: "Ustun, 'Local Uniqueness of the Born Rule on Categories with Complex-Weighted Morphisms' (2026)", url: "https://arxiv.org/abs/2608.05197" },
     ] },
 
   { id: "F3", cat: "foundations", horizon: "conceptual",
@@ -92,30 +97,42 @@ A general, principled characterization of when a factorization is physical and h
       { label: "Cotler, Penington, Ranard, 'Locality from the spectrum', Comm. Math. Phys. 368 (2019)" },
     ] },
 
-  { id: "F8", cat: "foundations", horizon: "conceptual",
+  { id: "F8", cat: "foundations", horizon: "conceptual", status: "improved",
     title: "Quantum reference frames",
     statement: r`Develop a fully compositional formalism for changing between quantum reference frames — imperfect, finite, entangled and relativistic frames, and systems under gauge constraints.`,
     context: r`Reference frames (for position, orientation, time, phase) are physical systems and hence ultimately quantum. A quantum reference frame (QRF) can be in superposition or entangled with the system, so 'changing frames' becomes a nontrivial quantum operation, and properties like superposition and entanglement become frame-dependent.
 
-What is known: A active modern formalism has emerged. Giacomini–Castro-Ruiz–Brukner gave transformations between QRFs under which entanglement and superposition are relative to the frame, and defined frame-dependent notions of a system's state. The perspective-neutral / constraint-based approach (Vanrietvelde–Höhn–Giacomini–Castro-Ruiz; Höhn et al.) grounds QRF changes in gauge-theoretic reduction of a constrained system, connecting to the problem of time in quantum gravity and to the Page–Wootters mechanism (F11). Earlier resource-theoretic work (Bartlett–Rudolph–Spekkens) treated frames as consumable resources under superselection.
+What is known: An active modern formalism has emerged. Giacomini–Castro-Ruiz–Brukner gave transformations between QRFs under which entanglement and superposition are relative to the frame, and defined frame-dependent notions of a system's state. The perspective-neutral / constraint-based approach (Vanrietvelde–Höhn–Giacomini–Castro-Ruiz; Höhn et al.) grounds QRF changes in gauge-theoretic reduction of a constrained system, connecting to the problem of time in quantum gravity and to the Page–Wootters mechanism (F11). Earlier resource-theoretic work (Bartlett–Rudolph–Spekkens) treated frames as consumable resources under superselection.
+
+New progress (August–September 2026): De Vuyst, Höhn and Tsobanjan proved the equivalence of the perspective-neutral, algebraic and effective approaches for ideal sharply oriented frames, including single relativistic constraints and QRF transformations. Sahdo and Castro-Ruiz then gave an explicitly compositional treatment: external frames can be internalized, subsystems added and removed consistently, the third-particle paradox is avoided through extra-particle degrees of freedom, and the compatible states that may be appended are characterized. Brady independently formulated classical and quantum frames for $C^*$-algebras using Hilbert modules and equivariant correspondences. Together these results substantially organize ideal-frame composition and algebraic structure, while imperfect finite frames and a unified operational relativistic theory remain open.
+
+**Authors' statements (unverified):** De Vuyst, Höhn and Tsobanjan explicitly state that no AI tools were used. The other two manuscripts contain no declaration of generative-AI use; this catalogue cannot establish that no such tools were used.
 
 A fully compositional theory covering imperfect and finite-size frames, entangled frames, relativistic (Poincaré/Lorentz) frames, and systems with gauge constraints — with consistent composition and a clear operational meaning — is still under construction. Related: F7, F11, O7.`,
     refs: [
       { label: "Giacomini, Castro-Ruiz, Brukner, 'Quantum mechanics and the covariance of physical laws in quantum reference frames', Nat. Commun. 10, 494 (2019)" },
       { label: "Vanrietvelde, Höhn, Giacomini, Castro-Ruiz, 'A change of perspective: switching quantum reference frames...', Quantum 4, 225 (2020)" },
+      { label: "De Vuyst, Höhn & Tsobanjan, 'On the relation between perspective-neutral, algebraic, and effective quantum reference frames', Quantum (2026)", url: "https://doi.org/10.22331/q-2026-08-20-2196" },
+      { label: "Sahdo & Castro-Ruiz, 'Compositionality in quantum reference frame perspectives' (2026)", url: "https://arxiv.org/abs/2608.23698" },
+      { label: "Brady, 'A Hilbert Module Approach to Classical and Quantum Reference Frames' (2026)", url: "https://arxiv.org/abs/2609.01894" },
     ] },
 
-  { id: "F9", cat: "foundations", horizon: "conceptual",
+  { id: "F9", cat: "foundations", horizon: "conceptual", status: "improved",
     title: "Physical boundary of indefinite causal order",
     statement: r`Characterize which mathematically valid process matrices can arise from ordinary quantum systems embedded in spacetime and which require a genuine extension of standard quantum theory.`,
     context: r`The process-matrix framework (Oreshkov–Costa–Brukner) generalizes quantum theory to allow operations without a fixed causal order between them. Some 'processes' are causally nonseparable — they cannot be explained by any definite (even probabilistic) ordering of events — raising the question of which are physically realizable.
 
 What is known: The mathematical framework classifies process matrices, and causal nonseparability is well characterized (via causal witnesses; Araújo et al.). The quantum switch — where a control qubit coherently orders two operations — is causally nonseparable yet demonstrably realizable in the lab (many photonic and other experiments) and gives genuine advantages in query and communication tasks. But other valid process matrices violate causal inequalities (device-independent signatures of indefinite order) and it is unknown whether any of these can be physically realized in ordinary spacetime, or whether they require exotic scenarios (closed timelike curves, quantum gravity) or are unphysical.
 
+Published progress (August 2026; preprint July 2025): Mothe, Abbott and Branciard identified a new intermediate class of non-influenceable causal order, between static-order and fully general causal correlations, and defined corresponding classes of quantum processes and circuits with classical or quantum control of order. This makes precise how a process can have both indefinite and dynamical causal order, but does not decide which general process matrices are realizable in ordinary spacetime.
+
+**Authors' statement (unverified):** The manuscript contains no declaration of generative-AI use; this catalogue cannot establish that no such tools were used.
+
 Drawing the line — which process matrices come from ordinary quantum systems in spacetime versus require an extension of quantum theory — is open. Related: F10.`,
     refs: [
       { label: "Oreshkov, Costa, Brukner, 'Quantum correlations with no causal order', Nat. Commun. 3, 1092 (2012)" },
       { label: "Araújo, Feix, Costa, Brukner et al., 'Witnessing causal nonseparability', New J. Phys. 17 (2015); Quantum 1, 10 (2017)" },
+      { label: "Mothe, Abbott & Branciard, 'Correlations and quantum circuits with dynamical causal order', Physical Review Research (2026)", url: "https://doi.org/10.1103/bt67-n8kx" },
     ] },
 
   { id: "F10", cat: "foundations", horizon: "conceptual",

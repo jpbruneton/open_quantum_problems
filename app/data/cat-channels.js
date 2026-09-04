@@ -86,30 +86,40 @@ A structural characterization of the channels with $P>Q$, the maximal achievable
       { label: "Elkouss & Strelchuk, 'Superadditivity of private information for any number of uses of the channel', PRL 115, 040501 (2015)" },
     ] },
 
-  { id: "C6", cat: "channels", horizon: "incremental",
+  { id: "C6", cat: "channels", horizon: "incremental", status: "improved",
     title: "Zero-error quantum capacities",
     statement: r`Characterize zero-error classical and quantum capacities, their superactivation, and the channel classes for which the required regularization can be evaluated effectively.`,
     context: r`Zero-error capacity asks for the rate of perfectly (not just asymptotically) reliable transmission. Even classically this is Shannon's zero-error capacity, a notoriously hard combinatorial quantity — the zero-error capacity of the 7-cycle is still unknown, and the 5-cycle was only settled by Lovász's theta function.
 
 What is known: The quantum generalization was developed by Duan–Severini–Winter and Cubitt–Chen–Harrow via non-commutative graph theory: a channel's zero-error properties are governed by an operator system ('quantum graph'), with a quantum Lovász theta as a semidefinite bound. Striking non-additivity appears: Duan and Cubitt–Cubitt–Smolin–Smith–Leung–Winter showed superactivation of zero-error capacity — channels each with zero zero-error capacity that jointly transmit perfectly. Entanglement can boost zero-error classical capacity (Cubitt–Leung–Matthews–Winter).
 
+New progress (August 2026): Tandon refined the recent recursive constructions for odd-cycle Shannon capacity by allowing heterogeneous intermediate choices. An explicit independent set in the 500th strong power gives $\Theta(C_7)\geq 3.25883262\ldots$, improving the best lower bound for the oldest unresolved odd cycle. This is concrete classical zero-error progress, but it neither determines $\Theta(C_7)$ nor addresses the full quantum regularization and superactivation questions.
+
+**Author's statement (unverified):** Tandon states that ChatGPT and Claude were used to explore constructions, develop and check proofs, implement searches and verification scripts, and refine the manuscript. The paper supplies proofs, exact computations and machine-readable certificates, and the author takes responsibility for the results.
+
 Characterizing zero-error classical and quantum capacities in general, the extent of superactivation, and the classes where the regularizations are effectively computable, are open — incremental problems inheriting classical combinatorial hardness. Related: C1, U4.`,
     refs: [
       { label: "Duan, Severini, Winter, 'Zero-error communication via quantum channels, non-commutative graphs, and a quantum Lovász theta function', IEEE Trans. Inf. Theory 59 (2013)" },
       { label: "Cubitt, Chen, Harrow, 'Superactivation of the asymptotic zero-error classical capacity of a quantum channel', IEEE Trans. Inf. Theory 57 (2011)" },
+      { label: "Tandon, 'Strengthening Recursive Constructions for Zero-Error Shannon Capacity' (2026)", url: "https://arxiv.org/abs/2608.30273" },
     ] },
 
-  { id: "C7", cat: "channels", horizon: "programme",
+  { id: "C7", cat: "channels", horizon: "programme", status: "improved",
     title: "Quantum broadcast-channel capacity region",
     statement: r`Determine the full classical–quantum–entanglement capacity region of a general quantum broadcast channel.`,
     context: r`A broadcast channel has one sender transmitting to several receivers over a shared noisy channel. The capacity region is the set of simultaneously achievable rate tuples. Even classically, the general broadcast-channel capacity region is a famous unsolved problem (open since the 1970s), so the quantum version inherits and extends that difficulty.
 
 What is known: Partial results exist. Yard–Hayden–Devetak determined capacity regions for degraded quantum broadcast channels and for classical–quantum broadcast channels in special cases; Savov–Wilde and others gave achievable rate regions (quantum Marton and superposition coding). Entanglement-assisted and specific degraded/Hadamard structures are better understood. Bounds combine quantum superposition coding with decoupling arguments.
 
+New progress (August 2026, classical obstruction): Huang, Yanxiao Liu and Yi Liu proved that Marton's inner bound is strictly suboptimal for some two-receiver discrete memoryless broadcast channels. Their explicit counterexample rules out the leading candidate as a general classical capacity formula. Because the quantum problem contains the classical one, this sharpens the obstruction inherited by C7 rather than supplying the missing quantum region.
+
+**Authors' statement (unverified):** The authors report that GPT-5.6 Sol and Claude Fable/Opus assisted their numerical and analytic counterexample searches, including the examples that led from failed tensorization and Markovity conjectures to the Marton counterexample. They also acknowledge human colleagues for verification of the non-numerical aspects and help with organization and writing.
+
 The general quantum broadcast capacity region — the full trade-off among classical, quantum, and entanglement rates to multiple receivers — is unknown, and will remain so at least until the classical problem is solved. This is a long-horizon programme. Related: C8.`,
     refs: [
       { label: "Yard, Hayden, Devetak, 'Quantum broadcast channels', IEEE Trans. Inf. Theory 57 (2011)" },
       { label: "Savov & Wilde, 'Classical codes for quantum broadcast channels', IEEE Trans. Inf. Theory 61 (2015)" },
+      { label: "Huang, Liu & Liu, 'Sub-optimality of Marton's Inner Bound for the Two-Receiver Broadcast Channel' (2026)", url: "https://arxiv.org/abs/2608.19869" },
     ] },
 
   { id: "C8", cat: "channels", horizon: "programme",

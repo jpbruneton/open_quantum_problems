@@ -62,17 +62,22 @@ The incremental frontier is to enlarge the families with complete, low-cost crit
       { label: "Malavolta, 'Quantum Separability in Polynomial Time' (2026)", url: "https://arxiv.org/abs/2607.23773" },
     ] },
 
-  { id: "E4", cat: "entanglement", horizon: "incremental",
+  { id: "E4", cat: "entanglement", horizon: "incremental", status: "improved",
     title: "Exact characterization of LOCC",
     statement: r`Characterize the closure and boundary of the set of transformations implementable by local operations and classical communication, and give an effective membership criterion.`,
     context: r`LOCC is the physically natural free operation of entanglement theory, but it is mathematically awkward: the set of LOCC maps is not topologically closed, and it sits strictly between local operations with shared randomness and the larger, well-behaved class of separable operations (SEP). There exist separable operations that are provably not LOCC ('nonlocality without entanglement').
 
 What is known: Chitambar–Leung–Mančinska–Ozols–Winter gave a careful framework distinguishing LOCC, its closure LOCC-bar, and SEP, and proved these are all different, including gaps that require infinitely many rounds of communication. For pure bipartite states, Nielsen's theorem gives an exact majorization criterion for single-copy LOCC convertibility, and the theory of catalysis and multi-copy conversions is well developed there.
 
+New progress (August 2026): Zhao and Chen translated complete multiqubit orthogonal product bases into edge-coloured multigraphs. Within this restricted but nontrivial family, a complete colour-splitting tree is necessary and sufficient for perfect discrimination by finite-round LOCC, and their recursive graph algorithm constructs the protocol whenever it exists. The result gives an effective exact test for a structured state-discrimination problem, not a membership criterion for general LOCC maps.
+
+**Authors' statement (unverified):** The manuscript contains no declaration of generative-AI use; this catalogue cannot establish that no such tools were used.
+
 For general (mixed, multipartite, multi-round) transformations there is no effective membership test for LOCC, and the boundary of the set — including how the number of communication rounds affects power — is not characterized. This is an incremental structural problem. Related: E5, E11.`,
     refs: [
       { label: "Chitambar, Leung, Mančinska, Ozols, Winter, 'Everything you always wanted to know about LOCC', Comm. Math. Phys. 328 (2014)" },
       { label: "Nielsen, 'Conditions for a class of entanglement transformations', PRL 83, 436 (1999)" },
+      { label: "Zhao & Chen, 'Multiqubit orthogonal product bases' (2026)", url: "https://arxiv.org/abs/2608.18421" },
     ] },
 
   { id: "E5", cat: "entanglement", horizon: "incremental",
@@ -88,17 +93,22 @@ Determining the exact conversion rates for general mixed states, and the precise
       { label: "Horodecki⁴, Rev. Mod. Phys. 81, 865 (2009)" },
     ] },
 
-  { id: "E6", cat: "entanglement", horizon: "sharp",
+  { id: "E6", cat: "entanglement", horizon: "sharp", status: "improved",
     title: "Irreversibility of mixed-state entanglement",
     statement: r`Characterize exactly when entanglement cost equals distillable entanglement, $E_C(\rho)=E_D(\rho)$.`,
     context: r`Pure-state entanglement is reversible: the entropy of entanglement governs both formation and distillation, so no entanglement is lost in a dilution-then-distillation cycle. Generic mixed states are irreversible — $E_C(\rho)>E_D(\rho)$ — so entanglement is genuinely 'wasted', and bound entangled states have $E_D=0$ while $E_C>0$, the extreme case.
 
 What is known: Vidal and Cirac gave explicit irreversible states and clarified the general phenomenon; the gap $E_C-E_D$ is a fundamental irreversibility measure. Under the larger class of PPT or non-entangling operations, a reversible theory with a unique measure can sometimes be restored, and the recent work on a 'second law' of entanglement / general resource theories (Brandão–Plenio, and later results, including a 2023 counterexample by Lami–Regula to reversibility under all non-entangling operations) has sharpened exactly when reversibility can and cannot hold.
 
+New progress (August 2026): Ao, Philip and Streltsov proved that correlated catalysts do not remove asymptotic irreversibility even under the larger class of PPT operations. They established full additivity and strong superadditivity of the regularized PPT relative entropy and exhibited a state whose distillation rate remains strictly below its entanglement cost despite arbitrary correlated catalysts. This strengthens the no-second-law picture but does not characterize the LOCC states satisfying $E_C=E_D$.
+
+**Authors' statement (unverified):** The authors state that ChatGPT 5.6 assisted with editing, organization, bibliographic checks, and exploration and verification of mathematical arguments. They say every suggestion was critically assessed, the final mathematics was independently verified, and they take responsibility for the manuscript.
+
 Characterizing precisely the set of states with $E_C=E_D$ under LOCC — a clean structural criterion — remains open and sharp. Related: E5, E9.`,
     refs: [
       { label: "Vidal & Cirac, 'Irreversibility in asymptotic manipulations of entanglement', PRL 86, 5803 (2001)" },
       { label: "Lami & Regula, 'No second law of entanglement manipulation after all', Nat. Phys. 19 (2023)" },
+      { label: "Ao, Philip & Streltsov, 'PPT Entanglement with Correlated Catalysis: Monotones and Irreversibility' (2026)", url: "https://arxiv.org/abs/2608.20063" },
     ] },
 
   { id: "E7", cat: "entanglement", horizon: "sharp",
@@ -140,30 +150,40 @@ Which of these regularized measures are computable, approximable to certified ac
       { label: "Huang, 'Computing quantum discord is NP-complete', New J. Phys. 16 (2014)" },
     ] },
 
-  { id: "E10", cat: "entanglement", horizon: "sharp",
+  { id: "E10", cat: "entanglement", horizon: "sharp", status: "improved",
     title: "Additivity of entanglement of purification",
     statement: r`Determine whether $E_P(\rho\otimes\sigma)=E_P(\rho)+E_P(\sigma)$, or construct an explicit counterexample, and determine the regularized $E_P^\infty$.`,
     context: r`The entanglement of purification $E_P(\rho)$ measures the total (quantum plus classical) correlations needed to prepare $\rho$, defined as the minimal entanglement of a pure state whose reduction gives $\rho$. Whether $E_P$ is additive under tensor products is a clean, long-standing question, and its regularization $E_P^\infty$ governs an operational task (the entanglement cost of preparing correlations under asymptotically vanishing communication).
 
 What is known: Terhal–Horodecki–Leung–DiVincenzo introduced $E_P$ and showed it is not an entanglement monotone (it can increase under LOCC) and gave bounds. Additivity is generally conjectured to fail — $E_P$ is expected to be strictly subadditive for some states — but no clean explicit counterexample settling it is known, and the regularized $E_P^\infty$ is not determined even for simple families. The quantity has resurfaced in holography as the conjectured dual of the entanglement wedge cross-section, intensifying interest.
 
+New progress (August 2026): Negari and Baghali Khanian proved that the Rényi entanglement of purification is nonadditive for every order $\alpha\in[0,1)$, already for two copies of a classical two-qubit state. For the same family they prove additivity for $\alpha\in[2,\infty]$. The interval $\alpha\in[1,2)$ — crucially including the ordinary von Neumann quantity at $\alpha=1$ asked for here — remains open, so this brackets rather than resolves E10.
+
+**Authors' statement (unverified):** The manuscript contains no declaration of generative-AI use; this catalogue cannot establish that no such tools were used.
+
 A single explicit pair of states violating additivity (or a proof of additivity) resolves the sharp question. Related: E9.`,
     refs: [
       { label: "Terhal, Horodecki, Leung, DiVincenzo, 'The entanglement of purification', J. Math. Phys. 43, 4286 (2002)" },
       { label: "Bagchi & Pati, 'Monogamy, polygamy, and other properties of entanglement of purification', PRA 91 (2015)" },
+      { label: "Negari & Baghali Khanian, 'Rényi Entanglement of Purification Is Non-additive' (2026)", url: "https://arxiv.org/abs/2608.28897" },
     ] },
 
-  { id: "E11", cat: "entanglement", horizon: "incremental",
+  { id: "E11", cat: "entanglement", horizon: "incremental", status: "improved",
     title: "Entanglement catalysis",
     statement: r`Give necessary and sufficient conditions for catalytic state conversion when states and catalysts may be mixed, multipartite or correlated, and determine the resources required of the catalyst.`,
     context: r`A catalyst is an auxiliary entangled state that enables an otherwise-impossible LOCC conversion $\rho\to\sigma$ and is returned unchanged. Catalysis reveals that the ordering of entangled states is richer than single-copy majorization suggests.
 
 What is known: For pure bipartite states, Jonathan–Plenio discovered catalysis, and the achievable conversions are exactly characterized by trumping / the theory of 'catalytic majorization', related to Ky Fan-type and Rényi-entropy inequalities (Klimesh; Turgut): $\rho\to\sigma$ is catalytically possible iff a family of Rényi-entropy inequalities holds. Recent 'catalytic' results are striking: entropy is a complete monotone for correlated-catalytic transformations (Kondra–Datta–Streltsov; Lipka-Bartosik–Skrzypczyk), and embezzlement (van Dam–Hayden) shows arbitrarily good conversion using a slightly perturbed catalyst.
 
+New progress (August 2026): Ao, Philip and Streltsov constructed catalyst-independent monotones for correlated catalytic transformations under PPT operations. Their fully additive, strongly superadditive regularized PPT-relative-entropy measure proves that even arbitrary correlated catalysts cannot restore asymptotic reversibility for an explicit state. These are strong necessary constraints in a resource theory larger than LOCC, not necessary-and-sufficient conditions for the mixed or multipartite conversions asked for here.
+
+**Authors' statement (unverified):** The authors state that ChatGPT 5.6 assisted with editing, organization, bibliographic checks, and exploration and verification of mathematical arguments. They say every suggestion was critically assessed, the final mathematics was independently verified, and they take responsibility for the manuscript.
+
 For mixed, multipartite, or correlated catalysts the necessary-and-sufficient conditions, and the minimal resources a catalyst must have, are only partially known — an active incremental area. Related: E4, E5.`,
     refs: [
       { label: "Jonathan & Plenio, 'Entanglement-assisted local manipulation of pure quantum states', PRL 83, 3566 (1999)" },
       { label: "Kondra, Datta, Streltsov, 'Catalytic transformations of pure entangled states', PRL 127, 150503 (2021)" },
+      { label: "Ao, Philip & Streltsov, 'PPT Entanglement with Correlated Catalysis: Monotones and Irreversibility' (2026)", url: "https://arxiv.org/abs/2608.20063" },
     ] },
 
   { id: "E12", cat: "entanglement", horizon: "incremental",
