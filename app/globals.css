@@ -42,7 +42,7 @@ a:hover { text-decoration: underline; }
   border-bottom: 1px solid var(--border);
   background: linear-gradient(180deg, var(--panel), var(--bg));
 }
-.site-header .inner { padding: 34px 0 26px; position: relative; }
+.site-header .inner { padding: 34px 20px 26px; position: relative; }
 .gh-link {
   display: inline-flex; align-items: center; gap: 6px;
   margin-top: 16px;
@@ -52,6 +52,9 @@ a:hover { text-decoration: underline; }
   transition: background .15s, border-color .15s;
 }
 .gh-link:hover { background: var(--panel-2); border-color: #b7c1d1; text-decoration: none; }
+.review-link { margin-left: 8px; }
+a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
+button, input { font: inherit; }
 .eyebrow {
   text-transform: uppercase;
   letter-spacing: 0.16em;
@@ -118,11 +121,12 @@ section.body { padding: 30px 0 80px; }
 /* Category grid */
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
 .card {
+  display: block; color: var(--text); text-decoration: none;
   background: var(--panel); border: 1px solid var(--border);
   border-radius: 12px; padding: 18px; cursor: pointer;
   transition: border-color .15s, transform .15s, background .15s;
 }
-.card:hover { border-color: #b7c1d1; transform: translateY(-2px); background: var(--panel-2); }
+.card:hover { border-color: #b7c1d1; transform: translateY(-2px); background: var(--panel-2); text-decoration: none; }
 .card .code {
   font-size: 12px; color: var(--muted-2); letter-spacing: .08em;
   text-transform: uppercase; margin-bottom: 6px;
@@ -212,12 +216,28 @@ td.stmt .katex { font-size: 1em; }
 }
 
 .site-footer { border-top: 1px solid var(--border); padding: 24px 0; color: var(--muted-2); font-size: 13px; }
+.footer-meta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 10px; }
+.astra-credit { color: var(--muted); font-weight: 600; }
+.review-note, .archive-note { margin: 22px 0; padding: 16px 18px; border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 10px; background: var(--panel); font-size: 14px; }
+.archive-note p { margin: 8px 0; }
+.review-meta, .relation-type { color: var(--muted); font-size: 13px; }
+.related-links { padding-left: 20px; }
+.detail .evidence-list, .detail .archive-list { list-style: none; padding: 0; }
+.evidence-list li, .archive-list li { padding: 14px 0; border-bottom: 1px solid var(--border); }
+.evidence-list li p, .archive-list li p { margin: 8px 0; color: var(--text); }
+.ev-preprint, .ev-conjecture { color: #87550a; background: #fdf5e8; }
+.ev-published { color: #116c4c; background: #eafbf3; }
+.ev-numerical { color: var(--incremental); background: #eef4ff; }
+.ev-withdrawn { color: #9b2635; background: #fff0f2; }
+.context, .statement, .evidence-list, .archive-list { overflow-wrap: anywhere; }
+.katex-display { overflow-x: auto; overflow-y: hidden; padding: 3px 0; }
+.submissions { overflow-x: auto; }
 
 /* Mobile optimizations — desktop layout above is untouched */
 @media (max-width: 640px) {
   .container { padding: 0 16px; }
 
-  .site-header .inner { padding: 20px 0 18px; }
+  .site-header .inner { padding: 20px 16px 18px; }
   .gh-link {
     margin-top: 14px;
     padding: 7px 12px; font-size: 12.5px;

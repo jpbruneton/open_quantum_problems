@@ -2,162 +2,219 @@ const r = String.raw;
 
 export const CHANNELS = [
   { id: "C1", cat: "channels", horizon: "incremental", status: "improved",
-    title: "Computable classes of quantum capacities",
-    statement: r`Since no general single-letter formula can exist, identify maximal natural channel classes for which $Q(\mathcal{N})=\lim_n \tfrac1n \max_\rho I_c(\rho,\mathcal{N}^{\otimes n})$ is computable or finite-letter.`,
-    context: r`The quantum capacity $Q(\mathcal{N})$ is the optimal rate of reliable qubit transmission through a noisy channel. Unlike Shannon's classical capacity, it is given by a regularized (many-copy) coherent-information formula that is generally not computable in closed form.
+    relations: [{ id: "C11", type: "benchmark" }, { id: "U4", type: "related" }, { id: "C4", type: "related" }, { id: "C5", type: "related" }],
+    evidence: [{ kind: "preprint", summary: "Explicit qutrit zero-Q, zero-P channel outside the PPT and antidegradable classes; not a general capacity-computability theorem.", url: "https://arxiv.org/abs/2607.24693", date: "2026-07-27" }],
+    provenance: [{ summary: "Zhu and Wang report that they formulated the problem and selected channels, while QudeLeap's AI Scientist harness and language models suggested a signed-lift mechanism that the authors reformulated and take responsibility for.", url: "https://arxiv.org/abs/2607.24693" }],
+    title: "Structural formulas for quantum channel capacities",
+    statement: r`For explicitly specified finite-dimensional memoryless channel families, find certified capacity formulas or sufficient additivity criteria for $Q(\mathcal N)=\lim_{n\to\infty}\frac1n\max_\rho I_c(\rho,\mathcal N^{\otimes n})$, and characterize their domain of validity.`,
+    context: r`Quantum capacity is the asymptotic rate of reliable unassisted qubit transmission. The Lloyd–Shor–Devetak theorem gives a regularized coherent-information expression. Evaluating it, deriving a single-letter formula and deciding whether an arbitrary input channel has a computable capacity are different tasks.
 
-What is known: The Lloyd–Shor–Devetak theorem establishes the regularized coherent-information formula. For degradable channels (Devetak–Shor) the coherent information is additive, giving a single-letter capacity — this covers dephasing channels, amplitude damping, and certain bosonic channels. But the formula is badly non-additive in general: Smith–Yard exhibited superactivation, where two channels each with zero quantum capacity have positive capacity together, and DiVincenzo–Shor–Smolin showed superadditivity of coherent information. Cubitt et al. and Elkouss–Strelchuk showed that the regularization can require an unbounded number of copies, so no fixed-letter formula suffices in general.
+For degradable channels, coherent information is additive; examples include dephasing and the degradable parameter regime of amplitude damping. Superadditivity of coherent information and Smith–Yard superactivation defeat naive single-copy formulas. Unbounded blocklength phenomena rule out one fixed coherent-information blocklength that works for every channel. They do not prove that every conceivable single-letter expression is impossible or that ordinary memoryless quantum/private capacity is Turing-uncomputable. The 2026 capacity-complexity work distinguishes quantum-capacity hardness from specialized zero-error undecidability; U4 treats the remaining computability question.
 
-New progress (2026): Zhu and Wang constructed an explicit qutrit channel with exactly zero quantum and private capacities which is neither PPT nor antidegradable. Their all-blocklength relative-entropy argument establishes a mechanism for quantum and private incapacity beyond the two standard PPT and no-cloning mechanisms. This resolves the existence question for zero-capacity channels outside those classes, while leaving the broader classification and computability programme open.
+Preprint progress (July 2026): Zhu and Wang claim an explicit qutrit channel with zero quantum and private capacities that is neither PPT nor antidegradable, using an all-blocklength relative-entropy argument. This supplies a proposed additional mechanism for incapacity, not a complete structural classification.
 
-Additional progress (August 2026): Krohn-Grimberghe supplied an exact-arithmetic, independently checkable certificate that the qubit depolarizing channel has positive coherent information at per-Pauli noise $p=0.064956$. The explicit 45-copy rank-two input improves the previous numerical lower bound on the positive-capacity threshold. This is a certified quantitative advance, not a capacity formula or a resolution of the regularization problem.
-
-**Authors' statement (unverified, July paper):** According to the paper's disclosure, the authors would have formulated the question, selected the candidate channels and directed the work, while QudeLeap's AI Scientist harness and several frontier language models would have suggested the key signed-lift mechanism. The authors say they reformulated that suggestion as precise mathematics and take responsibility for the result.
-
-**Author's statement (unverified, August paper):** According to the contribution statement, an AI-driven numerical search would have found the input state, and AI systems would also have assisted with code, calculations, mechanical proof derivations and drafting under the author's direction. The author takes full responsibility; the published verification chain is designed to check the computational claims independently of how the witness was found.
-
-The open, incremental task is to enlarge the classes — beyond degradable/antidegradable/PPT — for which $Q$ is computable or single-letter, and to understand the structure that makes capacity tractable. Related: C4, C5, U4.`,
+The depolarizing-channel threshold and its August certificate have been promoted to the concrete benchmark C11. Here the incremental target is a specified natural family with a verified finite-letter formula, matching bounds or sufficient structural additivity conditions.`,
     refs: [
-      { label: "Devetak & Shor, 'The capacity of a quantum channel for simultaneous transmission of classical and quantum information', Comm. Math. Phys. 256 (2005)" },
-      { label: "Smith & Yard, 'Quantum communication with zero-capacity channels', Science 321 (2008)" },
-      { label: "Zhu & Wang, 'Quantum Incapacity beyond No-Cloning and PPT Mechanisms' (2026)", url: "https://arxiv.org/abs/2607.24693" },
-      { label: "Krohn-Grimberghe, 'A certified lower bound on the quantum-capacity threshold of the depolarizing channel' (2026)", url: "https://arxiv.org/abs/2608.15870" },
+      {"label":"Bhattacharyya, Mehta & Zhao, 'On the undecidability of quantum channel capacities' (2026 preprint, corrected v3)","url":"https://arxiv.org/abs/2601.22471v3"},
+      { label: "Devetak & Shor, 'The capacity of a quantum channel for simultaneous transmission of classical and quantum information', Comm. Math. Phys. 256 (2005)", url: "https://arxiv.org/abs/quant-ph/0311131" },
+      { label: "Smith & Yard, 'Quantum communication with zero-capacity channels', Science 321 (2008)", url: "https://arxiv.org/abs/0807.4935" },
+      { label: "Zhu & Wang, 'Quantum Incapacity beyond No-Cloning and PPT Mechanisms' (2026 preprint)", url: "https://arxiv.org/abs/2607.24693" },
+      { label: "Krohn-Grimberghe, 'A certified lower bound on the quantum-capacity threshold of the depolarizing channel' (2026 preprint)", url: "https://arxiv.org/abs/2608.15870" },
     ] },
 
   { id: "C2", cat: "channels", horizon: "sharp",
+    relations: [{ id: "C3", type: "related" }, { id: "C10", type: "parent" }],
     title: "Quantum capacity of the thermal attenuator",
-    statement: r`Determine the energy-constrained quantum and private capacities of a general bosonic thermal-loss channel outside the degradable and antidegradable regimes.`,
-    context: r`The thermal attenuator — a beam-splitter interaction with a thermal environment — models optical fiber and free-space loss with added thermal noise. It is the workhorse channel of continuous-variable quantum communication, so its exact quantum and private capacities are of direct practical interest.
+    statement: r`For a bosonic thermal attenuator with transmissivity $\eta$, environment mean occupation $N_{\rm th}$ and mean input-photon budget $N_S$ per use, determine the unassisted quantum capacity $Q(\eta,N_{\rm th},N_S)$ outside known zero-capacity and pure-loss cases. Treat private capacity as a separate subtarget.`,
+    context: r`The thermal attenuator mixes the input with a thermal environment on a beam splitter. It models optical transmission with loss and added noise. Here the energy budget is a mean photon-number constraint averaged over uses of each code; other constraints, assistance conventions and finite-error capacities must be stated separately.
 
-What is known: In limiting regimes the capacity is known. The pure-loss channel (zero temperature) is degradable/antidegradable and its energy-constrained quantum capacity is a single-letter expression (Wolf–Pérez-García–Giedke; Wilde–Qi). For the general thermal attenuator, tight upper and lower bounds exist: lower bounds from Gaussian coherent-information optimization, and upper bounds from the PLOB (Pirandola–Laurenza–Ottaviani–Banchi) bound and from data-processing / decomposition arguments (Rosati–Mari–Giovannetti; Sharma–Wilde et al.). These bounds are close but do not coincide in the intermediate (non-degradable, nonzero temperature) regime.
+The zero-temperature pure-loss channel has known degradable/antidegradable regimes and an energy-constrained single-letter quantum capacity. Thermal channels have established antidegradable and entanglement-breaking zero-capacity regions, but useful positive-capacity noisy regimes remain unresolved. Upper bounds follow from channel decompositions, data processing and two-way bounds, while coherent information yields achievable lower bounds.
 
-The exact energy-constrained quantum (and private) capacity of the general thermal attenuator remains open — a sharp gap between the best known upper and lower bounds. Related: C3, C10.`,
+Rosati–Mari–Giovannetti provide important bounds. Correlated multimode Gaussian coding can improve upon product thermal-input strategies, as demonstrated by published 2020 work. Thus “Gaussian optimization” must not silently mean a one-mode product ansatz, nor should all remaining upper/lower gaps be called uniformly small.
+
+The target is matching achievable and converse bounds for fixed $(\eta,N_{\rm th},N_S)$. Private capacity requires its own coding and secrecy definition and should not be assumed equal to quantum capacity.`,
     refs: [
-      { label: "Pirandola, Laurenza, Ottaviani, Banchi, 'Fundamental limits of repeaterless quantum communications', Nat. Commun. 8, 15043 (2017)" },
-      { label: "Rosati, Mari, Giovannetti, 'Narrow bounds for the quantum capacity of thermal attenuators', Nat. Commun. 9, 4339 (2018)" },
+      {"label":"Rosati, Mari & Giovannetti, 'Narrow bounds for the quantum capacity of thermal attenuators', Nature Communications 9, 4339 (2018)","url":"https://www.nature.com/articles/s41467-018-06848-0"},
+      {"label":"'Enhanced energy-constrained quantum communication over bosonic Gaussian channels', Nature Communications (2020)","url":"https://www.nature.com/articles/s41467-020-14329-6"},
+      { label: "Pirandola, Laurenza, Ottaviani, Banchi, 'Fundamental limits of repeaterless quantum communications', Nat. Commun. 8, 15043 (2017)", url: "https://arxiv.org/abs/1510.08863" },
     ] },
 
   { id: "C3", cat: "channels", horizon: "incremental",
+    relations: [{ id: "C2", type: "related" }, { id: "C10", type: "parent" }],
     title: "Two-way capacities of Gaussian channels",
-    statement: r`Determine the exact two-way-assisted entanglement-distribution and secret-key capacities for thermal attenuators, amplifiers and additive-noise channels.`,
-    context: r`With unlimited two-way classical communication between sender and receiver, the relevant figures of merit are the two-way entanglement-distribution capacity and the secret-key capacity — the ultimate rates for quantum repeaters and quantum key distribution over a given channel.
+    statement: r`Determine exact two-way entanglement-distribution capacity $Q_2$ and secret-key capacity $K$ for specified noisy thermal-loss, thermal-amplifier and additive-noise channels, distinguishing unrestricted-energy from fixed-energy coding.`,
+    context: r`Unlimited authenticated two-way classical communication changes channel capacity. Entanglement distribution and secret-key generation have distinct operational definitions; $Q_2$ and $K$ need not coincide for a general channel. They bound repeaterless communication over a single link, rather than capacities of arbitrary repeater networks.
 
-What is known: For the pure-loss channel, the PLOB bound gives the exact secret-key capacity $-\log_2(1-\eta)$ (with transmissivity $\eta$), a landmark tight result. For the thermal attenuator, quantum amplifier, and additive-Gaussian-noise channels, PLOB and subsequent work (Wilde–Tomamichel–Berta; Pirandola et al.) give strong upper bounds and matching lower bounds only in special cases; gaps remain for nonzero thermal noise and for amplifiers.
+Known exact boundary cases must be excluded from the open claim. PLOB establishes, in the unrestricted-energy limit, $Q_2=K=-\log_2(1-\eta)$ for pure loss and $Q_2=K=\log_2[g/(g-1)]$ for a quantum-limited amplifier of gain $g>1$. The quantum-limited amplifier is therefore not an unresolved generic amplifier case.
 
-Closing these gaps — exact two-way capacities for the full Gaussian family — is an incremental but important target, since two-way capacities set the ultimate benchmarks for practical quantum communication and repeater design. Related: C2.`,
+With nonzero thermal noise or additive Gaussian noise, general matching bounds are missing. A finite input-energy budget changes the problem even for a channel with a known unrestricted-energy capacity; the constraint and error criterion must be included in every benchmark.
+
+The incremental goal is to close specified $Q_2$ or $K$ gaps in noisy families and under explicit energy assumptions, using PLOB and subsequent converse techniques alongside achievable protocols.`,
     refs: [
-      { label: "Pirandola, Laurenza, Ottaviani, Banchi, Nat. Commun. 8, 15043 (2017)" },
-      { label: "Wilde, Tomamichel, Berta, 'Converse bounds for private communication over quantum channels', IEEE Trans. Inf. Theory 63 (2017)" },
+      {"label":"Pirandola, Laurenza, Ottaviani & Banchi, PLOB theorem, Nature Communications 8, 15043 (2017)","url":"https://arxiv.org/abs/1510.08863"},
+      { label: "Wilde, Tomamichel, Berta, 'Converse bounds for private communication over quantum channels', IEEE Trans. Inf. Theory 63 (2017)", url: "https://arxiv.org/abs/1602.08898" },
     ] },
 
   { id: "C4", cat: "channels", horizon: "sharp", status: "improved",
+    relations: [{ id: "C1", type: "related" }, { id: "C11", type: "related" }],
+    evidence: [{ kind: "preprint", summary: "Strong converse restricted to full-joint-eigenspace stabilizer codes over Pauli channels.", url: "https://arxiv.org/abs/2607.23450", date: "2026-07-26" }, { kind: "preprint", summary: "Claimed all-code exponential strong converse for finite-dimensional degradable and antidegradable channels; general channels remain open.", url: "https://arxiv.org/abs/2608.01308", date: "2026-08-02" }],
+    provenance: [{ summary: "Tomamichel reports author-directed Claude proof development, writing and literature work, plus ChatGPT adversarial review, and states that he checked the statements, proofs and references.", url: "https://arxiv.org/abs/2607.23450" }, { summary: "Kondra et al. disclose ChatGPT 5.6 Sol assistance on technical proof steps and later manuscript work with Claude Opus 4.8; they state that the initial draft was handwritten and all assisted material was reviewed.", url: "https://arxiv.org/abs/2608.01308" }],
     title: "Strong converse for quantum capacity",
-    statement: r`Determine for which channels communication above $Q(\mathcal{N})$ forces the fidelity to converge to zero, and settle the general finite-dimensional case or give a counterexample.`,
-    context: r`A strong converse says the capacity is a sharp threshold: at any rate above $Q(\mathcal{N})$ the transmission fidelity does not merely fail to reach 1, it decays to 0 as the block length grows. A weak converse only forbids fidelity 1. Strong converses make the capacity operationally sharp.
+    statement: r`For every finite-dimensional memoryless channel $\mathcal N$, does unassisted entanglement transmission at a fixed rate above $Q(\mathcal N)$ force entanglement fidelity to tend to zero for all code sequences? Prove the statement or construct a counterexample.`,
+    context: r`A strong converse makes quantum capacity a sharp threshold: above it, entanglement fidelity tends to zero as blocklength grows. The weak converse only prevents asymptotically perfect transmission. Exponential decay is a stronger quantitative conclusion and should be distinguished from the basic strong-converse question.
 
-What is known: The strong converse holds for several structured classes. For degradable channels and for the classical capacity of entanglement-breaking and other channels, strong converses are established (Wilde–Winter–Yang via Rényi/sandwiched divergences; Tomamichel–Wilde–Winter for the quantum capacity of certain channels, e.g. dephasing and generalized dephasing). The Rains bound and its regularizations provide strong-converse upper bounds for many channels.
+Earlier work established quantum strong converses for selected channel classes and strong-converse upper bounds using the Rains quantity. The general degradable-channel baseline was a “pretty strong” converse, not an all-code full strong converse. Strong converses for classical communication through entanglement-breaking channels do not prove the corresponding quantum-capacity statement.
 
-New progress (2026): Tomamichel proved a strong converse for stabilizer codes over Pauli channels. Above the coherent information of the code input, entanglement fidelity decays exponentially; for memoryless Pauli channels this fixes the $\varepsilon$-quantum capacity within the full-joint-eigenspace stabilizer-code class for every $\varepsilon<1$. The proof also isolates an encoder-side statement whose extension would cover unrestricted codes. This is a substantial restricted-class result, not a proof of the general strong converse.
+Preprint progress (July 2026): Tomamichel claims an exponential strong converse for full-joint-eigenspace stabilizer codes over Pauli channels, with a threshold determined by the corresponding coherent-information optimization. This restricted-code result is not a theorem for every possible encoder.
 
-**Author's statement (unverified, July paper):** According to the paper's disclosure, Claude would have originated and executed the proof ideas, drafted and typeset the manuscript, and carried out the literature search under Tomamichel's direction, corrections and verification. Other Claude models would have handled revisions, while ChatGPT would have acted as an adversarial referee. Tomamichel says he checked the statements, proofs and references and takes responsibility for the paper.
+Further preprint progress (August 2026): Kondra–Brinster–Kampermann–Bruß–Wyderka claim an all-code exponential strong converse for finite-dimensional degradable and antidegradable channels, including the first all-code exponential erasure-channel result over its full parameter range. They also give general SDP strong-converse bounds and a result for a multilevel amplitude-damping family. These are newly proposed proofs; this catalogue does not independently certify them.
 
-Further progress (August 2026): Kondra, Brinster, Kampermann, Bruß and Wyderka proved an exponential strong converse for every finite-dimensional degradable and antidegradable channel, covering all codes. Consequences include the first all-code exponential strong converse for the quantum erasure channel over its full parameter range, SDP strong-converse bounds for arbitrary finite-dimensional channels, and an exact result for a nondegradable multilevel amplitude-damping family. The unrestricted finite-dimensional problem remains open.
-
-**Authors' statement (unverified, August paper):** The authors state that some technical proof steps would have been developed with ChatGPT 5.6 Sol. They say the initial draft was written by hand and later improved with ChatGPT 5.6 Sol and Claude Opus 4.8, and that all AI-assisted material was reviewed and revised by the authors, who take responsibility for it.
-
-Whether a strong converse for the quantum capacity holds for all finite-dimensional channels is open — no general proof and no counterexample. Given the non-additivity phenomena (C1), a counterexample is conceivable. This is a sharp yes/no problem. Related: C1, C5.`,
+Neither manuscript resolves the unrestricted finite-dimensional channel question stated here. Code restrictions, assistance and fidelity conventions remain part of each result.`,
     refs: [
-      { label: "Tomamichel, Wilde, Winter, 'Strong converse rates for quantum communication', IEEE Trans. Inf. Theory 63 (2017)" },
-      { label: "Wilde, Winter, Yang, 'Strong converse for the classical capacity of entanglement-breaking and Hadamard channels', Comm. Math. Phys. 331 (2014)" },
-      { label: "Tomamichel, 'A strong converse for stabilizer codes over Pauli channels via the blowing-up lemma' (2026)", url: "https://arxiv.org/abs/2607.23450" },
-      { label: "Kondra et al., 'Sharp Quantum Capacity Thresholds: Exponential Strong Converses for Degradable and Antidegradable Channels' (2026)", url: "https://arxiv.org/abs/2608.01308" },
+      { label: "Tomamichel, Wilde, Winter, 'Strong converse rates for quantum communication', IEEE Trans. Inf. Theory 63 (2017)", url: "https://arxiv.org/abs/1406.2946" },
+      { label: "Wilde, Winter, Yang, 'Strong converse for the classical capacity of entanglement-breaking and Hadamard channels', Comm. Math. Phys. 331 (2014)", url: "https://arxiv.org/abs/1306.1586" },
+      { label: "Tomamichel, 'A strong converse for stabilizer codes over Pauli channels via the blowing-up lemma' (2026 preprint)", url: "https://arxiv.org/abs/2607.23450" },
+      { label: "Kondra et al., 'Sharp Quantum Capacity Thresholds: Exponential Strong Converses for Degradable and Antidegradable Channels' (2026 preprint)", url: "https://arxiv.org/abs/2608.01308" },
     ] },
 
   { id: "C5", cat: "channels", horizon: "incremental",
+    relations: [{ id: "C1", type: "related" }, { id: "E16", type: "related" }],
     title: "Private versus quantum capacity",
-    statement: r`Characterize channels with $P(\mathcal{N})>Q(\mathcal{N})$, determine the maximal possible separation, and decide when either capacity is additive.`,
-    context: r`The private capacity $P(\mathcal{N})$ is the rate of secret classical communication, and the quantum capacity $Q(\mathcal{N})$ the rate of qubit transmission; always $Q\le P$. Understanding when private strictly exceeds quantum capacity, and by how much, probes the difference between hiding classical information and preserving quantum coherence.
+    statement: r`At fixed input and output dimensions, characterize when a memoryless channel has $P(\mathcal N)>Q(\mathcal N)$ and bound the maximal gap $P-Q$; separately seek structural criteria for additivity across specified channel pairs.`,
+    context: r`Private capacity $P$ is the reliable secret-classical-communication rate against the channel environment; quantum capacity $Q$ is the qubit-transmission rate. Always $Q\leq P$. A gap probes the difference between secrecy and preservation of quantum coherence.
 
-What is known: The private capacity has a regularized formula (Devetak; Cai–Winter–Yeung). Large separations exist: Horodecki–Horodecki–Horodecki–Oppenheim's private states show channels with high private capacity but low or zero quantum capacity, and Leung et al. and Elkouss–Strelchuk exhibited big gaps and non-additivity of private information. Both $P$ and $Q$ are non-additive in general, and even zero-quantum-capacity channels can have positive private capacity.
+Regularized formulas are known, as are channels with $P>0$ but $Q=0$. Such examples show that an unnormalized maximal gap over all dimensions is not a finite open target: tensor powers make the absolute gap arbitrarily large. A ratio also becomes meaningless or infinite when $Q=0$. Fixed dimensions or an explicit dimension normalization are therefore essential.
 
-A structural characterization of the channels with $P>Q$, the maximal achievable separation, and criteria for additivity of either quantity, are open — an incremental problem tightly linked to C1 and to the theory of bound entanglement (E1). Related: C1, C4.`,
+Private information can be superadditive across channel uses. This single-letter issue must be distinguished from whether the operational capacity $P(\mathcal N\otimes\mathcal M)$ equals $P(\mathcal N)+P(\mathcal M)$ for different channels; analogous distinctions apply to $Q$.
+
+Useful residual work characterizes families with equality or strict separation and tight fixed-dimension bounds. The state question of entanglement with zero distillable key is E16, not the same problem as a channel-capacity gap.`,
     refs: [
-      { label: "Horodecki, Horodecki, Horodecki, Oppenheim, 'Secure key from bound entanglement', PRL 94, 160502 (2005)" },
-      { label: "Elkouss & Strelchuk, 'Superadditivity of private information for any number of uses of the channel', PRL 115, 040501 (2015)" },
+      { label: "Horodecki, Horodecki, Horodecki, Oppenheim, 'Secure key from bound entanglement', PRL 94, 160502 (2005)", url: "https://doi.org/10.1103/PhysRevLett.94.160502" },
+      { label: "Elkouss & Strelchuk, 'Superadditivity of private information for any number of uses of the channel', PRL 115, 040501 (2015)", url: "https://arxiv.org/abs/1502.05326" },
     ] },
 
   { id: "C6", cat: "channels", horizon: "incremental", status: "improved",
-    title: "Zero-error quantum capacities",
-    statement: r`Characterize zero-error classical and quantum capacities, their superactivation, and the channel classes for which the required regularization can be evaluated effectively.`,
-    context: r`Zero-error capacity asks for the rate of perfectly (not just asymptotically) reliable transmission. Even classically this is Shannon's zero-error capacity, a notoriously hard combinatorial quantity — the zero-error capacity of the 7-cycle is still unknown, and the 5-cycle was only settled by Lovász's theta function.
+    relations: [{ id: "C1", type: "related" }, { id: "U4", type: "related" }],
+    evidence: [{ kind: "preprint", summary: "Certified classical seven-cycle Shannon-capacity lower bound from an independent set in a 500th strong power, not an exact capacity.", url: "https://arxiv.org/abs/2608.30273", date: "2026-08-31" }],
+    provenance: [{ summary: "Tandon reports ChatGPT and Claude use for constructions, proof development/checks, implementation and writing, and supplies exact computations and machine-readable certificates under author responsibility.", url: "https://arxiv.org/abs/2608.30273" }],
+    title: "Zero-error capacities and graph-capacity benchmarks",
+    statement: r`For explicitly specified channel or noncommutative-graph families, evaluate asymptotic zero-error capacity with message type and assistance fixed. A concrete classical benchmark is the exact Shannon capacity $\Theta(C_7)$.`,
+    context: r`Zero-error communication requires perfectly distinguishable messages at every blocklength, unlike vanishing-error Shannon transmission. Classical messages, quantum states, entanglement assistance, one-shot transmission and asymptotic rates define different quantities.
 
-What is known: The quantum generalization was developed by Duan–Severini–Winter and Cubitt–Chen–Harrow via non-commutative graph theory: a channel's zero-error properties are governed by an operator system ('quantum graph'), with a quantum Lovász theta as a semidefinite bound. Striking non-additivity appears: Duan and Cubitt–Cubitt–Smolin–Smith–Leung–Winter showed superactivation of zero-error capacity — channels each with zero zero-error capacity that jointly transmit perfectly. Entanglement can boost zero-error classical capacity (Cubitt–Leung–Matthews–Winter).
+Classically, an independent-set problem on strong graph powers defines $\Theta(G)$, while the capacity in bits per use is $\log_2\Theta(G)$. Lovász settled the five-cycle; the seven-cycle remains a benchmark. Quantum channels lead to noncommutative graphs/operator systems and quantum Lovász-type SDP bounds. Established superactivation and entanglement-assisted enhancements show that zero-error resources can behave very differently from ordinary capacities.
 
-New progress (August 2026): Tandon refined the recent recursive constructions for odd-cycle Shannon capacity by allowing heterogeneous intermediate choices. An explicit independent set in the 500th strong power gives $\Theta(C_7)\geq 3.25883262\ldots$, improving the best lower bound for the oldest unresolved odd cycle. This is concrete classical zero-error progress, but it neither determines $\Theta(C_7)$ nor addresses the full quantum regularization and superactivation questions.
+Preprint progress (31 August 2026): Tandon claims a certified independent set in the 500th strong power of the seven-cycle, yielding $\Theta(C_7)\geq3.25883262\ldots$. This is a classical graph-capacity lower bound, not a bit rate or a generic quantum-capacity theorem; the exact value remains unresolved.
 
-**Author's statement (unverified):** Tandon states that ChatGPT and Claude were used to explore constructions, develop and check proofs, implement searches and verification scripts, and refine the manuscript. The paper supplies proofs, exact computations and machine-readable certificates, and the author takes responsibility for the results.
-
-Characterizing zero-error classical and quantum capacities in general, the extent of superactivation, and the classes where the regularizations are effectively computable, are open — incremental problems inheriting classical combinatorial hardness. Related: C1, U4.`,
+The active programme is computable bounds and matching characterizations in stated models. Specialized zero-error undecidability results must not be transferred to ordinary memoryless quantum capacity in C1/U4.`,
     refs: [
-      { label: "Duan, Severini, Winter, 'Zero-error communication via quantum channels, non-commutative graphs, and a quantum Lovász theta function', IEEE Trans. Inf. Theory 59 (2013)" },
-      { label: "Cubitt, Chen, Harrow, 'Superactivation of the asymptotic zero-error classical capacity of a quantum channel', IEEE Trans. Inf. Theory 57 (2011)" },
-      { label: "Tandon, 'Strengthening Recursive Constructions for Zero-Error Shannon Capacity' (2026)", url: "https://arxiv.org/abs/2608.30273" },
+      { label: "Duan, Severini, Winter, 'Zero-error communication via quantum channels, non-commutative graphs, and a quantum Lovász theta function', IEEE Trans. Inf. Theory 59 (2013)", url: "https://arxiv.org/abs/1002.2514" },
+      { label: "Cubitt, Chen, Harrow, 'Superactivation of the asymptotic zero-error classical capacity of a quantum channel', IEEE Trans. Inf. Theory 57 (2011)", url: "https://arxiv.org/abs/0906.2547" },
+      { label: "Tandon, 'Strengthening Recursive Constructions for Zero-Error Shannon Capacity' (2026 preprint)", url: "https://arxiv.org/abs/2608.30273" },
     ] },
 
   { id: "C7", cat: "channels", horizon: "programme", status: "improved",
-    title: "Quantum broadcast-channel capacity region",
-    statement: r`Determine the full classical–quantum–entanglement capacity region of a general quantum broadcast channel.`,
-    context: r`A broadcast channel has one sender transmitting to several receivers over a shared noisy channel. The capacity region is the set of simultaneously achievable rate tuples. Even classically, the general broadcast-channel capacity region is a famous unsolved problem (open since the 1970s), so the quantum version inherits and extends that difficulty.
+    relations: [{ id: "C8", type: "related" }],
+    evidence: [{ kind: "preprint", summary: "Marton's inner bound is claimed suboptimal for an explicit classical broadcast channel; this is a classical subproblem, not a quantum capacity-region theorem.", url: "https://arxiv.org/abs/2608.19869", date: "2026-08-20" }],
+    provenance: [{ summary: "Huang, Liu and Liu report GPT-5.6 Sol and Claude Fable/Opus assistance with numerical and analytic searches, and acknowledge human verification and editorial help. This is an author disclosure, not independent proof verification.", url: "https://arxiv.org/abs/2608.19869" }],
+    title: "Private-message quantum broadcast capacity regions",
+    statement: r`For a specified two-receiver memoryless quantum broadcast channel, characterize the region for independent classical private messages, with no preshared entanglement, feedback or receiver cooperation; treat common messages, quantum transmission and entanglement assistance as separate variants.`,
+    context: r`A broadcast channel maps one sender's input to two receiver systems. The achievable region depends on what each receiver must recover and which auxiliary resources are allowed. A “full classical–quantum–entanglement region” is not one defined task without those choices.
 
-What is known: Partial results exist. Yard–Hayden–Devetak determined capacity regions for degraded quantum broadcast channels and for classical–quantum broadcast channels in special cases; Savov–Wilde and others gave achievable rate regions (quantum Marton and superposition coding). Entanglement-assisted and specific degraded/Hadamard structures are better understood. Bounds combine quantum superposition coding with decoupling arguments.
+Yard–Hayden–Devetak and Savov–Wilde established coding results and achievable regions in specified degraded, classical–quantum and other settings. Quantum superposition and Marton-type coding give inner bounds; some structured channel families admit matching characterizations. These results should be recorded with their message and assistance hypotheses.
 
-New progress (August 2026, classical obstruction): Huang, Yanxiao Liu and Yi Liu proved that Marton's inner bound is strictly suboptimal for some two-receiver discrete memoryless broadcast channels. Their explicit counterexample rules out the leading candidate as a general classical capacity formula. Because the quantum problem contains the classical one, this sharpens the obstruction inherited by C7 rather than supplying the missing quantum region.
+Preprint progress (August 2026, classical subproblem): Huang–Yanxiao Liu–Yi Liu claim an explicit two-receiver discrete memoryless classical broadcast channel for which Marton's inner bound is strictly suboptimal. Since classical channels embed in the unassisted classical-message task, this challenges a candidate general formula within that subproblem. It does not resolve a quantum broadcast region or block progress on quantum special cases.
 
-**Authors' statement (unverified):** The authors report that GPT-5.6 Sol and Claude Fable/Opus assisted their numerical and analytic counterexample searches, including the examples that led from failed tensorization and Markovity conjectures to the Marton counterexample. They also acknowledge human colleagues for verification of the non-numerical aspects and help with organization and writing.
-
-The general quantum broadcast capacity region — the full trade-off among classical, quantum, and entanglement rates to multiple receivers — is unknown, and will remain so at least until the classical problem is solved. This is a long-horizon programme. Related: C8.`,
+The programme is to close well-defined inner/outer-bound gaps for named channel families, while keeping other communication tasks as separately labeled variants.`,
     refs: [
-      { label: "Yard, Hayden, Devetak, 'Quantum broadcast channels', IEEE Trans. Inf. Theory 57 (2011)" },
-      { label: "Savov & Wilde, 'Classical codes for quantum broadcast channels', IEEE Trans. Inf. Theory 61 (2015)" },
-      { label: "Huang, Liu & Liu, 'Sub-optimality of Marton's Inner Bound for the Two-Receiver Broadcast Channel' (2026)", url: "https://arxiv.org/abs/2608.19869" },
+      { label: "Yard, Hayden, Devetak, 'Quantum broadcast channels', IEEE Trans. Inf. Theory 57 (2011)", url: "https://arxiv.org/abs/quant-ph/0603098" },
+      { label: "Huang, Liu & Liu, 'Sub-optimality of Marton's Inner Bound for the Two-Receiver Broadcast Channel' (2026 preprint)", url: "https://arxiv.org/abs/2608.19869" },
     ] },
 
   { id: "C8", cat: "channels", horizon: "programme",
-    title: "Quantum interference-channel capacity region",
-    statement: r`Find matching inner and outer bounds, or an exact characterization, for general quantum interference channels.`,
-    context: r`An interference channel has multiple sender–receiver pairs sharing a medium, so each transmission interferes with the others. The classical interference-channel capacity region is one of the most celebrated open problems in network information theory — the best known inner bound (Han–Kobayashi) is not proven optimal in general, even for two users.
+    relations: [{ id: "C7", type: "related" }],
+    title: "Classical communication over quantum interference channels",
+    statement: r`For specified two-sender, two-receiver memoryless classical–quantum interference channels, obtain matching rate-region bounds for independent classical messages with no preshared entanglement, feedback or sender/receiver cooperation.`,
+    context: r`In an interference channel each sender communicates with its intended receiver while affecting the other receiver. Here classical inputs $(x_1,x_2)$ produce a joint quantum output state on $B_1B_2$; each receiver decodes only its own classical message. Transmission of unknown quantum states or entanglement-assisted communication is a different task.
 
-What is known: Quantum versions have achievable regions from quantum Han–Kobayashi-type coding and simultaneous-decoding arguments (Fawzi–Hayden–Savov–Sen–Wilde; Sen's work on the quantum simultaneous decoder). Special cases — strong/very strong interference regimes, and classical-quantum interference channels — have partial characterizations. The quantum simultaneous-decoding conjecture, needed for several of these regions, was a bottleneck partly resolved by Sen.
+Quantum Han–Kobayashi-type coding and simultaneous-decoding methods give achievable regions, as in Fawzi–Hayden–Savov–Sen–Wilde. Strong- and very-strong-interference assumptions yield additional characterizations. Sen's joint-typicality techniques address decoding obstacles but do not provide a universal exact region.
 
-An exact characterization, or matching inner and outer bounds, for the general quantum interference channel is open and blocked in part by the unsolved classical problem. A long-horizon programme. Related: C7.`,
+The unrestricted classical interference problem embeds in this class, so a fully general solution would also solve that classical problem. Nevertheless, exact quantum special cases and sharper bounds remain possible. The programme should select a concrete channel family, state its assistance convention and display a specific inner/outer-bound gap, rather than conflate all quantum-network message types.`,
     refs: [
-      { label: "Fawzi, Hayden, Savov, Sen, Wilde, 'Classical communication over a quantum interference channel', IEEE Trans. Inf. Theory 58 (2012)" },
-      { label: "Sen, 'A one-shot quantum joint typicality lemma', (2018)" },
+      { label: "Fawzi, Hayden, Savov, Sen, Wilde, 'Classical communication over a quantum interference channel', IEEE Trans. Inf. Theory 58 (2012)", url: "https://arxiv.org/abs/1102.2624" },
+      { label: "Sen, 'Unions, intersections and a one-shot quantum joint typicality lemma' (2018)", url: "https://arxiv.org/abs/1806.07278" },
     ] },
 
   { id: "C9", cat: "channels", horizon: "programme",
+    relations: [{ id: "C1", type: "related" }, { id: "O5", type: "related" }],
     title: "Capacities of channels with memory",
-    statement: r`Develop computable capacity formulas for broad non-Markovian channel families with correlated noise, including an operational classification of forgetful and nonforgetful memory.`,
-    context: r`Most capacity theorems assume memoryless (i.i.d.) channel uses. Real channels have correlated noise across uses — memory. Capacities of channels with memory require different tools, and general formulas are scarce.
+    statement: r`For finitely specified finite-memory quantum channels, obtain certified capacity bounds with explicit finite-block errors, fixing the interaction map, initial memory, reset/access assumptions and quantitative forgetfulness or stationarity conditions.`,
+    context: r`Memory channels correlate different uses of a transmission medium. A useful finite description specifies an interaction map from input plus memory to output plus updated memory, an initial memory state, and whether either party can access or reset that memory. An arbitrary infinite sequence of unrelated non-Markovian maps is not the same computable input model.
 
-What is known: For 'forgetful' quantum memory channels — where the influence of the distant past decays — Kretschmann and Werner proved coding theorems giving regularized capacity expressions, and information-theoretic quantities converge. For certain Gauss–Markov and finite-state (Markov) memory models, and for channels with classical memory, capacity formulas or bounds exist (Caruso et al. review; Datta–Dorlas one-shot / information-spectrum methods handle general non-i.i.d. sources). Quantum Markov chains and matrix-product channel structures give tractable subclasses.
+Kretschmann–Werner already define operational forgetfulness and prove coding theorems with regularized expressions for forgetful channels. The remaining issue is not the absence of a definition of forgetfulness. Gaussian, finite-state classical-memory and matrix-product structures supply examples with additional bounds or tractability; information-spectrum approaches handle broader non-i.i.d. settings.
 
-Computable capacity formulas for broad non-Markovian, strongly correlated channels, and a clean operational classification of forgetful versus nonforgetful memory, remain open — a programme intertwined with the theory of open-system non-Markovianity (O5). Related: C1, O5.`,
+The target is a stated model family with computable finite-block error estimates and resource/runtime dependence, or a structural result about when those estimates exist. Initial-state sensitivity and nonforgetful behavior require separate hypotheses. Correlation between uses alone does not identify the same notion of non-Markovianity studied for dynamical maps in O5.`,
     refs: [
-      { label: "Kretschmann & Werner, 'Quantum channels with memory', PRA 72, 062323 (2005)" },
-      { label: "Caruso, Giovannetti, Lupo, Mancini, 'Quantum channels and memory effects', Rev. Mod. Phys. 86, 1203 (2014)" },
+      { label: "Kretschmann & Werner, 'Quantum channels with memory', PRA 72, 062323 (2005)", url: "https://arxiv.org/abs/quant-ph/0502106" },
+      { label: "Caruso, Giovannetti, Lupo, Mancini, 'Quantum channels and memory effects', Rev. Mod. Phys. 86, 1203 (2014)", url: "https://arxiv.org/abs/1207.5435" },
     ] },
 
-  { id: "C10", cat: "channels", horizon: "incremental",
+  { id: "C10", cat: "channels", horizon: "programme",
+    relations: [{ id: "C2", type: "benchmark" }, { id: "C3", type: "benchmark" }, { id: "M11", type: "related" }],
     title: "Quantum Shannon theory in infinite dimensions",
-    statement: r`Extend coding theorems, strong converses and resource inequalities to bosonic and other infinite-dimensional systems under physically natural energy constraints, with controlled compactness and continuity.`,
-    context: r`Continuous-variable / bosonic systems live in infinite-dimensional Hilbert spaces, where capacities can be infinite without energy constraints and entropic quantities are not continuous. A fully rigorous quantum Shannon theory in this setting requires energy constraints and careful functional-analytic control.
+    statement: r`For specified infinite-dimensional channels and resource tasks, prove coding, continuity and converse results under explicit energy-growth and input-constraint hypotheses, identifying which conclusions survive beyond Gaussian and energy-compact settings.`,
+    context: r`Infinite-dimensional quantum information requires careful control of unbounded observables, entropy and topology. Capacities may diverge without resource constraints; finite-dimensional continuity and compactness arguments need not extend unchanged. This entry absorbs M11's broader mathematical programme while retaining C2/C3 as concrete channel benchmarks.
 
-What is known: Considerable progress. The classical capacity of the pure-loss bosonic channel was established (Giovannetti–Guha–Lloyd–Maccone–Shapiro et al.), and the long-standing minimum-output-entropy / Gaussian-optimizer conjecture — that Gaussian inputs are optimal — was proved by Giovannetti–Holevo–García-Patrón, settling several bosonic classical capacities. Energy-constrained capacities, continuity bounds (Winter; Shirokov), and strong converses for many Gaussian channels are now available. Holevo's monograph systematizes much of this.
+Substantial theory already exists: pure-loss classical capacity, Gaussian-optimizer theorems for specified phase-insensitive settings, energy-constrained capacities and continuity bounds due to Winter, Shirokov and others. These are not blanket assertions that Gaussian inputs optimize every bosonic task or that all entropies are uniformly continuous without assumptions.
 
-A complete infinite-dimensional theory — all coding theorems, strong converses, and resource inequalities under natural energy constraints, with uniform continuity/compactness — is still being assembled, and general non-Gaussian channels are less controlled. This overlaps M11 and is an incremental consolidation. Related: M11, C2.`,
+Constraint choice matters even for simple channels. Wilde–Winter show that a strong converse can fail for classical communication over pure loss under a mean-energy constraint. A photon-number occupation constraint supports a different strong-converse theorem; related phase-insensitive Gaussian results retain analogous hypotheses. Thus “prove all strong converses under natural energy constraints” is not a valid unconditional goal.
+
+The programme is to characterize sufficient energy-growth, compactness and continuity assumptions, establish explicit moduli and finite-block bounds, and identify non-Gaussian families with controlled coding theorems. It includes infinite-dimensional entanglement and resource inequalities, but each proposed result must name its task, topology and constraint.`,
     refs: [
-      { label: "Giovannetti, Holevo, García-Patrón, 'A solution of Gaussian optimizer conjecture...', Comm. Math. Phys. 334 (2015)" },
-      { label: "Holevo, 'Quantum Systems, Channels, Information' (De Gruyter, 2nd ed. 2019)" },
+      {"label":"Wilde & Winter, 'Strong converse for the classical capacity of the pure-loss bosonic channel', Problems of Information Transmission (2014)","url":"https://arxiv.org/abs/1308.6732"},
+      {"label":"Bardhan & Wilde, strong converse for thermal/additive-noise bosonic channels under a photon-number occupation constraint","url":"https://arxiv.org/abs/1312.3287"},
+      {"label":"Strong converse for phase-insensitive bosonic Gaussian channels with an occupation constraint","url":"https://arxiv.org/abs/1401.4161"},
+      { label: "Giovannetti, Holevo, García-Patrón, 'A solution of the Gaussian optimizer conjecture', Comm. Math. Phys. 334 (2015)", url: "https://arxiv.org/abs/1312.2251" },
+      { label: "Holevo, 'Quantum Systems, Channels, Information' (De Gruyter, 2nd ed. 2019)", url: "https://doi.org/10.1515/9783110642490" },
+    ] },
+
+  { id: "C11", cat: "channels", horizon: "sharp", status: "improved",
+    title: "Quantum capacity of the qubit depolarizing channel",
+    relations: [{ id: "C1", type: "parent" }, { id: "C4", type: "related" }],
+    statement: r`For $\mathcal D_q(\rho)=(1-q)\rho+\frac q3(X\rho X+Y\rho Y+Z\rho Z)$, determine the unassisted memoryless quantum capacity, or at least $q_* = \sup\{q\in[0,3/4]:Q(\mathcal D_q)>0\}$.`,
+    context: r`The depolarizing channel is a canonical simple noise model whose ordinary quantum capacity is still unknown. The parameter $q$ here is the total nonidentity Pauli error probability; the probability of each individual Pauli error is $p=q/3$. Other definitions of “depolarizing probability” differ, so numerical thresholds must state their convention.
+
+Antidegradability gives zero quantum capacity for $q\in[1/4,3/4]$. Achievable rates from coherent information and degenerate quantum codes give lower bounds, but optimization over a single use is not generally the capacity. The residual gap already poses a sharp problem for a two-dimensional channel.
+
+Preprint progress (August 2026): Krohn-Grimberghe supplies an exact-arithmetic certificate claiming positive coherent information for a 45-copy rank-two input at per-Pauli noise $p=0.064956$, or total error $q=0.194868$. If verified, this certifies $q_*\geq0.194868$; it is not an exact capacity formula or the threshold itself. The certificate is designed to permit independent checking, which this catalogue does not claim to have performed.
+
+This benchmark was promoted from C1 to keep the precise threshold question and its noise normalization visible. Unassisted vanishing-error capacity is intended; two-way, zero-error and restricted-code capacities are different quantities.`,
+    evidence: [{ kind: "preprint", summary: "Exact-arithmetic positive coherent-information certificate for a 45-copy rank-two input at total Pauli error q=0.194868; not an exact threshold.", url: "https://arxiv.org/abs/2608.15870", date: "2026-08-16" }],
+    provenance: [{ summary: "Krohn-Grimberghe reports an AI-driven numerical search and AI assistance with code, calculations, mechanical proof derivations and drafting under author direction. The author takes responsibility; the verification chain is intended to be independent of witness discovery.", url: "https://arxiv.org/abs/2608.15870" }],
+    refs: [
+      { label: "Krohn-Grimberghe, 'A certified lower bound on the quantum-capacity threshold of the depolarizing channel' (2026 preprint)", url: "https://arxiv.org/abs/2608.15870" },
+      { label: "Tomamichel, 'A strong converse for stabilizer codes over Pauli channels via the blowing-up lemma' (2026 preprint; includes depolarizing parameter regimes)", url: "https://arxiv.org/abs/2607.23450" },
+    ] },
+
+  { id: "C12", cat: "channels", horizon: "sharp", status: "improved",
+    title: "PPT-squared conjecture",
+    relations: [{ id: "E1", type: "related" }, { id: "C1", type: "related" }],
+    statement: r`Is $\Psi\circ\Phi$ entanglement breaking for every pair of compatible finite-dimensional complex completely positive, trace-preserving maps whose Choi matrices have positive partial transpose?`,
+    context: r`A PPT channel has a Choi matrix positive under partial transpose. An entanglement-breaking channel destroys entanglement with every reference system, equivalently having a separable Choi matrix. The conjecture asks whether two compatible PPT stages always suffice. It connects channel composition with limits on entanglement swapping across PPT-entangled links.
+
+Established special cases include low dimensions and Gaussian channels, as developed by Christandl–Müller-Hermes–Wolf and related work. The general complex higher-dimensional problem remains the target. The straightforward real-Hilbert-space analogue is false, so the scalar field is not cosmetic.
+
+Recent partial results include symplectic-covariant and Cartan-covariant map classes. An–Lee's July 2026 preprint claims a stronger qutrit composition theorem involving one-copy-undistillable Choi matrices and Schmidt number at most two; it does not settle arbitrary higher dimension.
+
+Important scope update: Park's August preprint claims that every PPT channel has a finite entanglement-breaking index, and gives an index-at-most-three bound for a restricted family. Eventual entanglement breaking is therefore not being listed as the open existence question. A finite number of iterations depending on the map does not establish that two always suffice.
+
+A general proof or one complex finite-dimensional PPT-channel pair whose composition is not entanglement breaking resolves the stated conjecture.`,
+    evidence: [{ kind: "preprint", summary: "Every PPT channel is claimed to become entanglement breaking after finitely many iterations; this does not settle the two-step conjecture.", url: "https://arxiv.org/abs/2608.13551v2", date: "2026-08-17", version: "v2" }, { kind: "preprint", summary: "Qutrit composition result beyond the PPT setting, not an arbitrary-dimensional resolution.", url: "https://arxiv.org/abs/2607.15947", date: "2026-07-17" }],
+    refs: [
+      { label: "Christandl, Müller-Hermes & Wolf, 'When Do Composed Maps Become Entanglement Breaking?', Annales Henri Poincaré (2019)", url: "https://arxiv.org/abs/1807.01266" },
+      { label: "Prudhoe, 'Entanglement Breaking Structure of Cartan-Covariant Quantum Channels' (2026 revision, v3)", url: "https://arxiv.org/abs/2501.03959" },
+      { label: "Park, 'k-Positivity and high-dimensional bound entanglement under symplectic group symmetry' (2026 preprint)", url: "https://arxiv.org/abs/2602.09860" },
+      { label: "An & Lee, 'Beyond the Positive Partial Transpose Squared Conjecture: The Qutrit Case' (2026 preprint)", url: "https://arxiv.org/abs/2607.15947" },
+      { label: "Park, 'Every PPT channel has finite entanglement breaking index' (2026 preprint, v2)", url: "https://arxiv.org/abs/2608.13551v2" },
+      { label: "Chiribella, Davidson, Paulsen & Rahaman, 'Positive maps and entanglement in real Hilbert spaces' (real-analogue counterexample)", url: "https://arxiv.org/abs/2207.02510" },
     ] },
 ];

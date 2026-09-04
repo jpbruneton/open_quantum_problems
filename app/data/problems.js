@@ -8,6 +8,10 @@
 //
 // status    : "open" | "improved" | "solved"  (all start "open").
 // submissions: [{ who, model, date, kind: "solution"|"improvement"|"note", url, summary }]
+// archive: { kind: "merged"|"background", targets: [id], reason }
+// relations: [{ id, type: "parent"|"benchmark"|"reduction"|"related" }]
+// evidence: [{ kind, summary, url, date?, version? }]
+// provenance: [{ summary, url, version? }] — author disclosures, not proof status.
 //
 // Problem statements, context and references live in the per-category files
 // imported below. References are curated entry points, not exhaustive
@@ -28,26 +32,35 @@ export const CATEGORIES = [
   { slug: "spectral", code: "M", name: "Mathematical QM & spectral theory",
     blurb: "Rigorous spectral theory of Schrödinger operators: binding, localization, gaps, quantum chaos." },
   { slug: "many-body", code: "B", name: "Quantum many-body theory",
-    blurb: "Area laws, tensor networks, thermalization, phase classification, the Hubbard model." },
+    blurb: "Area laws, tensor networks, thermalization, phases, Bose condensation, Laughlin and kagome benchmarks." },
   { slug: "qft", code: "QF", name: "Mathematical quantum field theory",
-    blurb: "Nonperturbative construction of gauge theories, mass gaps, scattering, entanglement in the continuum." },
+    blurb: "Gauge-theory construction, mass gaps, scattering, continuum entanglement and local measurements." },
   { slug: "entanglement", code: "E", name: "Entanglement theory",
     blurb: "Distillability, LOCC, entanglement measures, marginals, the entropy cone, AME states." },
-  { slug: "nonlocality", code: "N", name: "Measurements, nonlocality & contextuality",
-    blurb: "SIC-POVMs, MUBs, Bell scenarios, self-testing, contextuality as a resource." },
+  { slug: "nonlocality", code: "N", name: "Nonlocality & measurement geometry",
+    blurb: "SICs and MUBs, Bell correlations and locality thresholds, self-testing and contextuality." },
   { slug: "channels", code: "C", name: "Quantum channels & Shannon theory",
     blurb: "Capacities, strong converses, Gaussian and memory channels, computability of capacities." },
   { slug: "complexity", code: "A", name: "Quantum algorithms & complexity",
-    blurb: "BQP separations, QMA, quantum PCP, state testing, fault tolerance and speedup criteria." },
+    blurb: "BQP separations, QMA, quantum PCP, state testing, fault tolerance and classical verification." },
   { slug: "undecidability", code: "U", name: "Computability & undecidability",
     blurb: "Where the spectral-gap, phase, thermalization and capacity problems become undecidable." },
   { slug: "open-systems", code: "O", name: "Open systems & quantum thermodynamics",
-    blurb: "Lindblad generators, dynamics learning, non-Markovianity, strong coupling, work and heat." },
-  { slug: "foundations", code: "F", name: "Foundations & missing formalism",
-    blurb: "Measurement, the Born rule, reconstruction, subsystems, causal order, quantum clocks." },
+    blurb: "Lindblad generators, dynamics learning, memory, thermal operations and Gibbs preparation." },
+  { slug: "foundations", code: "F", name: "Quantum foundations & operational frameworks",
+    blurb: "Measurement, reconstruction, subsystem structure, causal order and quantum reference frames." },
 ];
 
-export const PROBLEMS = [
+export const REVIEW = {
+  date: "2026-09-04",
+  label: "4 September 2026",
+  baseline: "e32e461",
+  reviewed: 111,
+  added: 12,
+  reportUrl: "https://github.com/jpbruneton/open_quantum_problems/blob/main/docs/reviews/2026-09-04-catalogue-review.md",
+};
+
+export const ALL_PROBLEMS = [
   ...SPECTRAL,
   ...MANYBODY,
   ...QFT,
@@ -58,19 +71,28 @@ export const PROBLEMS = [
   ...UNDECIDABILITY,
   ...OPENSYSTEMS,
   ...FOUNDATIONS,
-];
+].map((p) => ({
+  status: "open",
+  submissions: [],
+  evidence: [],
+  provenance: [],
+  relations: [],
+  reviewedAt: REVIEW.date,
+  ...p,
+}));
 
-// Normalize defaults: every problem starts "open" with no contributions.
-PROBLEMS.forEach((p) => {
-  if (!p.status) p.status = "open";
-  if (!p.submissions) p.submissions = [];
-});
+// Archived IDs remain addressable, but do not inflate open-problem counts.
+export const PROBLEMS = ALL_PROBLEMS.filter((p) => !p.archive);
+export const ARCHIVED_PROBLEMS = ALL_PROBLEMS.filter((p) => p.archive);
 
 export function problemsByCat(catSlug) {
   return PROBLEMS.filter((p) => p.cat === catSlug);
 }
 export function getProblem(id) {
-  return PROBLEMS.find((p) => p.id === id);
+  return ALL_PROBLEMS.find((p) => p.id === id);
+}
+export function consolidatedInto(id) {
+  return ARCHIVED_PROBLEMS.filter((p) => p.archive.targets.includes(id));
 }
 export function getCategory(slug) {
   return CATEGORIES.find((c) => c.slug === slug);
@@ -87,3 +109,19 @@ export const STATUSES = {
   improved: { label: "Improved" },
   solved: { label: "Solved" },
 };
+
+export const EVIDENCE_KINDS = {
+  published: { label: "Published result", desc: "Published under the stated hypotheses; not independently proof-checked here." },
+  preprint: { label: "Preprint claim", desc: "Attributed manuscript claim, not treated as an established resolution." },
+  numerical: { label: "Numerical evidence", desc: "A computation or extrapolation with its stated error and model limitations." },
+  conjecture: { label: "Conjecture", desc: "A proposed statement, not a proved result." },
+  withdrawn: { label: "Withdrawn claim", desc: "Not evidence that the problem has been solved." },
+};
+
+// These are not counted as open problems: their precise status needs another check.
+export const WATCHLIST = [
+  { title: "Robust, initializable 3D passive quantum memories", summary: "A May 2026 preprint claims a local construction with stretched-exponential thermal lifetime. Monitor lifetime robustness and passive initialization; deferred proofs are evidence-status items, not automatically new open conjectures.", url: "https://arxiv.org/abs/2605.10943" },
+  { title: "Same-state-copy Bell activation and triangle networks", summary: "Select a precise residual after checking the newest activation and binary-output triangle results. Numerical agreement with a quantum realization is not an exact construction.", url: "https://arxiv.org/abs/2605.00981" },
+  { title: "Homogeneous electron gas and Wigner crystallization", summary: "A further model-specific review is needed before adding a sharp low-density quantum-jellium question.", url: "https://comptes-rendus.academie-sciences.fr/physique/item/CRPHYS_2025__26_G1_369_0/" },
+  { title: "Unitary Fermi gas", summary: "Choose a quantitative target, such as certified Bertsch-parameter bounds, rather than listing the entire field as a single problem.", url: "https://comptes-rendus.academie-sciences.fr/physique/item/CRPHYS_2025__26_G1_393_0/" },
+];

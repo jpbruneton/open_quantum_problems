@@ -2,164 +2,204 @@ const r = String.raw;
 
 export const NONLOCALITY = [
   { id: "N1", cat: "nonlocality", horizon: "sharp",
+    relations: [{ id: "N3", type: "related" }, { id: "E14", type: "related" }],
     title: "Existence of SIC-POVMs",
     statement: r`Prove or disprove that for every $d\ge2$ there exist $d^2$ unit vectors $\{|\psi_j\rangle\}\subset\mathbb{C}^d$ with $|\langle\psi_j|\psi_k\rangle|^2=\tfrac{1}{d+1}$ for $j\neq k$.`,
-    context: r`A symmetric informationally complete POVM (SIC-POVM) is a set of $d^2$ equiangular unit vectors in $\mathbb{C}^d$ — the maximal possible number of equiangular lines in complex space. SICs are optimal measurements for quantum state tomography, minimal informationally complete, and central to QBist reconstructions of quantum theory. Zauner's conjecture asserts they exist in every dimension.
+    context: r`A symmetric informationally complete POVM (SIC) is obtained from $d^2$ equiangular unit vectors in $\mathbb C^d$, with effects $|\psi_j\rangle\langle\psi_j|/d$. SICs are minimal informationally complete measurements, useful in tomography and quantum foundations. This is a measurement-geometry problem, not intrinsically a Bell-nonlocality question.
 
-What is known: This is a remarkably data-rich open problem. Exact algebraic solutions have been constructed in many dimensions (including $d=2$–$28$ and scattered higher values up to well over 100), and high-precision numerical solutions exist in every dimension tested (into the hundreds). Almost all known SICs are covariant under the Weyl–Heisenberg group and possess an order-3 'Zauner' symmetry, drastically reducing the search. Scott–Grassl compiled extensive numerical and exact solutions.
+Exact algebraic constructions and extensive high-precision numerical solutions provide strong evidence, but neither establishes all-dimensional existence. The unrestricted existence question is weaker than requiring Weyl–Heisenberg covariance or the additional order-three symmetry associated with Zauner's conjecture. These variants should not be conflated.
 
-Most strikingly, Appleby, Flammia, Kopp, Yard and others uncovered a deep link to algebraic number theory: the entries of SIC vectors generate specific abelian extensions of real quadratic fields, tying Zauner's conjecture to Hilbert's 12th problem and the Stark conjectures on units. A general existence proof (or a single dimension with no SIC) is the sharp open problem. Related: N2, N3, E14.`,
+Appleby, Flammia, Kopp, Yard and others connected SICs with abelian extensions of real quadratic fields and Hilbert's twelfth problem. Appleby–Flammia–Kopp's constructive approach proves validity under two number-theoretic conjectures: an order-one abelian Stark conjecture and a special-value identity for the Shintani–Faddeev modular cocycle. This is conditional progress, not an unconditional existence theorem.
+
+A general proof or one dimension admitting no SIC resolves the stated sharp question.`,
     refs: [
-      { label: "Renes, Blume-Kohout, Scott, Caves, 'Symmetric informationally complete quantum measurements', J. Math. Phys. 45, 2171 (2004)" },
-      { label: "Appleby, Flammia, McConnell, Yard, 'SICs and algebraic number theory', Found. Phys. 47 (2017)" },
-      { label: "Scott & Grassl, 'SIC-POVMs: A new computer study', J. Math. Phys. 51 (2010)" },
+      {"label":"Appleby, Flammia & Kopp, 'A Constructive Approach to Zauner’s Conjecture via the Stark Conjectures' (conditional construction, 2025)","url":"https://arxiv.org/abs/2501.03970"},
+      { label: "Renes, Blume-Kohout, Scott, Caves, 'Symmetric informationally complete quantum measurements', J. Math. Phys. 45, 2171 (2004)", url: "https://arxiv.org/abs/quant-ph/0310075" },
+      { label: "Appleby, Flammia, McConnell, Yard, 'SICs and algebraic number theory', Found. Phys. 47 (2017)", url: "https://arxiv.org/abs/1701.05200" },
+      { label: "Scott & Grassl, 'SIC-POVMs: A new computer study', J. Math. Phys. 51 (2010)", url: "https://arxiv.org/abs/0910.5784" },
     ] },
 
   { id: "N2", cat: "nonlocality", horizon: "sharp", status: "improved",
+    relations: [{ id: "N3", type: "parent" }],
+    evidence: [{ kind: "preprint", summary: "Claimed classification of order-six complex Hadamard matrices; simultaneous mutual-unbiasedness constraints remain additional and M(6) is not determined.", url: "https://arxiv.org/abs/2608.18053", date: "2026-08-18" }],
+    provenance: [{ summary: "Cárdenes Wuttig and Tindall disclose interactive assistance from ChatGPT Sol 5.6 Pro, Codex 5.6 Sol and Claude Opus 5.0 in proofs, searches, algebra and verification code. They state that they repaired or rejected incorrect proposals and independently checked retained material.", url: "https://arxiv.org/abs/2608.18053" }],
     title: "Mutually unbiased bases in dimension six",
     statement: r`Determine the maximal number $M(6)$ of mutually unbiased bases in $\mathbb{C}^6$; in particular decide whether $M(6)=3$ or whether four or more exist.`,
-    context: r`Two orthonormal bases are mutually unbiased (MU) if $|\langle e_i|f_j\rangle|^2=1/d$ for all $i,j$ — measuring in one gives no information about the other. The maximal number of pairwise MU bases $M(d)$ is $d+1$ when $d$ is a prime power. Dimension six is the smallest non-prime-power case, and $M(6)$ is a notorious open problem.
+    context: r`Two orthonormal bases are mutually unbiased if $|\langle e_i|f_j\rangle|^2=1/d$ for every pair of vectors. Complete sets of $d+1$ bases exist in prime-power dimensions. Dimension six is the smallest remaining case and is retained as the flagship benchmark of N3.
 
-What is known: One can always construct 3 MU bases in $\mathbb{C}^6$ (from a prime-power factor), so $M(6)\ge3$, and the upper bound is $M(6)\le7$. Extensive numerical optimization, computer-algebra, and Gröbner-basis searches (Butterley–Hall; Brierley–Weigert; Raynal–Lü–Englert; Jaming et al.) have never found a fourth MU basis, and strong evidence — including studies of the Fourier family of complex Hadamard matrices and the 'Zauner conjecture for MUBs' — points to $M(6)=3$. The problem is closely connected to classifying $6\times6$ complex Hadamard matrices.
+Tensor-product constructions give $M(6)\geq3$, while the general dimension bound gives $M(6)\leq7$. Extensive numerical, computer-algebra and Gröbner-basis investigations have not produced a fourth basis. Restrictions on particular complex Hadamard families provide rigorous partial exclusions; numerical search failure is not a proof of global nonexistence.
 
-New progress (August 2026): Cárdenes Wuttig and Tindall give a claimed complete, exact finite-incidence classification of order-six complex Hadamard matrices up to standard equivalence, including a proof of Szöllősi's conjecture. If the preprint withstands scrutiny, it removes a major auxiliary classification problem and supplies a rigorous framework for the MUB search. It does not determine $M(6)$ or prove that a fourth basis cannot exist.
+Preprint progress (August 2026): Cárdenes Wuttig and Tindall claim a complete exact finite-incidence classification of order-six complex Hadamard matrices, including Szöllősi's conjecture. This concerns individual matrices up to standard equivalence. A MUB set additionally requires simultaneous mutual unbiasedness between several matrices, so this claimed auxiliary classification does not determine $M(6)$.
 
-**Authors' statement (unverified):** The authors state that ChatGPT Sol 5.6 Pro, Codex 5.6 Sol and Claude Opus 5.0 would have assisted interactively with proof strategies, counterexample searches, algebra, symbolic and formal-verification code, and revision. They also report discarding or repairing incorrect model proposals, independently checking all retained material and taking full responsibility. Their declaration therefore describes mixed human–AI work, not a purely autonomous AI result.
-
-Despite overwhelming numerical evidence for $M(6)=3$, there is no proof even that a fourth basis does not exist. A rigorous determination of $M(6)$ is the sharp target. Related: N3.`,
+The sharp target remains whether four or more MUBs exist, and ultimately the exact value of $M(6)$.`,
     refs: [
-      { label: "Durt, Englert, Bengtsson, Życzkowski, 'On mutually unbiased bases', Int. J. Quantum Inf. 8 (2010)" },
-      { label: "Brierley & Weigert, 'Maximal sets of mutually unbiased quantum states in dimension six', PRA 78 (2008)" },
-      { label: "Cárdenes Wuttig & Tindall, 'A Complete Classification of Complex Hadamard Matrices of Order Six' (2026)", url: "https://arxiv.org/abs/2608.18053" },
+      { label: "Durt, Englert, Bengtsson, Życzkowski, 'On mutually unbiased bases', Int. J. Quantum Inf. 8 (2010)", url: "https://arxiv.org/abs/1004.3348" },
+      { label: "Brierley & Weigert, 'Maximal sets of mutually unbiased quantum states in dimension six', PRA 78 (2008)", url: "https://arxiv.org/abs/0808.1614" },
+      { label: "Cárdenes Wuttig & Tindall, 'A Complete Classification of Complex Hadamard Matrices of Order Six' (2026 preprint)", url: "https://arxiv.org/abs/2608.18053" },
     ] },
 
   { id: "N3", cat: "nonlocality", horizon: "sharp",
-    title: "MUBs in non-prime-power dimensions",
-    statement: r`Determine the maximal number $M(d)$ of mutually unbiased bases when $d$ is not a prime power, and decide whether a complete set of $d+1$ bases can exist in any such dimension.`,
-    context: r`For prime-power $d$, complete sets of $d+1$ MU bases exist (built from finite fields / the Heisenberg–Weyl group). For general composite $d$ the maximal number $M(d)$ is unknown, and even the existence of a complete set of $d+1$ MU bases in any non-prime-power dimension is open — this generalizes N2 beyond $d=6$.
+    relations: [{ id: "N2", type: "benchmark" }, { id: "N1", type: "related" }],
+    evidence: [{ kind: "numerical", summary: "Extension searches for tensor-product MUB constructions found no extension; this is not a nonexistence proof.", url: "https://doi.org/10.3390/info17080796" }],
+    title: "Complete MUB sets outside prime-power dimensions",
+    statement: r`Can a dimension $d$ that is not a prime power admit $d+1$ mutually unbiased bases? As a separate quantitative programme, improve certified bounds on the maximal number $M(d)$ in specified dimensions.`,
+    context: r`Complete sets of $d+1$ mutually unbiased bases are known in prime-power dimensions. Whether any non-prime-power dimension supports a complete set is the sharp existence question here; finding every value $M(d)$ is a broader programme. N2 records the dimension-six benchmark.
 
-What is known: General bounds are weak. Lower bounds come from the prime-power factorization: writing $d=\prod p_i^{k_i}$, one has $M(d)\ge \min_i(p_i^{k_i})+1$, which for $d=6$ gives only 3. It is known that $M(d)\ge3$ for all $d$, and the upper bound is $d+1$. The MUB problem is tightly linked to combinatorial designs: complete sets of MU bases are equivalent to certain finite affine planes / complete sets of mutually orthogonal Latin squares, and the existence of $d-1$ MOLS (hence of a projective plane of order $d$) is a famous open combinatorial question for many composite $d$ (e.g. $d=10,12$).
+Writing $d=\prod_i p_i^{k_i}$ gives the tensor-product lower bound $M(d)\geq1+\min_i p_i^{k_i}$, while $M(d)\leq d+1$. Links with finite geometry motivate conjectures, but complete complex MUBs are not known to be equivalent to finite affine/projective planes. Classical complete mutually orthogonal Latin squares have their own established relation to planes. In particular, projective planes of order 10 were proved not to exist by Lam–Thiel–Swiercz in 1989; that result does not by itself exclude complete MUBs in dimension 10.
 
-New numerical evidence (August 2026): Wu, Liu and Wu built and verified the standard tensor-product MUB sets in all 64 non-prime-power dimensions up to 100, then ran 107,374 extension searches across every such dimension up to 30 while comparing twelve optimizers and publishing the per-run data and code. No extension was found. The authors explicitly stress that failure of local optimization is not a nonexistence proof, and that the relevant maximally entangled target occupies a measure-zero structured submanifold. The status of every sharp existence question is therefore unchanged.
-
-**Authors' statement (unverified):** The article contains no declaration of generative-AI use; this catalogue cannot establish that no such tools were used.
-
-Determining $M(d)$ for composite $d$, and whether complete sets ever exist outside prime powers, is a sharp problem sitting at the crossroads of quantum information and combinatorics. Related: N1, N2.`,
+The 2026-published composite-dimension review provides a current baseline. Numerical evidence (August 2026): Wu–Liu–Wu report standard tensor-product constructions in 64 non-prime-power dimensions up to 100 and extensive extension searches in such dimensions up to 30. No extension was found. This tests chosen search procedures and starting families, not all possible MUBs, so it does not resolve any universal nonexistence claim.`,
     refs: [
-      { label: "Boykin, Sitharam, Tarifi, Wocjan, 'Mutually unbiased bases and orthogonal decompositions of Lie algebras', QIC 7 (2007)" },
-      { label: "Bengtsson & Życzkowski, 'Geometry of Quantum States' (CUP, 2nd ed. 2017)" },
+      {"label":"'Mutually Unbiased Bases in Composite Dimensions — A Review' (published 2026)","url":"https://arxiv.org/abs/2410.23997"},
+      {"label":"Saniga, Planat & Rosu, 'Mutually unbiased bases and finite projective planes' (proposed connection, 2004)","url":"https://arxiv.org/abs/math-ph/0403057"},
+      {"label":"Lam, Thiel & Swiercz, 'The non-existence of finite projective planes of order 10', Canadian Journal of Mathematics (1989)","url":"https://doi.org/10.4153/CJM-1989-049-4"},
+      { label: "Boykin, Sitharam, Tiep, Wocjan, 'Mutually unbiased bases and orthogonal decompositions of Lie algebras', QIC 7 (2007)", url: "https://arxiv.org/abs/quant-ph/0506089" },
+      { label: "Bengtsson & Życzkowski, 'Geometry of Quantum States' (CUP, 2nd ed. 2017)", url: "https://doi.org/10.1017/9781139207010" },
       { label: "Wu, Liu & Wu, 'Numerical Search for Extensions of Tensor-Product Mutually Unbiased Bases in Non-Prime-Power Composite Dimensions up to 100' (2026)", url: "https://doi.org/10.3390/info17080796" },
     ] },
 
   { id: "N4", cat: "nonlocality", horizon: "incremental",
+    relations: [{ id: "N5", type: "related" }, { id: "N6", type: "related" }],
     title: "Minimal separation of quantum correlation models",
-    statement: r`Find the smallest Bell scenario in which finite-dimensional, approximately finite-dimensional and commuting-operator quantum correlation sets differ.`,
-    context: r`There are several inequivalent ways to define 'quantum' correlations in a Bell experiment: the finite-dimensional tensor-product set $C_q$, its closure $C_{qa}$ (approximately finite-dimensional), and the commuting-operator set $C_{qc}$. Tsirelson's problem asked whether these coincide.
+    statement: r`For each separation $C_q\ne C_{qa}$ and $C_{qa}\ne C_{qc}$, determine minimal input/output tuples under a stated ordering, and construct explicit small witnesses.`,
+    context: r`Finite-dimensional tensor-product correlations form $C_q$; their closure is $C_{qa}$; commuting-operator correlations form $C_{qc}$. Nonclosure of $C_q$ and separation of $C_{qa}$ from $C_{qc}$ are different established phenomena, not one undifferentiated separation.
 
-What is known: The landmark result MIP*=RE (Ji–Natarajan–Vidick–Wright–Yuen, 2020) proved $C_{qa}\ne C_{qc}$, refuting Tsirelson's problem and, via a chain of equivalences, disproving Connes' embedding conjecture in operator algebras. Earlier, Slofstra had shown $C_q$ is not closed ($C_q\ne C_{qa}$) using group-theoretic (representation) methods, and Coladangelo–Stark gave a five-input separation. These are among the deepest recent results connecting complexity theory, operator algebras, and quantum foundations.
+Slofstra proved nonclosure of finite-dimensional quantum correlations. Dykema–Paulsen–Prakash give an explicit five-input, two-output nonclosure example. MIP*=RE establishes $C_{qa}\ne C_{qc}$ and refutes the corresponding Tsirelson/Connes conjectures. Its construction is effective: calling all these proofs nonconstructive is inaccurate, although the resulting examples can be complicated.
 
-But the proofs are highly nonconstructive: the minimal Bell scenario (number of inputs/outputs) in which these sets provably differ is unknown, and explicit small separating correlations are scarce. Pinning down the smallest scenario, and giving explicit witnesses, is an incremental follow-up. Related: N5, N6.`,
+The residual benchmark must specify which two sets are compared and what “smallest” means. Setting counts and output counts form a partial order, so distinct Pareto-minimal scenarios may matter. Useful advances are smaller certified examples, lower bounds excluding separation in specified scenarios and transparent separating correlations.`,
     refs: [
-      { label: "Ji, Natarajan, Vidick, Wright, Yuen, 'MIP* = RE', Comm. ACM 64 (2021)" },
-      { label: "Slofstra, 'The set of quantum correlations is not closed', Forum Math. Pi 7 (2019)" },
+      {"label":"Dykema, Paulsen & Prakash, 'Non-closure of the set of quantum correlations via graphs' (published 2019)","url":"https://arxiv.org/abs/1709.05032"},
+      {"label":"Ji et al., 'MIP*=RE'","url":"https://arxiv.org/abs/2001.04383"},
+      { label: "Slofstra, 'The set of quantum correlations is not closed', Forum Math. Pi 7 (2019)", url: "https://arxiv.org/abs/1703.08618" },
     ] },
 
   { id: "N5", cat: "nonlocality", horizon: "incremental",
+    relations: [{ id: "N4", type: "related" }, { id: "N6", type: "related" }, { id: "N7", type: "related" }],
     title: "Dimension required for nonlocal correlations",
-    statement: r`Given a Bell correlation and accuracy $\varepsilon$, bound or determine the minimal local Hilbert-space dimension needed to realize it within $\varepsilon$.`,
-    context: r`Some quantum correlations require high-dimensional entanglement to reproduce. The dimension-witness problem asks, for a target correlation and tolerance $\varepsilon$, for the minimal local Hilbert-space dimension realizing it — a device-independent measure of the quantum resources at play.
+    statement: r`For specified finite-dimensional tensor-product correlation families and a fixed metric, determine tight lower and upper bounds on the minimal local dimension achieving accuracy $\varepsilon$, with explicit parameter dependence.`,
+    context: r`Dimension witnesses certify lower bounds on resources needed to reproduce observed Bell statistics. For a target in $C_{qa}$, define approximation in a stated metric such as the maximum total-variation distance over input pairs. A commuting-operator target outside $C_{qa}$ need not have arbitrarily accurate finite-dimensional realizations at all.
 
-What is known: Dimension witnesses give certified lower bounds on local dimension from observed statistics (Brunner et al.; Gallego et al.). Some correlations are known to need unbounded dimension: there exist Bell inequalities whose near-optimal violation forces the dimension to grow, and certain nonlocal games ('quantum-coin' / low-degree games) require dimension exponential in the number of questions. The MIP*=RE machinery shows, in effect, that approximating quantum values can require unbounded dimension. Self-testing (N7) gives the opposite, tight side: some correlations pin down the state and dimension exactly.
+Known examples force dimension to grow as the requested error decreases, sometimes extremely rapidly. There can be no uniform computable dimension cutoff sufficient to approximate every unrestricted finite Bell-game value: together with bounded-dimensional optimization this would contradict MIP*=RE. Thus a general computable dimension bound is not an open deliverable.
 
-Sharp, general bounds relating a correlation and $\varepsilon$ to the necessary dimension — beyond specific families — are open, and the dependence on $\varepsilon$ is subtle. This is an incremental, quantitative program. Related: N4, N7.`,
+Self-testing certifies a reference subsystem up to local isometries and unused auxiliary systems, not the exact total dimension of an unknown physical device. Conversely, specified noisy-resource models can restore computable bounds; Qin–Yao supply one such result for fully quantum games using noisy maximally entangled resources.
+
+The useful quantitative frontier is restricted families, optimal dimension witnesses and explicit dependence on accuracy, inputs and outputs.`,
     refs: [
-      { label: "Brunner, Cavalcanti, Pironio, Scarani, Wehner, 'Bell nonlocality', Rev. Mod. Phys. 86, 419 (2014)" },
-      { label: "Brunner, Pironio, Acín, Gisin, Méthot, Scarani, 'Testing the dimension of Hilbert spaces', PRL 100, 210503 (2008)" },
+      {"label":"Qin & Yao, 'Decidability of fully quantum nonlocal games with noisy maximally entangled states' (2023 revision)","url":"https://arxiv.org/abs/2211.10613"},
+      {"label":"Ji et al., 'MIP*=RE'","url":"https://arxiv.org/abs/2001.04383"},
+      { label: "Brunner, Cavalcanti, Pironio, Scarani, Wehner, 'Bell nonlocality', Rev. Mod. Phys. 86, 419 (2014)", url: "https://arxiv.org/abs/1303.2849" },
+      { label: "Brunner, Pironio, Acín, Gisin, Méthot, Scarani, 'Testing the dimension of Hilbert spaces', PRL 100, 210503 (2008)", url: "https://arxiv.org/abs/0802.0760" },
     ] },
 
   { id: "N6", cat: "nonlocality", horizon: "incremental", status: "improved",
+    relations: [{ id: "N4", type: "related" }, { id: "N5", type: "related" }],
+    evidence: [{ kind: "preprint", summary: "Nonexactness of fixed NPA levels near a critical doubly-tilted CHSH point, not universal noncomputability in the smallest Bell scenario.", url: "https://arxiv.org/abs/2607.13762", date: "2026-07-15" }, { kind: "preprint", summary: "No finite standard NPA level describes the complete (2,2,2) behavior set; particular functionals can still have finite certificates.", url: "https://arxiv.org/abs/2607.14569", date: "2026-07-16" }],
     title: "Restricted decidability of nonlocal games",
-    statement: r`Although the general problem is undecidable, classify the natural families of nonlocal games whose quantum value is computable, semidecidable or efficiently approximable.`,
-    context: r`A nonlocal game has a quantum value — the supremum winning probability over all quantum strategies. MIP*=RE shows that approximating this value is undecidable in general (as hard as the halting problem), and there is no algorithm computing it for arbitrary games.
+    statement: r`Identify natural restricted families of finite nonlocal games whose finite-dimensional tensor-product value admits two-sided additive approximation with a certified stopping rule; separately determine efficient algorithms and finite-level NPA certificates.`,
+    context: r`For a finitely specified game, the quantum value is a supremum over finite-dimensional tensor-product strategies. MIP*=RE rules out a general algorithm approximating this value to prescribed accuracy. Enumerating finite-dimensional strategies already supplies lower semicomputability; this is weaker than a two-sided computable value or a terminating threshold decision.
 
-What is known: On the tractable side, XOR games are fully understood — Tsirelson's theorem gives their quantum value via a semidefinite program, so it is efficiently computable. The Navascués–Pironio–Acín (NPA) hierarchy provides a converging sequence of SDP upper bounds on the commuting-operator value of any game, and lower bounds come from explicit strategies; for many structured games these meet. Unique games, synchronous games (linked to the existence of tracial states on a game algebra), and certain group-theoretic games have partial characterizations of computability.
+XOR games have an SDP characterization. The Navascués–Pironio–Acín hierarchy supplies decreasing upper bounds converging to the commuting-operator value, which need not equal the tensor-product value. Restricted symmetries, game algebras, input/output patterns and noisy-resource assumptions can yield tractable islands, including computable bounds in the Qin–Yao setting.
 
-New progress (2026): work on the doubly-tilted CHSH family sharply mapped a boundary of finite NPA decidability. Pakhunov proved that no fixed finite NPA level is exact on any neighbourhood of the critical tilt, while a companion analysis identifies a phase transition: explicit finite certificates work throughout the supercritical region, whereas every fixed level overshoots on the subcritical side near the boundary. Independently, Chaturvedi proved that no finite standard NPA level characterizes the complete quantum set even in the bipartite two-input, two-output scenario. These results delimit NPA termination but do not decide the quantum value of arbitrary nonlocal games.
+Preprint progress (July 2026): Pakhunov's two manuscripts claim nonexactness of any fixed NPA level throughout suitable neighborhoods of the doubly-tilted CHSH critical point, with a finite-certification phase boundary. Chaturvedi claims that no finite standard NPA level equals the entire quantum set in the two-input/two-output scenario. These are statements about fixed levels and sets or neighborhoods. They do not mean every individual inequality lacks a finite certificate, or that values in this small scenario are uncomputable.
 
-**Authors' statements (unverified):** Pakhunov's manuscripts contain no AI disclosure, but he reportedly described his research process as using AI to search the literature and attempt open problems, and reportedly used Claude for this work; the papers also provide exact-arithmetic verification code. Chaturvedi's manuscript contains no AI disclosure, but he reportedly said that ChatGPT was used to write up results developed through several years of human research. These external accounts are not independently verified by this catalogue.
-
-The open, incremental task is to map the decidable/approximable islands: which natural families (by symmetry, number of questions, answer structure) have computable or semidecidable quantum values, and when the NPA hierarchy terminates or gives efficient bounds. Related: N4, N9, U-category.`,
+N9's former generic solver request is archived here; dimensional aspects are treated in N5. The active target is a precisely described restricted family with a certified algorithm, not a universal solver.`,
     refs: [
-      { label: "Cleve, Høyer, Toner, Watrous, 'Consequences and limits of nonlocal strategies', CCC 2004" },
-      { label: "Ji et al., 'MIP* = RE', Comm. ACM 64 (2021)" },
-      { label: "Pakhunov, 'No finite level of the NPA hierarchy is exact for the doubly-tilted CHSH functional near the critical tilt' (2026)", url: "https://arxiv.org/abs/2607.13762" },
-      { label: "Pakhunov, 'A phase transition in the exactness of the NPA hierarchy at the critical doubly-tilted CHSH functional' (2026)", url: "https://arxiv.org/abs/2607.13774" },
-      { label: "Chaturvedi, 'No Finite NPA Level Characterizes the Complete Quantum Set in the Simplest Bell Scenario' (2026)", url: "https://arxiv.org/abs/2607.14569" },
-      { label: "Araújo, 'A strange affair in the nonlocality community' (reported provenance and timeline, 2026)", url: "https://mateusaraujo.info/2026/07/19/a-strange-affair-in-the-nonlocality-community/" },
+      {"label":"Ji et al., 'MIP*=RE'","url":"https://arxiv.org/abs/2001.04383"},
+      {"label":"Qin & Yao, 'Decidability of fully quantum nonlocal games with noisy maximally entangled states' (2023 revision)","url":"https://arxiv.org/abs/2211.10613"},
+      { label: "Cleve, Høyer, Toner, Watrous, 'Consequences and limits of nonlocal strategies', CCC 2004", url: "https://arxiv.org/abs/quant-ph/0404076" },
+      { label: "Pakhunov, 'No finite level of the NPA hierarchy is exact for the doubly-tilted CHSH functional near the critical tilt' (2026 preprint)", url: "https://arxiv.org/abs/2607.13762" },
+      { label: "Pakhunov, 'A phase transition in the exactness of the NPA hierarchy at the critical doubly-tilted CHSH functional' (2026 preprint)", url: "https://arxiv.org/abs/2607.13774" },
+      { label: "Chaturvedi, 'No Finite NPA Level Characterizes the Complete Quantum Set in the Simplest Bell Scenario' (2026 preprint)", url: "https://arxiv.org/abs/2607.14569" },
     ] },
 
   { id: "N7", cat: "nonlocality", horizon: "incremental",
-    title: "Classification of self-testing correlations",
-    statement: r`Characterize which states and measurements can be uniquely certified, up to local isometries, from their correlations alone.`,
-    context: r`Self-testing is the strongest form of device-independent certification: certain observed correlations force the underlying state and measurements to be, up to a local isometry and irrelevant ancillas, a unique reference — with no assumption about the devices. The maximal violation of the CHSH inequality self-tests the singlet, the paradigm example.
+    relations: [{ id: "N5", type: "related" }, { id: "N8", type: "related" }],
+    evidence: [{ kind: "published", summary: "All pure multipartite entangled qubit states admit self-tests in the standard Bell setting; arbitrary higher local dimensions remain a separate frontier.", url: "https://www.nature.com/articles/s41467-026-70829-x", date: "2026-03-24" }],
+    title: "Self-testing beyond multipartite qubits",
+    statement: r`Can every finite-dimensional pure multipartite entangled state be self-tested in a standard single-source Bell experiment, up to local isometries, unused auxiliary systems and unavoidable conjugation equivalences? Separately classify measurement sets under an explicit certification convention.`,
+    context: r`Self-testing extracts a reference state and, when specified, its measurements from correlations alone. CHSH self-tests a singlet. The equivalence convention is essential: unused auxiliary systems and complex conjugation cannot simply be excluded by observed probabilities.
 
-What is known: A large catalogue of self-tests is now established — all pure bipartite entangled states are self-testable (Coladangelo–Goh–Scarani), many multipartite states (GHZ, graph states, Dicke states) have self-tests, and there are self-tests for high-dimensional maximally entangled states and for certain measurements (mutually unbiased bases, tilted Bell inequalities). The Šupić–Bowles review organizes the methods (SOS decompositions, operator-algebraic and NPA-based certification).
+Established results cover every pure bipartite entangled state. A published March 2026 theorem also covers every pure multipartite entangled qubit state, beyond earlier GHZ, graph and Dicke examples. The remaining universal state question concerns arbitrary higher local dimensions in the standard Bell setting. Network protocols using auxiliary parties or entanglement answer a different question.
 
-A general characterization — necessary and sufficient conditions for a state (especially mixed or multipartite) and a measurement set to be self-testable, and by which correlations — is open. Related: N5, N8, N9.`,
+Conventional exact self-testing does not uniquely identify a genuinely mixed bipartite target in the analogous pure-state sense; “classify all mixed states” is not an untouched extension without changing the definition. Measurement certification likewise has hypotheses: all real projective measurements can be self-tested, while arbitrary complex POVMs require careful treatment of equivalence and dilation freedoms.
+
+The residual programme separates the sharp pure-state existence question from measurement-specific necessary-and-sufficient criteria and robustness.`,
     refs: [
-      { label: "Šupić & Bowles, 'Self-testing of quantum systems: a review', Quantum 4, 337 (2020)" },
-      { label: "Coladangelo, Goh, Scarani, 'All pure bipartite entangled states can be self-tested', Nat. Commun. 8, 15485 (2017)" },
+      {"label":"'All pure multipartite entangled states of qubits can be self-tested', Nature Communications (24 March 2026)","url":"https://www.nature.com/articles/s41467-026-70829-x"},
+      {"label":"Coladangelo, Goh & Scarani, all pure bipartite states and the mixed-state obstruction, Nature Communications (2017)","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC5458560/"},
+      {"label":"Chen, Mančinska & Volčič, self-testing all real projective measurements, Nature Physics (2024)","url":"https://arxiv.org/abs/2302.00974"},
+      { label: "Šupić & Bowles, 'Self-testing of quantum systems: a review', Quantum 4, 337 (2020)", url: "https://arxiv.org/abs/1904.10042" },
     ] },
 
   { id: "N8", cat: "nonlocality", horizon: "incremental", status: "improved",
+    relations: [{ id: "N7", type: "related" }],
+    evidence: [{ kind: "preprint", summary: "Size-independent analytic GHZ robustness within a factor of two; numerical tests up to 100 qubits support, but do not prove, the general optimum.", url: "https://arxiv.org/abs/2608.30851", date: "2026-08-31" }],
     title: "Optimal robustness of self-testing",
-    statement: r`For standard self-tests, determine the sharp relation between the deviation of a Bell value from its optimum and the distance from the ideal state and measurements.`,
-    context: r`Real experiments never reach the exact optimal Bell violation, so self-testing must be robust: a small deviation $\varepsilon$ from the ideal value should certify a state within some distance $\delta(\varepsilon)$ of the reference. The robustness function $\delta(\varepsilon)$ controls how demanding a device-independent protocol is experimentally.
+    statement: r`For a specified Bell functional, normalization and target, determine the tight extractability-fidelity bound as a function of the violation deficit; treat norm-distance bounds and measurement certification as separate metrics.`,
+    context: r`Real experiments have a nonzero Bell-value deficit. Robust self-testing quantifies the worst-case reference-state fidelity obtainable by local extraction maps from statistics with that deficit. Bell normalization, fidelity convention and the allowed extraction maps must be fixed before comparing bounds.
 
-What is known: Robust self-testing bounds exist for CHSH and many other tests, obtained via operator (sum-of-squares) methods, the 'swap' isometry technique, and numerical SDP relaxations (Yang–Vértesi–Bancal–Scarani–Navascués; Bancal et al.). Typical proven bounds scale like $\delta\sim\sqrt{\varepsilon}$ or worse and are usually far from tight; for CHSH the optimal robustness has been progressively improved but the sharp constant/scaling is generally not known.
+Operator sum-of-squares techniques, swap isometries and SDPs provide many bounds. A square-root estimate in state-vector norm and a linear estimate in infidelity can describe compatible behavior, not different optimal exponents. Kaniewski established a tight three-qubit Mermin/GHZ benchmark and nearly optimal CHSH bounds; the catalogue should not present all standard tests as wholly unresolved.
 
-New progress (August 2026): Cao, Zhang, Shi and Zhao derived a fully analytic, device-independent self-testing bound for $n$-qubit GHZ states whose robustness is independent of $n$, scales linearly with the observed violation error, and stays within a factor of two of a theoretical upper bound. They also reduce the conjectured optimal bound to an efficient numerical check verified through $n=100$. This removes the usual system-size degradation for one central multipartite family, while the exact optimum and a general method for other self-tests remain open.
+Preprint progress (31 August 2026): Cao–Zhang–Shi–Zhao claim analytic $n$-qubit GHZ bounds with size-independent robustness, linear violation-error dependence and a factor-two comparison to an upper bound. Numerical checks through $n=100$ support a conjectured optimum but are not a general exact proof.
 
-**Authors' statement (unverified):** The manuscript contains no declaration of generative-AI use; this catalogue cannot establish that no such tools were used.
-
-Determining the optimal (tight) robustness for standard self-tests, and general methods that achieve it, is a quantitative, leaderboard-style open problem directly affecting the feasibility of device-independent cryptography and certified randomness. Related: N7.`,
+The incremental target is matching upper/lower robustness curves for named tests, with the same metric and normalization, and transferable methods for additional targets.`,
     refs: [
-      { label: "Yang, Vértesi, Bancal, Scarani, Navascués, 'Robust and versatile black-box certification of quantum devices', PRL 113, 040401 (2014)" },
-      { label: "Šupić & Bowles, Quantum 4, 337 (2020)" },
-      { label: "Cao et al., 'Size-Independent Robustness in Multipartite Bell Self-Testing' (2026)", url: "https://arxiv.org/abs/2608.30851" },
+      {"label":"Kaniewski, 'Analytic and nearly optimal self-testing bounds for the Clauser-Horne-Shimony-Holt and Mermin inequalities', PRL 117, 070402 (2016)","url":"https://arxiv.org/abs/1604.08176"},
+      { label: "Yang, Vértesi, Bancal, Scarani, Navascués, 'Robust and versatile black-box certification of quantum devices', PRL 113, 040401 (2014)", url: "https://arxiv.org/abs/1406.7127" },
+      { label: "Šupić & Bowles, Quantum 4, 337 (2020)", url: "https://arxiv.org/abs/1904.10042" },
+      { label: "Cao et al., 'Size-Independent Robustness in Multipartite Bell Self-Testing' (2026 preprint)", url: "https://arxiv.org/abs/2608.30851" },
     ] },
 
   { id: "N9", cat: "nonlocality", horizon: "incremental", status: "improved",
+    archive: { kind: "merged", targets: ["N6", "N5"], reason: "The unrestricted Bell-value algorithm is impossible; restricted computability and dimension benchmarks are treated in N6 and N5." },
+    relations: [{ id: "N6", type: "parent" }, { id: "N5", type: "parent" }],
     title: "Quantum maxima of Bell and contextuality inequalities",
-    statement: r`Develop exact methods for the quantum maximum and the minimal realizing dimension of a general inequality, beyond convergent but potentially nonterminating semidefinite hierarchies.`,
-    context: r`Computing the maximal quantum violation (Tsirelson bound) of a general Bell or noncontextuality inequality, and the minimal Hilbert-space dimension achieving it, is a basic task with no general closed-form solution.
+    statement: r`Archived under N6 and N5: exact or certified Bell-maximum methods for specified restricted families, with a separate minimal-dimension task; no terminating algorithm exists for all finite Bell games.`,
+    context: r`The earlier formulation asked for a general exact solver for Bell maxima and minimal realizing dimensions. In unrestricted finite-dimensional tensor-product models that algorithmic request is ruled out by MIP*=RE, not merely an unsolved technical challenge. The viable restricted-family problems now live in N6 and N5.
 
-What is known: The NPA hierarchy (Navascués–Pironio–Acín) gives a converging sequence of semidefinite-programming outer bounds on the commuting-operator quantum value, and it is complete (converges to the true value) — but it need not terminate at any finite level, and there is no general certificate of when it has converged. For XOR / two-outcome correlation inequalities, Tsirelson's theorem gives the exact value via a single SDP. Contextuality has an analogous graph-theoretic bound: the Lovász theta function of the exclusivity graph (Cabello–Severini–Winter) upper-bounds the quantum value, exactly for a class of inequalities.
+The NPA hierarchy converges to the commuting-operator value. It need not terminate at a finite level and its limit need not equal the tensor-product value. XOR correlation inequalities admit an SDP solution. Graph-theoretic contextuality methods, including the Cabello–Severini–Winter framework and Lovász theta bounds, concern explicitly specified exclusivity and compatibility assumptions; not every contextuality task inherits the identical Bell undecidability statement.
 
-New progress (2026): three closely timed works make the nontermination statement concrete in the smallest Bell setting. For symmetric doubly-tilted CHSH near its critical tilt, Pakhunov proved that every fixed NPA level strictly overshoots the true quantum maximum on some interval; the companion paper locates an exactness phase transition and relates finite convergence to the order of contact at the self-tested optimum. Chaturvedi independently gave a fully analytical obstruction showing that no finite standard NPA level equals the complete quantum behavior set in the bipartite two-binary-measurement scenario. Thus finite-level exactness for CHSH and one-sided tilted CHSH does not extend to the full minimal behavior set. These are negative resolutions for finite NPA certification, not a general method for exact Bell maxima.
+Historical preprint progress (July 2026): the two Pakhunov papers and Chaturvedi's paper give obstructions to finite standard NPA descriptions of whole neighborhoods or the complete smallest Bell behavior set. Individual inequalities can still have finite certificates. These sources are retained here for continuity, but the same progress is counted only under N6.
 
-**Authors' statements (unverified):** Pakhunov's manuscripts contain no AI disclosure, but he reportedly described his research process as using AI to search the literature and attempt open problems, and reportedly used Claude for this work; the papers also provide exact-arithmetic verification code. Chaturvedi's manuscript contains no AI disclosure, but he reportedly said that ChatGPT was used to write up results developed through several years of human research. These external accounts are not independently verified by this catalogue.
-
-Exact or finitely-terminating methods for the quantum maximum, together with the minimal realizing dimension, for general inequalities are open, and connect to N4/N6 undecidability limits: no algorithm can compute all quantum values. Related: N4, N6, N8.`,
+A selected finite benchmark list can retain exact-value and dimension questions without reviving the impossible universal solver.`,
     refs: [
-      { label: "Navascués, Pironio, Acín, 'A convergent hierarchy of semidefinite programs characterizing the set of quantum correlations', New J. Phys. 10, 073013 (2008)" },
-      { label: "Cabello, Severini, Winter, 'Graph-theoretic approach to quantum correlations', PRL 112, 040401 (2014)" },
-      { label: "Pakhunov, 'No finite level of the NPA hierarchy is exact for the doubly-tilted CHSH functional near the critical tilt' (2026)", url: "https://arxiv.org/abs/2607.13762" },
-      { label: "Pakhunov, 'A phase transition in the exactness of the NPA hierarchy at the critical doubly-tilted CHSH functional' (2026)", url: "https://arxiv.org/abs/2607.13774" },
-      { label: "Chaturvedi, 'No Finite NPA Level Characterizes the Complete Quantum Set in the Simplest Bell Scenario' (2026)", url: "https://arxiv.org/abs/2607.14569" },
-      { label: "Araújo, 'A strange affair in the nonlocality community' (reported provenance and timeline, 2026)", url: "https://mateusaraujo.info/2026/07/19/a-strange-affair-in-the-nonlocality-community/" },
+      {"label":"Ji et al., 'MIP*=RE'","url":"https://arxiv.org/abs/2001.04383"},
+      { label: "Navascués, Pironio, Acín, 'A convergent hierarchy of semidefinite programs characterizing the set of quantum correlations', New J. Phys. 10, 073013 (2008)", url: "https://arxiv.org/abs/0803.4290" },
+      { label: "Cabello, Severini, Winter, 'Graph-theoretic approach to quantum correlations', PRL 112, 040401 (2014)", url: "https://arxiv.org/abs/1401.7081" },
+      { label: "Pakhunov, 'No finite level of the NPA hierarchy is exact for the doubly-tilted CHSH functional near the critical tilt' (2026 preprint)", url: "https://arxiv.org/abs/2607.13762" },
+      { label: "Pakhunov, 'A phase transition in the exactness of the NPA hierarchy at the critical doubly-tilted CHSH functional' (2026 preprint)", url: "https://arxiv.org/abs/2607.13774" },
+      { label: "Chaturvedi, 'No Finite NPA Level Characterizes the Complete Quantum Set in the Simplest Bell Scenario' (2026 preprint)", url: "https://arxiv.org/abs/2607.14569" },
     ] },
 
-  { id: "N10", cat: "nonlocality", horizon: "incremental",
+  { id: "N10", cat: "nonlocality", horizon: "programme",
+    relations: [{ id: "A16", type: "related" }],
     title: "Contextuality as a computational resource",
-    statement: r`Find necessary and sufficient conditions under which contextuality provides a genuine quantum computational advantage, rather than merely being present in a computation.`,
-    context: r`Quantum contextuality — the impossibility of assigning outcomes to measurements independent of the compatible context — is widely believed to be a resource fueling quantum computational speedups, but exactly when it confers an advantage (rather than being incidentally present) is not fully characterized.
+    statement: r`In specified measurement-based or stabilizer-resource computation models, relate a quantitative contextuality resource to classical simulation cost or distillation rates, fixing free operations, scalable input families and the required sampling or decision accuracy.`,
+    context: r`Contextuality means that measurement outcomes cannot be modeled consistently by values independent of their compatible context. Whether it enables a computational advantage depends on the computational model and task, not its mere presence in a finite experiment.
 
-What is known: There are strong results in specific models. Howard–Wallman–Veitch–Emerson showed that contextuality is necessary for magic-state distillation to give universal fault-tolerant quantum computation with stabilizer operations (in odd prime dimensions). Raussendorf and Bermejo-Vega–Hangleiter–Raussendorf et al. linked contextuality to the power of measurement-based quantum computation and to Wigner-function negativity. Anders–Browne showed that in certain settings contextuality can even promote a classical (linear) computer to universal. Sheaf-theoretic (Abramsky–Brandenburger) and cohomological frameworks quantify contextuality precisely.
+Howard–Wallman–Veitch–Emerson establish contextuality requirements for magic-state-based computation in an odd-prime-dimensional stabilizer setting. Measurement-based computation has other model-specific results, including Raussendorf's contextuality links and Anders–Browne's promotion of restricted classical control. Sheaf-theoretic descriptions quantify contextuality but do not supply a universal speedup theorem.
 
-A general necessary-and-sufficient criterion — for which computational tasks and models contextuality yields a genuine speedup — remains open, especially for even dimensions/qubits and for general (non-Clifford) settings. Related: A16.`,
+For a concrete benchmark, fix the resource-state or measurement family, allowed stabilizer or measurement-based operations, circuit-size scaling, and whether classical simulation means exact sampling, approximate total-variation sampling or a decision task. Then seek simulation algorithms or resource-conversion lower bounds as the contextuality parameter changes.
+
+Necessity in one model is not sufficiency in another, and contextuality of a constant-size gadget alone is not an asymptotic computational separation. This is a scoped programme related to A16, not one necessary-and-sufficient criterion for all quantum advantage.`,
     refs: [
-      { label: "Howard, Wallman, Veitch, Emerson, 'Contextuality supplies the magic for quantum computation', Nature 510, 351 (2014)" },
-      { label: "Abramsky & Brandenburger, 'The sheaf-theoretic structure of non-locality and contextuality', New J. Phys. 13, 113036 (2011)" },
+      { label: "Howard, Wallman, Veitch, Emerson, 'Contextuality supplies the magic for quantum computation', Nature 510, 351 (2014)", url: "https://arxiv.org/abs/1401.4174" },
+      { label: "Abramsky & Brandenburger, 'The sheaf-theoretic structure of non-locality and contextuality', New J. Phys. 13, 113036 (2011)", url: "https://arxiv.org/abs/1102.0264" },
+    ] },
+
+  { id: "N11", cat: "nonlocality", horizon: "sharp",
+    title: "Bell-locality threshold of two-qubit Werner states",
+    relations: [{ id: "N5", type: "related" }, { id: "E1", type: "related" }],
+    statement: r`For $\rho_v=v|\psi^-\rangle\langle\psi^-|+(1-v)I/4$, determine the exact critical visibility for Bell locality under all single-copy local projective measurements; formulate arbitrary POVMs as a separate threshold.`,
+    context: r`A two-qubit Werner state mixes a singlet with white noise. Entanglement and Bell nonlocality are different resources: the state is entangled for $v>1/3$, but some entangled states still admit local hidden-variable models.
+
+Acín–Gisin–Toner proved that the projective-measurement locality threshold is $v_{\rm proj}=1/K_G(3)$, with $K_G(3)$ the order-three Grothendieck constant. Thus exact determination is a precise mathematical problem, not just a search for another Bell inequality. The threshold for all POVMs must be kept separate.
+
+Published progress (February 2026): Designolle–Vértesi–Pokutta improve certified bounds for finite-order Grothendieck constants and clearly distinguish exact certificates from heuristic candidates. The exact order-three value remains unknown. No numerical interval is displayed here without a separately maintained certificate ledger.
+
+The operational setting is one copy, ordinary classical-input Bell tests and no postselection or auxiliary entanglement. Filtering, collective measurements on several copies and network activation change the question; none should be silently included in this threshold.`,
+    evidence: [{ kind: "published", summary: "New certified finite-order Grothendieck bounds; exact order-three value remains unknown, and heuristic candidates are distinguished from certificates.", url: "https://arxiv.org/abs/2409.03739", date: "2026-02-02", version: "v3" }],
+    refs: [
+      { label: "Acín, Gisin & Toner, 'Grothendieck's constant and local models for noisy entangled quantum states', PRA 73, 062105 (2006)", url: "https://arxiv.org/abs/quant-ph/0606138" },
+      { label: "Designolle, Vértesi & Pokutta, 'Better bounds on finite-order Grothendieck constants', PRA 113, 022401 (2026)", url: "https://arxiv.org/abs/2409.03739" },
     ] },
 ];
