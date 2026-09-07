@@ -163,6 +163,7 @@ test("home, all categories, sharp list, policy and missing-page views render", (
   const home = render(views.Home);
   assert.ok(home.includes("113") && home.includes("Active entries"));
   assert.ok(home.includes("#review") && home.includes("powered by Astra"));
+  assert.ok(home.includes('href="https://quantumlectures.org/en"'));
   assert.ok(!home.includes("IDs M1–"), "category count must not fabricate contiguous IDs");
   for (const c of CATEGORIES) {
     const html = render(views.CategoryView, { slug: c.slug });
