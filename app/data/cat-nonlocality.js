@@ -91,8 +91,14 @@ The useful quantitative frontier is restricted families, optimal dimension witne
     ] },
 
   { id: "N6", cat: "nonlocality", horizon: "incremental", status: "improved",
+    reviewedAt: "2026-09-10",
     relations: [{ id: "N4", type: "related" }, { id: "N5", type: "related" }],
-    evidence: [{ kind: "preprint", summary: "Nonexactness of fixed NPA levels near a critical doubly-tilted CHSH point, not universal noncomputability in the smallest Bell scenario.", url: "https://arxiv.org/abs/2607.13762", date: "2026-07-15" }, { kind: "preprint", summary: "No finite standard NPA level describes the complete (2,2,2) behavior set; particular functionals can still have finite certificates.", url: "https://arxiv.org/abs/2607.14569", date: "2026-07-16" }],
+    evidence: [
+      { kind: "preprint", summary: "Measurement-unrestricted bounds with specified noisy EPR resources; the general parallel-repetition theorem excludes biased-reset noise and does not decide unrestricted games.", url: "https://arxiv.org/abs/2609.05122v1", date: "2026-09-04", version: "v1" },
+      { kind: "preprint", summary: "Nonexactness of fixed NPA levels near a critical doubly-tilted CHSH point, not universal noncomputability in the smallest Bell scenario.", url: "https://arxiv.org/abs/2607.13762", date: "2026-07-15" }, { kind: "preprint", summary: "No finite standard NPA level describes the complete (2,2,2) behavior set; particular functionals can still have finite certificates.", url: "https://arxiv.org/abs/2607.14569", date: "2026-07-16" }],
+    provenance: [
+      { summary: "Kundu and Lalonde report ChatGPT 5.6 Sol and Codex assistance with research, writing, calculations and code, materially affecting proofs in Sections 3, 6 and Appendix A. They state that they reviewed, corrected and independently verified the final claims.", url: "https://arxiv.org/html/2609.05122v1", version: "v1" },
+    ],
     title: "Restricted decidability of nonlocal games",
     statement: r`Identify natural restricted families of finite nonlocal games whose finite-dimensional tensor-product value admits two-sided additive approximation with a certified stopping rule; separately determine efficient algorithms and finite-level NPA certificates.`,
     context: r`For a finitely specified game, the quantum value is a supremum over finite-dimensional tensor-product strategies. MIP*=RE rules out a general algorithm approximating this value to prescribed accuracy. Enumerating finite-dimensional strategies already supplies lower semicomputability; this is weaker than a two-sided computable value or a terminating threshold decision.
@@ -101,8 +107,11 @@ XOR games have an SDP characterization. The Navascués–Pironio–Acín hierarc
 
 Preprint progress (July 2026): Pakhunov's two manuscripts claim nonexactness of any fixed NPA level throughout suitable neighborhoods of the doubly-tilted CHSH critical point, with a finite-certification phase boundary. Chaturvedi claims that no finite standard NPA level equals the entire quantum set in the two-input/two-output scenario. These are statements about fixed levels and sets or neighborhoods. They do not mean every individual inequality lacks a finite certificate, or that values in this small scenario are uncomputable.
 
-N9's former generic solver request is archived here; dimensional aspects are treated in N5. The active target is a precisely described restricted family with a certified algorithm, not a universal solver.`,
+N9's former generic solver request is archived here; dimensional aspects are treated in N5. The active target is a precisely described restricted family with a certified algorithm, not a universal solver.
+
+Restricted noisy-resource progress (4 September 2026, v1): Kundu and Lalonde study arbitrarily many noisy EPR pairs. They claim CHSH upper bounds under depolarizing, unital, biased-reset and erasure noise without restricting measurements, and parallel repetition for general games under the first, second and fourth models. These resource-dependent bounds and communication-complexity separations do not give a universal stopping rule for unrestricted games. Biased-reset noise is not included in their general parallel-repetition theorem.`,
     refs: [
+      { label: "Kundu & Lalonde, 'Non-local games and communication complexity with noisy entanglement' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.05122v1" },
       {"label":"Ji et al., 'MIP*=RE'","url":"https://arxiv.org/abs/2001.04383"},
       {"label":"Qin & Yao, 'Decidability of fully quantum nonlocal games with noisy maximally entangled states' (2023 revision)","url":"https://arxiv.org/abs/2211.10613"},
       { label: "Cleve, Høyer, Toner, Watrous, 'Consequences and limits of nonlocal strategies', CCC 2004", url: "https://arxiv.org/abs/quant-ph/0404076" },
@@ -111,9 +120,15 @@ N9's former generic solver request is archived here; dimensional aspects are tre
       { label: "Chaturvedi, 'No Finite NPA Level Characterizes the Complete Quantum Set in the Simplest Bell Scenario' (2026 preprint)", url: "https://arxiv.org/abs/2607.14569" },
     ] },
 
-  { id: "N7", cat: "nonlocality", horizon: "incremental",
+  { id: "N7", cat: "nonlocality", horizon: "incremental", status: "improved",
+    reviewedAt: "2026-09-10",
     relations: [{ id: "N5", type: "related" }, { id: "N8", type: "related" }],
-    evidence: [{ kind: "published", summary: "All pure multipartite entangled qubit states admit self-tests in the standard Bell setting; arbitrary higher local dimensions remain a separate frontier.", url: "https://www.nature.com/articles/s41467-026-70829-x", date: "2026-03-24" }],
+    evidence: [
+      { kind: "preprint", summary: "Claimed separation of simultaneous full-rank/projective self-testing from unrestricted measurement strategies; does not refute universal pure-state self-testability.", url: "https://arxiv.org/abs/2609.10013v1", date: "2026-09-09", version: "v1" },
+      { kind: "published", summary: "All pure multipartite entangled qubit states admit self-tests in the standard Bell setting; arbitrary higher local dimensions remain a separate frontier.", url: "https://www.nature.com/articles/s41467-026-70829-x", date: "2026-03-24" }],
+    provenance: [
+      { summary: "Chen reports human-directed frontier language models for exploratory proofs and manuscript preparation, followed by refinement and verification of the statements. No particular model is named in the declaration; the author takes responsibility.", url: "https://arxiv.org/html/2609.10013v1", version: "v1" },
+    ],
     title: "Self-testing beyond multipartite qubits",
     statement: r`Can every finite-dimensional pure multipartite entangled state be self-tested in a standard single-source Bell experiment, up to local isometries, unused auxiliary systems and unavoidable conjugation equivalences? Separately classify measurement sets under an explicit certification convention.`,
     context: r`Self-testing extracts a reference state and, when specified, its measurements from correlations alone. CHSH self-tests a singlet. The equivalence convention is essential: unused auxiliary systems and complex conjugation cannot simply be excluded by observed probabilities.
@@ -122,8 +137,11 @@ Established results cover every pure bipartite entangled state. A published Marc
 
 Conventional exact self-testing does not uniquely identify a genuinely mixed bipartite target in the analogous pure-state sense; “classify all mixed states” is not an untouched extension without changing the definition. Measurement certification likewise has hypotheses: all real projective measurements can be self-tested, while arbitrary complex POVMs require careful treatment of equivalence and dilation freedoms.
 
-The residual programme separates the sharp pure-state existence question from measurement-specific necessary-and-sufficient criteria and robustness.`,
+The residual programme separates the sharp pure-state existence question from measurement-specific necessary-and-sufficient criteria and robustness.
+
+Preprint progress (9 September 2026, v1): Chen claims a game that self-tests a maximally entangled qubit strategy among pure full-Schmidt-rank projective strategies, yet has an inequivalent optimum with a nonprojective measurement. Thus full rank and projectivity cannot both be imposed silently when asserting an assumption-free self-test. A dimension-six family also obstructs robustness of this restricted self-test. This addresses the certification convention and a conjecture about simultaneous assumptions, not the universal higher-dimensional pure-state question.`,
     refs: [
+      { label: "Chen, 'A Separation between Full-Rank PVM and Assumption-free Self-Testing' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.10013v1" },
       {"label":"'All pure multipartite entangled states of qubits can be self-tested', Nature Communications (24 March 2026)","url":"https://www.nature.com/articles/s41467-026-70829-x"},
       {"label":"Coladangelo, Goh & Scarani, all pure bipartite states and the mixed-state obstruction, Nature Communications (2017)","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC5458560/"},
       {"label":"Chen, Mančinska & Volčič, self-testing all real projective measurements, Nature Physics (2024)","url":"https://arxiv.org/abs/2302.00974"},

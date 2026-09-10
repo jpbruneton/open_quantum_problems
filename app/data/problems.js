@@ -60,6 +60,14 @@ export const REVIEW = {
   reportUrl: "https://github.com/jpbruneton/open_quantum_problems/blob/main/docs/reviews/2026-09-04-catalogue-review.md",
 };
 
+// A targeted literature update does not reset the full-review date of every entry.
+export const LITERATURE_UPDATE = {
+  date: "2026-09-10",
+  label: "10 September 2026",
+  ids: ["C4", "C5", "E3", "A17", "N6", "N7", "B8", "F3", "E12", "QF7", "O10"],
+  reportUrl: "https://github.com/jpbruneton/open_quantum_problems/blob/main/docs/reviews/2026-09-10-literature-update.md",
+};
+
 export const ALL_PROBLEMS = [
   ...SPECTRAL,
   ...MANYBODY,
@@ -121,7 +129,7 @@ export const EVIDENCE_KINDS = {
 // These are not counted as open problems: their precise status needs another check.
 export const WATCHLIST = [
   { title: "Robust, initializable 3D passive quantum memories", summary: "A May 2026 preprint claims a local construction with stretched-exponential thermal lifetime. Monitor lifetime robustness and passive initialization; deferred proofs are evidence-status items, not automatically new open conjectures.", url: "https://arxiv.org/abs/2605.10943" },
-  { title: "Same-state-copy Bell activation and triangle networks", summary: "Select a precise residual after checking the newest activation and binary-output triangle results. Numerical agreement with a quantum realization is not an exact construction.", url: "https://arxiv.org/abs/2605.00981" },
+  { title: "Multipartite Bell activation and triangle networks", summary: "A 7 September 2026 preprint by Ulu, Weilenmann and Brunner claims multi-copy and catalytic activation of genuine multipartite nonlocality defined using biseparable nonsignaling models, including quantum-realizable examples. This highlights a composition issue for that definition; it does not settle the single-copy Werner threshold or binary-output triangle questions. Select a precise residual before promotion.", url: "https://arxiv.org/abs/2609.07380v1" },
   { title: "Homogeneous electron gas and Wigner crystallization", summary: "A further model-specific review is needed before adding a sharp low-density quantum-jellium question.", url: "https://comptes-rendus.academie-sciences.fr/physique/item/CRPHYS_2025__26_G1_369_0/" },
   { title: "Unitary Fermi gas", summary: "Choose a quantitative target, such as certified Bertsch-parameter bounds, rather than listing the entire field as a single problem.", url: "https://comptes-rendus.academie-sciences.fr/physique/item/CRPHYS_2025__26_G1_393_0/" },
 ];

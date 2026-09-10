@@ -102,15 +102,25 @@ The useful frontier is a stability theorem or counterexample for a fixed mechani
       { label: "Moudgalya & Motrunich, 'Hilbert space fragmentation and commutant algebras', PRX 12, 011050 (2022)", url: "https://arxiv.org/abs/2108.10324" },
     ] },
 
-  { id: "B8", cat: "many-body", horizon: "programme",
+  { id: "B8", cat: "many-body", horizon: "programme", status: "improved",
+    reviewedAt: "2026-09-10",
+    evidence: [
+      { kind: "preprint", summary: "Decomposition theorem for locally finite-dimensional fermionic QCA; QCA triviality does not mean all 2D gapped phases are trivial.", url: "https://arxiv.org/abs/2609.09317v1", date: "2026-09-08", version: "v1" },
+    ],
+    provenance: [
+      { summary: "Kwan, Long and Haah report Claude and ChatGPT use for figure-generation scripts and literature searches. This declaration does not attribute the mathematical proof to those tools.", url: "https://arxiv.org/html/2609.09317v1", version: "v1" },
+    ],
     title: "Classification of gapped phases in d≥2",
     statement: r`Organize classification of uniformly gapped local Hamiltonian families in $d\ge2$ under gapped-path equivalence, fixing bosonic or fermionic degrees of freedom, symmetries, ground-space structure and stabilization conventions. Use explicit subproblems for intrinsic order, symmetry enrichment and boundaries.`,
     context: r`A uniformly gapped local path induces quasi-local spectral flow under the applicable hypotheses. This is not an unrestricted assertion of exact finite-depth-circuit equality: approximation accuracy, circuit range, ancillary product states and thermodynamic conventions matter. These choices form part of the equivalence relation, not an afterthought.
 
 What is known: The 1D bosonic unique-ground-state setting has a controlled classification: without symmetry it is trivial under the stated phase conventions, and on-site symmetry yields the familiar projective-representation/SPT classification. Symmetry breaking, degenerate ground spaces and fermionic parity introduce additional cases. The phrase 'all 1D gapped phases are trivial' would erase them. In 2D, anyon categories, symmetry-fractionalization data and invertible phases provide substantial but not universally complete classifications.
 
-But 2D and 3D are a major, still-incomplete programme mixing physics with higher category theory and cobordism. Chiral phases (nonzero chiral central charge, no gapped boundary), the precise role of invertible/anomalous phases, fermionic and crystalline cases, and a fully rigorous equivalence relation are not settled. Related: B9.`,
+But 2D and 3D are a major, still-incomplete programme mixing physics with higher category theory and cobordism. Chiral phases (nonzero chiral central charge, no gapped boundary), the precise role of invertible/anomalous phases, fermionic and crystalline cases, and a fully rigorous equivalence relation are not settled. Related: B9.
+
+Related structural progress (8 September 2026, v1): Kwan, Long and Haah claim that every two-dimensional fermionic quantum cellular automaton on a locally finite-dimensional algebra decomposes into local automorphisms and a fermionic shift. Their “triviality” concerns bounded-spread automorphisms and the stated stabilization conventions. It is not a theorem that every two-dimensional fermionic gapped Hamiltonian phase is trivial, or a complete classification with symmetry and intrinsic topological order.`,
     refs: [
+      { label: "Kwan, Long & Haah, 'Fermionic quantum cellular automata in 2d are trivial' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.09317v1" },
       { label: "Chen, Gu, Liu & Wen, 'Symmetry protected topological orders and the group cohomology of their symmetry group', PRB 87, 155114 (2013)", url: "https://arxiv.org/abs/1106.4772" },
       { label: "Kitaev, 'Anyons in an exactly solved model and beyond', Ann. Phys. 321 (2006)", url: "https://arxiv.org/abs/cond-mat/0506438" },
       { label: "Senthil, 'Symmetry-protected topological phases of quantum matter', Annu. Rev. Condens. Matter Phys. 6 (2015)", url: "https://arxiv.org/abs/1405.4015" },

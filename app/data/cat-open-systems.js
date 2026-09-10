@@ -153,20 +153,28 @@ These newest tensor-network results are preprints with structured-model and nume
       { label: "Ramos Ramos et al., 'Scalable Lindblad Noise Learning via Stochastic Tensor-Network Simulation' (2026)", url: "https://arxiv.org/abs/2608.24668" },
       { label: "Pancotti, Saravanan & Svore, 'Exact learning of quantum noise with tensor networks' (2026)", url: "https://arxiv.org/abs/2609.00169" },
     ] },
-  { id: "O10", cat: "open-systems", horizon: "incremental",
+  { id: "O10", cat: "open-systems", horizon: "incremental", status: "improved",
+    reviewedAt: "2026-09-10",
+    provenance: [
+      { summary: "Li reports GPT-5.6 Sol assistance with editing, organization, literature discovery, code and completion of several proofs, while attributing the scientific ideas to himself and stating that he reviewed and verified the assisted material.", url: "https://arxiv.org/html/2609.09291v1", version: "v1" },
+    ],
     title: "Efficient Gibbs preparation beyond high temperature",
     statement: r`For two-dimensional finite-range noncommuting spin Hamiltonians of bounded local strength and a specified reversible local or quasilocal Gibbs sampler, identify verifiable temperature/interaction conditions beyond the established high-temperature regime giving polynomial mixing and preparation to trace-distance error $\varepsilon$, or prove slow-mixing obstructions.`,
     context: r`Preparing $\rho_\beta=e^{-\beta H}/\operatorname{tr}(e^{-\beta H})$ is different from proving a master equation valid (O2) or learning its generator (O9). A sampler must have the desired stationary state, mix rapidly from its allowed initial states, and be implementable at controlled circuit or system–bath cost. Fix the generator normalization so that increasing all rates is not counted as an algorithmic speedup.
 
 Published baseline (April 2026): Hahn, Sweke, Deshpande and Shtanko show that spatial truncation and local-circuit implementation preserve rapid Gibbs mixing with bounded error at high temperature. A January 2026 preprint by Slezak et al. proves polynomial convergence for specified system–bath/repeated-interaction generators in high-temperature lattices, weakly interacting fermions and 1D chains. Those regimes are not being proposed as unsolved.
 
-The selected frontier concerns genuinely interacting 2D spin families outside proven uniform high-temperature guarantees. State the generator, inverse-temperature range and any clustering or phase assumptions; derive quantitative spectral-gap or log-Sobolev bounds and implementation errors, or identify bottlenecks forcing slow mixing. No efficient algorithm for every Hamiltonian at every temperature is conjectured here. Noncommuting conserved charges introduce a related but distinct thermalization target under B4/B5.`,
+The selected frontier concerns genuinely interacting 2D spin families outside proven uniform high-temperature guarantees. State the generator, inverse-temperature range and any clustering or phase assumptions; derive quantitative spectral-gap or log-Sobolev bounds and implementation errors, or identify bottlenecks forcing slow mixing. No efficient algorithm for every Hamiltonian at every temperature is conjectured here. Noncommuting conserved charges introduce a related but distinct thermalization target under B4/B5.
+
+Adjacent preparation progress (8 September 2026, v1): Li's spectral core–tail framework separates core preparation, unitary implementation and model-mismatch errors. Its volume-uniform local-observable bound assumes a summable Kubo–Mori response and uniform local data; perturbative residual control also assumes uniform locality and solvability. Exact anchor constructions and tests on deformed graph-stabilizer models do not establish a general low-temperature mixing theorem. In particular, local-observable accuracy is weaker than the global trace-distance target above, and a prepared ansatz is not by itself a rapidly mixing reversible sampler.`,
     relations: [{ id: "O2", type: "related" }, { id: "O9", type: "related" }, { id: "B5", type: "related" }],
     evidence: [
+      { kind: "preprint", summary: "Local Gibbs-observable error certification under response-summability and perturbative assumptions; neither global trace-distance convergence nor general low-temperature rapid mixing follows.", url: "https://arxiv.org/abs/2609.09291v1", date: "2026-09-08", version: "v1" },
       { kind: "published", summary: "Local-circuit approximations preserve rapid Gibbs mixing at high temperature with bounded preparation error.", url: "https://journals.aps.org/prxquantum/abstract/10.1103/m5zb-z4nn", date: "2026-04-23" },
       { kind: "preprint", summary: "Polynomial-time thermalization is proved for particular generator families and high-temperature lattices, weakly interacting fermions and 1D chains, not all 2D low-temperature models.", url: "https://arxiv.org/abs/2601.16154", date: "2026-01-22", version: "v1" },
     ],
     refs: [
+      { label: "Li, 'Spectral Core-Tail Architecture for Locally Certified Gibbs-State Preparation' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.09291v1" },
       { label: "Hahn, Sweke, Deshpande & Shtanko, 'Efficient Quantum Gibbs Sampling with Local Circuits', PRX Quantum 7, 020314 (2026)", url: "https://journals.aps.org/prxquantum/abstract/10.1103/m5zb-z4nn" },
       { label: "Slezak et al., 'Polynomial-time thermalization and Gibbs sampling from system-bath couplings' (2026), preprint", url: "https://arxiv.org/abs/2601.16154" },
     ] },

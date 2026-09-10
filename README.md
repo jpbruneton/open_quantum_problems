@@ -14,6 +14,13 @@ https://openquantumproblems.com/
 
 ### Timeline
 
+**10 September 2026 — targeted literature update**
+
+- Updated eleven entries using thirteen new versioned arXiv references, plus one source for the existing Bell-activation watchlist. See the [dated literature report](docs/reviews/2026-09-10-literature-update.md) for scope and source-by-source qualifications.
+- C4 now records a claimed general exponential strong converse; C5 records claimed operational private-capacity superactivation. Both remain “Improved” pending independent assessment.
+- Added progress on separability SDP bounds, tomography measurement trade-offs, noisy nonlocal games, self-testing assumptions, fermionic QCA, information causality, moment-polytope optimization, scalar-QED infrared sectors and local Gibbs-state certification.
+- Preserved the full-review date of 4 September and all untouched entry dates. Added a separate latest-update date, source links and attributed AI/formalization disclosures. Counts remain 113 active entries and ten archive/background pages.
+
 **4 September 2026 — full catalogue review implemented**
 
 - Reassessed all 111 original entries and implemented their statement, scope, status and citation corrections. The [full audit](docs/reviews/2026-09-04-catalogue-review.md) records the pre-change findings; the [implementation record](docs/reviews/2026-09-04-implementation.md) maps the changes.
@@ -68,7 +75,8 @@ Do not renumber existing IDs or reuse an archived ID for a new question.
 
 - `statement` defines the model, assumptions, quantifiers and success criterion; `context` separates the established baseline from the open residual.
 - `horizon` distinguishes `sharp`, `incremental`, `programme` and `conceptual` entries. A programme is not a single conjecture.
-- `status: "improved"` means partial progress is recorded; it does not certify every cited claim.
+- `status: "improved"` means relevant progress is recorded, including a claimed resolution awaiting assessment; it does not certify every cited claim.
+- `reviewedAt` records the most recent literature check for that entry. A targeted `LITERATURE_UPDATE` does not change the baseline `REVIEW` date or untouched entry dates.
 - `evidence` contains `{ kind, summary, url, date?, version? }`. Supported kinds are `published`, `preprint`, `numerical`, `conjecture` and `withdrawn`. Include scope, not just an optimistic headline.
 - `provenance` contains `{ summary, url, version? }` for attributed disclosures. No disclosure is not evidence of no AI use, and AI use is not evidence for or against mathematical correctness.
 - `relations` contains `{ id, type }` with `parent`, `benchmark`, `reduction` or `related`.

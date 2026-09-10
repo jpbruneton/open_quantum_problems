@@ -274,24 +274,37 @@ The full statements, current open conjecture and author-reported disclosures are
     ] },
 
   { id: "A17", cat: "complexity", horizon: "incremental", status: "improved",
+    reviewedAt: "2026-09-10",
     title: "Quantum state certification with local measurements",
     statement: r`Given a full classical description of an arbitrary reference state $\sigma$ and copies of an unknown $N$-qubit state $\rho$, determine the optimal copy complexity of testing $\rho=\sigma$ versus $\|\rho-\sigma\|_1\ge\varepsilon$, with success at least $2/3$, using adaptive single-qubit Pauli measurements and no entangling measurements within or across copies. Seek matching instance-dependent bounds and the accompanying classical running time.`,
     context: r`A full reference-state description can itself be exponentially long in $N$; computational costs must count its input length. Rank, spectrum and the reference eigenbasis relative to the allowed local measurements can matter. This concrete certification target is distinct from estimating an unknown state's spectral functional or learning many observable expectations.
 
 What is known: Haah–Harrow–Ji–Wu–Yu establish sample-optimal tomography bounds in their collective-measurement model (IEEE TIT 63, 2017). August 2026 preprints refine restricted models: Wang's framework gives nearly tight lower bounds for a broad collection of spectral-functional tasks, while Acharya–Dharmavarapu–Liu–Yu nearly determine mixedness testing under single-qubit Pauli measurements, with $\widetilde\Theta((\sqrt{10})^N/\varepsilon^2)$ copies. The maximally mixed reference is a benchmark, not a solution for every reference state or measurement trade-off.
 
-A neighbouring August preprint by Stempin–Llorens–Huber disproves the fractional-colouring conjecture proposed as a route to universal triply efficient Pauli shadow tomography. It rules out that route, not every possible algorithm. Its front matter explicitly credits GPT Sol 5.6 with contributions to Theorems A and B; the previous no-disclosure statement was incorrect. Related: E3, A11.`,
+A neighbouring August preprint by Stempin–Llorens–Huber disproves the fractional-colouring conjecture proposed as a route to universal triply efficient Pauli shadow tomography. It rules out that route, not every possible algorithm. Its front matter explicitly credits GPT Sol 5.6 with contributions to Theorems A and B; the previous no-disclosure statement was incorrect. Related: E3, A11.
+
+Adjacent tomography benchmarks (4–9 September 2026, v1): Keskin, Luo, Majid and Radzihovsky claim the tight arbitrary-state copy bound $\Theta(\max\{d^3/(\sqrt{k}\varepsilon^2),d^2/\varepsilon^2\})$ when measurements act on at most $k$ fresh copies, with classical adaptivity but no quantum memory between blocks. Nayak and Zhou claim the rank-$r$ refinement $\Theta((dr/\varepsilon^2)\max\{1,r/\sqrt{t}\})$ with at most $t$ jointly measured copies, for sufficiently small error and constant success probability. These permit entangling measurements and reconstruct an unknown state; neither settles arbitrary-reference certification with single-qubit Pauli measurements.
+
+A separate 9 September preprint by Zhang et al. gives shallow phase shadows for stabilizer-state fidelity estimation. Its constant-depth implementation assumes all-to-all connectivity, mid-circuit measurements and classical feedforward; without auxiliary systems the stated depth is logarithmic. Its entangling readout and restricted observables do not remove A17's measurement restrictions or the earlier obstruction to a universal Pauli-shadow route.`,
     evidence: [
+      { kind: "preprint", summary: "Matching tomography lower bound for adaptive fresh-copy blocks with no quantum memory between blocks; entangling block measurements are allowed.", url: "https://arxiv.org/abs/2609.05718v1", date: "2026-09-04", version: "v1" },
+      { kind: "preprint", summary: "Claimed optimal rank-dependent tomography rate with bounded-copy joint measurements; not single-qubit Pauli certification.", url: "https://arxiv.org/abs/2609.10514v1", date: "2026-09-09", version: "v1" },
+      { kind: "preprint", summary: "Stabilizer-fidelity estimation with entangling readout; constant depth uses all-to-all connectivity, auxiliary resources, mid-circuit measurements and feedforward.", url: "https://arxiv.org/abs/2609.10408v1", date: "2026-09-09", version: "v1" },
       { kind: "preprint", summary: "Lower-bound framework for multiple quantum spectral-functional estimation tasks; task-specific hypotheses still apply.", url: "https://arxiv.org/abs/2608.02600v2", version: "v2" },
       { kind: "preprint", summary: "Nearly tight single-qubit Pauli mixedness-testing copy complexity; arbitrary-reference certification remains a separate target.", url: "https://arxiv.org/abs/2608.18839v1", version: "v1" },
       { kind: "preprint", summary: "Counterexamples close the proposed universal fractional-colouring route to triply efficient Pauli shadow tomography.", url: "https://arxiv.org/abs/2608.20113v1", version: "v1" },
     ],
     provenance: [
+      { summary: "Keskin and coauthors report GPT-5.6 Sol through OpenAI Codex assistance with the main ideas and proof strategies. They state that they refined and verified the material and take responsibility for claims, proofs and citations.", url: "https://arxiv.org/html/2609.05718v1", version: "v1" },
+      { summary: "Nayak and Zhou report GPT-5.5 and GPT-5.6 Sol assistance with crucial Fisher-information lemmas and a Gaussian reformulation of earlier upper-bound algorithms. They attribute the rank-dependent analysis to themselves and state that they independently verified all arguments and references.", url: "https://arxiv.org/html/2609.10514v1", version: "v1" },
       { summary: "Wang reports ChatGPT 5.5/5.6 assistance with proof exploration and calculations, with substantial human input and author responsibility.", url: "https://arxiv.org/abs/2608.02600v2", version: "v2" },
       { summary: "Stempin, Llorens and Huber explicitly report GPT Sol 5.6 contributions to their principal results, Theorems A and B, and say they verified and contextualized them. This corrects the former assertion that no declaration was present.", url: "https://arxiv.org/html/2608.20113v1", version: "v1" },
     ],
     relations: [{ id: "E3", type: "related" }, { id: "A11", type: "related" }],
     refs: [
+      { label: "Keskin, Luo, Majid & Radzihovsky, 'Tight Lower Bounds for State Tomography with Limited Entanglement' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.05718v1" },
+      { label: "Nayak & Zhou, 'Optimal Low-Rank Quantum State Tomography with Bounded-Sample Joint Measurements' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.10514v1" },
+      { label: "Zhang, You, Qin, Li, Eisert & Zhou, 'Constant-depth global shadow estimation' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.10408v1" },
       { label: "Haah, Harrow, Ji, Wu & Yu, 'Sample-optimal tomography of quantum states', IEEE Trans. Inf. Theory 63 (2017)", url: "https://arxiv.org/abs/1508.01797" },
       { label: "Wang, 'A Lower Bound Framework for Quantum Functional Estimation' (2026 preprint)", url: "https://arxiv.org/abs/2608.02600v2" },
       { label: "Acharya, Dharmavarapu, Liu & Yu, 'Quantum Mixedness Testing with Pauli Measurements' (2026 preprint)", url: "https://arxiv.org/abs/2608.18839v1" },

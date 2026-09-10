@@ -56,9 +56,14 @@ The incremental goal is to close specified $Q_2$ or $K$ gaps in noisy families a
     ] },
 
   { id: "C4", cat: "channels", horizon: "sharp", status: "improved",
+    reviewedAt: "2026-09-10",
     relations: [{ id: "C1", type: "related" }, { id: "C11", type: "related" }],
-    evidence: [{ kind: "preprint", summary: "Strong converse restricted to full-joint-eigenspace stabilizer codes over Pauli channels.", url: "https://arxiv.org/abs/2607.23450", date: "2026-07-26" }, { kind: "preprint", summary: "Claimed all-code exponential strong converse for finite-dimensional degradable and antidegradable channels; general channels remain open.", url: "https://arxiv.org/abs/2608.01308", date: "2026-08-02" }],
-    provenance: [{ summary: "Tomamichel reports author-directed Claude proof development, writing and literature work, plus ChatGPT adversarial review, and states that he checked the statements, proofs and references.", url: "https://arxiv.org/abs/2607.23450" }, { summary: "Kondra et al. disclose ChatGPT 5.6 Sol assistance on technical proof steps and later manuscript work with Claude Opus 4.8; they state that the initial draft was handwritten and all assisted material was reviewed.", url: "https://arxiv.org/abs/2608.01308" }],
+    evidence: [
+      { kind: "preprint", summary: "Claimed exponential strong converses for arbitrary finite-dimensional memoryless channels and all unassisted codes. This would resolve the stated quantum-capacity question; independent verification is pending.", url: "https://arxiv.org/abs/2609.08998v1", date: "2026-09-08", version: "v1" },
+      { kind: "preprint", summary: "Strong converse restricted to full-joint-eigenspace stabilizer codes over Pauli channels.", url: "https://arxiv.org/abs/2607.23450", date: "2026-07-26" }, { kind: "preprint", summary: "Claimed all-code exponential strong converse for finite-dimensional degradable and antidegradable channels; this earlier claim does not cover general channels.", url: "https://arxiv.org/abs/2608.01308", date: "2026-08-02" }],
+    provenance: [
+      { summary: "Cheng and Tomamichel credit OpenAI Codex with ChatGPT 6 Astra for suggesting the asymptotic-continuity approach via derivative bounds and an initial proof. They attribute the integral-representation exposition to themselves, report further drafting and literature assistance, and take responsibility after review.", url: "https://arxiv.org/html/2609.08998v1", version: "v1" },
+      { summary: "Tomamichel reports author-directed Claude proof development, writing and literature work, plus ChatGPT adversarial review, and states that he checked the statements, proofs and references.", url: "https://arxiv.org/abs/2607.23450" }, { summary: "Kondra et al. disclose ChatGPT 5.6 Sol assistance on technical proof steps and later manuscript work with Claude Opus 4.8; they state that the initial draft was handwritten and all assisted material was reviewed.", url: "https://arxiv.org/abs/2608.01308" }],
     title: "Strong converse for quantum capacity",
     statement: r`For every finite-dimensional memoryless channel $\mathcal N$, does unassisted entanglement transmission at a fixed rate above $Q(\mathcal N)$ force entanglement fidelity to tend to zero for all code sequences? Prove the statement or construct a counterexample.`,
     context: r`A strong converse makes quantum capacity a sharp threshold: above it, entanglement fidelity tends to zero as blocklength grows. The weak converse only prevents asymptotically perfect transmission. Exponential decay is a stronger quantitative conclusion and should be distinguished from the basic strong-converse question.
@@ -69,16 +74,26 @@ Preprint progress (July 2026): Tomamichel claims an exponential strong converse 
 
 Further preprint progress (August 2026): Kondra–Brinster–Kampermann–Bruß–Wyderka claim an all-code exponential strong converse for finite-dimensional degradable and antidegradable channels, including the first all-code exponential erasure-channel result over its full parameter range. They also give general SDP strong-converse bounds and a result for a multilevel amplitude-damping family. These are newly proposed proofs; this catalogue does not independently certify them.
 
-Neither manuscript resolves the unrestricted finite-dimensional channel question stated here. Code restrictions, assistance and fidelity conventions remain part of each result.`,
+The July and August manuscripts concern restricted classes. The September claim below addresses the unrestricted finite-dimensional question; code restrictions, assistance and fidelity conventions still distinguish the results.
+
+Claimed resolution (8 September 2026, v1): Cheng and Tomamichel claim an exponential strong converse for unassisted quantum communication over every finite-dimensional memoryless channel, as well as for unassisted classical communication at its respective capacity. Their entanglement-generation bound covers arbitrary codes and implies the transmission statement above. The argument uses integral representations and asymptotic continuity of regularized Rényi capacities. This claims to settle the full finite-dimensional question, rather than another restricted channel class; it remains a preprint awaiting independent assessment here. The catalogue retains “Improved” pending that assessment. No exact capacity formula, infinite-dimensional extension or assisted-capacity theorem follows merely from this claim.`,
     refs: [
+      { label: "Cheng & Tomamichel, 'No information transmission through quantum channels above capacity' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.08998v1" },
       { label: "Tomamichel, Wilde, Winter, 'Strong converse rates for quantum communication', IEEE Trans. Inf. Theory 63 (2017)", url: "https://arxiv.org/abs/1406.2946" },
       { label: "Wilde, Winter, Yang, 'Strong converse for the classical capacity of entanglement-breaking and Hadamard channels', Comm. Math. Phys. 331 (2014)", url: "https://arxiv.org/abs/1306.1586" },
       { label: "Tomamichel, 'A strong converse for stabilizer codes over Pauli channels via the blowing-up lemma' (2026 preprint)", url: "https://arxiv.org/abs/2607.23450" },
       { label: "Kondra et al., 'Sharp Quantum Capacity Thresholds: Exponential Strong Converses for Degradable and Antidegradable Channels' (2026 preprint)", url: "https://arxiv.org/abs/2608.01308" },
     ] },
 
-  { id: "C5", cat: "channels", horizon: "incremental",
+  { id: "C5", cat: "channels", horizon: "incremental", status: "improved",
+    reviewedAt: "2026-09-10",
     relations: [{ id: "C1", type: "related" }, { id: "E16", type: "related" }],
+    evidence: [
+      { kind: "preprint", summary: "Two individually zero-private-capacity channels are claimed to have positive joint private capacity; this is operational superactivation, not just private-information superadditivity.", url: "https://arxiv.org/abs/2609.10520v1", date: "2026-09-09", version: "v1" },
+    ],
+    provenance: [
+      { summary: "Zhu and Wang report QudeLeap AI Quantum Scientist and language-model assistance in finding an initial activating example, exploring proofs, and drafting. They say they checked and rewrote the proofs and retain responsibility. They also report Lean 4 formalization, which this review has not rebuilt.", url: "https://arxiv.org/html/2609.10520v1", version: "v1" },
+    ],
     title: "Private versus quantum capacity",
     statement: r`At fixed input and output dimensions, characterize when a memoryless channel has $P(\mathcal N)>Q(\mathcal N)$ and bound the maximal gap $P-Q$; separately seek structural criteria for additivity across specified channel pairs.`,
     context: r`Private capacity $P$ is the reliable secret-classical-communication rate against the channel environment; quantum capacity $Q$ is the qubit-transmission rate. Always $Q\leq P$. A gap probes the difference between secrecy and preservation of quantum coherence.
@@ -87,8 +102,11 @@ Regularized formulas are known, as are channels with $P>0$ but $Q=0$. Such examp
 
 Private information can be superadditive across channel uses. This single-letter issue must be distinguished from whether the operational capacity $P(\mathcal N\otimes\mathcal M)$ equals $P(\mathcal N)+P(\mathcal M)$ for different channels; analogous distinctions apply to $Q$.
 
-Useful residual work characterizes families with equality or strict separation and tight fixed-dimension bounds. The state question of entanglement with zero distillable key is E16, not the same problem as a channel-capacity gap.`,
+Useful residual work characterizes families with equality or strict separation and tight fixed-dimension bounds. The state question of entanglement with zero distillable key is E16, not the same problem as a channel-capacity gap.
+
+Preprint progress (9 September 2026, v1): Zhu and Wang claim operational private-capacity superactivation: a four-level channel and a qubit erasure channel with erasure probability $1/2$ each have $P=0$, but their product transmits more than $0.0001903$ private bits per product use. Their theorem extends positivity to erasure probabilities below one and at least one half, using a fixed joint output measurement and classical wiretap coding. This is a claim about regularized operational capacity, stronger than single-letter private-information superadditivity. It settles the existence subquestion if verified, while structural criteria and optimal dimension-constrained gaps remain. The authors report a Lean 4 formalization; its scope and build have not been independently checked here.`,
     refs: [
+      { label: "Zhu & Wang, 'Private communication via zero-private-capacity quantum channels' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.10520v1" },
       { label: "Horodecki, Horodecki, Horodecki, Oppenheim, 'Secure key from bound entanglement', PRL 94, 160502 (2005)", url: "https://doi.org/10.1103/PhysRevLett.94.160502" },
       { label: "Elkouss & Strelchuk, 'Superadditivity of private information for any number of uses of the channel', PRL 115, 040501 (2015)", url: "https://arxiv.org/abs/1502.05326" },
     ] },

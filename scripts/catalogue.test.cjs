@@ -42,7 +42,7 @@ function loadApp(relative) {
 }
 
 const data = loadApp("app/data/problems.js");
-const { ALL_PROBLEMS, PROBLEMS, ARCHIVED_PROBLEMS, CATEGORIES, HORIZONS, STATUSES, EVIDENCE_KINDS, REVIEW, getProblem, problemsByCat } = data;
+const { ALL_PROBLEMS, PROBLEMS, ARCHIVED_PROBLEMS, CATEGORIES, HORIZONS, STATUSES, EVIDENCE_KINDS, REVIEW, LITERATURE_UPDATE, getProblem, problemsByCat } = data;
 const views = loadApp("app/page.js").testViews;
 const render = (view, props) => renderToStaticMarkup(React.createElement(view, props));
 const originalSeries = { M: 11, B: 12, QF: 10, E: 15, N: 10, C: 10, A: 18, U: 5, O: 9, F: 11 };
@@ -83,7 +83,8 @@ test("every entry has valid metadata, references and internal relations", () => 
     for (const key of ["id", "title", "statement", "context", "cat"]) assert.ok(typeof p[key] === "string" && p[key].trim(), `${p.id}.${key}`);
     assert.ok(CATEGORIES.some((c) => c.slug === p.cat), p.id);
     assert.ok(HORIZONS[p.horizon] && STATUSES[p.status], p.id);
-    assert.equal(p.reviewedAt, REVIEW.date);
+    assert.equal(new Date(p.reviewedAt).toISOString().slice(0, 10), p.reviewedAt, `${p.id}: review date`);
+    assert.ok(p.reviewedAt >= REVIEW.date && p.reviewedAt <= LITERATURE_UPDATE.date, `${p.id}: review date outside recorded review window`);
     assert.ok(p.refs.length > 0, `${p.id}: references`);
     for (const ref of p.refs) {
       assert.ok(ref.label, `${p.id}: source label`);
@@ -101,7 +102,7 @@ test("every entry has valid metadata, references and internal relations", () => 
       validUrl(item.url, p.id);
       if (item.date) {
         assert.equal(new Date(item.date).toISOString().slice(0, 10), item.date, `${p.id}: evidence date`);
-        assert.ok(item.date <= REVIEW.date, `${p.id}: future evidence presented as already reviewed`);
+        assert.ok(item.date <= p.reviewedAt, `${p.id}: future evidence presented as already reviewed`);
       }
       if (item.version) assert.match(item.version, /^v[1-9]\d*$/, `${p.id}: version`);
     }
@@ -110,6 +111,25 @@ test("every entry has valid metadata, references and internal relations", () => 
       validUrl(item.url, p.id);
     }
   }
+});
+
+test("targeted literature updates preserve untouched review dates and expose pending claims", () => {
+  const ids = LITERATURE_UPDATE.ids;
+  assert.equal(new Set(ids).size, ids.length);
+  for (const id of ids) assert.ok(PROBLEMS.some((p) => p.id === id), `updated entry ${id} must be active`);
+  for (const p of ALL_PROBLEMS) {
+    assert.equal(p.reviewedAt, ids.includes(p.id) ? LITERATURE_UPDATE.date : REVIEW.date, p.id);
+    if (ids.includes(p.id)) assert.ok(p.evidence.some((e) => e.date >= REVIEW.date && e.version), `${p.id}: missing dated, versioned evidence`);
+  }
+  for (const [id, source] of [["C4", "2609.08998v1"], ["C5", "2609.10520v1"]]) {
+    assert.equal(getProblem(id).status, "improved", `${id}: unverified claim promoted to solved`);
+    assert.ok(getProblem(id).evidence.some((e) => e.kind === "preprint" && e.url.includes(source)), id);
+  }
+  const home = render(views.Home);
+  assert.ok(home.includes(LITERATURE_UPDATE.label) && home.includes(REVIEW.label));
+  const policy = render(views.ReviewView);
+  assert.ok(policy.includes(LITERATURE_UPDATE.reportUrl));
+  for (const id of ids) assert.ok(policy.includes(`#p/${id}`), `missing update link ${id}`);
 });
 
 test("priority scientific corrections retain the supporting sources", () => {

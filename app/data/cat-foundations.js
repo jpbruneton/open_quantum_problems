@@ -36,7 +36,8 @@ This entry is archived as merged. Compare axiom independence and composition und
       { label: "Ustun, 'Local Uniqueness of the Born Rule on Categories with Complex-Weighted Morphisms' (2026)", url: "https://arxiv.org/abs/2608.05197" },
     ] },
 
-  { id: "F3", cat: "foundations", horizon: "conceptual",
+  { id: "F3", cat: "foundations", horizon: "conceptual", status: "improved",
+    reviewedAt: "2026-09-10",
     title: "Operational reconstruction of quantum theory",
     statement: r`For specified operational axioms and composite-system rules, establish their independence and reconstruction power, and determine which alternative theories are experimentally distinguishable; extend controlled reconstructions beyond their finite-dimensional assumptions.`,
     context: r`Quantum theory's mathematical apparatus — Hilbert spaces, composition, completely positive maps and outcome probabilities — is usually postulated. Reconstruction asks which operational or information-theoretic axioms select the usual quantum predictions, and which assumptions rule out physically different alternatives rather than equivalent representations.
@@ -45,12 +46,16 @@ What is known: Hardy, Chiribella–D'Ariano–Perinotti, Masanes–Müller and o
 
 Renou et al. (2021) propose a network test distinguishing a particular real-Hilbert-space theory with specified composition and independent product-source assumptions. That paper is a theoretical proposal, not the experimental realization itself, and does not exclude every formulation using real numbers. Barrios Hita et al. (PRL, June 2026) reproduce multipartite quantum predictions using a modified real composite-system postulate. Hoffreumon–Woods (March 2026 preprint) distinguish operational independence from product-state independence and give simulation results. Neither changes the conclusion of Renou's theorem under its original assumptions.
 
-Concrete remaining targets include independence within a fixed axiom vocabulary, compositional consistency of probability rules (the mathematical part of archived F2), infinite-dimensional reconstruction with explicit continuity assumptions, and tests separating operationally inequivalent alternatives. Distinguish alternative physics from merely changing scalar representation. Related: F1, F7, M11.`,
+Concrete remaining targets include independence within a fixed axiom vocabulary, compositional consistency of probability rules (the mathematical part of archived F2), infinite-dimensional reconstruction with explicit continuity assumptions, and tests separating operationally inequivalent alternatives. Distinguish alternative physics from merely changing scalar representation. Related: F1, F7, M11.
+
+Preprint progress (9 September 2026, v1): Gachechiladze and Miklin derive the Tsirelson–Landau–Masanes correlator criterion from generalized information causality using correlated inputs and optimized noisy communication. They also exhibit macroscopically local correlations excluded by generalized information causality. The four-correlator projection must be distinguished from the full behavior set with biased marginals: the discussion explicitly leaves the full power of the principle, including its relation to almost-quantum correlations, unresolved. This advances a specified operational principle; it is not a reconstruction of all quantum states, transformations and composition rules.`,
     evidence: [
+      { kind: "preprint", summary: "Derives the TLM correlator boundary and constraints beyond macroscopic locality; the full power for complete behaviors and almost-quantum correlations remains unresolved.", url: "https://arxiv.org/abs/2609.10508v1", date: "2026-09-09", version: "v1" },
       { kind: "published", summary: "A real-number formulation recovers multipartite predictions by modifying the composite-system postulate; this does not refute network no-go results with their original assumptions.", url: "https://journals.aps.org/prl/abstract/10.1103/4k13-sdjh", date: "2026-06-18" },
       { kind: "preprint", summary: "Operational source independence and product-state independence are distinguished in real simulations of quantum protocols.", url: "https://arxiv.org/abs/2603.19208", date: "2026-03-19", version: "v1" },
     ],
     refs: [
+      { label: "Gachechiladze & Miklin, 'Information Causality Characterizes the Set of Quantum Correlations in the Simplest Bell Scenario' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.10508v1" },
       { label: "Hardy, 'Quantum theory from five reasonable axioms' (2001)", url: "https://arxiv.org/abs/quant-ph/0101012" },
       { label: "Chiribella, D'Ariano & Perinotti, 'Informational derivation of quantum theory', PRA 84, 012311 (2011)", url: "https://arxiv.org/abs/1011.6451" },
       { label: "Renou et al., 'Quantum theory based on real numbers can be experimentally falsified', Nature 600 (2021)", url: "https://www.nature.com/articles/s41586-021-04160-4" },

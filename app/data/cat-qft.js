@@ -88,7 +88,11 @@ The four-dimensional local target can be pursued by conditional axiomatic theore
       { label: "Duell & Dybalski, 'Asymptotic Completeness in a Class of Massive Wedge-Local Quantum Field Theories in Any Dimension', CMP (2023)", url: "https://link.springer.com/article/10.1007/s00220-023-04690-0" },
     ] },
 
-  { id: "QF7", cat: "qft", horizon: "incremental",
+  { id: "QF7", cat: "qft", horizon: "incremental", status: "improved",
+    reviewedAt: "2026-09-10",
+    evidence: [
+      { kind: "preprint", summary: "Perturbative Wilson-line-dressed scalar-QED sector and infraparticle scaling with explicit infrared regulation; not general nonperturbative scattering completeness.", url: "https://arxiv.org/abs/2609.06224v1", date: "2026-09-05", version: "v1" },
+    ],
     title: "Infrared sectors and infraparticles",
     statement: r`For a specified charged model, construct infrared-finite scattering predictions for stated inclusive observables and asymptotic charge sectors, prove the applicable completeness statement, and control collinear singularities where massless charged particles are included.`,
     context: r`In QED a charged particle is inevitably accompanied by a cloud of soft photons; it is an 'infraparticle' with no sharp mass and does not sit in a standard Wigner irreducible representation of the Poincaré group. Naive scattering amplitudes are infrared-divergent, and the usual Fock-space asymptotic states do not exist for charged particles.
@@ -97,8 +101,11 @@ What is known: Several partial frameworks address this. Bloch–Nordsieck and th
 
 Published progress: Prabhu–Satishchandran (2024) develop an algebraic infrared-finite scattering construction using generalized asymptotic states and superscattering, with soft theorems. This advances the formalism without providing a nonperturbative construction of four-dimensional QED or removing every collinear difficulty.
 
-The frontier is model-specific control: relate the algebraic asymptotic data to finite-resolution detector probabilities, state the sectors on which completeness holds, and prove existence/error bounds under the chosen infrared and collinear assumptions. A uniquely preferred notation or universal agreement between formalisms is not the success criterion. Related: QF3, QF6.`,
+The frontier is model-specific control: relate the algebraic asymptotic data to finite-resolution detector probabilities, state the sectors on which completeness holds, and prove existence/error bounds under the chosen infrared and collinear assumptions. A uniquely preferred notation or universal agreement between formalisms is not the success criterion. Related: QF3, QF6.
+
+Preprint progress (5 September 2026, v1): Semenoff and Waterfield develop a gauge- and Lorentz-invariant perturbative calculus for Wilson-line-dressed scalar QED with a Stueckelberg photon-mass infrared regulator. They obtain dressing-dependent cloud orthogonality, superselection sectors and infraparticle branch-cut scaling, with one-loop-exact exponents under their mass-gapped-matter assumptions. These are regulated perturbative results for scalar QED, not a nonperturbative construction of QED or an asymptotic-completeness proof for general charged scattering.`,
     refs: [
+      { label: "Semenoff & Waterfield, 'The Wilson-line-dressed charged sector of scalar QED: superselection and the infraparticle' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.06224v1" },
       { label: "Buchholz, 'Gauss' law and the infraparticle problem', Phys. Lett. B174 (1986)", url: "https://doi.org/10.1016/0370-2693(86)91110-X" },
       { label: "Strominger, 'Lectures on the Infrared Structure of Gravity and Gauge Theory' (Princeton, 2018)", url: "https://arxiv.org/abs/1703.05448" },
       { label: "Prabhu & Satishchandran, 'Infrared finite scattering theory: Amplitudes and soft theorems', PRD 110, 085022 (2024)", url: "https://journals.aps.org/prd/abstract/10.1103/PhysRevD.110.085022" },

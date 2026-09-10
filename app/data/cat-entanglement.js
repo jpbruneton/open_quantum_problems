@@ -50,9 +50,14 @@ Resolving the all-copy Werner question resolves E1. The corrected author attribu
     ] },
 
   { id: "E3", cat: "entanglement", horizon: "incremental", status: "improved",
+    reviewedAt: "2026-09-10",
     relations: [{ id: "E12", type: "related" }],
-    evidence: [{ kind: "preprint", summary: "Randomized polynomial-time separability testing with a fixed constant Euclidean-distance promise gap; not exact or arbitrary-norm membership.", url: "https://arxiv.org/abs/2607.23773", date: "2026-07-26" }],
-    provenance: [{ summary: "Malavolta attributes the main idea to himself with Michael Walter's feedback, and reports ChatGPT 5.5/5.6 assistance on technical reduction proofs. He states that he wrote the final manuscript and takes responsibility.", url: "https://arxiv.org/abs/2607.23773" }],
+    evidence: [
+      { kind: "preprint", summary: "Accuracy-dependent lower bounds for a shared-feasible-region SDP model; not a lower bound on all algorithms, nor a new unconditional separation of QMA and QMA(2).", url: "https://arxiv.org/abs/2609.09033v1", date: "2026-09-08", version: "v1" },
+      { kind: "preprint", summary: "Randomized polynomial-time separability testing with a fixed constant Euclidean-distance promise gap; not exact or arbitrary-norm membership.", url: "https://arxiv.org/abs/2607.23773", date: "2026-07-26" }],
+    provenance: [
+      { summary: "The authors report Lean proofs supporting their main results. This is an attributed formalization statement; the catalogue has not checked the formal project or inferred AI authorship from the use of Lean.", url: "https://arxiv.org/html/2609.09033v1", version: "v1" },
+      { summary: "Malavolta attributes the main idea to himself with Michael Walter's feedback, and reports ChatGPT 5.5/5.6 assistance on technical reduction proofs. He states that he wrote the final manuscript and takes responsibility.", url: "https://arxiv.org/abs/2607.23773" }],
     title: "Effective separability criteria",
     statement: r`For rational finite-dimensional density matrices, identify structured families admitting efficient separability tests with a specified norm and promise gap, and bound the dimension and accuracy dependence of convergent hierarchies.`,
     context: r`Deciding whether a bipartite mixed state is separable is fundamental but hard. PPT is necessary and sufficient for arbitrary states only in $2\times2$ and $2\times3$; higher dimensions admit PPT entanglement.
@@ -61,8 +66,11 @@ What is known: Appropriate weak-membership promise versions of separability are 
 
 Preprint progress (July 2026): Malavolta claims a randomized polynomial-time algorithm distinguishing separable density matrices from those at least a fixed constant $\eta>0$ from the separable set in Euclidean norm. The theorem's promise is essential: it does not give exact membership, vanishing-gap or arbitrary trace-distance tractability.
 
-The incremental target is a quantitative map of specified tractable families and certified hierarchy levels as functions of dimension and requested accuracy, rather than an undefined “maximal tractable class”.`,
+The incremental target is a quantitative map of specified tractable families and certified hierarchy levels as functions of dimension and requested accuracy, rather than an undefined “maximal tractable class”.
+
+Preprint progress (8 September 2026, v1): Gharibian, Hecht and Rudolph bound the size of SDPs approximating separable-state optimization in the HNW extended-formulation model. Every objective shares a feasible region and an objective-independent product-state embedding. For $0<\theta<2/7$, sufficiently small error $a$ and large local dimension $d$, the claimed lower bound is $d^{c_\theta\min\{a^{-1/3},d^\theta\}}$. It is superpolynomial when $a=o(1)$, not automatically at fixed constant error. This is a restriction on that SDP representation model, not on every separability algorithm or every norm/promise formulation. The paper also notes that concurrent quantum-oracle work already supersedes its approximate-disentangler application; its SDP bound is a separate contribution. Lean support is author-reported and has not been independently rebuilt.`,
     refs: [
+      { label: "Gharibian, Hecht & Rudolph, 'Semidefinite extension complexity of the separable set, with applications to approximate disentanglers' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.09033v1" },
       {"label":"Lami, Serafini & Adesso, 'Gaussian entanglement revisited' (published 2018)","url":"https://arxiv.org/abs/1612.05215"},
       { label: "Gurvits, 'Classical deterministic complexity of Edmonds' problem and quantum entanglement', STOC 2003", url: "https://doi.org/10.1103/RevModPhys.81.865" },
       { label: "Doherty, Parrilo, Spedalieri, 'Complete family of separability criteria', PRA 69, 022308 (2004)", url: "https://arxiv.org/abs/quant-ph/0308032" },
@@ -198,16 +206,23 @@ Useful benchmarks fix source/target families, trace-distance accuracy, allowed c
       { label: "Ao, Philip & Streltsov, 'PPT Entanglement with Correlated Catalysis: Monotones and Irreversibility' (2026 preprint)", url: "https://arxiv.org/abs/2608.20063" },
     ] },
 
-  { id: "E12", cat: "entanglement", horizon: "incremental",
+  { id: "E12", cat: "entanglement", horizon: "incremental", status: "improved",
+    reviewedAt: "2026-09-10",
     relations: [{ id: "E3", type: "related" }, { id: "E14", type: "related" }],
+    evidence: [
+      { kind: "preprint", summary: "Efficient first-order algorithms for suitable moment-polytope objectives; arbitrary overlapping-marginal compatibility remains a different computational problem.", url: "https://arxiv.org/abs/2609.06633v1", date: "2026-09-06", version: "v1" },
+    ],
     title: "Efficient and structured quantum marginal compatibility",
     statement: r`For overlapping local density matrices supplied succinctly, obtain certified compatibility algorithms and hierarchy bounds for specified families, distinguishing mixed global states from pure global states and fixing an inverse-polynomial or other explicit promise gap.`,
     context: r`The quantum marginal problem asks whether prescribed reduced states come from one common global state. It includes important versions of fermionic N-representability in quantum chemistry, but particle statistics, pure versus mixed global states and input representation change the problem.
 
 Known complete formulations must be distinguished from efficient algorithms. For an explicitly represented finite global density matrix, mixed-state compatibility is semidefinite feasibility: positivity, unit trace and linear partial-trace constraints. Its matrix size can grow exponentially with the number of sites. Klyachko and related representation-theoretic work characterize one-body pure-state spectral compatibility. Yu–Simnacher–Wyderka–Nguyen–Gühne additionally established a complete SDP hierarchy for arbitrary pure-state marginal compatibility.
 
-Appropriate promise versions with succinct overlapping local inputs are QMA-complete. This does not mean no complete mathematical criterion exists; it obstructs a generic efficient algorithm. The residual programme is quantitative convergence, certified finite-level tests and tractable structures beyond known one-body cases.`,
+Appropriate promise versions with succinct overlapping local inputs are QMA-complete. This does not mean no complete mathematical criterion exists; it obstructs a generic efficient algorithm. The residual programme is quantitative convergence, certified finite-level tests and tractable structures beyond known one-body cases.
+
+Structured algorithmic progress (6 September 2026, v1): Doğan, Sakabe and Walter introduce Hadamard mirror descent with convergence guarantees for suitable convex objectives over moment polytopes. Applications include efficient first-order computation of quantum functionals and related tensor parameters on entanglement polytopes, without an explicit facet list. This concerns the stated representation-theoretic optimization problems and their input models; it is not an efficient solution to arbitrary succinct overlapping-marginal compatibility or generic N-representability.`,
     refs: [
+      { label: "Doğan, Sakabe & Walter, 'Convex optimization on moment polytopes: Hadamard mirror descent and efficient algorithms for quantum functionals and other tensor parameters' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.06633v1" },
       {"label":"Yu et al., 'A complete hierarchy for the pure state marginal problem', Nature Communications (2021)","url":"https://www.nature.com/articles/s41467-020-20799-5"},
       { label: "Klyachko, 'Quantum marginal problem and N-representability', J. Phys. Conf. Ser. 36 (2006)", url: "https://arxiv.org/abs/quant-ph/0511102" },
       { label: "Liu, Christandl, Verstraete, 'Quantum computational complexity of the N-representability problem', PRL 98, 110503 (2007)", url: "https://arxiv.org/abs/quant-ph/0609125" },

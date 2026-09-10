@@ -7,6 +7,7 @@ import {
   PROBLEMS,
   ARCHIVED_PROBLEMS,
   REVIEW,
+  LITERATURE_UPDATE,
   EVIDENCE_KINDS,
   WATCHLIST,
   HORIZONS,
@@ -116,7 +117,7 @@ function Home() {
       <Header />
       <section className="body">
         <div className="container">
-          <p className="last-updated">Literature review: {REVIEW.label}</p>
+          <p className="last-updated">Literature update: {LITERATURE_UPDATE.label} · Full review: {REVIEW.label}</p>
           <div className="stats-row">
             <div className="stats">
               <div className="stat"><div className="n">{total}</div><div className="l">Active entries</div></div>
@@ -130,6 +131,12 @@ function Home() {
             </button>
           </div>
 
+          <div className="review-note">
+            <b>Latest literature update.</b> {LITERATURE_UPDATE.ids.length} entries updated, including
+            {" "}<a href="#p/C4">a claimed general strong converse</a> and
+            {" "}<a href="#p/C5">private-capacity superactivation</a>. New results are attributed
+            preprint claims. <a href="#review">Sources &amp; scope →</a>
+          </div>
           <div className="review-note">
             <b>Full catalogue review.</b> All {REVIEW.reviewed} original entries reassessed;
             {" "}{REVIEW.added} questions added or promoted. Merged entries and background pages
@@ -499,6 +506,13 @@ function ReviewView() {
       <section className="body">
         <div className="container detail">
           <h2>Clear questions. Explicit evidence.</h2>
+          <p className="intro">Latest literature update · {LITERATURE_UPDATE.label}</p>
+          <p>A targeted check of recent arXiv submissions updated {LITERATURE_UPDATE.ids.length} entries:
+            {" "}{LITERATURE_UPDATE.ids.map((id, i) => <span key={id}>{i > 0 ? ", " : ""}<a href={`#p/${id}`}>{id}</a></span>)}.
+            The remaining entries retain their earlier review dates. This is a literature and scope check, not an independent verification of the proofs.</p>
+          <p>C4 now records a claimed resolution for all finite-dimensional memoryless channels, pending independent assessment.
+            C5 records claimed superactivation of operational private capacity. Both retain “Improved”; no entry was promoted to “Solved” in this update.</p>
+          <p><a href={LITERATURE_UPDATE.reportUrl} target="_blank" rel="noreferrer">Read the dated update, source versions and remaining questions →</a></p>
           <p className="intro">Full catalogue review · {REVIEW.label}</p>
           <p>All {REVIEW.reviewed} original entries were reassessed. The review recommended retaining 27, reframing 74, consolidating nine and moving one broad methods proposal to background. Twelve missing or underexposed questions have now been added or promoted.</p>
           <p>There are currently {PROBLEMS.length} active entries across {CATEGORIES.length} areas. Stable IDs are never renumbered: the gaps in a category’s numbering reflect consolidation, not missing pages.</p>
@@ -506,7 +520,7 @@ function ReviewView() {
 
           <h4>How to read a problem</h4>
           <p>The statement specifies the target and assumptions. The context separates known results, solved subcases and the open residual. A sharp question has a definite resolution; an incremental target, programme or conceptual issue need not.</p>
-          <p>“Improved” means relevant partial progress is recorded, not that every result has been independently validated. A restricted theorem does not settle a broader question. Computational hardness, uncomputability and failure of a particular method are different claims.</p>
+          <p>“Improved” means relevant progress is recorded, including a claimed resolution awaiting assessment; it does not mean every result has been independently validated. A restricted theorem does not settle a broader question. Computational hardness, uncomputability and failure of a particular method are different claims.</p>
           <ul className="evidence-list">
             {Object.entries(EVIDENCE_KINDS).map(([kind, info]) => <li key={kind}><span className={`badge ev-${kind}`}>{info.label}</span><p>{info.desc}</p></li>)}
           </ul>
