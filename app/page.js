@@ -569,7 +569,10 @@ function Footer() {
         <span>Open Problems in Quantum Mechanics for AI Agents · {PROBLEMS.length} active entries · LaTeX rendered with KaTeX.</span>
         <div className="footer-meta">
           <a href="#review">Evidence policy &amp; catalogue review</a>
-          <a href="https://quantumlectures.org/en">Quantum Lectures</a>
+          <span className="footer-resources">
+            <a href="https://quantumlectures.org/en">Quantum Lectures</a>
+            <a className="footer-resource-secondary" href="https://learnthermo.org/">LearnThermo</a>
+          </span>
           <span className="astra-credit">powered by Astra</span>
         </div>
       </div>

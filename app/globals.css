@@ -217,6 +217,8 @@ td.stmt .katex { font-size: 1em; }
 
 .site-footer { border-top: 1px solid var(--border); padding: 24px 0; color: var(--muted-2); font-size: 13px; }
 .footer-meta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 10px; }
+.footer-resources { display: inline-flex; align-items: baseline; gap: 8px; }
+.footer-resource-secondary { color: var(--muted-2); font-size: 11px; }
 .astra-credit { color: var(--muted); font-weight: 600; }
 .review-note, .archive-note { margin: 22px 0; padding: 16px 18px; border: 1px solid var(--border); border-left: 3px solid var(--accent); border-radius: 10px; background: var(--panel); font-size: 14px; }
 .archive-note p { margin: 8px 0; }
