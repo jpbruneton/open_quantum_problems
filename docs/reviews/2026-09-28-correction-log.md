@@ -102,7 +102,7 @@ Every addition was checked against its arXiv record or through Crossref.
 | E3, O10 | Bakshi–Liu–Moitra–Tang (FOCS 2024): high-temperature Gibbs states are separable and efficiently preparable. Kiani's September preprint explicitly builds on it. O10 also cites Chen–Kastoryano–Gilyén (the exact noncommutative Gibbs sampler) and Rouzé–Stilck França–Alhambra (high-temperature polynomial thermalization, *Nature Physics* 2026). |
 | C6 | The seven-cycle lower-bound sequence described in Tandon's own paper: Polak–Schrijver (2019, ≈ 3.25787), Itty et al., Gao, and Buys–Polak–Zuiddam (Lean-formalized, ≈ 3.25880, added as evidence), then Tandon (3.25883262…). The Lovász bound ϑ(C₇) ≈ 3.3177 is stated to show the remaining gap. |
 | C11 | The prior positivity-point ladder, taken from the table in arXiv:2608.15870: DiVincenzo–Shor–Smolin (1998), Smith–Smolin (2007), Fern–Whaley (2008) and Agarwal et al. (2026, p = 0.064657, q ≈ 0.19397). The text notes that the certificate starts from Agarwal et al.'s public states. |
-| N11 | Replaced the "no numerical interval" note with certified bounds. Designolle et al. (PRR 2023) give 1.4367 ≤ K_G(3) ≤ 1.4546; Designolle–Vértesi–Pokutta (PRA 2026) give K_G(3) ≥ 1.43670. The authors state that this moves the upper bound on v_proj from about 0.69606 to 0.69604. Hence approximately 0.6874 ≤ v_proj ≤ 0.69604. |
+| N11 | Replaced the "no numerical interval" note with certified bounds. Designolle et al. (PRR 2023) give lower and upper bounds on K_G(3) approximately 1.43665 and 1.4546; Designolle–Vértesi–Pokutta (PRA 2026, Table 2(b)) improve the lower bound to approximately 1.43670. The upper bound on v_proj moves from about 0.69606 to 0.69604; its lower bound is approximately 0.6875. These are rounded summaries, not exact endpoints. |
 | U1 | Bravyi–Gosset (*J. Math. Phys.* 56, 2015): a complete gapped/gapless classification of translation-invariant nearest-neighbour frustration-free spin-1/2 chains, the smallest case of U1's question. |
 | A4 | The Grewal–Rudolph abstract's consequence that quantum 3-SAT becomes QMA-complete. |
 
@@ -127,6 +127,15 @@ References described only by a paraphrase now carry their actual title, authors 
 - The Bazzi–Khater v3 disclosure (A18) could not be checked, because no HTML rendering was available. Its record was left as is.
 - The Vilasini–Woods v2 date (F4) was not rechecked.
 - The *Notices* page returns a bot-protection page to automated requests. It was left in place because Crossref confirms the article.
+
+## 10. Follow-up review of commit `5c07c06`
+
+Reviewed all 16 changed files, reran the catalogue tests and production build, and spot-checked the substantive additions against primary sources. This was a review of code, metadata and scientific scope, not an independent verification of the cited proofs or computational certificates. The Improved list remains intact; counts remain 113 active entries, 43 Improved entries and 38 sharp questions.
+
+Two wording corrections followed:
+
+- **E3/O10:** made the inverse-temperature direction and the fixed-parameter sampling guarantee explicit, following [Kiani, Theorems 1.1 and 1.3](https://arxiv.org/html/2609.30149v1). The ambiguous temperature wording predated the reviewed commit and remained in its revised paragraphs.
+- **N11:** distinguished rounded decimals from exact certified endpoints. [The 2023 paper, equation (7)](https://arxiv.org/html/2302.04721v3) marks its decimals as approximate; [the 2026 paper, Table 2(b) and section IV.4](https://arxiv.org/html/2409.03739v3) makes the small improvement visible at five decimal places. The entry and the summary row above now retain this distinction.
 
 ## Validation
 

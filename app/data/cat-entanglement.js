@@ -53,7 +53,7 @@ Resolving the all-copy Werner question resolves E1. Author attributions and vers
     reviewedAt: "2026-09-28",
     relations: [{ id: "E12", type: "related" }],
     evidence: [
-      { kind: "preprint", summary: "Sharp high-temperature separability threshold for bounded-overlap Pauli Hamiltonians; efficient sampling strictly below the threshold, not generic separability testing.", url: "https://arxiv.org/abs/2609.30149v1", date: "2026-09-24", version: "v1" },
+      { kind: "preprint", summary: "Sharp separability threshold in inverse temperature for bounded-overlap Pauli Hamiltonians; efficient sampling for fixed overlap degree and fixed relative margin below that threshold, not generic separability testing.", url: "https://arxiv.org/abs/2609.30149v1", date: "2026-09-24", version: "v1" },
       { kind: "preprint", summary: "Accuracy-dependent lower bounds for a shared-feasible-region SDP model; not a lower bound on all algorithms, nor a new unconditional separation of QMA and QMA(2).", url: "https://arxiv.org/abs/2609.09033v1", date: "2026-09-08", version: "v1" },
       { kind: "preprint", summary: "Randomized polynomial-time separability testing with a fixed constant Euclidean-distance promise gap; not exact or arbitrary-norm membership.", url: "https://arxiv.org/abs/2607.23773", date: "2026-07-26" }],
     provenance: [
@@ -74,7 +74,7 @@ Preprint progress (8 September 2026, v1): Gharibian, Hecht and Rudolph bound the
 
 High-temperature baseline: Bakshi, Liu, Moitra and Tang (FOCS 2024) proved that Gibbs states of local Hamiltonians on bounded-degree interaction graphs are separable above a constant temperature, with efficient sampling of the product-state decomposition. This is a promise on the generating Hamiltonian and temperature, not a separability test for arbitrary input matrices.
 
-Structured-family progress (24 September 2026, v1): Kiani, building on that result, claims the sharp universal high-temperature separability threshold for Pauli Hamiltonians with coefficients bounded by one and term-overlap degree $\Delta\ge2$. At or below the stated threshold, Gibbs states decompose into product Pauli eigenstates; strictly below it, the paper gives polynomial-time approximate sampling in trace distance. This is a promise on the generating Hamiltonian and temperature, not efficient separability testing for arbitrary input states. See O10 for the preparation consequence.`,
+Structured-family progress (24 September 2026, v1): Kiani, building on that result, claims a sharp universal separability threshold in inverse temperature $\beta$ for Pauli Hamiltonians with coefficients bounded by one and term-overlap degree $\Delta\ge2$. At or below this inverse-temperature threshold, Gibbs states decompose into product Pauli eigenstates. For fixed $\Delta$ and a fixed relative margin below the threshold, sampling is polynomial-time in system size and inverse trace-distance error. These guarantees apply at high physical temperature and do not give separability testing for arbitrary input states. See O10 for the preparation consequence.`,
     refs: [
       { label: "Kiani, 'Sharp universal death of entanglement threshold for Pauli Hamiltonians' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.30149v1" },
       { label: "Gharibian, Hecht & Rudolph, 'Semidefinite extension complexity of the separable set, with applications to approximate disentanglers' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.09033v1" },

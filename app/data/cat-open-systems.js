@@ -173,7 +173,7 @@ Adjacent preparation progress (8 September 2026, v1): Li's spectral core–tail 
 
 Published progress (18 September 2026): Hwang and Jiang reduce Gibbs preparation for specified commuting Hamiltonians to classical Gibbs sampling, including 2-local qudit systems and restricted 2D 4-local qubit systems. Efficiency depends on efficient sampling of the associated classical model; this is not a rapid-mixing theorem for every Davies generator.
 
-A separate 24 September preprint by Kiani, sharpening the Bakshi–Liu–Moitra–Tang separability temperature for this family, supplies polynomial-time sampling of product-state decompositions strictly below a sharp high-temperature separability threshold for bounded-overlap Pauli Hamiltonians (E3). This is a preparation algorithm, not a proof of rapid mixing for arbitrary reversible quantum dynamics or low-temperature systems.`,
+A separate 24 September preprint by Kiani sharpens the separability threshold for bounded-overlap Pauli Hamiltonians (E3). Product-state sampling is polynomial-time for fixed overlap degree and a fixed relative margin below the inverse-temperature threshold, thus above the corresponding physical temperature. This does not establish rapid mixing for arbitrary reversible dynamics.`,
     relations: [{ id: "O2", type: "related" }, { id: "O9", type: "related" }, { id: "B5", type: "related" }],
     evidence: [
       { kind: "published", summary: "Gibbs preparation via classical reductions for specified commuting families; efficiency requires an efficient sampler for the associated classical model.", url: "https://doi.org/10.22331/q-2026-09-18-2209", date: "2026-09-18" },
