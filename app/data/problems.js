@@ -75,6 +75,13 @@ export const LITERATURE_UPDATES = [{
 
 export const LITERATURE_UPDATE = LITERATURE_UPDATES[0];
 
+// Source and consistency corrections. They do not change entry review dates.
+export const CORRECTION_LOG = {
+  date: "2026-09-28",
+  label: "28 September 2026",
+  reportUrl: "https://github.com/jpbruneton/open_quantum_problems/blob/main/docs/reviews/2026-09-28-correction-log.md",
+};
+
 export const ALL_PROBLEMS = [
   ...SPECTRAL,
   ...MANYBODY,

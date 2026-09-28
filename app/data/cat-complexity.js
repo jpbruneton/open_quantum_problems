@@ -42,7 +42,7 @@ The full standard classical-oracle separation is due to Bostanci, Haferkamp, Nir
       { label: "Aaronson & Kuperberg, 'Quantum versus classical proofs and advice', Theory of Computing 3 (2007)", url: "https://theoryofcomputing.org/articles/v003a007/" },
       { label: "Natarajan & Nirkhe, 'A distribution testing oracle separation between QMA and QCMA', Quantum 8, 1377 (2024)", url: "https://quantum-journal.org/papers/q-2024-06-17-1377/" },
       { label: "Ben-David & Kundu, 'Oracle separation of QMA and QCMA with bounded adaptivity' (2024)", url: "https://arxiv.org/abs/2402.00298" },
-      { label: "Bostanci, Haferkamp, Nirkhe & Zhandry, 'A classical oracle separation between QMA and QCMA', STOC 2026", url: "https://arxiv.org/abs/2511.09551v2" },
+      { label: "Bostanci, Haferkamp, Nirkhe & Zhandry, 'Separating QMA from QCMA with a classical oracle', STOC 2026", url: "https://arxiv.org/abs/2511.09551v2" },
     ] },
 
   { id: "A4", cat: "complexity", horizon: "sharp", status: "improved",
@@ -58,7 +58,7 @@ What is known: Aaronson constructed a quantum oracle relative to which $\mathsf{
 
 Jeffery–Witteveen prove $\mathsf{QMA}=\mathsf{QMA}^{\infty}=\mathsf{QMA}_1^{\infty}$ when the verifier has their specified infinite-dimensional counter with an efficient shift operation. The result, posted in June 2025 and published in PRL in May 2026, removes completeness error using an additional infinite register. Truncation also gives stronger finite-dimensional completeness amplification, but not exactly perfect completeness in ordinary finite-register QMA. That infinite-register theorem does not answer the finite-register question. Related: A3, A8.
 
-Claimed resolution (11 September 2026, v1): Grewal and Rudolph claim $\mathsf{QMA}=\mathsf{QMA}_1$ using finite registers and Hadamard, Toffoli and $X$ gates. Their exact-gate corollary covers Clifford+$T$, hence the convention above; no infinite counter is needed. The construction relativizes to classical oracles, not arbitrary quantum oracles, so it does not contradict Aaronson's obstruction. This is a claimed resolution of A4, retained as “Improved” pending independent assessment.`,
+Claimed resolution (11 September 2026, v1): Grewal and Rudolph claim $\mathsf{QMA}=\mathsf{QMA}_1$ using finite registers and Hadamard, Toffoli and $X$ gates. Their exact-gate corollary covers Clifford+$T$, hence the convention above; no infinite counter is needed. They also state that quantum 3-SAT consequently becomes QMA-complete. The construction relativizes to classical oracles, not arbitrary quantum oracles, so it does not contradict Aaronson's obstruction. This is a claimed resolution of A4, retained as “Improved” pending independent assessment.`,
     evidence: [
       { kind: "preprint", summary: "Claimed finite-register QMA perfect completeness with exact gates, including Clifford+T; addresses A4 directly, pending assessment.", url: "https://arxiv.org/abs/2609.13032v1", date: "2026-09-11", version: "v1" },
       { kind: "published", summary: "Perfect completeness is achievable with a specified infinite counter; this does not settle the ordinary finite-register problem.", url: "https://journals.aps.org/prl/abstract/10.1103/pwdd-htbf", date: "2026-05-06" }],
@@ -66,7 +66,7 @@ Claimed resolution (11 September 2026, v1): Grewal and Rudolph claim $\mathsf{QM
     refs: [
       { label: "Grewal & Rudolph, 'QMA has perfect completeness' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.13032v1" },
       { label: "Aaronson, 'On perfect completeness for QMA', Quantum Inf. Comput. 9 (2009)", url: "https://arxiv.org/abs/0806.0450" },
-      { label: "Jeffery & Witteveen, 'QMA = QMA1 with an infinite counter', PRL (2026; preprint 2025)", url: "https://arxiv.org/abs/2506.15551" },
+      { label: "Jeffery & Witteveen, 'Quantum-Merlin-Arthur Problems Have Perfect Completeness with an Infinite Counter', PRL 136, 180601 (2026); preprint 'QMA = QMA1 with an infinite counter' (2025)", url: "https://arxiv.org/abs/2506.15551" },
     ] },
 
   { id: "A5", cat: "complexity", horizon: "sharp", status: "improved",
@@ -103,7 +103,7 @@ September 2026 preprint: Bostanci et al. construct a quantum oracle separating Q
 
 What is known: The ordinary local-Hamiltonian promise problem is QMA-complete at inverse-polynomial precision, not for exact real-valued energy output. Anshu–Breuckmann–Nirkhe proved NLTS: there are bounded-locality Hamiltonian families whose sufficiently low-energy states cannot be prepared by constant-depth local circuits. Good quantum codes enable that result, but NLTS is weaker than quantum PCP and does not exclude every succinct classical description of a low-energy state.
 
-Published 2025 work clarifies quantum-PCP definitions. A separate October 2025 preprint develops derandomized tensor-product gap amplification under its stated hypotheses. Neither supplies the complete constant-gap QMA-hardness reduction. Related: A7, A8.
+Published 2025 work clarifies quantum-PCP definitions. A separate October 2025 preprint by Bergamaschi, Metger, Vidick and Zhang develops derandomized tensor-product gap amplification under its stated hypotheses. Neither supplies the complete constant-gap QMA-hardness reduction. Related: A7, A8.
 
 Related September 2026 claim: Gay–Jeronimo's proposed good qLTC construction is recorded in A7. Constant local-test soundness for a code Hamiltonian is not a reduction proving QMA-hardness of constant-gap ground-energy approximation. A6 remains open; the claimed A7 resolution must not be reported as quantum PCP.`,
     evidence: [
@@ -116,7 +116,7 @@ Related September 2026 claim: Gay–Jeronimo's proposed good qLTC construction i
       { label: "Gay & Jeronimo, 'Asymptotically Good Quantum Locally Testable Codes' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.20780v1" },
       { label: "Anshu, Breuckmann & Nirkhe, 'NLTS Hamiltonians from good quantum codes', STOC 2023", url: "https://arxiv.org/abs/2206.13228" },
       { label: "Buhrman, Helsen & Weggemans, 'Quantum PCPs: on Adaptivity, Multiple Provers and Reductions to Local Hamiltonians', Quantum 9, 1791 (2025)", url: "https://quantum-journal.org/papers/q-2025-07-11-1791/" },
-      { label: "'Derandomised tensor product gap amplification for quantum Hamiltonians' (2025 preprint)", url: "https://arxiv.org/abs/2510.01333" },
+      { label: "Bergamaschi, Metger, Vidick & Zhang, 'Derandomised tensor product gap amplification for quantum Hamiltonians' (2025 preprint)", url: "https://arxiv.org/abs/2510.01333" },
     ] },
 
   { id: "A7", cat: "complexity", horizon: "sharp", status: "improved",
@@ -126,7 +126,7 @@ Related September 2026 claim: Gay–Jeronimo's proposed good qLTC construction i
       { kind: "preprint", summary: "Separate good-qLTC construction conditional on a Reed–Solomon product-expansion conjecture.", url: "https://arxiv.org/abs/2609.26735v1", date: "2026-09-22", version: "v1" },
     ],
     provenance: [
-      { summary: "Gay and Jeronimo report material help from ChatGPT Pro 5.6 and 6 with expander–code arguments, plus editorial assistance, and take responsibility for the results.", url: "https://arxiv.org/html/2609.20780v1", version: "v1" },
+      { summary: "Gay and Jeronimo report that the general direction was human; ChatGPT Pro versions 5 to 6 were used, with only 5.6 and 6 Pro materially helping to orchestrate some expander–code interactions, and ChatGPT 6 Pro serving as an editorial assistant. They take responsibility for the results. They also state that they released the paper at an earlier point in light of rumours that OpenAI had solved several major TCS problems, a reason for additional caution before assessment.", url: "https://arxiv.org/html/2609.20780v1", version: "v1" },
     ],
     title: "Good quantum locally testable codes",
     statement: r`Construct stabilizer quantum locally testable codes with constant rate, linear distance, constant check weight and degree, and constant soundness $s>0$. For $m$ checks on $n$ qubits, require $|\operatorname{syn}(E)|/m\ge s\,\min_{F:\operatorname{syn}(F)=0}\operatorname{wt}(EF)/n$ for every Pauli error $E$.`,
@@ -144,7 +144,7 @@ A separate 22 September preprint by Bafna, Li and Nguyen obtains good qLTCs cond
       { label: "Gay & Jeronimo, 'Asymptotically Good Quantum Locally Testable Codes' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.20780v1" },
       { label: "Bafna, Li & Nguyen, 'Good Quantum Locally Testable Codes from Product Expansion' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.26735v1" },
       { label: "Panteleev & Kalachev, 'Asymptotically good quantum and locally testable classical LDPC codes', STOC 2022", url: "https://doi.org/10.1145/3519935.3520017" },
-      { label: "Dinur, Lin & Vidick, 'Almost good quantum locally testable codes' (2024)", url: "https://arxiv.org/abs/2402.07476" },
+      { label: "Dinur, Lin & Vidick, 'Expansion of higher-dimensional cubical complexes with application to quantum locally testable codes', FOCS 2024 (almost-good qLTCs)", url: "https://arxiv.org/abs/2402.07476" },
     ] },
 
   { id: "A8", cat: "complexity", horizon: "sharp",
@@ -307,9 +307,9 @@ The full statements, current open conjecture and author-reported disclosures are
     statement: r`Given a full classical description of an arbitrary reference state $\sigma$ and copies of an unknown $N$-qubit state $\rho$, determine the optimal copy complexity of testing $\rho=\sigma$ versus $\|\rho-\sigma\|_1\ge\varepsilon$, with success at least $2/3$, using adaptive single-qubit Pauli measurements and no entangling measurements within or across copies. Seek matching instance-dependent bounds and the accompanying classical running time.`,
     context: r`A full reference-state description can itself be exponentially long in $N$; computational costs must count its input length. Rank, spectrum and the reference eigenbasis relative to the allowed local measurements can matter. This concrete certification target is distinct from estimating an unknown state's spectral functional or learning many observable expectations.
 
-What is known: Haah–Harrow–Ji–Wu–Yu establish sample-optimal tomography bounds in their collective-measurement model (IEEE TIT 63, 2017). August 2026 preprints refine restricted models: Wang's framework gives nearly tight lower bounds for a broad collection of spectral-functional tasks, while Acharya–Dharmavarapu–Liu–Yu nearly determine mixedness testing under single-qubit Pauli measurements, with $\widetilde\Theta((\sqrt{10})^N/\varepsilon^2)$ copies. The maximally mixed reference is a benchmark, not a solution for every reference state or measurement trade-off.
+What is known: Haah–Harrow–Ji–Wu–Yu establish sample-optimal tomography bounds in their collective-measurement model (IEEE TIT 63, 2017). August 2026 preprints refine restricted models: Wang's framework (retitled in its 8 September v3 as a unified complexity framework for quantum property testing) gives nearly tight lower bounds for entropy, closeness and spectrum estimation and for rank, Schmidt-rank and MPS testing, while Acharya–Dharmavarapu–Liu–Yu nearly determine mixedness testing under single-qubit Pauli measurements, with $\widetilde\Theta((\sqrt{10})^N/\varepsilon^2)$ copies (their 23 September v3 adds fixed-Pauli-protocol bounds). The maximally mixed reference is a benchmark, not a solution for every reference state or measurement trade-off.
 
-A neighbouring August preprint by Stempin–Llorens–Huber disproves the fractional-colouring conjecture proposed as a route to universal triply efficient Pauli shadow tomography. It rules out that route, not every possible algorithm. Its front matter explicitly credits GPT Sol 5.6 with contributions to Theorems A and B; the previous no-disclosure statement was incorrect. Related: E3, A11.
+A neighbouring August preprint by Stempin–Llorens–Huber disproves the fractional-colouring conjecture proposed as a route to universal triply efficient Pauli shadow tomography. It rules out that route, not every possible algorithm. Related: E3, A11.
 
 Adjacent tomography benchmarks (4–9 September 2026, v1): Keskin, Luo, Majid and Radzihovsky claim the tight arbitrary-state copy bound $\Theta(\max\{d^3/(\sqrt{k}\varepsilon^2),d^2/\varepsilon^2\})$ when measurements act on at most $k$ fresh copies, with classical adaptivity but no quantum memory between blocks. Nayak and Zhou claim the rank-$r$ refinement $\Theta((dr/\varepsilon^2)\max\{1,r/\sqrt{t}\})$ with at most $t$ jointly measured copies, for sufficiently small error and constant success probability. These permit entangling measurements and reconstruct an unknown state; neither settles arbitrary-reference certification with single-qubit Pauli measurements.
 
@@ -318,15 +318,15 @@ A separate 9 September preprint by Zhang et al. gives shallow phase shadows for 
       { kind: "preprint", summary: "Matching tomography lower bound for adaptive fresh-copy blocks with no quantum memory between blocks; entangling block measurements are allowed.", url: "https://arxiv.org/abs/2609.05718v1", date: "2026-09-04", version: "v1" },
       { kind: "preprint", summary: "Claimed optimal rank-dependent tomography rate with bounded-copy joint measurements; not single-qubit Pauli certification.", url: "https://arxiv.org/abs/2609.10514v1", date: "2026-09-09", version: "v1" },
       { kind: "preprint", summary: "Stabilizer-fidelity estimation with entangling readout; constant depth uses all-to-all connectivity, auxiliary resources, mid-circuit measurements and feedforward.", url: "https://arxiv.org/abs/2609.10408v1", date: "2026-09-09", version: "v1" },
-      { kind: "preprint", summary: "Lower-bound framework for multiple quantum spectral-functional estimation tasks; task-specific hypotheses still apply.", url: "https://arxiv.org/abs/2608.02600v2", version: "v2" },
+      { kind: "preprint", summary: "Unified lower-bound framework for spectral-functional estimation and rank/Schmidt-rank/MPS testing (v3); task-specific hypotheses still apply.", url: "https://arxiv.org/abs/2608.02600v3", date: "2026-09-08", version: "v3" },
       { kind: "preprint", summary: "Nearly tight single-qubit Pauli mixedness-testing copy complexity; arbitrary-reference certification remains a separate target.", url: "https://arxiv.org/abs/2608.18839v1", version: "v1" },
       { kind: "preprint", summary: "Counterexamples close the proposed universal fractional-colouring route to triply efficient Pauli shadow tomography.", url: "https://arxiv.org/abs/2608.20113v1", version: "v1" },
     ],
     provenance: [
       { summary: "Keskin and coauthors report GPT-5.6 Sol through OpenAI Codex assistance with the main ideas and proof strategies. They state that they refined and verified the material and take responsibility for claims, proofs and citations.", url: "https://arxiv.org/html/2609.05718v1", version: "v1" },
       { summary: "Nayak and Zhou report GPT-5.5 and GPT-5.6 Sol assistance with crucial Fisher-information lemmas and a Gaussian reformulation of earlier upper-bound algorithms. They attribute the rank-dependent analysis to themselves and state that they independently verified all arguments and references.", url: "https://arxiv.org/html/2609.10514v1", version: "v1" },
-      { summary: "Wang reports ChatGPT 5.5/5.6 assistance with proof exploration and calculations, with substantial human input and author responsibility.", url: "https://arxiv.org/abs/2608.02600v2", version: "v2" },
-      { summary: "Stempin, Llorens and Huber explicitly report GPT Sol 5.6 contributions to their principal results, Theorems A and B, and say they verified and contextualized them. This corrects the former assertion that no declaration was present.", url: "https://arxiv.org/html/2608.20113v1", version: "v1" },
+      { summary: "Wang's v3 reports large language models used throughout as research and writing tools, to brainstorm ideas and explore proof strategies, with portions of the text redrafted with AI assistance in all sections; the author reviewed and validated all claims, proofs and citations and takes responsibility. (v2 named ChatGPT 5.5/5.6 for proof strategies and calculations.)", url: "https://arxiv.org/html/2608.02600v3", version: "v3" },
+      { summary: "Stempin, Llorens and Huber state that GPT Sol 5.6 was used to derive their main results, Theorems A and B, and that they verified and contextualized all results.", url: "https://arxiv.org/html/2608.20113v1", version: "v1" },
     ],
     relations: [{ id: "E3", type: "related" }, { id: "A11", type: "related" }],
     refs: [
@@ -334,8 +334,8 @@ A separate 9 September preprint by Zhang et al. gives shallow phase shadows for 
       { label: "Nayak & Zhou, 'Optimal Low-Rank Quantum State Tomography with Bounded-Sample Joint Measurements' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.10514v1" },
       { label: "Zhang, You, Qin, Li, Eisert & Zhou, 'Constant-depth global shadow estimation' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.10408v1" },
       { label: "Haah, Harrow, Ji, Wu & Yu, 'Sample-optimal tomography of quantum states', IEEE Trans. Inf. Theory 63 (2017)", url: "https://arxiv.org/abs/1508.01797" },
-      { label: "Wang, 'A Lower Bound Framework for Quantum Functional Estimation' (2026 preprint)", url: "https://arxiv.org/abs/2608.02600v2" },
-      { label: "Acharya, Dharmavarapu, Liu & Yu, 'Quantum Mixedness Testing with Pauli Measurements' (2026 preprint)", url: "https://arxiv.org/abs/2608.18839v1" },
+      { label: "Wang, 'A Unified Complexity Framework for Quantum Property Testing' (2026 preprint, v3; v2 titled 'A Lower Bound Framework for Quantum Functional Estimation')", url: "https://arxiv.org/abs/2608.02600v3" },
+      { label: "Acharya, Dharmavarapu, Liu & Yu, 'Quantum Mixedness Testing with Pauli Measurements' (2026 preprint, v1 reviewed; v3 of 23 September retitled 'Near-Optimal Mixedness Testing with Pauli Measurements')", url: "https://arxiv.org/abs/2608.18839v1" },
       { label: "Stempin, Llorens & Huber, 'Counterexamples to the fractional coloring conjecture for triply efficient shadow tomography' (2026 preprint)", url: "https://arxiv.org/abs/2608.20113v1" },
     ] },
 

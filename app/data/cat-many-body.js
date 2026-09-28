@@ -15,7 +15,7 @@ The unique-ground-state formulation above remains a central open target. A theor
       { label: "Hastings, 'An area law for one-dimensional quantum systems', J. Stat. Mech. (2007) P08024", url: "https://arxiv.org/abs/0705.2024" },
       { label: "Arad, Kitaev, Landau, Vazirani, 'An area law and sub-exponential algorithm for 1D systems' (2013)", url: "https://arxiv.org/abs/1301.1162" },
       { label: "Eisert, Cramer, Plenio, 'Colloquium: Area laws for the entanglement entropy', Rev. Mod. Phys. 82, 277 (2010)", url: "https://arxiv.org/abs/0808.3773" },
-      { label: "Anshu, Arad & Gosset, 2D frustration-free area law with local-gap hypotheses", url: "https://arxiv.org/abs/2103.02492" },
+      { label: "Anshu, Arad & Gosset, 'An area law for 2D frustration-free spin systems', STOC 2022 (local-gap hypotheses)", url: "https://arxiv.org/abs/2103.02492" },
     ] },
 
   { id: "B2", cat: "many-body", horizon: "sharp",
@@ -29,7 +29,7 @@ A distinct weaker target asks for trace-distance error at most $\epsilon$ on eve
     refs: [
       { label: "Cirac, Pérez-García, Schuch & Verstraete, 'Matrix product states and projected entangled pair states: Concepts, symmetries, and theorems', Rev. Mod. Phys. 93, 045003 (2021)", url: "https://arxiv.org/abs/2011.12127" },
       { label: "Landau, Vazirani, Vidick, 'A polynomial-time algorithm for the ground state of 1D gapped Hamiltonians', Nat. Phys. 11 (2015)", url: "https://arxiv.org/abs/1307.5143" },
-      { label: "Molnár et al., tensor-network approximation guarantees for Gibbs and ground states", url: "https://arxiv.org/abs/1406.2973" },
+      { label: "Molnár, Schuch, Verstraete & Cirac, 'Approximating Gibbs states of local Hamiltonians efficiently with PEPS', PRB 91, 045138 (2015)", url: "https://arxiv.org/abs/1406.2973" },
     ] },
 
   { id: "B3", cat: "many-body", horizon: "incremental",
@@ -43,7 +43,7 @@ The residual is to close the algorithmic gap in a named promise family, or exhib
     refs: [
       { label: "Schuch, Wolf, Verstraete, Cirac, 'Computational complexity of PEPS', PRL 98, 140506 (2007)", url: "https://arxiv.org/abs/quant-ph/0611050" },
       { label: "Cirac, Pérez-García, Schuch & Verstraete, 'Matrix product states and projected entangled pair states: Concepts, symmetries, and theorems', Rev. Mod. Phys. 93, 045003 (2021)", url: "https://arxiv.org/abs/2011.12127" },
-      { label: "Schwarz, Buerschaper & Eisert, local observables in PEPS and quasi-polynomial algorithms", url: "https://arxiv.org/abs/1606.06301" },
+      { label: "Schwarz, Buerschaper & Eisert, 'Approximating local observables on projected entangled pair states', PRA 95, 060102 (2017)", url: "https://arxiv.org/abs/1606.06301" },
     ] },
 
   { id: "B4", cat: "many-body", horizon: "incremental",
@@ -73,7 +73,7 @@ Non-Abelian subtarget: for a model with conserved noncommuting charges, derive t
     refs: [
       { label: "Linden, Popescu, Short, Winter, 'Quantum mechanical evolution towards thermal equilibrium', PRE 79, 061103 (2009)", url: "https://arxiv.org/abs/0812.2385" },
       { label: "Gogolin & Eisert, 'Equilibration, thermalisation, and the emergence of statistical mechanics in closed quantum systems', Rep. Prog. Phys. 79 (2016)", url: "https://arxiv.org/abs/1503.07538" },
-      { label: "Quantum thermodynamics roadmap, non-Abelian conservation-law questions (2025)", url: "https://arxiv.org/abs/2504.20145" },
+      { label: "Campbell et al., 'Roadmap on Quantum Thermodynamics', Quantum Sci. Technol. 11, 012501 (2026) — includes non-Abelian conservation-law questions", url: "https://arxiv.org/abs/2504.20145" },
     ] },
 
   { id: "B6", cat: "many-body", horizon: "programme",
@@ -124,7 +124,7 @@ Related structural progress (8 September 2026, v1): Kwan, Long and Haah claim th
       { label: "Chen, Gu, Liu & Wen, 'Symmetry protected topological orders and the group cohomology of their symmetry group', PRB 87, 155114 (2013)", url: "https://arxiv.org/abs/1106.4772" },
       { label: "Kitaev, 'Anyons in an exactly solved model and beyond', Ann. Phys. 321 (2006)", url: "https://arxiv.org/abs/cond-mat/0506438" },
       { label: "Senthil, 'Symmetry-protected topological phases of quantum matter', Annu. Rev. Condens. Matter Phys. 6 (2015)", url: "https://arxiv.org/abs/1405.4015" },
-      { label: "Schuch, Pérez-García & Cirac, classification with symmetry and ground-space distinctions", url: "https://arxiv.org/abs/1010.3732" },
+      { label: "Schuch, Pérez-García & Cirac, 'Classifying quantum phases using matrix product states and projected entangled pair states', PRB 84, 165139 (2011)", url: "https://arxiv.org/abs/1010.3732" },
     ] },
 
   { id: "B9", cat: "many-body", horizon: "programme",
@@ -137,6 +137,7 @@ What is known: For 2D bosonic topological order the working conjecture is that a
 Completeness and realizability are not proved in this generality. Modular $S,T$ matrices alone do not determine a UMTC (Mignard–Schauenburg); equality of those matrices is not equality of the full categorical input. The full chiral central charge matters, not only its value modulo eight, because invertible bosonic layers can change it without adding anyons. Symmetry enrichment, fermionic systems and 3D loop excitations are separate branches of B8 rather than hidden assumptions of this target.`,
     relations: [{ id: "B8", type: "parent" }, { id: "B14", type: "benchmark" }, { id: "B15", type: "benchmark" }],
     refs: [
+      { label: "Bruillard, Ng, Rowell & Wang, 'Rank-finiteness for modular categories', J. Amer. Math. Soc. 29, 857–881 (2016)", url: "https://doi.org/10.1090/jams/842" },
       { label: "Rowell, Stong, Wang, 'On classification of modular tensor categories', Comm. Math. Phys. 292 (2009)", url: "https://arxiv.org/abs/0712.1377" },
       { label: "Mignard & Schauenburg, 'Modular categories are not determined by their modular data', Lett. Math. Phys. 111 (2021)", url: "https://arxiv.org/abs/1708.02796" },
     ] },
@@ -146,13 +147,19 @@ Completeness and realizability are not proved in this generality. Modular $S,T$ 
     statement: r`For the nearest-neighbor repulsive square-lattice Hubbard model, determine thermodynamic ground-state order as a function of $U/t$ and hole doping. A concrete benchmark is whether long-range d-wave pair correlations survive at $U/t=8$ and doping $1/8$, allowing competition with stripes. Treat the finite-temperature pseudogap separately.`,
     context: r`The single-band Hubbard model $H=-t\sum_{\langle ij\rangle\sigma}c^\dagger_{i\sigma}c_{j\sigma}+U\sum_i n_{i\uparrow}n_{i\downarrow}$ on the square lattice is the minimal model of strongly correlated electrons and the prime candidate for capturing cuprate high-Tc superconductivity. Its zero-temperature phase diagram as a function of filling and $U/t$ is the target.
 
-What is known: Half-filled antiferromagnetic/Mott behavior has strong support, with rigorous results under particular lattice, coupling and limiting assumptions. Lieb's total-spin theorem is not a proof of long-range antiferromagnetic order at every coupling, and Nagaoka's one-hole infinite-repulsion theorem is a different limit. At finite doping, sign problems and finite-size/geometry effects complicate numerical extrapolation. Multi-method studies find closely competing stripe and pairing states in specific parameter regimes; these are not a rigorous full phase diagram.
+What is known: Half-filled antiferromagnetic/Mott behavior has strong support, with rigorous results under particular lattice, coupling and limiting assumptions. Lieb's total-spin theorem is not a proof of long-range antiferromagnetic order at every coupling, and Nagaoka's one-hole infinite-repulsion theorem is a different limit. At finite doping, sign problems and finite-size/geometry effects complicate numerical extrapolation. Multi-method studies find closely competing stripe and pairing states in specific parameter regimes; these are not a rigorous full phase diagram. In the regime containing this benchmark, Qin et al. (2020) combine constrained-path AFQMC and DMRG and find a non-superconducting ground state of the pure nearest-neighbour model at moderate-to-strong coupling near optimal hole doping. With an added next-nearest-neighbour hopping $t'$ — a different Hamiltonian — Xu et al. (2024) find superconductivity coexisting with partially filled stripes. Both are numerical evidence with extrapolation and method assumptions, not proofs.
 
 The full doped phase diagram — whether and where the model superconducts, the nature of the pseudogap, and the competition with stripe/charge order — is contested even numerically, and there is no rigorous determination. This is a grand programme, not a single conjecture. Related: B11.`,
     refs: [
       { label: "Qin, Schäfer, Andergassen, Corboz, Gull, 'The Hubbard model: a computational perspective', Annu. Rev. Condens. Matter Phys. 13 (2022)", url: "https://arxiv.org/abs/2104.00064" },
       { label: "Zheng et al. (Simons Collaboration), 'Stripe order in the underdoped region of the two-dimensional Hubbard model', Science 358 (2017)", url: "https://arxiv.org/abs/1701.00054" },
       { label: "Lieb, 'Two theorems on the Hubbard model', PRL 62, 1201 (1989)", url: "https://doi.org/10.1103/PhysRevLett.62.1201" },
+      { label: "Qin et al., 'Absence of superconductivity in the pure two-dimensional Hubbard model', PRX 10, 031016 (2020)", url: "https://arxiv.org/abs/1910.08931" },
+      { label: "Xu et al., 'Coexistence of superconductivity with partially filled stripes in the Hubbard model', Science 384, adh7691 (2024) — model with next-nearest-neighbour hopping", url: "https://arxiv.org/abs/2303.08376" },
+    ],
+    evidence: [
+      { kind: "numerical", summary: "AFQMC/DMRG study finds a non-superconducting ground state of the pure nearest-neighbour model at moderate-to-strong coupling near optimal doping; numerical extrapolation, not a proof.", url: "https://arxiv.org/abs/1910.08931" },
+      { kind: "numerical", summary: "With next-nearest-neighbour hopping, superconductivity coexisting with stripes is reported; this is a different Hamiltonian from the benchmark.", url: "https://arxiv.org/abs/2303.08376" },
     ] },
 
   { id: "B11", cat: "many-body", horizon: "incremental", status: "improved",
@@ -160,7 +167,7 @@ The full doped phase diagram — whether and where the model superconducts, the 
     statement: r`For a specified class of local Hamiltonians and allowed local or quasilocal basis changes, characterize obstructions to stoquasticity. Separate finite-input basis-curing complexity from a phase-invariant obstruction under uniformly local transformations.`,
     context: r`The sign problem is the exponential obstruction that blocks quantum Monte Carlo for many fermionic and frustrated systems. A Hamiltonian is 'stoquastic' (sign-problem-free in a given basis) if its off-diagonal matrix elements are nonpositive. The question is which systems are only 'basis-dependently' cursed — curable by a local basis change — versus intrinsically sign-problematic.
 
-What is known: Checking the signs of an explicitly listed matrix is easy; a succinct local-Hamiltonian representation and allowed transformations require separate complexity analysis. Hastings, Ringel–Kovrizhin, Smith–Golan–Ringel and Golan–Smith–Ringel establish topological sign-problem obstructions under particular locality, phase and spectral assumptions. Their criteria do not say that every nonzero chiral central charge forbids every conceivable sign-free representation. The result is not supplied by the unrelated digital-simulation paper previously attributed here.
+What is known: Checking the signs of an explicitly listed matrix is easy; a succinct local-Hamiltonian representation and allowed transformations require separate complexity analysis. Hastings, Ringel–Kovrizhin, Smith–Golan–Ringel and Golan–Smith–Ringel establish topological sign-problem obstructions under particular locality, phase and spectral assumptions. Their criteria do not say that every nonzero chiral central charge forbids every conceivable sign-free representation.
 
 New progress (2026): Karakashian and Hen separated stoquastizability from vanishing geometric phase (VGP). They exhibit VGP 3-local Hamiltonians which are formally hard to stoquastize yet retain StoqMA-type complexity, give polynomial-time recognition in several natural settings, and prove general VGP recognition PSPACE-complete for geometrically local Hamiltonians. The result suggests that the tractable/sign-free boundary is not captured by the existence of a stoquastizing basis alone; it does not provide the sought necessary-and-sufficient quasilocal basis-change criterion.
 
@@ -168,8 +175,8 @@ A general characterization — necessary and sufficient conditions for a local H
     evidence: [{ kind: "preprint", summary: "VGP/stoquastizability and recognition-complexity results concern specified representations, not a complete phase-level sign criterion.", url: "https://arxiv.org/abs/2607.18596" }],
     refs: [
       { label: "Hastings, 'How quantum are non-negative wavefunctions?', J. Math. Phys. 57, 015210 (2016)", url: "https://arxiv.org/abs/1506.08883" },
-      { label: "Smith, Golan & Ringel, intrinsic sign problems in topological quantum matter", url: "https://arxiv.org/abs/2005.05343" },
-      { label: "Golan, Smith & Ringel, intrinsic sign problems in chiral topological matter", url: "https://arxiv.org/abs/2005.05566" },
+      { label: "Smith, Golan & Ringel, 'Intrinsic sign problems in topological quantum field theories', Phys. Rev. Research 2, 033515 (2020)", url: "https://arxiv.org/abs/2005.05343" },
+      { label: "Golan, Smith & Ringel, 'Intrinsic sign problem in fermionic and bosonic chiral topological matter', Phys. Rev. Research 2, 043032 (2020)", url: "https://arxiv.org/abs/2005.05566" },
       { label: "Karakashian & Hen, 'Dismantling the Stoquastic Dichotomy' (2026 preprint)", url: "https://arxiv.org/abs/2607.18596" },
     ] },
 
@@ -185,7 +192,7 @@ For $\alpha\le d$, whether interactions are Kac-normalized changes the question.
       { label: "Chen, Lucas, Yin, 'Speed limits and locality in many-body quantum dynamics', Rep. Prog. Phys. 86 (2023)", url: "https://arxiv.org/abs/2303.07386" },
       { label: "Tran et al., 'Hierarchy of linear light cones with long-range interactions', PRX 10, 031009 (2020)", url: "https://arxiv.org/abs/2001.11509" },
       { label: "Kuwahara & Saito, 'Strictly linear light cones in long-range interacting systems of arbitrary dimensions', PRX 10, 031010 (2020)", url: "https://arxiv.org/abs/1910.14477" },
-      { label: "Tran et al., optimal long-range propagation exponents, PRL 127, 160401 (2021)", url: "https://arxiv.org/abs/2103.15828" },
+      { label: "Tran et al., 'Lieb-Robinson light cone for power-law interactions', PRL 127, 160401 (2021)", url: "https://arxiv.org/abs/2103.15828" },
     ] },
 
   { id: "B13", cat: "many-body", horizon: "sharp",
@@ -196,7 +203,7 @@ For $\alpha\le d$, whether interactions are Kac-normalized changes the question.
 Established baseline: rigorous energy asymptotics and condensation theorems in other scaling regimes provide substantial progress but do not imply a macroscopic one-body eigenvalue in this homogeneous fixed-density limit. Solovej's 2025 account explicitly separates the energy expansion from this condensation question.
 
 Positive-temperature condensation and quantitative depletion are further targets, not required for the zero-temperature existence benchmark.`,
-    refs: [{ label: "Solovej, original open questions on the dilute Bose gas (2025), sections 5 and 8", url: "https://comptes-rendus.academie-sciences.fr/physique/item/10.5802/crphys.247.pdf" }],
+    refs: [{ label: "Solovej, 'Mathematical physics of dilute Bose gases', C. R. Physique 26, 339–348 (2025), sections 5 and 8", url: "https://comptes-rendus.academie-sciences.fr/physique/item/10.5802/crphys.247.pdf" }],
   },
 
   { id: "B14", cat: "many-body", horizon: "sharp",
@@ -210,19 +217,29 @@ Preprint progress (2026): Schraven and Warzel study thin-cylinder Laughlin corre
     relations: [{ id: "M6", type: "related" }, { id: "B9", type: "parent" }],
     evidence: [{ kind: "preprint", summary: "Thin-cylinder correlation decay and an entanglement-spectrum gap; not a proof of the full bulk energy gap.", url: "https://arxiv.org/abs/2601.12165" }],
     refs: [
-      { label: "Warzel & Young, spectral gap for a thin-torus truncated model", url: "https://arxiv.org/abs/2112.13764" },
-      { label: "Young, bulk-gap methods and open questions", url: "https://arxiv.org/abs/2308.01405" },
-      { label: "Schraven & Warzel, thin-cylinder Laughlin correlations and entanglement spectrum (2026 preprint)", url: "https://arxiv.org/abs/2601.12165" },
+      { label: "Warzel & Young, 'The spectral gap of a fractional quantum Hall system on a thin torus', J. Math. Phys. 63, 041901 (2022)", url: "https://arxiv.org/abs/2112.13764" },
+      { label: "Young, 'On a bulk gap strategy for quantum lattice models', Rev. Math. Phys. 36, 2460007 (2024)", url: "https://arxiv.org/abs/2308.01405" },
+      { label: "Schraven & Warzel, 'Fractional Quantum Hall States: Infinite Matrix Product Representation and its Implications' (2026 preprint) — thin-cylinder correlations and entanglement-spectrum gap", url: "https://arxiv.org/abs/2601.12165" },
     ] },
 
   { id: "B15", cat: "many-body", horizon: "incremental",
     title: "Ground-state phase of the kagome Heisenberg model",
     statement: r`Determine the thermodynamic ground-state phase and excitation gap of $H=\sum_{\langle ij\rangle}\vec S_i\cdot\vec S_j$ for spin $1/2$ on the uniform kagome lattice, with nearest-neighbor antiferromagnetic coupling one and no additional interactions.`,
-    context: r`This concrete frustrated quantum magnet is a canonical spin-liquid benchmark. Competing interpretations include a gapped $\mathbb Z_2$ spin liquid and a gapless Dirac spin liquid; the 2026 primary numerical study cited below describes the continuing dispute.
+    context: r`This concrete frustrated quantum magnet is a canonical spin-liquid benchmark. Competing interpretations include a gapped $\mathbb Z_2$ spin liquid and a gapless Dirac spin liquid. DMRG studies on cylinders by Yan–Huse–White and Depenbrock–McCulloch–Schollwöck reported a spin liquid with a finite spin gap and topological entanglement consistent with $\mathbb Z_2$ order. Later DMRG with flux insertion (He–Zaletel–Oshikawa–Pollmann) and tensor-network (PESS) calculations (Liao et al.) instead report signatures of a gapless Dirac spin liquid. A 2026 DMRG study (Jiang et al.) maps the robustness of the spin-liquid phase to next-nearest-neighbour and Dzyaloshinskii–Moriya perturbations relevant to herbertsmithite and Zn-barlowite; it concerns those extended Hamiltonians and does not settle the gapped-versus-gapless question for the pure model.
 
 The target requires controlled thermodynamic extrapolation, certified numerical bounds or a proof. Finite-cylinder spectra, variational energies and finite bond dimensions are evidence with limitations, not an exact phase determination. Magnetic materials with further-neighbor or anisotropic interactions, square-kagome models and breathing-kagome variants are different Hamiltonians.`,
     relations: [{ id: "B8", type: "parent" }, { id: "B9", type: "related" }],
-    evidence: [{ kind: "numerical", summary: "A published 2026 study examines competing kagome spin-liquid descriptions; the full thermodynamic phase remains unresolved.", url: "https://www.nature.com/articles/s41524-026-01959-5" }],
-    refs: [{ label: "Jiang et al., kagome spin-liquid study, npj Computational Materials (2026)", url: "https://www.nature.com/articles/s41524-026-01959-5" }],
+    evidence: [
+      { kind: "numerical", summary: "Cylinder DMRG reports a spin liquid with a finite spin gap, consistent with a gapped Z2 phase; finite-circumference extrapolation, not a proof.", url: "https://arxiv.org/abs/1011.6114" },
+      { kind: "numerical", summary: "DMRG flux insertion reports a much smaller spin gap and Dirac-cone signatures, favouring a gapless Dirac spin liquid; the thermodynamic phase remains unresolved.", url: "https://arxiv.org/abs/1611.06238" },
+      { kind: "numerical", summary: "A 2026 DMRG study maps the spin-liquid phase under added J2 and Dzyaloshinskii–Moriya couplings; these extended Hamiltonians differ from the pure nearest-neighbour target.", url: "https://www.nature.com/articles/s41524-026-01959-5" },
+    ],
+    refs: [
+      { label: "Yan, Huse & White, 'Spin-liquid ground state of the S = 1/2 kagome Heisenberg antiferromagnet', Science 332, 1173 (2011)", url: "https://arxiv.org/abs/1011.6114" },
+      { label: "Depenbrock, McCulloch & Schollwöck, 'Nature of the spin-liquid ground state of the S = 1/2 Heisenberg model on the kagome lattice', PRL 109, 067201 (2012)", url: "https://arxiv.org/abs/1205.4858" },
+      { label: "He, Zaletel, Oshikawa & Pollmann, 'Signatures of Dirac cones in a DMRG study of the kagome Heisenberg model', PRX 7, 031020 (2017)", url: "https://arxiv.org/abs/1611.06238" },
+      { label: "Liao et al., 'Gapless spin-liquid ground state in the S = 1/2 kagome antiferromagnet', PRL 118, 137202 (2017)", url: "https://arxiv.org/abs/1610.04727" },
+      { label: "Jiang et al., 'Quantifying the phase diagram and Hamiltonian of S = 1/2 kagome antiferromagnets: bridging theory and experiment', npj Comput. Mater. 12, 91 (2026) — extended J2/DM Hamiltonians", url: "https://www.nature.com/articles/s41524-026-01959-5" },
+    ],
   },
 ];

@@ -9,6 +9,7 @@ import {
   REVIEW,
   LITERATURE_UPDATE,
   LITERATURE_UPDATES,
+  CORRECTION_LOG,
   EVIDENCE_KINDS,
   WATCHLIST,
   HORIZONS,
@@ -534,6 +535,12 @@ function ReviewView() {
           <p>Earlier literature updates: {LITERATURE_UPDATES.slice(1).map((update, i) => <span key={update.date}>
             {i > 0 ? " · " : ""}<a href={update.reportUrl} target="_blank" rel="noreferrer">{update.label}</a>
           </span>)}</p>
+          <p className="intro">Source and consistency corrections · {CORRECTION_LOG.label}</p>
+          <p>A follow-up audit of every cited source corrected mislabelled or mislinked references,
+            a missing AI-use disclosure, stale version pointers, reader-facing editing notes, status and
+            horizon inconsistencies, and added missing baseline results. Problem statements, IDs and
+            review dates are unchanged.
+            {" "}<a href={CORRECTION_LOG.reportUrl} target="_blank" rel="noreferrer">Read the correction log →</a></p>
           <p className="intro">Full catalogue review · {REVIEW.label}</p>
           <p>All {REVIEW.reviewed} original entries were reassessed. The review recommended retaining 27, reframing 74, consolidating nine and moving one broad methods proposal to background. Twelve missing or underexposed questions have now been added or promoted.</p>
           <p>There are currently {PROBLEMS.length} active entries across {CATEGORIES.length} areas. Stable IDs are never renumbered: the gaps in a category’s numbering reflect consolidation, not missing pages.</p>
@@ -594,7 +601,7 @@ function Footer() {
             <a href="https://quantumlectures.org/en">Quantum Lectures</a>
             <a className="footer-resource-secondary" href="https://learnthermo.org/">LearnThermo</a>
           </span>
-          <span className="astra-credit">powered by Astra</span>
+          <span className="astra-credit">powered by Astra &amp; Opus 5.5</span>
         </div>
       </div>
     </footer>

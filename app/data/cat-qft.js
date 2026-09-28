@@ -54,7 +54,7 @@ What is known: Perturbative renormalizability and anomaly cancellation are estab
 
 This historical umbrella is merged into QF1, QF3 and QF5. Their results must ultimately be compatible with the Higgs/Yukawa interactions and full particle content; the merge does not claim the Standard Model has been constructed or must possess a nontrivial continuum limit. Related: QF1, QF3, QF5.`,
     refs: [
-      { label: "Montvay & Münster, 'Quantum Fields on a Lattice' (CUP, 1994; publisher preview)", url: "https://assets.cambridge.org/97805215/99177/frontmatter/9780521599177_frontmatter.pdf" },
+      { label: "Montvay & Münster, 'Quantum Fields on a Lattice' (Cambridge University Press, 1994)", url: "https://doi.org/10.1017/CBO9780511470783" },
     ] },
 
   { id: "QF5", cat: "qft", horizon: "programme",
@@ -105,7 +105,7 @@ The frontier is model-specific control: relate the algebraic asymptotic data to 
 
 Preprint progress (5 September 2026, v1): Semenoff and Waterfield develop a gauge- and Lorentz-invariant perturbative calculus for Wilson-line-dressed scalar QED with a Stueckelberg photon-mass infrared regulator. They obtain dressing-dependent cloud orthogonality, superselection sectors and infraparticle branch-cut scaling, with one-loop-exact exponents under their mass-gapped-matter assumptions. These are regulated perturbative results for scalar QED, not a nonperturbative construction of QED or an asymptotic-completeness proof for general charged scattering.`,
     refs: [
-      { label: "Semenoff & Waterfield, 'The Wilson-line-dressed charged sector of scalar QED: superselection and the infraparticle' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.06224v1" },
+      { label: "Semenoff & Waterfield, 'The Wilson-line-dressed charged sector of scalar QED: superselection and the infraparticle' (2026 preprint, v1 reviewed; v2 of 12 September 2026 reports typo fixes and clarifying remarks)", url: "https://arxiv.org/abs/2609.06224v1" },
       { label: "Buchholz, 'Gauss' law and the infraparticle problem', Phys. Lett. B174 (1986)", url: "https://doi.org/10.1016/0370-2693(86)91110-X" },
       { label: "Strominger, 'Lectures on the Infrared Structure of Gravity and Gauge Theory' (Princeton, 2018)", url: "https://arxiv.org/abs/1703.05448" },
       { label: "Prabhu & Satishchandran, 'Infrared finite scattering theory: Amplitudes and soft theorems', PRD 110, 085022 (2024)", url: "https://journals.aps.org/prd/abstract/10.1103/PhysRevD.110.085022" },

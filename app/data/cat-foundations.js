@@ -28,9 +28,9 @@ What is known: Gleason's theorem establishes Born probabilities for noncontextua
 Historical preprint update (August 2026): Ustun claims local uniqueness of the squared-modulus rule for complex-weighted morphisms under nonnegativity, polynomial restrictions, phase invariance, additivity and normalization. This supplies another explicit assumption set, not an assumption-free derivation; the audit verified the abstract and metadata, not the proof. Its broader compositional significance requires further assessment.
 
 This entry is archived as merged. Compare axiom independence and composition under F3, and Everettian decision/probability questions under F1. Neither an undefined minimum number of assumptions nor community consensus supplies a sharp solved/open criterion.`,
-    evidence: [{ kind: "preprint", summary: "Local squared-modulus uniqueness under explicit complex-weight, polynomiality and additivity assumptions; abstract/metadata verified, not an independent proof audit.", url: "https://arxiv.org/abs/2608.05197", date: "2026-08-23", version: "v2" }],
+    evidence: [{ kind: "preprint", summary: "Local squared-modulus uniqueness under explicit complex-weight, polynomiality and additivity assumptions; abstract/metadata verified, not an independent proof audit.", url: "https://arxiv.org/abs/2608.05197v2", date: "2026-08-23", version: "v2" }],
     refs: [
-      { label: "Gleason, 'Measures on the closed subspaces of a Hilbert space', J. Math. Mech. 6 (1957)", url: "https://iumj.org/article/1128/cite/" },
+      { label: "Gleason, 'Measures on the closed subspaces of a Hilbert space', J. Math. Mech. 6, 885–893 (1957)", url: "https://doi.org/10.1512/iumj.1957.6.56050" },
       { label: "Wallace, 'The Emergent Multiverse' (OUP, 2012)", url: "https://academic.oup.com/book/25622" },
       { label: "Masanes, Galley & Müller, 'The measurement postulates of quantum mechanics are operationally redundant', Nat. Commun. 10, 1361 (2019)", url: "https://arxiv.org/abs/1811.11060" },
       { label: "Ustun, 'Local Uniqueness of the Born Rule on Categories with Complex-Weighted Morphisms' (2026)", url: "https://arxiv.org/abs/2608.05197" },
@@ -52,7 +52,7 @@ Preprint progress (9 September 2026, v1): Gachechiladze and Miklin derive the Ts
     evidence: [
       { kind: "preprint", summary: "Derives the TLM correlator boundary and constraints beyond macroscopic locality; the full power for complete behaviors and almost-quantum correlations remains unresolved.", url: "https://arxiv.org/abs/2609.10508v1", date: "2026-09-09", version: "v1" },
       { kind: "published", summary: "A real-number formulation recovers multipartite predictions by modifying the composite-system postulate; this does not refute network no-go results with their original assumptions.", url: "https://journals.aps.org/prl/abstract/10.1103/4k13-sdjh", date: "2026-06-18" },
-      { kind: "preprint", summary: "Operational source independence and product-state independence are distinguished in real simulations of quantum protocols.", url: "https://arxiv.org/abs/2603.19208", date: "2026-03-19", version: "v1" },
+      { kind: "preprint", summary: "Operational source independence and product-state independence are distinguished in real simulations of quantum protocols.", url: "https://arxiv.org/abs/2603.19208v1", date: "2026-03-19", version: "v1" },
     ],
     refs: [
       { label: "Gachechiladze & Miklin, 'Information Causality Characterizes the Set of Quantum Correlations in the Simplest Bell Scenario' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.10508v1" },
@@ -73,7 +73,7 @@ What is known: Recent no-go theorems have sharpened the puzzle dramatically. Fra
 Positive frameworks also exist. Vilasini–Woods formulate extended Wigner's-friend scenarios as quantum circuits, with explicit conditioning on channels and rules for logically and causally consistent agent predictions without absolute measurement events. This preprint framework is not a consensus interpretation or an unrestricted resolution of F1, but invalidates the claim that only no-go theorems are available.
 
 The frontier is experimental and assumption-specific: characterize what records remain accessible when a laboratory is coherently controlled, which agent inferences can be jointly checked, and how noise or imperfect reversibility changes local-friendliness tests. Distinguish actual observation protocols from counterfactual inferences about erased records. Related: F1, F5.`,
-    evidence: [{ kind: "preprint", summary: "A constructive circuit framework permits logically and causally consistent agent reasoning without absolute events; interpretation-independent experimental discrimination is a separate task.", url: "https://arxiv.org/abs/2209.09281", date: "2024-11-11", version: "v2" }],
+    evidence: [{ kind: "preprint", summary: "A constructive circuit framework permits logically and causally consistent agent reasoning without absolute events; interpretation-independent experimental discrimination is a separate task.", url: "https://arxiv.org/abs/2209.09281v2", date: "2024-11-11", version: "v2" }],
     refs: [
       { label: "Frauchiger & Renner, 'Quantum theory cannot consistently describe the use of itself', Nat. Commun. 9, 3711 (2018)", url: "https://arxiv.org/abs/1604.07422" },
       { label: "Bong, Utreras-Alarcón, Ghafari, Liang, Tischler, Cavalcanti, Pryde, Wiseman, 'A strong no-go theorem on the Wigner's friend paradox', Nat. Phys. 16 (2020)", url: "https://arxiv.org/abs/1907.05607" },
@@ -139,10 +139,10 @@ A published earlier baseline, Höhn–Smith–Lock's trinity of relational quant
 The frontier is quantitative: fix a group (for example time translations or spatial rotations), reference-state energy/size, admissible couplings and operational error; derive composition and repeated-use bounds. For relativistic constraints, state the constraint algebra and clock–system interaction before seeking extensions. Existing compositional constructions are the baseline, not an absent formalism. Related: F7, O7.`,
     evidence: [
       { kind: "published", summary: "Equivalence of perspective-neutral, algebraic and effective frame descriptions in the paper's ideal-frame and constraint setting.", url: "https://doi.org/10.22331/q-2026-08-20-2196", date: "2026-08-20" },
-      { kind: "preprint", summary: "A compositional framework specifies which subsystems and states can consistently be appended; not a universal finite-resource error theorem.", url: "https://arxiv.org/abs/2608.23698", date: "2026-08-24", version: "v1" },
-      { kind: "preprint", summary: "A Hilbert-module formalism for classical and quantum reference frames supplies additional algebraic structure.", url: "https://arxiv.org/abs/2609.01894", date: "2026-09-01", version: "v1" },
+      { kind: "preprint", summary: "A compositional framework specifies which subsystems and states can consistently be appended; not a universal finite-resource error theorem.", url: "https://arxiv.org/abs/2608.23698v1", date: "2026-08-24", version: "v1" },
+      { kind: "preprint", summary: "A Hilbert-module formalism for classical and quantum reference frames supplies additional algebraic structure.", url: "https://arxiv.org/abs/2609.01894v1", date: "2026-09-01", version: "v1" },
     ],
-    provenance: [{ summary: "The previous update recorded De Vuyst, Höhn and Tsobanjan's statement that no AI tools were used. This declaration was not independently rechecked in the audit and does not determine the mathematical status.", url: "https://doi.org/10.22331/q-2026-08-20-2196" }],
+    provenance: [{ summary: "De Vuyst, Höhn and Tsobanjan's contribution statement, in the arXiv version published in Quantum (v4), states that no AI tools were used in the paper's creation. This is an author statement and does not determine the mathematical status.", url: "https://arxiv.org/abs/2507.14131v4", version: "v4" }],
     refs: [
       { label: "Giacomini, Castro-Ruiz, Brukner, 'Quantum mechanics and the covariance of physical laws in quantum reference frames', Nat. Commun. 10, 494 (2019)", url: "https://arxiv.org/abs/1712.07207" },
       { label: "Vanrietvelde, Höhn, Giacomini, Castro-Ruiz, 'A change of perspective: switching quantum reference frames via a perspective-neutral framework', Quantum 4, 225 (2020)", url: "https://arxiv.org/abs/1809.00556" },
@@ -162,7 +162,7 @@ What is known: Causal witnesses detect nonseparability, and implementations of t
 
 Preprint theorem (May 2026): Salzger–Vilasini show that, in a classical acyclic background spacetime and the causal-box framework, processes satisfying fine-grained Acting Once and Local Order closed-laboratory conditions are behaviorally equivalent to quantum-controlled-order circuits (QC-QCs). This is a characterization under explicit assumptions, not a no-go theorem for all indefinite causal order or a characterization of quantum gravity.
 
-Separate accepted-paper progress: Mothe–Abbott–Branciard classify non-influenceable causal order and corresponding controlled-order circuits. APS lists their paper as accepted in PRX Quantum on 20 August 2026 (preprint July 2025), not published in Physical Review Research.
+Separate accepted-paper progress: Mothe–Abbott–Branciard classify non-influenceable causal order and corresponding controlled-order circuits. APS lists their paper as accepted in PRX Quantum on 20 August 2026 (preprint July 2025).
 
 Remaining questions require a specified change of model: relax a closed-lab condition, allow different localization or continuous relativistic implementations, or specify a nonclassical background. Characterize the new achievable processes and observable signatures; do not keep the characterized closed-lab regime open by omitting its assumptions. Related: F10.
 
@@ -170,7 +170,7 @@ Preprint progress (16–17 September 2026, v1): Wei–Pang and Wechs–Abbott–
     evidence: [
       { kind: "preprint", summary: "Claimed operational equivalence of extensible causal separability and QC-CC, including global past/future systems.", url: "https://arxiv.org/abs/2609.18559v1", date: "2026-09-16", version: "v1" },
       { kind: "preprint", summary: "Concurrent characterization using coherent teleportation and the ancilla-stable multipartite causal-separability definition; not a theorem for all nonseparable processes.", url: "https://arxiv.org/abs/2609.20774v1", date: "2026-09-17", version: "v1" },
-      { kind: "preprint", summary: "QC-QC characterization in classical acyclic spacetime with causal boxes and fine-grained Acting Once/Local Order closed-lab conditions; not an unrestricted quantum-gravity or ICO no-go result.", url: "https://arxiv.org/abs/2605.08351", date: "2026-05-08", version: "v1" }],
+      { kind: "preprint", summary: "QC-QC characterization in classical acyclic spacetime with causal boxes and fine-grained Acting Once/Local Order closed-lab conditions; not an unrestricted quantum-gravity or ICO no-go result.", url: "https://arxiv.org/abs/2605.08351v1", date: "2026-05-08", version: "v1" }],
     refs: [
       { label: "Wei & Pang, 'Extensibly Causally Separable Processes Admit Realizations as Quantum Circuits with Classical Control of Causal Order' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.18559v1" },
       { label: "Wechs, Abbott & Branciard, 'All causally separable quantum processes are quantum circuits with classical control of causal order' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.20774v1" },

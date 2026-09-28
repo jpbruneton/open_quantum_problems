@@ -47,9 +47,9 @@ The sharp target remains whether four or more MUBs exist, and ultimately the exa
 
 Writing $d=\prod_i p_i^{k_i}$ gives the tensor-product lower bound $M(d)\geq1+\min_i p_i^{k_i}$, while $M(d)\leq d+1$. Links with finite geometry motivate conjectures, but complete complex MUBs are not known to be equivalent to finite affine/projective planes. Classical complete mutually orthogonal Latin squares have their own established relation to planes. In particular, projective planes of order 10 were proved not to exist by Lam–Thiel–Swiercz in 1989; that result does not by itself exclude complete MUBs in dimension 10.
 
-The 2026-published composite-dimension review provides a current baseline. Numerical evidence (August 2026): Wu–Liu–Wu report standard tensor-product constructions in 64 non-prime-power dimensions up to 100 and extensive extension searches in such dimensions up to 30. No extension was found. This tests chosen search procedures and starting families, not all possible MUBs, so it does not resolve any universal nonexistence claim.`,
+McNulty and Weigert's composite-dimension review (Quantum, 2026) provides a current baseline. Numerical evidence (August 2026): Wu–Liu–Wu report standard tensor-product constructions in 64 non-prime-power dimensions up to 100 and extensive extension searches in such dimensions up to 30. No extension was found. This tests chosen search procedures and starting families, not all possible MUBs, so it does not resolve any universal nonexistence claim.`,
     refs: [
-      {"label":"'Mutually Unbiased Bases in Composite Dimensions — A Review' (published 2026)","url":"https://arxiv.org/abs/2410.23997"},
+      {"label":"McNulty & Weigert, 'Mutually Unbiased Bases in Composite Dimensions — A Review', Quantum 10, 2051 (2026)","url":"https://arxiv.org/abs/2410.23997"},
       {"label":"Saniga, Planat & Rosu, 'Mutually unbiased bases and finite projective planes' (proposed connection, 2004)","url":"https://arxiv.org/abs/math-ph/0403057"},
       {"label":"Lam, Thiel & Swiercz, 'The non-existence of finite projective planes of order 10', Canadian Journal of Mathematics (1989)","url":"https://doi.org/10.4153/CJM-1989-049-4"},
       { label: "Boykin, Sitharam, Tiep, Wocjan, 'Mutually unbiased bases and orthogonal decompositions of Lie algebras', QIC 7 (2007)", url: "https://arxiv.org/abs/quant-ph/0506089" },
@@ -147,9 +147,9 @@ Preprint progress (20 September 2026, v1): Chen and Zhao claim a single synchron
     refs: [
       { label: "Chen & Zhao, 'A non-robust quantum correlation self-test' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.25117v1" },
       { label: "Chen, 'A Separation between Full-Rank PVM and Assumption-free Self-Testing' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.10013v1" },
-      {"label":"'All pure multipartite entangled states of qubits can be self-tested', Nature Communications (24 March 2026)","url":"https://www.nature.com/articles/s41467-026-70829-x"},
-      {"label":"Coladangelo, Goh & Scarani, all pure bipartite states and the mixed-state obstruction, Nature Communications (2017)","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC5458560/"},
-      {"label":"Chen, Mančinska & Volčič, self-testing all real projective measurements, Nature Physics (2024)","url":"https://arxiv.org/abs/2302.00974"},
+      {"label":"Balanzó-Juandó, Coladangelo, Augusiak, Acín & Šupić, 'All pure multipartite entangled states of qubits can be self-tested', Nature Communications 17, 4463 (24 March 2026)","url":"https://www.nature.com/articles/s41467-026-70829-x"},
+      {"label":"Coladangelo, Goh & Scarani, 'All pure bipartite entangled states can be self-tested', Nature Communications 8, 15485 (2017)","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC5458560/"},
+      {"label":"Chen, Mančinska & Volčič, 'All real projective measurements can be self-tested', Nature Physics (2024)","url":"https://arxiv.org/abs/2302.00974"},
       { label: "Šupić & Bowles, 'Self-testing of quantum systems: a review', Quantum 4, 337 (2020)", url: "https://arxiv.org/abs/1904.10042" },
     ] },
 
@@ -168,7 +168,7 @@ The incremental target is matching upper/lower robustness curves for named tests
     refs: [
       {"label":"Kaniewski, 'Analytic and nearly optimal self-testing bounds for the Clauser-Horne-Shimony-Holt and Mermin inequalities', PRL 117, 070402 (2016)","url":"https://arxiv.org/abs/1604.08176"},
       { label: "Yang, Vértesi, Bancal, Scarani, Navascués, 'Robust and versatile black-box certification of quantum devices', PRL 113, 040401 (2014)", url: "https://arxiv.org/abs/1406.7127" },
-      { label: "Šupić & Bowles, Quantum 4, 337 (2020)", url: "https://arxiv.org/abs/1904.10042" },
+      { label: "Šupić & Bowles, 'Self-testing of quantum systems: a review', Quantum 4, 337 (2020)", url: "https://arxiv.org/abs/1904.10042" },
       { label: "Cao et al., 'Size-Independent Robustness in Multipartite Bell Self-Testing' (2026 preprint)", url: "https://arxiv.org/abs/2608.30851" },
     ] },
 
@@ -217,12 +217,16 @@ Necessity in one model is not sufficiency in another, and contextuality of a con
 
 Acín–Gisin–Toner proved that the projective-measurement locality threshold is $v_{\rm proj}=1/K_G(3)$, with $K_G(3)$ the order-three Grothendieck constant. Thus exact determination is a precise mathematical problem, not just a search for another Bell inequality. The threshold for all POVMs must be kept separate.
 
-Published progress (February 2026): Designolle–Vértesi–Pokutta improve certified bounds for finite-order Grothendieck constants and clearly distinguish exact certificates from heuristic candidates. The exact order-three value remains unknown. No numerical interval is displayed here without a separately maintained certificate ledger.
+Certified bounds: Designolle et al. (2023) gave analytical local models and Bell inequalities yielding $1.4367\le K_G(3)\le1.4546$. Designolle–Vértesi–Pokutta (published February 2026) certify the slightly larger lower bound $K_G(3)\ge1.43670$, which they state lowers the upper bound on $v_{\rm proj}$ from about $0.69606$ to $0.69604$; they distinguish these certificates from heuristic candidates. Hence approximately $0.6874\le v_{\rm proj}\le0.69604$. The exact order-three value remains unknown.
 
 The operational setting is one copy, ordinary classical-input Bell tests and no postselection or auxiliary entanglement. Filtering, collective measurements on several copies and network activation change the question; none should be silently included in this threshold.`,
-    evidence: [{ kind: "published", summary: "New certified finite-order Grothendieck bounds; exact order-three value remains unknown, and heuristic candidates are distinguished from certificates.", url: "https://arxiv.org/abs/2409.03739", date: "2026-02-02", version: "v3" }],
+    evidence: [
+      { kind: "published", summary: "New certified finite-order Grothendieck bounds, including K_G(3) ≥ 1.43670; exact order-three value remains unknown, and heuristic candidates are distinguished from certificates.", url: "https://arxiv.org/abs/2409.03739v3", date: "2026-02-02", version: "v3" },
+      { kind: "published", summary: "Analytical local models and Bell inequalities giving 1.4367 ≤ K_G(3) ≤ 1.4546 for the projective-measurement Werner threshold.", url: "https://doi.org/10.1103/PhysRevResearch.5.043059" },
+    ],
     refs: [
       { label: "Acín, Gisin & Toner, 'Grothendieck's constant and local models for noisy entangled quantum states', PRA 73, 062105 (2006)", url: "https://arxiv.org/abs/quant-ph/0606138" },
+      { label: "Designolle, Iommazzo, Besançon, Knebel, Gelß & Pokutta, 'Improved local models and new Bell inequalities via Frank-Wolfe algorithms', Phys. Rev. Research 5, 043059 (2023)", url: "https://arxiv.org/abs/2302.04721" },
       { label: "Designolle, Vértesi & Pokutta, 'Better bounds on finite-order Grothendieck constants', PRA 113, 022401 (2026)", url: "https://arxiv.org/abs/2409.03739" },
     ] },
 ];

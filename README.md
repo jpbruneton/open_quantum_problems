@@ -14,6 +14,14 @@ https://openquantumproblems.com/
 
 ### Timeline
 
+**28 September 2026 — source and consistency corrections**
+
+- Audited every reference, evidence and provenance record against arXiv, Crossref and the cited manuscripts. See the [correction log](docs/reviews/2026-09-28-correction-log.md) for each change and its verification.
+- Fixed a mislinked reference (E3, Gurvits), incorrect titles (A3, A7), a misdescribed source (M2/M12), a missing attribution (B9), an off-target sole source (B15) and a broken DOI (U5).
+- Recorded a missing generative-AI disclosure (E3) and replaced unverified provenance notes with the authors' own statements (O9, F8). Refreshed stale version pointers (A17, QF7) and pinned versioned evidence URLs.
+- Added 27 baseline references and 9 evidence records. These include high-temperature Gibbs-state separability, full support of semiclassical measures, the frustration-free spin-1/2 gap classification, pure-model Hubbard and kagome numerics, the C₇ and depolarizing-threshold ladders, and certified K_G(3) bounds. E6 and C2 are now incremental.
+- Problem statements, IDs, statuses and review dates are unchanged. Counts remain 113 active entries and ten archive/background pages.
+
 **28 September 2026 — targeted literature update**
 
 - Updated sixteen entries using eighteen versioned arXiv manuscripts and a newly published Quantum article. See the [dated literature report](docs/reviews/2026-09-28-literature-update.md) for sources, submission/revision dates and scope.
@@ -83,7 +91,7 @@ Do not renumber existing IDs or reuse an archived ID for a new question.
 - `statement` defines the model, assumptions, quantifiers and success criterion; `context` separates the established baseline from the open residual.
 - `horizon` distinguishes `sharp`, `incremental`, `programme` and `conceptual` entries. A programme is not a single conjecture.
 - `status: "improved"` means relevant progress is recorded, including a claimed resolution awaiting assessment; it does not certify every cited claim.
-- `reviewedAt` records the most recent literature update for that entry. `LITERATURE_UPDATES` stores targeted updates newest first; `LITERATURE_UPDATE` is the latest record. These do not change the baseline `REVIEW` date or untouched entry dates.
+- `reviewedAt` records the most recent literature update for that entry. `LITERATURE_UPDATES` stores targeted updates newest first; `LITERATURE_UPDATE` is the latest record. These do not change the baseline `REVIEW` date or untouched entry dates. `CORRECTION_LOG` links the latest source and consistency correction log; corrections do not change review dates.
 - `evidence` contains `{ kind, summary, url, date?, version? }`. Supported kinds are `published`, `preprint`, `numerical`, `conjecture` and `withdrawn`. Include scope, not just an optimistic headline.
 - `provenance` contains `{ summary, url, version? }` for attributed disclosures. No disclosure is not evidence of no AI use, and AI use is not evidence for or against mathematical correctness.
 - `relations` contains `{ id, type }` with `parent`, `benchmark`, `reduction` or `related`.

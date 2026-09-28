@@ -6,18 +6,20 @@ export const SPECTRAL = [
     statement: r`For the nonrelativistic Coulomb Hamiltonian of fermionic spin-1/2 electrons and a fixed point nucleus of charge $Z$, prove that the maximal number of bound electrons satisfies $N_c(Z)\le Z+C$, with $C$ independent of $Z$.`,
     context: r`The question is how many electrons a nucleus of charge $Z$ can bind. Physically atoms bind at most one or two extra electrons, so one expects $N_c(Z)-Z$ to stay bounded. Proving this from the many-body Schrödinger operator $H=\sum_i(-\Delta_i-Z/|x_i|)+\sum_{i<j}1/|x_i-x_j|$ is the ionization conjecture.
 
-What is known: Zhislin proved that a neutral or positive net charge always binds ($N_c(Z)\ge Z$). On the upper side, Ruskai and Sigal showed $N_c(Z)$ is finite; Lieb's elegant argument gives $N_c(Z)<2Z+1$, and asymptotic results (Lieb–Sigal–Simon–Thirring, Fefferman–Seco) show $N_c(Z)/Z\to1$ as $Z\to\infty$. Nam later improved the bound to roughly $N_c(Z)\le 1.22\,Z + 3Z^{1/3}$.
+What is known: Zhislin proved that a neutral or positive net charge always binds ($N_c(Z)\ge Z$). On the upper side, Ruskai and Sigal showed $N_c(Z)$ is finite; Lieb's elegant argument gives $N_c(Z)<2Z+1$. Lieb–Sigal–Simon–Thirring showed $N_c(Z)/Z\to1$ as $Z\to\infty$, and Fefferman–Seco and Seco–Sigal–Solovej sharpened this asymptotically to $N_c(Z)\le Z+O(Z^{5/7})$. Nam later improved the bound to roughly $N_c(Z)\le 1.22\,Z + 3Z^{1/3}$.
 
 The conjectured sharp form $N_c(Z)\le Z+C$ has been proved in mean-field surrogates: Solovej established it for Hartree–Fock theory, and analogous statements hold in Thomas–Fermi–type and reduced density-matrix models. For the full many-electron Schrödinger operator it remains open; the obstruction is controlling electron–electron screening rigorously without a self-consistent mean field.
 
-Preprint progress (2025): Hundertmark, Pattakos and Schulz report $N_c(Z)<1.1185Z+O(Z^{1/3})$. This improves an explicit finite-$Z$ estimate, not the already known asymptotic coefficient one and not the uniform excess-charge conjecture. Uniform ionization-energy and radius bounds are related but separate targets.`,
+Preprint progress (2025): Hundertmark, Pattakos and Schulz report $N_c(Z)<1.1185Z+O(Z^{1/3})$. This improves an explicit non-asymptotic estimate, not the already known asymptotic bound $Z+O(Z^{5/7})$ and not the uniform excess-charge conjecture. Uniform ionization-energy and radius bounds are related but separate targets.`,
     evidence: [{ kind: "preprint", summary: "An improved explicit ionization bound, not a proof of uniformly bounded excess charge.", url: "https://arxiv.org/abs/2504.18487" }],
     refs: [
       { label: "Lieb, 'Bound on the maximum negative ionization of atoms and molecules', PRA 29, 3018 (1984)", url: "https://doi.org/10.1103/PhysRevA.29.3018" },
       { label: "Solovej, 'The ionization conjecture in Hartree–Fock theory', Ann. of Math. 158 (2003)", url: "https://arxiv.org/abs/math-ph/0012026" },
       { label: "Nam, 'New bounds on the maximum ionization of atoms', Comm. Math. Phys. 312 (2012)", url: "https://arxiv.org/abs/1009.2367" },
+      { label: "Fefferman & Seco, 'Asymptotic neutrality of large ions', Comm. Math. Phys. 128, 109–130 (1990)", url: "https://doi.org/10.1007/BF02097048" },
+      { label: "Seco, Sigal & Solovej, 'Bound on the ionization energy of large atoms', Comm. Math. Phys. 131, 307–315 (1990)", url: "https://doi.org/10.1007/BF02161416" },
       { label: "Lieb & Seiringer, 'The Stability of Matter in Quantum Mechanics' (CUP, 2010)", url: "https://www.cambridge.org/core/books/the-stability-of-matter-in-quantum-mechanics/BC90EBAF135B745979EA749076A2F931" },
-      { label: "Hundertmark, Pattakos & Schulz, improved ionization bound (2025 preprint)", url: "https://arxiv.org/abs/2504.18487" },
+      { label: "Hundertmark, Pattakos & Schulz, 'On the Excess Charge Problem of Atoms' (2025 preprint)", url: "https://arxiv.org/abs/2504.18487" },
       { label: "Solovej, Quantissima lectures on the ionization conjecture (2025)", url: "https://bruneau.perso.math.cnrs.fr/quantissima2025/slidesweek2/Solovej_Quantissima2025_Lectures.pdf" },
     ] },
 
@@ -47,7 +49,7 @@ Comparison result (17 September 2026, v1): Becker and Oltman claim absolutely co
       { label: "Klein, 'Extended states in the Anderson model on the Bethe lattice', Adv. Math. 133 (1998)", url: "https://www.sciencedirect.com/science/article/pii/S0001870897916881" },
       { label: "Fröhlich & Spencer, 'Absence of diffusion in the Anderson tight binding model for large disorder or low energy', Comm. Math. Phys. 88 (1983)", url: "https://doi.org/10.1007/BF01209475" },
       { label: "Aizenman & Molchanov, 'Localization at large disorder and at extreme energies: An elementary derivation', Comm. Math. Phys. 157 (1993)", url: "https://doi.org/10.1007/BF02099760" },
-      { label: "Bucaj et al., localization and the unresolved higher-dimensional regimes", url: "https://arxiv.org/abs/1706.06135" },
+      { label: "Bucaj et al., 'Localization for the one-dimensional Anderson model via positivity and large deviations for the Lyapunov exponent', Trans. Amer. Math. Soc. 372 (2019) — one-dimensional baseline", url: "https://arxiv.org/abs/1706.06135" },
     ] },
 
   { id: "M3", cat: "spectral", horizon: "incremental",
@@ -127,15 +129,17 @@ Undecidability of the unrestricted Hamiltonian gap problem (U1) is important bac
     statement: r`For every compact connected smooth surface without boundary and with strictly negative curvature, does every sequence of normalized Laplace eigenfunctions with eigenvalues tending to infinity have Liouville semiclassical measure, including arbitrary choices within degenerate eigenspaces?`,
     context: r`Quantum ergodicity asks how eigenfunctions of a system with chaotic classical limit distribute in phase space at high energy. The Shnirelman–Zelditch–Colin de Verdière theorem says that for an ergodic classical flow, a density-one subsequence of eigenfunctions equidistributes. Quantum Unique Ergodicity (QUE), conjectured by Rudnick–Sarnak, is the stronger statement that the full sequence equidistributes — no exceptional sparse subsequences, and in particular no strong scarring.
 
-What is known: QUE is a theorem in the arithmetic setting. Lindenstrauss proved arithmetic QUE for Hecke–Maass forms on congruence surfaces using measure rigidity for the diagonal action; Soundararajan removed a remaining escape-of-mass issue, and Holowinsky–Soundararajan proved the holomorphic (mass-form) analogue. These rely crucially on the extra Hecke symmetries.
+What is known: QUE is a theorem in the arithmetic setting. Lindenstrauss proved arithmetic QUE for Hecke–Maass forms on congruence surfaces using measure rigidity for the diagonal action; Soundararajan removed a remaining escape-of-mass issue, and Holowinsky–Soundararajan proved the holomorphic analogue (mass equidistribution for holomorphic Hecke eigenforms). These rely crucially on the extra Hecke symmetries.
 
-Ergodicity alone is insufficient: Hassell constructed ergodic billiard counterexamples. Such billiards are not compact boundaryless negatively curved surfaces. The restricted geometric question stated here remains open; arithmetic QUE for specially chosen Hecke eigenbases does not settle every eigenfunction sequence on every such surface. Entropy bounds constrain possible exceptional measures but do not force Liouville measure. Related: M9, M10.`,
+Ergodicity alone is insufficient: Hassell constructed ergodic billiard counterexamples. Such billiards are not compact boundaryless negatively curved surfaces. The restricted geometric question stated here remains open; arithmetic QUE for specially chosen Hecke eigenbases does not settle every eigenfunction sequence on every such surface. Entropy bounds constrain possible exceptional measures but do not force Liouville measure. Dyatlov–Jin (compact hyperbolic surfaces) and Dyatlov–Jin–Nonnenmacher (surfaces with Anosov geodesic flow, including variable negative curvature) prove that every semiclassical measure has full support on the cosphere bundle. This excludes concentration on a single closed geodesic or other proper closed invariant set, but full support is still much weaker than equality with Liouville measure. Related: M9, M10.`,
     refs: [
       { label: "Rudnick & Sarnak, 'The behaviour of eigenstates of arithmetic hyperbolic manifolds', Comm. Math. Phys. 161 (1994)", url: "https://doi.org/10.1007/BF02099418" },
       { label: "Lindenstrauss, 'Invariant measures and arithmetic quantum unique ergodicity', Ann. of Math. 163 (2006)", url: "https://doi.org/10.4007/annals.2006.163.165" },
       { label: "Anantharaman, 'Entropy and the localization of eigenfunctions', Ann. of Math. 168 (2008)", url: "https://doi.org/10.4007/annals.2008.168.435" },
       { label: "Hassell, 'Ergodic billiards that are not quantum unique ergodic'", url: "https://arxiv.org/abs/0807.0666" },
-      { label: "Dyatlov, mathematical account of quantum chaos (2023)", url: "https://www.ams.org/journals/notices/202310/noti2801/noti2801.html" },
+      { label: "Dyatlov & Jin, 'Semiclassical measures on hyperbolic surfaces have full support', Acta Math. 220 (2018)", url: "https://arxiv.org/abs/1705.05019" },
+      { label: "Dyatlov, Jin & Nonnenmacher, 'Control of eigenfunctions on surfaces of variable curvature', J. Amer. Math. Soc. 35 (2022)", url: "https://arxiv.org/abs/1906.08923" },
+      { label: "Dyatlov, 'Quantum Ergodicity in Theorems and Pictures', Notices Amer. Math. Soc. 70(10) (2023)", url: "https://www.ams.org/journals/notices/202310/noti2801/noti2801.html" },
     ] },
 
   { id: "M9", cat: "spectral", horizon: "programme",
@@ -164,7 +168,7 @@ Quantum ergodicity already excludes a positive-density family converging to a fi
       { label: "Heller, 'Bound-state eigenfunctions of classically chaotic Hamiltonian systems: Scars of periodic orbits', PRL 53, 1515 (1984)", url: "https://doi.org/10.1103/PhysRevLett.53.1515" },
       { label: "Anantharaman & Nonnenmacher, 'Half-delocalization of eigenfunctions for the Laplacian on an Anosov manifold', Ann. Inst. Fourier 57 (2007)", url: "https://arxiv.org/abs/math-ph/0610019" },
       { label: "Faure, Nonnenmacher & De Bièvre, 'Scarred eigenstates for quantum cat maps of minimal periods', Comm. Math. Phys. 239 (2003)", url: "https://arxiv.org/abs/nlin/0207060" },
-      { label: "Dyatlov, quantum chaos and semiclassical measures (2023)", url: "https://www.ams.org/journals/notices/202310/noti2801/noti2801.html" },
+      { label: "Dyatlov, 'Quantum Ergodicity in Theorems and Pictures', Notices Amer. Math. Soc. 70(10) (2023)", url: "https://www.ams.org/journals/notices/202310/noti2801/noti2801.html" },
     ] },
 
   { id: "M11", cat: "spectral", horizon: "programme",
@@ -179,7 +183,7 @@ The retained work is to establish quantitative statements under named energy, lo
     refs: [
       { label: "Holevo, 'Quantum Systems, Channels, Information' (De Gruyter, 2nd ed. 2019)", url: "https://doi.org/10.1515/9783110642490" },
       { label: "Shirokov, 'Tight uniform continuity bounds for the quantum conditional mutual information, for the Holevo quantity, and for capacities of quantum channels', J. Math. Phys. 58, 102202 (2017)", url: "https://arxiv.org/abs/1512.09047" },
-      { label: "Wilde & Winter, energy constraints and failure of the pure-loss strong converse", url: "https://arxiv.org/abs/1308.6732" },
+      { label: "Wilde & Winter, 'Strong converse for the classical capacity of the pure-loss bosonic channel', Problems of Information Transmission 50 (2014)", url: "https://arxiv.org/abs/1308.6732" },
     ] },
 
   { id: "M12", cat: "spectral", horizon: "sharp",
@@ -187,13 +191,15 @@ The retained work is to establish quantitative statements under named energy, lo
     statement: r`For $H_\lambda=-\Delta+\lambda V_\omega$ on $\ell^2(\mathbb Z^2)$ with independent potentials uniform on $[-1,1]$, prove that for every $\lambda>0$ the almost-sure spectrum is pure point with exponentially localized eigenfunctions throughout the spectrum.`,
     context: r`This is the full-spectrum two-dimensional localization question, not the three-dimensional delocalization problem M2. The fixed scalar, real i.i.d. model excludes magnetic, correlated and multi-orbital variants with different physics.
 
-Established baseline: localization is proved in one dimension and at strong disorder or suitable spectral edges in higher dimensions. These results do not settle all energies at arbitrarily weak disorder on the square lattice. Hurtado's 2026 nonstationary-potential advance concerns the bottom of the spectrum, not this universal energy range.
+Established baseline: localization is proved in one dimension and at strong disorder or suitable spectral edges in higher dimensions. These results do not settle all energies at arbitrarily weak disorder on the square lattice. For singular Bernoulli potentials, Ding–Smart prove localization near the spectral edge in two dimensions; Hurtado's 2026 extension to non-identically distributed potentials likewise yields localization at the bottom of the spectrum, not this universal energy range.
 
 The stated target is spectral localization. Uniform-in-time dynamical localization with quantified moment or eigenfunction-correlator bounds is a stronger related target and should be recorded separately.`,
     relations: [{ id: "M2", type: "related" }],
     refs: [
-      { label: "Bucaj et al., primary account of localization and the open 2D problem", url: "https://arxiv.org/abs/1706.06135" },
-      { label: "Hurtado, bottom-of-spectrum localization for nonstationary potentials, CMP (2026)", url: "https://doi.org/10.1007/s00220-026-05559-8" },
+      { label: "Aizenman & Warzel, 'Random Operators: Disorder Effects on Quantum Spectra and Dynamics' (AMS, 2015)", url: "https://doi.org/10.1090/gsm/168" },
+      { label: "Bucaj et al., 'Localization for the one-dimensional Anderson model via positivity and large deviations for the Lyapunov exponent', Trans. Amer. Math. Soc. 372 (2019) — one-dimensional baseline", url: "https://arxiv.org/abs/1706.06135" },
+      { label: "Ding & Smart, 'Localization near the edge for the Anderson Bernoulli model on the two dimensional lattice', Invent. Math. 219 (2020)", url: "https://doi.org/10.1007/s00222-019-00910-4" },
+      { label: "Hurtado, 'Localization and Unique Continuation for Non-stationary Schrödinger Operators on the 2D Lattice', Comm. Math. Phys. 407, 64 (2026)", url: "https://doi.org/10.1007/s00220-026-05559-8" },
     ] },
 
   { id: "M13", cat: "spectral", horizon: "sharp",
@@ -203,8 +209,8 @@ The stated target is spectral localization. Uniform-in-time dynamical localizati
 
 Established baseline: general Lieb–Thirring inequalities and progressively improved bounds are available. The older conjecture giving a two-candidate formula for every dimension and exponent is partly disproved by Frank, Gontier and Lewin; it must not be advertised wholesale as open. The specified first-moment three-dimensional semiclassical equality is the retained target. Better certified upper bounds are useful partial progress, not a resolution.`,
     refs: [
-      { label: "Frank, Gontier & Lewin, counterexamples to portions of the general Lieb–Thirring conjecture", url: "https://arxiv.org/abs/2002.04964" },
-      { label: "Frank, Hundertmark, Jex & Nam, improved Lieb–Thirring bounds", url: "https://arxiv.org/abs/1808.09017" },
-      { label: "Schimmer, review of Lieb–Thirring inequalities and surviving conjectures", url: "https://arxiv.org/abs/2203.06051" },
+      { label: "Frank, Gontier & Lewin, 'The nonlinear Schrödinger equation for orthonormal functions II: Application to Lieb–Thirring inequalities', Comm. Math. Phys. 384 (2021) — counterexamples to parts of the general conjecture", url: "https://arxiv.org/abs/2002.04964" },
+      { label: "Frank, Hundertmark, Jex & Nam, 'The Lieb–Thirring inequality revisited', J. Eur. Math. Soc. 23 (2021)", url: "https://arxiv.org/abs/1808.09017" },
+      { label: "Schimmer, 'The state of the Lieb–Thirring conjecture', in The Physics and Mathematics of Elliott Lieb (EMS, 2022)", url: "https://arxiv.org/abs/2203.06051" },
     ] },
 ];

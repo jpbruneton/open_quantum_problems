@@ -15,7 +15,7 @@ Preprint progress (August 2026): Tabia, Chen and Hsieh report that a distinguish
 
 NPT bound entanglement would have major consequences for activation and the nonadditivity of distillability. A single explicit all-copy-undistillable NPT state, or a proof that no such state exists, resolves the question.`,
     refs: [
-      {"label":"DiVincenzo et al., 'Evidence for bound entangled states with negative partial transpose', PRA 61, 062312 (2000)","url":"https://doi.org/10.1103/PhysRevA.61.062312"},
+      {"label":"DiVincenzo, Shor, Smolin, Terhal & Thapliyal, 'Evidence for bound entangled states with negative partial transpose', PRA 61, 062312 (2000)","url":"https://doi.org/10.1103/PhysRevA.61.062312"},
       { label: "Horodecki, Horodecki, Horodecki, Horodecki, 'Quantum entanglement', Rev. Mod. Phys. 81, 865 (2009)", url: "https://doi.org/10.1103/RevModPhys.81.865" },
       { label: "Tabia, Chen & Hsieh, 'Two-copy distillability of one-copy-undistillable negative-partial-transpose states in every dimension' (2026 preprint)", url: "https://arxiv.org/abs/2608.08836" },
     ] },
@@ -39,10 +39,10 @@ Preprint progress (July 2026): Fu–Gao–Park, Bharti–Gajjala–Haug and Fras
 
 Further preprint progress (submitted 31 July 2026): Wu and Zou analyze the three-copy Werner endpoint and claim nonnegativity for positive-semidefinite rank-two coefficient operators, the normal rank-two sector and specified nonnormal cases. This does not settle the full three-copy problem. The initial submission date precedes August despite the arXiv identifier.
 
-Resolving the all-copy Werner question resolves E1. The corrected author attributions and version-specific disclosures are retained in the references and provenance below.`,
+Resolving the all-copy Werner question resolves E1. Author attributions and version-specific disclosures are recorded in the references and provenance below.`,
     refs: [
       { label: "Pankowski, Piani, Horodecki, Horodecki, 'A few steps more towards NPT bound entanglement', IEEE Trans. Inf. Theory 56 (2010)", url: "https://arxiv.org/abs/0711.2613" },
-      { label: "DiVincenzo et al., PRA 61, 062312 (2000)", url: "https://doi.org/10.1103/PhysRevA.61.062312" },
+      { label: "DiVincenzo, Shor, Smolin, Terhal & Thapliyal, 'Evidence for bound entangled states with negative partial transpose', PRA 61, 062312 (2000)", url: "https://doi.org/10.1103/PhysRevA.61.062312" },
       { label: "Fu, Gao & Park, 'A solution to 2-copy distillability of Werner states' (2026 preprint, v2)", url: "https://arxiv.org/abs/2607.21367v2" },
       { label: "Bharti, Gajjala & Haug, 'Two-copy nondistillability of Werner states: sharp partial-trace inequalities and finite-copy extensions' (2026 preprint)", url: "https://arxiv.org/abs/2607.24479" },
       { label: "Fraser, Huber, Pozsgay & Vona, 'On the two-copy distillability of Werner states and a new partial trace inequality' (2026 preprint)", url: "https://arxiv.org/abs/2607.24309" },
@@ -58,7 +58,7 @@ Resolving the all-copy Werner question resolves E1. The corrected author attribu
       { kind: "preprint", summary: "Randomized polynomial-time separability testing with a fixed constant Euclidean-distance promise gap; not exact or arbitrary-norm membership.", url: "https://arxiv.org/abs/2607.23773", date: "2026-07-26" }],
     provenance: [
       { summary: "Kiani credits ChatGPT 6 with the proof strategy and central arguments, refined through author feedback; he reports checking all proofs and responsibility for the paper.", url: "https://arxiv.org/html/2609.30149v1", version: "v1" },
-      { summary: "The authors report Lean proofs supporting their main results. This is an attributed formalization statement; the catalogue has not checked the formal project or inferred AI authorship from the use of Lean.", url: "https://arxiv.org/html/2609.09033v1", version: "v1" },
+      { summary: "Gharibian, Hecht and Rudolph disclose extensive, iterative generative-AI use in developing the proofs, including proposing and refining key proof ideas; they report critically evaluating, correcting and synthesizing the suggestions, writing the final exposition and taking full responsibility. They also report Lean proofs supporting the main results, which were not rebuilt here.", url: "https://arxiv.org/html/2609.09033v1", version: "v1" },
       { summary: "Malavolta attributes the main idea to himself with Michael Walter's feedback, and reports ChatGPT 5.5/5.6 assistance on technical reduction proofs. He states that he wrote the final manuscript and takes responsibility.", url: "https://arxiv.org/abs/2607.23773" }],
     title: "Effective separability criteria",
     statement: r`For rational finite-dimensional density matrices, identify structured families admitting efficient separability tests with a specified norm and promise gap, and bound the dimension and accuracy dependence of convergent hierarchies.`,
@@ -72,18 +72,22 @@ The incremental target is a quantitative map of specified tractable families and
 
 Preprint progress (8 September 2026, v1): Gharibian, Hecht and Rudolph bound the size of SDPs approximating separable-state optimization in the HNW extended-formulation model. Every objective shares a feasible region and an objective-independent product-state embedding. For $0<\theta<2/7$, sufficiently small error $a$ and large local dimension $d$, the claimed lower bound is $d^{c_\theta\min\{a^{-1/3},d^\theta\}}$. It is superpolynomial when $a=o(1)$, not automatically at fixed constant error. This is a restriction on that SDP representation model, not on every separability algorithm or every norm/promise formulation. The paper also notes that concurrent quantum-oracle work already supersedes its approximate-disentangler application; its SDP bound is a separate contribution. Lean support is author-reported and has not been independently rebuilt.
 
-Structured-family progress (24 September 2026, v1): Kiani claims the sharp universal high-temperature separability threshold for Pauli Hamiltonians with coefficients bounded by one and term-overlap degree $\Delta\ge2$. At or below the stated threshold, Gibbs states decompose into product Pauli eigenstates; strictly below it, the paper gives polynomial-time approximate sampling in trace distance. This is a promise on the generating Hamiltonian and temperature, not efficient separability testing for arbitrary input states. See O10 for the preparation consequence.`,
+High-temperature baseline: Bakshi, Liu, Moitra and Tang (FOCS 2024) proved that Gibbs states of local Hamiltonians on bounded-degree interaction graphs are separable above a constant temperature, with efficient sampling of the product-state decomposition. This is a promise on the generating Hamiltonian and temperature, not a separability test for arbitrary input matrices.
+
+Structured-family progress (24 September 2026, v1): Kiani, building on that result, claims the sharp universal high-temperature separability threshold for Pauli Hamiltonians with coefficients bounded by one and term-overlap degree $\Delta\ge2$. At or below the stated threshold, Gibbs states decompose into product Pauli eigenstates; strictly below it, the paper gives polynomial-time approximate sampling in trace distance. This is a promise on the generating Hamiltonian and temperature, not efficient separability testing for arbitrary input states. See O10 for the preparation consequence.`,
     refs: [
       { label: "Kiani, 'Sharp universal death of entanglement threshold for Pauli Hamiltonians' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.30149v1" },
       { label: "Gharibian, Hecht & Rudolph, 'Semidefinite extension complexity of the separable set, with applications to approximate disentanglers' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.09033v1" },
+      { label: "Bakshi, Liu, Moitra & Tang, 'High-Temperature Gibbs States are Unentangled and Efficiently Preparable', FOCS 2024", url: "https://arxiv.org/abs/2403.16850" },
       {"label":"Lami, Serafini & Adesso, 'Gaussian entanglement revisited' (published 2018)","url":"https://arxiv.org/abs/1612.05215"},
-      { label: "Gurvits, 'Classical deterministic complexity of Edmonds' problem and quantum entanglement', STOC 2003", url: "https://doi.org/10.1103/RevModPhys.81.865" },
+      { label: "Gurvits, 'Classical deterministic complexity of Edmonds' problem and quantum entanglement', STOC 2003", url: "https://doi.org/10.1145/780542.780545" },
       { label: "Doherty, Parrilo, Spedalieri, 'Complete family of separability criteria', PRA 69, 022308 (2004)", url: "https://arxiv.org/abs/quant-ph/0308032" },
       { label: "Malavolta, 'Quantum Separability in Polynomial Time' (2026 preprint)", url: "https://arxiv.org/abs/2607.23773" },
     ] },
 
   { id: "E4", cat: "entanglement", horizon: "incremental", status: "improved",
     relations: [{ id: "E5", type: "related" }, { id: "E11", type: "related" }],
+    evidence: [{ kind: "preprint", summary: "Edge-coloured multigraph encoding of complete multiqubit orthogonal product bases; a complete colour-splitting tree characterizes perfect finite-round LOCC discrimination in this structured family, not membership of arbitrary maps in LOCC or its closure.", url: "https://arxiv.org/abs/2608.18421v2", date: "2026-08-31", version: "v2" }],
     title: "Effective membership in LOCC and its closure",
     statement: r`For finitely specified bipartite channels or instruments, develop certified $\varepsilon$-membership tests for the closure of LOCC in a stated operational norm, and distinguish this task from exact finite-round or unbounded-round LOCC implementability.`,
     context: r`Local operations and classical communication (LOCC) are the free operations of entanglement theory, but their geometry is subtle. LOCC is not closed, and separable operations can fail to be LOCC — the operational phenomenon of nonlocality without entanglement.
@@ -96,7 +100,7 @@ Useful residual questions ask for certified approximation with a specified promi
     refs: [
       {"label":"Chitambar et al., 'Everything You Always Wanted to Know About LOCC', CMP 328 (2014)","url":"https://arxiv.org/abs/1210.4583"},
       { label: "Nielsen, 'Conditions for a class of entanglement transformations', PRL 83, 436 (1999)", url: "https://arxiv.org/abs/quant-ph/9811053" },
-      { label: "Zhao & Chen, 'Multiqubit orthogonal product bases' (2026 preprint)", url: "https://arxiv.org/abs/2608.18421" },
+      { label: "Zhao & Chen, 'Multiqubit orthogonal product bases' (2026 preprint, v2)", url: "https://arxiv.org/abs/2608.18421v2" },
     ] },
 
   { id: "E5", cat: "entanglement", horizon: "programme",
@@ -110,10 +114,10 @@ For mixed states, the extreme conversions are distillation to Bell pairs at rate
 This is a programme of family-specific rate calculations and matching converses, not one conjecture covering every mixed-state pair. The ordinary unassisted LOCC convention is fixed here. Catalysts, correlated return and sublinear auxiliary resources define different rates and are treated separately in E11.`,
     refs: [
       { label: "Bennett, DiVincenzo, Smolin, Wootters, 'Mixed-state entanglement and quantum error correction', PRA 54, 3824 (1996)", url: "https://doi.org/10.1103/PhysRevA.54.3824" },
-      { label: "Horodecki⁴, Rev. Mod. Phys. 81, 865 (2009)", url: "https://doi.org/10.1103/RevModPhys.81.865" },
+      { label: "Horodecki, Horodecki, Horodecki & Horodecki, 'Quantum entanglement', Rev. Mod. Phys. 81, 865 (2009)", url: "https://doi.org/10.1103/RevModPhys.81.865" },
     ] },
 
-  { id: "E6", cat: "entanglement", horizon: "sharp", status: "improved",
+  { id: "E6", cat: "entanglement", horizon: "incremental", status: "improved",
     relations: [{ id: "E5", type: "parent" }, { id: "E9", type: "related" }, { id: "E11", type: "related" }],
     evidence: [{ kind: "preprint", summary: "Irreversibility persists for an explicit state under PPT operations with correlated catalysts; this is not an LOCC equality classification.", url: "https://arxiv.org/abs/2608.20063", date: "2026-08-20" }],
     provenance: [{ summary: "Ao, Philip and Streltsov report ChatGPT 5.6 assistance with editing, organization, references and exploration/verification of mathematical arguments, while asserting independent author review and responsibility.", url: "https://arxiv.org/abs/2608.20063" }],
@@ -121,7 +125,7 @@ This is a programme of family-specific rate calculations and matching converses,
     statement: r`Give a structural characterization of finite-dimensional bipartite states satisfying $E_C(\rho)=E_D(\rho)$ under ordinary asymptotic LOCC with vanishing error and no catalysts.`,
     context: r`Pure-state entanglement is reversible: entropy of entanglement governs both formation and distillation. Mixed-state irreversibility is established by explicit examples, including bound-entangled states with $E_D=0<E_C$. It is not correct to treat every mixed state as irreversible: locally distinguishable flagged mixtures of suitable pure resources provide reversible mixed subclasses.
 
-Vidal and Cirac exhibited irreversible states and clarified the gap $E_C-E_D$. Changing the free operations changes the question: strict non-entangling, asymptotically non-entangling, PPT and LOCC conventions are not interchangeable. Results on entanglement “second laws”, including Lami–Regula's irreversibility theorem, must retain their operation and error hypotheses.
+A complete characterization has no single yes/no resolution: progress is a larger certified reversible or irreversible class. Vidal and Cirac exhibited irreversible states and clarified the gap $E_C-E_D$. Changing the free operations changes the question: strict non-entangling, asymptotically non-entangling, PPT and LOCC conventions are not interchangeable. Results on entanglement “second laws”, including Lami–Regula's irreversibility theorem, must retain their operation and error hypotheses.
 
 Preprint progress (August 2026): Ao, Philip and Streltsov claim full additivity and strong superadditivity of regularized PPT relative entropy, and an explicit state with an irreversible formation–distillation gap even with correlated catalysts under PPT operations. This does not supply the missing equality criterion for ordinary LOCC.
 
@@ -138,7 +142,7 @@ The target is the boundary between reversible and irreversible states under the 
     statement: r`For three fixed parties, does a finite set of pure resource states exist from which every finite-dimensional tripartite pure state can be reversibly generated by asymptotic LOCC with vanishing error?`,
     context: r`For bipartite pure states the Bell pair is a reversible currency. A multipartite analogue would be a finite reversible entanglement-generating set (MREGS), allowing tensor products of its resources at asymptotic rates.
 
-What is known: Bennett–Popescu–Rohrlich–Smolin–Thapliyal introduced the multipartite programme. Acín–Vidal–Cirac, rather than that original paper, established the inadequacy of the natural candidate consisting of three pairwise EPR resources and a GHZ state. GHZ and pairwise entanglement have inequivalent reversible resource content; a list of familiar representatives is therefore not automatically a reversible generating set.
+What is known: Bennett–Popescu–Rohrlich–Smolin–Thapliyal introduced the multipartite programme. Acín–Vidal–Cirac established the inadequacy of the natural candidate consisting of three pairwise EPR resources and a GHZ state. GHZ and pairwise entanglement have inequivalent reversible resource content; a list of familiar representatives is therefore not automatically a reversible generating set.
 
 No finite MREGS is known even for three parties. Fixing that party number avoids conflating the question with an ever-growing number of laboratories. Negative results under one-way communication, finite-copy exact conversion or other restricted operations do not by themselves exclude all finite asymptotic LOCC generating sets.`,
     refs: [
@@ -216,13 +220,14 @@ Claimed resolution (listed September 2026; arXiv records v1 submission on 25 Aug
 
   { id: "E11", cat: "entanglement", horizon: "incremental", status: "improved",
     relations: [{ id: "E4", type: "related" }, { id: "E5", type: "related" }, { id: "E6", type: "related" }],
+    evidence: [{ kind: "preprint", summary: "Monotones for PPT operations with correlated catalysts, and an irreversibility example. Because LOCC is contained in PPT operations, these also constrain correlated-catalytic LOCC conversions; no necessary-and-sufficient criterion follows. Cross-listed from E6.", url: "https://arxiv.org/abs/2608.20063", date: "2026-08-20" }],
     title: "Entanglement catalysis",
     statement: r`For specified mixed or multipartite LOCC conversion families, characterize feasibility and catalyst cost separately for exact product return, exact marginal return with correlations, and approximate return with a stated error–dimension bound.`,
     context: r`A catalyst is an auxiliary state enabling a conversion while being returned according to a specified convention. Exact uncorrelated return requires an output $\sigma\otimes\tau$ with the original catalyst $\tau$. Correlated catalysis may return only the marginal $\tau$, and approximate return allows a perturbation. These are inequivalent resource theories.
 
 For pure bipartite states, Jonathan–Plenio discovered exact catalysis; catalytic majorization/trumping criteria characterize the relevant Schmidt-vector conversions, including their support and strict-inequality conditions. Kondra–Datta–Streltsov's entropy criterion concerns approximate pure-bipartite conversion with the catalyst marginal returned and allowed output correlations, not arbitrary exact mixed-state or multipartite conversion. Van Dam–Hayden embezzlement shows why unconstrained catalyst dimension and arbitrarily small return error can otherwise trivialize conversion obstructions.
 
-Related preprint progress (August 2026): Ao–Philip–Streltsov provide monotones and an irreversibility example under the larger class of PPT operations with correlated catalysts. E6 records this same paper's evidence and provenance; it is not a second independent advance.
+Related preprint progress (August 2026): Ao–Philip–Streltsov provide monotones and an irreversibility example under the larger class of PPT operations with correlated catalysts. Since every LOCC protocol is a PPT operation, their obstructions also apply to correlated-catalytic LOCC conversion. The same paper is recorded under E6, with its provenance; it is one advance cross-listed in two entries, not two independent results.
 
 Useful benchmarks fix source/target families, trace-distance accuracy, allowed correlations and catalyst dimension or entanglement cost. Necessary-and-sufficient criteria in these controlled settings remain the incremental target.`,
     refs: [
@@ -265,8 +270,8 @@ For quantum states, nontrivial constrained inequalities have long been establish
 
 A new independent universal inequality would be a major advance but would not by itself characterize the entire cone. Complete characterization is therefore labeled a programme.`,
     refs: [
-      {"label":"'Inner bounding the quantum entropy cone with subadditivity and subsystem coarse grainings', PRA 109, 052407 (2024)","url":"https://doi.org/10.1103/PhysRevA.109.052407"},
-      {"label":"'The Tip of the Quantum Entropy Cone', PRL 131, 240201 (2023)","url":"https://doi.org/10.1103/PhysRevLett.131.240201"},
+      {"label":"He, Hubeny & Rota, 'Inner bounding the quantum entropy cone with subadditivity and subsystem coarse grainings', PRA 109, 052407 (2024)","url":"https://doi.org/10.1103/PhysRevA.109.052407"},
+      {"label":"Christandl, Durhuus & Wolff, 'Tip of the Quantum Entropy Cone', PRL 131, 240201 (2023)","url":"https://doi.org/10.1103/PhysRevLett.131.240201"},
       { label: "Pippenger, 'The inequalities of quantum information theory', IEEE Trans. Inf. Theory 49 (2003)", url: "https://doi.org/10.1109/TIT.2003.809569" },
       { label: "Linden & Winter, 'A new inequality for the von Neumann entropy', Comm. Math. Phys. 259 (2005)", url: "https://arxiv.org/abs/quant-ph/0406162" },
     ] },

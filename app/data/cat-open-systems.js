@@ -62,6 +62,7 @@ Remaining tasks include checkable CP-extension criteria for physically structure
     ] },
 
   { id: "O5", cat: "open-systems", horizon: "incremental", status: "improved",
+    evidence: [{ kind: "published", summary: "Pauli twirling can map divisible noise to a channel not embeddable in a Pauli semigroup; negative Pauli–Lindblad parameters diagnose failure of that semigroup criterion, not multi-time memory under interventions.", url: "https://doi.org/10.1038/s41534-026-01345-5", date: "2026-08-20" }],
     title: "Operational memory detection and compression",
     statement: r`For a specified set of multi-time interventions, determine optimal tests for quantum memory and the minimal memory dimension or simulation cost needed to reproduce the accessible statistics within error $\varepsilon$.`,
     context: r`Different quantum memory criteria probe different data. CP-divisibility concerns a family of reduced maps; homogeneous semigroup embeddability concerns a time-independent generator; process-tensor Markovianity concerns statistics under interventions. Their inequivalence is not itself a missing definition.
@@ -75,7 +76,7 @@ Pollock et al.'s operational Markov condition is already necessary and sufficien
       { label: "Breuer, Laine, Piilo, Vacchini, 'Colloquium: Non-Markovian dynamics in open quantum systems', Rev. Mod. Phys. 88, 021002 (2016)", url: "https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.88.021002" },
       { label: "Pollock, Rodríguez-Rosario, Frauenheim, Paternostro, Modi, 'Non-Markovian quantum processes: complete framework and efficient characterisation', PRA 97, 012127 (2018)", url: "https://arxiv.org/abs/1512.00589" },
       { label: "Pollock et al., 'Operational Markov condition for quantum processes', PRL 120, 040405 (2018)", url: "https://arxiv.org/abs/1801.09811" },
-      { label: "Kattemölle, Gulácsi & Burkard, 'Non-Markovianity induced by Pauli twirling', npj Quantum Information (2026)", url: "https://doi.org/10.1038/s41534-026-01345-5" },
+      { label: "Kattemölle, Gulácsi & Burkard, 'Non-Markovianity induced by Pauli twirling', npj Quantum Information 12, 138 (2026)", url: "https://doi.org/10.1038/s41534-026-01345-5" },
     ] },
 
   { id: "O6", cat: "open-systems", horizon: "incremental",
@@ -89,14 +90,14 @@ Preprint theorem (October 2025): Shiraishi–Takagi characterize approximate cor
 
 Remaining targets are catalyst-free or exact-output conversion and quantitative resource bounds for a fixed input/target pair: minimum catalyst dimension, energy spread and generated correlation at error $\varepsilon$. Determine the boundary when the resonant-mode condition fails rather than assuming the theorem covers it. These are more precise questions than declaring all coherent conversion open. Related: E11, O8.`,
     evidence: [
-      { kind: "preprint", summary: "Approximate correlated-catalytic thermal conversion is characterized by free energy when target resonant coherent modes are contained in input modes; bounded catalyst resources and exact target output are not covered.", url: "https://arxiv.org/abs/2510.05642", date: "2025-10-07", version: "v1" },
+      { kind: "preprint", summary: "Approximate correlated-catalytic thermal conversion is characterized by free energy when target resonant coherent modes are contained in input modes; bounded catalyst resources and exact target output are not covered.", url: "https://arxiv.org/abs/2510.05642v1", date: "2025-10-07", version: "v1" },
       { kind: "published", summary: "A related conversion theorem uses covariant Gibbs-preserving operations, a different operation class from thermal operations.", url: "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.134.160402", date: "2025-04-22" },
     ],
     refs: [
       { label: "Lostaglio, Jennings, Rudolph, 'Description of quantum coherence in thermodynamic processes requires constraints beyond free energy', Nat. Commun. 6, 6383 (2015)", url: "https://arxiv.org/abs/1405.2188" },
       { label: "Brandão, Horodecki, Ng, Oppenheim, Wehner, 'The second laws of quantum thermodynamics', PNAS 112, 3275 (2015)", url: "https://arxiv.org/abs/1305.5278" },
       { label: "Shiraishi & Takagi, 'Recovery of the second law in fully quantum thermodynamics' (2025), preprint", url: "https://arxiv.org/abs/2510.05642" },
-      { label: "Shiraishi, PRL 134, 160402 (2025), covariant Gibbs-preserving conversion", url: "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.134.160402" },
+      { label: "Shiraishi, 'Quantum Thermodynamics with Coherence: Covariant Gibbs-Preserving Operation Is Characterized by the Free Energy', PRL 134, 160402 (2025)", url: "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.134.160402" },
     ] },
 
   { id: "O7", cat: "open-systems", horizon: "programme",
@@ -142,11 +143,11 @@ Further progress (August–September 2026): Ramos Ramos et al. combined stochast
 
 These newest tensor-network results are preprints with structured-model and numerical evidence, not a universal optimal-resource theorem. The remaining targets include restricted local preparation/measurement, translating coefficient error into prediction error, SPAM-robust identification, time-dependent generators and finite-memory non-Markovian processes, each with explicit upper and lower bounds. Related: O1, O2, O5.`,
     evidence: [
-      { kind: "preprint", summary: "Near-optimal bounded-strength coefficient learning with thresholded support, using specified product/stabilizer access; not a universal diamond-norm process-learning guarantee.", url: "https://arxiv.org/abs/2607.28610", date: "2026-07-30", version: "v1" },
+      { kind: "preprint", summary: "Near-optimal bounded-strength coefficient learning with thresholded support, using specified product/stabilizer access; not a universal diamond-norm process-learning guarantee.", url: "https://arxiv.org/abs/2607.28610v1", date: "2026-07-30", version: "v1" },
       { kind: "numerical", summary: "Structured Lindblad-rate learning with stochastic tensor networks; simulation scaling does not certify arbitrary-process learnability.", url: "https://arxiv.org/abs/2608.24668" },
       { kind: "numerical", summary: "Tensor-network likelihood learning of fault-event probabilities from error-correction data, a restricted noise model.", url: "https://arxiv.org/abs/2609.00169" },
     ],
-    provenance: [{ summary: "The previous update recorded an author statement about interactive ChatGPT use for checking, references and polishing, with responsibility attributed to the human authors. That declaration was not independently rechecked in this audit and is not evidence of theorem correctness.", url: "https://arxiv.org/abs/2607.28610" }],
+    provenance: [{ summary: "Chen and Yu state that ChatGPT was used interactively to check the correctness of proofs, identify relevant references and polish the manuscript, and that all writing, including mathematical statements and reasoning, was completed by the authors. This is an author disclosure, not evidence of theorem correctness.", url: "https://arxiv.org/abs/2607.28610v1", version: "v1" }],
     refs: [
       { label: "Pollock et al., 'Non-Markovian quantum processes: complete framework and efficient characterisation', PRA 97, 012127 (2018)", url: "https://arxiv.org/abs/1512.00589" },
       { label: "Chen & Yu, 'Learning Arbitrary Lindbladians from Time Evolution' (2026)", url: "https://arxiv.org/abs/2607.28610" },
@@ -162,6 +163,8 @@ These newest tensor-network results are preprints with structured-model and nume
     statement: r`For two-dimensional finite-range noncommuting spin Hamiltonians of bounded local strength and a specified reversible local or quasilocal Gibbs sampler, identify verifiable temperature/interaction conditions beyond the established high-temperature regime giving polynomial mixing and preparation to trace-distance error $\varepsilon$, or prove slow-mixing obstructions.`,
     context: r`Preparing $\rho_\beta=e^{-\beta H}/\operatorname{tr}(e^{-\beta H})$ is different from proving a master equation valid (O2) or learning its generator (O9). A sampler must have the desired stationary state, mix rapidly from its allowed initial states, and be implementable at controlled circuit or system–bath cost. Fix the generator normalization so that increasing all rates is not counted as an algorithmic speedup.
 
+Standard baselines: Chen–Kastoryano–Gilyén construct an efficiently implementable, exactly detailed-balanced Lindbladian for Gibbs states of arbitrary noncommuting Hamiltonians, whose cost scales with its mixing time. Rouzé–Stilck França–Alhambra prove that such a dissipative evolution thermalizes in polynomial time at high enough temperature for Hamiltonians satisfying a Lieb–Robinson bound (published in Nature Physics, 2026). Bakshi–Liu–Moitra–Tang show that Gibbs states of local Hamiltonians on bounded-degree graphs are separable above a constant temperature and can be prepared efficiently (FOCS 2024).
+
 Published baseline (April 2026): Hahn, Sweke, Deshpande and Shtanko show that spatial truncation and local-circuit implementation preserve rapid Gibbs mixing with bounded error at high temperature. A January 2026 preprint by Slezak et al. proves polynomial convergence for specified system–bath/repeated-interaction generators in high-temperature lattices, weakly interacting fermions and 1D chains. Those regimes are not being proposed as unsolved.
 
 The selected frontier concerns genuinely interacting 2D spin families outside proven uniform high-temperature guarantees. State the generator, inverse-temperature range and any clustering or phase assumptions; derive quantitative spectral-gap or log-Sobolev bounds and implementation errors, or identify bottlenecks forcing slow mixing. No efficient algorithm for every Hamiltonian at every temperature is conjectured here. Noncommuting conserved charges introduce a related but distinct thermalization target under B4/B5.
@@ -170,16 +173,19 @@ Adjacent preparation progress (8 September 2026, v1): Li's spectral core–tail 
 
 Published progress (18 September 2026): Hwang and Jiang reduce Gibbs preparation for specified commuting Hamiltonians to classical Gibbs sampling, including 2-local qudit systems and restricted 2D 4-local qubit systems. Efficiency depends on efficient sampling of the associated classical model; this is not a rapid-mixing theorem for every Davies generator.
 
-A separate 24 September preprint by Kiani supplies polynomial-time sampling of product-state decompositions strictly below a sharp high-temperature separability threshold for bounded-overlap Pauli Hamiltonians (E3). This is a preparation algorithm, not a proof of rapid mixing for arbitrary reversible quantum dynamics or low-temperature systems.`,
+A separate 24 September preprint by Kiani, sharpening the Bakshi–Liu–Moitra–Tang separability temperature for this family, supplies polynomial-time sampling of product-state decompositions strictly below a sharp high-temperature separability threshold for bounded-overlap Pauli Hamiltonians (E3). This is a preparation algorithm, not a proof of rapid mixing for arbitrary reversible quantum dynamics or low-temperature systems.`,
     relations: [{ id: "O2", type: "related" }, { id: "O9", type: "related" }, { id: "B5", type: "related" }],
     evidence: [
       { kind: "published", summary: "Gibbs preparation via classical reductions for specified commuting families; efficiency requires an efficient sampler for the associated classical model.", url: "https://doi.org/10.22331/q-2026-09-18-2209", date: "2026-09-18" },
       { kind: "preprint", summary: "High-temperature product-state sampling in global trace distance; not a general reversible-generator mixing theorem.", url: "https://arxiv.org/abs/2609.30149v1", date: "2026-09-24", version: "v1" },
       { kind: "preprint", summary: "Local Gibbs-observable error certification under response-summability and perturbative assumptions; neither global trace-distance convergence nor general low-temperature rapid mixing follows.", url: "https://arxiv.org/abs/2609.09291v1", date: "2026-09-08", version: "v1" },
       { kind: "published", summary: "Local-circuit approximations preserve rapid Gibbs mixing at high temperature with bounded preparation error.", url: "https://journals.aps.org/prxquantum/abstract/10.1103/m5zb-z4nn", date: "2026-04-23" },
-      { kind: "preprint", summary: "Polynomial-time thermalization is proved for particular generator families and high-temperature lattices, weakly interacting fermions and 1D chains, not all 2D low-temperature models.", url: "https://arxiv.org/abs/2601.16154", date: "2026-01-22", version: "v1" },
+      { kind: "preprint", summary: "Polynomial-time thermalization is proved for particular generator families and high-temperature lattices, weakly interacting fermions and 1D chains, not all 2D low-temperature models.", url: "https://arxiv.org/abs/2601.16154v1", date: "2026-01-22", version: "v1" },
     ],
     refs: [
+      { label: "Chen, Kastoryano & Gilyén, 'An efficient and exact noncommutative quantum Gibbs sampler' (2023 preprint)", url: "https://arxiv.org/abs/2311.09207" },
+      { label: "Rouzé, Stilck França & Alhambra, 'Efficient thermalization and universal quantum computing with quantum Gibbs samplers', Nature Physics (2026)", url: "https://arxiv.org/abs/2403.12691" },
+      { label: "Bakshi, Liu, Moitra & Tang, 'High-Temperature Gibbs States are Unentangled and Efficiently Preparable', FOCS 2024", url: "https://arxiv.org/abs/2403.16850" },
       { label: "Hwang & Jiang, 'Gibbs state preparation for commuting Hamiltonian: Mapping to classical Gibbs sampling', Quantum 10, 2209 (18 September 2026)", url: "https://doi.org/10.22331/q-2026-09-18-2209" },
       { label: "Kiani, 'Sharp universal death of entanglement threshold for Pauli Hamiltonians' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.30149v1" },
       { label: "Li, 'Spectral Core-Tail Architecture for Locally Certified Gibbs-State Preparation' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.09291v1" },

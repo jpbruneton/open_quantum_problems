@@ -8,13 +8,14 @@ export const UNDECIDABILITY = [
 
 What is known: Cubitt–Pérez-García–Wolf prove undecidability for translation-invariant nearest-neighbour interactions in two dimensions. Bausch–Cubitt–Lucia–Pérez-García extend it to one-dimensional chains. Their general constructions use a large but fixed local dimension; one-dimensional geometry alone is therefore insufficient. Those theorems should not automatically be transferred to every additional frustration-free or small-dimension restriction.
 
-On the constructive side, finite-size criteria and the published 2026 hierarchy of spectral-gap certificates can certify gaps for frustration-free models under their hypotheses. A certificate search that terminates on a positive branch is not by itself a decision procedure that also terminates on every promised gapless input. Complete classifications require both the precise input class and termination guarantees. Related: B1, M7, U2.`,
+On the constructive side, the smallest case is settled for a natural subclass: Bravyi–Gosset give necessary and sufficient conditions for translation-invariant nearest-neighbour frustration-free spin-1/2 chains with open boundaries to be gapped, and hence a complete gapped/gapless classification of that qubit class. Finite-size criteria and the published 2026 hierarchy of spectral-gap certificates (Rai et al.) can certify gaps for further frustration-free models under their hypotheses. A certificate search that terminates on a positive branch is not by itself a decision procedure that also terminates on every promised gapless input. Complete classifications require both the precise input class and termination guarantees. Related: B1, M7, U2.`,
     evidence: [{ kind: "published", summary: "A hierarchy of frustration-free spectral-gap certificates supplies constructive sufficient tests; a total gapped/gapless decision algorithm is a separate claim.", url: "https://doi.org/10.22331/q-2026-04-13-2065", date: "2026-04-13" }],
     relations: [{ id: "B1", type: "related" }, { id: "M7", type: "related" }, { id: "U2", type: "related" }],
     refs: [
       { label: "Cubitt, Pérez-García & Wolf, 'Undecidability of the spectral gap', Nature 528, 207 (2015)", url: "https://arxiv.org/abs/1502.04573" },
       { label: "Bausch, Cubitt, Lucia & Pérez-García, 'Undecidability of the spectral gap in one dimension', PRX 10, 031038 (2020)", url: "https://journals.aps.org/prx/abstract/10.1103/PhysRevX.10.031038" },
-      { label: "'A Hierarchy of Spectral Gap Certificates for Frustration-Free Spin Systems', Quantum 10, 2065 (2026)", url: "https://doi.org/10.22331/q-2026-04-13-2065" },
+      { label: "Bravyi & Gosset, 'Gapped and gapless phases of frustration-free spin-1/2 chains', J. Math. Phys. 56, 061902 (2015)", url: "https://arxiv.org/abs/1503.04035" },
+      { label: "Rai, Kull, Emonts, Tura, Schuch & Baccari, 'A Hierarchy of Spectral Gap Certificates for Frustration-Free Spin Systems', Quantum 10, 2065 (2026)", url: "https://doi.org/10.22331/q-2026-04-13-2065" },
     ] },
 
   { id: "U2", cat: "undecidability", horizon: "incremental",
@@ -63,13 +64,13 @@ Free models and other explicitly solvable families supply positive cases, but �
 
 What is known: Uncomputability results for channels with memory concern a different model. Likewise, zero-error capacity, assisted capacities and capacity-achieving optimizers are different tasks. Noncomputability of zero-error capacity on computable-real channel descriptions cannot simply be transferred to ordinary capacity on finite rational/algebraic input.
 
-The March 2026 v3 preprint by Bhattacharyya–Mehta–Zhao proves QMA-hardness for computing quantum capacity and uncomputability of a restricted entanglement-assisted zero-error capacity. It explicitly leaves general capacity uncomputability unresolved. Version 3 corrects an error in the zero-error part of v2; neither its title nor an earlier abstract should be read as proving the headline problem settled.
+The March 2026 v3 preprint by Bhattacharyya–Mehta–Zhao (listed on arXiv as a FOCS 2026 paper) proves QMA-hardness for computing quantum capacity and uncomputability of a restricted entanglement-assisted zero-error capacity. It explicitly leaves general capacity uncomputability unresolved. Version 3 corrects an error in the zero-error part of v2; neither its title nor an earlier abstract should be read as proving the headline problem settled.
 
 C1 treats formulas and tractable channel families; C6 treats zero-error questions; C9 treats memory. Classical and private memoryless capacity computability are companion questions requiring their own precise representations and assistance conventions. Related: C1, C6, C9.`,
     evidence: [{ kind: "preprint", summary: "QMA-hardness of quantum capacity and a restricted assisted zero-error uncomputability theorem; ordinary memoryless quantum-capacity computability is not settled. v3 corrects v2.", url: "https://arxiv.org/abs/2601.22471v3", date: "2026-03-30", version: "v3" }],
     relations: [{ id: "C1", type: "related" }, { id: "C6", type: "related" }, { id: "C9", type: "related" }],
     refs: [
-      { label: "Bhattacharyya, Mehta & Zhao, 'On the undecidability of quantum channel capacities' (2026 preprint, corrected v3)", url: "https://arxiv.org/abs/2601.22471v3" },
+      { label: "Bhattacharyya, Mehta & Zhao, 'On the undecidability of quantum channel capacities' (2026, corrected v3; FOCS 2026)", url: "https://arxiv.org/abs/2601.22471v3" },
       { label: "Elkouss & Pérez-García, 'Memory effects can make the transmission capability of a communication channel uncomputable', Nat. Commun. 9, 1149 (2018)", url: "https://www.nature.com/articles/s41467-018-03428-0" },
       { label: "Boche & Deppe, 'Computability of the Zero-Error Capacity of Noisy Channels' (2020; revised 2024)", url: "https://arxiv.org/abs/2010.06873v3" },
     ] },
@@ -89,7 +90,7 @@ The methodological checklist supports the distinct finite-input questions U1–U
     relations: [{ id: "U1", type: "related" }, { id: "U2", type: "related" }, { id: "U3", type: "related" }, { id: "U4", type: "related" }, { id: "M11", type: "related" }],
     refs: [
       { label: "Weihrauch, 'Computable Analysis: An Introduction' (Springer, 2000)", url: "https://doi.org/10.1007/978-3-642-56999-9" },
-      { label: "Pour-El & Richards, 'Computability in Analysis and Physics' (Springer, 1989)", url: "https://doi.org/10.1007/978-3-662-21717-7" },
+      { label: "Pour-El & Richards, 'Computability in Analysis and Physics' (Springer, 1989; reissued by Cambridge University Press, 2017)", url: "https://doi.org/10.1017/9781316717325" },
       { label: "Hege, Moscolari & Teufel, 'Computing the spectrum and pseudospectrum of infinite-volume operators from local patches' (2024 preprint; revised 2025)", url: "https://arxiv.org/abs/2403.19055v2" },
     ] },
 ];

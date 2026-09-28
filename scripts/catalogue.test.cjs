@@ -140,6 +140,14 @@ test("targeted literature updates preserve untouched review dates and expose pen
   for (const id of ids) assert.ok(policy.includes(`#p/${id}`), `missing update link ${id}`);
 });
 
+test("correction log is published and linked from the review page", () => {
+  const { CORRECTION_LOG } = data;
+  validUrl(CORRECTION_LOG.reportUrl, "correction log");
+  assert.ok(CORRECTION_LOG.reportUrl.endsWith(`${CORRECTION_LOG.date}-correction-log.md`));
+  assert.ok(fs.existsSync(path.join(root, "docs/reviews", `${CORRECTION_LOG.date}-correction-log.md`)), "missing correction log");
+  assert.ok(render(views.ReviewView).includes(CORRECTION_LOG.reportUrl));
+});
+
 test("priority scientific corrections retain the supporting sources", () => {
   const anchors = {
     A4: "0806.0450", N3: "CJM-1989-049-4", N7: "s41467-026-70829-x",
@@ -173,10 +181,10 @@ test("all mathematical expressions parse with KaTeX and have balanced delimiters
   }
 });
 
-test("every active and archived detail view renders with valid links and Astra credit", () => {
+test("every active and archived detail view renders with valid links and Astra & Opus 5.5 credit", () => {
   for (const p of ALL_PROBLEMS) {
     const html = render(views.ProblemView, { id: p.id });
-    assert.ok(html.includes("powered by Astra"), p.id);
+    assert.ok(html.includes("powered by Astra &amp; Opus 5.5"), p.id);
     assert.ok(!html.includes("katex-error"), `${p.id}: math rendering error`);
     assert.ok(!html.includes('href="undefined"'), `${p.id}: broken href`);
     for (const match of html.matchAll(/href="#p\/([^"<>]+)"/g)) assert.ok(getProblem(match[1]), `${p.id}: broken rendered link ${match[1]}`);
@@ -190,7 +198,7 @@ test("every active and archived detail view renders with valid links and Astra c
 test("home, all categories, filtered lists, policy and missing-page views render", () => {
   const home = render(views.Home);
   assert.ok(home.includes("113") && home.includes("Active entries"));
-  assert.ok(home.includes("#review") && home.includes("powered by Astra"));
+  assert.ok(home.includes("#review") && home.includes("powered by Astra &amp; Opus 5.5"));
   assert.ok(home.includes('href="#improved"'));
   assert.ok(home.includes('href="https://quantumlectures.org/en"'));
   assert.ok(home.includes('href="https://learnthermo.org/"'));

@@ -29,14 +29,14 @@ Preprint progress (23–25 September 2026): Tang, Zhu, Bai and Wang claim strong
       { label: "Tang, Zhu, Bai & Wang, 'Classical Capacity and Entanglement Cost of the Amplitude Damping Channel' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.28592v1" },
       { label: "Pirandola, 'Exact series formulas for the capacities of the amplitude damping channel' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.31609v1" },
       { label: "Shou & Gorshkov, 'A constructive violation of additivity of minimum output von Neumann entropy' (2026 preprint, v2)", url: "https://arxiv.org/abs/2609.23946v2" },
-      {"label":"Bhattacharyya, Mehta & Zhao, 'On the undecidability of quantum channel capacities' (2026 preprint, corrected v3)","url":"https://arxiv.org/abs/2601.22471v3"},
+      {"label":"Bhattacharyya, Mehta & Zhao, 'On the undecidability of quantum channel capacities' (2026, corrected v3; FOCS 2026)","url":"https://arxiv.org/abs/2601.22471v3"},
       { label: "Devetak & Shor, 'The capacity of a quantum channel for simultaneous transmission of classical and quantum information', Comm. Math. Phys. 256 (2005)", url: "https://arxiv.org/abs/quant-ph/0311131" },
       { label: "Smith & Yard, 'Quantum communication with zero-capacity channels', Science 321 (2008)", url: "https://arxiv.org/abs/0807.4935" },
       { label: "Zhu & Wang, 'Quantum Incapacity beyond No-Cloning and PPT Mechanisms' (2026 preprint)", url: "https://arxiv.org/abs/2607.24693" },
       { label: "Krohn-Grimberghe, 'A certified lower bound on the quantum-capacity threshold of the depolarizing channel' (2026 preprint)", url: "https://arxiv.org/abs/2608.15870" },
     ] },
 
-  { id: "C2", cat: "channels", horizon: "sharp",
+  { id: "C2", cat: "channels", horizon: "incremental",
     relations: [{ id: "C3", type: "related" }, { id: "C10", type: "parent" }],
     title: "Quantum capacity of the thermal attenuator",
     statement: r`For a bosonic thermal attenuator with transmissivity $\eta$, environment mean occupation $N_{\rm th}$ and mean input-photon budget $N_S$ per use, determine the unassisted quantum capacity $Q(\eta,N_{\rm th},N_S)$ outside known zero-capacity and pure-loss cases. Treat private capacity as a separate subtarget.`,
@@ -46,10 +46,10 @@ The zero-temperature pure-loss channel has known degradable/antidegradable regim
 
 Rosati–Mari–Giovannetti provide important bounds. Correlated multimode Gaussian coding can improve upon product thermal-input strategies, as demonstrated by published 2020 work. Thus “Gaussian optimization” must not silently mean a one-mode product ansatz, nor should all remaining upper/lower gaps be called uniformly small.
 
-The target is matching achievable and converse bounds for fixed $(\eta,N_{\rm th},N_S)$. Private capacity requires its own coding and secrecy definition and should not be assumed equal to quantum capacity.`,
+The target is matching achievable and converse bounds for fixed $(\eta,N_{\rm th},N_S)$. Across this three-parameter family, progress is incremental: closing the gap on a specified parameter region counts, and no single proof or counterexample settles every point. Private capacity requires its own coding and secrecy definition and should not be assumed equal to quantum capacity.`,
     refs: [
       {"label":"Rosati, Mari & Giovannetti, 'Narrow bounds for the quantum capacity of thermal attenuators', Nature Communications 9, 4339 (2018)","url":"https://www.nature.com/articles/s41467-018-06848-0"},
-      {"label":"'Enhanced energy-constrained quantum communication over bosonic Gaussian channels', Nature Communications (2020)","url":"https://www.nature.com/articles/s41467-020-14329-6"},
+      {"label":"Noh, Pirandola & Jiang, 'Enhanced energy-constrained quantum communication over bosonic Gaussian channels', Nature Communications 11, 457 (2020)","url":"https://www.nature.com/articles/s41467-020-14329-6"},
       { label: "Pirandola, Laurenza, Ottaviani, Banchi, 'Fundamental limits of repeaterless quantum communications', Nat. Commun. 8, 15043 (2017)", url: "https://arxiv.org/abs/1510.08863" },
     ] },
 
@@ -72,7 +72,7 @@ The incremental goal is to close specified $Q_2$ or $K$ gaps in noisy families a
 Newly indexed preprint (September 2026; arXiv records submission on 17 August): Barber and Pirandola improve achievable two-way quantum rates for thermal loss over a range of parameters by combining qubit–bosonic distribution and optimized entanglement distillation. This tightens lower bounds; it supplies neither matching converses nor an exact secret-key capacity. Comparisons with energy-constrained benchmarks must retain the protocol's resource assumptions.`,
     refs: [
       { label: "Barber & Pirandola, 'Improved lower bound for the two-way-assisted quantum capacity of the bosonic thermal-loss channel' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.27792v1" },
-      {"label":"Pirandola, Laurenza, Ottaviani & Banchi, PLOB theorem, Nature Communications 8, 15043 (2017)","url":"https://arxiv.org/abs/1510.08863"},
+      {"label":"Pirandola, Laurenza, Ottaviani & Banchi, 'Fundamental limits of repeaterless quantum communications' (PLOB), Nature Communications 8, 15043 (2017)","url":"https://arxiv.org/abs/1510.08863"},
       { label: "Wilde, Tomamichel, Berta, 'Converse bounds for private communication over quantum channels', IEEE Trans. Inf. Theory 63 (2017)", url: "https://arxiv.org/abs/1602.08898" },
     ] },
 
@@ -101,7 +101,7 @@ The July and August manuscripts concern restricted classes. The September claim 
 
 Claimed resolution (8 September 2026, v1): Cheng and Tomamichel claim an exponential strong converse for unassisted quantum communication over every finite-dimensional memoryless channel, as well as for unassisted classical communication at its respective capacity. Their entanglement-generation bound covers arbitrary codes and implies the transmission statement above. The argument uses integral representations and asymptotic continuity of regularized Rényi capacities. This claims to settle the full finite-dimensional question, rather than another restricted channel class; it remains a preprint awaiting independent assessment here. The catalogue retains “Improved” pending that assessment. No exact capacity formula, infinite-dimensional extension or assisted-capacity theorem follows merely from this claim.
 
-Additional full-resolution claim (10 September 2026, v1, absent from the previous update): Beigi and Tomamichel claim exponential fidelity decay above quantum capacity for every finite-dimensional memoryless channel. Their route uses a fully quantum blowing-up lemma and a polynomial approximation controlling a Stinespring-image projector's projective norm. This is a second proposed argument, with an author shared with Cheng–Tomamichel, not independent validation of either manuscript. Status remains “Improved”.`,
+Additional full-resolution claim (10 September 2026, v1): Beigi and Tomamichel claim exponential fidelity decay above quantum capacity for every finite-dimensional memoryless channel. Their route uses a fully quantum blowing-up lemma and a polynomial approximation controlling a Stinespring-image projector's projective norm. This is a second proposed argument, with an author shared with Cheng–Tomamichel, not independent validation of either manuscript. Status remains “Improved”.`,
     refs: [
       { label: "Beigi & Tomamichel, 'Strong Converse for Quantum Capacity via a Fully Quantum Blowing-Up Lemma' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.11771v1" },
       { label: "Cheng & Tomamichel, 'No information transmission through quantum channels above capacity' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.08998v1" },
@@ -139,7 +139,10 @@ Preprint progress (9 September 2026, v1): Zhu and Wang claim operational private
 
   { id: "C6", cat: "channels", horizon: "incremental", status: "improved",
     relations: [{ id: "C1", type: "related" }, { id: "U4", type: "related" }],
-    evidence: [{ kind: "preprint", summary: "Certified classical seven-cycle Shannon-capacity lower bound from an independent set in a 500th strong power, not an exact capacity.", url: "https://arxiv.org/abs/2608.30273", date: "2026-08-31" }],
+    evidence: [
+      { kind: "preprint", summary: "Certified classical seven-cycle Shannon-capacity lower bound from an independent set in a 500th strong power, not an exact capacity.", url: "https://arxiv.org/abs/2608.30273", date: "2026-08-31" },
+      { kind: "preprint", summary: "Lean-formalized lower bounds for several odd cycles, including Θ(C7) ≥ 3.258805…, in the recursive line started by Itty et al. and Gao; lower bounds only.", url: "https://arxiv.org/abs/2607.29681v1", date: "2026-07-31", version: "v1" },
+    ],
     provenance: [{ summary: "Tandon reports ChatGPT and Claude use for constructions, proof development/checks, implementation and writing, and supplies exact computations and machine-readable certificates under author responsibility.", url: "https://arxiv.org/abs/2608.30273" }],
     title: "Zero-error capacities and graph-capacity benchmarks",
     statement: r`For explicitly specified channel or noncommutative-graph families, evaluate asymptotic zero-error capacity with message type and assistance fixed. A concrete classical benchmark is the exact Shannon capacity $\Theta(C_7)$.`,
@@ -147,12 +150,16 @@ Preprint progress (9 September 2026, v1): Zhu and Wang claim operational private
 
 Classically, an independent-set problem on strong graph powers defines $\Theta(G)$, while the capacity in bits per use is $\log_2\Theta(G)$. Lovász settled the five-cycle; the seven-cycle remains a benchmark. Quantum channels lead to noncommutative graphs/operator systems and quantum Lovász-type SDP bounds. Established superactivation and entanglement-assisted enhancements show that zero-error resources can behave very differently from ordinary capacities.
 
-Preprint progress (31 August 2026): Tandon claims a certified independent set in the 500th strong power of the seven-cycle, yielding $\Theta(C_7)\geq3.25883262\ldots$. This is a classical graph-capacity lower bound, not a bit rate or a generic quantum-capacity theorem; the exact value remains unresolved.
+Preprint progress (July–August 2026): the seven-cycle lower bound had stood at $\Theta(C_7)\geq367^{1/5}\approx3.25787$ (Polak–Schrijver, 2019). A rapid AI-assisted sequence then raised it: Itty–Rosin–Carstensen–Reichman ($134753^{1/10}>3.25802$), Gao's recursive product construction ($3.25878\ldots$) and Buys–Polak–Zuiddam's Lean-formalized bounds ($3.25880\ldots$). On 31 August, Tandon claimed a heterogeneous refinement giving an independent set in the 500th strong power, $\Theta(C_7)\geq3.25883262\ldots$. These are classical graph-capacity lower bounds, not bit rates or generic quantum-capacity theorems; a gap remains below the Lovász upper bound $\vartheta(C_7)=7\cos(\pi/7)/(1+\cos(\pi/7))\approx3.3177$, and the exact value is unresolved.
 
 The active programme is computable bounds and matching characterizations in stated models. Specialized zero-error undecidability results must not be transferred to ordinary memoryless quantum capacity in C1/U4.`,
     refs: [
       { label: "Duan, Severini, Winter, 'Zero-error communication via quantum channels, non-commutative graphs, and a quantum Lovász theta function', IEEE Trans. Inf. Theory 59 (2013)", url: "https://arxiv.org/abs/1002.2514" },
       { label: "Cubitt, Chen, Harrow, 'Superactivation of the asymptotic zero-error classical capacity of a quantum channel', IEEE Trans. Inf. Theory 57 (2011)", url: "https://arxiv.org/abs/0906.2547" },
+      { label: "Polak & Schrijver, 'New lower bound on the Shannon capacity of C7 from circular graphs', Inf. Process. Lett. 143, 37–40 (2019)", url: "https://doi.org/10.1016/j.ipl.2018.11.006" },
+      { label: "Itty, Rosin, Carstensen & Reichman, 'Improved lower bounds for the Shannon capacity of odd cycles' (2026 preprint)", url: "https://arxiv.org/abs/2607.21517" },
+      { label: "Gao, 'A Recursive Construction Improving the Lower Bound on the Shannon Capacity of C7' (2026 preprint)", url: "https://arxiv.org/abs/2607.27869" },
+      { label: "Buys, Polak & Zuiddam, 'Lean-verified lower bounds for the Shannon capacity of odd cycles' (2026 preprint, v1)", url: "https://arxiv.org/abs/2607.29681v1" },
       { label: "Tandon, 'Strengthening Recursive Constructions for Zero-Error Shannon Capacity' (2026 preprint)", url: "https://arxiv.org/abs/2608.30273" },
     ] },
 
@@ -225,8 +232,8 @@ Preprint progress (15 September 2026, v1): Wilde claims a strong converse at the
     refs: [
       { label: "Wilde, 'Strong converse for the quantum capacity of the pure-loss bosonic channel' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.16608v1" },
       {"label":"Wilde & Winter, 'Strong converse for the classical capacity of the pure-loss bosonic channel', Problems of Information Transmission (2014)","url":"https://arxiv.org/abs/1308.6732"},
-      {"label":"Bardhan & Wilde, strong converse for thermal/additive-noise bosonic channels under a photon-number occupation constraint","url":"https://arxiv.org/abs/1312.3287"},
-      {"label":"Strong converse for phase-insensitive bosonic Gaussian channels with an occupation constraint","url":"https://arxiv.org/abs/1401.4161"},
+      {"label":"Bardhan & Wilde, 'Strong converse rates for classical communication over thermal and additive noise bosonic channels', PRA 89, 022302 (2014) — photon-number occupation constraint","url":"https://arxiv.org/abs/1312.3287"},
+      {"label":"Bardhan, García-Patrón, Wilde & Winter, 'Strong converse for the classical capacity of optical quantum communication channels', IEEE Trans. Inf. Theory 61, 1842 (2015) — phase-insensitive Gaussian channels with an occupation constraint","url":"https://arxiv.org/abs/1401.4161"},
       { label: "Giovannetti, Holevo, García-Patrón, 'A solution of the Gaussian optimizer conjecture', Comm. Math. Phys. 334 (2015)", url: "https://arxiv.org/abs/1312.2251" },
       { label: "Holevo, 'Quantum Systems, Channels, Information' (De Gruyter, 2nd ed. 2019)", url: "https://doi.org/10.1515/9783110642490" },
     ] },
@@ -239,13 +246,19 @@ Preprint progress (15 September 2026, v1): Wilde claims a strong converse at the
 
 Antidegradability gives zero quantum capacity for $q\in[1/4,3/4]$. Achievable rates from coherent information and degenerate quantum codes give lower bounds, but optimization over a single use is not generally the capacity. The residual gap already poses a sharp problem for a two-dimensional channel.
 
-Preprint progress (August 2026): Krohn-Grimberghe supplies an exact-arithmetic certificate claiming positive coherent information for a 45-copy rank-two input at per-Pauli noise $p=0.064956$, or total error $q=0.194868$. If verified, this certifies $q_*\geq0.194868$; it is not an exact capacity formula or the threshold itself. The certificate is designed to permit independent checking, which this catalogue does not claim to have performed.
+Prior threshold ladder (per-Pauli $p$, as tabulated in the August certificate paper): DiVincenzo–Shor–Smolin (1998) $0.06352$, Smith–Smolin (2007) $0.063626$, Fern–Whaley (2008) $0.0637675$, and Agarwal et al. (May 2026) $0.064657$, i.e. $q\approx0.19397$, from a symmetric-subspace search. The code constructions are rigorous, but the final sign of the coherent information at each printed point was evaluated numerically.
+
+Preprint progress (August 2026): starting from the public states of Agarwal et al., Krohn-Grimberghe supplies an exact-arithmetic certificate claiming positive coherent information for a 45-copy rank-two input at per-Pauli noise $p=0.064956$, or total error $q=0.194868$. If verified, this certifies $q_*\geq0.194868$; it is not an exact capacity formula or the threshold itself. The certificate is designed to permit independent checking, which this catalogue does not claim to have performed.
 
 This benchmark was promoted from C1 to keep the precise threshold question and its noise normalization visible. Unassisted vanishing-error capacity is intended; two-way, zero-error and restricted-code capacities are different quantities.`,
     evidence: [{ kind: "preprint", summary: "Exact-arithmetic positive coherent-information certificate for a 45-copy rank-two input at total Pauli error q=0.194868; not an exact threshold.", url: "https://arxiv.org/abs/2608.15870", date: "2026-08-16" }],
     provenance: [{ summary: "Krohn-Grimberghe reports an AI-driven numerical search and AI assistance with code, calculations, mechanical proof derivations and drafting under author direction. The author takes responsibility; the verification chain is intended to be independent of witness discovery.", url: "https://arxiv.org/abs/2608.15870" }],
     refs: [
       { label: "Krohn-Grimberghe, 'A certified lower bound on the quantum-capacity threshold of the depolarizing channel' (2026 preprint)", url: "https://arxiv.org/abs/2608.15870" },
+      { label: "Agarwal, Kalra, Lee, Leung, Schaeffer, Sinha & Smith, 'Enhanced quantum capacity thresholds from symmetry' (2026 preprint)", url: "https://arxiv.org/abs/2605.09138" },
+      { label: "DiVincenzo, Shor & Smolin, 'Quantum-channel capacity of very noisy channels', PRA 57, 830 (1998)", url: "https://arxiv.org/abs/quant-ph/9706061" },
+      { label: "Smith & Smolin, 'Degenerate quantum codes for Pauli channels', PRL 98, 030501 (2007)", url: "https://arxiv.org/abs/quant-ph/0604107" },
+      { label: "Fern & Whaley, 'Lower bounds on the nonzero capacity of Pauli channels', PRA 78, 062335 (2008)", url: "https://arxiv.org/abs/0708.1597" },
       { label: "Tomamichel, 'A strong converse for stabilizer codes over Pauli channels via the blowing-up lemma' (2026 preprint; includes depolarizing parameter regimes)", url: "https://arxiv.org/abs/2607.23450" },
     ] },
 
@@ -266,7 +279,7 @@ A general proof or one complex finite-dimensional PPT-channel pair whose composi
     refs: [
       { label: "Christandl, Müller-Hermes & Wolf, 'When Do Composed Maps Become Entanglement Breaking?', Annales Henri Poincaré (2019)", url: "https://arxiv.org/abs/1807.01266" },
       { label: "Prudhoe, 'Entanglement Breaking Structure of Cartan-Covariant Quantum Channels' (2026 revision, v3)", url: "https://arxiv.org/abs/2501.03959" },
-      { label: "Park, 'k-Positivity and high-dimensional bound entanglement under symplectic group symmetry' (2026 preprint)", url: "https://arxiv.org/abs/2602.09860" },
+      { label: "Park, 'k-Positivity and high-dimensional bound entanglement under symplectic group symmetries' (2026 preprint)", url: "https://arxiv.org/abs/2602.09860" },
       { label: "An & Lee, 'Beyond the Positive Partial Transpose Squared Conjecture: The Qutrit Case' (2026 preprint)", url: "https://arxiv.org/abs/2607.15947" },
       { label: "Park, 'Every PPT channel has finite entanglement breaking index' (2026 preprint, v2)", url: "https://arxiv.org/abs/2608.13551v2" },
       { label: "Chiribella, Davidson, Paulsen & Rahaman, 'Positive maps and entanglement in real Hilbert spaces' (real-analogue counterexample)", url: "https://arxiv.org/abs/2207.02510" },
