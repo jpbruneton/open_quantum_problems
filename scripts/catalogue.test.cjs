@@ -42,7 +42,7 @@ function loadApp(relative) {
 }
 
 const data = loadApp("app/data/problems.js");
-const { ALL_PROBLEMS, PROBLEMS, ARCHIVED_PROBLEMS, CATEGORIES, HORIZONS, STATUSES, EVIDENCE_KINDS, REVIEW, LITERATURE_UPDATE, getProblem, problemsByCat } = data;
+const { ALL_PROBLEMS, PROBLEMS, ARCHIVED_PROBLEMS, CATEGORIES, HORIZONS, STATUSES, EVIDENCE_KINDS, REVIEW, LITERATURE_UPDATE, LITERATURE_UPDATES, getProblem, problemsByCat } = data;
 const views = loadApp("app/page.js").testViews;
 const render = (view, props) => renderToStaticMarkup(React.createElement(view, props));
 const originalSeries = { M: 11, B: 12, QF: 10, E: 15, N: 10, C: 10, A: 18, U: 5, O: 9, F: 11 };
@@ -115,20 +115,28 @@ test("every entry has valid metadata, references and internal relations", () => 
 
 test("targeted literature updates preserve untouched review dates and expose pending claims", () => {
   const ids = LITERATURE_UPDATE.ids;
-  assert.equal(new Set(ids).size, ids.length);
-  for (const id of ids) assert.ok(PROBLEMS.some((p) => p.id === id), `updated entry ${id} must be active`);
-  for (const p of ALL_PROBLEMS) {
-    assert.equal(p.reviewedAt, ids.includes(p.id) ? LITERATURE_UPDATE.date : REVIEW.date, p.id);
-    if (ids.includes(p.id)) assert.ok(p.evidence.some((e) => e.date >= REVIEW.date && e.version), `${p.id}: missing dated, versioned evidence`);
+  assert.equal(LITERATURE_UPDATE, LITERATURE_UPDATES[0]);
+  for (const [index, update] of LITERATURE_UPDATES.entries()) {
+    assert.equal(new Set(update.ids).size, update.ids.length);
+    assert.ok(update.date > REVIEW.date);
+    if (index) assert.ok(update.date < LITERATURE_UPDATES[index - 1].date, "updates must be newest first");
+    for (const id of update.ids) assert.ok(PROBLEMS.some((p) => p.id === id), `updated entry ${id} must be active`);
+    validUrl(update.reportUrl, update.date);
+    assert.ok(fs.existsSync(path.join(root, "docs/reviews", `${update.date}-literature-update.md`)), "missing update report");
   }
-  for (const [id, source] of [["C4", "2609.08998v1"], ["C5", "2609.10520v1"]]) {
+  for (const p of ALL_PROBLEMS) {
+    const latest = LITERATURE_UPDATES.find((update) => update.ids.includes(p.id));
+    assert.equal(p.reviewedAt, latest?.date ?? REVIEW.date, p.id);
+    if (ids.includes(p.id)) assert.ok(p.evidence.some((e) => e.date && (e.version || e.kind === "published")), `${p.id}: missing dated, versioned or published evidence`);
+  }
+  for (const [id, source] of [["C4", "2609.08998v1"], ["C5", "2609.10520v1"], ["A4", "2609.13032v1"], ["A7", "2609.20780v1"], ["E10", "2609.29539v1"]]) {
     assert.equal(getProblem(id).status, "improved", `${id}: unverified claim promoted to solved`);
     assert.ok(getProblem(id).evidence.some((e) => e.kind === "preprint" && e.url.includes(source)), id);
   }
   const home = render(views.Home);
   assert.ok(home.includes(LITERATURE_UPDATE.label) && home.includes(REVIEW.label));
   const policy = render(views.ReviewView);
-  assert.ok(policy.includes(LITERATURE_UPDATE.reportUrl));
+  for (const update of LITERATURE_UPDATES) assert.ok(policy.includes(update.reportUrl));
   for (const id of ids) assert.ok(policy.includes(`#p/${id}`), `missing update link ${id}`);
 });
 

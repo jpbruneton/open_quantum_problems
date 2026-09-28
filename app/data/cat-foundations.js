@@ -153,6 +153,7 @@ The frontier is quantitative: fix a group (for example time translations or spat
     ] },
 
   { id: "F9", cat: "foundations", horizon: "conceptual", status: "improved",
+    reviewedAt: "2026-09-28",
     title: "Physical boundary of indefinite causal order",
     statement: r`Determine how the physically realizable process class changes when specified closed-laboratory, spacetime-localization or background-causality assumptions are relaxed, and give operational implementations or obstructions for the resulting models.`,
     context: r`The process-matrix framework (Oreshkov–Costa–Brukner) generalizes quantum theory to allow operations without a fixed causal order between them. Some 'processes' are causally nonseparable — they cannot be explained by any definite (even probabilistic) ordering of events — raising the question of which are physically realizable.
@@ -163,9 +164,16 @@ Preprint theorem (May 2026): Salzger–Vilasini show that, in a classical acycli
 
 Separate accepted-paper progress: Mothe–Abbott–Branciard classify non-influenceable causal order and corresponding controlled-order circuits. APS lists their paper as accepted in PRX Quantum on 20 August 2026 (preprint July 2025), not published in Physical Review Research.
 
-Remaining questions require a specified change of model: relax a closed-lab condition, allow different localization or continuous relativistic implementations, or specify a nonclassical background. Characterize the new achievable processes and observable signatures; do not keep the characterized closed-lab regime open by omitting its assumptions. Related: F10.`,
-    evidence: [{ kind: "preprint", summary: "QC-QC characterization in classical acyclic spacetime with causal boxes and fine-grained Acting Once/Local Order closed-lab conditions; not an unrestricted quantum-gravity or ICO no-go result.", url: "https://arxiv.org/abs/2605.08351", date: "2026-05-08", version: "v1" }],
+Remaining questions require a specified change of model: relax a closed-lab condition, allow different localization or continuous relativistic implementations, or specify a nonclassical background. Characterize the new achievable processes and observable signatures; do not keep the characterized closed-lab regime open by omitting its assumptions. Related: F10.
+
+Preprint progress (16–17 September 2026, v1): Wei–Pang and Wechs–Abbott–Branciard give two teleportation-based constructions identifying extensibly causally separable multipartite processes with circuits whose order is classically controlled (QC-CC). The ancillary-extension convention is essential; the latter paper uses the corresponding strengthened notion of causal separability. This characterizes the causally separable class, not the realizability of every causally nonseparable process. It is separate from the QC-QC closed-laboratory theorem above.`,
+    evidence: [
+      { kind: "preprint", summary: "Claimed operational equivalence of extensible causal separability and QC-CC, including global past/future systems.", url: "https://arxiv.org/abs/2609.18559v1", date: "2026-09-16", version: "v1" },
+      { kind: "preprint", summary: "Concurrent characterization using coherent teleportation and the ancilla-stable multipartite causal-separability definition; not a theorem for all nonseparable processes.", url: "https://arxiv.org/abs/2609.20774v1", date: "2026-09-17", version: "v1" },
+      { kind: "preprint", summary: "QC-QC characterization in classical acyclic spacetime with causal boxes and fine-grained Acting Once/Local Order closed-lab conditions; not an unrestricted quantum-gravity or ICO no-go result.", url: "https://arxiv.org/abs/2605.08351", date: "2026-05-08", version: "v1" }],
     refs: [
+      { label: "Wei & Pang, 'Extensibly Causally Separable Processes Admit Realizations as Quantum Circuits with Classical Control of Causal Order' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.18559v1" },
+      { label: "Wechs, Abbott & Branciard, 'All causally separable quantum processes are quantum circuits with classical control of causal order' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.20774v1" },
       { label: "Oreshkov, Costa, Brukner, 'Quantum correlations with no causal order', Nat. Commun. 3, 1092 (2012)", url: "https://arxiv.org/abs/1105.4464" },
       { label: "Araújo, Branciard, Costa, Feix, Giarmatzi & Brukner, 'Witnessing causal nonseparability', New J. Phys. 17, 102001 (2015)", url: "https://arxiv.org/abs/1506.03776" },
       { label: "Araújo, Feix, Navascués & Brukner, 'A purification postulate for quantum mechanics with indefinite causal order', Quantum 1, 10 (2017)", url: "https://arxiv.org/abs/1611.08535" },

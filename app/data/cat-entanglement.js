@@ -50,12 +50,14 @@ Resolving the all-copy Werner question resolves E1. The corrected author attribu
     ] },
 
   { id: "E3", cat: "entanglement", horizon: "incremental", status: "improved",
-    reviewedAt: "2026-09-10",
+    reviewedAt: "2026-09-28",
     relations: [{ id: "E12", type: "related" }],
     evidence: [
+      { kind: "preprint", summary: "Sharp high-temperature separability threshold for bounded-overlap Pauli Hamiltonians; efficient sampling strictly below the threshold, not generic separability testing.", url: "https://arxiv.org/abs/2609.30149v1", date: "2026-09-24", version: "v1" },
       { kind: "preprint", summary: "Accuracy-dependent lower bounds for a shared-feasible-region SDP model; not a lower bound on all algorithms, nor a new unconditional separation of QMA and QMA(2).", url: "https://arxiv.org/abs/2609.09033v1", date: "2026-09-08", version: "v1" },
       { kind: "preprint", summary: "Randomized polynomial-time separability testing with a fixed constant Euclidean-distance promise gap; not exact or arbitrary-norm membership.", url: "https://arxiv.org/abs/2607.23773", date: "2026-07-26" }],
     provenance: [
+      { summary: "Kiani credits ChatGPT 6 with the proof strategy and central arguments, refined through author feedback; he reports checking all proofs and responsibility for the paper.", url: "https://arxiv.org/html/2609.30149v1", version: "v1" },
       { summary: "The authors report Lean proofs supporting their main results. This is an attributed formalization statement; the catalogue has not checked the formal project or inferred AI authorship from the use of Lean.", url: "https://arxiv.org/html/2609.09033v1", version: "v1" },
       { summary: "Malavolta attributes the main idea to himself with Michael Walter's feedback, and reports ChatGPT 5.5/5.6 assistance on technical reduction proofs. He states that he wrote the final manuscript and takes responsibility.", url: "https://arxiv.org/abs/2607.23773" }],
     title: "Effective separability criteria",
@@ -68,8 +70,11 @@ Preprint progress (July 2026): Malavolta claims a randomized polynomial-time alg
 
 The incremental target is a quantitative map of specified tractable families and certified hierarchy levels as functions of dimension and requested accuracy, rather than an undefined “maximal tractable class”.
 
-Preprint progress (8 September 2026, v1): Gharibian, Hecht and Rudolph bound the size of SDPs approximating separable-state optimization in the HNW extended-formulation model. Every objective shares a feasible region and an objective-independent product-state embedding. For $0<\theta<2/7$, sufficiently small error $a$ and large local dimension $d$, the claimed lower bound is $d^{c_\theta\min\{a^{-1/3},d^\theta\}}$. It is superpolynomial when $a=o(1)$, not automatically at fixed constant error. This is a restriction on that SDP representation model, not on every separability algorithm or every norm/promise formulation. The paper also notes that concurrent quantum-oracle work already supersedes its approximate-disentangler application; its SDP bound is a separate contribution. Lean support is author-reported and has not been independently rebuilt.`,
+Preprint progress (8 September 2026, v1): Gharibian, Hecht and Rudolph bound the size of SDPs approximating separable-state optimization in the HNW extended-formulation model. Every objective shares a feasible region and an objective-independent product-state embedding. For $0<\theta<2/7$, sufficiently small error $a$ and large local dimension $d$, the claimed lower bound is $d^{c_\theta\min\{a^{-1/3},d^\theta\}}$. It is superpolynomial when $a=o(1)$, not automatically at fixed constant error. This is a restriction on that SDP representation model, not on every separability algorithm or every norm/promise formulation. The paper also notes that concurrent quantum-oracle work already supersedes its approximate-disentangler application; its SDP bound is a separate contribution. Lean support is author-reported and has not been independently rebuilt.
+
+Structured-family progress (24 September 2026, v1): Kiani claims the sharp universal high-temperature separability threshold for Pauli Hamiltonians with coefficients bounded by one and term-overlap degree $\Delta\ge2$. At or below the stated threshold, Gibbs states decompose into product Pauli eigenstates; strictly below it, the paper gives polynomial-time approximate sampling in trace distance. This is a promise on the generating Hamiltonian and temperature, not efficient separability testing for arbitrary input states. See O10 for the preparation consequence.`,
     refs: [
+      { label: "Kiani, 'Sharp universal death of entanglement threshold for Pauli Hamiltonians' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.30149v1" },
       { label: "Gharibian, Hecht & Rudolph, 'Semidefinite extension complexity of the separable set, with applications to approximate disentanglers' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.09033v1" },
       {"label":"Lami, Serafini & Adesso, 'Gaussian entanglement revisited' (published 2018)","url":"https://arxiv.org/abs/1612.05215"},
       { label: "Gurvits, 'Classical deterministic complexity of Edmonds' problem and quantum entanglement', STOC 2003", url: "https://doi.org/10.1103/RevModPhys.81.865" },
@@ -141,16 +146,26 @@ No finite MREGS is known even for three parties. Fixing that party number avoids
       { label: "Bennett, Popescu, Rohrlich, Smolin, Thapliyal, 'Exact and asymptotic measures of multipartite pure-state entanglement', PRA 63, 012307 (2000)", url: "https://arxiv.org/abs/quant-ph/9908073" },
     ] },
 
-  { id: "E8", cat: "entanglement", horizon: "programme",
+  { id: "E8", cat: "entanglement", horizon: "programme", status: "improved",
+    reviewedAt: "2026-09-28",
     relations: [{ id: "E7", type: "related" }, { id: "E5", type: "related" }],
+    evidence: [
+      { kind: "preprint", summary: "Claimed collapse of partition mixing for finite-mode Gaussian targets, allowing non-Gaussian decompositions; does not extend to arbitrary mixed states.", url: "https://arxiv.org/abs/2609.10984v1", date: "2026-09-10", version: "v1" },
+    ],
+    provenance: [
+      { summary: "The authors disclose GPT-5.6 Sol assistance with literature, proof auditing and drafting; they attribute the questions and arguments to themselves and report independent checking.", url: "https://arxiv.org/html/2609.10984v1", version: "v1" },
+    ],
     title: "Multipartite entanglement classification",
     statement: r`For fixed party number, local dimensions and rank bounds, develop computable invariants and conversion criteria for multipartite states under a specified equivalence relation, distinguishing pure-state SLOCC orbits from mixed-state LOCC convertibility.`,
     context: r`Multipartite entanglement has no single canonical classification independent of the allowed operations. Pure-state SLOCC equivalence, local-unitary equivalence, deterministic LOCC conversion and asymptotic resource conversion ask different questions.
 
 For pure three-qubit states, SLOCC yields finitely many classes, including inequivalent GHZ and W classes. Four-qubit pure states already have infinitely many SLOCC classes; the Verstraete–Dehaene–De Moor–Verschelde classification organizes them into nine parameterized families, not nine equivalence classes. Tensor algebra, orbit geometry and invariant theory describe small cases. Entanglement polytopes and tensor rank provide useful coarser structure.
 
-Mixed-state classification requires its own rank, dimensional and operational hypotheses; pure-state examples do not settle it. The programme is to obtain computable invariants, complete criteria in selected families and algorithms with explicit costs, rather than a universal finite list for all systems.`,
+Mixed-state classification requires its own rank, dimensional and operational hypotheses; pure-state examples do not settle it. The programme is to obtain computable invariants, complete criteria in selected families and algorithms with explicit costs, rather than a universal finite list for all systems.
+
+Structured classification claim (10 September 2026, v1): Yang et al. claim that for a Gaussian state of finitely many bosonic modes, full inseparability is equivalent to genuine multipartite entanglement. More generally, a mixture over a finite family of separability partitions reduces to one fixed partition, even allowing non-Gaussian components and trace-norm closure. This distinguishes finite-mode Gaussian targets from arbitrary mixed states; it is not a general multipartite LOCC classification or a PPT criterion for every cut.`,
     refs: [
+      { label: "Yang et al., 'Full Inseparability and Genuine Multipartite Entanglement Coincide for Finite-Mode Gaussian States' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.10984v1" },
       { label: "Dür, Vidal, Cirac, 'Three qubits can be entangled in two inequivalent ways', PRA 62, 062314 (2000)", url: "https://arxiv.org/abs/quant-ph/0005115" },
       { label: "Verstraete, Dehaene, De Moor, Verschelde, 'Four qubits can be entangled in nine different ways', PRA 65, 052112 (2002)", url: "https://arxiv.org/abs/quant-ph/0109033" },
     ] },
@@ -173,16 +188,26 @@ The task must be specified quantity by quantity, with input encoding, additive a
     ] },
 
   { id: "E10", cat: "entanglement", horizon: "sharp", status: "improved",
+    reviewedAt: "2026-09-28",
     relations: [{ id: "E9", type: "related" }],
-    evidence: [{ kind: "numerical", summary: "Werner-state calculations support nonadditivity but do not constitute a rigorously certified counterexample.", url: "https://arxiv.org/abs/1206.1307" }, { kind: "preprint", summary: "Rényi results for alpha below 1 and at least 2 do not settle ordinary entanglement of purification at alpha=1.", url: "https://arxiv.org/abs/2608.28897", date: "2026-08-28" }],
+    evidence: [
+      { kind: "preprint", summary: "Claimed certified von Neumann nonadditivity at some finite tensor power; not merely numerical evidence or a Renyi-order result. Independent assessment pending.", url: "https://arxiv.org/abs/2609.29539v1", date: "2026-08-25", version: "v1" },
+      { kind: "numerical", summary: "Werner-state calculations support nonadditivity but do not constitute a rigorously certified counterexample.", url: "https://arxiv.org/abs/1206.1307" }, { kind: "preprint", summary: "Rényi results for alpha below 1 and at least 2 do not settle ordinary entanglement of purification at alpha=1.", url: "https://arxiv.org/abs/2608.28897", date: "2026-08-28" }],
+    provenance: [
+      { summary: "The author reports AI use for code, calculations, mechanical proof steps and drafting under his direction, without naming a model. The supplied verification artifact was not run in this update.", url: "https://arxiv.org/html/2609.29539v1", version: "v1" },
+    ],
     title: "Additivity of entanglement of purification",
     statement: r`For ordinary von Neumann entanglement of purification, prove $E_P(\rho\otimes\sigma)=E_P(\rho)+E_P(\sigma)$ for all finite-dimensional states, or give a rigorously certified counterexample.`,
     context: r`Entanglement of purification $E_P$ is the minimum entanglement over purifications of a bipartite state. It measures quantum plus classical correlations. Its regularization governs formation of correlations with asymptotically vanishing communication, but evaluating that whole regularization is a separate task under E9.
 
 Terhal–Horodecki–Leung–DiVincenzo introduced the quantity and established bounds; it is not an entanglement monotone under LOCC. Chen–Winter supplied strong numerical evidence for nonadditivity on Werner states, together with rigorous structural results. Their numerical evidence is not an explicit rigorously proved counterexample. Holographic conjectures involving entanglement-wedge cross-sections provide additional motivation, not a resolution for arbitrary states.
 
-Preprint progress (August 2026): Negari and Baghali Khanian claim Rényi nonadditivity for every $\alpha\in[0,1)$ using a classical two-qubit family, and additivity for $\alpha\in[2,\infty]$ within that family. The ordinary $\alpha=1$ problem remains unresolved. A theorem at another Rényi order must not be labeled a solution here.`,
+Preprint progress (August 2026): Negari and Baghali Khanian claim Rényi nonadditivity for every $\alpha\in[0,1)$ using a classical two-qubit family, and additivity for $\alpha\in[2,\infty]$ within that family. Those Rényi results do not resolve the ordinary $\alpha=1$ problem. A theorem at another Rényi order must not be labeled a solution here.
+
+Claimed resolution (listed September 2026; arXiv records v1 submission on 25 August): Krohn-Grimberghe claims a rigorous separation $E_P^\infty(W)<0.97<E_P(W)$ for the two-qubit Werner state with singlet fraction $1/200$. Analytic reductions and exact-rational certificates would establish ordinary von Neumann nonadditivity at some finite tensor power. This does not identify a two-copy violation. The supplied verifier checks finite arithmetic, while the analytic reduction remains essential; neither has been independently validated here. E10 remains “Improved” pending assessment.`,
     refs: [
+      { label: "Krohn-Grimberghe, 'The entanglement of purification is not additive' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.29539v1" },
+      { label: "Krohn-Grimberghe, exact-rational verification artifact for entanglement-of-purification nonadditivity (author-supplied)", url: "https://doi.org/10.5281/zenodo.22097511" },
       {"label":"Chen & Winter, 'Non-Additivity of the Entanglement of Purification (Beyond Reasonable Doubt)' (numerical evidence, 2012)","url":"https://arxiv.org/abs/1206.1307"},
       { label: "Terhal, Horodecki, Leung, DiVincenzo, 'The entanglement of purification', J. Math. Phys. 43, 4286 (2002)", url: "https://arxiv.org/abs/quant-ph/0202044" },
       { label: "Bagchi & Pati, 'Monogamy, polygamy, and other properties of entanglement of purification', PRA 91 (2015)", url: "https://doi.org/10.1103/PhysRevA.91.042323" },

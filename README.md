@@ -14,6 +14,13 @@ https://openquantumproblems.com/
 
 ### Timeline
 
+**28 September 2026 — targeted literature update**
+
+- Updated sixteen entries using eighteen versioned arXiv manuscripts and a newly published Quantum article. See the [dated literature report](docs/reviews/2026-09-28-literature-update.md) for sources, submission/revision dates and scope.
+- A4, A7 and E10 now record claimed resolutions of finite-register QMA perfect completeness, good quantum local testability and ordinary entanglement-of-purification additivity. They remain “Improved” pending assessment; quantum PCP remains open.
+- Added progress on channel capacities and converses, Gaussian multipartite entanglement, separability, causal order, self-testing, classical verification, hyperbolic Anderson models, vacuum entanglement and Gibbs preparation.
+- Preserved the 10 September update in a visible history and retained untouched entry dates. Counts remain 113 active entries and ten archive/background pages.
+
 **10 September 2026 — targeted literature update**
 
 - Updated eleven entries using thirteen new versioned arXiv references, plus one source for the existing Bell-activation watchlist. See the [dated literature report](docs/reviews/2026-09-10-literature-update.md) for scope and source-by-source qualifications.
@@ -76,7 +83,7 @@ Do not renumber existing IDs or reuse an archived ID for a new question.
 - `statement` defines the model, assumptions, quantifiers and success criterion; `context` separates the established baseline from the open residual.
 - `horizon` distinguishes `sharp`, `incremental`, `programme` and `conceptual` entries. A programme is not a single conjecture.
 - `status: "improved"` means relevant progress is recorded, including a claimed resolution awaiting assessment; it does not certify every cited claim.
-- `reviewedAt` records the most recent literature check for that entry. A targeted `LITERATURE_UPDATE` does not change the baseline `REVIEW` date or untouched entry dates.
+- `reviewedAt` records the most recent literature update for that entry. `LITERATURE_UPDATES` stores targeted updates newest first; `LITERATURE_UPDATE` is the latest record. These do not change the baseline `REVIEW` date or untouched entry dates.
 - `evidence` contains `{ kind, summary, url, date?, version? }`. Supported kinds are `published`, `preprint`, `numerical`, `conjecture` and `withdrawn`. Include scope, not just an optimistic headline.
 - `provenance` contains `{ summary, url, version? }` for attributed disclosures. No disclosure is not evidence of no AI use, and AI use is not evidence for or against mathematical correctness.
 - `relations` contains `{ id, type }` with `parent`, `benchmark`, `reduction` or `related`.

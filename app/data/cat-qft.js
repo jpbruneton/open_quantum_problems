@@ -111,7 +111,8 @@ Preprint progress (5 September 2026, v1): Semenoff and Waterfield develop a gaug
       { label: "Prabhu & Satishchandran, 'Infrared finite scattering theory: Amplitudes and soft theorems', PRD 110, 085022 (2024)", url: "https://journals.aps.org/prd/abstract/10.1103/PhysRevD.110.085022" },
     ] },
 
-  { id: "QF8", cat: "qft", horizon: "incremental",
+  { id: "QF8", cat: "qft", horizon: "incremental", status: "improved",
+    reviewedAt: "2026-09-28",
     title: "Finite-resource entanglement in continuum QFT",
     statement: r`For specified local algebras, spacetime separation and energy/work budgets, bound entanglement distillation and catalytic embezzlement yields and errors under physically implementable local operations, including mixed states.`,
     context: r`Local algebras in standard relativistic continuum QFT are typically type III. They have no intrinsic regional trace and density-matrix entropy of the finite-dimensional tensor-product kind. Cutoff entropies can diverge from short-distance correlations across the boundary; this does not prevent algebraic states or operational entanglement from being defined.
@@ -120,10 +121,16 @@ What is known: Modular theory and Araki relative entropy give regulator-independ
 
 Published progress (2025): van Luijk, Stottmeister, Werner and Wilming formulate LOCC for commuting von Neumann algebras and extend Nielsen's pure-state conversion theorem to arbitrary factors. Under the stated Haag-duality assumptions, type III pure states can be converted into one another to arbitrary accuracy by LOCC; for type III_1 local operations without classical communication suffice. Universal entanglement embezzlement further shows how unconstrained algebraic operations can trivialize conversion costs.
 
-The missing step is therefore not an unrestricted pure-state formalism. Fix an admissible finite-energy operation model and ask for matching bounds on work, localization, separation, output entanglement and approximation error. Determine which mixed-state and gauge-constrained resources remain accessible, and whether predictions have regulator-independent limits. Related: QF9, QF11, F7.`,
-    evidence: [{ kind: "published", summary: "LOCC and a generalized Nielsen theorem exist for arbitrary factors; unrestricted type-III pure-state conversion is characterized under Haag duality, without imposing finite-energy operation costs.", url: "https://doi.org/10.1007/s00220-025-05465-5", date: "2025-10-30" }],
+The missing step is therefore not an unrestricted pure-state formalism. Fix an admissible finite-energy operation model and ask for matching bounds on work, localization, separation, output entanglement and approximation error. Determine which mixed-state and gauge-constrained resources remain accessible, and whether predictions have regulator-independent limits. Related: QF9, QF11, F7.
+
+Model-specific progress (23 September 2026, v1): Perche and Ribes-Metidieri compute approximate most-entangled mode profiles for two disjoint spheres in the vacuum of a free massless scalar field in $3+1$ dimensions, and propose a nonperturbative mode-swap harvesting protocol. The profiles and convergence study provide numerical evidence within this free-field setup. They do not establish optimal yields under arbitrary finite work budgets, interacting-field extensions or a general regulator-independent resource theorem.`,
+    evidence: [
+      { kind: "preprint", summary: "Free-scalar-field mode-swap harvesting construction; does not solve general finite-resource continuum entanglement.", url: "https://arxiv.org/abs/2609.28621v1", date: "2026-09-23", version: "v1" },
+      { kind: "numerical", summary: "Approximate entangled-mode profiles and convergence studied for two spheres in the free massless scalar vacuum.", url: "https://arxiv.org/abs/2609.28621v1", date: "2026-09-23", version: "v1" },
+      { kind: "published", summary: "LOCC and a generalized Nielsen theorem exist for arbitrary factors; unrestricted type-III pure-state conversion is characterized under Haag duality, without imposing finite-energy operation costs.", url: "https://doi.org/10.1007/s00220-025-05465-5", date: "2025-10-30" }],
     relations: [{ id: "QF9", type: "related" }, { id: "QF11", type: "related" }],
     refs: [
+      { label: "Perche & Ribes-Metidieri, 'Local Vacuum Entanglement through Most Entangled Modes' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.28621v1" },
       { label: "Witten, 'Notes on some entanglement properties of quantum field theory', Rev. Mod. Phys. 90, 045003 (2018)", url: "https://arxiv.org/abs/1803.04993" },
       { label: "Faulkner, Leigh, Parrikar & Wang, 'Modular Hamiltonians for Deformed Half-Spaces and the Averaged Null Energy Condition' (2016)", url: "https://arxiv.org/abs/1605.08072" },
       { label: "Ceyhan & Faulkner, 'Recovering the QNEC from the ANEC', Comm. Math. Phys. (2020)", url: "https://arxiv.org/abs/1812.04683" },

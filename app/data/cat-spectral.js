@@ -21,7 +21,14 @@ Preprint progress (2025): Hundertmark, Pattakos and Schulz report $N_c(Z)<1.1185
       { label: "Solovej, Quantissima lectures on the ionization conjecture (2025)", url: "https://bruneau.perso.math.cnrs.fr/quantissima2025/slidesweek2/Solovej_Quantissima2025_Lectures.pdf" },
     ] },
 
-  { id: "M2", cat: "spectral", horizon: "sharp",
+  { id: "M2", cat: "spectral", horizon: "sharp", status: "improved",
+    reviewedAt: "2026-09-28",
+    evidence: [
+      { kind: "preprint", summary: "Delocalization claim on a product involving a hyperbolic square lattice; does not establish the standard cubic-lattice Anderson conjecture.", url: "https://arxiv.org/abs/2609.20798v1", date: "2026-09-17", version: "v1" },
+    ],
+    provenance: [
+      { summary: "Becker and Oltman report combining their ideas with ChatGPT 5.6 Sol assistance to strengthen the result and develop the proof; they report extensive revision and independent checking. Suggested ChatGPT 6 extensions are not claimed as results of the paper.", url: "https://arxiv.org/html/2609.20798v1", version: "v1" },
+    ],
     title: "Delocalization in the 3D Anderson model",
     statement: r`For $H_\lambda=-\Delta+\lambda V_\omega$ on $\ell^2(\mathbb Z^3)$, with independent potentials uniform on $[-1,1]$, prove that all sufficiently small $\lambda>0$ admit a nonempty interval in the free band with almost-sure nonzero absolutely continuous spectrum.`,
     context: r`The Anderson Hamiltonian $H=-\Delta+\lambda V_\omega$ on $\ell^2(\mathbb{Z}^d)$, with i.i.d. random potential $V_\omega$, models a quantum particle in a disordered medium. Physics (the scaling theory of localization) predicts that for $d\ge3$ and weak disorder $\lambda$ there is a mobility edge separating a low-energy/strong-disorder localized regime from a delocalized regime with absolutely continuous (a.c.) spectrum and diffusive transport.
@@ -30,9 +37,12 @@ What is known: Multiscale analysis and fractional-moment methods establish local
 
 An important solved comparison is the Bethe lattice (regular tree), where Klein proved persistence of a.c. spectrum at weak disorder, followed by further results of Aizenman, Warzel, Sims and others. A tree is not the cubic lattice. Diffusive transport is a stronger, separate dynamical target; a.c. spectrum alone does not supply it.
 
-Mobility-edge subproblem (formerly M3): for this same fixed model, establish a boundary between localized and a.c. energy regions, then bound its location or regularity. Do not assume there is exactly one such boundary or identify spectral localization with every possible transport criterion.`,
+Mobility-edge subproblem (formerly M3): for this same fixed model, establish a boundary between localized and a.c. energy regions, then bound its location or regularity. Do not assume there is exactly one such boundary or identify spectral localization with every possible transport criterion.
+
+Comparison result (17 September 2026, v1): Becker and Oltman claim absolutely continuous spectrum for disordered products of a Euclidean lattice with the hyperbolic square lattice having five squares per vertex, under specified disorder laws. The geometry is non-Euclidean and nonamenable; it does not prove delocalization on the cubic lattice in the statement. This adds a more structured comparison beyond trees while leaving the sharp $\mathbb Z^3$ target open.`,
     relations: [{ id: "M3", type: "benchmark" }, { id: "M12", type: "related" }],
     refs: [
+      { label: "Becker & Oltman, 'Disorder on the hyperbolic square lattice I: Anderson delocalization and absolutely continuous spectrum' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.20798v1" },
       { label: "Aizenman & Warzel, 'Random Operators: Disorder Effects on Quantum Spectra and Dynamics' (AMS, 2015)", url: "https://doi.org/10.1090/gsm/168" },
       { label: "Klein, 'Extended states in the Anderson model on the Bethe lattice', Adv. Math. 133 (1998)", url: "https://www.sciencedirect.com/science/article/pii/S0001870897916881" },
       { label: "Fröhlich & Spencer, 'Absence of diffusion in the Anderson tight binding model for large disorder or low energy', Comm. Math. Phys. 88 (1983)", url: "https://doi.org/10.1007/BF01209475" },

@@ -45,17 +45,26 @@ The full standard classical-oracle separation is due to Bostanci, Haferkamp, Nir
       { label: "Bostanci, Haferkamp, Nirkhe & Zhandry, 'A classical oracle separation between QMA and QCMA', STOC 2026", url: "https://arxiv.org/abs/2511.09551v2" },
     ] },
 
-  { id: "A4", cat: "complexity", horizon: "sharp",
+  { id: "A4", cat: "complexity", horizon: "sharp", status: "improved",
+    reviewedAt: "2026-09-28",
+    provenance: [
+      { summary: "The authors credit generative AI with the core proof idea and extensive proof and drafting assistance; no model is named. They report subsequent verification, simplification and responsibility.", url: "https://arxiv.org/html/2609.13032v1", version: "v1" },
+    ],
     title: "Perfect completeness for finite-register QMA",
     statement: r`In the finite-register circuit model with Hadamard, $T$ and CNOT gates and computational-basis initialization/measurement, determine whether $\mathsf{QMA}_1=\mathsf{QMA}$. Here $\mathsf{QMA}_1$ requires acceptance probability exactly one for some witness on every yes-instance.`,
     context: r`Ordinary QMA permits completeness error; QMA1 does not. Exact acceptance is sensitive to the gate convention, so approximate universality alone cannot be used to transfer a perfect-completeness theorem between models.
 
 What is known: Aaronson constructed a quantum oracle relative to which $\mathsf{QMA}_1\ne\mathsf{QMA}$. This is a quantum-oracle obstruction, not a classical-oracle separation and not an equality theorem.
 
-Jeffery–Witteveen prove $\mathsf{QMA}=\mathsf{QMA}^{\infty}=\mathsf{QMA}_1^{\infty}$ when the verifier has their specified infinite-dimensional counter with an efficient shift operation. The result, posted in June 2025 and published in PRL in May 2026, removes completeness error using an additional infinite register. Truncation also gives stronger finite-dimensional completeness amplification, but not exactly perfect completeness in ordinary finite-register QMA. The standard equality remains open. Related: A3, A8.`,
-    evidence: [{ kind: "published", summary: "Perfect completeness is achievable with a specified infinite counter; this does not settle the ordinary finite-register problem.", url: "https://journals.aps.org/prl/abstract/10.1103/pwdd-htbf", date: "2026-05-06" }],
+Jeffery–Witteveen prove $\mathsf{QMA}=\mathsf{QMA}^{\infty}=\mathsf{QMA}_1^{\infty}$ when the verifier has their specified infinite-dimensional counter with an efficient shift operation. The result, posted in June 2025 and published in PRL in May 2026, removes completeness error using an additional infinite register. Truncation also gives stronger finite-dimensional completeness amplification, but not exactly perfect completeness in ordinary finite-register QMA. That infinite-register theorem does not answer the finite-register question. Related: A3, A8.
+
+Claimed resolution (11 September 2026, v1): Grewal and Rudolph claim $\mathsf{QMA}=\mathsf{QMA}_1$ using finite registers and Hadamard, Toffoli and $X$ gates. Their exact-gate corollary covers Clifford+$T$, hence the convention above; no infinite counter is needed. The construction relativizes to classical oracles, not arbitrary quantum oracles, so it does not contradict Aaronson's obstruction. This is a claimed resolution of A4, retained as “Improved” pending independent assessment.`,
+    evidence: [
+      { kind: "preprint", summary: "Claimed finite-register QMA perfect completeness with exact gates, including Clifford+T; addresses A4 directly, pending assessment.", url: "https://arxiv.org/abs/2609.13032v1", date: "2026-09-11", version: "v1" },
+      { kind: "published", summary: "Perfect completeness is achievable with a specified infinite counter; this does not settle the ordinary finite-register problem.", url: "https://journals.aps.org/prl/abstract/10.1103/pwdd-htbf", date: "2026-05-06" }],
     relations: [{ id: "A3", type: "related" }, { id: "A8", type: "related" }],
     refs: [
+      { label: "Grewal & Rudolph, 'QMA has perfect completeness' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.13032v1" },
       { label: "Aaronson, 'On perfect completeness for QMA', Quantum Inf. Comput. 9 (2009)", url: "https://arxiv.org/abs/0806.0450" },
       { label: "Jeffery & Witteveen, 'QMA = QMA1 with an infinite counter', PRL (2026; preprint 2025)", url: "https://arxiv.org/abs/2506.15551" },
     ] },
@@ -87,34 +96,53 @@ September 2026 preprint: Bostanci et al. construct a quantum oracle separating Q
     ] },
 
   { id: "A6", cat: "complexity", horizon: "sharp",
+    reviewedAt: "2026-09-28",
     title: "Quantum PCP conjecture",
     statement: r`For $H=m^{-1}\sum_{i=1}^{m}h_i$, with fixed locality and local dimension and $0\le h_i\le I$, prove or disprove that distinguishing $\lambda_{\min}(H)\le a$ from $\lambda_{\min}(H)\ge b$ is $\mathsf{QMA}$-hard for some constant promise gap $b-a>0$.`,
     context: r`The normalization makes this a constant energy-density approximation problem, or equivalently a constant extensive error for the unnormalized sum. The local terms have finite efficiently specified descriptions. This is the Hamiltonian formulation of quantum PCP; variants of probabilistically checkable quantum proofs require care about the verifier and reduction model.
 
 What is known: The ordinary local-Hamiltonian promise problem is QMA-complete at inverse-polynomial precision, not for exact real-valued energy output. Anshu–Breuckmann–Nirkhe proved NLTS: there are bounded-locality Hamiltonian families whose sufficiently low-energy states cannot be prepared by constant-depth local circuits. Good quantum codes enable that result, but NLTS is weaker than quantum PCP and does not exclude every succinct classical description of a low-energy state.
 
-Published 2025 work clarifies quantum-PCP definitions. A separate October 2025 preprint develops derandomized tensor-product gap amplification under its stated hypotheses. Neither supplies the complete constant-gap QMA-hardness reduction. Related: A7, A8.`,
+Published 2025 work clarifies quantum-PCP definitions. A separate October 2025 preprint develops derandomized tensor-product gap amplification under its stated hypotheses. Neither supplies the complete constant-gap QMA-hardness reduction. Related: A7, A8.
+
+Related September 2026 claim: Gay–Jeronimo's proposed good qLTC construction is recorded in A7. Constant local-test soundness for a code Hamiltonian is not a reduction proving QMA-hardness of constant-gap ground-energy approximation. A6 remains open; the claimed A7 resolution must not be reported as quantum PCP.`,
     evidence: [
+      { kind: "preprint", summary: "Related good-qLTC claim supplies no constant-gap QMA-hardness reduction; quantum PCP remains open.", url: "https://arxiv.org/abs/2609.20780v1", date: "2026-09-17", version: "v1" },
       { kind: "published", summary: "NLTS is proved; excluding constant-depth circuit preparation is not the full quantum PCP conjecture.", url: "https://arxiv.org/abs/2206.13228" },
       { kind: "preprint", summary: "Derandomized tensor-product gap amplification advances the amplification toolkit without resolving quantum PCP.", url: "https://arxiv.org/abs/2510.01333" },
     ],
     relations: [{ id: "A7", type: "related" }, { id: "A8", type: "related" }],
     refs: [
+      { label: "Gay & Jeronimo, 'Asymptotically Good Quantum Locally Testable Codes' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.20780v1" },
       { label: "Anshu, Breuckmann & Nirkhe, 'NLTS Hamiltonians from good quantum codes', STOC 2023", url: "https://arxiv.org/abs/2206.13228" },
       { label: "Buhrman, Helsen & Weggemans, 'Quantum PCPs: on Adaptivity, Multiple Provers and Reductions to Local Hamiltonians', Quantum 9, 1791 (2025)", url: "https://quantum-journal.org/papers/q-2025-07-11-1791/" },
       { label: "'Derandomised tensor product gap amplification for quantum Hamiltonians' (2025 preprint)", url: "https://arxiv.org/abs/2510.01333" },
     ] },
 
-  { id: "A7", cat: "complexity", horizon: "sharp",
+  { id: "A7", cat: "complexity", horizon: "sharp", status: "improved",
+    reviewedAt: "2026-09-28",
+    evidence: [
+      { kind: "preprint", summary: "Claimed explicit good binary CSS qLTCs with all required parameters constant; full resolution claim awaiting assessment.", url: "https://arxiv.org/abs/2609.20780v1", date: "2026-09-17", version: "v1" },
+      { kind: "preprint", summary: "Separate good-qLTC construction conditional on a Reed–Solomon product-expansion conjecture.", url: "https://arxiv.org/abs/2609.26735v1", date: "2026-09-22", version: "v1" },
+    ],
+    provenance: [
+      { summary: "Gay and Jeronimo report material help from ChatGPT Pro 5.6 and 6 with expander–code arguments, plus editorial assistance, and take responsibility for the results.", url: "https://arxiv.org/html/2609.20780v1", version: "v1" },
+    ],
     title: "Good quantum locally testable codes",
     statement: r`Construct stabilizer quantum locally testable codes with constant rate, linear distance, constant check weight and degree, and constant soundness $s>0$. For $m$ checks on $n$ qubits, require $|\operatorname{syn}(E)|/m\ge s\,\min_{F:\operatorname{syn}(F)=0}\operatorname{wt}(EF)/n$ for every Pauli error $E$.`,
     context: r`The syndrome counts violated checks. Distance in this soundness inequality is distance to the code space: errors are considered modulo zero-syndrome operators, including logical operators, not just modulo stabilizers. This distinguishes local testability from ordinary error-correction distance.
 
 What is known: Panteleev–Kalachev constructed asymptotically good quantum LDPC codes, with constant rate and linear distance; later quantum Tanner constructions provide another route. Earlier fibre-bundle and balanced-product breakthroughs had different parameters and should not all be credited with the full good-code theorem.
 
-Dinur–Lin–Vidick construct almost-good qLTCs with constant rate, bounded-size checks and inverse-polylogarithmic relative distance and soundness. Thus several parameters are close, but the simultaneous constant-parameter target above remains open. Good qLDPC codes and NLTS do not by themselves establish constant local-test soundness, and quantum PCP should not be identified with this particular stabilizer-code construction problem. Related: A6, A18.`,
+Dinur–Lin–Vidick construct almost-good qLTCs with constant rate, bounded-size checks and inverse-polylogarithmic relative distance and soundness. This earlier construction does not reach the simultaneous constant-parameter target above. Good qLDPC codes and NLTS do not by themselves establish constant local-test soundness, and quantum PCP should not be identified with this particular stabilizer-code construction problem. Related: A6, A18.
+
+Claimed resolution (17 September 2026, v1): Gay and Jeronimo claim explicit binary CSS families with constant rate, linear distance, bounded check weight and qubit incidence, and constant soundness (Theorem 2.4.3). They supply a product-expansion argument within the manuscript. This claims the full A7 target, pending independent assessment.
+
+A separate 22 September preprint by Bafna, Li and Nguyen obtains good qLTCs conditional on a variant of the Reed–Solomon product-expansion conjecture. Keep that conditional construction distinct from Gay–Jeronimo's unconditional claim. Neither code construction alone supplies the constant-gap QMA-hardness reduction required by A6.`,
     relations: [{ id: "A6", type: "related" }, { id: "A18", type: "related" }],
     refs: [
+      { label: "Gay & Jeronimo, 'Asymptotically Good Quantum Locally Testable Codes' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.20780v1" },
+      { label: "Bafna, Li & Nguyen, 'Good Quantum Locally Testable Codes from Product Expansion' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.26735v1" },
       { label: "Panteleev & Kalachev, 'Asymptotically good quantum and locally testable classical LDPC codes', STOC 2022", url: "https://doi.org/10.1145/3519935.3520017" },
       { label: "Dinur, Lin & Vidick, 'Almost good quantum locally testable codes' (2024)", url: "https://arxiv.org/abs/2402.07476" },
     ] },
@@ -347,20 +375,28 @@ Decoding milestones also need model labels. Bazzi–Khater prove additive inappr
       { label: "Krishnamoorthy et al., 'Certified decoding of quantum LDPC codes' (2026 preprint)", url: "https://arxiv.org/abs/2608.25545v1" },
     ] },
 
-  { id: "A19", cat: "complexity", horizon: "sharp",
+  { id: "A19", cat: "complexity", horizon: "sharp", status: "improved",
+    reviewedAt: "2026-09-28",
+    provenance: [
+      { summary: "The authors credit ChatGPT 6 Astra with an initial one-sided proof idea; interactions and their own discussions led to the two-sided Forrelation argument. They report verification, simplification and responsibility.", url: "https://arxiv.org/html/2609.25680v1", version: "v1" },
+    ],
     title: "Noncryptographic classical verification of BQP",
     statement: r`Does every BQP decision problem admit an interactive proof with one polynomial-time honest quantum prover and a probabilistic polynomial-time classical verifier, using polynomially many rounds of classical messages, completeness at least $2/3$ and soundness at most $1/3$ against an unrestricted cheating prover? Require no computational hardness assumption, trusted quantum setup or additional noncommunicating prover.`,
     context: r`The verifier must be genuinely classical and the honest prover efficient. The inclusion $\mathsf{BQP}\subseteq\mathsf{IP}=\mathsf{PSPACE}$ alone does not provide an efficient honest prover. Conversely, a protocol sound only against efficient quantum cheats does not meet the information-theoretic soundness target stated here.
 
 Mahadev's classical-verification protocol is a landmark positive result with computational soundness under a quantum-hard lattice assumption. Protocols with a small trusted quantum verifier or multiple separated provers solve different resource models.
 
-An April 2026 preprint by Aaronson–Natarajan–Tal–Villanyi proves $\mathsf{BQP}^{O}\subseteq\mathsf{MIP}^{O}$ for every classical oracle $O$. It is progress in a relativized multi-prover model and explicitly motivates noncryptographic verification, but does not construct the single efficient prover protocol sought here. Related: A1, A3, A10.`,
+An April 2026 preprint by Aaronson–Natarajan–Tal–Villanyi proves $\mathsf{BQP}^{O}\subseteq\mathsf{MIP}^{O}$ for every classical oracle $O$. It is progress in a relativized multi-prover model and explicitly motivates noncryptographic verification, but does not construct the single efficient prover protocol sought here. Related: A1, A3, A10.
+
+Preprint obstruction (22 September 2026, v1): Bouland, Huang, Natarajan, Shalit and Tal construct an oracle relative to which $\mathsf{BQP}\not\subseteq\mathsf{IP}$, using Forrelation. In that oracle model, polynomial-query classical verification with polynomial communication fails even with an unbounded prover. This rules out fully relativizing approaches to the desired protocol, not unrelativized classical verification; a non-relativizing construction remains possible.`,
     evidence: [
+      { kind: "preprint", summary: "Oracle separation BQP not contained in IP gives a barrier to relativizing verification protocols, not an unrelativized impossibility theorem.", url: "https://arxiv.org/abs/2609.25680v1", date: "2026-09-22", version: "v1" },
       { kind: "published", summary: "Mahadev achieves classical verification with computational soundness under a lattice hardness assumption; the assumption-free target is stronger.", url: "https://arxiv.org/abs/1804.01082" },
       { kind: "preprint", summary: "Relativizing multi-prover containment for BQP with classical oracles, not efficient single-prover noncryptographic verification.", url: "https://arxiv.org/abs/2604.11952v1", date: "2026-04-13", version: "v1" },
     ],
     relations: [{ id: "A1", type: "related" }, { id: "A3", type: "related" }, { id: "A10", type: "related" }],
     refs: [
+      { label: "Bouland, Huang, Natarajan, Shalit & Tal, 'BQP ⊆ IP Does Not Relativize' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.25680v1" },
       { label: "Mahadev, 'Classical Verification of Quantum Computations', FOCS 2018", url: "https://arxiv.org/abs/1804.01082" },
       { label: "Aaronson, Natarajan, Tal & Villanyi, 'A Relativizing MIP for BQP' (2026 preprint)", url: "https://arxiv.org/abs/2604.11952v1" },
     ] },

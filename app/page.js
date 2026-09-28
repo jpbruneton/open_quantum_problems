@@ -8,6 +8,7 @@ import {
   ARCHIVED_PROBLEMS,
   REVIEW,
   LITERATURE_UPDATE,
+  LITERATURE_UPDATES,
   EVIDENCE_KINDS,
   WATCHLIST,
   HORIZONS,
@@ -133,9 +134,10 @@ function Home() {
 
           <div className="review-note">
             <b>Latest literature update.</b> {LITERATURE_UPDATE.ids.length} entries updated, including
-            {" "}<a href="#p/C4">a claimed general strong converse</a> and
-            {" "}<a href="#p/C5">private-capacity superactivation</a>. New results are attributed
-            preprint claims. <a href="#review">Sources &amp; scope →</a>
+            {" "}<a href="#p/A4">QMA perfect completeness</a>,
+            {" "}<a href="#p/A7">good locally testable quantum codes</a> and
+            {" "}<a href="#p/E10">nonadditivity of entanglement of purification</a>.
+            Claimed resolutions await assessment. <a href="#review">Sources &amp; scope →</a>
           </div>
           <div className="review-note">
             <b>Full catalogue review.</b> All {REVIEW.reviewed} original entries reassessed;
@@ -507,12 +509,18 @@ function ReviewView() {
         <div className="container detail">
           <h2>Clear questions. Explicit evidence.</h2>
           <p className="intro">Latest literature update · {LITERATURE_UPDATE.label}</p>
-          <p>A targeted check of recent arXiv submissions updated {LITERATURE_UPDATE.ids.length} entries:
+          <p>A targeted check of arXiv manuscripts and journal announcements updated {LITERATURE_UPDATE.ids.length} entries:
             {" "}{LITERATURE_UPDATE.ids.map((id, i) => <span key={id}>{i > 0 ? ", " : ""}<a href={`#p/${id}`}>{id}</a></span>)}.
             The remaining entries retain their earlier review dates. This is a literature and scope check, not an independent verification of the proofs.</p>
-          <p>C4 now records a claimed resolution for all finite-dimensional memoryless channels, pending independent assessment.
-            C5 records claimed superactivation of operational private capacity. Both retain “Improved”; no entry was promoted to “Solved” in this update.</p>
+          <p>A4, A7 and E10 now record claimed resolutions of finite-register QMA perfect completeness,
+            good quantum local testability and ordinary entanglement-of-purification additivity.
+            Each retains “Improved” pending assessment. Other additions cover channel capacities,
+            self-testing, causal order, Gaussian entanglement and Gibbs preparation, including a published Quantum article.
+            No entry was promoted to “Solved” in this update.</p>
           <p><a href={LITERATURE_UPDATE.reportUrl} target="_blank" rel="noreferrer">Read the dated update, source versions and remaining questions →</a></p>
+          <p>Earlier literature updates: {LITERATURE_UPDATES.slice(1).map((update, i) => <span key={update.date}>
+            {i > 0 ? " · " : ""}<a href={update.reportUrl} target="_blank" rel="noreferrer">{update.label}</a>
+          </span>)}</p>
           <p className="intro">Full catalogue review · {REVIEW.label}</p>
           <p>All {REVIEW.reviewed} original entries were reassessed. The review recommended retaining 27, reframing 74, consolidating nine and moving one broad methods proposal to background. Twelve missing or underexposed questions have now been added or promoted.</p>
           <p>There are currently {PROBLEMS.length} active entries across {CATEGORIES.length} areas. Stable IDs are never renumbered: the gaps in a category’s numbering reflect consolidation, not missing pages.</p>

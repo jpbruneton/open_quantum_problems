@@ -121,12 +121,14 @@ Restricted noisy-resource progress (4 September 2026, v1): Kundu and Lalonde stu
     ] },
 
   { id: "N7", cat: "nonlocality", horizon: "incremental", status: "improved",
-    reviewedAt: "2026-09-10",
+    reviewedAt: "2026-09-28",
     relations: [{ id: "N5", type: "related" }, { id: "N8", type: "related" }],
     evidence: [
+      { kind: "preprint", summary: "Claimed exact-but-nonrobust self-test for a single correlation; does not preclude another robust test of the same state.", url: "https://arxiv.org/abs/2609.25117v1", date: "2026-09-20", version: "v1" },
       { kind: "preprint", summary: "Claimed separation of simultaneous full-rank/projective self-testing from unrestricted measurement strategies; does not refute universal pure-state self-testability.", url: "https://arxiv.org/abs/2609.10013v1", date: "2026-09-09", version: "v1" },
       { kind: "published", summary: "All pure multipartite entangled qubit states admit self-tests in the standard Bell setting; arbitrary higher local dimensions remain a separate frontier.", url: "https://www.nature.com/articles/s41467-026-70829-x", date: "2026-03-24" }],
     provenance: [
+      { summary: "Chen and Zhao credit ChatGPT 5.6 Sol ultra with an initial solution to their question; they report extracting and simplifying the ideas, writing the manuscript and using language models for editing.", url: "https://arxiv.org/html/2609.25117v1", version: "v1" },
       { summary: "Chen reports human-directed frontier language models for exploratory proofs and manuscript preparation, followed by refinement and verification of the statements. No particular model is named in the declaration; the author takes responsibility.", url: "https://arxiv.org/html/2609.10013v1", version: "v1" },
     ],
     title: "Self-testing beyond multipartite qubits",
@@ -139,8 +141,11 @@ Conventional exact self-testing does not uniquely identify a genuinely mixed bip
 
 The residual programme separates the sharp pure-state existence question from measurement-specific necessary-and-sufficient criteria and robustness.
 
-Preprint progress (9 September 2026, v1): Chen claims a game that self-tests a maximally entangled qubit strategy among pure full-Schmidt-rank projective strategies, yet has an inequivalent optimum with a nonprojective measurement. Thus full rank and projectivity cannot both be imposed silently when asserting an assumption-free self-test. A dimension-six family also obstructs robustness of this restricted self-test. This addresses the certification convention and a conjecture about simultaneous assumptions, not the universal higher-dimensional pure-state question.`,
+Preprint progress (9 September 2026, v1): Chen claims a game that self-tests a maximally entangled qubit strategy among pure full-Schmidt-rank projective strategies, yet has an inequivalent optimum with a nonprojective measurement. Thus full rank and projectivity cannot both be imposed silently when asserting an assumption-free self-test. A dimension-six family also obstructs robustness of this restricted self-test. This addresses the certification convention and a conjecture about simultaneous assumptions, not the universal higher-dimensional pure-state question.
+
+Preprint progress (20 September 2026, v1): Chen and Zhao claim a single synchronous binary correlation that is an exact self-test but is not robust. This strengthens earlier game-level separations: exact uniqueness of the realized correlation need not imply stability under small experimental errors. The example does not show that its target state has no alternative robust self-test, or disprove universal higher-dimensional pure-state self-testability.`,
     refs: [
+      { label: "Chen & Zhao, 'A non-robust quantum correlation self-test' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.25117v1" },
       { label: "Chen, 'A Separation between Full-Rank PVM and Assumption-free Self-Testing' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.10013v1" },
       {"label":"'All pure multipartite entangled states of qubits can be self-tested', Nature Communications (24 March 2026)","url":"https://www.nature.com/articles/s41467-026-70829-x"},
       {"label":"Coladangelo, Goh & Scarani, all pure bipartite states and the mixed-state obstruction, Nature Communications (2017)","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC5458560/"},
