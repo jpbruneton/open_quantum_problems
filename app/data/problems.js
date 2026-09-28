@@ -6,7 +6,7 @@
 //   "programme"   a whole research field; not closable by one submission.
 //   "conceptual"  no community-agreed success criterion (foundations).
 //
-// status    : "open" | "improved" | "solved"  (all start "open").
+// status    : "open" | "improved" | "claimed-solved" | "solved" (default: "open").
 // submissions: [{ who, model, date, kind: "solution"|"improvement"|"note", url, summary }]
 // archive: { kind: "merged"|"background", targets: [id], reason }
 // relations: [{ id, type: "parent"|"benchmark"|"reduction"|"related" }]
@@ -127,9 +127,10 @@ export const HORIZONS = {
   conceptual: { label: "Conceptual", desc: "No community-agreed success criterion (yet)." },
 };
 export const STATUSES = {
-  open: { label: "Open" },
-  improved: { label: "Improved" },
-  solved: { label: "Solved" },
+  open: { label: "Open", desc: "The stated problem remains open." },
+  improved: { label: "Improved", desc: "Partial progress is recorded; the full stated problem remains open." },
+  "claimed-solved": { label: "Claimed solved", desc: "A full resolution of the stated problem has been claimed; independent assessment is pending." },
+  solved: { label: "Solved", desc: "An established resolution of the stated problem." },
 };
 
 export const EVIDENCE_KINDS = {

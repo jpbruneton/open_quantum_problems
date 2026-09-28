@@ -14,6 +14,12 @@ https://openquantumproblems.com/
 
 ### Timeline
 
+**28 September 2026 — distinguish claimed solutions**
+
+- A4, A7, C4 and E10 now use **Claimed solved**: each has a claimed full resolution awaiting independent assessment.
+- The homepage links to separate searchable lists: 39 Improved entries and four Claimed solved entries. No entry is marked Solved; the 113 active entries and ten archive/background pages are unchanged.
+- Updated status badges, explanatory text and tests. Earlier reports preserve the classification used at the time of those reviews.
+
 **28 September 2026 — source and consistency corrections**
 
 - Audited every reference, evidence and provenance record against arXiv, Crossref and the cited manuscripts. See the [correction log](docs/reviews/2026-09-28-correction-log.md) for each change and its verification.
@@ -90,7 +96,8 @@ Do not renumber existing IDs or reuse an archived ID for a new question.
 
 - `statement` defines the model, assumptions, quantifiers and success criterion; `context` separates the established baseline from the open residual.
 - `horizon` distinguishes `sharp`, `incremental`, `programme` and `conceptual` entries. A programme is not a single conjecture.
-- `status: "improved"` means relevant progress is recorded, including a claimed resolution awaiting assessment; it does not certify every cited claim.
+- `status: "improved"` means partial progress is recorded while the full stated question remains open, including when only a subcase is resolved.
+- `status: "claimed-solved"` means a full resolution of the stated question has been claimed and awaits independent assessment. `status: "solved"` is reserved for established resolutions.
 - `reviewedAt` records the most recent literature update for that entry. `LITERATURE_UPDATES` stores targeted updates newest first; `LITERATURE_UPDATE` is the latest record. These do not change the baseline `REVIEW` date or untouched entry dates. `CORRECTION_LOG` links the latest source and consistency correction log; corrections do not change review dates.
 - `evidence` contains `{ kind, summary, url, date?, version? }`. Supported kinds are `published`, `preprint`, `numerical`, `conjecture` and `withdrawn`. Include scope, not just an optimistic headline.
 - `provenance` contains `{ summary, url, version? }` for attributed disclosures. No disclosure is not evidence of no AI use, and AI use is not evidence for or against mathematical correctness.

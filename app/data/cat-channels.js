@@ -76,7 +76,7 @@ Newly indexed preprint (September 2026; arXiv records submission on 17 August): 
       { label: "Wilde, Tomamichel, Berta, 'Converse bounds for private communication over quantum channels', IEEE Trans. Inf. Theory 63 (2017)", url: "https://arxiv.org/abs/1602.08898" },
     ] },
 
-  { id: "C4", cat: "channels", horizon: "sharp", status: "improved",
+  { id: "C4", cat: "channels", horizon: "sharp", status: "claimed-solved",
     reviewedAt: "2026-09-28",
     relations: [{ id: "C1", type: "related" }, { id: "C11", type: "related" }],
     evidence: [
@@ -99,9 +99,9 @@ Further preprint progress (August 2026): Kondra–Brinster–Kampermann–Bruß�
 
 The July and August manuscripts concern restricted classes. The September claim below addresses the unrestricted finite-dimensional question; code restrictions, assistance and fidelity conventions still distinguish the results.
 
-Claimed resolution (8 September 2026, v1): Cheng and Tomamichel claim an exponential strong converse for unassisted quantum communication over every finite-dimensional memoryless channel, as well as for unassisted classical communication at its respective capacity. Their entanglement-generation bound covers arbitrary codes and implies the transmission statement above. The argument uses integral representations and asymptotic continuity of regularized Rényi capacities. This claims to settle the full finite-dimensional question, rather than another restricted channel class; it remains a preprint awaiting independent assessment here. The catalogue retains “Improved” pending that assessment. No exact capacity formula, infinite-dimensional extension or assisted-capacity theorem follows merely from this claim.
+Claimed resolution (8 September 2026, v1): Cheng and Tomamichel claim an exponential strong converse for unassisted quantum communication over every finite-dimensional memoryless channel, as well as for unassisted classical communication at its respective capacity. Their entanglement-generation bound covers arbitrary codes and implies the transmission statement above. The argument uses integral representations and asymptotic continuity of regularized Rényi capacities. This claims to settle the full finite-dimensional question, rather than another restricted channel class; it remains a preprint awaiting independent assessment here. The catalogue marks this “Claimed solved” pending that assessment. No exact capacity formula, infinite-dimensional extension or assisted-capacity theorem follows merely from this claim.
 
-Additional full-resolution claim (10 September 2026, v1): Beigi and Tomamichel claim exponential fidelity decay above quantum capacity for every finite-dimensional memoryless channel. Their route uses a fully quantum blowing-up lemma and a polynomial approximation controlling a Stinespring-image projector's projective norm. This is a second proposed argument, with an author shared with Cheng–Tomamichel, not independent validation of either manuscript. Status remains “Improved”.`,
+Additional full-resolution claim (10 September 2026, v1): Beigi and Tomamichel claim exponential fidelity decay above quantum capacity for every finite-dimensional memoryless channel. Their route uses a fully quantum blowing-up lemma and a polynomial approximation controlling a Stinespring-image projector's projective norm. This is a second proposed argument, with an author shared with Cheng–Tomamichel, not independent validation of either manuscript. Status is “Claimed solved”.`,
     refs: [
       { label: "Beigi & Tomamichel, 'Strong Converse for Quantum Capacity via a Fully Quantum Blowing-Up Lemma' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.11771v1" },
       { label: "Cheng & Tomamichel, 'No information transmission through quantum channels above capacity' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.08998v1" },

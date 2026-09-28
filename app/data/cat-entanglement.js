@@ -191,7 +191,7 @@ The task must be specified quantity by quantity, with input encoding, additive a
       { label: "Huang, 'Computing quantum discord is NP-complete', New J. Phys. 16 (2014)", url: "https://arxiv.org/abs/1305.5941" },
     ] },
 
-  { id: "E10", cat: "entanglement", horizon: "sharp", status: "improved",
+  { id: "E10", cat: "entanglement", horizon: "sharp", status: "claimed-solved",
     reviewedAt: "2026-09-28",
     relations: [{ id: "E9", type: "related" }],
     evidence: [
@@ -208,7 +208,7 @@ Terhal–Horodecki–Leung–DiVincenzo introduced the quantity and established 
 
 Preprint progress (August 2026): Negari and Baghali Khanian claim Rényi nonadditivity for every $\alpha\in[0,1)$ using a classical two-qubit family, and additivity for $\alpha\in[2,\infty]$ within that family. Those Rényi results do not resolve the ordinary $\alpha=1$ problem. A theorem at another Rényi order must not be labeled a solution here.
 
-Claimed resolution (listed September 2026; arXiv records v1 submission on 25 August): Krohn-Grimberghe claims a rigorous separation $E_P^\infty(W)<0.97<E_P(W)$ for the two-qubit Werner state with singlet fraction $1/200$. Analytic reductions and exact-rational certificates would establish ordinary von Neumann nonadditivity at some finite tensor power. This does not identify a two-copy violation. The supplied verifier checks finite arithmetic, while the analytic reduction remains essential; neither has been independently validated here. E10 remains “Improved” pending assessment.`,
+Claimed resolution (listed September 2026; arXiv records v1 submission on 25 August): Krohn-Grimberghe claims a rigorous separation $E_P^\infty(W)<0.97<E_P(W)$ for the two-qubit Werner state with singlet fraction $1/200$. Analytic reductions and exact-rational certificates would establish ordinary von Neumann nonadditivity at some finite tensor power. This does not identify a two-copy violation. The supplied verifier checks finite arithmetic, while the analytic reduction remains essential; neither has been independently validated here. E10 is marked “Claimed solved” pending assessment.`,
     refs: [
       { label: "Krohn-Grimberghe, 'The entanglement of purification is not additive' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.29539v1" },
       { label: "Krohn-Grimberghe, exact-rational verification artifact for entanglement-of-purification nonadditivity (author-supplied)", url: "https://doi.org/10.5281/zenodo.22097511" },

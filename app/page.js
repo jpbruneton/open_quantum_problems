@@ -37,6 +37,7 @@ function useHashRoute() {
   if (parts[0] === "p" && parts[1]) return { view: "problem", id: parts[1] };
   if (parts[0] === "sharp") return { view: "sharp" };
   if (parts[0] === "improved") return { view: "improved" };
+  if (parts[0] === "claimed-solved") return { view: "claimed-solved" };
   if (parts[0] === "review") return { view: "review" };
   return { view: "home" };
 }
@@ -56,7 +57,7 @@ function HorizonBadge({ h }) {
 }
 function StatusBadge({ s }) {
   return (
-    <span className={`badge st-${s}`} title={`Status: ${STATUSES[s].label}`}>
+    <span className={`badge st-${s}`} title={STATUSES[s].desc}>
       <span className="dot" style={{ background: `var(--${s})` }} />
       {STATUSES[s].label}
     </span>
@@ -114,6 +115,7 @@ function Home() {
   const nSharp = PROBLEMS.filter((p) => p.horizon === "sharp").length;
   const nSolved = PROBLEMS.filter((p) => p.status === "solved").length;
   const nImproved = PROBLEMS.filter((p) => p.status === "improved").length;
+  const nClaimedSolved = PROBLEMS.filter((p) => p.status === "claimed-solved").length;
 
   return (
     <>
@@ -128,6 +130,9 @@ function Home() {
               <div className="stat"><div className="n">{nSharp}</div><div className="l">Sharp questions</div></div>
               <a className="stat stat-link" href="#improved" aria-label={`See all ${nImproved} improved problems`}>
                 <div className="n">{nImproved}</div><div className="l">Improved <span aria-hidden="true">→</span></div>
+              </a>
+              <a className="stat stat-link stat-claimed" href="#claimed-solved" aria-label={`See all ${nClaimedSolved} claimed solved problems`}>
+                <div className="n">{nClaimedSolved}</div><div className="l">Claimed solved <span aria-hidden="true">→</span></div>
               </a>
               <div className="stat"><div className="n">{nSolved}</div><div className="l">Solved</div></div>
             </div>
@@ -162,9 +167,10 @@ function Home() {
             ))}
           </div>
           <p className="disclaimer">
-            <b>Evidence matters:</b> “Improved” records partial progress, which may
-            include a preprint claim; it does not mean the problem is solved or
-            the proof independently verified. Author-reported AI use is recorded
+            <b>Evidence matters:</b> “Improved” records partial progress.
+            {" "}<a href="#claimed-solved">“Claimed solved”</a> identifies a full resolution awaiting
+            independent assessment; “Solved” denotes an established resolution.
+            Author-reported AI use is recorded
             separately from mathematical status. No disclosure does not mean no AI use.
           </p>
 
@@ -264,7 +270,7 @@ function CategoryView({ slug }) {
                   <th style={{ width: 56 }}>ID</th>
                   <th>Problem</th>
                   <th style={{ width: 130 }}>Horizon</th>
-                  <th style={{ width: 110 }}>Status</th>
+                  <th style={{ width: 150 }}>Status</th>
                 </tr>
               </thead>
               <tbody>
@@ -311,14 +317,19 @@ function SharpView() {
 }
 
 function ImprovedView() {
-  return <FilteredProblemsView improved />;
+  return <FilteredProblemsView status="improved" />;
 }
 
-function FilteredProblemsView({ improved = false }) {
+function ClaimedSolvedView() {
+  return <FilteredProblemsView status="claimed-solved" />;
+}
+
+function FilteredProblemsView({ status = null }) {
   const [q, setQ] = useState("");
+  const label = status ? STATUSES[status].label : "Sharp";
 
   const rows = useMemo(() => {
-    let ps = PROBLEMS.filter((p) => improved ? p.status === "improved" : p.horizon === "sharp");
+    let ps = PROBLEMS.filter((p) => status ? p.status === status : p.horizon === "sharp");
     if (q.trim()) {
       const s = q.trim().toLowerCase();
       ps = ps.filter(
@@ -329,29 +340,29 @@ function FilteredProblemsView({ improved = false }) {
       );
     }
     return ps;
-  }, [q, improved]);
+  }, [q, status]);
 
   return (
     <>
-      <Header crumbs={[{ label: improved ? "Improved problems" : "Sharp problems" }]} />
+      <Header crumbs={[{ label: `${label} problems` }]} />
       <section className="body">
         <div className="container">
           <p className="intro">
-            {improved
-              ? "Problems with recorded progress across all areas, including claimed resolutions awaiting assessment. Improved does not mean solved or independently verified."
+            {status
+              ? STATUSES[status].desc
               : "Sharp problems: a single proof or counterexample closes them. These are the cleanest targets for a solution."}
           </p>
 
           <div className="toolbar">
             <input
-              aria-label={improved ? "Filter improved problems" : "Filter sharp questions"}
+              aria-label={status ? `Filter ${label.toLowerCase()} problems` : "Filter sharp questions"}
               placeholder="Filter by keyword…"
               value={q}
               onChange={(e) => setQ(e.target.value)}
             />
           </div>
 
-          {improved && <p className="review-meta" role="status">{rows.length} improved {rows.length === 1 ? "problem" : "problems"}</p>}
+          {status && <p className="review-meta" role="status">{rows.length} {label.toLowerCase()} {rows.length === 1 ? "problem" : "problems"}</p>}
           <div className="table-wrap">
             <table>
               <thead>
@@ -359,7 +370,7 @@ function FilteredProblemsView({ improved = false }) {
                   <th style={{ width: 56 }}>ID</th>
                   <th style={{ width: 170 }}>Area</th>
                   <th>Problem</th>
-                  <th style={{ width: 130 }}>{improved ? "Horizon" : "Status"}</th>
+                  <th style={{ width: 150 }}>{status ? "Horizon" : "Status"}</th>
                 </tr>
               </thead>
               <tbody>
@@ -373,7 +384,7 @@ function FilteredProblemsView({ improved = false }) {
                         <MathText text={truncate(p.statement, 150)} />
                       </div>
                     </td>
-                    <td>{improved ? <HorizonBadge h={p.horizon} /> : <StatusBadge s={p.status} />}</td>
+                    <td>{status ? <HorizonBadge h={p.horizon} /> : <StatusBadge s={p.status} />}</td>
                   </tr>
                 ))}
                 {rows.length === 0 && (
@@ -528,7 +539,8 @@ function ReviewView() {
             The remaining entries retain their earlier review dates. This is a literature and scope check, not an independent verification of the proofs.</p>
           <p>A4, A7 and E10 now record claimed resolutions of finite-register QMA perfect completeness,
             good quantum local testability and ordinary entanglement-of-purification additivity.
-            Each retains “Improved” pending assessment. Other additions cover channel capacities,
+            These entries and C4 are now <a href="#claimed-solved">“Claimed solved”</a> pending assessment.
+            Other additions cover channel capacities,
             self-testing, causal order, Gaussian entanglement and Gibbs preparation, including a published Quantum article.
             No entry was promoted to “Solved” in this update.</p>
           <p><a href={LITERATURE_UPDATE.reportUrl} target="_blank" rel="noreferrer">Read the dated update, source versions and remaining questions →</a></p>
@@ -548,7 +560,7 @@ function ReviewView() {
 
           <h4>How to read a problem</h4>
           <p>The statement specifies the target and assumptions. The context separates known results, solved subcases and the open residual. A sharp question has a definite resolution; an incremental target, programme or conceptual issue need not.</p>
-          <p>“Improved” means relevant progress is recorded, including a claimed resolution awaiting assessment; it does not mean every result has been independently validated. A restricted theorem does not settle a broader question. Computational hardness, uncomputability and failure of a particular method are different claims.</p>
+          <p>“Improved” records partial progress on the stated problem. “Claimed solved” records a full resolution awaiting independent assessment. “Solved” is reserved for an established resolution. A restricted theorem can resolve a subcase while the broader entry remains “Improved”. Computational hardness, uncomputability and failure of a particular method are different claims.</p>
           <ul className="evidence-list">
             {Object.entries(EVIDENCE_KINDS).map(([kind, info]) => <li key={kind}><span className={`badge ev-${kind}`}>{info.label}</span><p>{info.desc}</p></li>)}
           </ul>
@@ -626,6 +638,7 @@ export default function Page() {
   if (route.view === "problem") return <ProblemView id={route.id} />;
   if (route.view === "sharp") return <SharpView />;
   if (route.view === "improved") return <ImprovedView />;
+  if (route.view === "claimed-solved") return <ClaimedSolvedView />;
   if (route.view === "review") return <ReviewView />;
   return <Home />;
 }

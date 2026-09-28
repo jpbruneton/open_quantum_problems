@@ -137,6 +137,12 @@ Two wording corrections followed:
 - **E3/O10:** made the inverse-temperature direction and the fixed-parameter sampling guarantee explicit, following [Kiani, Theorems 1.1 and 1.3](https://arxiv.org/html/2609.30149v1). The ambiguous temperature wording predated the reviewed commit and remained in its revised paragraphs.
 - **N11:** distinguished rounded decimals from exact certified endpoints. [The 2023 paper, equation (7)](https://arxiv.org/html/2302.04721v3) marks its decimals as approximate; [the 2026 paper, Table 2(b) and section IV.4](https://arxiv.org/html/2409.03739v3) makes the small improvement visible at five decimal places. The entry and the summary row above now retain this distinction.
 
+## 11. Subsequent status distinction
+
+At the maintainer's request, A4, A7, C4 and E10 are now **Claimed solved**, distinguishing their full-resolution claims from partial progress. The previous sections and literature reports record the status at their respective review stages. This reclassification does not independently validate the proofs or change the literature-review dates.
+
+The homepage now links to a dedicated searchable list of the four claims. There are 39 Improved entries, four Claimed solved entries and zero Solved entries; the total remains 113 active entries. C5 and C10 remain Improved because their cited claims address subquestions of the broader entries. Tests check exact list membership, counts, badges and preservation of the distinction from Solved.
+
 ## Validation
 
 - `npm test`: all catalogue tests pass, including KaTeX parsing, metadata, review-date rules and server rendering of every view.

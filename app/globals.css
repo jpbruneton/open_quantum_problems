@@ -16,6 +16,7 @@
 
   --open: #838d9c;
   --improved: #2f6fed;
+  --claimed-solved: #955300;
   --solved: #0f9d68;
 }
 
@@ -94,12 +95,13 @@ h1.title {
 }
 .stat .n { font-size: 20px; font-weight: 700; }
 .stat .l { font-size: 12px; color: var(--muted); }
-.stat-link { color: var(--improved); }
+.stat-link { --stat-accent: var(--improved); color: var(--stat-accent); }
+.stat-claimed { --stat-accent: var(--claimed-solved); }
 .stat-link .l { color: inherit; }
 .stat-link:hover, .stat-link:focus-visible {
-  background: var(--panel-2); border-color: var(--improved); text-decoration: none;
+  background: var(--panel-2); border-color: var(--stat-accent); text-decoration: none;
 }
-.stat-link:focus-visible { outline: 2px solid var(--improved); outline-offset: 3px; }
+.stat-link:focus-visible { outline: 2px solid var(--stat-accent); outline-offset: 3px; }
 
 .disclaimer {
   max-width: 920px;
@@ -184,6 +186,7 @@ td.stmt .katex { font-size: 1em; }
 .h-conceptual { color: var(--conceptual); border-color: #d3c1f5; background: #f5f0fd; }
 .st-open { color: var(--open); }
 .st-improved { color: var(--improved); }
+.st-claimed-solved { color: var(--claimed-solved); border-color: #e4cba5; background: #fff7e8; }
 .st-solved { color: var(--solved); }
 
 .badge-row { display: flex; flex-wrap: wrap; gap: 8px; }

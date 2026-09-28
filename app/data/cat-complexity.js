@@ -45,7 +45,7 @@ The full standard classical-oracle separation is due to Bostanci, Haferkamp, Nir
       { label: "Bostanci, Haferkamp, Nirkhe & Zhandry, 'Separating QMA from QCMA with a classical oracle', STOC 2026", url: "https://arxiv.org/abs/2511.09551v2" },
     ] },
 
-  { id: "A4", cat: "complexity", horizon: "sharp", status: "improved",
+  { id: "A4", cat: "complexity", horizon: "sharp", status: "claimed-solved",
     reviewedAt: "2026-09-28",
     provenance: [
       { summary: "The authors credit generative AI with the core proof idea and extensive proof and drafting assistance; no model is named. They report subsequent verification, simplification and responsibility.", url: "https://arxiv.org/html/2609.13032v1", version: "v1" },
@@ -58,7 +58,7 @@ What is known: Aaronson constructed a quantum oracle relative to which $\mathsf{
 
 Jeffery–Witteveen prove $\mathsf{QMA}=\mathsf{QMA}^{\infty}=\mathsf{QMA}_1^{\infty}$ when the verifier has their specified infinite-dimensional counter with an efficient shift operation. The result, posted in June 2025 and published in PRL in May 2026, removes completeness error using an additional infinite register. Truncation also gives stronger finite-dimensional completeness amplification, but not exactly perfect completeness in ordinary finite-register QMA. That infinite-register theorem does not answer the finite-register question. Related: A3, A8.
 
-Claimed resolution (11 September 2026, v1): Grewal and Rudolph claim $\mathsf{QMA}=\mathsf{QMA}_1$ using finite registers and Hadamard, Toffoli and $X$ gates. Their exact-gate corollary covers Clifford+$T$, hence the convention above; no infinite counter is needed. They also state that quantum 3-SAT consequently becomes QMA-complete. The construction relativizes to classical oracles, not arbitrary quantum oracles, so it does not contradict Aaronson's obstruction. This is a claimed resolution of A4, retained as “Improved” pending independent assessment.`,
+Claimed resolution (11 September 2026, v1): Grewal and Rudolph claim $\mathsf{QMA}=\mathsf{QMA}_1$ using finite registers and Hadamard, Toffoli and $X$ gates. Their exact-gate corollary covers Clifford+$T$, hence the convention above; no infinite counter is needed. They also state that quantum 3-SAT consequently becomes QMA-complete. The construction relativizes to classical oracles, not arbitrary quantum oracles, so it does not contradict Aaronson's obstruction. This is a claimed resolution of A4, marked “Claimed solved” pending independent assessment.`,
     evidence: [
       { kind: "preprint", summary: "Claimed finite-register QMA perfect completeness with exact gates, including Clifford+T; addresses A4 directly, pending assessment.", url: "https://arxiv.org/abs/2609.13032v1", date: "2026-09-11", version: "v1" },
       { kind: "published", summary: "Perfect completeness is achievable with a specified infinite counter; this does not settle the ordinary finite-register problem.", url: "https://journals.aps.org/prl/abstract/10.1103/pwdd-htbf", date: "2026-05-06" }],
@@ -119,7 +119,7 @@ Related September 2026 claim: Gay–Jeronimo's proposed good qLTC construction i
       { label: "Bergamaschi, Metger, Vidick & Zhang, 'Derandomised tensor product gap amplification for quantum Hamiltonians' (2025 preprint)", url: "https://arxiv.org/abs/2510.01333" },
     ] },
 
-  { id: "A7", cat: "complexity", horizon: "sharp", status: "improved",
+  { id: "A7", cat: "complexity", horizon: "sharp", status: "claimed-solved",
     reviewedAt: "2026-09-28",
     evidence: [
       { kind: "preprint", summary: "Claimed explicit good binary CSS qLTCs with all required parameters constant; full resolution claim awaiting assessment.", url: "https://arxiv.org/abs/2609.20780v1", date: "2026-09-17", version: "v1" },

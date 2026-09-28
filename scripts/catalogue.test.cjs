@@ -18,7 +18,7 @@ function loadApp(relative) {
   if (cache.has(filename)) return cache.get(filename).exports;
   let source = fs.readFileSync(filename, "utf8");
   if (relative === "app/page.js") {
-    source += "\nexport const testViews = { Home, CategoryView, SharpView, ImprovedView, ProblemView, ReviewView, NotFound, truncate };";
+    source += "\nexport const testViews = { Home, CategoryView, SharpView, ImprovedView, ClaimedSolvedView, ProblemView, ReviewView, NotFound, truncate };";
   }
   const { code } = transformSync(source, {
     filename,
@@ -130,9 +130,12 @@ test("targeted literature updates preserve untouched review dates and expose pen
     if (ids.includes(p.id)) assert.ok(p.evidence.some((e) => e.date && (e.version || e.kind === "published")), `${p.id}: missing dated, versioned or published evidence`);
   }
   for (const [id, source] of [["C4", "2609.08998v1"], ["C5", "2609.10520v1"], ["A4", "2609.13032v1"], ["A7", "2609.20780v1"], ["E10", "2609.29539v1"]]) {
-    assert.equal(getProblem(id).status, "improved", `${id}: unverified claim promoted to solved`);
+    assert.equal(getProblem(id).status, id === "C5" ? "improved" : "claimed-solved", `${id}: distinguish partial progress from a full pending claim`);
     assert.ok(getProblem(id).evidence.some((e) => e.kind === "preprint" && e.url.includes(source)), id);
   }
+  assert.deepEqual(PROBLEMS.filter((p) => p.status === "claimed-solved").map((p) => p.id).sort(), ["A4", "A7", "C4", "E10"]);
+  assert.equal(getProblem("C10").status, "improved", "a solved subcase must not close the broader programme");
+  assert.equal(PROBLEMS.filter((p) => p.status === "solved").length, 0, "pending claims must not count as established solutions");
   const home = render(views.Home);
   assert.ok(home.includes(LITERATURE_UPDATE.label) && home.includes(REVIEW.label));
   const policy = render(views.ReviewView);
@@ -190,7 +193,10 @@ test("every active and archived detail view renders with valid links and Astra &
     for (const match of html.matchAll(/href="#p\/([^"<>]+)"/g)) assert.ok(getProblem(match[1]), `${p.id}: broken rendered link ${match[1]}`);
     if (p.archive) {
       assert.ok(html.includes("Catalogue disposition"), p.id);
-      assert.ok(!html.includes("st-open") && !html.includes("st-improved"), `${p.id}: archive presented as active`);
+      for (const status of Object.keys(STATUSES)) assert.ok(!html.includes(`st-${status}`), `${p.id}: archive presented as active`);
+    } else {
+      assert.ok(html.includes(`class="badge st-${p.status}"`), `${p.id}: missing status badge`);
+      assert.ok(html.includes(STATUSES[p.status].label), `${p.id}: missing status label`);
     }
   }
 });
@@ -200,6 +206,9 @@ test("home, all categories, filtered lists, policy and missing-page views render
   assert.ok(home.includes("113") && home.includes("Active entries"));
   assert.ok(home.includes("#review") && home.includes("powered by Astra &amp; Opus 5.5"));
   assert.ok(home.includes('href="#improved"'));
+  assert.ok(home.includes('href="#claimed-solved"'));
+  assert.ok(home.includes('aria-label="See all 39 improved problems"'));
+  assert.ok(home.includes('aria-label="See all 4 claimed solved problems"'));
   assert.ok(home.includes('href="https://quantumlectures.org/en"'));
   assert.ok(home.includes('href="https://learnthermo.org/"'));
   assert.ok(!home.includes("IDs M1–"), "category count must not fabricate contiguous IDs");
@@ -210,8 +219,12 @@ test("home, all categories, filtered lists, policy and missing-page views render
   const sharp = render(views.SharpView);
   for (const p of ARCHIVED_PROBLEMS) assert.ok(!sharp.includes(`href="#p/${p.id}"`), `archived ${p.id} in sharp list`);
   const improved = render(views.ImprovedView);
+  const claimedSolved = render(views.ClaimedSolvedView);
+  assert.ok(claimedSolved.includes("independent assessment is pending"));
+  assert.ok(claimedSolved.includes('aria-label="Filter claimed solved problems"'));
   for (const p of ALL_PROBLEMS) {
     assert.equal(improved.includes(`href="#p/${p.id}"`), !p.archive && p.status === "improved", `${p.id}: improved list membership`);
+    assert.equal(claimedSolved.includes(`href="#p/${p.id}"`), !p.archive && p.status === "claimed-solved", `${p.id}: claimed-solved list membership`);
   }
   const policy = render(views.ReviewView);
   for (const p of ARCHIVED_PROBLEMS) assert.ok(policy.includes(`#p/${p.id}`), p.id);
