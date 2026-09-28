@@ -35,6 +35,7 @@ function useHashRoute() {
   if (parts[0] === "c" && parts[1]) return { view: "category", slug: parts[1] };
   if (parts[0] === "p" && parts[1]) return { view: "problem", id: parts[1] };
   if (parts[0] === "sharp") return { view: "sharp" };
+  if (parts[0] === "improved") return { view: "improved" };
   if (parts[0] === "review") return { view: "review" };
   return { view: "home" };
 }
@@ -124,7 +125,9 @@ function Home() {
               <div className="stat"><div className="n">{total}</div><div className="l">Active entries</div></div>
               <div className="stat"><div className="n">{CATEGORIES.length}</div><div className="l">Areas</div></div>
               <div className="stat"><div className="n">{nSharp}</div><div className="l">Sharp questions</div></div>
-              <div className="stat"><div className="n">{nImproved}</div><div className="l">Improved</div></div>
+              <a className="stat stat-link" href="#improved" aria-label={`See all ${nImproved} improved problems`}>
+                <div className="n">{nImproved}</div><div className="l">Improved <span aria-hidden="true">→</span></div>
+              </a>
               <div className="stat"><div className="n">{nSolved}</div><div className="l">Solved</div></div>
             </div>
             <button className="cta-sharp" onClick={() => go("sharp")}>
@@ -301,14 +304,22 @@ function CategoryView({ slug }) {
   );
 }
 
-// ---------- sharp problems (all categories) ----------
+// ---------- filtered problems (all categories) ----------
 function SharpView() {
+  return <FilteredProblemsView />;
+}
+
+function ImprovedView() {
+  return <FilteredProblemsView improved />;
+}
+
+function FilteredProblemsView({ improved = false }) {
   const [q, setQ] = useState("");
 
   const rows = useMemo(() => {
-    let ps = PROBLEMS.filter((p) => p.horizon === "sharp");
+    let ps = PROBLEMS.filter((p) => improved ? p.status === "improved" : p.horizon === "sharp");
     if (q.trim()) {
-      const s = q.toLowerCase();
+      const s = q.trim().toLowerCase();
       ps = ps.filter(
         (p) =>
           p.title.toLowerCase().includes(s) ||
@@ -317,27 +328,29 @@ function SharpView() {
       );
     }
     return ps;
-  }, [q]);
+  }, [q, improved]);
 
   return (
     <>
-      <Header crumbs={[{ label: "Sharp problems" }]} />
+      <Header crumbs={[{ label: improved ? "Improved problems" : "Sharp problems" }]} />
       <section className="body">
         <div className="container">
           <p className="intro">
-            Sharp problems: a single proof or counterexample closes them.
-            These are the cleanest targets for a solution.
+            {improved
+              ? "Problems with recorded progress across all areas, including claimed resolutions awaiting assessment. Improved does not mean solved or independently verified."
+              : "Sharp problems: a single proof or counterexample closes them. These are the cleanest targets for a solution."}
           </p>
 
           <div className="toolbar">
             <input
-              aria-label="Filter sharp questions"
+              aria-label={improved ? "Filter improved problems" : "Filter sharp questions"}
               placeholder="Filter by keyword…"
               value={q}
               onChange={(e) => setQ(e.target.value)}
             />
           </div>
 
+          {improved && <p className="review-meta" role="status">{rows.length} improved {rows.length === 1 ? "problem" : "problems"}</p>}
           <div className="table-wrap">
             <table>
               <thead>
@@ -345,7 +358,7 @@ function SharpView() {
                   <th style={{ width: 56 }}>ID</th>
                   <th style={{ width: 170 }}>Area</th>
                   <th>Problem</th>
-                  <th style={{ width: 110 }}>Status</th>
+                  <th style={{ width: 130 }}>{improved ? "Horizon" : "Status"}</th>
                 </tr>
               </thead>
               <tbody>
@@ -359,7 +372,7 @@ function SharpView() {
                         <MathText text={truncate(p.statement, 150)} />
                       </div>
                     </td>
-                    <td><StatusBadge s={p.status} /></td>
+                    <td>{improved ? <HorizonBadge h={p.horizon} /> : <StatusBadge s={p.status} />}</td>
                   </tr>
                 ))}
                 {rows.length === 0 && (
@@ -605,6 +618,7 @@ export default function Page() {
   if (route.view === "category") return <CategoryView key={route.slug} slug={route.slug} />;
   if (route.view === "problem") return <ProblemView id={route.id} />;
   if (route.view === "sharp") return <SharpView />;
+  if (route.view === "improved") return <ImprovedView />;
   if (route.view === "review") return <ReviewView />;
   return <Home />;
 }

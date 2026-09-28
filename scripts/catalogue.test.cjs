@@ -18,7 +18,7 @@ function loadApp(relative) {
   if (cache.has(filename)) return cache.get(filename).exports;
   let source = fs.readFileSync(filename, "utf8");
   if (relative === "app/page.js") {
-    source += "\nexport const testViews = { Home, CategoryView, SharpView, ProblemView, ReviewView, NotFound, truncate };";
+    source += "\nexport const testViews = { Home, CategoryView, SharpView, ImprovedView, ProblemView, ReviewView, NotFound, truncate };";
   }
   const { code } = transformSync(source, {
     filename,
@@ -187,10 +187,11 @@ test("every active and archived detail view renders with valid links and Astra c
   }
 });
 
-test("home, all categories, sharp list, policy and missing-page views render", () => {
+test("home, all categories, filtered lists, policy and missing-page views render", () => {
   const home = render(views.Home);
   assert.ok(home.includes("113") && home.includes("Active entries"));
   assert.ok(home.includes("#review") && home.includes("powered by Astra"));
+  assert.ok(home.includes('href="#improved"'));
   assert.ok(home.includes('href="https://quantumlectures.org/en"'));
   assert.ok(home.includes('href="https://learnthermo.org/"'));
   assert.ok(!home.includes("IDs M1–"), "category count must not fabricate contiguous IDs");
@@ -200,6 +201,10 @@ test("home, all categories, sharp list, policy and missing-page views render", (
   }
   const sharp = render(views.SharpView);
   for (const p of ARCHIVED_PROBLEMS) assert.ok(!sharp.includes(`href="#p/${p.id}"`), `archived ${p.id} in sharp list`);
+  const improved = render(views.ImprovedView);
+  for (const p of ALL_PROBLEMS) {
+    assert.equal(improved.includes(`href="#p/${p.id}"`), !p.archive && p.status === "improved", `${p.id}: improved list membership`);
+  }
   const policy = render(views.ReviewView);
   for (const p of ARCHIVED_PROBLEMS) assert.ok(policy.includes(`#p/${p.id}`), p.id);
   assert.ok(policy.includes("Research watchlist"));
