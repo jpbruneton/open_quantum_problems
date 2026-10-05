@@ -38,17 +38,26 @@ The sharp target remains whether four or more MUBs exist, and ultimately the exa
       { label: "Cárdenes Wuttig & Tindall, 'A Complete Classification of Complex Hadamard Matrices of Order Six' (2026 preprint)", url: "https://arxiv.org/abs/2608.18053" },
     ] },
 
-  { id: "N3", cat: "nonlocality", horizon: "sharp",
+  { id: "N3", cat: "nonlocality", horizon: "sharp", status: "improved",
+    provenance: [
+      { summary: "The authors report prompting ChatGPT 6 Astra and Claude Fable 5.1 to construct new MUBs, developing the general construction with them, and independently checking all assisted material and claims.", url: "https://arxiv.org/html/2609.40311v1", version: "v1" },
+    ],
+    reviewedAt: "2026-10-05",
     relations: [{ id: "N2", type: "benchmark" }, { id: "N1", type: "related" }],
-    evidence: [{ kind: "numerical", summary: "Extension searches for tensor-product MUB constructions found no extension; this is not a nonexistence proof.", url: "https://doi.org/10.3390/info17080796" }],
+    evidence: [
+      { kind: "preprint", summary: "Constructive lower bounds beyond tensor products in several composite dimensions; complete-set existence and dimension six remain open.", url: "https://arxiv.org/abs/2609.40311v1", date: "2026-09-30", version: "v1" },
+      { kind: "numerical", summary: "Extension searches for tensor-product MUB constructions found no extension; this is not a nonexistence proof.", url: "https://doi.org/10.3390/info17080796" }],
     title: "Complete MUB sets outside prime-power dimensions",
     statement: r`Can a dimension $d$ that is not a prime power admit $d+1$ mutually unbiased bases? As a separate quantitative programme, improve certified bounds on the maximal number $M(d)$ in specified dimensions.`,
     context: r`Complete sets of $d+1$ mutually unbiased bases are known in prime-power dimensions. Whether any non-prime-power dimension supports a complete set is the sharp existence question here; finding every value $M(d)$ is a broader programme. N2 records the dimension-six benchmark.
 
 Writing $d=\prod_i p_i^{k_i}$ gives the tensor-product lower bound $M(d)\geq1+\min_i p_i^{k_i}$, while $M(d)\leq d+1$. Links with finite geometry motivate conjectures, but complete complex MUBs are not known to be equivalent to finite affine/projective planes. Classical complete mutually orthogonal Latin squares have their own established relation to planes. In particular, projective planes of order 10 were proved not to exist by Lam–Thiel–Swiercz in 1989; that result does not by itself exclude complete MUBs in dimension 10.
 
-McNulty and Weigert's composite-dimension review (Quantum, 2026) provides a current baseline. Numerical evidence (August 2026): Wu–Liu–Wu report standard tensor-product constructions in 64 non-prime-power dimensions up to 100 and extensive extension searches in such dimensions up to 30. No extension was found. This tests chosen search procedures and starting families, not all possible MUBs, so it does not resolve any universal nonexistence claim.`,
+McNulty and Weigert's composite-dimension review (Quantum, 2026) provides a current baseline. Numerical evidence (August 2026): Wu–Liu–Wu report standard tensor-product constructions in 64 non-prime-power dimensions up to 100 and extensive extension searches in such dimensions up to 30. No extension was found. This tests chosen search procedures and starting families, not all possible MUBs, so it does not resolve any universal nonexistence claim.
+
+Constructive progress (30 September 2026, v1): Cárdenes Wuttig and Tindall report five MUBs in dimension 12, seven in dimensions 36 and 108, six in dimensions 48, 96 and 192, and ten in dimension 648. A Paley-Hadamard construction yields $q+1$ bases in $d=q(q+1)$ for prime powers $q\equiv3\pmod4$. These improve lower bounds beyond standard tensor products; they supply neither a complete $d+1$ set in a non-prime-power dimension nor a fourth basis in dimension six.`,
     refs: [
+      { label: "Mateo Cárdenes Wuttig, Joseph Tindall, 'More mutually unbiased bases' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.40311v1" },
       {"label":"McNulty & Weigert, 'Mutually Unbiased Bases in Composite Dimensions — A Review', Quantum 10, 2051 (2026)","url":"https://arxiv.org/abs/2410.23997"},
       {"label":"Saniga, Planat & Rosu, 'Mutually unbiased bases and finite projective planes' (proposed connection, 2004)","url":"https://arxiv.org/abs/math-ph/0403057"},
       {"label":"Lam, Thiel & Swiercz, 'The non-existence of finite projective planes of order 10', Canadian Journal of Mathematics (1989)","url":"https://doi.org/10.4153/CJM-1989-049-4"},
@@ -121,13 +130,15 @@ Restricted noisy-resource progress (4 September 2026, v1): Kundu and Lalonde stu
     ] },
 
   { id: "N7", cat: "nonlocality", horizon: "incremental", status: "improved",
-    reviewedAt: "2026-09-28",
+    reviewedAt: "2026-10-05",
     relations: [{ id: "N5", type: "related" }, { id: "N8", type: "related" }],
     evidence: [
+      { kind: "preprint", summary: "Ideal Lüders-instrument self-testing in a sequential Bell protocol under a stated extraction convention; not the general multipartite state question.", url: "https://arxiv.org/abs/2610.03168v1", date: "2026-10-02", version: "v1" },
       { kind: "preprint", summary: "Claimed exact-but-nonrobust self-test for a single correlation; does not preclude another robust test of the same state.", url: "https://arxiv.org/abs/2609.25117v1", date: "2026-09-20", version: "v1" },
       { kind: "preprint", summary: "Claimed separation of simultaneous full-rank/projective self-testing from unrestricted measurement strategies; does not refute universal pure-state self-testability.", url: "https://arxiv.org/abs/2609.10013v1", date: "2026-09-09", version: "v1" },
       { kind: "published", summary: "All pure multipartite entangled qubit states admit self-tests in the standard Bell setting; arbitrary higher local dimensions remain a separate frontier.", url: "https://www.nature.com/articles/s41467-026-70829-x", date: "2026-03-24" }],
     provenance: [
+      { summary: "Saha, Xu and Cabello state that generative-AI tools were used only for language editing; no model is named.", url: "https://arxiv.org/html/2610.03168v1", version: "v1" },
       { summary: "Chen and Zhao credit ChatGPT 5.6 Sol ultra with an initial solution to their question; they report extracting and simplifying the ideas, writing the manuscript and using language models for editing.", url: "https://arxiv.org/html/2609.25117v1", version: "v1" },
       { summary: "Chen reports human-directed frontier language models for exploratory proofs and manuscript preparation, followed by refinement and verification of the statements. No particular model is named in the declaration; the author takes responsibility.", url: "https://arxiv.org/html/2609.10013v1", version: "v1" },
     ],
@@ -143,8 +154,11 @@ The residual programme separates the sharp pure-state existence question from me
 
 Preprint progress (9 September 2026, v1): Chen claims a game that self-tests a maximally entangled qubit strategy among pure full-Schmidt-rank projective strategies, yet has an inequivalent optimum with a nonprojective measurement. Thus full rank and projectivity cannot both be imposed silently when asserting an assumption-free self-test. A dimension-six family also obstructs robustness of this restricted self-test. This addresses the certification convention and a conjecture about simultaneous assumptions, not the universal higher-dimensional pure-state question.
 
-Preprint progress (20 September 2026, v1): Chen and Zhao claim a single synchronous binary correlation that is an exact self-test but is not robust. This strengthens earlier game-level separations: exact uniqueness of the realized correlation need not imply stability under small experimental errors. The example does not show that its target state has no alternative robust self-test, or disprove universal higher-dimensional pure-state self-testability.`,
+Preprint progress (20 September 2026, v1): Chen and Zhao claim a single synchronous binary correlation that is an exact self-test but is not robust. This strengthens earlier game-level separations: exact uniqueness of the realized correlation need not imply stability under small experimental errors. The example does not show that its target state has no alternative robust self-test, or disprove universal higher-dimensional pure-state self-testability.
+
+Measurement progress (2 October 2026, v1): Saha, Xu and Cabello claim self-testing of any ideal projective measurement together with its Lüders state update, using bipartite Bell statistics with an added sequential nondemolition operation. Their convention extracts the post-measurement state using outcome-dependent isometries acting only on the delivered system. This instrument-specific result does not settle universal higher-dimensional multipartite pure-state self-testing in the standard Bell setting or provide general noise-robustness bounds.`,
     refs: [
+      { label: "Debashis Saha, Zhen-Peng Xu, Adán Cabello, 'Self-testing ideal quantum measurements' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.03168v1" },
       { label: "Chen & Zhao, 'A non-robust quantum correlation self-test' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.25117v1" },
       { label: "Chen, 'A Separation between Full-Rank PVM and Assumption-free Self-Testing' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.10013v1" },
       {"label":"Balanzó-Juandó, Coladangelo, Augusiak, Acín & Šupić, 'All pure multipartite entangled states of qubits can be self-tested', Nature Communications 17, 4463 (24 March 2026)","url":"https://www.nature.com/articles/s41467-026-70829-x"},

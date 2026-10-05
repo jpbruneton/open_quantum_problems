@@ -112,12 +112,16 @@ Additional full-resolution claim (10 September 2026, v1): Beigi and Tomamichel c
     ] },
 
   { id: "C5", cat: "channels", horizon: "incremental", status: "improved",
-    reviewedAt: "2026-09-10",
+    reviewedAt: "2026-10-05",
     relations: [{ id: "C1", type: "related" }, { id: "E16", type: "related" }],
     evidence: [
+      { kind: "preprint", summary: "Exact private strong-converse exponent claimed under a joint squared-fidelity criterion, expressed through a regularized quantity.", url: "https://arxiv.org/abs/2609.38144v1", date: "2026-09-29", version: "v1" },
+      { kind: "preprint", summary: "Channel-order criteria and explicit zero-private-capacity/activation families; not a general classification of P versus Q.", url: "https://arxiv.org/abs/2610.03706v1", date: "2026-10-02", version: "v1" },
       { kind: "preprint", summary: "Two individually zero-private-capacity channels are claimed to have positive joint private capacity; this is operational superactivation, not just private-information superadditivity.", url: "https://arxiv.org/abs/2609.10520v1", date: "2026-09-09", version: "v1" },
     ],
     provenance: [
+      { summary: "The authors report ChatGPT and Codex assistance with proof exploration, derivation checks, literature and editing, and state that they verified the resulting content.", url: "https://arxiv.org/html/2609.38144v1", version: "v1" },
+      { summary: "Hirche reports Codex with gpt-6-sol and gpt-6-astra contributions to proof strategies, intermediate results and proof drafting, as well as supporting research and writing. He retains responsibility for the proofs.", url: "https://arxiv.org/html/2610.03706v1", version: "v1" },
       { summary: "Zhu and Wang report QudeLeap AI Quantum Scientist and language-model assistance in finding an initial activating example, exploring proofs, and drafting. They say they checked and rewrote the proofs and retain responsibility. They also report Lean 4 formalization, which this review has not rebuilt.", url: "https://arxiv.org/html/2609.10520v1", version: "v1" },
     ],
     title: "Private versus quantum capacity",
@@ -130,8 +134,14 @@ Private information can be superadditive across channel uses. This single-letter
 
 Useful residual work characterizes families with equality or strict separation and tight fixed-dimension bounds. The state question of entanglement with zero distillable key is E16, not the same problem as a channel-capacity gap.
 
-Preprint progress (9 September 2026, v1): Zhu and Wang claim operational private-capacity superactivation: a four-level channel and a qubit erasure channel with erasure probability $1/2$ each have $P=0$, but their product transmits more than $0.0001903$ private bits per product use. Their theorem extends positivity to erasure probabilities below one and at least one half, using a fixed joint output measurement and classical wiretap coding. This is a claim about regularized operational capacity, stronger than single-letter private-information superadditivity. It settles the existence subquestion if verified, while structural criteria and optimal dimension-constrained gaps remain. The authors report a Lean 4 formalization; its scope and build have not been independently checked here.`,
+Preprint progress (9 September 2026, v1): Zhu and Wang claim operational private-capacity superactivation: a four-level channel and a qubit erasure channel with erasure probability $1/2$ each have $P=0$, but their product transmits more than $0.0001903$ private bits per product use. Their theorem extends positivity to erasure probabilities below one and at least one half, using a fixed joint output measurement and classical wiretap coding. This is a claim about regularized operational capacity, stronger than single-letter private-information superadditivity. It settles the existence subquestion if verified, while structural criteria and optimal dimension-constrained gaps remain. The authors report a Lean 4 formalization; its scope and build have not been independently checked here.
+
+Preprint progress (29 September 2026, v1): Cheng, Hirche and Tomamichel claim an exact strong-converse exponent for finite-dimensional quantum wiretap channels, using squared fidelity to an ideal secret key as a joint reliability/secrecy criterion. The formula uses regularized Rényi private information; it is not a single-letter capacity formula or a criterion-independent converse.
+
+Further progress (2 October 2026, v1): Hirche connects channel orderings to binary estimation, obtains exact thresholds for specified noisy Werner–Holevo families and extends activation constructions. Complete comparison controls stability against antidegradable helpers, whereas regularized comparison alone need not prevent activation. A general classification of the gap between private and quantum capacities remains open.`,
     refs: [
+      { label: "Hao-Chung Cheng, Christoph Hirche, Marco Tomamichel, 'The exact strong converse exponent for private communication over quantum channels' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.38144v1" },
+      { label: "Christoph Hirche, 'Quantum estimation, channel orders, and private capacity' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.03706v1" },
       { label: "Zhu & Wang, 'Private communication via zero-private-capacity quantum channels' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.10520v1" },
       { label: "Horodecki, Horodecki, Horodecki, Oppenheim, 'Secure key from bound entanglement', PRL 94, 160502 (2005)", url: "https://doi.org/10.1103/PhysRevLett.94.160502" },
       { label: "Elkouss & Strelchuk, 'Superadditivity of private information for any number of uses of the channel', PRL 115, 040501 (2015)", url: "https://arxiv.org/abs/1502.05326" },

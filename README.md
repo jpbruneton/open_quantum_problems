@@ -14,6 +14,13 @@ https://openquantumproblems.com/
 
 ### Timeline
 
+**5 October 2026 — literature update and challenged-proof correction**
+
+- Updated sixteen entries from twenty new versioned arXiv manuscripts; added a separate watchlist item on the thermal lifetime of Haah's cubic code. See the [dated literature report](docs/reviews/2026-10-05-literature-update.md) for sources, hypotheses and exclusions.
+- E10 now flags the counterexample to a lemma in the previously cited proof and records the new nonadditivity claim by Baghali Khanian and Negari. Its **Claimed solved** status rests on the new manuscript; the reported Lean formalization was not rebuilt in this review.
+- Added progress on MUB constructions, universal distillation, multipartite separability, private capacities, quantum-proof complexity, self-testing, reconstruction, tree percolation, thermalization and Gibbs preparation.
+- A3, B5, E5 and N3 move to **Improved**. Counts: 113 active entries, 43 Improved, four Claimed solved, zero Solved, and ten archive/background pages. Conditional results retain their assumptions; untouched entry dates and previous reports are preserved.
+
 **28 September 2026 — distinguish claimed solutions**
 
 - A4, A7, C4 and E10 now use **Claimed solved**: each has a claimed full resolution awaiting independent assessment.

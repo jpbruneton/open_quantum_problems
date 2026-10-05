@@ -62,6 +62,11 @@ export const REVIEW = {
 
 // A targeted literature update does not reset the full-review date of every entry.
 export const LITERATURE_UPDATES = [{
+  date: "2026-10-05",
+  label: "5 October 2026",
+  ids: ["A3", "A5", "A7", "A11", "A19", "B5", "C5", "E3", "E5", "E8", "E10", "F3", "M2", "N3", "N7", "O10"],
+  reportUrl: "https://github.com/jpbruneton/open_quantum_problems/blob/main/docs/reviews/2026-10-05-literature-update.md",
+}, {
   date: "2026-09-28",
   label: "28 September 2026",
   ids: ["A4", "A6", "A7", "A19", "C1", "C3", "C4", "C10", "E3", "E8", "E10", "F9", "M2", "N7", "O10", "QF8"],
@@ -143,6 +148,7 @@ export const EVIDENCE_KINDS = {
 
 // These are not counted as open problems: their precise status needs another check.
 export const WATCHLIST = [
+  { title: "Thermal lifetime of Haah's 3D cubic code", summary: "Stengele, Caha, Capel and Warzel (30 September 2026, v1) claim rapid mixing for the specified Davies dynamics of Haah's cubic code at every fixed positive temperature, ruling out self-correction in that setting. This model-specific obstruction does not rule out every 3D passive memory. Track independent assessment and the bath and rate assumptions.", url: "https://arxiv.org/abs/2609.39959v1" },
   { title: "Robust, initializable 3D passive quantum memories", summary: "A May 2026 preprint claims a local construction with stretched-exponential thermal lifetime. Monitor lifetime robustness and passive initialization; deferred proofs are evidence-status items, not automatically new open conjectures.", url: "https://arxiv.org/abs/2605.10943" },
   { title: "Multipartite Bell activation and triangle networks", summary: "A 7 September 2026 preprint by Ulu, Weilenmann and Brunner claims multi-copy and catalytic activation of genuine multipartite nonlocality defined using biseparable nonsignaling models, including quantum-realizable examples. This highlights a composition issue for that definition; it does not settle the single-copy Werner threshold or binary-output triangle questions. Select a precise residual before promotion.", url: "https://arxiv.org/abs/2609.07380v1" },
   { title: "Homogeneous electron gas and Wigner crystallization", summary: "A further model-specific review is needed before adding a sharp low-density quantum-jellium question.", url: "https://comptes-rendus.academie-sciences.fr/physique/item/CRPHYS_2025__26_G1_369_0/" },

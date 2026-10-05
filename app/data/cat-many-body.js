@@ -60,7 +60,14 @@ Deriving ETH from the structure of a concrete, non-random local Hamiltonian — 
       { label: "D'Alessio, Kafri, Polkovnikov & Rigol, 'From quantum chaos and eigenstate thermalization to statistical mechanics and thermodynamics', Adv. Phys. 65 (2016)", url: "https://arxiv.org/abs/1509.06411" },
     ] },
 
-  { id: "B5", cat: "many-body", horizon: "programme",
+  { id: "B5", cat: "many-body", horizon: "programme", status: "improved",
+    provenance: [
+      { summary: "The authors acknowledge GPT 5.5–6 and Claude Fable 5–5.1 for technical assistance in their proofs.", url: "https://arxiv.org/html/2609.35973v1", version: "v1" },
+    ],
+    evidence: [
+      { kind: "preprint", summary: "Conditional 1D local thermalization for specified initial ensembles and nondegenerate energy gaps; no general relaxation-time estimate.", url: "https://arxiv.org/abs/2609.35973v1", date: "2026-09-28", version: "v1" },
+    ],
+    reviewedAt: "2026-10-05",
     title: "Unitary derivation of thermalization",
     statement: r`For a specified translation-invariant nonintegrable local Hamiltonian and a stated low-correlation initial-state family with narrow energy density, prove local-observable convergence or time-fraction closeness to the appropriate thermal ensemble, with explicit relaxation times, finite-size errors and ordering of limits.`,
     context: r`Beyond ETH as an ansatz (B4), the goal is to prove from the microscopic unitary dynamics that a nonintegrable many-body system relaxes to thermal equilibrium, with explicit relaxation time scales, bounds on residual fluctuations, and control of finite-size effects.
@@ -69,8 +76,11 @@ What is known: Equilibration-on-average theorems use effective-dimension and ene
 
 The residual programme combines ensemble identification, local relaxation and quantitative rates for concrete interacting models. Conserved charges and symmetry sectors must be fixed; arbitrary initial states include deliberately stationary or atypical ones.
 
-Non-Abelian subtarget: for a model with conserved noncommuting charges, derive the appropriate local equilibrium predictions and finite-size/rate bounds under a stated charge-preparation convention. Noncommuting charges cannot simply be assigned simultaneous sharp values. This is an operational extension of thermalization, not a claim that no non-Abelian thermodynamic formalism exists. Related: B4, B6, O10.`,
+Non-Abelian subtarget: for a model with conserved noncommuting charges, derive the appropriate local equilibrium predictions and finite-size/rate bounds under a stated charge-preparation convention. Noncommuting charges cannot simply be assigned simultaneous sharp values. This is an operational extension of thermalization, not a claim that no non-Abelian thermodynamic formalism exists. Related: B4, B6, O10.
+
+Preprint progress (28 September 2026, v1): Pilatowsky-Cameo, Styliaris, Bakshi and Malz derive local thermalization for translation-invariant spin chains with nondegenerate energy gaps and maximally entropic ensembles of low-complexity initial states at fixed positive temperature (Corollary 4). The result controls ensemble/time-averaged local deviations and finite-size errors. It supplies no general finite relaxation-time bound and does not cover arbitrary initial states.`,
     refs: [
+      { label: "Saúl Pilatowsky-Cameo, Georgios Styliaris, Ainesh Bakshi, Daniel Malz, 'One-dimensional quantum Gibbs states in constant circuit depth' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.35973v1" },
       { label: "Linden, Popescu, Short, Winter, 'Quantum mechanical evolution towards thermal equilibrium', PRE 79, 061103 (2009)", url: "https://arxiv.org/abs/0812.2385" },
       { label: "Gogolin & Eisert, 'Equilibration, thermalisation, and the emergence of statistical mechanics in closed quantum systems', Rep. Prog. Phys. 79 (2016)", url: "https://arxiv.org/abs/1503.07538" },
       { label: "Campbell et al., 'Roadmap on Quantum Thermodynamics', Quantum Sci. Technol. 11, 012501 (2026) — includes non-Abelian conservation-law questions", url: "https://arxiv.org/abs/2504.20145" },

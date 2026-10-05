@@ -155,8 +155,11 @@ These newest tensor-network results are preprints with structured-model and nume
       { label: "Pancotti, Saravanan & Svore, 'Exact learning of quantum noise with tensor networks' (2026)", url: "https://arxiv.org/abs/2609.00169" },
     ] },
   { id: "O10", cat: "open-systems", horizon: "incremental", status: "improved",
-    reviewedAt: "2026-09-28",
+    reviewedAt: "2026-10-05",
     provenance: [
+      { summary: "The authors acknowledge GPT 5.5–6 and Claude Fable 5–5.1 for technical assistance in their proofs.", url: "https://arxiv.org/html/2609.35973v1", version: "v1" },
+      { summary: "Capel, Pérez-García and Scandi attribute the main concepts to themselves and acknowledge LLM assistance upgrading weak MLSI to MLSI, refining proofs, proofreading and figures. They take responsibility for the manuscript and do not name a model.", url: "https://arxiv.org/html/2610.03683v1", version: "v1" },
+      { summary: "Rouzé and Stilck França report Codex with ChatGPT 6 Astra assistance exploring and checking proof strategies and preparing the manuscript. They retain responsibility for the mathematics and exposition; disclosure checked in the PDF, page 55.", url: "https://arxiv.org/pdf/2610.03578v1", version: "v1" },
       { summary: "Li reports GPT-5.6 Sol assistance with editing, organization, literature discovery, code and completion of several proofs, while attributing the scientific ideas to himself and stating that he reviewed and verified the assisted material.", url: "https://arxiv.org/html/2609.09291v1", version: "v1" },
     ],
     title: "Efficient Gibbs preparation beyond high temperature",
@@ -173,9 +176,16 @@ Adjacent preparation progress (8 September 2026, v1): Li's spectral core–tail 
 
 Published progress (18 September 2026): Hwang and Jiang reduce Gibbs preparation for specified commuting Hamiltonians to classical Gibbs sampling, including 2-local qudit systems and restricted 2D 4-local qubit systems. Efficiency depends on efficient sampling of the associated classical model; this is not a rapid-mixing theorem for every Davies generator.
 
-A separate 24 September preprint by Kiani sharpens the separability threshold for bounded-overlap Pauli Hamiltonians (E3). Product-state sampling is polynomial-time for fixed overlap degree and a fixed relative margin below the inverse-temperature threshold, thus above the corresponding physical temperature. This does not establish rapid mixing for arbitrary reversible dynamics.`,
+A separate 24 September preprint by Kiani sharpens the separability threshold for bounded-overlap Pauli Hamiltonians (E3). Product-state sampling is polynomial-time for fixed overlap degree and a fixed relative margin below the inverse-temperature threshold, thus above the corresponding physical temperature. This does not establish rapid mixing for arbitrary reversible dynamics.
+
+Preprint progress (28 September–2 October 2026, v1): Pilatowsky-Cameo et al. give a block-product mixture for 1D Gibbs states at fixed positive temperature, enabling constant-depth quantum preparation with polynomial classical preprocessing. The constants can grow doubly exponentially with inverse temperature; this is not constant total computational cost.
+
+Capel, Pérez-García and Scandi claim a modified log-Sobolev constant of order $1/\log n$ for specified noncommuting 1D heat-bath generators. Rouzé and Stilck França obtain logarithmic trace-norm mixing for smoothed block dynamics on chains and stability near reference Hamiltonians satisfying a strict quantum Dobrushin–Shlosman condition. The latter includes controlled noncommuting perturbations of suitable classical models in higher dimensions. Generator normalization, fixed temperature and the reference mixing condition remain essential; arbitrary low-temperature 2D preparation is still unresolved.`,
     relations: [{ id: "O2", type: "related" }, { id: "O9", type: "related" }, { id: "B5", type: "related" }],
     evidence: [
+      { kind: "preprint", summary: "1D constant-depth quantum preparation at fixed temperature, with polynomial classical preprocessing and temperature-dependent constants.", url: "https://arxiv.org/abs/2609.35973v1", date: "2026-09-28", version: "v1" },
+      { kind: "preprint", summary: "Modified log-Sobolev inequality and rapid mixing for specified 1D noncommuting heat-bath samplers at fixed positive temperature.", url: "https://arxiv.org/abs/2610.03683v1", date: "2026-10-02", version: "v1" },
+      { kind: "preprint", summary: "Block-sampler rapid mixing on chains and near references satisfying a strict quantum Dobrushin–Shlosman condition; not arbitrary low-temperature 2D mixing.", url: "https://arxiv.org/abs/2610.03578v1", date: "2026-10-02", version: "v1" },
       { kind: "published", summary: "Gibbs preparation via classical reductions for specified commuting families; efficiency requires an efficient sampler for the associated classical model.", url: "https://doi.org/10.22331/q-2026-09-18-2209", date: "2026-09-18" },
       { kind: "preprint", summary: "High-temperature product-state sampling in global trace distance; not a general reversible-generator mixing theorem.", url: "https://arxiv.org/abs/2609.30149v1", date: "2026-09-24", version: "v1" },
       { kind: "preprint", summary: "Local Gibbs-observable error certification under response-summability and perturbative assumptions; neither global trace-distance convergence nor general low-temperature rapid mixing follows.", url: "https://arxiv.org/abs/2609.09291v1", date: "2026-09-08", version: "v1" },
@@ -183,6 +193,9 @@ A separate 24 September preprint by Kiani sharpens the separability threshold fo
       { kind: "preprint", summary: "Polynomial-time thermalization is proved for particular generator families and high-temperature lattices, weakly interacting fermions and 1D chains, not all 2D low-temperature models.", url: "https://arxiv.org/abs/2601.16154v1", date: "2026-01-22", version: "v1" },
     ],
     refs: [
+      { label: "Saúl Pilatowsky-Cameo, Georgios Styliaris, Ainesh Bakshi, Daniel Malz, 'One-dimensional quantum Gibbs states in constant circuit depth' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.35973v1" },
+      { label: "Ángela Capel, David Pérez-García, Matteo Scandi, 'Modified logarithmic Sobolev inequality for 1D non-commuting Hamiltonians' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.03683v1" },
+      { label: "Cambyse Rouzé, Daniel Stilck França, 'Rapid mixing of Gibbs samplers via quantum Dobrushin--Shlosman conditions' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.03578v1" },
       { label: "Chen, Kastoryano & Gilyén, 'An efficient and exact noncommutative quantum Gibbs sampler' (2023 preprint)", url: "https://arxiv.org/abs/2311.09207" },
       { label: "Rouzé, Stilck França & Alhambra, 'Efficient thermalization and universal quantum computing with quantum Gibbs samplers', Nature Physics (2026)", url: "https://arxiv.org/abs/2403.12691" },
       { label: "Bakshi, Liu, Moitra & Tang, 'High-Temperature Gibbs States are Unentangled and Efficiently Preparable', FOCS 2024", url: "https://arxiv.org/abs/2403.16850" },

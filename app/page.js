@@ -143,10 +143,10 @@ function Home() {
 
           <div className="review-note">
             <b>Latest literature update.</b> {LITERATURE_UPDATE.ids.length} entries updated, including
-            {" "}<a href="#p/A4">QMA perfect completeness</a>,
-            {" "}<a href="#p/A7">good locally testable quantum codes</a> and
-            {" "}<a href="#p/E10">nonadditivity of entanglement of purification</a>.
-            Claimed resolutions await assessment. <a href="#review">Sources &amp; scope →</a>
+            {" "}<a href="#p/E10">a challenged proof and new nonadditivity claim</a>,
+            {" "}<a href="#p/N3">new composite-dimension MUB constructions</a> and
+            {" "}<a href="#p/O10">Gibbs preparation and mixing</a>.
+            Full resolution claims await assessment. <a href="#review">Sources &amp; scope →</a>
           </div>
           <div className="review-note">
             <b>Full catalogue review.</b> All {REVIEW.reviewed} original entries reassessed;
@@ -534,15 +534,18 @@ function ReviewView() {
         <div className="container detail">
           <h2>Clear questions. Explicit evidence.</h2>
           <p className="intro">Latest literature update · {LITERATURE_UPDATE.label}</p>
-          <p>A targeted check of arXiv manuscripts and journal announcements updated {LITERATURE_UPDATE.ids.length} entries:
+          <p>A targeted check of recent arXiv manuscripts updated {LITERATURE_UPDATE.ids.length} entries:
             {" "}{LITERATURE_UPDATE.ids.map((id, i) => <span key={id}>{i > 0 ? ", " : ""}<a href={`#p/${id}`}>{id}</a></span>)}.
             The remaining entries retain their earlier review dates. This is a literature and scope check, not an independent verification of the proofs.</p>
-          <p>A4, A7 and E10 now record claimed resolutions of finite-register QMA perfect completeness,
-            good quantum local testability and ordinary entanglement-of-purification additivity.
-            These entries and C4 are now <a href="#claimed-solved">“Claimed solved”</a> pending assessment.
-            Other additions cover channel capacities,
-            self-testing, causal order, Gaussian entanglement and Gibbs preparation, including a published Quantum article.
-            No entry was promoted to “Solved” in this update.</p>
+          <p>E10 now records a counterexample to a lemma in the earlier nonadditivity proof,
+            together with a new claimed resolution by Baghali Khanian and Negari.
+            Its <a href="#claimed-solved">“Claimed solved”</a> status rests on the new manuscript;
+            the reported Lean formalization has not been rebuilt here.
+            A4, A7 and C4 also retain their pending-claim status. No entry was promoted to “Solved”.</p>
+          <p>New progress includes composite-dimension MUB constructions, universal entanglement distillation,
+            separability algorithms, private-channel converses, quantum-proof oracle separations,
+            operational reconstruction and Gibbs preparation. A3, B5, E5 and N3 move to “Improved”.
+            Conditional code constructions and cryptographic verification retain their stated assumptions.</p>
           <p><a href={LITERATURE_UPDATE.reportUrl} target="_blank" rel="noreferrer">Read the dated update, source versions and remaining questions →</a></p>
           <p>Earlier literature updates: {LITERATURE_UPDATES.slice(1).map((update, i) => <span key={update.date}>
             {i > 0 ? " · " : ""}<a href={update.reportUrl} target="_blank" rel="noreferrer">{update.label}</a>

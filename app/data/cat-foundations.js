@@ -37,7 +37,11 @@ This entry is archived as merged. Compare axiom independence and composition und
     ] },
 
   { id: "F3", cat: "foundations", horizon: "conceptual", status: "improved",
-    reviewedAt: "2026-09-10",
+    provenance: [
+      { summary: "Hoffreumon and Woods report Grammarly for editing and ChatGPT 5.6 Sol for identifying and expanding overly terse passages.", url: "https://arxiv.org/html/2610.03644v1", version: "v1" },
+      { summary: "Dmello et al. state that artificial intelligence was not used in any meaningful capacity in this work. This is their declaration, not an independent provenance audit.", url: "https://arxiv.org/html/2610.03694v1", version: "v1" },
+    ],
+    reviewedAt: "2026-10-05",
     title: "Operational reconstruction of quantum theory",
     statement: r`For specified operational axioms and composite-system rules, establish their independence and reconstruction power, and determine which alternative theories are experimentally distinguishable; extend controlled reconstructions beyond their finite-dimensional assumptions.`,
     context: r`Quantum theory's mathematical apparatus — Hilbert spaces, composition, completely positive maps and outcome probabilities — is usually postulated. Reconstruction asks which operational or information-theoretic axioms select the usual quantum predictions, and which assumptions rule out physically different alternatives rather than equivalent representations.
@@ -48,13 +52,21 @@ Renou et al. (2021) propose a network test distinguishing a particular real-Hilb
 
 Concrete remaining targets include independence within a fixed axiom vocabulary, compositional consistency of probability rules (the mathematical part of archived F2), infinite-dimensional reconstruction with explicit continuity assumptions, and tests separating operationally inequivalent alternatives. Distinguish alternative physics from merely changing scalar representation. Related: F1, F7, M11.
 
-Preprint progress (9 September 2026, v1): Gachechiladze and Miklin derive the Tsirelson–Landau–Masanes correlator criterion from generalized information causality using correlated inputs and optimized noisy communication. They also exhibit macroscopically local correlations excluded by generalized information causality. The four-correlator projection must be distinguished from the full behavior set with biased marginals: the discussion explicitly leaves the full power of the principle, including its relation to almost-quantum correlations, unresolved. This advances a specified operational principle; it is not a reconstruction of all quantum states, transformations and composition rules.`,
+Preprint progress (9 September 2026, v1): Gachechiladze and Miklin derive the Tsirelson–Landau–Masanes correlator criterion from generalized information causality using correlated inputs and optimized noisy communication. They also exhibit macroscopically local correlations excluded by generalized information causality. The four-correlator projection must be distinguished from the full behavior set with biased marginals: the discussion explicitly leaves the full power of the principle, including its relation to almost-quantum correlations, unresolved. This advances a specified operational principle; it is not a reconstruction of all quantum states, transformations and composition rules.
+
+Preprint progress (2 October 2026, v1): Dmello, Xu, Renou and Gross characterize finite-dimensional quantum theory using specified two-body correlations plus stability under arbitrarily iterated teleportation. The latter is a hierarchy with one condition per teleportation length; the result is not a finite experimental certification of all operational axioms.
+
+Hoffreumon and Woods' same-day clarification argues that operational source independence does not entail product-state independence. This is an attributed interpretation of the real-versus-complex debate; Renou et al.'s network separation retains its force under its stated product-source postulate.`,
     evidence: [
+      { kind: "preprint", summary: "Operational characterization conditional on correlations and an unbounded teleportation hierarchy.", url: "https://arxiv.org/abs/2610.03694v1", date: "2026-10-02", version: "v1" },
+      { kind: "preprint", summary: "Clarifies the role of product-source versus operational independence in real-theory tests; does not refute the original conditional network theorem.", url: "https://arxiv.org/abs/2610.03644v1", date: "2026-10-02", version: "v1" },
       { kind: "preprint", summary: "Derives the TLM correlator boundary and constraints beyond macroscopic locality; the full power for complete behaviors and almost-quantum correlations remains unresolved.", url: "https://arxiv.org/abs/2609.10508v1", date: "2026-09-09", version: "v1" },
       { kind: "published", summary: "A real-number formulation recovers multipartite predictions by modifying the composite-system postulate; this does not refute network no-go results with their original assumptions.", url: "https://journals.aps.org/prl/abstract/10.1103/4k13-sdjh", date: "2026-06-18" },
       { kind: "preprint", summary: "Operational source independence and product-state independence are distinguished in real simulations of quantum protocols.", url: "https://arxiv.org/abs/2603.19208v1", date: "2026-03-19", version: "v1" },
     ],
     refs: [
+      { label: "Lionel J. Dmello, Xiangling Xu, Marc-Olivier Renou, David Gross, 'An operational characterization of finite-dimensional quantum theory' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.03694v1" },
+      { label: "Timothée Hoffreumon, Mischa P. Woods, 'Clarifications on the Experimental Status of Real Quantum Theory' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.03644v1" },
       { label: "Gachechiladze & Miklin, 'Information Causality Characterizes the Set of Quantum Correlations in the Simplest Bell Scenario' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.10508v1" },
       { label: "Hardy, 'Quantum theory from five reasonable axioms' (2001)", url: "https://arxiv.org/abs/quant-ph/0101012" },
       { label: "Chiribella, D'Ariano & Perinotti, 'Informational derivation of quantum theory', PRA 84, 012311 (2011)", url: "https://arxiv.org/abs/1011.6451" },

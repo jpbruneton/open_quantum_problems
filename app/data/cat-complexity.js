@@ -28,17 +28,26 @@ A resolution would distinguish quantum speedups for structured problems from eff
       { label: "Bennett, Bernstein, Brassard & Vazirani, 'Strengths and weaknesses of quantum computing', SIAM J. Comput. 26 (1997)", url: "https://arxiv.org/abs/quant-ph/9701001" },
     ] },
 
-  { id: "A3", cat: "complexity", horizon: "sharp",
+  { id: "A3", cat: "complexity", horizon: "sharp", status: "improved",
+    provenance: [
+      { summary: "Cakan attributes the results to himself and reports ChatGPT-6 Astra assistance with preliminary drafts, transcription, parameter choices and checking. He takes responsibility for the paper.", url: "https://arxiv.org/html/2610.03648v1", version: "v1" },
+    ],
+    reviewedAt: "2026-10-05",
     title: "QMA versus QCMA",
     statement: r`Determine whether quantum witnesses increase the power of polynomial-time quantum verification: $\mathsf{QMA}\stackrel{?}{=}\mathsf{QCMA}$, without an oracle.`,
     context: r`QMA allows a polynomial-size quantum witness; QCMA restricts the witness to a classical string while retaining a quantum verifier. The question is whether some efficiently verifiable evidence fundamentally requires quantum information.
 
 What is known: Aaronson–Kuperberg gave a quantum-oracle separation. Natarajan–Nirkhe's distribution-testing separation uses a randomized classical oracle; Ben-David–Kundu's 2024 classical-oracle result restricts adaptivity. These are important intermediate models, not the unrestricted classical-oracle theorem.
 
-The full standard classical-oracle separation is due to Bostanci, Haferkamp, Nirkhe and Zhandry: first posted in November 2025, revised in January 2026 and published at STOC 2026. It strengthens relativized evidence but does not settle the unrelativized QMA versus QCMA question. Related: A4, A5, A10.`,
-    evidence: [{ kind: "published", summary: "A standard classical oracle separates QMA from QCMA; the unrelativized equality remains open.", url: "https://doi.org/10.1145/3798129.3800776" }],
+The full standard classical-oracle separation is due to Bostanci, Haferkamp, Nirkhe and Zhandry: first posted in November 2025, revised in January 2026 and published at STOC 2026. It strengthens relativized evidence but does not settle the unrelativized QMA versus QCMA question. Related: A4, A5, A10.
+
+Preprint progress (2 October 2026, v1): Cakan constructs a classical oracle relative to which QMA is not contained in QCIP, where a quantum verifier exchanges polynomially many classical messages with an unbounded prover. This strengthens the earlier oracle separation from QCMA to classical interaction. The unrelativized QMA/QCMA question remains open.`,
+    evidence: [
+      { kind: "preprint", summary: "Classical-oracle separation of QMA from polynomial-round QCIP; does not separate the unrelativized classes.", url: "https://arxiv.org/abs/2610.03648v1", date: "2026-10-02", version: "v1" },
+      { kind: "published", summary: "A standard classical oracle separates QMA from QCMA; the unrelativized equality remains open.", url: "https://doi.org/10.1145/3798129.3800776" }],
     relations: [{ id: "A4", type: "related" }, { id: "A5", type: "related" }, { id: "A10", type: "related" }],
     refs: [
+      { label: "Alper Cakan, 'Separating QMA from QCIP with a Classical Oracle, or, the Power of Quantum Proofs over Classical Interaction for Quantum Verifiers' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.03648v1" },
       { label: "Aaronson & Kuperberg, 'Quantum versus classical proofs and advice', Theory of Computing 3 (2007)", url: "https://theoryofcomputing.org/articles/v003a007/" },
       { label: "Natarajan & Nirkhe, 'A distribution testing oracle separation between QMA and QCMA', Quantum 8, 1377 (2024)", url: "https://quantum-journal.org/papers/q-2024-06-17-1377/" },
       { label: "Ben-David & Kundu, 'Oracle separation of QMA and QCMA with bounded adaptivity' (2024)", url: "https://arxiv.org/abs/2402.00298" },
@@ -70,6 +79,7 @@ Claimed resolution (11 September 2026, v1): Grewal and Rudolph claim $\mathsf{QM
     ] },
 
   { id: "A5", cat: "complexity", horizon: "sharp", status: "improved",
+    reviewedAt: "2026-10-05",
     title: "Multiple unentangled quantum proofs",
     statement: r`Determine whether $\mathsf{QMA}(2)=\mathsf{QMA}$, or whether two polynomial-size witnesses promised to be unentangled increase verification power.`,
     context: r`The verifier may jointly process the two witnesses, but the honest and cheating witnesses in QMA(2) must be product across the two prover registers. The product-state optimization underlying this model connects it to separability and tensor optimization.
@@ -78,17 +88,22 @@ What is known: Harrow–Montanaro show that polynomially many unentangled witnes
 
 July 2026 preprint: Beckey, Jeronimo and Wu determine the exact worst-case product-test acceptance curve over all product overlaps and finite local dimensions. This settles the low-overlap analysis and strengthens one-shot soundness of a key reduction, without settling the class comparison.
 
-September 2026 preprint: Bostanci et al. construct a quantum oracle separating QMA(2) from QMA. They also prove the geometric no-disentanglers conjecture at constant errors $\varepsilon+\delta<1$: an approximate disentangler needs exponentially many input qubits in the number of output qubits. The class separation is relativized; the geometric theorem is not. Neither proves an unrelativized separation, and a classical-oracle separation remains open. Related: A3, E3.`,
+September 2026 preprint: Bostanci et al. construct a quantum oracle separating QMA(2) from QMA. They also prove the geometric no-disentanglers conjecture at constant errors $\varepsilon+\delta<1$: an approximate disentangler needs exponentially many input qubits in the number of output qubits. The class separation is relativized; the geometric theorem is not. Neither proves an unrelativized separation, and a classical-oracle separation remains open. Related: A3, E3.
+
+Preprint progress (30 September 2026, v1): Della Schiava and Mataraarachchi claim $\mathsf{QMA}(2;h)=\mathsf{QMA}(2)$ for $h=O(\log n)$ shared EPR pairs. The resource is a bounded shared-entanglement budget during witness preparation, not arbitrary entangled witnesses. Larger budgets and the comparison with ordinary QMA remain unresolved.`,
     evidence: [
+      { kind: "preprint", summary: "Logarithmically many shared EPR pairs do not increase QMA(2) in the specified model; not QMA(2)=QMA.", url: "https://arxiv.org/abs/2609.39668v1", date: "2026-09-30", version: "v1" },
       { kind: "preprint", summary: "Exact product-test acceptance curve, including the previously open low-overlap regime.", url: "https://arxiv.org/abs/2607.21477v1", date: "2026-07-23", version: "v1" },
       { kind: "preprint", summary: "Quantum-oracle QMA(2)/QMA separation and an unrelativized no-disentanglers theorem at constant errors with epsilon + delta < 1.", url: "https://arxiv.org/abs/2609.02865v1", date: "2026-09-02", version: "v1" },
     ],
     provenance: [
+      { summary: "The authors report substantial proof-development and writing assistance from ChatGPT-5.6 Sol, ChatGPT-6 Astra and Claude 5.0 Opus, and take responsibility for the claims.", url: "https://arxiv.org/html/2609.39668v1", version: "v1" },
       { summary: "Product-test authors report ChatGPT 5.5 Pro assistance with analysis, ChatGPT/Claude assistance with writing and exploratory Codex-supported Lean work; they report human verification and responsibility for the manuscript.", url: "https://arxiv.org/abs/2607.21477v1", version: "v1" },
       { summary: "The September authors report that ChatGPT 5.6 Sol suggested the central proof idea after prompts about She–Yuen, and that they verified, simplified and developed it. This records their disclosure, not an independent provenance audit.", url: "https://arxiv.org/abs/2609.02865v1", version: "v1" },
     ],
     relations: [{ id: "A3", type: "related" }, { id: "E3", type: "related" }],
     refs: [
+      { label: "Alex Della Schiava, Ranitha Mataraarachchi, 'QMA(2) with Limited Shared Entanglement' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.39668v1" },
       { label: "Harrow & Montanaro, 'Testing product states, quantum Merlin-Arthur games and tensor optimization', J. ACM 60 (2013)", url: "https://arxiv.org/abs/1001.0017" },
       { label: "Aaronson, Beigi, Drucker, Fefferman & Shor, 'The power of unentanglement', Theory of Computing 5 (2009)", url: "https://theoryofcomputing.org/articles/v005a001/" },
       { label: "Beckey, Jeronimo & Wu, 'An Optimal Analysis of the Product Test' (2026 preprint)", url: "https://arxiv.org/abs/2607.21477v1" },
@@ -120,12 +135,14 @@ Related September 2026 claim: Gay–Jeronimo's proposed good qLTC construction i
     ] },
 
   { id: "A7", cat: "complexity", horizon: "sharp", status: "claimed-solved",
-    reviewedAt: "2026-09-28",
+    reviewedAt: "2026-10-05",
     evidence: [
+      { kind: "preprint", summary: "Good qLTCs conditional on the required lossless cubical complexes; their existence is not established in this manuscript.", url: "https://arxiv.org/abs/2610.00525v1", date: "2026-09-30", version: "v1" },
       { kind: "preprint", summary: "Claimed explicit good binary CSS qLTCs with all required parameters constant; full resolution claim awaiting assessment.", url: "https://arxiv.org/abs/2609.20780v1", date: "2026-09-17", version: "v1" },
       { kind: "preprint", summary: "Separate good-qLTC construction conditional on a Reed–Solomon product-expansion conjecture.", url: "https://arxiv.org/abs/2609.26735v1", date: "2026-09-22", version: "v1" },
     ],
     provenance: [
+      { summary: "The authors report ChatGPT and Codex assistance with exposition and calculations, including a preliminary Lemma 4.3 developed in a guided GPT-5.5 conversation. They attribute the main ideas to humans and report reviewing the assisted material.", url: "https://arxiv.org/html/2610.00525v1", version: "v1" },
       { summary: "Gay and Jeronimo report that the general direction was human; ChatGPT Pro versions 5 to 6 were used, with only 5.6 and 6 Pro materially helping to orchestrate some expander–code interactions, and ChatGPT 6 Pro serving as an editorial assistant. They take responsibility for the results. They also state that they released the paper at an earlier point in light of rumours that OpenAI had solved several major TCS problems, a reason for additional caution before assessment.", url: "https://arxiv.org/html/2609.20780v1", version: "v1" },
     ],
     title: "Good quantum locally testable codes",
@@ -138,9 +155,12 @@ Dinur–Lin–Vidick construct almost-good qLTCs with constant rate, bounded-siz
 
 Claimed resolution (17 September 2026, v1): Gay and Jeronimo claim explicit binary CSS families with constant rate, linear distance, bounded check weight and qubit incidence, and constant soundness (Theorem 2.4.3). They supply a product-expansion argument within the manuscript. This claims the full A7 target, pending independent assessment.
 
-A separate 22 September preprint by Bafna, Li and Nguyen obtains good qLTCs conditional on a variant of the Reed–Solomon product-expansion conjecture. Keep that conditional construction distinct from Gay–Jeronimo's unconditional claim. Neither code construction alone supplies the constant-gap QMA-hardness reduction required by A6.`,
+A separate 22 September preprint by Bafna, Li and Nguyen obtains good qLTCs conditional on a variant of the Reed–Solomon product-expansion conjecture. Keep that conditional construction distinct from Gay–Jeronimo's unconditional claim. Neither code construction alone supplies the constant-gap QMA-hardness reduction required by A6.
+
+Conditional progress (30 September 2026, v1): Cohen, Leigh, Reiner, Ta-Shma and Tzalik derive good qLTCs from sufficiently imbalanced, two-sided lossless four-dimensional cubical complexes. They explicitly do not construct the required complexes. Their local-to-global expansion theorem supplies another conditional route; it is not an independent verification of Gay–Jeronimo's claimed resolution or a proof of quantum PCP.`,
     relations: [{ id: "A6", type: "related" }, { id: "A18", type: "related" }],
     refs: [
+      { label: "Itay Cohen, Itai Leigh, Assaf Reiner, Amnon Ta-Shma, Elad Tzalik, 'Good Quantum Locally Testable Codes from Lossless Cubical Complexes' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.00525v1" },
       { label: "Gay & Jeronimo, 'Asymptotically Good Quantum Locally Testable Codes' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.20780v1" },
       { label: "Bafna, Li & Nguyen, 'Good Quantum Locally Testable Codes from Product Expansion' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.26735v1" },
       { label: "Panteleev & Kalachev, 'Asymptotically good quantum and locally testable classical LDPC codes', STOC 2022", url: "https://doi.org/10.1145/3519935.3520017" },
@@ -195,6 +215,7 @@ The unrelativized QMA-decision-oracle question remains open. It concerns produci
     ] },
 
   { id: "A11", cat: "complexity", horizon: "sharp", status: "improved",
+    reviewedAt: "2026-10-05",
     title: "Aaronson–Ambainis influential-variable conjecture",
     statement: r`Do universal constants $c,C>0$ exist such that every multilinear $p:\{-1,1\}^{n}\to[0,1]$ of degree $d\ge1$ and positive variance has some variable $i$ with $\operatorname{Inf}_i(p)\ge c(\operatorname{Var}(p)/d)^C$? Use the uniform measure and $\operatorname{Inf}_i(p)=\mathbb E[(p(x)-p(x^{\oplus i}))^2]/4$.`,
     context: r`Here $x^{\oplus i}$ flips the $i$th sign. The conjecture is an exact analytic statement, independent of implementation costs. Aaronson–Ambainis show it would imply that a $T$-query quantum algorithm's acceptance probability can be approximated within additive $\varepsilon$ on a $1-\delta$ fraction of uniformly random Boolean inputs using $\operatorname{poly}(T,1/\varepsilon,1/\delta)$ classical queries.
@@ -203,17 +224,22 @@ The full influential-variable conjecture remains open. Its simulation consequenc
 
 August 2026 preprints, moved here from A16: Blanc–Docter–Strassle–Tan prove an analogous acceptance-probability simulation for $t$ queries in $d$ parallel query rounds, with $t^{O(d^2)}$ classical queries at fixed approximation and failure parameters. Liu–Mutreja independently establish constant-round and limited-adaptivity simulation results with different quantitative bounds. Constantly many oracle-query rounds are thus a positive restricted case; physical gate depth, unrestricted adaptive queries and sampling advantage are separate notions.
 
-A16 retains the input/output/data-access comparison methods and the historical record; it is not counted as a second conjecture. Related: A1, A16.`,
+A16 retains the input/output/data-access comparison methods and the historical record; it is not counted as a second conjecture. Related: A1, A16.
+
+Preprint progress (28 September 2026, v1): Girish, Mittal, Nehoran and Raz prove equivalence of the influential-variable conjecture under the uniform measure, fixed-bias product measures and fixed-density Hamming slices. They separately establish analogous equivalences for the weaker average-input query-simulation conjecture. These reductions transfer the open questions between distributions; they prove neither conjecture.`,
     evidence: [
+      { kind: "preprint", summary: "Equivalence of uniform, fixed-bias and fixed-density-slice variants, separately for influence and query simulation; the original conjectures remain open.", url: "https://arxiv.org/abs/2609.35327v1", date: "2026-09-28", version: "v1" },
       { kind: "preprint", summary: "Bounded-round acceptance-probability simulation on most uniform inputs, with t^{O(d^2)} classical queries at fixed error parameters.", url: "https://arxiv.org/abs/2608.19158v1", date: "2026-08-19", version: "v1" },
       { kind: "preprint", summary: "Independent simulation results for constant-round and limited-adaptivity quantum query algorithms; sampling is a different target.", url: "https://arxiv.org/abs/2608.20297v1", date: "2026-08-20", version: "v1" },
     ],
     provenance: [
+      { summary: "The authors credit Gemini with the inner-gadget idea in Lemma 3.7 and ChatGPT with other proofs and exposition, reporting material assistance across the technical results and author verification of the content.", url: "https://arxiv.org/html/2609.35327v1", version: "v1" },
       { summary: "Blanc et al. report ChatGPT 5.4 use for literature search, note transcription, proof checking and copyediting; this is an author disclosure, not independent verification of the workflow.", url: "https://arxiv.org/abs/2608.19158v1", version: "v1" },
       { summary: "Liu–Mutreja report that conversations with ChatGPT 5.5 Pro helped prove their constant-depth version and assisted with a main theorem's proof.", url: "https://arxiv.org/abs/2608.20297v1", version: "v1" },
     ],
     relations: [{ id: "A1", type: "related" }, { id: "A16", type: "related" }],
     refs: [
+      { label: "Uma Girish, Kunal Mittal, Barak Nehoran, Ran Raz, 'Distributional Variants of the Aaronson-Ambainis Conjecture' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.35327v1" },
       { label: "Aaronson & Ambainis, 'The need for structure in quantum speedups', Theory of Computing 10 (2014)", url: "https://theoryofcomputing.org/articles/v010a006/" },
       { label: "Blanc, Docter, Strassle & Tan, 'Quantum Speedups Require Structure or Depth' (2026 preprint; FOCS 2026)", url: "https://arxiv.org/abs/2608.19158v1" },
       { label: "Liu & Mutreja, 'Parallel Quantum Advantage with Limited Adaptivity Requires Structure' (2026 preprint)", url: "https://arxiv.org/abs/2608.20297v1" },
@@ -376,8 +402,9 @@ Decoding milestones also need model labels. Bazzi–Khater prove additive inappr
     ] },
 
   { id: "A19", cat: "complexity", horizon: "sharp", status: "improved",
-    reviewedAt: "2026-09-28",
+    reviewedAt: "2026-10-05",
     provenance: [
+      { summary: "The authors report ChatGPT assistance with representation analysis and Claude assistance with circuits, several proof ideas, review and writing; they take responsibility for all content.", url: "https://arxiv.org/html/2609.38060v1", version: "v1" },
       { summary: "The authors credit ChatGPT 6 Astra with an initial one-sided proof idea; interactions and their own discussions led to the two-sided Forrelation argument. They report verification, simplification and responsibility.", url: "https://arxiv.org/html/2609.25680v1", version: "v1" },
     ],
     title: "Noncryptographic classical verification of BQP",
@@ -388,14 +415,18 @@ Mahadev's classical-verification protocol is a landmark positive result with com
 
 An April 2026 preprint by Aaronson–Natarajan–Tal–Villanyi proves $\mathsf{BQP}^{O}\subseteq\mathsf{MIP}^{O}$ for every classical oracle $O$. It is progress in a relativized multi-prover model and explicitly motivates noncryptographic verification, but does not construct the single efficient prover protocol sought here. Related: A1, A3, A10.
 
-Preprint obstruction (22 September 2026, v1): Bouland, Huang, Natarajan, Shalit and Tal construct an oracle relative to which $\mathsf{BQP}\not\subseteq\mathsf{IP}$, using Forrelation. In that oracle model, polynomial-query classical verification with polynomial communication fails even with an unbounded prover. This rules out fully relativizing approaches to the desired protocol, not unrelativized classical verification; a non-relativizing construction remains possible.`,
+Preprint obstruction (22 September 2026, v1): Bouland, Huang, Natarajan, Shalit and Tal construct an oracle relative to which $\mathsf{BQP}\not\subseteq\mathsf{IP}$, using Forrelation. In that oracle model, polynomial-query classical verification with polynomial communication fails even with an unbounded prover. This rules out fully relativizing approaches to the desired protocol, not unrelativized classical verification; a non-relativizing construction remains possible.
+
+Cryptographic progress (29 September 2026, v1): Holler and Natarajan obtain single-prover classical verification with total resources quasilinear in the delegated circuit size, up to security-parameter and logarithmic factors. Their main theorem assumes subexponential LWE hardness against nonuniform quantum adversaries and gives computational soundness. It improves the cryptographic benchmark without meeting A19's unrestricted-cheater, assumption-free target.`,
     evidence: [
+      { kind: "preprint", summary: "Quasilinear-resource classical verification under subexponential quantum LWE hardness, with computational soundness.", url: "https://arxiv.org/abs/2609.38060v1", date: "2026-09-29", version: "v1" },
       { kind: "preprint", summary: "Oracle separation BQP not contained in IP gives a barrier to relativizing verification protocols, not an unrelativized impossibility theorem.", url: "https://arxiv.org/abs/2609.25680v1", date: "2026-09-22", version: "v1" },
       { kind: "published", summary: "Mahadev achieves classical verification with computational soundness under a lattice hardness assumption; the assumption-free target is stronger.", url: "https://arxiv.org/abs/1804.01082" },
       { kind: "preprint", summary: "Relativizing multi-prover containment for BQP with classical oracles, not efficient single-prover noncryptographic verification.", url: "https://arxiv.org/abs/2604.11952v1", date: "2026-04-13", version: "v1" },
     ],
     relations: [{ id: "A1", type: "related" }, { id: "A3", type: "related" }, { id: "A10", type: "related" }],
     refs: [
+      { label: "Finn Holler, Anand Natarajan, 'Classical Verification of Quantum Computation with Quasilinear Resources, from Compiled Nonlocal Games' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.38060v1" },
       { label: "Bouland, Huang, Natarajan, Shalit & Tal, 'BQP ⊆ IP Does Not Relativize' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.25680v1" },
       { label: "Mahadev, 'Classical Verification of Quantum Computations', FOCS 2018", url: "https://arxiv.org/abs/1804.01082" },
       { label: "Aaronson, Natarajan, Tal & Villanyi, 'A Relativizing MIP for BQP' (2026 preprint)", url: "https://arxiv.org/abs/2604.11952v1" },

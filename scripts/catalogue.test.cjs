@@ -129,13 +129,17 @@ test("targeted literature updates preserve untouched review dates and expose pen
     assert.equal(p.reviewedAt, latest?.date ?? REVIEW.date, p.id);
     if (ids.includes(p.id)) assert.ok(p.evidence.some((e) => e.date && (e.version || e.kind === "published")), `${p.id}: missing dated, versioned or published evidence`);
   }
-  for (const [id, source] of [["C4", "2609.08998v1"], ["C5", "2609.10520v1"], ["A4", "2609.13032v1"], ["A7", "2609.20780v1"], ["E10", "2609.29539v1"]]) {
+  for (const [id, source] of [["C4", "2609.08998v1"], ["C5", "2609.10520v1"], ["A4", "2609.13032v1"], ["A7", "2609.20780v1"], ["E10", "2610.03630v1"]]) {
     assert.equal(getProblem(id).status, id === "C5" ? "improved" : "claimed-solved", `${id}: distinguish partial progress from a full pending claim`);
     assert.ok(getProblem(id).evidence.some((e) => e.kind === "preprint" && e.url.includes(source)), id);
   }
   assert.deepEqual(PROBLEMS.filter((p) => p.status === "claimed-solved").map((p) => p.id).sort(), ["A4", "A7", "C4", "E10"]);
   assert.equal(getProblem("C10").status, "improved", "a solved subcase must not close the broader programme");
   assert.equal(PROBLEMS.filter((p) => p.status === "solved").length, 0, "pending claims must not count as established solutions");
+  const earlierE10 = getProblem("E10").evidence.find((e) => e.url.includes("2609.29539v1"));
+  assert.match(earlierE10.summary, /counterexample.*Lemma 2/);
+  assert.match(earlierE10.summary, /historical claim/);
+  for (const id of ["A3", "B5", "E5", "N3"]) assert.equal(getProblem(id).status, "improved", id);
   const home = render(views.Home);
   assert.ok(home.includes(LITERATURE_UPDATE.label) && home.includes(REVIEW.label));
   const policy = render(views.ReviewView);
@@ -207,7 +211,7 @@ test("home, all categories, filtered lists, policy and missing-page views render
   assert.ok(home.includes("#review") && home.includes("powered by Astra &amp; Opus 5.5"));
   assert.ok(home.includes('href="#improved"'));
   assert.ok(home.includes('href="#claimed-solved"'));
-  assert.ok(home.includes('aria-label="See all 39 improved problems"'));
+  assert.ok(home.includes('aria-label="See all 43 improved problems"'));
   assert.ok(home.includes('aria-label="See all 4 claimed solved problems"'));
   assert.ok(home.includes('href="https://quantumlectures.org/en"'));
   assert.ok(home.includes('href="https://learnthermo.org/"'));
