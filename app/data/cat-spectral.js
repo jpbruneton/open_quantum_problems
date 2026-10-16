@@ -1,17 +1,27 @@
 const r = String.raw;
+// OpenAI Math Release, pinned to the commit reviewed on 17 October 2026.
+const OAI = "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/";
 
 export const SPECTRAL = [
-  { id: "M1", cat: "spectral", horizon: "sharp", status: "improved",
+  { id: "M1", cat: "spectral", horizon: "sharp", status: "claimed-solved",
+    reviewedAt: "2026-10-17",
+    provenance: [
+      { summary: "OpenAI lists itself as author and states that an unreleased internal model produced the manuscript collection. The linked Lean formalization covers generalized ionization-energy and outer-radius asymptotics, not the excess-charge bound $Z+CM$. This is OpenAI's account; the formalization was not rebuilt here.", url: `${OAI}lean/docs/263.md` },
+    ],
     title: "Ionization conjecture for atoms",
     statement: r`For the nonrelativistic Coulomb Hamiltonian of fermionic spin-1/2 electrons and a fixed point nucleus of charge $Z$, prove that the maximal number of bound electrons satisfies $N_c(Z)\le Z+C$, with $C$ independent of $Z$.`,
     context: r`The question is how many electrons a nucleus of charge $Z$ can bind. Physically atoms bind at most one or two extra electrons, so one expects $N_c(Z)-Z$ to stay bounded. Proving this from the many-body Schrödinger operator $H=\sum_i(-\Delta_i-Z/|x_i|)+\sum_{i<j}1/|x_i-x_j|$ is the ionization conjecture.
 
 What is known: Zhislin proved that a neutral or positive net charge always binds ($N_c(Z)\ge Z$). On the upper side, Ruskai and Sigal showed $N_c(Z)$ is finite; Lieb's elegant argument gives $N_c(Z)<2Z+1$. Lieb–Sigal–Simon–Thirring showed $N_c(Z)/Z\to1$ as $Z\to\infty$, and Fefferman–Seco and Seco–Sigal–Solovej sharpened this asymptotically to $N_c(Z)\le Z+O(Z^{5/7})$. Nam later improved the bound to roughly $N_c(Z)\le 1.22\,Z + 3Z^{1/3}$.
 
-The conjectured sharp form $N_c(Z)\le Z+C$ has been proved in mean-field surrogates: Solovej established it for Hartree–Fock theory, and analogous statements hold in Thomas–Fermi–type and reduced density-matrix models. For the full many-electron Schrödinger operator it remains open; the obstruction is controlling electron–electron screening rigorously without a self-consistent mean field.
+The conjectured sharp form $N_c(Z)\le Z+C$ has been proved in mean-field surrogates: Solovej established it for Hartree–Fock theory, and analogous statements hold in Thomas–Fermi–type and reduced density-matrix models. For the full many-electron Schrödinger operator the obstruction is controlling electron–electron screening rigorously without a self-consistent mean field.
 
-Preprint progress (2025): Hundertmark, Pattakos and Schulz report $N_c(Z)<1.1185Z+O(Z^{1/3})$. This improves an explicit non-asymptotic estimate, not the already known asymptotic bound $Z+O(Z^{5/7})$ and not the uniform excess-charge conjecture. Uniform ionization-energy and radius bounds are related but separate targets.`,
-    evidence: [{ kind: "preprint", summary: "An improved explicit ionization bound, not a proof of uniformly bounded excess charge.", url: "https://arxiv.org/abs/2504.18487" }],
+Preprint progress (2025): Hundertmark, Pattakos and Schulz report $N_c(Z)<1.1185Z+O(Z^{1/3})$. This improves an explicit non-asymptotic estimate, not the already known asymptotic bound $Z+O(Z^{5/7})$ and not the uniform excess-charge conjecture. Uniform ionization-energy and radius bounds are related but separate targets.
+
+Claimed resolution (OpenAI Math Release, public 6 October 2026; manuscript dated 24 September): for the full nonrelativistic two-spin Coulomb Hamiltonian, a molecule with $M$ fixed nuclei of charges at least one and total charge $Z$ is claimed to bind at most $Z+CM$ electrons, with $C$ universal. Taking $M=1$ gives the stated atomic bound. Companion manuscripts claim universal two-sided bounds on first ionization energies and outer radii of neutral atoms. The manuscripts are GitHub releases, not arXiv preprints, and the main excess-charge theorem is not among the Lean-formalized statements. Marked “Claimed solved” pending independent assessment.`,
+    evidence: [
+      { kind: "preprint", summary: "Claimed universal excess-charge bound $N\\le Z+CM$ for the full Coulomb molecule, hence $N_c(Z)\\le Z+C$ for atoms; OpenAI GitHub manuscript, pending assessment.", url: `${OAI}preprints/Uniform-excess-charge-for-Coulomb-molecules-and-the-outer-radius-of-neutral-atoms-September-24-2026/paper.pdf`, date: "2026-10-06", version: "v1" },
+      { kind: "preprint", summary: "An improved explicit ionization bound, not a proof of uniformly bounded excess charge.", url: "https://arxiv.org/abs/2504.18487" }],
     refs: [
       { label: "Lieb, 'Bound on the maximum negative ionization of atoms and molecules', PRA 29, 3018 (1984)", url: "https://doi.org/10.1103/PhysRevA.29.3018" },
       { label: "Solovej, 'The ionization conjecture in Hartree–Fock theory', Ann. of Math. 158 (2003)", url: "https://arxiv.org/abs/math-ph/0012026" },
@@ -21,15 +31,19 @@ Preprint progress (2025): Hundertmark, Pattakos and Schulz report $N_c(Z)<1.1185
       { label: "Lieb & Seiringer, 'The Stability of Matter in Quantum Mechanics' (CUP, 2010)", url: "https://www.cambridge.org/core/books/the-stability-of-matter-in-quantum-mechanics/BC90EBAF135B745979EA749076A2F931" },
       { label: "Hundertmark, Pattakos & Schulz, 'On the Excess Charge Problem of Atoms' (2025 preprint)", url: "https://arxiv.org/abs/2504.18487" },
       { label: "Solovej, Quantissima lectures on the ionization conjecture (2025)", url: "https://bruneau.perso.math.cnrs.fr/quantissima2025/slidesweek2/Solovej_Quantissima2025_Lectures.pdf" },
+      { label: "OpenAI, 'Uniform excess charge for Coulomb molecules and the outer radius of neutral atoms' (OpenAI Math Release manuscript, dated 24 September 2026; public 6 October 2026)", url: `${OAI}preprints/Uniform-excess-charge-for-Coulomb-molecules-and-the-outer-radius-of-neutral-atoms-September-24-2026/paper.pdf` },
     ] },
 
-  { id: "M2", cat: "spectral", horizon: "sharp", status: "improved",
-    reviewedAt: "2026-10-05",
+  { id: "M2", cat: "spectral", horizon: "sharp", status: "claimed-solved",
+    reviewedAt: "2026-10-17",
     evidence: [
+      { kind: "preprint", summary: "Claimed almost-surely purely absolutely continuous spectrum, with nonzero weight, on a fixed open interval for every $d\\ge3$ and every sufficiently small positive uniform disorder; OpenAI GitHub manuscript, pending assessment.", url: `${OAI}preprints/Absolutely-Continuous-Spectrum-for-Weak-Disorder-Anderson-Models-in-Dimensions-at-Least-Three-September-23-2026/paper.pdf`, date: "2026-10-06", version: "v1" },
+      { kind: "preprint", summary: "Short Bethe-lattice proof; an appendix gives an alternative route for the OpenAI manuscript's final step from boundary positivity to purity. This is not a verification of the full cubic-lattice argument.", url: "https://arxiv.org/abs/2610.11611v1", date: "2026-10-08", version: "v1" },
       { kind: "preprint", summary: "Strict separation of geometric and absolutely-continuous-spectrum thresholds for bond percolation on regular trees; a different model from cubic-lattice Anderson.", url: "https://arxiv.org/abs/2609.38017v1", date: "2026-09-29", version: "v1" },
       { kind: "preprint", summary: "Delocalization claim on a product involving a hyperbolic square lattice; does not establish the standard cubic-lattice Anderson conjecture.", url: "https://arxiv.org/abs/2609.20798v1", date: "2026-09-17", version: "v1" },
     ],
     provenance: [
+      { summary: "OpenAI lists itself as author and states that an unreleased internal model produced the manuscript collection. The family's Lean formalization concerns the companion two-dimensional paper and only identifies its spectrum; the three-dimensional a.c.-spectrum theorem is not formalized there. This is OpenAI's account.", url: `${OAI}lean/docs/261.md` },
       { summary: "Becker and Oltman credit ChatGPT with suggesting the two-step contraction mechanism in Proposition 3.3 and assistance deriving it, alongside research and editing support. They report checking the mathematical arguments and final text.", url: "https://arxiv.org/html/2609.38017v1", version: "v1" },
       { summary: "Becker and Oltman report combining their ideas with ChatGPT 5.6 Sol assistance to strengthen the result and develop the proof; they report extensive revision and independent checking. Suggested ChatGPT 6 extensions are not claimed as results of the paper.", url: "https://arxiv.org/html/2609.20798v1", version: "v1" },
     ],
@@ -45,9 +59,13 @@ Mobility-edge subproblem (formerly M3): for this same fixed model, establish a b
 
 Comparison result (17 September 2026, v1): Becker and Oltman claim absolutely continuous spectrum for disordered products of a Euclidean lattice with the hyperbolic square lattice having five squares per vertex, under specified disorder laws. The geometry is non-Euclidean and nonamenable; it does not prove delocalization on the cubic lattice in the statement. This adds a more structured comparison beyond trees while leaving the sharp $\mathbb Z^3$ target open.
 
-Comparison result (29 September 2026, v1): Becker and Oltman claim $p_c<p_{ac}<1$ for Bernoulli bond percolation on every regular tree of degree at least three, with an explicit supercritical interval lacking absolutely continuous spectrum. This separates geometric percolation from spectral delocalization on trees. It does not establish the cubic-lattice Anderson statement, nor does absence of a.c. spectrum alone imply dynamical localization.`,
+Comparison result (29 September 2026, v1): Becker and Oltman claim $p_c<p_{ac}<1$ for Bernoulli bond percolation on every regular tree of degree at least three, with an explicit supercritical interval lacking absolutely continuous spectrum. This separates geometric percolation from spectral delocalization on trees. It does not establish the cubic-lattice Anderson statement, nor does absence of a.c. spectrum alone imply dynamical localization.
+
+Claimed resolution (OpenAI Math Release, public 6 October 2026; manuscript dated 23 September): for each fixed $d\ge3$ and each sufficiently small positive disorder strength, the uniform-potential Anderson operator on $\mathbb Z^d$ is claimed to have almost-surely purely absolutely continuous spectrum, with nonzero weight, on an open energy interval independent of the disorder strength. For $d=3$ this is the stated benchmark. The manuscript is a GitHub release, not an arXiv preprint; its main theorem is not Lean-formalized. Jakšić and Last's 8 October arXiv note independently proposes a shorter route for its final step from boundary positivity to purity; that is engagement with one step, not a verification of the multiscale argument. Diffusive transport and the mobility-edge subproblem remain separate. Marked “Claimed solved” pending independent assessment.`,
     relations: [{ id: "M3", type: "benchmark" }, { id: "M12", type: "related" }],
     refs: [
+      { label: "OpenAI, 'Absolutely Continuous Spectrum for Weak-Disorder Anderson Models in Dimensions at Least Three' (OpenAI Math Release manuscript, dated 23 September 2026; public 6 October 2026)", url: `${OAI}preprints/Absolutely-Continuous-Spectrum-for-Weak-Disorder-Anderson-Models-in-Dimensions-at-Least-Three-September-23-2026/paper.pdf` },
+      { label: "Jakšić & Last, 'Extended States on the Bethe Lattice Revisited' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.11611v1" },
       { label: "Simon Becker, Izak Oltman, 'Quantum percolation conjecture on regular trees' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.38017v1" },
       { label: "Becker & Oltman, 'Disorder on the hyperbolic square lattice I: Anderson delocalization and absolutely continuous spectrum' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.20798v1" },
       { label: "Aizenman & Warzel, 'Random Operators: Disorder Effects on Quantum Spectra and Dynamics' (AMS, 2015)", url: "https://doi.org/10.1090/gsm/168" },
@@ -85,15 +103,28 @@ The status is genuinely contested. De Roeck and Huveneers develop an ETH-based a
       { label: "Abanin, Altman, Bloch, Serbyn, 'Many-body localization, thermalization, and entanglement', Rev. Mod. Phys. 91, 021001 (2019)", url: "https://arxiv.org/abs/1804.11065" },
     ] },
 
-  { id: "M5", cat: "spectral", horizon: "sharp",
+  { id: "M5", cat: "spectral", horizon: "sharp", status: "claimed-solved",
+    reviewedAt: "2026-10-17",
+    evidence: [
+      { kind: "preprint", summary: "Claimed uniform positive gap for the pure spin-1 Heisenberg chain on even periodic rings; OpenAI GitHub manuscript with a finite numerical verifier, pending assessment.", url: `${OAI}preprints/The-periodic-spin-one-Haldane-gap-September-24-2026/paper.pdf`, date: "2026-10-06", version: "v1" },
+      { kind: "preprint", summary: "Companion gap for odd open chains with endpoint field $h=3/5$; a boundary-selected variant, not the periodic benchmark.", url: `${OAI}preprints/A-boundary-field-gap-for-the-spin-one-Heisenberg-chain-September-24-2026/paper.pdf`, date: "2026-10-06", version: "v1" },
+    ],
+    provenance: [
+      { summary: "OpenAI lists itself as author and states that an unreleased internal model produced the manuscript collection. No Lean formalization is listed for this family; the README states that its finite checks do not replace the analytic uniform-gap argument. This is OpenAI's account.", url: `${OAI}preprints/The-periodic-spin-one-Haldane-gap-September-24-2026/README.md` },
+    ],
     title: "Haldane gap for the spin-1 Heisenberg chain",
-    statement: r`For the spin-1 antiferromagnetic Heisenberg chain $H_L=\sum_{j=1}^L\vec S_j\cdot\vec S_{j+1}$ with periodic boundary conditions and coupling one, prove $\liminf_{L\to\infty}(E_1(L)-E_0(L))>0$, where $E_1$ is the first energy strictly above the ground space.`,
+    statement: r`For the spin-1 antiferromagnetic Heisenberg chain $H_L=\sum_{j=1}^L\vec S_j\cdot\vec S_{j+1}$ with periodic boundary conditions, coupling one and even length $L$, prove $\liminf_{L\to\infty,\,L\in2\mathbb N}(E_1(L)-E_0(L))>0$, where $E_1$ is the first energy strictly above the ground space.`,
     context: r`Haldane predicted in 1983 that antiferromagnetic Heisenberg chains behave qualitatively differently for integer and half-integer spin: integer-spin chains have a unique ground state separated by a spectral gap (the Haldane gap) with exponentially decaying correlations, while half-integer chains are gapless. For $S=1$ the gap is measured numerically at $\Delta\approx0.4105\,J$ and confirmed experimentally in quasi-1D magnets.
 
 What is known: For half-integer spin the Lieb–Schultz–Mattis theorem (extended by Affleck–Lieb, and in higher dimensions by Hastings) rigorously forbids a unique gapped ground state, consistent with gaplessness. On the integer side, the AKLT model — a nearby, specially tuned Hamiltonian — was proved by Affleck, Kennedy, Lieb and Tasaki to have a unique gapped ground state with a valence-bond-solid structure and hidden (string) order; this is the paradigm of a symmetry-protected topological phase. Den Nijs–Rommelse and Kennedy–Tasaki clarified the hidden $\mathbb{Z}_2\times\mathbb{Z}_2$ order and its detection.
 
-The gap of the pure Heisenberg $S=1$ chain remains the target: the AKLT theorem concerns a different Hamiltonian and does not by itself establish a uniformly gapped interpolation. Periodic or bulk-gap conventions avoid confusing the question with low-energy boundary spins of open chains. Higher integer spin is a related extension, not an additional condition for solving this spin-1 benchmark. The LSM theorem allows degeneracy as an alternative to gaplessness in its general setting.`,
+The gap of the pure Heisenberg $S=1$ chain remains the target: the AKLT theorem concerns a different Hamiltonian and does not by itself establish a uniformly gapped interpolation. Periodic or bulk-gap conventions avoid confusing the question with low-energy boundary spins of open chains. Higher integer spin is a related extension, not an additional condition for solving this spin-1 benchmark. The LSM theorem allows degeneracy as an alternative to gaplessness in its general setting.
+
+Statement correction (17 October 2026): the statement now specifies even $L$. Odd periodic rings are geometrically frustrated for an antiferromagnet and are not part of the standard periodic formulation; the earlier wording took the limit inferior over all lengths.
+
+Claimed resolution (OpenAI Math Release, public 6 October 2026; manuscript dated 24 September): a uniform positive gap with explicit length-independent bounds is claimed for the pure bilinear spin-1 chain on even periodic rings. The argument combines spatial-moment bounds with two finite thermal initializations checked by a supplied numerical verifier. A companion treats odd open chains with a boundary field. The manuscripts are GitHub releases, not arXiv preprints, and no Lean formalization is listed. Marked “Claimed solved” pending independent assessment.`,
     refs: [
+      { label: "OpenAI, 'The periodic spin-one Haldane gap' (OpenAI Math Release manuscript, dated 24 September 2026; public 6 October 2026)", url: `${OAI}preprints/The-periodic-spin-one-Haldane-gap-September-24-2026/paper.pdf` },
       { label: "Haldane, 'Nonlinear field theory of large-spin Heisenberg antiferromagnets: Semiclassically quantized solitons of the one-dimensional easy-axis Néel state', PRL 50, 1153 (1983)", url: "https://doi.org/10.1103/PhysRevLett.50.1153" },
       { label: "Affleck, Kennedy, Lieb & Tasaki, 'Valence bond ground states in isotropic quantum antiferromagnets', Comm. Math. Phys. 115, 477 (1988)", url: "https://doi.org/10.1007/BF01218021" },
       { label: "Lieb, Schultz & Mattis, 'Two soluble models of an antiferromagnetic chain', Ann. Phys. 16 (1961)", url: "https://doi.org/10.1016/0003-4916(61)90115-4" },
@@ -191,16 +222,26 @@ The retained work is to establish quantitative statements under named energy, lo
       { label: "Wilde & Winter, 'Strong converse for the classical capacity of the pure-loss bosonic channel', Problems of Information Transmission 50 (2014)", url: "https://arxiv.org/abs/1308.6732" },
     ] },
 
-  { id: "M12", cat: "spectral", horizon: "sharp",
+  { id: "M12", cat: "spectral", horizon: "sharp", status: "improved",
+    reviewedAt: "2026-10-17",
+    evidence: [
+      { kind: "preprint", summary: "Claimed almost-sure pure-point spectral type throughout the spectrum at every positive uniform disorder; exponential eigenfunction decay is explicitly not asserted. OpenAI GitHub manuscript, pending assessment.", url: `${OAI}preprints/Pure-Point-Spectrum-for-the-Two-Dimensional-Anderson-Model-at-Every-Positive-Disorder-September-23-2026/paper.pdf`, date: "2026-10-06", version: "v1" },
+    ],
+    provenance: [
+      { summary: "OpenAI lists itself as author and states that an unreleased internal model produced the manuscript collection. Its Lean formalization proves only the almost-sure spectrum $[-4-h,4+h]$, not the pure-point spectral type. This is OpenAI's account; the formalization was not rebuilt here.", url: `${OAI}lean/docs/261.md` },
+    ],
     title: "Two-dimensional Anderson localization at arbitrary disorder",
     statement: r`For $H_\lambda=-\Delta+\lambda V_\omega$ on $\ell^2(\mathbb Z^2)$ with independent potentials uniform on $[-1,1]$, prove that for every $\lambda>0$ the almost-sure spectrum is pure point with exponentially localized eigenfunctions throughout the spectrum.`,
     context: r`This is the full-spectrum two-dimensional localization question, not the three-dimensional delocalization problem M2. The fixed scalar, real i.i.d. model excludes magnetic, correlated and multi-orbital variants with different physics.
 
 Established baseline: localization is proved in one dimension and at strong disorder or suitable spectral edges in higher dimensions. These results do not settle all energies at arbitrarily weak disorder on the square lattice. For singular Bernoulli potentials, Ding–Smart prove localization near the spectral edge in two dimensions; Hurtado's 2026 extension to non-identically distributed potentials likewise yields localization at the bottom of the spectrum, not this universal energy range.
 
-The stated target is spectral localization. Uniform-in-time dynamical localization with quantified moment or eigenfunction-correlator bounds is a stronger related target and should be recorded separately.`,
+The stated target is spectral localization. Uniform-in-time dynamical localization with quantified moment or eigenfunction-correlator bounds is a stronger related target and should be recorded separately.
+
+Preprint progress (OpenAI Math Release, public 6 October 2026; manuscript dated 23 September): for each fixed disorder width, the square-lattice uniform-potential operator is claimed to have almost-surely pure-point spectral type on all of $[-4-h,4+h]$, via fractional Green-function moments, resonant-cell estimates and a Simon–Wolff readout. The manuscript explicitly does not assert exponential eigenfunction decay, dynamical localization or one probability-one event for all disorders. The pure-point half of the statement is therefore claimed; exponential localization of the eigenfunctions remains open here. The manuscript is a GitHub release, not an arXiv preprint.`,
     relations: [{ id: "M2", type: "related" }],
     refs: [
+      { label: "OpenAI, 'Pure-Point Spectrum for the Two-Dimensional Anderson Model at Every Positive Disorder' (OpenAI Math Release manuscript, dated 23 September 2026; public 6 October 2026)", url: `${OAI}preprints/Pure-Point-Spectrum-for-the-Two-Dimensional-Anderson-Model-at-Every-Positive-Disorder-September-23-2026/paper.pdf` },
       { label: "Aizenman & Warzel, 'Random Operators: Disorder Effects on Quantum Spectra and Dynamics' (AMS, 2015)", url: "https://doi.org/10.1090/gsm/168" },
       { label: "Bucaj et al., 'Localization for the one-dimensional Anderson model via positivity and large deviations for the Lyapunov exponent', Trans. Amer. Math. Soc. 372 (2019) — one-dimensional baseline", url: "https://arxiv.org/abs/1706.06135" },
       { label: "Ding & Smart, 'Localization near the edge for the Anderson Bernoulli model on the two dimensional lattice', Invent. Math. 219 (2020)", url: "https://doi.org/10.1007/s00222-019-00910-4" },

@@ -62,6 +62,11 @@ export const REVIEW = {
 
 // A targeted literature update does not reset the full-review date of every entry.
 export const LITERATURE_UPDATES = [{
+  date: "2026-10-17",
+  label: "17 October 2026",
+  ids: ["A3", "A5", "B1", "B2", "B13", "B14", "C1", "C3", "C10", "C12", "E16", "F3", "M1", "M2", "M5", "M12", "N2", "N4", "N6", "O10", "QF5"],
+  reportUrl: "https://github.com/jpbruneton/open_quantum_problems/blob/main/docs/reviews/2026-10-17-literature-update.md",
+}, {
   date: "2026-10-05",
   label: "5 October 2026",
   ids: ["A3", "A5", "A7", "A11", "A19", "B5", "C5", "E3", "E5", "E8", "E10", "F3", "M2", "N3", "N7", "O10"],
@@ -148,6 +153,8 @@ export const EVIDENCE_KINDS = {
 
 // These are not counted as open problems: their precise status needs another check.
 export const WATCHLIST = [
+  { title: "OpenAI quantum-computation manuscripts without a catalogue entry", summary: "The 6 October 2026 OpenAI Math Release claims, among others, that parity is not in measured-output QAC0, exponential threshold parallel repetition for finite-dimensional entangled games, QMA-hardness of continuum Coulomb ground energies, constant-error Aaronson–Kuperberg unitary synthesis with a target-dependent Boolean oracle, total functions ruling out every exponent below four in the randomized-versus-quantum query bound, disproving the cubic conjecture, and exact factoring over a fixed finite gate set. OpenAI reports Lean formalizations for some, not all. Decide on precise entries only after independent assessment.", url: "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/CONTENTS.md" },
+  { title: "OpenAI mathematical-physics manuscripts without a catalogue entry", summary: "The same release claims a non-Gaussian massive continuum limit of the 2D O(3) model and exact 2D O(4) mass asymptotics, Bloch's law and spontaneous magnetization for quantum Heisenberg ferromagnets in d≥3, a unique threshold bound state of the SU(N) BFSS model, failure of Kohn–Sham ensemble representability for a Coulomb molecule, scale-to-conformal symmetry in 4D QFT under stated hypotheses, and sharp 1D matrix Lieb–Thirring constants for 1/2<γ<3/2. The last is related to M13 but is not a three-dimensional result. These are pending assessment.", url: "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/overview.pdf" },
   { title: "Thermal lifetime of Haah's 3D cubic code", summary: "Stengele, Caha, Capel and Warzel (30 September 2026, v1) claim rapid mixing for the specified Davies dynamics of Haah's cubic code at every fixed positive temperature, ruling out self-correction in that setting. This model-specific obstruction does not rule out every 3D passive memory. Track independent assessment and the bath and rate assumptions.", url: "https://arxiv.org/abs/2609.39959v1" },
   { title: "Robust, initializable 3D passive quantum memories", summary: "A May 2026 preprint claims a local construction with stretched-exponential thermal lifetime. Monitor lifetime robustness and passive initialization; deferred proofs are evidence-status items, not automatically new open conjectures.", url: "https://arxiv.org/abs/2605.10943" },
   { title: "Multipartite Bell activation and triangle networks", summary: "A 7 September 2026 preprint by Ulu, Weilenmann and Brunner claims multi-copy and catalytic activation of genuine multipartite nonlocality defined using biseparable nonsignaling models, including quantum-realizable examples. This highlights a composition issue for that definition; it does not settle the single-copy Werner threshold or binary-output triangle questions. Select a precise residual before promotion.", url: "https://arxiv.org/abs/2609.07380v1" },

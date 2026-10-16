@@ -133,13 +133,22 @@ test("targeted literature updates preserve untouched review dates and expose pen
     assert.equal(getProblem(id).status, id === "C5" ? "improved" : "claimed-solved", `${id}: distinguish partial progress from a full pending claim`);
     assert.ok(getProblem(id).evidence.some((e) => e.kind === "preprint" && e.url.includes(source)), id);
   }
-  assert.deepEqual(PROBLEMS.filter((p) => p.status === "claimed-solved").map((p) => p.id).sort(), ["A4", "A7", "C4", "E10"]);
+  assert.deepEqual(PROBLEMS.filter((p) => p.status === "claimed-solved").map((p) => p.id).sort(), ["A4", "A7", "B1", "B13", "C12", "C4", "E10", "E16", "M1", "M2", "M5", "N2"]);
   assert.equal(getProblem("C10").status, "improved", "a solved subcase must not close the broader programme");
   assert.equal(PROBLEMS.filter((p) => p.status === "solved").length, 0, "pending claims must not count as established solutions");
   const earlierE10 = getProblem("E10").evidence.find((e) => e.url.includes("2609.29539v1"));
   assert.match(earlierE10.summary, /counterexample.*Lemma 2/);
   assert.match(earlierE10.summary, /historical claim/);
   for (const id of ["A3", "B5", "E5", "N3"]) assert.equal(getProblem(id).status, "improved", id);
+  // Partial OpenAI claims must not be promoted beyond their stated scope.
+  for (const id of ["M12", "B2", "B14", "N4", "QF5"]) assert.equal(getProblem(id).status, "improved", id);
+  for (const [id, path] of [["M1", "Uniform-excess-charge"], ["M2", "Absolutely-Continuous-Spectrum"], ["M5", "The-periodic-spin-one-Haldane-gap"], ["B1", "A-two-dimensional-area-law"], ["B13", "A-density-uniform-condensate-bound"], ["E16", "Entanglement-with-zero-distillable-secret-key"], ["C12", "Entanglement-with-zero-distillable-secret-key"], ["N2", "The-maximum-number-of-mutually-unbiased-bases"]]) {
+    const source = getProblem(id).evidence.find((e) => e.url.includes(path));
+    assert.ok(source && source.kind === "preprint" && source.url.startsWith("https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/"), `${id}: pinned OpenAI source`);
+    assert.match(source.summary, /OpenAI GitHub manuscript|OpenAI/, id);
+  }
+  assert.match(getProblem("M12").context, /does not assert exponential eigenfunction decay|explicitly does not assert exponential/);
+  assert.match(getProblem("M5").statement, /even length/);
   const home = render(views.Home);
   assert.ok(home.includes(LITERATURE_UPDATE.label) && home.includes(REVIEW.label));
   const policy = render(views.ReviewView);
@@ -211,8 +220,8 @@ test("home, all categories, filtered lists, policy and missing-page views render
   assert.ok(home.includes("#review") && home.includes("powered by Astra &amp; Opus 5.5"));
   assert.ok(home.includes('href="#improved"'));
   assert.ok(home.includes('href="#claimed-solved"'));
-  assert.ok(home.includes('aria-label="See all 43 improved problems"'));
-  assert.ok(home.includes('aria-label="See all 4 claimed solved problems"'));
+  assert.ok(home.includes('aria-label="See all 44 improved problems"'));
+  assert.ok(home.includes('aria-label="See all 12 claimed solved problems"'));
   assert.ok(home.includes('href="https://quantumlectures.org/en"'));
   assert.ok(home.includes('href="https://learnthermo.org/"'));
   assert.ok(!home.includes("IDs M1–"), "category count must not fabricate contiguous IDs");

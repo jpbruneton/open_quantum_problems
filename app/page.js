@@ -142,11 +142,11 @@ function Home() {
           </div>
 
           <div className="review-note">
-            <b>Latest literature update.</b> {LITERATURE_UPDATE.ids.length} entries updated, including
-            {" "}<a href="#p/E10">a challenged proof and new nonadditivity claim</a>,
-            {" "}<a href="#p/N3">new composite-dimension MUB constructions</a> and
-            {" "}<a href="#p/O10">Gibbs preparation and mixing</a>.
-            Full resolution claims await assessment. <a href="#review">Sources &amp; scope →</a>
+            <b>Latest literature update.</b> {LITERATURE_UPDATE.ids.length} entries updated, chiefly from
+            {" "}<a href="#review">OpenAI's 6 October manuscript release</a>, which claims full resolutions of
+            {" "}<a href="#p/M2">3D Anderson delocalization</a>, <a href="#p/B1">the 2D area law</a>,
+            {" "}<a href="#p/M5">the Haldane gap</a>, <a href="#p/N2">MUBs in dimension six</a> and four more entries.
+            These are “Claimed solved”, not verified. <a href="#review">Sources &amp; scope →</a>
           </div>
           <div className="review-note">
             <b>Full catalogue review.</b> All {REVIEW.reviewed} original entries reassessed;
@@ -534,18 +534,20 @@ function ReviewView() {
         <div className="container detail">
           <h2>Clear questions. Explicit evidence.</h2>
           <p className="intro">Latest literature update · {LITERATURE_UPDATE.label}</p>
-          <p>A targeted check of recent arXiv manuscripts updated {LITERATURE_UPDATE.ids.length} entries:
+          <p>A targeted check of recent arXiv manuscripts and the OpenAI Math Release updated {LITERATURE_UPDATE.ids.length} entries:
             {" "}{LITERATURE_UPDATE.ids.map((id, i) => <span key={id}>{i > 0 ? ", " : ""}<a href={`#p/${id}`}>{id}</a></span>)}.
             The remaining entries retain their earlier review dates. This is a literature and scope check, not an independent verification of the proofs.</p>
-          <p>E10 now records a counterexample to a lemma in the earlier nonadditivity proof,
-            together with a new claimed resolution by Baghali Khanian and Negari.
-            Its <a href="#claimed-solved">“Claimed solved”</a> status rests on the new manuscript;
-            the reported Lean formalization has not been rebuilt here.
-            A4, A7 and C4 also retain their pending-claim status. No entry was promoted to “Solved”.</p>
-          <p>New progress includes composite-dimension MUB constructions, universal entanglement distillation,
-            separability algorithms, private-channel converses, quantum-proof oracle separations,
-            operational reconstruction and Gibbs preparation. A3, B5, E5 and N3 move to “Improved”.
-            Conditional code constructions and cryptographic verification retain their stated assumptions.</p>
+          <p>Most changes come from the OpenAI Math Release, a GitHub collection of 719 manuscripts published on
+            6 October 2026 and attributed to an unreleased internal model. It is not an arXiv submission. Its claims move
+            M1, M2, M5, B1, B13, E16, C12 and N2 to <a href="#claimed-solved">“Claimed solved”</a>: ionization, 3D Anderson
+            delocalization, the spin-1 Haldane gap, the 2D area law, fixed-density Bose condensation, zero-key entanglement,
+            a PPT-squared counterexample and MUBs in dimension six. Lean formalizations, where reported, often cover only
+            supporting statements and were not rebuilt here. No entry is promoted to “Solved”.</p>
+          <p>Partial claims move M12 (pure point without exponential decay), B2 (PEPS at error 1/L), B14 (the sphere, not
+            the torus), N4 (an explicit Tsirelson counterexample) and QF5 (a lattice chiral-fermion measure) to “Improved”.
+            Further progress covers energy-constrained bosonic capacities, QMA(2) and ClonableQMA oracle separations,
+            undecidable coloring games, 1D Gibbs mixing and operational characterizations. M5's statement now specifies
+            even ring lengths; the report explains this correction. QIP 2027 has not yet announced accepted talks.</p>
           <p><a href={LITERATURE_UPDATE.reportUrl} target="_blank" rel="noreferrer">Read the dated update, source versions and remaining questions →</a></p>
           <p>Earlier literature updates: {LITERATURE_UPDATES.slice(1).map((update, i) => <span key={update.date}>
             {i > 0 ? " · " : ""}<a href={update.reportUrl} target="_blank" rel="noreferrer">{update.label}</a>

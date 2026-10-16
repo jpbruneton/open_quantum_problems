@@ -155,8 +155,10 @@ These newest tensor-network results are preprints with structured-model and nume
       { label: "Pancotti, Saravanan & Svore, 'Exact learning of quantum noise with tensor networks' (2026)", url: "https://arxiv.org/abs/2609.00169" },
     ] },
   { id: "O10", cat: "open-systems", horizon: "incremental", status: "improved",
-    reviewedAt: "2026-10-05",
+    reviewedAt: "2026-10-17",
     provenance: [
+      { summary: "Kim acknowledges ChatGPT 5.5, 5.6 Sol and 6 Astra assistance in developing several proof strategies, including the unitalization argument, Assumption 4.3 and the algorithm analysis.", url: "https://arxiv.org/abs/2610.01190v1", version: "v1" },
+      { summary: "Chen and Ding report that the work grew from a GPT-6-aided investigation, with GPT-6 used to brainstorm initial proof ideas and draft preliminary calculations; the authors report constructing the proof framework and verifying all arguments.", url: "https://arxiv.org/abs/2610.05848v1", version: "v1" },
       { summary: "The authors acknowledge GPT 5.5–6 and Claude Fable 5–5.1 for technical assistance in their proofs.", url: "https://arxiv.org/html/2609.35973v1", version: "v1" },
       { summary: "Capel, Pérez-García and Scandi attribute the main concepts to themselves and acknowledge LLM assistance upgrading weak MLSI to MLSI, refining proofs, proofreading and figures. They take responsibility for the manuscript and do not name a model.", url: "https://arxiv.org/html/2610.03683v1", version: "v1" },
       { summary: "Rouzé and Stilck França report Codex with ChatGPT 6 Astra assistance exploring and checking proof strategies and preparing the manuscript. They retain responsibility for the mathematics and exposition; disclosure checked in the PDF, page 55.", url: "https://arxiv.org/pdf/2610.03578v1", version: "v1" },
@@ -180,9 +182,13 @@ A separate 24 September preprint by Kiani sharpens the separability threshold fo
 
 Preprint progress (28 September–2 October 2026, v1): Pilatowsky-Cameo et al. give a block-product mixture for 1D Gibbs states at fixed positive temperature, enabling constant-depth quantum preparation with polynomial classical preprocessing. The constants can grow doubly exponentially with inverse temperature; this is not constant total computational cost.
 
-Capel, Pérez-García and Scandi claim a modified log-Sobolev constant of order $1/\log n$ for specified noncommuting 1D heat-bath generators. Rouzé and Stilck França obtain logarithmic trace-norm mixing for smoothed block dynamics on chains and stability near reference Hamiltonians satisfying a strict quantum Dobrushin–Shlosman condition. The latter includes controlled noncommuting perturbations of suitable classical models in higher dimensions. Generator normalization, fixed temperature and the reference mixing condition remain essential; arbitrary low-temperature 2D preparation is still unresolved.`,
+Capel, Pérez-García and Scandi claim a modified log-Sobolev constant of order $1/\log n$ for specified noncommuting 1D heat-bath generators. Rouzé and Stilck França obtain logarithmic trace-norm mixing for smoothed block dynamics on chains and stability near reference Hamiltonians satisfying a strict quantum Dobrushin–Shlosman condition. The latter includes controlled noncommuting perturbations of suitable classical models in higher dimensions. Generator normalization, fixed temperature and the reference mixing condition remain essential; arbitrary low-temperature 2D preparation is still unresolved.
+
+Preprint progress (1–5 October 2026, v1): Kim proves $O(\log(n/\varepsilon))$ mixing of a quasi-local Petz-recovery block-update Gibbs sampler for every 1D finite-range Hamiltonian at every finite temperature, with polylogarithmic-depth preparation circuits. Chen and Ding prove $O(\log^4 n+\log(1/\varepsilon))$ trace-norm mixing for the KMS-detailed-balance sampler of Chen, Kastoryano and Gilyén on general 1D noncommuting chains at every fixed positive temperature. These strengthen the one-dimensional picture; the two-dimensional target above remains open.`,
     relations: [{ id: "O2", type: "related" }, { id: "O9", type: "related" }, { id: "B5", type: "related" }],
     evidence: [
+      { kind: "preprint", summary: "Logarithmic-time mixing of a quasi-local Petz-recovery Gibbs sampler for every 1D finite-range Hamiltonian at every finite temperature; one-dimensional.", url: "https://arxiv.org/abs/2610.01190v1", date: "2026-10-01", version: "v1" },
+      { kind: "preprint", summary: "Polylogarithmic mixing of the KMS-detailed-balance Gibbs sampler for general 1D noncommuting chains at every fixed positive temperature; one-dimensional.", url: "https://arxiv.org/abs/2610.05848v1", date: "2026-10-05", version: "v1" },
       { kind: "preprint", summary: "1D constant-depth quantum preparation at fixed temperature, with polynomial classical preprocessing and temperature-dependent constants.", url: "https://arxiv.org/abs/2609.35973v1", date: "2026-09-28", version: "v1" },
       { kind: "preprint", summary: "Modified log-Sobolev inequality and rapid mixing for specified 1D noncommuting heat-bath samplers at fixed positive temperature.", url: "https://arxiv.org/abs/2610.03683v1", date: "2026-10-02", version: "v1" },
       { kind: "preprint", summary: "Block-sampler rapid mixing on chains and near references satisfying a strict quantum Dobrushin–Shlosman condition; not arbitrary low-temperature 2D mixing.", url: "https://arxiv.org/abs/2610.03578v1", date: "2026-10-02", version: "v1" },
@@ -193,6 +199,8 @@ Capel, Pérez-García and Scandi claim a modified log-Sobolev constant of order 
       { kind: "preprint", summary: "Polynomial-time thermalization is proved for particular generator families and high-temperature lattices, weakly interacting fermions and 1D chains, not all 2D low-temperature models.", url: "https://arxiv.org/abs/2601.16154v1", date: "2026-01-22", version: "v1" },
     ],
     refs: [
+      { label: "Leeseok Kim, 'Rapid mixing of quantum spin chains at any finite temperature' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.01190v1" },
+      { label: "Chen & Ding, 'Spectral Analysis Beyond the Spectral Gap: Rapid Mixing of Quantum Gibbs Samplers in One Dimension' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.05848v1" },
       { label: "Saúl Pilatowsky-Cameo, Georgios Styliaris, Ainesh Bakshi, Daniel Malz, 'One-dimensional quantum Gibbs states in constant circuit depth' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.35973v1" },
       { label: "Ángela Capel, David Pérez-García, Matteo Scandi, 'Modified logarithmic Sobolev inequality for 1D non-commuting Hamiltonians' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.03683v1" },
       { label: "Cambyse Rouzé, Daniel Stilck França, 'Rapid mixing of Gibbs samplers via quantum Dobrushin--Shlosman conditions' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.03578v1" },

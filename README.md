@@ -14,6 +14,13 @@ https://openquantumproblems.com/
 
 ### Timeline
 
+**17 October 2026 — OpenAI Math Release and October literature**
+
+- Reviewed the quantum and mathematical-physics families of the [OpenAI Math Release](https://github.com/openai/math/tree/1581d4cbdd69a0faf34b2089614fe2a814316a6a) (GitHub, 6 October; not arXiv) and arXiv announcements since 5 October. See the [dated literature report](docs/reviews/2026-10-17-literature-update.md) for sources, Lean scope notes and exclusions.
+- M1, M2, M5, B1, B13, E16, C12 and N2 move to **Claimed solved** on OpenAI's claims: ionization, 3D Anderson delocalization, Haldane gap, 2D area law, fixed-density condensation, zero-key entanglement, a PPT-squared counterexample and $M(6)=3$. Lean formalizations were not rebuilt; several cover only supporting statements.
+- M12, B2, B14, N4 and QF5 move to **Improved** for partial claims. A3, A5, C1, C3, C10, F3, N6 and O10 record further progress, including energy-constrained bosonic capacities and an explicit Tsirelson counterexample. M5's statement now specifies even ring lengths. QIP 2027 has not yet announced accepted talks.
+- Counts: 113 active entries, 44 Improved, 12 Claimed solved, zero Solved, and ten archive/background pages. Two watchlist items record OpenAI results without a matching entry.
+
 **5 October 2026 — literature update and challenged-proof correction**
 
 - Updated sixteen entries from twenty new versioned arXiv manuscripts; added a separate watchlist item on the thermal lifetime of Haah's cubic code. See the [dated literature report](docs/reviews/2026-10-05-literature-update.md) for sources, hypotheses and exclusions.

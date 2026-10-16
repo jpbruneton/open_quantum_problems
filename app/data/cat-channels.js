@@ -1,15 +1,19 @@
 const r = String.raw;
+// OpenAI Math Release, pinned to the commit reviewed on 17 October 2026.
+const OAI = "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/";
 
 export const CHANNELS = [
   { id: "C1", cat: "channels", horizon: "incremental", status: "improved",
-    reviewedAt: "2026-09-28",
+    reviewedAt: "2026-10-17",
     relations: [{ id: "C11", type: "benchmark" }, { id: "U4", type: "related" }, { id: "C4", type: "related" }, { id: "C5", type: "related" }],
     evidence: [
+      { kind: "preprint", summary: "Claimed unassisted classical capacity of every qubit generalized amplitude-damping channel, with Holevo-capacity and minimum-output-entropy additivity against every finite-dimensional partner; classical, not quantum, capacity. OpenAI GitHub manuscript.", url: `${OAI}preprints/Classical-capacity-and-entropy-inequalities-for-generalized-amplitude-damping-September-24-2026/paper.pdf`, date: "2026-10-06", version: "v1" },
       { kind: "preprint", summary: "Claimed additivity for qubit channels with a pure output, including amplitude-damping classical capacity and parallel entanglement cost.", url: "https://arxiv.org/abs/2609.28592v1", date: "2026-09-23", version: "v1" },
       { kind: "preprint", summary: "Convergent amplitude-damping capacity series and truncation bounds; classical capacity relies on the preceding additivity claim.", url: "https://arxiv.org/abs/2609.31609v1", date: "2026-09-25", version: "v1" },
       { kind: "preprint", summary: "Explicit non-random minimum-output entropy nonadditivity; v2 extends the gap to prescribed Renyi-order ranges.", url: "https://arxiv.org/abs/2609.23946v2", date: "2026-09-24", version: "v2" },
       { kind: "preprint", summary: "Explicit qutrit zero-Q, zero-P channel outside the PPT and antidegradable classes; not a general capacity-computability theorem.", url: "https://arxiv.org/abs/2607.24693", date: "2026-07-27" }],
     provenance: [
+      { summary: "OpenAI lists itself as author and states that an unreleased internal model produced the manuscript collection. It reports a Lean formalization of the generalized amplitude-damping capacity and additivity statement; it was not rebuilt here.", url: `${OAI}lean/docs/276.md` },
       { summary: "The authors credit frontier language models with proofs of Theorems 4.1–4.2 and ChatGPT-6 Astra with writing. They report human verification and Lean formalization, which was not rebuilt here.", url: "https://arxiv.org/html/2609.28592v1", version: "v1" },
       { summary: "Pirandola credits GPT-5.6 Sol and GPT-6 Astra with candidate derivations, proof development and presentation; he reports checking the results and takes responsibility.", url: "https://arxiv.org/html/2609.31609v1", version: "v1" },
       { summary: "Shou and Gorshkov credit GPT-6 Astra with the proof method, checking and proofreading.", url: "https://arxiv.org/html/2609.23946v2", version: "v2" },
@@ -24,8 +28,11 @@ Preprint progress (July 2026): Zhu and Wang claim an explicit qutrit channel wit
 
 The depolarizing-channel threshold and its August certificate have been promoted to the concrete benchmark C11. Here the incremental target is a specified natural family with a verified finite-letter formula, matching bounds or sufficient structural additivity conditions.
 
-Preprint progress (23–25 September 2026): Tang, Zhu, Bai and Wang claim strong additivity of Holevo information and channel entanglement of formation for qubit channels admitting a pure output, yielding amplitude-damping classical capacity and parallel entanglement cost. These are distinct from unassisted quantum capacity. Pirandola gives convergent series for amplitude-damping quantum, classical and entanglement-assisted capacities, with truncation control; the classical series uses the preceding additivity claim. Shou and Gorshkov separately give explicit non-random counterexamples to minimum-output von Neumann entropy additivity (v2). None yields a universal finite-letter quantum-capacity formula.`,
+Preprint progress (23–25 September 2026): Tang, Zhu, Bai and Wang claim strong additivity of Holevo information and channel entanglement of formation for qubit channels admitting a pure output, yielding amplitude-damping classical capacity and parallel entanglement cost. These are distinct from unassisted quantum capacity. Pirandola gives convergent series for amplitude-damping quantum, classical and entanglement-assisted capacities, with truncation control; the classical series uses the preceding additivity claim. Shou and Gorshkov separately give explicit non-random counterexamples to minimum-output von Neumann entropy additivity (v2). None yields a universal finite-letter quantum-capacity formula.
+
+Preprint progress (OpenAI Math Release, public 6 October 2026; manuscript dated 24 September): the unassisted classical capacity of every qubit generalized amplitude-damping channel, at all damping and thermal parameters, is claimed to equal its one-shot Holevo capacity, given by a one-variable maximum. Holevo capacity, minimum output entropy and regularized classical capacity are claimed additive under tensor products with every finite-dimensional channel. This extends the September pure-output amplitude-damping result to the thermal family. It concerns classical capacity, so the quantum-capacity formulas targeted here remain open. The manuscript is a GitHub release, not an arXiv preprint.`,
     refs: [
+      { label: "OpenAI, 'Classical capacity and entropy inequalities for generalized amplitude damping' (OpenAI Math Release manuscript, dated 24 September 2026; public 6 October 2026)", url: `${OAI}preprints/Classical-capacity-and-entropy-inequalities-for-generalized-amplitude-damping-September-24-2026/paper.pdf` },
       { label: "Tang, Zhu, Bai & Wang, 'Classical Capacity and Entanglement Cost of the Amplitude Damping Channel' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.28592v1" },
       { label: "Pirandola, 'Exact series formulas for the capacities of the amplitude damping channel' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.31609v1" },
       { label: "Shou & Gorshkov, 'A constructive violation of additivity of minimum output von Neumann entropy' (2026 preprint, v2)", url: "https://arxiv.org/abs/2609.23946v2" },
@@ -54,9 +61,17 @@ The target is matching achievable and converse bounds for fixed $(\eta,N_{\rm th
     ] },
 
   { id: "C3", cat: "channels", horizon: "incremental", status: "improved",
-    reviewedAt: "2026-09-28",
+    reviewedAt: "2026-10-17",
     relations: [{ id: "C2", type: "related" }, { id: "C10", type: "parent" }],
+    provenance: [
+      { summary: "Pirandola reports that GPT-6 Astra generated candidate derivations and proofs and assisted with their development and presentation; v3 adds a detailed AI-use history. The same statement appears in the noisy-channel and the multimode manuscript (the latter with Spedalieri).", url: "https://arxiv.org/abs/2610.06832v3", version: "v3" },
+      { summary: "Falco, Mele, Lami and Giovannetti state that their main result was obtained on 17 September 2026 with a single ChatGPT Astra prompt, and that Pirandola independently obtained the same result.", url: "https://arxiv.org/abs/2610.12365v1", version: "v1" },
+    ],
     evidence: [
+      { kind: "preprint", summary: "Claimed energy-constrained two-way quantum, entanglement, private and key capacities of pure loss, $g(N)-g((1-\\eta)N)$ under a mean transmitted-photon constraint; pure loss is a boundary case, not a noisy family.", url: "https://arxiv.org/abs/2610.06832v3", date: "2026-10-05", version: "v3" },
+      { kind: "preprint", summary: "Independent claim of the same energy-constrained pure-loss two-way quantum and key capacities under an average input photon-number constraint.", url: "https://arxiv.org/abs/2610.12365v1", date: "2026-10-08", version: "v1" },
+      { kind: "preprint", summary: "Unified energy-constrained adaptive weak-converse bound for thermal loss, noisy amplification and additive noise; an explicit gap to hashing rates remains.", url: "https://arxiv.org/abs/2610.08786v2", date: "2026-10-06", version: "v2" },
+      { kind: "preprint", summary: "Claimed exact finite-energy two-way capacities for multimode pure loss and publicly revealed fading; noisy channels are not covered.", url: "https://arxiv.org/abs/2610.18731v1", date: "2026-10-13", version: "v1" },
       { kind: "preprint", summary: "Improved achievable thermal-loss two-way quantum rates, not exact Q2 or K. Submission predates its September listing.", url: "https://arxiv.org/abs/2609.27792v1", date: "2026-08-17", version: "v1" },
     ],
     title: "Two-way capacities of Gaussian channels",
@@ -69,8 +84,14 @@ With nonzero thermal noise or additive Gaussian noise, general matching bounds a
 
 The incremental goal is to close specified $Q_2$ or $K$ gaps in noisy families and under explicit energy assumptions, using PLOB and subsequent converse techniques alongside achievable protocols.
 
-Newly indexed preprint (September 2026; arXiv records submission on 17 August): Barber and Pirandola improve achievable two-way quantum rates for thermal loss over a range of parameters by combining qubit–bosonic distribution and optimized entanglement distillation. This tightens lower bounds; it supplies neither matching converses nor an exact secret-key capacity. Comparisons with energy-constrained benchmarks must retain the protocol's resource assumptions.`,
+Newly indexed preprint (September 2026; arXiv records submission on 17 August): Barber and Pirandola improve achievable two-way quantum rates for thermal loss over a range of parameters by combining qubit–bosonic distribution and optimized entanglement distillation. This tightens lower bounds; it supplies neither matching converses nor an exact secret-key capacity. Comparisons with energy-constrained benchmarks must retain the protocol's resource assumptions.
+
+Preprint progress (5–13 October 2026): Pirandola (5 October; reviewed at v3) and, independently, Falco, Mele, Lami and Giovannetti (8 October, v1) claim that the energy-constrained two-way quantum and secret-key capacities of pure loss equal $g(N)-g((1-\eta)N)$, the reverse-coherent-information rate. Pirandola also covers entanglement-distribution and private capacities and the quantum-limited amplifier, with constraints on mean transmitted photon number. The two papers state their constraints differently: Pirandola bounds transmitted photons, while Falco et al. bound average input photons. Pirandola and Spedalieri (13 October) extend the pure-loss result to multimode loss and publicly revealed fading. Pirandola's 6 October bound for thermal loss, noisy amplification and additive noise improves evaluated converses but leaves a gap to achievable rates. The noisy families in the statement therefore remain open.`,
     refs: [
+      { label: "Pirandola, 'Energy-constrained two-way capacities of pure-loss and quantum-limited amplifier channels' (2026 preprint, v3)", url: "https://arxiv.org/abs/2610.06832v3" },
+      { label: "Falco, Mele, Lami & Giovannetti, 'Energy-constrained two-way capacities of the pure-loss channel' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.12365v1" },
+      { label: "Pirandola, 'Energy-constrained two-way capacity bounds for noisy Gaussian channels' (2026 preprint, v2)", url: "https://arxiv.org/abs/2610.08786v2" },
+      { label: "Pirandola & Spedalieri, 'Finite-energy two-way assisted capacities: Exact formulas for multimode loss and fading' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.18731v1" },
       { label: "Barber & Pirandola, 'Improved lower bound for the two-way-assisted quantum capacity of the bosonic thermal-loss channel' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.27792v1" },
       {"label":"Pirandola, Laurenza, Ottaviani & Banchi, 'Fundamental limits of repeaterless quantum communications' (PLOB), Nature Communications 8, 15043 (2017)","url":"https://arxiv.org/abs/1510.08863"},
       { label: "Wilde, Tomamichel, Berta, 'Converse bounds for private communication over quantum channels', IEEE Trans. Inf. Theory 63 (2017)", url: "https://arxiv.org/abs/1602.08898" },
@@ -220,12 +241,18 @@ The target is a stated model family with computable finite-block error estimates
     ] },
 
   { id: "C10", cat: "channels", horizon: "programme", status: "improved",
-    reviewedAt: "2026-09-28",
+    reviewedAt: "2026-10-17",
     relations: [{ id: "C2", type: "benchmark" }, { id: "C3", type: "benchmark" }, { id: "M11", type: "related" }],
     evidence: [
+      { kind: "preprint", summary: "Claimed energy-constrained classical capacity of every single-mode bosonic Gaussian channel, achieved by Gaussian ensembles, with strong-converse and rate–error statements under stated constraints.", url: "https://arxiv.org/abs/2610.22308v1", date: "2026-10-15", version: "v1" },
+      { kind: "preprint", summary: "Claimed entropy photon-number inequality for two independent finite-energy multimode bosonic inputs, with thermal-attenuator minimum-output-entropy and degraded pure-loss broadcast-region consequences. OpenAI GitHub manuscript.", url: `${OAI}preprints/The-entropy-photon-number-inequality-September-24-2026/paper.pdf`, date: "2026-10-06", version: "v1" },
+      { kind: "preprint", summary: "Claimed coincidence of unassisted and two-way assisted quantum and private capacities for energy-constrained bosonic dephasing, a non-Gaussian family.", url: "https://arxiv.org/abs/2610.13854v1", date: "2026-10-09", version: "v1" },
       { kind: "preprint", summary: "Claimed O(1/n) fidelity bound above unconstrained pure-loss quantum capacity; not an energy-constrained classical or general thermal-channel theorem.", url: "https://arxiv.org/abs/2609.16608v1", date: "2026-09-15", version: "v1" },
     ],
     provenance: [
+      { summary: "Adesso, Lami and Giovannetti report GPT 6 Astra assistance with lifting a single-use witness to many uses (Proposition 8) and Claude Opus 5.5 assistance with an initial derivation of Lemma 9; they state that the present proof required heavy human intervention.", url: "https://arxiv.org/abs/2610.22308v1", version: "v1" },
+      { summary: "OpenAI lists itself as author of the entropy photon-number manuscript and states that an unreleased internal model produced the collection. It reports a Lean formalization of the inequality only; this was not rebuilt here.", url: `${OAI}lean/docs/273.md` },
+      { summary: "Arqand and Smith report extensive ChatGPT Astra assistance in developing the main solution, completing proofs and finding errors, with the research formulated and directed by the authors.", url: "https://arxiv.org/abs/2610.13854v1", version: "v1" },
       { summary: "Wilde reports extensive ChatGPT Pro 6 Astra assistance with proof strategies, arguments, literature and drafting, without supplying the initial methods; he retains responsibility for verification and the final manuscript.", url: "https://arxiv.org/html/2609.16608v1", version: "v1" },
     ],
     title: "Quantum Shannon theory in infinite dimensions",
@@ -238,8 +265,13 @@ Constraint choice matters even for simple channels. Wilde–Winter show that a s
 
 The programme is to characterize sufficient energy-growth, compactness and continuity assumptions, establish explicit moduli and finite-block bounds, and identify non-Gaussian families with controlled coding theorems. It includes infinite-dimensional entanglement and resource inequalities, but each proposed result must name its task, topology and constraint.
 
-Preprint progress (15 September 2026, v1): Wilde claims a strong converse at the unconstrained quantum capacity of every pure-loss bosonic channel, allowing arbitrary multimode encodings and joint decoding without an energy restriction. The stated entanglement-generation fidelity bound is $O(1/n)$ at a fixed rate above capacity. This concerns quantum transmission at the unconstrained threshold, so it neither contradicts the mean-energy classical counterexample above nor establishes strong converses at all energy-constrained thresholds or for noisy thermal attenuators.`,
+Preprint progress (15 September 2026, v1): Wilde claims a strong converse at the unconstrained quantum capacity of every pure-loss bosonic channel, allowing arbitrary multimode encodings and joint decoding without an energy restriction. The stated entanglement-generation fidelity bound is $O(1/n)$ at a fixed rate above capacity. This concerns quantum transmission at the unconstrained threshold, so it neither contradicts the mean-energy classical counterexample above nor establishes strong converses at all energy-constrained thresholds or for noisy thermal attenuators.
+
+Preprint progress (6–15 October 2026): OpenAI's Math Release (public 6 October; manuscript dated 24 September) claims the entropy photon-number inequality for two independent finite-energy bosonic inputs in any finite number of modes, allowing entanglement within each input. It derives the exact minimum output entropy at fixed input entropy for tensor powers of a thermal attenuator, and the classical capacity region of the degraded two-receiver pure-loss broadcast channel under a mean photon constraint. The inequality itself is reported as Lean-formalized; the consequences are not. Adesso, Lami and Giovannetti (15 October, v1) claim the energy-constrained classical capacity of every single-mode bosonic Gaussian channel at every input energy, with Gaussian-displacement ensembles achieving it, and characterize communication above capacity under photon-number cutoffs and mean-energy constraints. Arqand and Smith (9 October, v1) prove that four energy-constrained capacities of bosonic dephasing channels coincide with a Fock-diagonal coherent-information formula. These close specified classical and non-Gaussian tasks; general multimode channels, other constraints and the broader programme remain open.`,
     refs: [
+      { label: "Adesso, Lami & Giovannetti, 'Classical Capacity of Single-Mode Bosonic Gaussian Channels' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.22308v1" },
+      { label: "OpenAI, 'The entropy photon-number inequality' (OpenAI Math Release manuscript, dated 24 September 2026; public 6 October 2026)", url: `${OAI}preprints/The-entropy-photon-number-inequality-September-24-2026/paper.pdf` },
+      { label: "Arqand & Smith, 'No advantage from classical assistance for energy-constrained bosonic dephasing channels' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.13854v1" },
       { label: "Wilde, 'Strong converse for the quantum capacity of the pure-loss bosonic channel' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.16608v1" },
       {"label":"Wilde & Winter, 'Strong converse for the classical capacity of the pure-loss bosonic channel', Problems of Information Transmission (2014)","url":"https://arxiv.org/abs/1308.6732"},
       {"label":"Bardhan & Wilde, 'Strong converse rates for classical communication over thermal and additive noise bosonic channels', PRA 89, 022302 (2014) — photon-number occupation constraint","url":"https://arxiv.org/abs/1312.3287"},
@@ -272,9 +304,13 @@ This benchmark was promoted from C1 to keep the precise threshold question and i
       { label: "Tomamichel, 'A strong converse for stabilizer codes over Pauli channels via the blowing-up lemma' (2026 preprint; includes depolarizing parameter regimes)", url: "https://arxiv.org/abs/2607.23450" },
     ] },
 
-  { id: "C12", cat: "channels", horizon: "sharp", status: "improved",
+  { id: "C12", cat: "channels", horizon: "sharp", status: "claimed-solved",
+    reviewedAt: "2026-10-17",
     title: "PPT-squared conjecture",
-    relations: [{ id: "E1", type: "related" }, { id: "C1", type: "related" }],
+    relations: [{ id: "E1", type: "related" }, { id: "C1", type: "related" }, { id: "E16", type: "related" }],
+    provenance: [
+      { summary: "OpenAI lists itself as author and states that an unreleased internal model produced the manuscript collection. It reports Lean formalizations of both counterexamples: the dimension-ten PPT pair and the trace-preserving channel on $M_{21}(\\mathbb C)$. These were not rebuilt here.", url: `${OAI}lean/docs/272.md` },
+    ],
     statement: r`Is $\Psi\circ\Phi$ entanglement breaking for every pair of compatible finite-dimensional complex completely positive, trace-preserving maps whose Choi matrices have positive partial transpose?`,
     context: r`A PPT channel has a Choi matrix positive under partial transpose. An entanglement-breaking channel destroys entanglement with every reference system, equivalently having a separable Choi matrix. The conjecture asks whether two compatible PPT stages always suffice. It connects channel composition with limits on entanglement swapping across PPT-entangled links.
 
@@ -284,10 +320,13 @@ Recent partial results include symplectic-covariant and Cartan-covariant map cla
 
 Important scope update: Park's August preprint claims that every PPT channel has a finite entanglement-breaking index, and gives an index-at-most-three bound for a restricted family. Eventual entanglement breaking is therefore not being listed as the open existence question. A finite number of iterations depending on the map does not establish that two always suffice.
 
-A general proof or one complex finite-dimensional PPT-channel pair whose composition is not entanglement breaking resolves the stated conjecture.`,
-    evidence: [{ kind: "preprint", summary: "Every PPT channel is claimed to become entanglement breaking after finitely many iterations; this does not settle the two-step conjecture.", url: "https://arxiv.org/abs/2608.13551v2", date: "2026-08-17", version: "v2" }, { kind: "preprint", summary: "Qutrit composition result beyond the PPT setting, not an arbitrary-dimensional resolution.", url: "https://arxiv.org/abs/2607.15947", date: "2026-07-17" }],
+A general proof or one complex finite-dimensional PPT-channel pair whose composition is not entanglement breaking resolves the stated conjecture.
+
+Claimed disproof (OpenAI Math Release, public 6 October 2026; manuscript dated 27 September): explicit PPT maps on $M_{10}(\mathbb C)$ are claimed to have a composition whose Choi matrix has no product vector in its range, so it is not entanglement breaking. These maps need not be trace preserving. A separate explicitly specified trace-preserving PPT channel on $M_{21}(\mathbb C)$ is claimed to have a square that is not entanglement breaking, which answers the channel form stated here with the same channel used twice. OpenAI reports Lean formalizations of both statements; they were not rebuilt here. The manuscript is a GitHub release, not an arXiv preprint. The same construction underlies the zero-key claim in E16. Marked “Claimed solved” (a claimed counterexample) pending independent assessment.`,
+    evidence: [{ kind: "preprint", summary: "Claimed counterexample: a trace-preserving PPT channel on $M_{21}(\\mathbb C)$ whose square is not entanglement breaking, plus a dimension-ten PPT pair; reported Lean-formalized. OpenAI GitHub manuscript, pending assessment.", url: `${OAI}preprints/Entanglement-with-zero-distillable-secret-key-in-local-dimension-ten-September-27-2026/paper.pdf`, date: "2026-10-06", version: "v1" }, { kind: "preprint", summary: "Every PPT channel is claimed to become entanglement breaking after finitely many iterations; this does not settle the two-step conjecture.", url: "https://arxiv.org/abs/2608.13551v2", date: "2026-08-17", version: "v2" }, { kind: "preprint", summary: "Qutrit composition result beyond the PPT setting, not an arbitrary-dimensional resolution.", url: "https://arxiv.org/abs/2607.15947", date: "2026-07-17" }],
     refs: [
       { label: "Christandl, Müller-Hermes & Wolf, 'When Do Composed Maps Become Entanglement Breaking?', Annales Henri Poincaré (2019)", url: "https://arxiv.org/abs/1807.01266" },
+      { label: "OpenAI, 'Entanglement with zero distillable secret key in local dimension ten' (OpenAI Math Release manuscript, dated 27 September 2026; public 6 October 2026) — Theorems 1.2 and 1.3", url: `${OAI}preprints/Entanglement-with-zero-distillable-secret-key-in-local-dimension-ten-September-27-2026/paper.pdf` },
       { label: "Prudhoe, 'Entanglement Breaking Structure of Cartan-Covariant Quantum Channels' (2026 revision, v3)", url: "https://arxiv.org/abs/2501.03959" },
       { label: "Park, 'k-Positivity and high-dimensional bound entanglement under symplectic group symmetries' (2026 preprint)", url: "https://arxiv.org/abs/2602.09860" },
       { label: "An & Lee, 'Beyond the Positive Partial Transpose Squared Conjecture: The Qutrit Case' (2026 preprint)", url: "https://arxiv.org/abs/2607.15947" },

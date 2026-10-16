@@ -32,7 +32,7 @@ A resolution would distinguish quantum speedups for structured problems from eff
     provenance: [
       { summary: "Cakan attributes the results to himself and reports ChatGPT-6 Astra assistance with preliminary drafts, transcription, parameter choices and checking. He takes responsibility for the paper.", url: "https://arxiv.org/html/2610.03648v1", version: "v1" },
     ],
-    reviewedAt: "2026-10-05",
+    reviewedAt: "2026-10-17",
     title: "QMA versus QCMA",
     statement: r`Determine whether quantum witnesses increase the power of polynomial-time quantum verification: $\mathsf{QMA}\stackrel{?}{=}\mathsf{QCMA}$, without an oracle.`,
     context: r`QMA allows a polynomial-size quantum witness; QCMA restricts the witness to a classical string while retaining a quantum verifier. The question is whether some efficiently verifiable evidence fundamentally requires quantum information.
@@ -41,12 +41,16 @@ What is known: Aaronson–Kuperberg gave a quantum-oracle separation. Natarajan�
 
 The full standard classical-oracle separation is due to Bostanci, Haferkamp, Nirkhe and Zhandry: first posted in November 2025, revised in January 2026 and published at STOC 2026. It strengthens relativized evidence but does not settle the unrelativized QMA versus QCMA question. Related: A4, A5, A10.
 
-Preprint progress (2 October 2026, v1): Cakan constructs a classical oracle relative to which QMA is not contained in QCIP, where a quantum verifier exchanges polynomially many classical messages with an unbounded prover. This strengthens the earlier oracle separation from QCMA to classical interaction. The unrelativized QMA/QCMA question remains open.`,
+Preprint progress (2 October 2026, v1): Cakan constructs a classical oracle relative to which QMA is not contained in QCIP, where a quantum verifier exchanges polynomially many classical messages with an unbounded prover. This strengthens the earlier oracle separation from QCMA to classical interaction. The unrelativized QMA/QCMA question remains open.
+
+Preprint progress (5 October 2026, v1): Cakan, Chung, Hung and Yang construct a classical oracle relative to which $\mathsf{QCMA}\ne\mathsf{ClonableQMA}$. Even clonable quantum witnesses can therefore beat classical ones relative to a classical oracle, answering a question of Nehoran and Zhandry. The result concerns the mechanism behind relativized separations; it does not separate the unrelativized classes.`,
     evidence: [
+      { kind: "preprint", summary: "Classical-oracle separation of ClonableQMA from QCMA; relativized, not an unrelativized class separation.", url: "https://arxiv.org/abs/2610.06740v1", date: "2026-10-05", version: "v1" },
       { kind: "preprint", summary: "Classical-oracle separation of QMA from polynomial-round QCIP; does not separate the unrelativized classes.", url: "https://arxiv.org/abs/2610.03648v1", date: "2026-10-02", version: "v1" },
       { kind: "published", summary: "A standard classical oracle separates QMA from QCMA; the unrelativized equality remains open.", url: "https://doi.org/10.1145/3798129.3800776" }],
     relations: [{ id: "A4", type: "related" }, { id: "A5", type: "related" }, { id: "A10", type: "related" }],
     refs: [
+      { label: "Cakan, Chung, Hung & Yang, 'Separating ClonableQMA and QCMA Relative to a Classical Oracle' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.06740v1" },
       { label: "Alper Cakan, 'Separating QMA from QCIP with a Classical Oracle, or, the Power of Quantum Proofs over Classical Interaction for Quantum Verifiers' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.03648v1" },
       { label: "Aaronson & Kuperberg, 'Quantum versus classical proofs and advice', Theory of Computing 3 (2007)", url: "https://theoryofcomputing.org/articles/v003a007/" },
       { label: "Natarajan & Nirkhe, 'A distribution testing oracle separation between QMA and QCMA', Quantum 8, 1377 (2024)", url: "https://quantum-journal.org/papers/q-2024-06-17-1377/" },
@@ -79,7 +83,7 @@ Claimed resolution (11 September 2026, v1): Grewal and Rudolph claim $\mathsf{QM
     ] },
 
   { id: "A5", cat: "complexity", horizon: "sharp", status: "improved",
-    reviewedAt: "2026-10-05",
+    reviewedAt: "2026-10-17",
     title: "Multiple unentangled quantum proofs",
     statement: r`Determine whether $\mathsf{QMA}(2)=\mathsf{QMA}$, or whether two polynomial-size witnesses promised to be unentangled increase verification power.`,
     context: r`The verifier may jointly process the two witnesses, but the honest and cheating witnesses in QMA(2) must be product across the two prover registers. The product-state optimization underlying this model connects it to separability and tensor optimization.
@@ -88,21 +92,26 @@ What is known: Harrow–Montanaro show that polynomially many unentangled witnes
 
 July 2026 preprint: Beckey, Jeronimo and Wu determine the exact worst-case product-test acceptance curve over all product overlaps and finite local dimensions. This settles the low-overlap analysis and strengthens one-shot soundness of a key reduction, without settling the class comparison.
 
-September 2026 preprint: Bostanci et al. construct a quantum oracle separating QMA(2) from QMA. They also prove the geometric no-disentanglers conjecture at constant errors $\varepsilon+\delta<1$: an approximate disentangler needs exponentially many input qubits in the number of output qubits. The class separation is relativized; the geometric theorem is not. Neither proves an unrelativized separation, and a classical-oracle separation remains open. Related: A3, E3.
+September 2026 preprint: Bostanci et al. construct a quantum oracle separating QMA(2) from QMA. They also prove the geometric no-disentanglers conjecture at constant errors $\varepsilon+\delta<1$: an approximate disentangler needs exponentially many input qubits in the number of output qubits. The class separation is relativized; the geometric theorem is not. Neither proves an unrelativized separation. Related: A3, E3.
 
-Preprint progress (30 September 2026, v1): Della Schiava and Mataraarachchi claim $\mathsf{QMA}(2;h)=\mathsf{QMA}(2)$ for $h=O(\log n)$ shared EPR pairs. The resource is a bounded shared-entanglement budget during witness preparation, not arbitrary entangled witnesses. Larger budgets and the comparison with ordinary QMA remain unresolved.`,
+Preprint progress (30 September 2026, v1): Della Schiava and Mataraarachchi claim $\mathsf{QMA}(2;h)=\mathsf{QMA}(2)$ for $h=O(\log n)$ shared EPR pairs. The resource is a bounded shared-entanglement budget during witness preparation, not arbitrary entangled witnesses. Larger budgets and the comparison with ordinary QMA remain unresolved.
+
+Preprint progress (5 October 2026, v1): Grewal, Mutreja and Tomer construct a classical oracle relative to which $\mathsf{QMA}\ne\mathsf{QMA(2)}$. Their separable-Hamiltonian problem uses signed edge constraints on a graph. YES instances have zero-energy product states, while NO instances have entangled zero-energy states built from the antisymmetric subspace but no low-energy product states. Compressed-oracle techniques bound QMA verifiers. This answers the classical-oracle version noted above; the unrelativized comparison and $\mathsf{QMA(2)}\subseteq\mathsf{EXP}$ remain open.`,
     evidence: [
+      { kind: "preprint", summary: "Classical-oracle separation of QMA from QMA(2) via a signed-edge separable-Hamiltonian problem; relativized, not an unrelativized class separation.", url: "https://arxiv.org/abs/2610.06760v1", date: "2026-10-05", version: "v1" },
       { kind: "preprint", summary: "Logarithmically many shared EPR pairs do not increase QMA(2) in the specified model; not QMA(2)=QMA.", url: "https://arxiv.org/abs/2609.39668v1", date: "2026-09-30", version: "v1" },
       { kind: "preprint", summary: "Exact product-test acceptance curve, including the previously open low-overlap regime.", url: "https://arxiv.org/abs/2607.21477v1", date: "2026-07-23", version: "v1" },
       { kind: "preprint", summary: "Quantum-oracle QMA(2)/QMA separation and an unrelativized no-disentanglers theorem at constant errors with epsilon + delta < 1.", url: "https://arxiv.org/abs/2609.02865v1", date: "2026-09-02", version: "v1" },
     ],
     provenance: [
+      { summary: "Grewal, Mutreja and Tomer report that the original proof was obtained in about ten rounds of interaction with ChatGPT 6 Astra; they verified the arguments independently, revised the proofs and link the original AI-generated manuscript.", url: "https://arxiv.org/abs/2610.06760v1", version: "v1" },
       { summary: "The authors report substantial proof-development and writing assistance from ChatGPT-5.6 Sol, ChatGPT-6 Astra and Claude 5.0 Opus, and take responsibility for the claims.", url: "https://arxiv.org/html/2609.39668v1", version: "v1" },
       { summary: "Product-test authors report ChatGPT 5.5 Pro assistance with analysis, ChatGPT/Claude assistance with writing and exploratory Codex-supported Lean work; they report human verification and responsibility for the manuscript.", url: "https://arxiv.org/abs/2607.21477v1", version: "v1" },
       { summary: "The September authors report that ChatGPT 5.6 Sol suggested the central proof idea after prompts about She–Yuen, and that they verified, simplified and developed it. This records their disclosure, not an independent provenance audit.", url: "https://arxiv.org/abs/2609.02865v1", version: "v1" },
     ],
     relations: [{ id: "A3", type: "related" }, { id: "E3", type: "related" }],
     refs: [
+      { label: "Grewal, Mutreja & Tomer, 'A classical oracle separation between QMA and QMA(2)' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.06760v1" },
       { label: "Alex Della Schiava, Ranitha Mataraarachchi, 'QMA(2) with Limited Shared Entanglement' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.39668v1" },
       { label: "Harrow & Montanaro, 'Testing product states, quantum Merlin-Arthur games and tensor optimization', J. ACM 60 (2013)", url: "https://arxiv.org/abs/1001.0017" },
       { label: "Aaronson, Beigi, Drucker, Fefferman & Shor, 'The power of unentanglement', Theory of Computing 5 (2009)", url: "https://theoryofcomputing.org/articles/v005a001/" },

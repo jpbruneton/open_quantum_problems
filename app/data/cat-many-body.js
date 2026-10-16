@@ -1,7 +1,18 @@
 const r = String.raw;
+// OpenAI Math Release, pinned to the commit reviewed on 17 October 2026.
+const OAI = "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/";
 
 export const MANYBODY = [
-  { id: "B1", cat: "many-body", horizon: "sharp",
+  { id: "B1", cat: "many-body", horizon: "sharp", status: "claimed-solved",
+    reviewedAt: "2026-10-17",
+    evidence: [
+      { kind: "preprint", summary: "Claimed entropy area law for the unique ground state of any uniformly gapped finite-range Hamiltonian on any finite induced square-lattice subgraph, for every subset; OpenAI GitHub manuscript, pending assessment.", url: `${OAI}preprints/A-two-dimensional-area-law-from-a-global-spectral-gap-September-24-2026/paper.pdf`, date: "2026-10-06", version: "v1" },
+      { kind: "preprint", summary: "Uniformly gapped, unique-ground-state examples with volume-law Rényi entropy below order one but a von Neumann area law; a comparison, not a counterexample to B1.", url: "https://arxiv.org/abs/2610.15199v1", date: "2026-10-10", version: "v1" },
+    ],
+    provenance: [
+      { summary: "OpenAI lists itself as author and states that an unreleased internal model produced the manuscript collection. No Lean formalization is listed for the area-law family. This is OpenAI's account.", url: `${OAI}README.md` },
+      { summary: "Kuwahara reports extensive ChatGPT use from GPT-5 through GPT-5.6 and GPT-6 Astra for proof exploration, derivations, consistency checks and alternative approaches, with the research programme and framework developed by the author.", url: "https://arxiv.org/abs/2610.15199v1", version: "v1" },
+    ],
     title: "Area law in two spatial dimensions",
     statement: r`For a family of finite-range 2D lattice Hamiltonians with fixed on-site dimension, uniformly bounded interaction strength, a unique ground state and a uniform spectral gap, prove $S(\rho_A)\le C|\partial A|$ for square regions $A$, with $C$ independent of system and region size.`,
     context: r`The area law says entanglement entropy of a region $A$ scales with the size of its boundary $|\partial A|$ rather than its volume. It underlies why gapped ground states are efficiently describable by tensor networks and is a cornerstone of Hamiltonian complexity.
@@ -10,26 +21,42 @@ What is known: The one-dimensional unique-gapped-ground-state area law is establ
 
 Ground-space assumptions are essential: on-site projectors pinning one sublattice and leaving the other spins free produce a gap of one but allow volume-entangled ground states. Thus a gap alone cannot imply the claimed law for every vector of an unrestricted degenerate ground space. Topologically degenerate models require their own explicit local-ground-space hypotheses.
 
-The unique-ground-state formulation above remains a central open target. A theorem about entanglement is not itself a total algorithm for deciding whether the gap promise holds; U1 does not automatically preclude such a conditional theorem. Representation and efficient computation are distinct further questions (B2/B3).`,
+The unique-ground-state formulation above was a central open target. A theorem about entanglement is not itself a total algorithm for deciding whether the gap promise holds; U1 does not automatically preclude such a conditional theorem. Representation and efficient computation are distinct further questions (B2/B3).
+
+Claimed resolution (OpenAI Math Release, public 6 October 2026; manuscript dated 24 September): for a finite-range Hamiltonian on any finite induced subgraph of the square lattice with a unique ground state, a lower bound on the full-system gap and fixed bounds on local dimension, range and strength, the entanglement entropy of every site set is claimed to be at most a constant times the number of boundary-crossing edges. This covers square regions with constants independent of system and region size. The manuscript is a GitHub release, not an arXiv preprint, and no Lean formalization is listed. Marked “Claimed solved” pending independent assessment.
+
+Comparison (10 October 2026, v1): Kuwahara constructs uniformly gapped finite-range Hamiltonians with unique ground states whose Rényi-$\alpha$ entropies for $0<\alpha<1$ obey a volume law, while their von Neumann entropy obeys an area law. This disproves the Rényi area-law conjecture below order one in dimensions at least two; it is compatible with the von Neumann statement above.`,
     refs: [
       { label: "Hastings, 'An area law for one-dimensional quantum systems', J. Stat. Mech. (2007) P08024", url: "https://arxiv.org/abs/0705.2024" },
       { label: "Arad, Kitaev, Landau, Vazirani, 'An area law and sub-exponential algorithm for 1D systems' (2013)", url: "https://arxiv.org/abs/1301.1162" },
       { label: "Eisert, Cramer, Plenio, 'Colloquium: Area laws for the entanglement entropy', Rev. Mod. Phys. 82, 277 (2010)", url: "https://arxiv.org/abs/0808.3773" },
       { label: "Anshu, Arad & Gosset, 'An area law for 2D frustration-free spin systems', STOC 2022 (local-gap hypotheses)", url: "https://arxiv.org/abs/2103.02492" },
+      { label: "OpenAI, 'A two-dimensional area law from a global spectral gap' (OpenAI Math Release manuscript, dated 24 September 2026; public 6 October 2026)", url: `${OAI}preprints/A-two-dimensional-area-law-from-a-global-spectral-gap-September-24-2026/paper.pdf` },
+      { label: "Kuwahara, 'The Rényi area law conjecture is false below α=1 in high dimensions' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.15199v1" },
     ] },
 
-  { id: "B2", cat: "many-body", horizon: "sharp",
+  { id: "B2", cat: "many-body", horizon: "sharp", status: "improved",
+    reviewedAt: "2026-10-17",
+    evidence: [
+      { kind: "preprint", summary: "Claimed PEPS with bond dimension polynomial in $L$ and global vector error at most $L^{-1}$ for uniformly gapped nearest-neighbor ground states on open $L\\times L$ squares; not arbitrary accuracy $\\epsilon$ or general finite range. OpenAI GitHub manuscript.", url: `${OAI}preprints/Polynomial-PEPS-approximation-of-gapped-square-grid-ground-states-September-24-2026/paper.pdf`, date: "2026-10-06", version: "v1" },
+    ],
+    provenance: [
+      { summary: "OpenAI lists itself as author and states that an unreleased internal model produced the manuscript collection. No Lean formalization is listed for this family. This is OpenAI's account.", url: `${OAI}README.md` },
+    ],
     title: "Efficient tensor-network approximation in 2D",
     statement: r`For every fixed-range, bounded-strength 2D Hamiltonian family with fixed on-site dimension, a unique ground state and a uniform gap, does there exist a normalized pure PEPS approximating the ground-state vector to norm error $\epsilon$ with bond dimension polynomial in the number of sites $N$ and $1/\epsilon$?`,
     context: r`This is an existence question about a pure-state representation, not an algorithm for discovering it or contracting it. The polynomial may depend on the fixed local dimension, range, interaction bound and gap lower bound, but not on system size. Global vector-norm error is deliberately stronger than reproducing bounded-region reduced states.
 
 What is known: In 1D, an area law plus a spectral gap yields an efficient MPS approximation, and the ground state can be found in polynomial time (Landau–Vazirani–Vidick). In 2D the chain of implications breaks: bounded entropy across cuts does not obviously bound the bond dimension needed for a global PEPS, and contracting a general 2D PEPS is itself #P-hard (see B3), so even having a PEPS description need not make it useful.
 
-A distinct weaker target asks for trace-distance error at most $\epsilon$ on every region of a fixed size. Its scaling must be stated separately; allowing mixed or purified tensor networks can also change the task. Gibbs-state PEPS approximations and local-observable approximation theorems do not automatically establish the global pure-state statement. An area-law bound on von Neumann entropy alone is not a universal efficient-representation theorem.`,
+A distinct weaker target asks for trace-distance error at most $\epsilon$ on every region of a fixed size. Its scaling must be stated separately; allowing mixed or purified tensor networks can also change the task. Gibbs-state PEPS approximations and local-observable approximation theorems do not automatically establish the global pure-state statement. An area-law bound on von Neumann entropy alone is not a universal efficient-representation theorem.
+
+Preprint progress (OpenAI Math Release, public 6 October 2026; manuscript dated 24 September): for uniformly gapped nearest-neighbor Hamiltonians with unique ground states on open $L\times L$ squares, a PEPS with bond dimension polynomial in $L$ and normalized global vector error at most $L^{-1}$ is claimed, using only the full-system gap and the companion area law (B1). This is an existence theorem at one inverse-polynomial accuracy schedule. The stated target asks for polynomial dependence on both $N$ and $1/\epsilon$ for every accuracy and for general fixed range, so it remains open here. The manuscript is a GitHub release, not an arXiv preprint.`,
     refs: [
       { label: "Cirac, Pérez-García, Schuch & Verstraete, 'Matrix product states and projected entangled pair states: Concepts, symmetries, and theorems', Rev. Mod. Phys. 93, 045003 (2021)", url: "https://arxiv.org/abs/2011.12127" },
       { label: "Landau, Vazirani, Vidick, 'A polynomial-time algorithm for the ground state of 1D gapped Hamiltonians', Nat. Phys. 11 (2015)", url: "https://arxiv.org/abs/1307.5143" },
       { label: "Molnár, Schuch, Verstraete & Cirac, 'Approximating Gibbs states of local Hamiltonians efficiently with PEPS', PRB 91, 045138 (2015)", url: "https://arxiv.org/abs/1406.2973" },
+      { label: "OpenAI, 'Polynomial PEPS approximation of gapped square-grid ground states' (OpenAI Math Release manuscript, dated 24 September 2026; public 6 October 2026)", url: `${OAI}preprints/Polynomial-PEPS-approximation-of-gapped-square-grid-ground-states-September-24-2026/paper.pdf` },
     ] },
 
   { id: "B3", cat: "many-body", horizon: "incremental",
@@ -205,28 +232,58 @@ For $\alpha\le d$, whether interactions are Kac-normalized changes the question.
       { label: "Tran et al., 'Lieb-Robinson light cone for power-law interactions', PRL 127, 160401 (2021)", url: "https://arxiv.org/abs/2103.15828" },
     ] },
 
-  { id: "B13", cat: "many-body", horizon: "sharp",
+  { id: "B13", cat: "many-body", horizon: "sharp", status: "claimed-solved",
+    reviewedAt: "2026-10-17",
+    evidence: [
+      { kind: "preprint", summary: "Claimed condensate fraction bounded below uniformly for small fixed density and $0\\le T\\le\\rho^2$, including the ground state, for bounded nonnegative radial finite-range potentials; OpenAI GitHub manuscript, pending assessment.", url: `${OAI}preprints/A-density-uniform-condensate-bound-for-dilute-Bose-gases-September-27-2026/paper.pdf`, date: "2026-10-06", version: "v1" },
+      { kind: "preprint", summary: "Claimed ground-state condensation for the dilute hard-sphere gas with a fraction independent of the gas parameter; the main statement is reported as Lean-formalized.", url: `${OAI}preprints/Ground-state-condensation-in-the-dilute-hard-sphere-gas-September-24-2026/paper.pdf`, date: "2026-10-06", version: "v1" },
+      { kind: "preprint", summary: "Claimed Bogoliubov depletion asymptotics for hard spheres and fixed bounded repulsive potentials, with the thermodynamic limit before the dilute limit; a further quantitative target.", url: `${OAI}preprints/Quantum-Depletion-for-Fixed-Bounded-Repulsive-Potentials-October-5-2026/fixed-repulsion-quantum-depletion.pdf`, date: "2026-10-06", version: "v1" },
+    ],
+    provenance: [
+      { summary: "OpenAI lists itself as author and states that an unreleased internal model produced the manuscript collection. Its Lean formalization covers uniform ground-state condensation for hard spheres, not the bounded-potential theorem or the depletion asymptotics. This is OpenAI's account; the formalization was not rebuilt here.", url: `${OAI}lean/docs/267.md` },
+    ],
     title: "Bose–Einstein condensation at fixed density",
     statement: r`For a homogeneous three-dimensional Bose gas with a fixed nonnegative finite-range two-body potential, prove at zero temperature that the largest eigenvalue of the one-body density matrix is at least $cN$ in the thermodynamic limit $N/L^3=\rho$, for sufficiently small fixed gas parameter $\rho a^3>0$ and some $c>0$.`,
     context: r`Use periodic boxes, fixed kinetic-energy normalization and a potential with positive scattering length $a$. The density and potential stay fixed as the box grows: this is not a mean-field or Gross–Pitaevskii scaling limit.
 
 Established baseline: rigorous energy asymptotics and condensation theorems in other scaling regimes provide substantial progress but do not imply a macroscopic one-body eigenvalue in this homogeneous fixed-density limit. Solovej's 2025 account explicitly separates the energy expansion from this condensation question.
 
-Positive-temperature condensation and quantitative depletion are further targets, not required for the zero-temperature existence benchmark.`,
-    refs: [{ label: "Solovej, 'Mathematical physics of dilute Bose gases', C. R. Physique 26, 339–348 (2025), sections 5 and 8", url: "https://comptes-rendus.academie-sciences.fr/physique/item/10.5802/crphys.247.pdf" }],
+Positive-temperature condensation and quantitative depletion are further targets, not required for the zero-temperature existence benchmark.
+
+Claimed resolution (OpenAI Math Release, public 6 October 2026; manuscripts dated 24 September–5 October): for every bounded, measurable, nonnegative, radial finite-range potential that is not almost everywhere zero, the constant-orbital condensate fraction on periodic boxes is claimed to be bounded below uniformly for all sufficiently small fixed densities and temperatures $0\le T\le\rho^2$, including the zero-temperature state. A separate manuscript claims ground-state condensation for hard spheres, and companions claim positive-temperature condensation and Bogoliubov depletion asymptotics. These cover the radial potentials of the standard formulation; a non-radial bounded potential is outside the stated theorems. The manuscripts are GitHub releases, not arXiv preprints. Marked “Claimed solved” pending independent assessment.`,
+    refs: [
+      { label: "Solovej, 'Mathematical physics of dilute Bose gases', C. R. Physique 26, 339–348 (2025), sections 5 and 8", url: "https://comptes-rendus.academie-sciences.fr/physique/item/10.5802/crphys.247.pdf" },
+      { label: "OpenAI, 'A density-uniform condensate bound for dilute Bose gases' (OpenAI Math Release manuscript, dated 27 September 2026; public 6 October 2026)", url: `${OAI}preprints/A-density-uniform-condensate-bound-for-dilute-Bose-gases-September-27-2026/paper.pdf` },
+      { label: "OpenAI, 'Ground-state condensation in the dilute hard-sphere gas' (OpenAI Math Release manuscript, dated 24 September 2026; public 6 October 2026)", url: `${OAI}preprints/Ground-state-condensation-in-the-dilute-hard-sphere-gas-September-24-2026/paper.pdf` },
+    ],
   },
 
-  { id: "B14", cat: "many-body", horizon: "sharp",
+  { id: "B14", cat: "many-body", horizon: "sharp", status: "improved",
+    reviewedAt: "2026-10-17",
+    provenance: [
+      { summary: "OpenAI lists itself as author and states that an unreleased internal model produced the manuscript collection. Its Lean formalization reports the spherical Fock-space gap inequality and a planar inequality; the torus statement is not among them. This is OpenAI's account; the formalization was not rebuilt here.", url: `${OAI}lean/docs/269.md` },
+      { summary: "Gao states that Claude Opus 5.5 completed the proof of the improvement and the SDP search under the author's direction, and declares the accompanying code and data AI-generated.", url: "https://arxiv.org/abs/2610.12700v1", version: "v1" },
+      { summary: "Scheer and Khalaf acknowledge ChatGPT 5.5, 5.6 Sol and 5.6 Astra, Claude Fable 5.1 and Opus 5.5 for literature search and further assistance.", url: "https://arxiv.org/abs/2610.18854v1", version: "v1" },
+    ],
     title: "Laughlin bulk spectral gap",
     statement: r`For the full fermionic $\nu=1/3$ Haldane $V_1$ pseudopotential projected to the lowest Landau level on tori with fixed magnetic length and bounded aspect ratio, prove a system-size-independent positive energy gap above its ground space at $N_\phi=3N$.`,
     context: r`The energy normalization is fixed as particle number grows. The target is the untruncated parent Hamiltonian in the two-dimensional thermodynamic limit, not a thin-cylinder approximation and not uniqueness of a topologically degenerate ground space.
 
 Established baseline: Warzel and Young prove a gap for a thin-torus truncated model. That important theorem does not establish the full pseudopotential gap on bounded-aspect-ratio tori.
 
-Preprint progress (2026): Schraven and Warzel study thin-cylinder Laughlin correlations and an entanglement-spectrum gap. An entanglement-spectrum gap is not the Hamiltonian excitation gap sought here. Rigorous finite-size criteria or controlled approximation errors connecting a solved model to the full parent would be meaningful partial progress.`,
+Preprint progress (2026): Schraven and Warzel study thin-cylinder Laughlin correlations and an entanglement-spectrum gap. An entanglement-spectrum gap is not the Hamiltonian excitation gap sought here. Rigorous finite-size criteria or controlled approximation errors connecting a solved model to the full parent would be meaningful partial progress.
+
+Preprint progress (OpenAI Math Release, public 6 October 2026; manuscript dated 24 September): via a Knabe-type Fock-space inequality $H_Q^2\ge\gamma H_Q$, the full fermionic $V_1$ Hamiltonian on the round sphere is claimed to have a gap of at least $1/25$ above the Laughlin state for all large systems. A 5 October companion claims stability under weak bounded projected one-body potentials. Independent arXiv follow-ups use the same strategy: Gao (8 October) raises the certified spherical constant to give a gap of at least $1/5$ and a planar spectral bound, while Scheer and Khalaf (13 October) give an exact-rational SDP hierarchy with a certified thermodynamic limit on the sphere and leave the torus to future work. The sphere has a different geometry and ground-space structure from the bounded-aspect-ratio tori of the statement, so the torus gap remains open here.`,
     relations: [{ id: "M6", type: "related" }, { id: "B9", type: "parent" }],
-    evidence: [{ kind: "preprint", summary: "Thin-cylinder correlation decay and an entanglement-spectrum gap; not a proof of the full bulk energy gap.", url: "https://arxiv.org/abs/2601.12165" }],
+    evidence: [
+      { kind: "preprint", summary: "Claimed uniform gap of at least $1/25$ above the Laughlin state for the full $V_1$ interaction on the round sphere; not the torus statement. OpenAI GitHub manuscript.", url: `${OAI}preprints/A-Fock-space-inequality-and-the-Laughlin-spectral-gap-September-24-2026/A-Fock-space-inequality-and-the-Laughlin-spectral-gap-September-24-2026.pdf`, date: "2026-10-06", version: "v1" },
+      { kind: "preprint", summary: "Exact-rational SDP strengthening of the spherical Fock-space inequality to a gap of at least $1/5$, plus a planar spectral lower bound.", url: "https://arxiv.org/abs/2610.12700v1", date: "2026-10-08", version: "v1" },
+      { kind: "preprint", summary: "Hierarchy of exact SDP lower bounds on the spherical Laughlin gap, certified in the thermodynamic limit; the torus is left open.", url: "https://arxiv.org/abs/2610.18854v1", date: "2026-10-13", version: "v1" },
+      { kind: "preprint", summary: "Thin-cylinder correlation decay and an entanglement-spectrum gap; not a proof of the full bulk energy gap.", url: "https://arxiv.org/abs/2601.12165" }],
     refs: [
+      { label: "OpenAI, 'A Fock-space inequality and the Laughlin spectral gap' (OpenAI Math Release manuscript, dated 24 September 2026; public 6 October 2026)", url: `${OAI}preprints/A-Fock-space-inequality-and-the-Laughlin-spectral-gap-September-24-2026/A-Fock-space-inequality-and-the-Laughlin-spectral-gap-September-24-2026.pdf` },
+      { label: "Qiang Gao, 'Improving the lower bound on the Laughlin gap: An SDP search' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.12700v1" },
+      { label: "Scheer & Khalaf, 'A hierarchy of exact lower bounds on the Laughlin spectral gap' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.18854v1" },
       { label: "Warzel & Young, 'The spectral gap of a fractional quantum Hall system on a thin torus', J. Math. Phys. 63, 041901 (2022)", url: "https://arxiv.org/abs/2112.13764" },
       { label: "Young, 'On a bulk gap strategy for quantum lattice models', Rev. Math. Phys. 36, 2460007 (2024)", url: "https://arxiv.org/abs/2308.01405" },
       { label: "Schraven & Warzel, 'Fractional Quantum Hall States: Infinite Matrix Product Representation and its Implications' (2026 preprint) — thin-cylinder correlations and entanglement-spectrum gap", url: "https://arxiv.org/abs/2601.12165" },

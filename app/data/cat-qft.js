@@ -57,7 +57,14 @@ This historical umbrella is merged into QF1, QF3 and QF5. Their results must ult
       { label: "Montvay & Münster, 'Quantum Fields on a Lattice' (Cambridge University Press, 1994)", url: "https://doi.org/10.1017/CBO9780511470783" },
     ] },
 
-  { id: "QF5", cat: "qft", horizon: "programme",
+  { id: "QF5", cat: "qft", horizon: "programme", status: "improved",
+    reviewedAt: "2026-10-17",
+    evidence: [
+      { kind: "preprint", summary: "Claimed nonperturbative gauge-invariant overlap-fermion measure on 4D lattices for a class of non-Abelian chiral gauge theories including the Standard Model, on admissible gauge fields; the interacting continuum theory is not constructed.", url: "https://arxiv.org/abs/2610.09093v1", date: "2026-10-06", version: "v1" },
+    ],
+    provenance: [
+      { summary: "Craig, who lists affiliations including OpenAI, states that GPT-6 Astra was essential: after iterations with Astra and outside experts, the proof is Astra-led, the manuscript combines author-written sections with rewrites of Astra's proof, and Astra carried out Lean and other checks.", url: "https://arxiv.org/abs/2610.09093v1", version: "v1" },
+    ],
     title: "Chiral gauge theories on the lattice",
     statement: r`Construct nonperturbative regulators for non-Abelian chiral gauge theories with all local and global anomalies cancelled, proving locality, global gauge consistency, removal of unwanted mirror modes and the required continuum fermion content.`,
     context: r`Putting chiral fermions on a lattice is obstructed by the Nielsen–Ninomiya theorem: a local, translation-invariant, hermitian lattice fermion action with the right symmetries necessarily produces species doublers, spoiling chirality. This is why nonperturbatively defining the electroweak (chiral) sector is hard, whereas vector-like QCD is fine.
@@ -66,8 +73,11 @@ What is known: The Ginsparg–Wilson relation and overlap/domain-wall constructi
 
 Published progress (July 2026): Thorngren, Preskill and Fidkowski propose symmetry disentanglers that convert suitable non-on-site symmetries into on-site ones. Their explicit Abelian examples and low-dimensional constructions do not establish a general non-Abelian regulator with the desired interacting continuum limit.
 
+Preprint progress (6 October 2026, v1): Craig claims a nonperturbative gauge-invariant fermion measure for overlap fermions on four-dimensional Euclidean lattices, for a class of non-Abelian chiral gauge theories that includes the Standard Model. On admissible gauge fields, comparing chiral projectors at successive lattice spacings yields an exponentially local current with the global properties required by Lüscher's reconstruction theorem. The author presents this as a candidate lattice definition. Admissibility restrictions, reflection positivity and the interacting continuum limit remain open, as the paper states.
+
 A general, nonperturbative construction of an arbitrary anomaly-free non-abelian chiral gauge theory with the correct continuum limit is still open. Related: QF4.`,
     refs: [
+      { label: "Craig, 'A gauge-invariant measure for lattice chiral fermions' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.09093v1" },
       { label: "Nielsen & Ninomiya, 'Absence of neutrinos on a lattice: (I). Proof by homotopy theory', Nucl. Phys. B185, 20–40 (1981)", url: "https://doi.org/10.1016/0550-3213(81)90361-8" },
       { label: "Lüscher, 'Abelian chiral gauge theories on the lattice with exact gauge invariance', Nucl. Phys. B549 (1999)", url: "https://arxiv.org/abs/hep-lat/9811032" },
       { label: "Kaplan, 'Chiral gauge theory at the boundary between topological phases', PRL 132, 141603 (2024; preprint 2023)", url: "https://arxiv.org/abs/2312.01494" },

@@ -38,10 +38,11 @@ This entry is archived as merged. Compare axiom independence and composition und
 
   { id: "F3", cat: "foundations", horizon: "conceptual", status: "improved",
     provenance: [
+      { summary: "Pompili and Weilenmann report GPT-5.6 Sol assistance: suggesting an initial version of Theorem 2, pointing to literature, checking calculations and correcting grammar. They report verifying all arguments.", url: "https://arxiv.org/abs/2610.06604v1", version: "v1" },
       { summary: "Hoffreumon and Woods report Grammarly for editing and ChatGPT 5.6 Sol for identifying and expanding overly terse passages.", url: "https://arxiv.org/html/2610.03644v1", version: "v1" },
       { summary: "Dmello et al. state that artificial intelligence was not used in any meaningful capacity in this work. This is their declaration, not an independent provenance audit.", url: "https://arxiv.org/html/2610.03694v1", version: "v1" },
     ],
-    reviewedAt: "2026-10-05",
+    reviewedAt: "2026-10-17",
     title: "Operational reconstruction of quantum theory",
     statement: r`For specified operational axioms and composite-system rules, establish their independence and reconstruction power, and determine which alternative theories are experimentally distinguishable; extend controlled reconstructions beyond their finite-dimensional assumptions.`,
     context: r`Quantum theory's mathematical apparatus — Hilbert spaces, composition, completely positive maps and outcome probabilities — is usually postulated. Reconstruction asks which operational or information-theoretic axioms select the usual quantum predictions, and which assumptions rule out physically different alternatives rather than equivalent representations.
@@ -56,8 +57,12 @@ Preprint progress (9 September 2026, v1): Gachechiladze and Miklin derive the Ts
 
 Preprint progress (2 October 2026, v1): Dmello, Xu, Renou and Gross characterize finite-dimensional quantum theory using specified two-body correlations plus stability under arbitrarily iterated teleportation. The latter is a hierarchy with one condition per teleportation length; the result is not a finite experimental certification of all operational axioms.
 
-Hoffreumon and Woods' same-day clarification argues that operational source independence does not entail product-state independence. This is an attributed interpretation of the real-versus-complex debate; Renou et al.'s network separation retains its force under its stated product-source postulate.`,
+Hoffreumon and Woods' same-day clarification argues that operational source independence does not entail product-state independence. This is an attributed interpretation of the real-versus-complex debate; Renou et al.'s network separation retains its force under its stated product-source postulate.
+
+Principle-based characterizations (5–6 October 2026, v1): Ramanathan shows that the convex hull of no-signalling behaviors obeying a common-overlap no-disturbance-without-uncertainty condition equals the finite-dimensional quantum set when one party has two binary measurements, including the full simplest Bell scenario. Pompili and Weilenmann show that information causality, in all known formulations, admits post-quantum correlations already with three inputs and two outcomes per party. The first characterizes quantum correlations in restricted scenarios, and the second shows a candidate principle failing to do so. Neither reconstructs states, transformations or composition rules.`,
     evidence: [
+      { kind: "preprint", summary: "A no-disturbance-without-uncertainty condition yields exactly the quantum behavior set when one party has two binary measurements; a restricted Bell-scenario characterization.", url: "https://arxiv.org/abs/2610.08749v1", date: "2026-10-06", version: "v1" },
+      { kind: "preprint", summary: "Information causality, in all known formulations, admits post-quantum correlations with three inputs and two outcomes per party.", url: "https://arxiv.org/abs/2610.06604v1", date: "2026-10-05", version: "v1" },
       { kind: "preprint", summary: "Operational characterization conditional on correlations and an unbounded teleportation hierarchy.", url: "https://arxiv.org/abs/2610.03694v1", date: "2026-10-02", version: "v1" },
       { kind: "preprint", summary: "Clarifies the role of product-source versus operational independence in real-theory tests; does not refute the original conditional network theorem.", url: "https://arxiv.org/abs/2610.03644v1", date: "2026-10-02", version: "v1" },
       { kind: "preprint", summary: "Derives the TLM correlator boundary and constraints beyond macroscopic locality; the full power for complete behaviors and almost-quantum correlations remains unresolved.", url: "https://arxiv.org/abs/2609.10508v1", date: "2026-09-09", version: "v1" },
@@ -65,6 +70,8 @@ Hoffreumon and Woods' same-day clarification argues that operational source inde
       { kind: "preprint", summary: "Operational source independence and product-state independence are distinguished in real simulations of quantum protocols.", url: "https://arxiv.org/abs/2603.19208v1", date: "2026-03-19", version: "v1" },
     ],
     refs: [
+      { label: "Ramanathan, 'No-Disturbance-without-Uncertainty generates the Quantum set in the simplest Bell scenario' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.08749v1" },
+      { label: "Pompili & Weilenmann, 'Information causality does not single out the set of quantum correlations' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.06604v1" },
       { label: "Lionel J. Dmello, Xiangling Xu, Marc-Olivier Renou, David Gross, 'An operational characterization of finite-dimensional quantum theory' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.03694v1" },
       { label: "Timothée Hoffreumon, Mischa P. Woods, 'Clarifications on the Experimental Status of Real Quantum Theory' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.03644v1" },
       { label: "Gachechiladze & Miklin, 'Information Causality Characterizes the Set of Quantum Correlations in the Simplest Bell Scenario' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.10508v1" },

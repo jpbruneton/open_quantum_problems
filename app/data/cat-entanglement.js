@@ -1,4 +1,6 @@
 const r = String.raw;
+// OpenAI Math Release, pinned to the commit reviewed on 17 October 2026.
+const OAI = "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/";
 
 export const ENTANGLEMENT = [
   { id: "E1", cat: "entanglement", horizon: "sharp", status: "improved",
@@ -338,10 +340,16 @@ A unique universal definition independent of laboratories, observables and free 
       {"label":"Benatti et al., 'Entanglement in indistinguishable particle systems', Physics Reports 878 (2020)","url":"https://arxiv.org/abs/2007.06253"},
       { label: "Wiseman & Vaccaro, 'Entanglement of indistinguishable particles shared between two parties', PRL 91, 097902 (2003)", url: "https://arxiv.org/abs/quant-ph/0210002" },
     ] },
-  { id: "E16", cat: "entanglement", horizon: "sharp",
+  { id: "E16", cat: "entanglement", horizon: "sharp", status: "claimed-solved",
+    reviewedAt: "2026-10-17",
     title: "Entangled states with zero distillable secret key",
-    relations: [{ id: "E1", type: "related" }, { id: "C5", type: "related" }],
-    evidence: [{ kind: "published", summary: "The 2026 resource theory of quantum secret key explicitly treats the existence of entangled zero-key states as unresolved.", url: "https://doi.org/10.22331/q-2026-05-06-2098", date: "2026-05-06" }],
+    relations: [{ id: "E1", type: "related" }, { id: "C5", type: "related" }, { id: "C12", type: "related" }],
+    provenance: [
+      { summary: "OpenAI lists itself as author and states that an unreleased internal model produced the manuscript collection. The family's Lean formalization covers the PPT-composition counterexamples; the zero-key statement is outside it. Supplied exact-arithmetic scripts check only finite arithmetic components. This is OpenAI's account.", url: `${OAI}lean/docs/272.md` },
+    ],
+    evidence: [
+      { kind: "preprint", summary: "Claimed explicit entangled state on $\\mathbb C^{10}\\otimes\\mathbb C^{10}$ with $K_D=0$ against admitted LOCC protocols, including all finite two-way protocols with a purifying eavesdropper; OpenAI GitHub manuscript, pending assessment.", url: `${OAI}preprints/Entanglement-with-zero-distillable-secret-key-in-local-dimension-ten-September-27-2026/paper.pdf`, date: "2026-10-06", version: "v1" },
+      { kind: "published", summary: "The 2026 resource theory of quantum secret key explicitly treats the existence of entangled zero-key states as unresolved.", url: "https://doi.org/10.22331/q-2026-05-06-2098", date: "2026-05-06" }],
     statement: r`Does there exist a finite-dimensional bipartite entangled state $\rho$ with $K_D(\rho)=0$, when key is distilled by LOCC with authenticated public communication and an adversary holds a purification?`,
     context: r`Distillable secret key $K_D$ is the asymptotic rate of shared classical bits that are uniform and independent of an adversary. The question asks whether this quantity is faithful on entangled bipartite states: does every entangled state contain some distillable secrecy?
 
@@ -349,8 +357,11 @@ Distillable entanglement implies distillable key, but the converse fails: PPT bo
 
 Horodecki–Sikorski–Das–Wilde's published 2026 resource theory explicitly allows for the unresolved possibility of entangled zero-key states. Calling this version “mathematical bound key” avoids silently identifying it with other conjectures involving a positive key-formation cost, whose definition requires additional care.
 
-A proof that $K_D$ is positive for every entangled state, or one explicit entangled state with a rigorous zero-key converse against arbitrary LOCC protocols, resolves this sharp question. No finite-copy failure or numerical lack of a protocol establishes the required asymptotic zero.`,
+A proof that $K_D$ is positive for every entangled state, or one explicit entangled state with a rigorous zero-key converse against arbitrary LOCC protocols, resolves this sharp question. No finite-copy failure or numerical lack of a protocol establishes the required asymptotic zero.
+
+Claimed resolution (OpenAI Math Release, public 6 October 2026; manuscript dated 27 September): an explicit entangled state on $\mathbb C^{10}\otimes\mathbb C^{10}$, with no product vector in its range, is claimed to have $K_D=0$. The converse bounds the error of any single output key bit below by a constant, for every admitted protocol on any number of copies. Admitted protocols include ordinary finite two-way LOCC with authenticated public communication, local auxiliaries and private randomness, plus specified countable processes; Eve holds a purification and the full public record. The state is the normalized Choi matrix of a composition of two PPT maps, which is also claimed to disprove the PPT-squared conjecture (C12). The manuscript is a GitHub release, not an arXiv preprint, and the zero-key theorem is not Lean-formalized. Marked “Claimed solved” pending independent assessment.`,
     refs: [
+      { label: "OpenAI, 'Entanglement with zero distillable secret key in local dimension ten' (OpenAI Math Release manuscript, dated 27 September 2026; public 6 October 2026)", url: `${OAI}preprints/Entanglement-with-zero-distillable-secret-key-in-local-dimension-ten-September-27-2026/paper.pdf` },
       { label: "Horodecki, Sikorski, Das & Wilde, 'Cost of quantum secret key', Quantum 10, 2098 (2026)", url: "https://doi.org/10.22331/q-2026-05-06-2098" },
       { label: "Horodecki et al., 'Secure key from bound entanglement', PRL 94, 160502 (2005)", url: "https://doi.org/10.1103/PhysRevLett.94.160502" },
     ] },

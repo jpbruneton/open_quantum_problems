@@ -1,4 +1,6 @@
 const r = String.raw;
+// OpenAI Math Release, pinned to the commit reviewed on 17 October 2026.
+const OAI = "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/";
 
 export const NONLOCALITY = [
   { id: "N1", cat: "nonlocality", horizon: "sharp",
@@ -19,10 +21,14 @@ A general proof or one dimension admitting no SIC resolves the stated sharp ques
       { label: "Scott & Grassl, 'SIC-POVMs: A new computer study', J. Math. Phys. 51 (2010)", url: "https://arxiv.org/abs/0910.5784" },
     ] },
 
-  { id: "N2", cat: "nonlocality", horizon: "sharp", status: "improved",
+  { id: "N2", cat: "nonlocality", horizon: "sharp", status: "claimed-solved",
+    reviewedAt: "2026-10-17",
     relations: [{ id: "N3", type: "parent" }],
-    evidence: [{ kind: "preprint", summary: "Claimed classification of order-six complex Hadamard matrices; simultaneous mutual-unbiasedness constraints remain additional and M(6) is not determined.", url: "https://arxiv.org/abs/2608.18053", date: "2026-08-18" }],
-    provenance: [{ summary: "Cárdenes Wuttig and Tindall disclose interactive assistance from ChatGPT Sol 5.6 Pro, Codex 5.6 Sol and Claude Opus 5.0 in proofs, searches, algebra and verification code. They state that they repaired or rejected incorrect proposals and independently checked retained material.", url: "https://arxiv.org/abs/2608.18053" }],
+    evidence: [
+      { kind: "preprint", summary: "Claimed $M(6)=3$; the exclusion of four bases is computer-assisted under stated binary64 arithmetic and compiler conditions. OpenAI GitHub manuscript, pending assessment.", url: `${OAI}preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026.pdf`, date: "2026-10-06", version: "v1" },
+      { kind: "preprint", summary: "Claimed classification of order-six complex Hadamard matrices; simultaneous mutual-unbiasedness constraints remain additional and M(6) is not determined.", url: "https://arxiv.org/abs/2608.18053", date: "2026-08-18" }],
+    provenance: [{ summary: "Cárdenes Wuttig and Tindall disclose interactive assistance from ChatGPT Sol 5.6 Pro, Codex 5.6 Sol and Claude Opus 5.0 in proofs, searches, algebra and verification code. They state that they repaired or rejected incorrect proposals and independently checked retained material.", url: "https://arxiv.org/abs/2608.18053" },
+      { summary: "OpenAI lists itself as author and states that an unreleased internal model produced the manuscript collection. Its Lean formalization proves only a five-basis upper bound and supporting Fourier statements, not $M(6)=3$. This is OpenAI's account; the formalization and verification pipeline were not rerun here.", url: `${OAI}lean/docs/266.md` }],
     title: "Mutually unbiased bases in dimension six",
     statement: r`Determine the maximal number $M(6)$ of mutually unbiased bases in $\mathbb{C}^6$; in particular decide whether $M(6)=3$ or whether four or more exist.`,
     context: r`Two orthonormal bases are mutually unbiased if $|\langle e_i|f_j\rangle|^2=1/d$ for every pair of vectors. Complete sets of $d+1$ bases exist in prime-power dimensions. Dimension six is the smallest remaining case and is retained as the flagship benchmark of N3.
@@ -31,8 +37,11 @@ Tensor-product constructions give $M(6)\geq3$, while the general dimension bound
 
 Preprint progress (August 2026): Cárdenes Wuttig and Tindall claim a complete exact finite-incidence classification of order-six complex Hadamard matrices, including Szöllősi's conjecture. This concerns individual matrices up to standard equivalence. A MUB set additionally requires simultaneous mutual unbiasedness between several matrices, so this claimed auxiliary classification does not determine $M(6)$.
 
-The sharp target remains whether four or more MUBs exist, and ultimately the exact value of $M(6)$.`,
+The sharp target was whether four or more MUBs exist, and ultimately the exact value of $M(6)$.
+
+Claimed resolution (OpenAI Math Release, public 6 October 2026; manuscript dated 24 September): $M(6)=3$ is claimed, resolving Zauner's dimension-six conjecture. The upper bound is computer-assisted: an exhaustive seed cover and certified phase-ball atlas exclude four arbitrary bases, under the stated binary64 arithmetic and compiler conditions for a complete run of the documented pipeline. A companion proves Fourier-vanishing certificates for order-six complex Hadamard matrices. The Lean formalization proves only a five-basis bound, and the pipeline was not rerun here. The manuscripts are GitHub releases, not arXiv preprints. Marked “Claimed solved” pending independent assessment, including of the floating-point certification.`,
     refs: [
+      { label: "OpenAI, 'The maximum number of mutually unbiased bases in dimension six' (OpenAI Math Release manuscript, dated 24 September 2026; public 6 October 2026)", url: `${OAI}preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026.pdf` },
       { label: "Durt, Englert, Bengtsson, Życzkowski, 'On mutually unbiased bases', Int. J. Quantum Inf. 8 (2010)", url: "https://arxiv.org/abs/1004.3348" },
       { label: "Brierley & Weigert, 'Maximal sets of mutually unbiased quantum states in dimension six', PRA 78 (2008)", url: "https://arxiv.org/abs/0808.1614" },
       { label: "Cárdenes Wuttig & Tindall, 'A Complete Classification of Complex Hadamard Matrices of Order Six' (2026 preprint)", url: "https://arxiv.org/abs/2608.18053" },
@@ -66,16 +75,26 @@ Constructive progress (30 September 2026, v1): Cárdenes Wuttig and Tindall repo
       { label: "Wu, Liu & Wu, 'Numerical Search for Extensions of Tensor-Product Mutually Unbiased Bases in Non-Prime-Power Composite Dimensions up to 100' (2026)", url: "https://doi.org/10.3390/info17080796" },
     ] },
 
-  { id: "N4", cat: "nonlocality", horizon: "incremental",
+  { id: "N4", cat: "nonlocality", horizon: "incremental", status: "improved",
+    reviewedAt: "2026-10-17",
     relations: [{ id: "N5", type: "related" }, { id: "N6", type: "related" }],
+    evidence: [
+      { kind: "preprint", summary: "Explicit binary linear system game separating $C_{qa}$ from $C_{qc}$, with the separation and exact classical value formalized in Lean 4; explicit but far from minimal.", url: "https://arxiv.org/abs/2610.10248v2", date: "2026-10-07", version: "v2" },
+    ],
+    provenance: [
+      { summary: "Gao, Yu and Zhi report GPT 6 Astra and Fable 5.1 assistance with mathematical exploration, proof development, implementation and computational verification of the construction, Lean 4 code and manuscript drafting.", url: "https://arxiv.org/abs/2610.10248v2", version: "v2" },
+    ],
     title: "Minimal separation of quantum correlation models",
     statement: r`For each separation $C_q\ne C_{qa}$ and $C_{qa}\ne C_{qc}$, determine minimal input/output tuples under a stated ordering, and construct explicit small witnesses.`,
     context: r`Finite-dimensional tensor-product correlations form $C_q$; their closure is $C_{qa}$; commuting-operator correlations form $C_{qc}$. Nonclosure of $C_q$ and separation of $C_{qa}$ from $C_{qc}$ are different established phenomena, not one undifferentiated separation.
 
 Slofstra proved nonclosure of finite-dimensional quantum correlations. Dykema–Paulsen–Prakash give an explicit five-input, two-output nonclosure example. MIP*=RE establishes $C_{qa}\ne C_{qc}$ and refutes the corresponding Tsirelson/Connes conjectures. Its construction is effective: calling all these proofs nonconstructive is inaccurate, although the resulting examples can be complicated.
 
-The residual benchmark must specify which two sets are compared and what “smallest” means. Setting counts and output counts form a partial order, so distinct Pareto-minimal scenarios may matter. Useful advances are smaller certified examples, lower bounds excluding separation in specified scenarios and transparent separating correlations.`,
+The residual benchmark must specify which two sets are compared and what “smallest” means. Setting counts and output counts form a partial order, so distinct Pareto-minimal scenarios may matter. Useful advances are smaller certified examples, lower bounds excluding separation in specified scenarios and transparent separating correlations.
+
+Preprint progress (7 October 2026; reviewed at v2): Gao, Yu and Zhi give an explicit binary linear system game with a perfect commuting-operator strategy whose value over $C_{qa}$ is strictly below one, a concrete counterexample to the approximate Tsirelson problem. The system has 1,417,152 equations in 1,889,684 variables and is specified in Lean 4, where the separation and exact classical value are formalized. This makes the $C_{qa}\ne C_{qc}$ witness explicit and machine-checked; it is far from minimal, so the small-witness question remains open.`,
     refs: [
+      { label: "Gao, Yu & Zhi, 'An Explicit Counterexample to Tsirelson's Problem via a Linear System Game' (2026 preprint, v2)", url: "https://arxiv.org/abs/2610.10248v2" },
       {"label":"Dykema, Paulsen & Prakash, 'Non-closure of the set of quantum correlations via graphs' (published 2019)","url":"https://arxiv.org/abs/1709.05032"},
       {"label":"Ji et al., 'MIP*=RE'","url":"https://arxiv.org/abs/2001.04383"},
       { label: "Slofstra, 'The set of quantum correlations is not closed', Forum Math. Pi 7 (2019)", url: "https://arxiv.org/abs/1703.08618" },
@@ -100,9 +119,10 @@ The useful quantitative frontier is restricted families, optimal dimension witne
     ] },
 
   { id: "N6", cat: "nonlocality", horizon: "incremental", status: "improved",
-    reviewedAt: "2026-09-10",
+    reviewedAt: "2026-10-17",
     relations: [{ id: "N4", type: "related" }, { id: "N5", type: "related" }],
     evidence: [
+      { kind: "preprint", summary: "Deciding a perfect quantum strategy for the graph $n$-coloring game is undecidable for every $n\\ge3$; a negative result for one natural restricted family.", url: "https://arxiv.org/abs/2610.05280v1", date: "2026-10-04", version: "v1" },
       { kind: "preprint", summary: "Measurement-unrestricted bounds with specified noisy EPR resources; the general parallel-repetition theorem excludes biased-reset noise and does not decide unrestricted games.", url: "https://arxiv.org/abs/2609.05122v1", date: "2026-09-04", version: "v1" },
       { kind: "preprint", summary: "Nonexactness of fixed NPA levels near a critical doubly-tilted CHSH point, not universal noncomputability in the smallest Bell scenario.", url: "https://arxiv.org/abs/2607.13762", date: "2026-07-15" }, { kind: "preprint", summary: "No finite standard NPA level describes the complete (2,2,2) behavior set; particular functionals can still have finite certificates.", url: "https://arxiv.org/abs/2607.14569", date: "2026-07-16" }],
     provenance: [
@@ -118,8 +138,11 @@ Preprint progress (July 2026): Pakhunov's two manuscripts claim nonexactness of 
 
 N9's former generic solver request is archived here; dimensional aspects are treated in N5. The active target is a precisely described restricted family with a certified algorithm, not a universal solver.
 
-Restricted noisy-resource progress (4 September 2026, v1): Kundu and Lalonde study arbitrarily many noisy EPR pairs. They claim CHSH upper bounds under depolarizing, unital, biased-reset and erasure noise without restricting measurements, and parallel repetition for general games under the first, second and fourth models. These resource-dependent bounds and communication-complexity separations do not give a universal stopping rule for unrestricted games. Biased-reset noise is not included in their general parallel-repetition theorem.`,
+Restricted noisy-resource progress (4 September 2026, v1): Kundu and Lalonde study arbitrarily many noisy EPR pairs. They claim CHSH upper bounds under depolarizing, unital, biased-reset and erasure noise without restricting measurements, and parallel repetition for general games under the first, second and fourth models. These resource-dependent bounds and communication-complexity separations do not give a universal stopping rule for unrestricted games. Biased-reset noise is not included in their general parallel-repetition theorem.
+
+Negative restricted-family result (4 October 2026, v1): Kidmose-Frederiksen and Nielsen reduce quantum 3-coloring to quantum $n$-coloring for every $n\ge3$, extending its undecidability. Thus deciding perfect quantum strategies is undecidable for graph-coloring games of every fixed color count. This rules out that family as a decidable island for the perfect-value question; it does not address additive approximation of values in other restricted families.`,
     refs: [
+      { label: "Kidmose-Frederiksen & Nielsen, 'Quantum n-coloring is undecidable for every n ≥ 3' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.05280v1" },
       { label: "Kundu & Lalonde, 'Non-local games and communication complexity with noisy entanglement' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.05122v1" },
       {"label":"Ji et al., 'MIP*=RE'","url":"https://arxiv.org/abs/2001.04383"},
       {"label":"Qin & Yao, 'Decidability of fully quantum nonlocal games with noisy maximally entangled states' (2023 revision)","url":"https://arxiv.org/abs/2211.10613"},
