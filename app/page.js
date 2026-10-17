@@ -637,7 +637,26 @@ function truncate(s, n) {
   return cut + "…";
 }
 
+// Silent, fire-and-forget visit counter: one beacon per page load (hash
+// navigation doesn't reload, so it counts site visits). See docs/page-views.md.
+function usePageViewBeacon() {
+  useEffect(() => {
+    const payload = JSON.stringify({ slug: "home" });
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon("/api/views", new Blob([payload], { type: "application/json" }));
+    } else {
+      fetch("/api/views", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: payload,
+        keepalive: true,
+      }).catch(() => {});
+    }
+  }, []);
+}
+
 export default function Page() {
+  usePageViewBeacon();
   const route = useHashRoute();
   if (route.view === "category") return <CategoryView key={route.slug} slug={route.slug} />;
   if (route.view === "problem") return <ProblemView id={route.id} />;
