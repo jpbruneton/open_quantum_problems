@@ -45,15 +45,25 @@ The frontier is efficient approximation with certificates, not existence of a un
       { label: "Pollock et al., 'Operational Markov condition for quantum processes', PRL 120, 040405 (2018)", url: "https://arxiv.org/abs/1801.09811" },
     ] },
 
-  { id: "O4", cat: "open-systems", horizon: "incremental",
+  { id: "O4", cat: "open-systems", horizon: "incremental", status: "improved",
+    reviewedAt: "2026-10-26",
+    evidence: [
+      { kind: "preprint", summary: "One-to-one correspondence between CPTP maps from system to environment and Hermiticity- and trace-preserving assignment maps realizing every joint state, with a necessary and sufficient condition for a system state to lie in the validity domain; a characterization of assignments, not a CP-extension criterion for a given preparation family.", url: "https://arxiv.org/abs/2610.27338v1", date: "2026-10-19", version: "v1" },
+    ],
+    provenance: [
+      { summary: "Fullwood and Ye report using Google Gemini for language refinement and as an interactive tool for exploring analytical methods and derivations, with the authors reviewing the content.", url: "https://arxiv.org/html/2610.27338v1", version: "v1" },
+    ],
     title: "Initial system–environment correlations",
     statement: r`For a specified correlated preparation family and class of joint unitaries, characterize the induced reduced maps on their compatibility domain and when they admit a CP extension, distinguishing domain positivity, extension positivity and intervention-based descriptions.`,
     context: r`A fixed product-state environment suffices for a CPTP reduced map on all system inputs; it is not necessary for every correlated preparation family. With initial correlations, different joint states may have the same system marginal, so even a single-valued reduced map requires an assignment or consistency condition. Positivity on the physical compatibility domain is different from a CP extension to the full operator space.
 
 What is known: Pechukas's full-domain linear, positive and consistent assignment assumptions force a fixed-product assignment, not a trivial interaction Hamiltonian. Buscemi gives an information-theoretic CP characterization under specified preparation assumptions. Dominy–Shabani–Lidar distinguish inequivalent notions of CP on restricted domains and explain why discord or information-backflow criteria do not answer every assignment problem. The 2009 Shabani–Lidar claim must be read with its 2016 erratum, not cited as an unrestricted necessary-and-sufficient zero-discord criterion. Process tensors already treat correlations operationally via interventions.
 
-Remaining tasks include checkable CP-extension criteria for physically structured preparation families and robust inference of the admissible domain from limited preparation data. Fix the assignment assumptions and allowed joint dynamics before formulating an iff statement; do not relabel the characterized special cases as open. Related: O5, O3.`,
+Remaining tasks include checkable CP-extension criteria for physically structured preparation families and robust inference of the admissible domain from limited preparation data. Fix the assignment assumptions and allowed joint dynamics before formulating an iff statement; do not relabel the characterized special cases as open. Related: O5, O3.
+
+Preprint progress (19 October 2026, v1): Fullwood and Ye establish a one-to-one correspondence between completely positive trace-preserving maps from the system to the environment and assignment maps that initialize the joint system in a possibly correlated state before the unitary. Every joint state is realized by such an assignment; the maps are Hermiticity- and trace-preserving but not globally positive, and the authors give a necessary and sufficient condition for a system state to lie in the domain of validity, whose geometry is fixed by the joint state assigned to the maximally mixed input. This characterizes the domain-positivity side of the statement for a broad assignment class and supplies an operational witness of its limits. It does not decide, for a given structured preparation family, when the induced reduced map admits a completely positive extension.`,
     refs: [
+      { label: "Fullwood & Ye, 'Assignment maps for arbitrary reduced quantum dynamics' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.27338v1" },
       { label: "Pechukas, 'Reduced dynamics need not be completely positive', PRL 73, 1060 (1994)", url: "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.73.1060" },
       { label: "Shabani & Lidar, 'Vanishing quantum discord is necessary and sufficient for completely positive maps', PRL 102, 100402 (2009; see 2016 erratum)", url: "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.102.100402" },
       { label: "Shabani & Lidar, Erratum, PRL 116, 049901 (2016)", url: "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.116.049901" },
@@ -155,7 +165,7 @@ These newest tensor-network results are preprints with structured-model and nume
       { label: "Pancotti, Saravanan & Svore, 'Exact learning of quantum noise with tensor networks' (2026)", url: "https://arxiv.org/abs/2609.00169" },
     ] },
   { id: "O10", cat: "open-systems", horizon: "incremental", status: "improved",
-    reviewedAt: "2026-10-17",
+    reviewedAt: "2026-10-26",
     provenance: [
       { summary: "Kim acknowledges ChatGPT 5.5, 5.6 Sol and 6 Astra assistance in developing several proof strategies, including the unitalization argument, Assumption 4.3 and the algorithm analysis.", url: "https://arxiv.org/abs/2610.01190v1", version: "v1" },
       { summary: "Chen and Ding report that the work grew from a GPT-6-aided investigation, with GPT-6 used to brainstorm initial proof ideas and draft preliminary calculations; the authors report constructing the proof framework and verifying all arguments.", url: "https://arxiv.org/abs/2610.05848v1", version: "v1" },
@@ -184,11 +194,15 @@ Preprint progress (28 September–2 October 2026, v1): Pilatowsky-Cameo et al. g
 
 Capel, Pérez-García and Scandi claim a modified log-Sobolev constant of order $1/\log n$ for specified noncommuting 1D heat-bath generators. Rouzé and Stilck França obtain logarithmic trace-norm mixing for smoothed block dynamics on chains and stability near reference Hamiltonians satisfying a strict quantum Dobrushin–Shlosman condition. The latter includes controlled noncommuting perturbations of suitable classical models in higher dimensions. Generator normalization, fixed temperature and the reference mixing condition remain essential; arbitrary low-temperature 2D preparation is still unresolved.
 
-Preprint progress (1–5 October 2026, v1): Kim proves $O(\log(n/\varepsilon))$ mixing of a quasi-local Petz-recovery block-update Gibbs sampler for every 1D finite-range Hamiltonian at every finite temperature, with polylogarithmic-depth preparation circuits. Chen and Ding prove $O(\log^4 n+\log(1/\varepsilon))$ trace-norm mixing for the KMS-detailed-balance sampler of Chen, Kastoryano and Gilyén on general 1D noncommuting chains at every fixed positive temperature. These strengthen the one-dimensional picture; the two-dimensional target above remains open.`,
+Preprint progress (1–5 October 2026, v1): Kim proves $O(\log(n/\varepsilon))$ mixing of a quasi-local Petz-recovery block-update Gibbs sampler for every 1D finite-range Hamiltonian at every finite temperature, with polylogarithmic-depth preparation circuits. Chen and Ding prove $O(\log^4 n+\log(1/\varepsilon))$ trace-norm mixing for the KMS-detailed-balance sampler of Chen, Kastoryano and Gilyén on general 1D noncommuting chains at every fixed positive temperature. These strengthen the one-dimensional picture; the two-dimensional target above remains open.
+
+Preprint progress (20–22 October 2026, v1): Gao, Guo and Wang prove a complete modified logarithmic Sobolev inequality with a size-independent constant for the Chen–Kastoryano–Gilyén sampler on 1D chains with bounded finite-range, possibly noncommuting and nonuniform, interactions at every fixed positive temperature, giving $O(\log N+\log(1/\varepsilon))$ mixing. Chen, Ding and Lu give a general route to size-independent $L^2$ and modified log-Sobolev inequalities for KMS-detailed-balanced samplers by transporting along a temperature path from infinite temperature, applied to 1D chains at every finite temperature and to finite-range systems at sufficiently high temperature in any dimension. Chen and Ding's v2 (21 October) adds a modified log-Sobolev rate of order $\log^{-4}n$. All of these are one-dimensional or high-temperature; the low-temperature two-dimensional target is unchanged.`,
     relations: [{ id: "O2", type: "related" }, { id: "O9", type: "related" }, { id: "B5", type: "related" }],
     evidence: [
       { kind: "preprint", summary: "Logarithmic-time mixing of a quasi-local Petz-recovery Gibbs sampler for every 1D finite-range Hamiltonian at every finite temperature; one-dimensional.", url: "https://arxiv.org/abs/2610.01190v1", date: "2026-10-01", version: "v1" },
-      { kind: "preprint", summary: "Polylogarithmic mixing of the KMS-detailed-balance Gibbs sampler for general 1D noncommuting chains at every fixed positive temperature; one-dimensional.", url: "https://arxiv.org/abs/2610.05848v1", date: "2026-10-05", version: "v1" },
+      { kind: "preprint", summary: "Polylogarithmic mixing of the KMS-detailed-balance Gibbs sampler for general 1D noncommuting chains at every fixed positive temperature; v2 adds a modified log-Sobolev rate of order $\\log^{-4}n$; one-dimensional.", url: "https://arxiv.org/abs/2610.05848v2", date: "2026-10-21", version: "v2" },
+      { kind: "preprint", summary: "Size-independent complete modified log-Sobolev inequality for the Chen–Kastoryano–Gilyén sampler on 1D finite-range chains at every fixed positive temperature; one-dimensional.", url: "https://arxiv.org/abs/2610.28600v1", date: "2026-10-20", version: "v1" },
+      { kind: "preprint", summary: "Temperature-path method for size-independent log-Sobolev inequalities of KMS-detailed-balanced samplers; applied to 1D chains at every temperature and to high temperature in any dimension.", url: "https://arxiv.org/abs/2610.31571v1", date: "2026-10-22", version: "v1" },
       { kind: "preprint", summary: "1D constant-depth quantum preparation at fixed temperature, with polynomial classical preprocessing and temperature-dependent constants.", url: "https://arxiv.org/abs/2609.35973v1", date: "2026-09-28", version: "v1" },
       { kind: "preprint", summary: "Modified log-Sobolev inequality and rapid mixing for specified 1D noncommuting heat-bath samplers at fixed positive temperature.", url: "https://arxiv.org/abs/2610.03683v1", date: "2026-10-02", version: "v1" },
       { kind: "preprint", summary: "Block-sampler rapid mixing on chains and near references satisfying a strict quantum Dobrushin–Shlosman condition; not arbitrary low-temperature 2D mixing.", url: "https://arxiv.org/abs/2610.03578v1", date: "2026-10-02", version: "v1" },
@@ -200,7 +214,9 @@ Preprint progress (1–5 October 2026, v1): Kim proves $O(\log(n/\varepsilon))$ 
     ],
     refs: [
       { label: "Leeseok Kim, 'Rapid mixing of quantum spin chains at any finite temperature' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.01190v1" },
-      { label: "Chen & Ding, 'Spectral Analysis Beyond the Spectral Gap: Rapid Mixing of Quantum Gibbs Samplers in One Dimension' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.05848v1" },
+      { label: "Chen & Ding, 'Spectral Analysis Beyond the Spectral Gap: Rapid Mixing of Quantum Gibbs Samplers in One Dimension' (2026 preprint, v2)", url: "https://arxiv.org/abs/2610.05848v2" },
+      { label: "Gao, Guo & Wang, 'Complete Modified Logarithmic Sobolev Inequalities for one-dimensional quantum Spin Chain' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.28600v1" },
+      { label: "Chen, Ding & Lu, 'Size-independent Logarithmic Sobolev Inequalities for Quantum Gibbs Samplers' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.31571v1" },
       { label: "Saúl Pilatowsky-Cameo, Georgios Styliaris, Ainesh Bakshi, Daniel Malz, 'One-dimensional quantum Gibbs states in constant circuit depth' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.35973v1" },
       { label: "Ángela Capel, David Pérez-García, Matteo Scandi, 'Modified logarithmic Sobolev inequality for 1D non-commuting Hamiltonians' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.03683v1" },
       { label: "Cambyse Rouzé, Daniel Stilck França, 'Rapid mixing of Gibbs samplers via quantum Dobrushin--Shlosman conditions' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.03578v1" },

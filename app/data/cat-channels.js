@@ -4,13 +4,14 @@ const OAI = "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a
 
 export const CHANNELS = [
   { id: "C1", cat: "channels", horizon: "incremental", status: "improved",
-    reviewedAt: "2026-10-17",
+    reviewedAt: "2026-10-26",
     relations: [{ id: "C11", type: "benchmark" }, { id: "U4", type: "related" }, { id: "C4", type: "related" }, { id: "C5", type: "related" }],
     evidence: [
       { kind: "preprint", summary: "Claimed unassisted classical capacity of every qubit generalized amplitude-damping channel, with Holevo-capacity and minimum-output-entropy additivity against every finite-dimensional partner; classical, not quantum, capacity. OpenAI GitHub manuscript.", url: `${OAI}preprints/Classical-capacity-and-entropy-inequalities-for-generalized-amplitude-damping-September-24-2026/paper.pdf`, date: "2026-10-06", version: "v1" },
       { kind: "preprint", summary: "Claimed additivity for qubit channels with a pure output, including amplitude-damping classical capacity and parallel entanglement cost.", url: "https://arxiv.org/abs/2609.28592v1", date: "2026-09-23", version: "v1" },
       { kind: "preprint", summary: "Convergent amplitude-damping capacity series and truncation bounds; classical capacity relies on the preceding additivity claim.", url: "https://arxiv.org/abs/2609.31609v1", date: "2026-09-25", version: "v1" },
       { kind: "preprint", summary: "Explicit non-random minimum-output entropy nonadditivity; v2 extends the gap to prescribed Renyi-order ranges.", url: "https://arxiv.org/abs/2609.23946v2", date: "2026-09-24", version: "v2" },
+      { kind: "preprint", summary: "Explicit channels with strictly subadditive minimum output Rényi entropy for every $p>1$, from subspaces of high geometric measure of entanglement; accepted to FOCS 2026. A nonadditivity result, not a capacity formula.", url: "https://arxiv.org/abs/2510.07547v2", date: "2026-01-25", version: "v2" },
       { kind: "preprint", summary: "Explicit qutrit zero-Q, zero-P channel outside the PPT and antidegradable classes; not a general capacity-computability theorem.", url: "https://arxiv.org/abs/2607.24693", date: "2026-07-27" }],
     provenance: [
       { summary: "OpenAI lists itself as author and states that an unreleased internal model produced the manuscript collection. It reports a Lean formalization of the generalized amplitude-damping capacity and additivity statement; it was not rebuilt here.", url: `${OAI}lean/docs/276.md` },
@@ -30,12 +31,15 @@ The depolarizing-channel threshold and its August certificate have been promoted
 
 Preprint progress (23–25 September 2026): Tang, Zhu, Bai and Wang claim strong additivity of Holevo information and channel entanglement of formation for qubit channels admitting a pure output, yielding amplitude-damping classical capacity and parallel entanglement cost. These are distinct from unassisted quantum capacity. Pirandola gives convergent series for amplitude-damping quantum, classical and entanglement-assisted capacities, with truncation control; the classical series uses the preceding additivity claim. Shou and Gorshkov separately give explicit non-random counterexamples to minimum-output von Neumann entropy additivity (v2). None yields a universal finite-letter quantum-capacity formula.
 
-Preprint progress (OpenAI Math Release, public 6 October 2026; manuscript dated 24 September): the unassisted classical capacity of every qubit generalized amplitude-damping channel, at all damping and thermal parameters, is claimed to equal its one-shot Holevo capacity, given by a one-variable maximum. Holevo capacity, minimum output entropy and regularized classical capacity are claimed additive under tensor products with every finite-dimensional channel. This extends the September pure-output amplitude-damping result to the thermal family. It concerns classical capacity, so the quantum-capacity formulas targeted here remain open. The manuscript is a GitHub release, not an arXiv preprint.`,
+Preprint progress (OpenAI Math Release, public 6 October 2026; manuscript dated 24 September): the unassisted classical capacity of every qubit generalized amplitude-damping channel, at all damping and thermal parameters, is claimed to equal its one-shot Holevo capacity, given by a one-variable maximum. Holevo capacity, minimum output entropy and regularized classical capacity are claimed additive under tensor products with every finite-dimensional channel. This extends the September pure-output amplitude-damping result to the thermal family. It concerns classical capacity, so the quantum-capacity formulas targeted here remain open. The manuscript is a GitHub release, not an arXiv preprint.
+
+Conference record (October 2026): Derksen and Lovitz's explicit channels with strictly subadditive minimum output Rényi entropy for every order $p>1$ (October 2025 preprint, revised January 2026), built from subspaces of high geometric measure of entanglement, are accepted at FOCS 2026 (8–11 November). Together with the Shou–Gorshkov von Neumann counterexample this makes explicit nonadditivity available at every Rényi order; it is a negative result for single-letter formulas, not a capacity theorem.`,
     refs: [
       { label: "OpenAI, 'Classical capacity and entropy inequalities for generalized amplitude damping' (OpenAI Math Release manuscript, dated 24 September 2026; public 6 October 2026)", url: `${OAI}preprints/Classical-capacity-and-entropy-inequalities-for-generalized-amplitude-damping-September-24-2026/paper.pdf` },
       { label: "Tang, Zhu, Bai & Wang, 'Classical Capacity and Entanglement Cost of the Amplitude Damping Channel' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.28592v1" },
       { label: "Pirandola, 'Exact series formulas for the capacities of the amplitude damping channel' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.31609v1" },
       { label: "Shou & Gorshkov, 'A constructive violation of additivity of minimum output von Neumann entropy' (2026 preprint, v2)", url: "https://arxiv.org/abs/2609.23946v2" },
+      { label: "Derksen & Lovitz, 'Constructive counterexamples to the additivity of minimum output Rényi entropy of quantum channels for all p>1' (2025 preprint, v2; accepted to FOCS 2026)", url: "https://arxiv.org/abs/2510.07547v2" },
       {"label":"Bhattacharyya, Mehta & Zhao, 'On the undecidability of quantum channel capacities' (2026, corrected v3; FOCS 2026)","url":"https://arxiv.org/abs/2601.22471v3"},
       { label: "Devetak & Shor, 'The capacity of a quantum channel for simultaneous transmission of classical and quantum information', Comm. Math. Phys. 256 (2005)", url: "https://arxiv.org/abs/quant-ph/0311131" },
       { label: "Smith & Yard, 'Quantum communication with zero-capacity channels', Science 321 (2008)", url: "https://arxiv.org/abs/0807.4935" },
@@ -61,13 +65,15 @@ The target is matching achievable and converse bounds for fixed $(\eta,N_{\rm th
     ] },
 
   { id: "C3", cat: "channels", horizon: "incremental", status: "improved",
-    reviewedAt: "2026-10-17",
+    reviewedAt: "2026-10-26",
     relations: [{ id: "C2", type: "related" }, { id: "C10", type: "parent" }],
     provenance: [
       { summary: "Pirandola reports that GPT-6 Astra generated candidate derivations and proofs and assisted with their development and presentation; v3 adds a detailed AI-use history. The same statement appears in the noisy-channel and the multimode manuscript (the latter with Spedalieri).", url: "https://arxiv.org/abs/2610.06832v3", version: "v3" },
       { summary: "Falco, Mele, Lami and Giovannetti state that their main result was obtained on 17 September 2026 with a single ChatGPT Astra prompt, and that Pirandola independently obtained the same result.", url: "https://arxiv.org/abs/2610.12365v1", version: "v1" },
+      { summary: "Barber and Pirandola report that ChatGPT (GPT-6 Astra) generated candidate derivations and proofs and assisted with their development and presentation.", url: "https://arxiv.org/html/2610.26783v1", version: "v1" },
     ],
     evidence: [
+      { kind: "preprint", summary: "Claimed exact PPT-assisted quantum and entanglement-distribution capacities of thermal loss, thermal amplification and additive Gaussian noise, with and without an energy constraint; PPT assistance is stronger than LOCC, so these are benchmarks, not $Q_2$ or $K$.", url: "https://arxiv.org/abs/2610.26783v1", date: "2026-10-19", version: "v1" },
       { kind: "preprint", summary: "Claimed energy-constrained two-way quantum, entanglement, private and key capacities of pure loss, $g(N)-g((1-\\eta)N)$ under a mean transmitted-photon constraint; pure loss is a boundary case, not a noisy family.", url: "https://arxiv.org/abs/2610.06832v3", date: "2026-10-05", version: "v3" },
       { kind: "preprint", summary: "Independent claim of the same energy-constrained pure-loss two-way quantum and key capacities under an average input photon-number constraint.", url: "https://arxiv.org/abs/2610.12365v1", date: "2026-10-08", version: "v1" },
       { kind: "preprint", summary: "Unified energy-constrained adaptive weak-converse bound for thermal loss, noisy amplification and additive noise; an explicit gap to hashing rates remains.", url: "https://arxiv.org/abs/2610.08786v2", date: "2026-10-06", version: "v2" },
@@ -86,13 +92,16 @@ The incremental goal is to close specified $Q_2$ or $K$ gaps in noisy families a
 
 Newly indexed preprint (September 2026; arXiv records submission on 17 August): Barber and Pirandola improve achievable two-way quantum rates for thermal loss over a range of parameters by combining qubit–bosonic distribution and optimized entanglement distillation. This tightens lower bounds; it supplies neither matching converses nor an exact secret-key capacity. Comparisons with energy-constrained benchmarks must retain the protocol's resource assumptions.
 
-Preprint progress (5–13 October 2026): Pirandola (5 October; reviewed at v3) and, independently, Falco, Mele, Lami and Giovannetti (8 October, v1) claim that the energy-constrained two-way quantum and secret-key capacities of pure loss equal $g(N)-g((1-\eta)N)$, the reverse-coherent-information rate. Pirandola also covers entanglement-distribution and private capacities and the quantum-limited amplifier, with constraints on mean transmitted photon number. The two papers state their constraints differently: Pirandola bounds transmitted photons, while Falco et al. bound average input photons. Pirandola and Spedalieri (13 October) extend the pure-loss result to multimode loss and publicly revealed fading. Pirandola's 6 October bound for thermal loss, noisy amplification and additive noise improves evaluated converses but leaves a gap to achievable rates. The noisy families in the statement therefore remain open.`,
+Preprint progress (5–13 October 2026): Pirandola (5 October; reviewed at v3) and, independently, Falco, Mele, Lami and Giovannetti (8 October, v1) claim that the energy-constrained two-way quantum and secret-key capacities of pure loss equal $g(N)-g((1-\eta)N)$, the reverse-coherent-information rate. Pirandola also covers entanglement-distribution and private capacities and the quantum-limited amplifier, with constraints on mean transmitted photon number. The two papers state their constraints differently: Pirandola bounds transmitted photons, while Falco et al. bound average input photons. Pirandola and Spedalieri (13 October) extend the pure-loss result to multimode loss and publicly revealed fading. Pirandola's 6 October bound for thermal loss, noisy amplification and additive noise improves evaluated converses but leaves a gap to achievable rates. The noisy families in the statement therefore remain open.
+
+Preprint progress (19 October 2026, v1): Barber and Pirandola claim the exact quantum-communication and entanglement-distribution capacities of thermal loss, thermal amplification and additive Gaussian noise when the assistance is enlarged from LOCC to operations that completely preserve positive partial transpose. For thermal loss the unconstrained PPT-assisted capacity is claimed to equal the PLOB bound throughout the non-entanglement-breaking regime, and the energy-constrained versions are claimed at every mean input energy. PPT-preserving operations can exceed LOCC, so these are upper benchmarks for $Q_2$ and $K$: the noisy LOCC-assisted capacities in the statement remain open, and the result sharpens the question to whether LOCC attains the PPT-assisted rates.`,
     refs: [
       { label: "Pirandola, 'Energy-constrained two-way capacities of pure-loss and quantum-limited amplifier channels' (2026 preprint, v3)", url: "https://arxiv.org/abs/2610.06832v3" },
       { label: "Falco, Mele, Lami & Giovannetti, 'Energy-constrained two-way capacities of the pure-loss channel' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.12365v1" },
       { label: "Pirandola, 'Energy-constrained two-way capacity bounds for noisy Gaussian channels' (2026 preprint, v2)", url: "https://arxiv.org/abs/2610.08786v2" },
       { label: "Pirandola & Spedalieri, 'Finite-energy two-way assisted capacities: Exact formulas for multimode loss and fading' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.18731v1" },
       { label: "Barber & Pirandola, 'Improved lower bound for the two-way-assisted quantum capacity of the bosonic thermal-loss channel' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.27792v1" },
+      { label: "Barber & Pirandola, 'PPT-assisted capacities of bosonic Gaussian channels' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.26783v1" },
       {"label":"Pirandola, Laurenza, Ottaviani & Banchi, 'Fundamental limits of repeaterless quantum communications' (PLOB), Nature Communications 8, 15043 (2017)","url":"https://arxiv.org/abs/1510.08863"},
       { label: "Wilde, Tomamichel, Berta, 'Converse bounds for private communication over quantum channels', IEEE Trans. Inf. Theory 63 (2017)", url: "https://arxiv.org/abs/1602.08898" },
     ] },
@@ -169,12 +178,17 @@ Further progress (2 October 2026, v1): Hirche connects channel orderings to bina
     ] },
 
   { id: "C6", cat: "channels", horizon: "incremental", status: "improved",
+    reviewedAt: "2026-10-26",
     relations: [{ id: "C1", type: "related" }, { id: "U4", type: "related" }],
     evidence: [
+      { kind: "preprint", summary: "A continuum of Rényi-type elements $\\vartheta_\\alpha$, $0\\le\\alpha\\le2$, in the entanglement-assisted asymptotic spectrum of graphs; proves the Duan–Winter conjecture $C_{\\min}(C_5)=\\log_2(5/2)$ and settles two links of their inequality chain. Lower bounds on zero-error capacities, not exact values of $\\Theta(C_7)$.", url: "https://arxiv.org/abs/2610.20775v1", date: "2026-10-14", version: "v1" },
+      { kind: "preprint", summary: "An exactly multiplicative SDP upper bound $\\Gamma(K)$ on no-signalling-assisted zero-error capacity of quantum channels, sharp bounds for classical-quantum channels, and a negative answer to an open question on the asymptotic simulation cost.", url: "https://arxiv.org/abs/2610.21071v1", date: "2026-10-15", version: "v1" },
       { kind: "preprint", summary: "Certified classical seven-cycle Shannon-capacity lower bound from an independent set in a 500th strong power, not an exact capacity.", url: "https://arxiv.org/abs/2608.30273", date: "2026-08-31" },
       { kind: "preprint", summary: "Lean-formalized lower bounds for several odd cycles, including Θ(C7) ≥ 3.258805…, in the recursive line started by Itty et al. and Gao; lower bounds only.", url: "https://arxiv.org/abs/2607.29681v1", date: "2026-07-31", version: "v1" },
     ],
-    provenance: [{ summary: "Tandon reports ChatGPT and Claude use for constructions, proof development/checks, implementation and writing, and supplies exact computations and machine-readable certificates under author responsibility.", url: "https://arxiv.org/abs/2608.30273" }],
+    provenance: [{ summary: "Tandon reports ChatGPT and Claude use for constructions, proof development/checks, implementation and writing, and supplies exact computations and machine-readable certificates under author responsibility.", url: "https://arxiv.org/abs/2608.30273" },
+      { summary: "Mghirbi and Douglas report generative-AI use throughout research and preparation, including mathematical exploration, proof development and critique; finite numerical checks are stated not to be used as proof.", url: "https://arxiv.org/html/2610.20775v1", version: "v1" },
+      { summary: "Li and Li report using ChatGPT in developing the arguments and proofs of specified sections, reviewed and verified by the authors.", url: "https://arxiv.org/html/2610.21071v1", version: "v1" }],
     title: "Zero-error capacities and graph-capacity benchmarks",
     statement: r`For explicitly specified channel or noncommutative-graph families, evaluate asymptotic zero-error capacity with message type and assistance fixed. A concrete classical benchmark is the exact Shannon capacity $\Theta(C_7)$.`,
     context: r`Zero-error communication requires perfectly distinguishable messages at every blocklength, unlike vanishing-error Shannon transmission. Classical messages, quantum states, entanglement assistance, one-shot transmission and asymptotic rates define different quantities.
@@ -183,7 +197,9 @@ Classically, an independent-set problem on strong graph powers defines $\Theta(G
 
 Preprint progress (July–August 2026): the seven-cycle lower bound had stood at $\Theta(C_7)\geq367^{1/5}\approx3.25787$ (Polak–Schrijver, 2019). A rapid AI-assisted sequence then raised it: Itty–Rosin–Carstensen–Reichman ($134753^{1/10}>3.25802$), Gao's recursive product construction ($3.25878\ldots$) and Buys–Polak–Zuiddam's Lean-formalized bounds ($3.25880\ldots$). On 31 August, Tandon claimed a heterogeneous refinement giving an independent set in the 500th strong power, $\Theta(C_7)\geq3.25883262\ldots$. These are classical graph-capacity lower bounds, not bit rates or generic quantum-capacity theorems; a gap remains below the Lovász upper bound $\vartheta(C_7)=7\cos(\pi/7)/(1+\cos(\pi/7))\approx3.3177$, and the exact value is unresolved.
 
-The active programme is computable bounds and matching characterizations in stated models. Specialized zero-error undecidability results must not be transferred to ordinary memoryless quantum capacity in C1/U4.`,
+The active programme is computable bounds and matching characterizations in stated models. Specialized zero-error undecidability results must not be transferred to ordinary memoryless quantum capacity in C1/U4.
+
+Preprint progress (14–15 October 2026, v1): Mghirbi and Douglas show that the Lovász number is not the only element of Li and Zuiddam's entanglement-assisted asymptotic spectrum of graphs: Petz–Rényi information radii of orders $0\le\alpha\le2$ give a family $\vartheta_\alpha$ that is additive, multiplicative under strong products and monotone, interpolating $\log_2\vartheta$, the minimal Holevo capacity $C_{\min}$ and the no-signalling simulation cost. On the pentagon this proves Duan and Winter's conjecture $C_{\min}(C_5)=\log_2(5/2)$, and two open links of their inequality chain are settled, one by an exact-arithmetic certificate on a 32-vertex Mermin–Peres graph. Li and Li introduce an exactly multiplicative SDP parameter $\Gamma(K)$ bounding the no-signalling-assisted zero-error capacity of a quantum channel from above, with sharp bounds for classical-quantum channels, and show that the asymptotic simulation cost is not given by the single-letter or regularized $\Sigma^-$ formula. Both supply computable bounds and spectrum structure, not the exact value of $\Theta(C_7)$ or a general zero-error capacity formula.`,
     refs: [
       { label: "Duan, Severini, Winter, 'Zero-error communication via quantum channels, non-commutative graphs, and a quantum Lovász theta function', IEEE Trans. Inf. Theory 59 (2013)", url: "https://arxiv.org/abs/1002.2514" },
       { label: "Cubitt, Chen, Harrow, 'Superactivation of the asymptotic zero-error classical capacity of a quantum channel', IEEE Trans. Inf. Theory 57 (2011)", url: "https://arxiv.org/abs/0906.2547" },
@@ -192,6 +208,8 @@ The active programme is computable bounds and matching characterizations in stat
       { label: "Gao, 'A Recursive Construction Improving the Lower Bound on the Shannon Capacity of C7' (2026 preprint)", url: "https://arxiv.org/abs/2607.27869" },
       { label: "Buys, Polak & Zuiddam, 'Lean-verified lower bounds for the Shannon capacity of odd cycles' (2026 preprint, v1)", url: "https://arxiv.org/abs/2607.29681v1" },
       { label: "Tandon, 'Strengthening Recursive Constructions for Zero-Error Shannon Capacity' (2026 preprint)", url: "https://arxiv.org/abs/2608.30273" },
+      { label: "Mghirbi & Douglas, 'The Lovász number is not alone: a continuum of Rényi points in the entanglement-assisted spectrum of graphs' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.20775v1" },
+      { label: "Li & Li, 'Multiplicative Semidefinite Programming Upper Bounds on Quantum No-Signalling-Assisted Zero-Error Capacity' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.21071v1" },
     ] },
 
   { id: "C7", cat: "channels", horizon: "programme", status: "improved",

@@ -149,6 +149,15 @@ test("targeted literature updates preserve untouched review dates and expose pen
   }
   assert.match(getProblem("M12").context, /does not assert exponential eigenfunction decay|explicitly does not assert exponential/);
   assert.match(getProblem("M5").statement, /even length/);
+  // 26 October 2026: the OpenAI verification package is recorded as numerical evidence pinned to its own commit, without a status change.
+  const mubPackage = getProblem("N2").evidence.find((e) => e.url.includes("verification/saved-run/VERIFY.md"));
+  assert.ok(mubPackage && mubPackage.kind === "numerical" && mubPackage.url.startsWith("https://github.com/openai/math/blob/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/"), "N2: pinned verification package");
+  assert.match(mubPackage.summary, /does not rerun/);
+  for (const id of ["O4", "QF9"]) assert.equal(getProblem(id).status, "improved", id);
+  assert.equal(getProblem("A6").status, "open", "gap amplification is a tool, not a quantum PCP theorem");
+  assert.ok(getProblem("A6").refs.some((r) => r.url.includes("2610.04952v1") && r.label.includes("FOCS 2026")));
+  assert.ok(getProblem("A12").evidence.some((e) => e.url.includes("2610.27065v1") && /simulab/i.test(e.summary)));
+  assert.ok(getProblem("C3").evidence.some((e) => e.url.includes("2610.26783v1") && /PPT/.test(e.summary)));
   const home = render(views.Home);
   assert.ok(home.includes(LITERATURE_UPDATE.label) && home.includes(REVIEW.label));
   const policy = render(views.ReviewView);
@@ -220,7 +229,7 @@ test("home, all categories, filtered lists, policy and missing-page views render
   assert.ok(home.includes("#review") && home.includes("powered by Astra &amp; Opus 5.5"));
   assert.ok(home.includes('href="#improved"'));
   assert.ok(home.includes('href="#claimed-solved"'));
-  assert.ok(home.includes('aria-label="See all 44 improved problems"'));
+  assert.ok(home.includes('aria-label="See all 46 improved problems"'));
   assert.ok(home.includes('aria-label="See all 12 claimed solved problems"'));
   assert.ok(home.includes('href="https://quantumlectures.org/en"'));
   assert.ok(home.includes('href="https://learnthermo.org/"'));

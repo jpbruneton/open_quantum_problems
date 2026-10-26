@@ -171,10 +171,10 @@ No finite MREGS is known even for three parties. Fixing that party number avoids
     ] },
 
   { id: "E8", cat: "entanglement", horizon: "programme", status: "improved",
-    reviewedAt: "2026-10-05",
+    reviewedAt: "2026-10-26",
     relations: [{ id: "E7", type: "related" }, { id: "E5", type: "related" }],
     evidence: [
-      { kind: "preprint", summary: "Positive-domination rigidity for finite-mode Gaussian states; stronger structured separability consequences, not a universal mixed-state classification.", url: "https://arxiv.org/abs/2609.36336v1", date: "2026-09-28", version: "v1" },
+      { kind: "preprint", summary: "Positive-domination rigidity for finite-mode Gaussian states; stronger structured separability consequences, not a universal mixed-state classification. v2 (15 October 2026) reviewed; the abstract and stated applications are unchanged.", url: "https://arxiv.org/abs/2609.36336v2", date: "2026-10-15", version: "v2" },
       { kind: "preprint", summary: "Claimed collapse of partition mixing for finite-mode Gaussian targets, allowing non-Gaussian decompositions; does not extend to arbitrary mixed states.", url: "https://arxiv.org/abs/2609.10984v1", date: "2026-09-10", version: "v1" },
     ],
     provenance: [
@@ -192,7 +192,7 @@ Structured classification claim (10 September 2026, v1): Yang et al. claim that 
 
 Preprint progress (28 September 2026, v1): Shchukin and van Loock claim a rigidity theorem: if a finite-mode Gaussian state dominates a nonzero positive operator separable across a fixed partition, it is itself separable across that partition. This implies that mixing finitely many separability partitions adds no Gaussian states, and rules out activation of genuine multipartite entanglement by identical copies of a biseparable Gaussian state. The theorem allows non-Gaussian decompositions but does not classify arbitrary non-Gaussian mixed states.`,
     refs: [
-      { label: "Evgeny Shchukin, Peter van Loock, 'Separability rigidity of Gaussian states under positive domination' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.36336v1" },
+      { label: "Evgeny Shchukin, Peter van Loock, 'Separability rigidity of Gaussian states under positive domination' (2026 preprint, v2)", url: "https://arxiv.org/abs/2609.36336v2" },
       { label: "Yang et al., 'Full Inseparability and Genuine Multipartite Entanglement Coincide for Finite-Mode Gaussian States' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.10984v1" },
       { label: "Dür, Vidal, Cirac, 'Three qubits can be entangled in two inequivalent ways', PRA 62, 062314 (2000)", url: "https://arxiv.org/abs/quant-ph/0005115" },
       { label: "Verstraete, Dehaene, De Moor, Verschelde, 'Four qubits can be entangled in nine different ways', PRA 65, 052112 (2002)", url: "https://arxiv.org/abs/quant-ph/0109033" },
@@ -266,9 +266,15 @@ Useful benchmarks fix source/target families, trace-distance accuracy, allowed c
     ] },
 
   { id: "E12", cat: "entanglement", horizon: "incremental", status: "improved",
-    reviewedAt: "2026-09-10",
+    reviewedAt: "2026-10-26",
     relations: [{ id: "E3", type: "related" }, { id: "E14", type: "related" }],
+    provenance: [
+      { summary: "Morelli states that the main idea and key proof steps are the author's and that most technical parts were done with Claude Opus 5.5.", url: "https://arxiv.org/html/2610.28162v1", version: "v1" },
+      { summary: "Rubin and DePrince state that the key components are human work but that some key proofs, including the reduction of degree-4 to degree-2 multipliers, were derived by OpenAI's Astra-6 Pro model, with Gemini models used in early discussions and writing; they take responsibility for correctness.", url: "https://arxiv.org/html/2610.20737v2", version: "v2" },
+    ],
     evidence: [
+      { kind: "preprint", summary: "Dimension-free family of linear inequalities on the local spectra of pure tripartite states, complete for equal local dimension at most four; a structural result on one-body pure-state compatibility, not an efficient algorithm for overlapping succinct marginals.", url: "https://arxiv.org/abs/2610.28162v1", date: "2026-10-20", version: "v1" },
+      { kind: "numerical", summary: "Open-source instantiation of a weighted sum-of-squares hierarchy for fermionic two-body N-representability, demonstrated on a three-fermion Richardson Hamiltonian; the hierarchy's levels grow with the system and no polynomial-time guarantee is claimed.", url: "https://arxiv.org/abs/2610.20737v2", date: "2026-10-21", version: "v2" },
       { kind: "preprint", summary: "Efficient first-order algorithms for suitable moment-polytope objectives; arbitrary overlapping-marginal compatibility remains a different computational problem.", url: "https://arxiv.org/abs/2609.06633v1", date: "2026-09-06", version: "v1" },
     ],
     title: "Efficient and structured quantum marginal compatibility",
@@ -279,8 +285,12 @@ Known complete formulations must be distinguished from efficient algorithms. For
 
 Appropriate promise versions with succinct overlapping local inputs are QMA-complete. This does not mean no complete mathematical criterion exists; it obstructs a generic efficient algorithm. The residual programme is quantitative convergence, certified finite-level tests and tractable structures beyond known one-body cases.
 
-Structured algorithmic progress (6 September 2026, v1): Doğan, Sakabe and Walter introduce Hadamard mirror descent with convergence guarantees for suitable convex objectives over moment polytopes. Applications include efficient first-order computation of quantum functionals and related tensor parameters on entanglement polytopes, without an explicit facet list. This concerns the stated representation-theoretic optimization problems and their input models; it is not an efficient solution to arbitrary succinct overlapping-marginal compatibility or generic N-representability.`,
+Structured algorithmic progress (6 September 2026, v1): Doğan, Sakabe and Walter introduce Hadamard mirror descent with convergence guarantees for suitable convex objectives over moment polytopes. Applications include efficient first-order computation of quantum functionals and related tensor parameters on entanglement polytopes, without an explicit facet list. This concerns the stated representation-theoretic optimization problems and their input models; it is not an efficient solution to arbitrary succinct overlapping-marginal compatibility or generic N-representability.
+
+Preprint progress (14–20 October 2026): Morelli gives a family of linear inequalities on the local spectra of pure three-party states that holds in every finite dimension, with the number of inequalities growing with dimension; for equal local dimension at most four they generate the complete set of eigenvalue inequalities. This is progress on the one-body pure-state problem of Klyachko type, not on succinct overlapping marginals. Rubin and DePrince (v2, 21 October) release an explicit open-source instantiation of a weighted sum-of-squares hierarchy for fermionic two-body N-representability, with nullspace constraints cancelling higher-body terms, and recover an exact three-fermion Richardson ground energy numerically. The hierarchy remains exponential in the worst case, consistent with QMA-hardness; it is a constructive tool, not an efficient general algorithm.`,
     refs: [
+      { label: "Morelli, 'Dimension-free marginal inequalities for pure three-party states' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.28162v1" },
+      { label: "Rubin & DePrince, 'A constructive solution to the n-representability problem' (2026 preprint, v2)", url: "https://arxiv.org/abs/2610.20737v2" },
       { label: "Doğan, Sakabe & Walter, 'Convex optimization on moment polytopes: Hadamard mirror descent and efficient algorithms for quantum functionals and other tensor parameters' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.06633v1" },
       {"label":"Yu et al., 'A complete hierarchy for the pure state marginal problem', Nature Communications (2021)","url":"https://www.nature.com/articles/s41467-020-20799-5"},
       { label: "Klyachko, 'Quantum marginal problem and N-representability', J. Phys. Conf. Ser. 36 (2006)", url: "https://arxiv.org/abs/quant-ph/0511102" },

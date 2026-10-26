@@ -142,11 +142,12 @@ function Home() {
           </div>
 
           <div className="review-note">
-            <b>Latest literature update.</b> {LITERATURE_UPDATE.ids.length} entries updated, chiefly from
-            {" "}<a href="#review">OpenAI's 6 October manuscript release</a>, which claims full resolutions of
-            {" "}<a href="#p/M2">3D Anderson delocalization</a>, <a href="#p/B1">the 2D area law</a>,
-            {" "}<a href="#p/M5">the Haldane gap</a>, <a href="#p/N2">MUBs in dimension six</a> and four more entries.
-            These are “Claimed solved”, not verified. <a href="#review">Sources &amp; scope →</a>
+            <b>Latest literature update.</b> {LITERATURE_UPDATE.ids.length} entries updated from arXiv announcements
+            of 14–23 October, the FOCS 2026 accepted-paper list and OpenAI's 26 October repository update, which adds a
+            verification package for the <a href="#p/N2">dimension-six MUB</a> claim. New partial results include
+            {" "}<a href="#p/A6">combinatorial gap amplification</a>, <a href="#p/A12">classical simulation of lossy BosonSampling</a>,
+            {" "}<a href="#p/C3">PPT-assisted bosonic capacities</a> and <a href="#p/C6">new points in the zero-error spectrum of graphs</a>.
+            The twelve “Claimed solved” entries from the 17 October review are unchanged and still unverified. <a href="#review">Sources &amp; scope →</a>
           </div>
           <div className="review-note">
             <b>Full catalogue review.</b> All {REVIEW.reviewed} original entries reassessed;
@@ -534,20 +535,24 @@ function ReviewView() {
         <div className="container detail">
           <h2>Clear questions. Explicit evidence.</h2>
           <p className="intro">Latest literature update · {LITERATURE_UPDATE.label}</p>
-          <p>A targeted check of recent arXiv manuscripts and the OpenAI Math Release updated {LITERATURE_UPDATE.ids.length} entries:
+          <p>A targeted check of arXiv announcements from 14 to 23 October, the FOCS 2026 accepted-paper list, the 26 October
+            update of the OpenAI Math Release repository and the public communications of large AI and quantum-hardware groups
+            updated {LITERATURE_UPDATE.ids.length} entries:
             {" "}{LITERATURE_UPDATE.ids.map((id, i) => <span key={id}>{i > 0 ? ", " : ""}<a href={`#p/${id}`}>{id}</a></span>)}.
             The remaining entries retain their earlier review dates. This is a literature and scope check, not an independent verification of the proofs.</p>
-          <p>Most changes come from the OpenAI Math Release, a GitHub collection of 719 manuscripts published on
-            6 October 2026 and attributed to an unreleased internal model. It is not an arXiv submission. Its claims move
-            M1, M2, M5, B1, B13, E16, C12 and N2 to <a href="#claimed-solved">“Claimed solved”</a>: ionization, 3D Anderson
-            delocalization, the spin-1 Haldane gap, the 2D area law, fixed-density Bose condensation, zero-key entanglement,
-            a PPT-squared counterexample and MUBs in dimension six. Lean formalizations, where reported, often cover only
-            supporting statements and were not rebuilt here. No entry is promoted to “Solved”.</p>
-          <p>Partial claims move M12 (pure point without exponential decay), B2 (PEPS at error 1/L), B14 (the sphere, not
-            the torus), N4 (an explicit Tsirelson counterexample) and QF5 (a lattice chiral-fermion measure) to “Improved”.
-            Further progress covers energy-constrained bosonic capacities, QMA(2) and ClonableQMA oracle separations,
-            undecidable coloring games, 1D Gibbs mixing and operational characterizations. M5's statement now specifies
-            even ring lengths; the report explains this correction. QIP 2027 has not yet announced accepted talks.</p>
+          <p>No status changes among the twelve <a href="#claimed-solved">“Claimed solved”</a> entries. For N2, OpenAI added the
+            C++ sources, saved numerical records and a consistency checker for the dimension-six MUB exclusion after an independent
+            audit had flagged their absence; the checker does not rerun the computation, and no expert review of the physics
+            manuscripts was found. O4 (initial system–environment correlations) and QF9 (subsystems in gauge theories) move to
+            “Improved” on an assignment-map characterization and on non-Abelian additivity counterexamples.</p>
+          <p>Other progress: combinatorial gap amplification for local Hamiltonians (A6), polynomial-time classical simulation of
+            BosonSampling at any constant photon loss (A12), exact PPT-assisted capacities of noisy Gaussian channels (C3), a continuum
+            of elements in the entanglement-assisted spectrum of graphs and multiplicative no-signalling bounds (C6), dimension-free
+            marginal inequalities (E12), size-independent log-Sobolev inequalities for 1D Gibbs samplers (O10), a structural theory of
+            approach to equilibrium (B5), entropy bounds for higher-dimensional cat maps (M10), a hybrid lattice–continuum Standard
+            Model regularization (QF5), and principle-based results in F3 and F8. FOCS 2026 (8–11 November) acceptances are recorded on
+            A6, A11, A18 and C1. QIP 2027 decisions are due on 30 November. Google DeepMind's AlphaProof Nexus paper (Science, 8 October)
+            and Anthropic's Lean percolation proof concern problems outside this catalogue.</p>
           <p><a href={LITERATURE_UPDATE.reportUrl} target="_blank" rel="noreferrer">Read the dated update, source versions and remaining questions →</a></p>
           <p>Earlier literature updates: {LITERATURE_UPDATES.slice(1).map((update, i) => <span key={update.date}>
             {i > 0 ? " · " : ""}<a href={update.reportUrl} target="_blank" rel="noreferrer">{update.label}</a>

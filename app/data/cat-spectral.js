@@ -193,14 +193,21 @@ Random-matrix and certain graph/model results do not prove the general geometric
     ] },
 
   { id: "M10", cat: "spectral", horizon: "incremental",
+    reviewedAt: "2026-10-26",
+    evidence: [
+      { kind: "preprint", summary: "Optimal lower bound on the Kolmogorov–Sinai entropy of semiclassical measures for quantum cat maps on higher-dimensional tori whose dynamics splits over the rationals; the first such bound with several positive Lyapunov exponents. A quantum-map comparison, not a result for Laplacians on Anosov manifolds.", url: "https://arxiv.org/abs/2610.28026v1", date: "2026-10-20", version: "v1" },
+    ],
     title: "Scars in the semiclassical limit",
     statement: r`For a specified Anosov quantum system, bound the mass that a semiclassical measure of exact eigenstates can assign to an unstable periodic orbit, and determine whether the bounds are attainable by exceptional subsequences.`,
     context: r`A quantum scar is an enhancement of eigenfunction density along an unstable classical periodic orbit, first observed by Heller. In the semiclassical limit, the question is which invariant measures can arise as weak limits ('semiclassical measures') of eigenfunction mass, and how much of that mass can sit on periodic orbits despite classical ergodicity.
 
 What is known: Entropy bounds constrain semiclassical concentration for Anosov flows, with constants and hypotheses depending on the geometry; a universal unqualified one-half rule would overstate them. Explicit partially scarred eigenstates exist for certain quantum cat maps. A quantum map is not a Laplace operator on a negatively curved surface, so those constructions do not settle M8.
 
-Quantum ergodicity already excludes a positive-density family converging to a fixed non-Liouville measure under its usual hypotheses. Meaningful residuals are exceptional zero-density sequences, sharp quantitative concentration bounds, or quasimodes with an explicitly specified spectral width. Finite-energy visual enhancement need not persist as a scarred limiting measure. This is distinct from many-body scars (B7).`,
+Quantum ergodicity already excludes a positive-density family converging to a fixed non-Liouville measure under its usual hypotheses. Meaningful residuals are exceptional zero-density sequences, sharp quantitative concentration bounds, or quasimodes with an explicitly specified spectral width. Finite-energy visual enhancement need not persist as a scarred limiting measure. This is distinct from many-body scars (B7).
+
+Comparison result (20 October 2026, v1): Ferrari-Dominguez proves an optimal lower bound on the Kolmogorov–Sinai entropy of semiclassical measures of quantum cat maps on multidimensional tori, under the hypothesis that the dynamics splits over the rationals, using a conditional quantum dynamical entropy and the multiple Ehrenfest times of the dynamics. This is the first half-delocalization-type bound for a system with several positive Lyapunov exponents. It bounds the mass that can concentrate on periodic orbits for these maps; it is a quantum-map result and does not settle the Anosov-flow bounds or their attainability asked here.`,
     refs: [
+      { label: "Ferrari-Dominguez, 'Half-delocalization for semiclassical measures of split higher-dimensional quantum cat maps' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.28026v1" },
       { label: "Heller, 'Bound-state eigenfunctions of classically chaotic Hamiltonian systems: Scars of periodic orbits', PRL 53, 1515 (1984)", url: "https://doi.org/10.1103/PhysRevLett.53.1515" },
       { label: "Anantharaman & Nonnenmacher, 'Half-delocalization of eigenfunctions for the Laplacian on an Anosov manifold', Ann. Inst. Fourier 57 (2007)", url: "https://arxiv.org/abs/math-ph/0610019" },
       { label: "Faure, Nonnenmacher & De Bièvre, 'Scarred eigenstates for quantum cat maps of minimal periods', Comm. Math. Phys. 239 (2003)", url: "https://arxiv.org/abs/nlin/0207060" },
