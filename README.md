@@ -14,6 +14,13 @@ https://openquantumproblems.com/
 
 ### Timeline
 
+**26 October 2026 — October literature, FOCS 2026 and large-group publications**
+
+- Screened arXiv announcements from 14 to 23 October (1,370 records across quant-ph, math-ph, cond-mat.str-el, hep-th and cs.CC), the FOCS 2026 accepted-paper list, the 26 October update of the [OpenAI Math Release](https://github.com/openai/math/tree/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a) repository, and public results from Google DeepMind, Anthropic, Quantinuum and IBM. See the [dated literature report](docs/reviews/2026-10-26-literature-update.md) for sources, scope notes and exclusions.
+- N2 records OpenAI's new verification package for the dimension-six MUB exclusion (C++ sources, saved records, consistency checker) and the independent audit that prompted it; the computation was not rerun and the status stays **Claimed solved**. No status change among the twelve claimed resolutions.
+- O4 and QF9 move to **Improved**. A6, A12, C3, C6, E12, O10, B5, M10, QF5, F3 and F8 record partial progress: combinatorial gap amplification, classical simulation of lossy BosonSampling, PPT-assisted bosonic capacities, new points in the zero-error spectrum of graphs, dimension-free marginal inequalities, size-independent log-Sobolev inequalities and more. FOCS 2026 acceptances are recorded on A6, A11, A18 and C1; version pointers refreshed on A5, A11, A18, E8 and O10.
+- Counts: 113 active entries, 46 Improved, 12 Claimed solved, zero Solved, and ten archive/background pages. Watchlist items updated with new comparison results; QIP 2027 decisions are due 30 November.
+
 **17 October 2026 — OpenAI Math Release and October literature**
 
 - Reviewed the quantum and mathematical-physics families of the [OpenAI Math Release](https://github.com/openai/math/tree/1581d4cbdd69a0faf34b2089614fe2a814316a6a) (GitHub, 6 October; not arXiv) and arXiv announcements since 5 October. See the [dated literature report](docs/reviews/2026-10-17-literature-update.md) for sources, Lean scope notes and exclusions.

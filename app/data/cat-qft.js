@@ -58,11 +58,13 @@ This historical umbrella is merged into QF1, QF3 and QF5. Their results must ult
     ] },
 
   { id: "QF5", cat: "qft", horizon: "programme", status: "improved",
-    reviewedAt: "2026-10-17",
+    reviewedAt: "2026-10-26",
     evidence: [
+      { kind: "preprint", summary: "Standard Model with gauge and Higgs fields on a finite lattice and continuum Weyl fermions: a gauge-invariant chiral determinant via anomaly cancellation, a finite gauge-invariant bosonic integral at fixed spacing and volume, and reflection positivity for a variant at zero Yukawa coupling and theta; the bosonic continuum limit is stated to remain open.", url: "https://arxiv.org/abs/2610.29019v1", date: "2026-10-21", version: "v1" },
       { kind: "preprint", summary: "Claimed nonperturbative gauge-invariant overlap-fermion measure on 4D lattices for a class of non-Abelian chiral gauge theories including the Standard Model, on admissible gauge fields; the interacting continuum theory is not constructed.", url: "https://arxiv.org/abs/2610.09093v1", date: "2026-10-06", version: "v1" },
     ],
     provenance: [
+      { summary: "Hsu states that GPT and Claude were used extensively, that the technical appendix is entirely AI-led (mostly GPT Astra with verification by Claude and other models), and that the author takes responsibility for the results.", url: "https://arxiv.org/html/2610.29019v1", version: "v1" },
       { summary: "Craig, who lists affiliations including OpenAI, states that GPT-6 Astra was essential: after iterations with Astra and outside experts, the proof is Astra-led, the manuscript combines author-written sections with rewrites of Astra's proof, and Astra carried out Lean and other checks.", url: "https://arxiv.org/abs/2610.09093v1", version: "v1" },
     ],
     title: "Chiral gauge theories on the lattice",
@@ -75,9 +77,12 @@ Published progress (July 2026): Thorngren, Preskill and Fidkowski propose symmet
 
 Preprint progress (6 October 2026, v1): Craig claims a nonperturbative gauge-invariant fermion measure for overlap fermions on four-dimensional Euclidean lattices, for a class of non-Abelian chiral gauge theories that includes the Standard Model. On admissible gauge fields, comparing chiral projectors at successive lattice spacings yields an exponentially local current with the global properties required by Lüscher's reconstruction theorem. The author presents this as a candidate lattice definition. Admissibility restrictions, reflection positivity and the interacting continuum limit remain open, as the paper states.
 
+Preprint progress (21 October 2026, v1): Hsu proposes a hybrid regularization in which gauge and Higgs fields live on a finite lattice while quarks and leptons remain continuum Weyl fermions, so that anomalies, spectral flow and zero modes keep their continuum description. Anomaly cancellation in the Standard Model is used to define a gauge-invariant chiral determinant, Yukawa couplings enter through a gauge-covariant vertex cutoff removable with one-loop local subtractions, and the resulting bosonic integral is claimed finite and exactly gauge invariant at fixed spacing and volume under stated smoothness conditions. Reflection positivity is established only for a variant at zero Yukawa coupling and zero theta, and the bosonic continuum limit is stated to remain open. This is a different regularization strategy from Craig's purely lattice measure; neither constructs the interacting continuum theory.
+
 A general, nonperturbative construction of an arbitrary anomaly-free non-abelian chiral gauge theory with the correct continuum limit is still open. Related: QF4.`,
     refs: [
       { label: "Craig, 'A gauge-invariant measure for lattice chiral fermions' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.09093v1" },
+      { label: "Hsu, 'The Standard Model on a finite bosonic lattice with continuum Weyl fermions' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.29019v1" },
       { label: "Nielsen & Ninomiya, 'Absence of neutrinos on a lattice: (I). Proof by homotopy theory', Nucl. Phys. B185, 20–40 (1981)", url: "https://doi.org/10.1016/0550-3213(81)90361-8" },
       { label: "Lüscher, 'Abelian chiral gauge theories on the lattice with exact gauge invariance', Nucl. Phys. B549 (1999)", url: "https://arxiv.org/abs/hep-lat/9811032" },
       { label: "Kaplan, 'Chiral gauge theory at the boundary between topological phases', PRL 132, 141603 (2024; preprint 2023)", url: "https://arxiv.org/abs/2312.01494" },
@@ -149,15 +154,22 @@ Model-specific progress (23 September 2026, v1): Perche and Ribes-Metidieri comp
       { label: "Longo & Xu, 'Relative Entropy in CFT', Advances in Mathematics 337 (2018)", url: "https://arxiv.org/abs/1712.07283" },
     ] },
 
-  { id: "QF9", cat: "qft", horizon: "incremental",
+  { id: "QF9", cat: "qft", horizon: "incremental", status: "improved",
+    reviewedAt: "2026-10-26",
+    evidence: [
+      { kind: "preprint", summary: "Explicit lattice counterexamples, for every finite non-Abelian gauge group on square tori under local magnetic Gauss constraints, in which vertex-disjoint regions have commuting physical observable algebras that do not generate all observables on their union; additivity is restored by uncovering a face or separating the regions by graph distance at least two. A lattice access-model result; continuum regulator independence is not addressed.", url: "https://arxiv.org/abs/2610.25329v1", date: "2026-10-18", version: "v1" },
+    ],
     title: "Subsystems in gauge theories",
     statement: r`For specified gauge-invariant operations and boundary access, characterize distillable resources of spatial subsystems and prove when their continuum predictions are regulator independent; compare different access models without assuming a unique factorization.`,
     context: r`In a gauge theory the Gauss-law constraint entangles degrees of freedom across any spatial boundary, so a region's Hilbert space does not factorize as a simple tensor product. Defining 'the entanglement entropy of a region' requires a choice — an algebra with a nontrivial center, or the introduction of boundary 'edge modes' — and different choices give different answers.
 
 What is known: Casini–Huerta–Rosabal formulated the algebraic center-choice approach; Donnelly and Donnelly–Freidel developed boundary edge-mode descriptions. Entropy decompositions depend on the algebra and access model and, in non-Abelian theories, can include representation-dependent terms as well as classical flux-sector uncertainty. Van Acoleyen et al. give an operational lattice distillation analysis including non-Abelian gauge groups: not every extended-Hilbert-space entropy contribution is distillable by gauge-invariant local operations.
 
-What remains is controlled passage from a stated lattice access model to continuum gauge fields, with dynamical matter, boundary resources and finite-energy operations explicitly accounted for. Compare inequivalent definitions by the tasks they permit, rather than demanding that physically different access models share one canonical entropy. Related: QF8, QF11, F7.`,
+What remains is controlled passage from a stated lattice access model to continuum gauge fields, with dynamical matter, boundary resources and finite-energy operations explicitly accounted for. Compare inequivalent definitions by the tasks they permit, rather than demanding that physically different access models share one canonical entropy. Related: QF8, QF11, F7.
+
+Preprint progress (18 October 2026, v1): Liang constructs, for every finite non-Abelian group on regular square tori with local magnetic Gauss constraints, pairs of vertex-disjoint regions whose physical observable algebras commute yet fail to generate all observables on their union, with the full magnetic physical space retained and the supports inside a fixed contractible disk. For a specified support family around an eight-edge loop, additivity fails exactly when the group is non-Abelian and each inner face is covered by a prescribed peripheral edge; uncovering a face, or separating the regions by graph distance at least two, restores additivity. The paper states that this refutes a recent group-double additivity proposition. It is a lattice statement about which access models define subsystems, directly relevant to the comparison asked here; passage to the continuum and distillable resources are not treated.`,
     refs: [
+      { label: "Liang, 'Failure of disjoint additivity under magnetic Gauss constraints' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.25329v1" },
       { label: "Casini, Huerta, Rosabal, 'Remarks on entanglement entropy for gauge fields', PRD 89, 085012 (2014)", url: "https://arxiv.org/abs/1312.1183" },
       { label: "Donnelly & Freidel, 'Local subsystems in gauge theory and gravity', JHEP 09 (2016) 102", url: "https://arxiv.org/abs/1601.04744" },
       { label: "Van Acoleyen et al., 'The entanglement of distillation for gauge theories'", url: "https://arxiv.org/abs/1511.04369" },

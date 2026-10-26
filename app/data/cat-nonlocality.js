@@ -1,6 +1,8 @@
 const r = String.raw;
 // OpenAI Math Release, pinned to the commit reviewed on 17 October 2026.
 const OAI = "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/";
+// OpenAI Math Release, commit of 26 October 2026 (verification package for the dimension-six MUB computation).
+const OAI2 = "https://github.com/openai/math/blob/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a/";
 
 export const NONLOCALITY = [
   { id: "N1", cat: "nonlocality", horizon: "sharp",
@@ -22,12 +24,14 @@ A general proof or one dimension admitting no SIC resolves the stated sharp ques
     ] },
 
   { id: "N2", cat: "nonlocality", horizon: "sharp", status: "claimed-solved",
-    reviewedAt: "2026-10-17",
+    reviewedAt: "2026-10-26",
     relations: [{ id: "N3", type: "parent" }],
     evidence: [
       { kind: "preprint", summary: "Claimed $M(6)=3$; the exclusion of four bases is computer-assisted under stated binary64 arithmetic and compiler conditions. OpenAI GitHub manuscript, pending assessment.", url: `${OAI}preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026.pdf`, date: "2026-10-06", version: "v1" },
+      { kind: "numerical", summary: "Verification package added by OpenAI on 26 October 2026: C++ sources, saved binary64 records described as matching an October 4 run, and a Python checker that tests only the consistency and coverage of the saved records. It does not rerun the exclusion computation and does not certify the C++ implementation or the hardware.", url: `${OAI2}preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/VERIFY.md`, date: "2026-10-26" },
       { kind: "preprint", summary: "Claimed classification of order-six complex Hadamard matrices; simultaneous mutual-unbiasedness constraints remain additional and M(6) is not determined.", url: "https://arxiv.org/abs/2608.18053", date: "2026-08-18" }],
-    provenance: [{ summary: "Cárdenes Wuttig and Tindall disclose interactive assistance from ChatGPT Sol 5.6 Pro, Codex 5.6 Sol and Claude Opus 5.0 in proofs, searches, algebra and verification code. They state that they repaired or rejected incorrect proposals and independently checked retained material.", url: "https://arxiv.org/abs/2608.18053" },
+    provenance: [{ summary: "An independent audit by Lattice24 (Jim Jardine, completed 16 October 2026) rated the manuscript a major verifiability gap because the exclusion code and run records were absent from the public release; it reports no error in the written mathematics of Sections 2–6. The audit used Claude agents as referees and is not a human proof check.", url: "https://github.com/JJardine919/openai-math-audit" },
+      { summary: "Cárdenes Wuttig and Tindall disclose interactive assistance from ChatGPT Sol 5.6 Pro, Codex 5.6 Sol and Claude Opus 5.0 in proofs, searches, algebra and verification code. They state that they repaired or rejected incorrect proposals and independently checked retained material.", url: "https://arxiv.org/abs/2608.18053" },
       { summary: "OpenAI lists itself as author and states that an unreleased internal model produced the manuscript collection. Its Lean formalization proves only a five-basis upper bound and supporting Fourier statements, not $M(6)=3$. This is OpenAI's account; the formalization and verification pipeline were not rerun here.", url: `${OAI}lean/docs/266.md` }],
     title: "Mutually unbiased bases in dimension six",
     statement: r`Determine the maximal number $M(6)$ of mutually unbiased bases in $\mathbb{C}^6$; in particular decide whether $M(6)=3$ or whether four or more exist.`,
@@ -39,9 +43,13 @@ Preprint progress (August 2026): Cárdenes Wuttig and Tindall claim a complete e
 
 The sharp target was whether four or more MUBs exist, and ultimately the exact value of $M(6)$.
 
-Claimed resolution (OpenAI Math Release, public 6 October 2026; manuscript dated 24 September): $M(6)=3$ is claimed, resolving Zauner's dimension-six conjecture. The upper bound is computer-assisted: an exhaustive seed cover and certified phase-ball atlas exclude four arbitrary bases, under the stated binary64 arithmetic and compiler conditions for a complete run of the documented pipeline. A companion proves Fourier-vanishing certificates for order-six complex Hadamard matrices. The Lean formalization proves only a five-basis bound, and the pipeline was not rerun here. The manuscripts are GitHub releases, not arXiv preprints. Marked “Claimed solved” pending independent assessment, including of the floating-point certification.`,
+Claimed resolution (OpenAI Math Release, public 6 October 2026; manuscript dated 24 September): $M(6)=3$ is claimed, resolving Zauner's dimension-six conjecture. The upper bound is computer-assisted: an exhaustive seed cover and certified phase-ball atlas exclude four arbitrary bases, under the stated binary64 arithmetic and compiler conditions for a complete run of the documented pipeline. A companion proves Fourier-vanishing certificates for order-six complex Hadamard matrices. The Lean formalization proves only a five-basis bound, and the pipeline was not rerun here. The manuscripts are GitHub releases, not arXiv preprints. Marked “Claimed solved” pending independent assessment, including of the floating-point certification.
+
+Verification package (26 October 2026): after an independent audit flagged that the exclusion code and run records were not public, OpenAI added the C++ sources, saved numerical records described as matching an October 4 run, and a Python checker to the repository. Its own notes state that the checker is a consistency check of the saved records, not an authentication of the archive, that the build script does not reproduce the full computation, and that the correctness of the C++ implementation and of compiler and hardware behaviour are separate questions. No independent rerun or expert review of the exclusion step has been found. The status is unchanged.`,
     refs: [
       { label: "OpenAI, 'The maximum number of mutually unbiased bases in dimension six' (OpenAI Math Release manuscript, dated 24 September 2026; public 6 October 2026)", url: `${OAI}preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026.pdf` },
+      { label: "OpenAI, verification package for the dimension-six MUB computation (repository update of 26 October 2026)", url: `${OAI2}preprints/The-maximum-number-of-mutually-unbiased-bases-in-dimension-six-September-24-2026/verification/saved-run/VERIFY.md` },
+      { label: "OpenAI, repository history (entries of 7 and 26 October 2026)", url: `${OAI2}history.md` },
       { label: "Durt, Englert, Bengtsson, Życzkowski, 'On mutually unbiased bases', Int. J. Quantum Inf. 8 (2010)", url: "https://arxiv.org/abs/1004.3348" },
       { label: "Brierley & Weigert, 'Maximal sets of mutually unbiased quantum states in dimension six', PRA 78 (2008)", url: "https://arxiv.org/abs/0808.1614" },
       { label: "Cárdenes Wuttig & Tindall, 'A Complete Classification of Complex Hadamard Matrices of Order Six' (2026 preprint)", url: "https://arxiv.org/abs/2608.18053" },
