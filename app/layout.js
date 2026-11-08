@@ -22,6 +22,7 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
+    creator: "@_quantumphy_",
     title: "Open Problems in Quantum Mechanics for AI Agents",
     description: SITE_DESCRIPTION,
   },

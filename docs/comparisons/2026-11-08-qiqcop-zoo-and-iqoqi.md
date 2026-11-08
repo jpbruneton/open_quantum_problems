@@ -80,3 +80,18 @@ La plupart des 29 problèmes IQOQI ont un équivalent chez nous : #2 → E1/E2 ;
 4. Reprendre la remarque de QIQCOP sur la non-indépendance des deux preuves du strong converse (C4).
 5. Ajouter sur le site une section « Related catalogues » (QIQCOP Zoo, IQOQI, QMBL, OpenProblemBench).
 6. Puiser dans la §4 pour de nouvelles entrées, en coordination avec le fichier de propositions du 8 novembre.
+
+## 7. DeepMind Formal Conjectures (ajout du 8 novembre 2026)
+
+Le dépôt [google-deepmind/formal-conjectures](https://github.com/google-deepmind/formal-conjectures) formalise en Lean les **énoncés** de conjectures ouvertes, les preuves étant laissées en `sorry`. Son jalon 11, « Open Quantum Problems » (créé le 9 mars 2026), ouvre un ticket par problème de la liste IQOQI : 49 tickets, dont 47 ouverts.
+
+- **Énoncés formalisés à ce jour :** #13 (MUB), #23 (SIC/Zauner) et #35 (AME). Ils sont liés depuis N2/N3, N1 et E14, sous « In other catalogues ». Ce sont des énoncés et non des solutions, donc distincts du badge « Lean verified ».
+- **Preuve formelle :** l'existence d'AME(4,6) (état « doré » de Rather et al.) a été prouvée en Lean et liée le 25 octobre 2026 (PR #7502, dépôt zblore/fc-ame-4-6). Elle est enregistrée dans E14.
+- **Numérotation :** à partir de 45, les tickets DeepMind ne suivent pas la numérotation du site IQOQI (chez DeepMind, #45 = Catalytic entropy et #49 = Single-prover). Nos renvois suivent le site IQOQI.
+- **Problèmes IQOQI encore ouverts sans fiche OQM** (#1, #8, #12, #14, #16, #25, #26, #29, #31, #32, #36, #40, #42, #48) : chacun a été examiné le 8 novembre 2026.
+  - Onze fiches ont été ajoutées : N15 (#1), N16 (#12), N17 (#26, partie bipartite), N18 (#32, item J), E20 (#25), E21 (#29), E22 (#48), A32 (#14), A33 (#16), M14 (#40) et F12 (#42).
+  - Trois problèmes n'ont pas donné de fiche :
+    - #8 : « formule close » sans critère de réussite précis ; le problème inverse est résolu et la valeur est calculable.
+    - #31 : réglé au niveau des exposants d'erreur (oui pour les états purs, non en général pour les états mixtes), et c'est de la discrimination d'états.
+    - #36 : réglé négativement via Dowker–Wilkes (2022), mais avec une étape finale non publiée à vérifier.
+  - Restent candidats dans #32 : l'item C (non-localité multipartite authentique de tout état pur authentiquement intriqué) et l'item M (clé secrète à partir de toute corrélation non locale).

@@ -208,12 +208,13 @@ function Home() {
           </div>
 
           <div className="review-note">
-            <b>Last update · {LITERATURE_UPDATE.label}.</b> {LITERATURE_UPDATE.ids.length - 22} entries updated and 22 new entries added.
+            <b>Last update · {LITERATURE_UPDATE.label}.</b> {LITERATURE_UPDATE.ids.length - 33} entries updated and 33 new entries added.
             <ul>
               <li>Independent <a href="#p/N2">second proof that dimension six has only three MUBs</a>; experts have engaged with the <a href="#p/M5">Haldane-gap proof</a>.</li>
               <li>OpenAI's announced <a href="#p/QF1">4D Yang–Mills existence proof</a> is not public and does not claim the mass gap.</li>
               <li>Checked against <a href="#similar">similar catalogues</a> (QIQCOP Zoo, IQOQI Vienna): shared problems are now cross-referenced on each page. This found an all-dimension <a href="#p/N1">SIC existence claim</a>, now “Claimed solved”, and added <a href="#p/A20">PARITY ∉ QAC0</a> and eleven other questions.</li>
               <li>Ten classic quant-ph questions added: <a href="#p/B17">Néel order in the 2D spin-½ Heisenberg antiferromagnet</a> (claimed proved on 2 November 2026), the <a href="#p/B18">3D Heisenberg ferromagnet</a>, <a href="#p/A31">unitary synthesis</a>, the <a href="#p/A30">quantum Hamming bound</a>, <a href="#p/B16">3D self-correcting memory</a>, <a href="#p/A26">Quantum Max-Cut</a>, <a href="#p/A29">public-key quantum money</a> and three more.</li>
+              <li>Eleven open problems from the IQOQI Vienna list added, including <a href="#p/N16">Bell violation by the vacuum at long range</a>, <a href="#p/E21">Gaussian entanglement of formation</a>, the <a href="#p/M14">refined Bessis–Moussa–Villani conjecture</a> and <a href="#p/F12">reversible dynamics on composite systems</a>. <a href="#p/A11">Aaronson–Ambainis</a> and <a href="#p/E18">bipartite bound information</a> are now claimed solved.</li>
             </ul>
           </div>
 
@@ -805,6 +806,7 @@ function Footer() {
         <div className="footer-meta">
           <span className="footer-resources">
             <span className="footer-author">Jean-Philippe Bruneton</span>
+            <a href="https://x.com/_quantumphy_" target="_blank" rel="noreferrer me">X: @_quantumphy_</a>
             <a href="https://quantumlectures.org/en">Quantum Lectures</a>
             <a href="https://learnthermo.org/">LearnThermo</a>
           </span>

@@ -882,4 +882,59 @@ Caveats:
       { label: "OpenAI, 'Polynomial-Time Unitary Synthesis from a Boolean Oracle' (OpenAI Math Release manuscript, dated 5 October 2026)", url: "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Polynomial-Time-Unitary-Synthesis-from-a-Boolean-Oracle-October-5-2026/paper.pdf" },
       { label: "He, Ou & Zhao, 'unitaryQIP = unitaryPSPACE' (2026 preprint, v1)", url: "https://arxiv.org/abs/2611.02819v1" },
     ] },
+
+  { id: "A32", cat: "complexity", horizon: "incremental",
+    reviewedAt: "2026-11-08",
+    title: "Tough error models: guaranteed code dimension for an arbitrary error space",
+    statement: r`An error model is an $e$-dimensional space $E$ of operators on $\mathbb C^n$; a subspace $C$ with projector $P_C$ corrects $E$ if $P_CA^\dagger BP_C=\lambda(A,B)P_C$ for all $A,B\in E$. Let $c(e,n)$ be the largest $c$ such that every $e$-dimensional $E$ on $\mathbb C^n$ has a correcting code of dimension $c$. Known bounds give $n/e^4\lesssim c(e,n)\le\lceil n/e\rceil$. Determine the growth of $c(e,n)$ in $e$ for $n\gg e$: prove $c(e,n)\ge\kappa\,n/e^{a}$ with a universal $\kappa>0$ and some $a<4$, or construct "tough" error models whose largest correcting code has dimension $o(n/e)$, ideally matching the lower bound.`,
+    definition: r`**A tough error model** is an error space whose correctable codes are as small as possible given only its dimension. Knill, Laflamme and Viola showed that large codes exist for any noise, depending solely on the dimension of the error space and not on its structure, “Theory of Quantum Error Correction for General Noise”, PRL 84, 2525 (2000), [arXiv:quant-ph/9908066](https://arxiv.org/abs/quant-ph/9908066). The question asks how large a code can be guaranteed without further information about $E$, and is [IQOQI problem 14](https://oqp.iqoqi.oeaw.ac.at/tough-error-models/).
+
+The upper bound comes from taking $E$ spanned by $e$ orthogonal projections of dimension about $n/e$: the corresponding Lüders measurement channel carries at most $n/e$ dimensions, so $c(e,n)\le\lceil n/e\rceil$. Equivalently, a correcting code of dimension $k$ is a rank-$k$ projection compressing every operator in the Hermitian span of $\{A^\dagger B\}$, of real dimension at most $e^2$, to a multiple of itself: the joint rank-$k$ numerical range of those operators must be nonempty.`,
+    progress: r`- Knill, Laflamme and Viola (2000) greedily build a code detecting a $D$-dimensional operator space for classical information, of dimension at least $\lceil n/D\rceil$, and extract a quantum code of dimension at least $\lceil\lceil n/D\rceil/(D+1)\rceil$ by a Tverberg-type partition argument; with $D\le e^2$ this gives $c(e,n)\gtrsim n/(e^2(e^2+1))$ ([arXiv:quant-ph/9908066](https://arxiv.org/abs/quant-ph/9908066)).
+- Choi, Kribs and Życzkowski recast code existence as a compression problem and introduced the higher-rank numerical range (Lin. Alg. Appl. 418 (2006), [arXiv:math/0511278](https://arxiv.org/abs/math/0511278)).
+- Li and Poon (J. Operator Theory 66 (2011)) showed that the joint rank-$k$ numerical range of any $m$ Hermitian operators is nonempty once $n\ge(k-1)(m+1)^2$, a slight sharpening of the Knill–Laflamme–Viola argument; with $m\le e^2$ it still gives order $n/e^4$ ([arXiv:0812.4772](https://arxiv.org/abs/0812.4772)).
+- Lau, Li, Poon and Sze (J. Funct. Anal. 275 (2018)) extended non-emptiness and star-shapedness to joint matricial ranges, which govern subsystem and hybrid codes. They note that for $m=1,2$ the dimension condition improves to $n\ge(m+1)k-m$, linear in $m$ ([arXiv:1710.09555](https://arxiv.org/abs/1710.09555)). For a single Hermitian operator, $n\ge2k-1$ is also necessary.`,
+    residual: r`The gap between order $n/e^4$ and $\lceil n/e\rceil$ remains open. A dimension condition linear in the number $m$ of Hermitian operators, as known for $m=1,2$, would raise the lower bound to order $n/e^2$; no such bound was found for $m\ge3$. No error model with largest code dimension asymptotically below $n/e$ was found either, so it is unknown which end of the gap is correct. Approximate codes and codes for specific physical noise, such as independent qubit errors, are different questions.`,
+    evidence: [
+      { kind: "published", role: "progress", summary: "Codes of dimension at least ⌈⌈n/D⌉/(D+1)⌉ correct any error space whose detectable span has dimension D ≤ e², whatever its structure; about n/e⁴.", url: "https://doi.org/10.1103/PhysRevLett.84.2525", date: "2000-03-13" },
+      { kind: "published", role: "progress", summary: "The joint rank-k numerical range of m Hermitian operators is nonempty if n ≥ (k−1)(m+1)², giving the same n/e⁴ order for code dimension (J. Operator Theory 66, 2011).", url: "https://arxiv.org/abs/0812.4772v1", date: "2008-12-27", version: "v1" },
+      { kind: "published", role: "progress", summary: "Non-emptiness and star-shapedness of joint matricial ranges for large n; a linear dimension condition (m+1)k−m only for m = 1, 2 (J. Funct. Anal. 275, 2018).", url: "https://arxiv.org/abs/1710.09555v3", date: "2018-04-04", version: "v3" },
+    ],
+    relations: [{ id: "A30", type: "related" }, { id: "A18", type: "related" }],
+    refs: [
+      { label: "Knill, Laflamme & Viola, 'Theory of Quantum Error Correction for General Noise', PRL 84, 2525 (2000)", url: "https://arxiv.org/abs/quant-ph/9908066" },
+      { label: "Knill, Laflamme, Ashikhmin, Barnum, Viola & Zurek, 'Introduction to Quantum Error Correction' (2002)", url: "https://arxiv.org/abs/quant-ph/0207170" },
+      { label: "Choi, Kribs & Życzkowski, 'Higher-rank numerical ranges and compression problems', Lin. Alg. Appl. 418 (2006)", url: "https://arxiv.org/abs/math/0511278" },
+      { label: "Li & Poon, 'Generalized numerical ranges and quantum error correction', J. Operator Theory 66 (2011)", url: "https://arxiv.org/abs/0812.4772" },
+      { label: "Lau, Li, Poon & Sze, 'Convexity and star-shapedness of matricial range', J. Funct. Anal. 275 (2018)", url: "https://arxiv.org/abs/1710.09555" },
+      { label: "IQOQI Vienna Open Quantum Problems, problem 14: 'Tough error models'", url: "https://oqp.iqoqi.oeaw.ac.at/tough-error-models/" },
+    ] },
+
+  { id: "A33", cat: "complexity", horizon: "sharp",
+    reviewedAt: "2026-11-08",
+    title: "Quantum mass production: the cost of many copies of a state",
+    statement: r`For an $m$-qubit pure state $|\psi\rangle$, let $C(\psi)$ be the least number of CNOT gates in an exact circuit of CNOTs and arbitrary single-qubit gates that prepares $|\psi\rangle$ from $|0\cdots0\rangle$, with ancillas starting and ending in $|0\rangle$. Is there a polynomial $p$ such that $\limsup_{r\to\infty}C(\psi^{\otimes r})/r\le p(m)$ for every $m$ and every $m$-qubit $|\psi\rangle$? Equivalently, can the amortized per-copy cost be made polynomial in $m$ when the number of copies is unrestricted, even though a single worst-case copy costs order $2^m$?`,
+    definition: r`**Quantum mass production** asks how much cheaper it is to prepare $r$ copies of a state than $r$ times one copy. Trivially $C(\psi^{\otimes r})\le r\,C(\psi)$. For Boolean circuits, Uhlig's theorem shows that many copies of any function cost asymptotically no more than one worst-case copy. Kretschmer proved the quantum analogue for not too many copies, “Quantum Mass Production Theorems”, TQC 2023, LIPIcs 266, [arXiv:2212.14399](https://arxiv.org/abs/2212.14399).
+
+The question of how the complexity of $|\psi\rangle^{\otimes n}$ depends on $n$ and on the complexity of $|\psi\rangle$ is [IQOQI problem 16](https://oqp.iqoqi.oeaw.ac.at/complexity-of-product-preparations/). That page proposes another cost model, rotations $\exp(i\phi\sigma_u)$ with $\sigma_u$ a product of Pauli matrices, each costing $|\phi|$, and an approximate variant. It also remarks that knowing $|\psi\rangle$ might allow it to be copied more cheaply than it is prepared.`,
+    progress: r`- Kretschmer (TQC 2023) proved that for every $m$-qubit state and every $r=2^{o(m/\log m)}$, $C(\psi^{\otimes r})\le(1+o(1))2^m$, which asymptotically matches the order-$2^m$ CNOT cost of one worst-case copy (Shende, Bullock and Markov, [arXiv:quant-ph/0406176](https://arxiv.org/abs/quant-ph/0406176)). The analogue for unitaries is $(5/2+o(1))4^m$ CNOTs for $U^{\otimes r}$. He leaves the regime of larger $r$ open and recalls that for Boolean functions the amortized complexity $\lim_r C(f^{\otimes r})/r$ is polynomial in the input length; he also asks whether ancillas are necessary ([arXiv:2212.14399](https://arxiv.org/abs/2212.14399v2)).
+- For the approximate version over Clifford+T, Gosset, Kothari and Wu (Quantum, 2026) implement $r$ copies of an arbitrary single-qubit unitary to error $\varepsilon$ with $O(r+\log(1/\varepsilon))$ T gates, and show this is optimal. Naive repetition needs order $r\log(1/\varepsilon)$ T gates ([arXiv:2411.04790](https://arxiv.org/abs/2411.04790v3)).
+- Huggins, Khattar and Wiebe (30 May 2025, v1) apply mass production to parallel classical-data loading (QROM). They obtain polynomial reductions in total gate count but no advantage when only non-Clifford gates are counted ([arXiv:2506.00132](https://arxiv.org/abs/2506.00132v1)).`,
+    residual: r`The amortized cost for unrestricted $r$, in particular whether it is polynomial in $m$ for every state, remains open, as does whether clean ancillas are needed. Also open: how $C(\psi^{\otimes r})$ depends on $C(\psi)$ for states of polynomial complexity, and the same questions in the IQOQI rotation-angle cost model and with an approximation parameter.`,
+    evidence: [
+      { kind: "preprint", role: "progress", summary: "r = 2^{o(m/log m)} copies of any m-qubit state with (1+o(1))2^m CNOTs, the cost of one worst-case copy; unitaries analogously. Published at TQC 2023; the large-r regime is left open.", url: "https://arxiv.org/abs/2212.14399v2", date: "2023-05-02", version: "v2" },
+      { kind: "published", role: "progress", summary: "Optimal T-count O(r + log(1/ε)) for r copies of a single-qubit unitary to error ε, within optimal T-count state preparation and diagonal-unitary synthesis.", url: "https://doi.org/10.22331/q-2026-07-22-2168", date: "2026-07-22" },
+      { kind: "preprint", role: "progress", summary: "Mass production applied to QROM data loading: polynomial reductions in total gate count, none for non-Clifford-only cost.", url: "https://arxiv.org/abs/2506.00132v1", date: "2025-05-30", version: "v1" },
+    ],
+    provenance: [
+      { summary: "Gosset, Kothari and Wu state that large language model tools were used only for typesetting and package conflicts when switching to the journal template, after which the authors proofread.", url: "https://arxiv.org/abs/2411.04790v3", version: "v3" },
+    ],
+    relations: [{ id: "A24", type: "related" }],
+    refs: [
+      { label: "Kretschmer, 'Quantum Mass Production Theorems', TQC 2023, LIPIcs 266", url: "https://arxiv.org/abs/2212.14399" },
+      { label: "Shende, Bullock & Markov, 'Synthesis of Quantum Logic Circuits', IEEE Trans. CAD 25 (2006)", url: "https://arxiv.org/abs/quant-ph/0406176" },
+      { label: "Gosset, Kothari & Wu, 'Quantum state preparation with optimal T-count', Quantum (2026)", url: "https://arxiv.org/abs/2411.04790v3" },
+      { label: "Huggins, Khattar & Wiebe, 'Productionizing Quantum Mass Production' (2025 preprint, v1)", url: "https://arxiv.org/abs/2506.00132v1" },
+      { label: "IQOQI Vienna Open Quantum Problems, problem 16: 'Complexity of product preparations'", url: "https://oqp.iqoqi.oeaw.ac.at/complexity-of-product-preparations/" },
+    ] },
 ];

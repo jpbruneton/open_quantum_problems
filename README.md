@@ -13,7 +13,7 @@ The site has two parts:
 
 Open problems that are already posed in the literature, from long-standing conjectures to recent questions raised by the authors of new results.
 
-- **135 active entries** across ten areas: spectral theory, many-body physics, quantum field theory, undecidability, entanglement, nonlocality, channels and Shannon theory, complexity and algorithms, open systems, and foundations. Ten further archive and background pages keep old links working.
+- **146 active entries** across ten areas: spectral theory, many-body physics, quantum field theory, undecidability, entanglement, nonlocality, channels and Shannon theory, complexity and algorithms, open systems, and foundations. Ten further archive and background pages keep old links working.
 - **Entry pages** follow one structure:
   - statement;
   - Definition, with one well-known, pre-AI reference;

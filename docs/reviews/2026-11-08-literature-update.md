@@ -136,6 +136,29 @@ Totals after these changes: 135 active entries, 46 Improved, 20 Claimed solved, 
 
 The same review removed 7 of the 46 suggested problems from the New problems page: P8, P26 and P31 as already answered, and P18, P39, P40 and P43 as ill-posed. Their keys are not reused.
 
+## IQOQI Vienna problems not yet covered
+
+Each of the 14 IQOQI open problems without an OQM entry was checked against the literature up to November 2026. DeepMind's Formal Conjectures project (milestone 11) mirrors the same list.
+
+| IQOQI | Decision | Entry | Horizon / status |
+|---|---|---|---|
+| #1 All the Bell inequalities | Added | N15 | programme / Improved |
+| #12 Bell inequalities for long-range vacuum correlations | Added | N16 | sharp / Open |
+| #26 Bell inequalities holding for all quantum states | Added (bipartite part; the other parts are answered) | N17 | sharp / Improved |
+| #32 Bell inequalities: many questions, a few answers | Added (item J, one-bit simulation of partially entangled qubit pairs) | N18 | sharp / Improved |
+| #25 Lockable entanglement measures | Added | E20 | sharp / Open |
+| #29 Entanglement of formation for Gaussian states | Added | E21 | sharp / Improved |
+| #48 The entanglement cost of f-routing | Added | E22 | sharp / Improved |
+| #14 Tough error models | Added (distinct from A18) | A32 | incremental / Open |
+| #16 Complexity of product preparations | Added, in Kretschmer's precise model | A33 | sharp / Open |
+| #40 Refinement of the Bessis–Moussa–Villani conjecture | Added: upper bound refuted, lower bound partly proved | M14 | sharp / Improved |
+| #42 Reversible dynamics on composite systems | Added | F12 | sharp / Improved |
+| #8 Qubit formula for relative entropy of entanglement | Not added: no precise success criterion; inverse problem solved, value computable | — | — |
+| #31 Individual measurement strategies on geometrically uniform states | Not added: settled at the error-exponent level | — | — |
+| #36 Composition of decoherence functionals | Not added: answered negatively via Dowker–Wilkes (2022), final step to be checked | — | — |
+
+Totals after these additions: 146 active entries, 53 Improved, 20 Claimed solved and zero Solved.
+
 ## Validation
 
 - `npm test`: catalogue tests pass, including new checks that N2 and M5 remain Claimed solved with their independent sources, and that QF1 remains Open with the mass gap still required.

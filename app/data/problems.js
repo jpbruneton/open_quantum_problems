@@ -66,7 +66,7 @@ export const REVIEW = {
 export const LITERATURE_UPDATES = [{
   date: "2026-11-08",
   label: "8 November 2026",
-  ids: ["A7", "A9", "A11", "A12", "A13", "A19", "A20", "A21", "A22", "A23", "A24", "A25", "B15", "C1", "C2", "C4", "C11", "C13", "E1", "E6", "E9", "E11", "E14", "E17", "E18", "F3", "F9", "M5", "M6", "N1", "N2", "N12", "N13", "N14", "O10", "QF1", "QF5", "N4", "A26", "A27", "A28", "A29", "A30", "A31", "B16", "B17", "B18", "E19"],
+  ids: ["A7", "A9", "A11", "A12", "A13", "A19", "A20", "A21", "A22", "A23", "A24", "A25", "B15", "C1", "C2", "C4", "C11", "C13", "E1", "E6", "E9", "E11", "E14", "E17", "E18", "F3", "F9", "M5", "M6", "N1", "N2", "N12", "N13", "N14", "O10", "QF1", "QF5", "N4", "A26", "A27", "A28", "A29", "A30", "A31", "B16", "B17", "B18", "E19", "N15", "N16", "N17", "N18", "E20", "E21", "E22", "A32", "A33", "M14", "F12"],
   reportUrl: "https://github.com/jpbruneton/open_quantum_problems/blob/main/docs/reviews/2026-11-08-literature-update.md",
 }, {
   date: "2026-10-26",

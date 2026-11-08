@@ -32,7 +32,8 @@ export function MathText({ text }) {
 // Minimal inline markup outside math: **bold** and [label](https://url).
 function renderInline(text) {
   const out = [];
-  const re = /\*\*([^*]+)\*\*|\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g;
+  // URLs may contain balanced parentheses, as in DOIs like 10.1016/0375-9601(85)90093-3.
+  const re = /\*\*([^*]+)\*\*|\[([^\]]+)\]\((https?:\/\/(?:[^()\s]|\([^()\s]*\))+)\)/g;
   let last = 0;
   let m;
   while ((m = re.exec(text)) !== null) {
