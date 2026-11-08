@@ -332,4 +332,33 @@ What is known: Slofstra proved that the finite-dimensional set $\mathcal C_q$ is
       { label: "Fu, Miller & Slofstra, 'The membership problem for constant-sized quantum correlations is undecidable', Comm. Math. Phys. 406 (2025)", url: "https://arxiv.org/abs/2101.11087" },
       { label: "Masanes, 'Extremal quantum correlations for N parties with two dichotomic observables per site' (2005)", url: "https://arxiv.org/abs/quant-ph/0512100" },
     ] },
+
+  { id: "N14", cat: "nonlocality", horizon: "incremental",
+    reviewedAt: "2026-11-08",
+    title: "The power of CGLMP inequalities",
+    statement: r`For the bipartite Bell scenario with two measurements per party and $d$ outcomes each: (A) show that every facet of the local polytope that is not contained in a face of the no-signalling polytope is a CGLMP inequality, possibly lifted from fewer outcomes by merging outcomes; (B) prove that the measurements maximizing the CGLMP violation on the maximally entangled state $|\Phi_d\rangle=d^{-1/2}\sum_j|jj\rangle$ are the standard ones (computational basis followed by discrete Fourier transforms and diagonal phases), for every $d\ge3$.`,
+    context: r`The Collins–Gisin–Linden–Massar–Popescu (CGLMP) inequalities generalize CHSH to $d$ outcomes and are the standard tool for high-dimensional Bell tests. This is problem 27 of the IQOQI Vienna list (R. Gill), which also asks whether the standard measurements give the best resistance to noise and the best discrimination against local realism in Kullback–Leibler divergence (van Dam, Grünwald and Gill).
+
+What is known: Masanes proved that the CGLMP inequality is a facet (tight) of the local polytope for every $d$. Whether all other relevant facets of this scenario are of CGLMP type (part A) is open beyond small cases. For part B, Durt, Kaszlikowski and Żukowski found the Fourier-type measurements numerically. Navascués, Pironio and Acín's hierarchy and Lang, Vértesi and Navascués's SDP bounds confirm their optimality on maximally entangled states up to numerical precision. Ioannou and Rosset obtained analytic sum-of-squares certificates for small $d$ by exploiting the symmetries.
+
+A related subtlety: the maximal CGLMP violation over all states is not attained by the maximally entangled state for $d\ge3$ (Acín, Durt, Gisin and Latorre), and optimal Bell tests need not use maximally entangled states (Acín, Gill and Gisin). Part B therefore fixes the state. The QIQCOP Zoo lists the measurement-optimality and statistical-strength versions as separate unsolved problems.
+
+A proof of part B for all $d$, or an analytic certificate for an infinite family of $d$, would be clear progress; so would the facet classification of part A for further $d$. This entry was added on 8 November 2026 in response to GitHub issue #2, which noted that IQOQI problem 27 was missing.`,
+    evidence: [
+      { kind: "preprint", summary: "Analytic sum-of-squares certificates exploiting the symmetries of the CGLMP inequality, giving tight analytic bounds for small numbers of outcomes; not a general-d proof.", url: "https://arxiv.org/abs/2112.10803v2", date: "2021-12-20", version: "v2" },
+      { kind: "numerical", summary: "SDP bounds showing the standard measurements are optimal for maximally entangled states of high dimension up to computer precision.", url: "https://arxiv.org/abs/1402.2850", date: "2014-02-12" },
+    ],
+    relations: [{ id: "N4", type: "related" }, { id: "N8", type: "related" }, { id: "N11", type: "related" }],
+    refs: [
+      { label: "Collins, Gisin, Linden, Massar & Popescu, 'Bell inequalities for arbitrarily high dimensional systems', PRL 88, 040404 (2002)", url: "https://arxiv.org/abs/quant-ph/0106024" },
+      { label: "Durt, Kaszlikowski & Żukowski, 'Violations of local realism with quNits up to N=16', PRA 64, 024101 (2001)", url: "https://arxiv.org/abs/quant-ph/0101084" },
+      { label: "Masanes, 'Tight Bell inequality for d-outcome measurements correlations', QIC 3, 345 (2003)", url: "https://arxiv.org/abs/quant-ph/0210073" },
+      { label: "Acín, Durt, Gisin & Latorre, 'Quantum non-locality in two three-level systems', PRA 65, 052325 (2002)", url: "https://arxiv.org/abs/quant-ph/0111143" },
+      { label: "van Dam, Grünwald & Gill, 'The statistical strength of nonlocality proofs' (2003)", url: "https://arxiv.org/abs/quant-ph/0307125" },
+      { label: "Acín, Gill & Gisin, 'Optimal Bell tests do not require maximally entangled states', PRL 95, 210402 (2005)", url: "https://arxiv.org/abs/quant-ph/0506225" },
+      { label: "Navascués, Pironio & Acín, 'Bounding the set of quantum correlations', PRL 98, 010401 (2007)", url: "https://arxiv.org/abs/quant-ph/0607119" },
+      { label: "Lang, Vértesi & Navascués, 'Closed sets of correlations: answers from the zoo', J. Phys. A 47, 424029 (2014)", url: "https://arxiv.org/abs/1402.2850" },
+      { label: "Ioannou & Rosset, 'Noncommutative polynomial optimization under symmetry' (2021 preprint, v2)", url: "https://arxiv.org/abs/2112.10803v2" },
+      { label: "IQOQI Vienna Open Quantum Problems, problem 27: 'The power of CGLMP inequalities' (R. Gill)", url: "https://oqp.iqoqi.oeaw.ac.at/the-power-of-cglmp-inequalities/" },
+    ] },
 ];

@@ -17,8 +17,8 @@ https://openquantumproblems.com/
 **8 November 2026 — comparison with similar catalogues**
 
 - Compared with the QIQCOP Zoo and the IQOQI Vienna list. Shared problems now link to those catalogues from each problem page, and a new About & similar projects page links them.
-- N1 (SIC existence) moves to **Claimed solved** on Radchenko–Wheeler's 4 October manuscript. The new A20 (PARITY ∉ QAC0, previously on the watchlist) enters as **Claimed solved**. Ten further open entries are added (A21–A25, C13, E17, E18, N12, N13), and existing entries gain sources. See the [comparison note](docs/comparisons/2026-11-08-qiqcop-zoo-and-iqoqi.md) and the [dated report](docs/reviews/2026-11-08-literature-update.md).
-- Counts: 124 active entries, 46 Improved, 14 Claimed solved, zero Solved.
+- N1 (SIC existence) moves to **Claimed solved** on Radchenko–Wheeler's 4 October manuscript. The new A20 (PARITY ∉ QAC0, previously on the watchlist) enters as **Claimed solved**. Eleven further open entries are added (A21–A25, C13, E17, E18, N12, N13, and N14 on CGLMP inequalities, IQOQI problem 27, following GitHub issue #2), and existing entries gain sources. See the [comparison note](docs/comparisons/2026-11-08-qiqcop-zoo-and-iqoqi.md) and the [dated report](docs/reviews/2026-11-08-literature-update.md).
+- Counts: 125 active entries, 46 Improved, 14 Claimed solved, zero Solved.
 
 **8 November 2026 — new problems suggested by AI**
 

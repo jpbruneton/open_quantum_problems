@@ -56,8 +56,8 @@ function validUrl(value, label) {
 }
 
 test("all 111 original IDs remain addressable; 12 additions and 10 archives are counted correctly", () => {
-  assert.equal(ALL_PROBLEMS.length, 134);
-  assert.equal(PROBLEMS.length, 124);
+  assert.equal(ALL_PROBLEMS.length, 135);
+  assert.equal(PROBLEMS.length, 125);
   assert.equal(ARCHIVED_PROBLEMS.length, 10);
   assert.equal(new Set(ALL_PROBLEMS.map((p) => p.id)).size, ALL_PROBLEMS.length);
   for (const [prefix, n] of Object.entries(originalSeries)) {
@@ -159,7 +159,7 @@ test("targeted literature updates preserve untouched review dates and expose pen
   assert.ok(getProblem("A12").evidence.some((e) => e.url.includes("2610.27065v1") && /simulab/i.test(e.summary)));
   assert.ok(getProblem("C3").evidence.some((e) => e.url.includes("2610.26783v1") && /PPT/.test(e.summary)));
   // 8 November 2026 (QIQCOP comparison): eleven new entries; N1 and A20 become pending claims.
-  for (const id of ["A20", "A21", "A22", "A23", "A24", "A25", "C13", "E17", "E18", "N12", "N13"]) assert.ok(PROBLEMS.some((p) => p.id === id), `new entry ${id}`);
+  for (const id of ["A20", "A21", "A22", "A23", "A24", "A25", "C13", "E17", "E18", "N12", "N13", "N14"]) assert.ok(PROBLEMS.some((p) => p.id === id), `new entry ${id}`);
   assert.ok(getProblem("N1").evidence.some((e) => e.url.includes("danrad.net")), "N1: Radchenko-Wheeler claim recorded");
   assert.ok(getProblem("N1").catalogues.some((x) => x.catalogue === "QIQCOP Zoo"), "N1: cross-referenced");
   // 8 November 2026: independent engagement does not by itself promote a pending claim.
@@ -231,7 +231,7 @@ test("every active and archived detail view renders with valid links and Astra &
 
 test("home, all categories, filtered lists and missing-page views render", () => {
   const home = render(views.Home);
-  assert.ok(home.includes("124") && home.includes("Active entries"));
+  assert.ok(home.includes("125") && home.includes("Active entries"));
   assert.ok(!home.includes("#review") && home.includes("Powered by Astra &amp; Opus 5.5"));
   assert.ok(home.includes('href="#improved"'));
   assert.ok(home.includes('href="#claimed-solved"'));
