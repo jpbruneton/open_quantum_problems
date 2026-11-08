@@ -36,6 +36,7 @@ function useHashRoute() {
   if (parts[0] === "improved") return { view: "improved" };
   if (parts[0] === "claimed-solved") return { view: "claimed-solved" };
   if (parts[0] === "new-problems") return { view: "new-problems" };
+  if (parts[0] === "np" && parts[1]) return { view: "proposal", key: parts[1] };
   if (parts[0] === "similar" || parts[0] === "about") return { view: "similar" };
   return { view: "home" };
 }
@@ -566,13 +567,65 @@ function ProblemView({ id }) {
 }
 
 // ---------- new problems suggested by AI ----------
+const ALL_PROPOSALS = PROPOSALS.flatMap((g) => g.items.map((it) => ({ ...it, cat: g.cat, catName: g.name })));
+
+function ProposalView({ pkey }) {
+  const idx = ALL_PROPOSALS.findIndex((it) => it.key === pkey);
+  if (idx < 0) return <NotFound />;
+  const it = ALL_PROPOSALS[idx];
+  const prev = ALL_PROPOSALS[idx - 1];
+  const next = ALL_PROPOSALS[idx + 1];
+  const baseline = it.baseline ? it.baseline.split(/;\s+/).map((s) => s.trim().replace(/\.$/, "").replace(/(?<!\[)arXiv:((?:\d{4}\.\d{4,5}|[a-z-]+\/\d{7})(?:v\d+)?)/g, "[arXiv:$1](https://arxiv.org/abs/$1)")).filter(Boolean) : [];
+  return (
+    <>
+      <Header crumbs={[{ label: "New problems suggested by AI", to: "new-problems" }, { label: it.key }]} />
+      <section className="body">
+        <div className="container detail">
+          <button className="back" onClick={() => go("new-problems")}>← New problems suggested by AI</button>
+          <div className="badge-row" style={{ margin: "6px 0 2px" }}>
+            <span className="badge" style={{ color: "var(--muted)" }}>{it.key}</span>
+            <HorizonBadge h={it.horizon} />
+            <span className="badge st-proposed" title="Candidate question, not a catalogue entry"><span className="dot" style={{ background: "var(--muted-2)" }} />Proposed</span>
+          </div>
+          <h2>{it.title}</h2>
+
+          <div className="xref-block">
+            <h4>Grows out of</h4>
+            {it.extends.length > 0 ? (
+              <ul className="refs xref-list">
+                {it.extends.map((id) => <li key={id}><a href={`#p/${id}`}>{id} · {getProblem(id)?.title}</a></li>)}
+              </ul>
+            ) : <p className="review-meta">No specific catalogue entry.</p>}
+          </div>
+
+          <div className="statement"><MathText text={it.statement} /></div>
+
+          <h4>Why it is open now</h4>
+          <div className="context"><Paras text={it.why} /></div>
+
+          {baseline.length > 0 && (
+            <>
+              <h4>Baseline literature</h4>
+              <ul className="refs">{baseline.map((b, i) => <li key={i}><MathText text={b} /></li>)}</ul>
+            </>
+          )}
+
+          {it.caveat && (<><h4>Caveats</h4><div className="context"><Paras text={it.caveat} /></div></>)}
+          {it.ai && (<><h4>Reported AI use</h4><div className="context"><Paras text={it.ai} /></div></>)}
+
+          <p className="disclaimer">Suggested by AI on {PROPOSALS_META.label} ({it.catName}). Not a catalogue entry: no status, not counted, awaiting human selection and critical review. <a href={PROPOSALS_META.reportUrl} target="_blank" rel="noreferrer">Full proposal with verification marks →</a></p>
+
+          <nav className="proposal-pager" aria-label="Other proposals">
+            {prev ? <a href={`#np/${prev.key}`}>← {prev.key} · {prev.title}</a> : <span />}
+            {next ? <a href={`#np/${next.key}`}>{next.key} · {next.title} →</a> : <span />}
+          </nav>
+        </div>
+      </section>
+    </>
+  );
+}
+
 function NewProblemsView() {
-  const [open, setOpen] = useState(() => new Set());
-  const toggle = (key) => setOpen((prev) => {
-    const next = new Set(prev);
-    if (next.has(key)) next.delete(key); else next.add(key);
-    return next;
-  });
   const scrollTo = (e, cat) => {
     e.preventDefault();
     const el = document.getElementById(`np-${cat}`);
@@ -586,7 +639,7 @@ function NewProblemsView() {
           <h2>New problems suggested by AI</h2>
           <p className="intro">Proposed {PROPOSALS_META.label} · {PROPOSAL_COUNT} priority candidates, {SECONDARY_PROPOSALS.length} secondary leads and {NEW_RESULTS.length} new result</p>
           <p>We prompted an AI model (Fable 5.1, high effort) to suggest new open problems, starting from the current catalogue and its own knowledge of the literature. It produced {PROPOSAL_COUNT} priority candidates, {SECONDARY_PROPOSALS.length} secondary leads and {NEW_RESULTS.length} small new result. These suggestions await human selection and critical review. They are not catalogue entries: they carry no status and are not counted.</p>
-          <p>Horizons use the same badges as the catalogue, and “extends” links each suggestion to the entries it grows out of. Click a row to see the motivation, baseline and caveats.</p>
+          <p>Horizons use the same badges as the catalogue, and “extends” links each suggestion to the entries it grows out of. Click a row to open the full page of a suggestion: motivation, baseline literature and caveats.</p>
           <p><a href={PROPOSALS_META.reportUrl} target="_blank" rel="noreferrer">Read the full proposal with verification marks and caveats →</a></p>
           <nav className="proposal-nav" aria-label="Areas">
             {PROPOSALS.map((g) => <a key={g.cat} href={`#new-problems`} onClick={(e) => scrollTo(e, g.cat)}>{g.name} ({g.items.length})</a>)}
@@ -609,29 +662,18 @@ function NewProblemsView() {
                   <tbody>
                     {g.items.map((it) => (
                       <Fragment key={it.key}>
-                        <tr onClick={(event) => { if (!event.target.closest("a")) toggle(it.key); }} aria-expanded={open.has(it.key)}>
+                        <tr onClick={(event) => { if (!event.target.closest("a")) go(`np/${it.key}`); }}>
                           <td className="id">{it.key}</td>
                           <td className="stmt">
-                            <div style={{ fontWeight: 600, marginBottom: 4 }}>{it.title}</div>
+                            <div style={{ fontWeight: 600, marginBottom: 4 }}><a href={`#np/${it.key}`} className="row-title">{it.title}</a></div>
                             <div style={{ color: "var(--muted)", fontSize: 13 }}>
-                              {open.has(it.key) ? <MathText text={it.statement} /> : <MathText text={truncate(it.statement, 150)} />}
+                              <MathText text={truncate(it.statement, 150)} />
                             </div>
                             {it.extends.length > 0 && <div className="proposal-extends" style={{ fontSize: 12, marginTop: 4 }}>extends {it.extends.map((id, i) => <span key={id}>{i > 0 ? ", " : ""}<a href={`#p/${id}`}>{id}</a></span>)}</div>}
                           </td>
                           <td><HorizonBadge h={it.horizon} /></td>
                           <td><span className="badge st-proposed" title="Candidate question, not a catalogue entry"><span className="dot" style={{ background: "var(--muted-2)" }} />Proposed</span></td>
                         </tr>
-                        {open.has(it.key) && (
-                          <tr className="proposal-detail-row">
-                            <td />
-                            <td colSpan={3} className="proposal-detail">
-                              <p><b>Why now.</b> <MathText text={it.why} /></p>
-                              {it.baseline && <p className="proposal-meta"><b>Baseline.</b> {it.baseline}</p>}
-                              {it.ai && <p className="proposal-meta"><b>Reported AI use.</b> {it.ai}</p>}
-                              {it.caveat && <p className="proposal-meta proposal-caveat"><b>Caveat.</b> {it.caveat}</p>}
-                            </td>
-                          </tr>
-                        )}
                       </Fragment>
                     ))}
                   </tbody>
@@ -772,6 +814,7 @@ export default function Page() {
   if (route.view === "improved") return <ImprovedView />;
   if (route.view === "claimed-solved") return <ClaimedSolvedView />;
   if (route.view === "new-problems") return <NewProblemsView />;
+  if (route.view === "proposal") return <ProposalView pkey={route.key} />;
   if (route.view === "similar") return <SimilarProjectsView />;
   return <Home />;
 }

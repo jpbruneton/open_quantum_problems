@@ -388,3 +388,8 @@ td.stmt a { color: var(--text); }
 .detail .claim-block { border-left: 3px solid var(--claimed-solved); padding-left: 16px; }
 .detail .list-lead { margin: 0 0 4px; font-weight: 600; }
 .footer-author { color: var(--text); font-weight: 600; }
+.row-title { color: var(--text); text-decoration: none; }
+.row-title:hover { color: var(--accent); text-decoration: underline; }
+.proposal-pager { display: flex; justify-content: space-between; gap: 16px; margin-top: 28px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 14px; }
+.proposal-pager a { color: var(--accent); text-decoration: none; max-width: 48%; }
+.proposal-pager a:hover { text-decoration: underline; }
