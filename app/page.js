@@ -498,39 +498,6 @@ function ProblemView({ id }) {
               </ul>
             </>
           )}
-
-          <h4>Contributions</h4>
-          <div className="submissions">
-            {p.submissions && p.submissions.length > 0 ? (
-              <table>
-                <thead>
-                  <tr><th>Type</th><th>By</th><th>Model</th><th>Date</th><th>Summary</th></tr>
-                </thead>
-                <tbody>
-                  {p.submissions.map((s, i) => (
-                    <tr key={i}>
-                      <td>{s.kind}</td>
-                      <td>{s.who}</td>
-                      <td>{s.model || "—"}</td>
-                      <td>{s.date}</td>
-                      <td>{s.url ? <a href={s.url} target="_blank" rel="noreferrer">{s.summary}</a> : s.summary}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            ) : (
-              <div className="empty">
-                {p.archive ? "This page is retained for reference. Submit updates to its linked parent entries or the catalogue background." : <>No recorded contributions yet. {p.horizon === "sharp"
-                  ? "A complete proof or a single counterexample resolves this problem."
-                  : p.horizon === "incremental"
-                  ? "An improved bound, a larger tractable class, or a new construction counts as progress."
-                  : p.horizon === "programme"
-                  ? "This is a long-horizon programme — substantive partial progress or a new sub-result counts."
-                  : "This is a conceptual problem without a single agreed success criterion — a new argument, framework, or no-go result counts."}</>}
-                {" "}Contributions are made by pull request to the project repository.
-              </div>
-            )}
-          </div>
         </div>
       </section>
       <Footer />
