@@ -102,10 +102,10 @@ button, input { font: inherit; }
 .stats { display: flex; flex-wrap: wrap; gap: 0; border: 1px solid var(--border); background: var(--panel); width: fit-content; }
 .stat {
   background: transparent; border: none; border-right: 1px solid var(--border);
-  border-radius: 0; padding: 10px 18px 9px; min-width: 104px;
+  border-radius: 0; padding: 9px 13px 8px; min-width: 84px;
 }
 .stat:last-child { border-right: none; }
-.stat .n { font-family: var(--serif); font-size: 30px; font-weight: 500; line-height: 1.05; font-variant-numeric: lining-nums; }
+.stat .n { font-family: var(--serif); font-size: 26px; font-weight: 500; line-height: 1.05; font-variant-numeric: lining-nums; }
 .stat .l { font-family: var(--mono); font-size: 10.5px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); margin-top: 3px; }
 .stat-link { --stat-accent: var(--improved); color: var(--stat-accent); }
 .stat-claimed { --stat-accent: var(--claimed-solved); }
@@ -405,3 +405,5 @@ td.stmt a { color: var(--text); }
 .badge.lean-badge { color: #7a5a00; background: linear-gradient(135deg, #fff4c2, #f3d36b); border-color: #c9a227; font-weight: 600; }
 .lean-link { text-decoration: none; }
 .lean-link:hover .lean-badge { border-color: #7a5a00; }
+.stat-lean { background: linear-gradient(135deg, #fff4c2, #f3d36b); color: #7a5a00; }
+.stat-lean .l { color: #7a5a00; }

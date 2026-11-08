@@ -168,6 +168,7 @@ function Home() {
   const nSharp = PROBLEMS.filter((p) => p.horizon === "sharp").length;
   const nImproved = PROBLEMS.filter((p) => p.status === "improved").length;
   const nClaimedSolved = PROBLEMS.filter((p) => p.status === "claimed-solved").length;
+  const leanVerified = PROBLEMS.filter((p) => p.lean);
 
   return (
     <>
@@ -188,9 +189,14 @@ function Home() {
                 <a className="stat stat-link stat-claimed" href="#claimed-solved" aria-label={`See all ${nClaimedSolved} claimed solved problems`}>
                   <div className="n">{nClaimedSolved}</div><div className="l">Claimed solved <span aria-hidden="true">→</span></div>
                 </a>
+                {leanVerified.length > 0 && (
+                  <div className="stat stat-lean" title={`Claimed solutions whose main theorem is formalized in Lean according to the authors: ${leanVerified.map((p) => p.id).join(", ")}`}>
+                    <div className="n">{leanVerified.length}</div><div className="l">Lean verified</div>
+                  </div>
+                )}
               </div>
               <button className="cta-sharp" onClick={() => go("sharp")}>
-                ⚡ See all {nSharp} sharp problems
+                <span aria-hidden="true">🔥</span> See all {nSharp} sharp problems
               </button>
             </div>
             <a className="box box-new" href="#new-problems">
