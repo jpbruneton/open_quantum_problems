@@ -158,6 +158,12 @@ test("targeted literature updates preserve untouched review dates and expose pen
   assert.ok(getProblem("A6").refs.some((r) => r.url.includes("2610.04952v1") && r.label.includes("FOCS 2026")));
   assert.ok(getProblem("A12").evidence.some((e) => e.url.includes("2610.27065v1") && /simulab/i.test(e.summary)));
   assert.ok(getProblem("C3").evidence.some((e) => e.url.includes("2610.26783v1") && /PPT/.test(e.summary)));
+  // 8 November 2026: independent engagement does not by itself promote a pending claim.
+  assert.ok(getProblem("N2").evidence.some((e) => e.url.includes("2611.06917v1")), "N2: independent second proof recorded");
+  assert.ok(getProblem("M5").evidence.some((e) => e.url.includes("2610.34330v2")), "M5: follow-up recorded");
+  assert.equal(getProblem("QF1").status, "open", "an unpublished existence announcement without a mass gap must not move QF1");
+  assert.match(getProblem("QF1").statement, /mass gap/);
+  assert.match(getProblem("QF1").context, /No manuscript was public/);
   const home = render(views.Home);
   assert.ok(home.includes(LITERATURE_UPDATE.label) && home.includes(REVIEW.label));
   const policy = render(views.ReviewView);

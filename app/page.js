@@ -142,12 +142,11 @@ function Home() {
           </div>
 
           <div className="review-note">
-            <b>Latest literature update.</b> {LITERATURE_UPDATE.ids.length} entries updated from arXiv announcements
-            of 14–23 October, the FOCS 2026 accepted-paper list and OpenAI's 26 October repository update, which adds a
-            verification package for the <a href="#p/N2">dimension-six MUB</a> claim. New partial results include
-            {" "}<a href="#p/A6">combinatorial gap amplification</a>, <a href="#p/A12">classical simulation of lossy BosonSampling</a>,
-            {" "}<a href="#p/C3">PPT-assisted bosonic capacities</a> and <a href="#p/C6">new points in the zero-error spectrum of graphs</a>.
-            The twelve “Claimed solved” entries from the 17 October review are unchanged and still unverified. <a href="#review">Sources &amp; scope →</a>
+            <b>Latest literature update.</b> {LITERATURE_UPDATE.ids.length} entries updated. An independent
+            {" "}<a href="#p/N2">second proof that dimension six has only three MUBs</a> has appeared, and experts have
+            {" "}engaged with the <a href="#p/M5">Haldane-gap proof</a>. OpenAI's announced
+            {" "}<a href="#p/QF1">4D Yang–Mills existence proof</a> is not yet public and does not claim the mass gap.
+            No status changed; twelve entries remain “Claimed solved”, not verified. <a href="#review">Sources &amp; scope →</a>
           </div>
           <div className="review-note">
             <b>Full catalogue review.</b> All {REVIEW.reviewed} original entries reassessed;
@@ -535,24 +534,20 @@ function ReviewView() {
         <div className="container detail">
           <h2>Clear questions. Explicit evidence.</h2>
           <p className="intro">Latest literature update · {LITERATURE_UPDATE.label}</p>
-          <p>A targeted check of arXiv announcements from 14 to 23 October, the FOCS 2026 accepted-paper list, the 26 October
-            update of the OpenAI Math Release repository and the public communications of large AI and quantum-hardware groups
-            updated {LITERATURE_UPDATE.ids.length} entries:
+          <p>A targeted check of arXiv manuscripts submitted up to 5 November 2026, of the OpenAI Math Release update of
+            29 October, and of related announcements updated {LITERATURE_UPDATE.ids.length} entries:
             {" "}{LITERATURE_UPDATE.ids.map((id, i) => <span key={id}>{i > 0 ? ", " : ""}<a href={`#p/${id}`}>{id}</a></span>)}.
             The remaining entries retain their earlier review dates. This is a literature and scope check, not an independent verification of the proofs.</p>
-          <p>No status changes among the twelve <a href="#claimed-solved">“Claimed solved”</a> entries. For N2, OpenAI added the
-            C++ sources, saved numerical records and a consistency checker for the dimension-six MUB exclusion after an independent
-            audit had flagged their absence; the checker does not rerun the computation, and no expert review of the physics
-            manuscripts was found. O4 (initial system–environment correlations) and QF9 (subsystems in gauge theories) move to
-            “Improved” on an assignment-map characterization and on non-Abelian additivity counterexamples.</p>
-          <p>Other progress: combinatorial gap amplification for local Hamiltonians (A6), polynomial-time classical simulation of
-            BosonSampling at any constant photon loss (A12), exact PPT-assisted capacities of noisy Gaussian channels (C3), a continuum
-            of elements in the entanglement-assisted spectrum of graphs and multiplicative no-signalling bounds (C6), dimension-free
-            marginal inequalities (E12), size-independent log-Sobolev inequalities for 1D Gibbs samplers (O10), a structural theory of
-            approach to equilibrium (B5), entropy bounds for higher-dimensional cat maps (M10), a hybrid lattice–continuum Standard
-            Model regularization (QF5), and principle-based results in F3 and F8. FOCS 2026 (8–11 November) acceptances are recorded on
-            A6, A11, A18 and C1. QIP 2027 decisions are due on 30 November. Google DeepMind's AlphaProof Nexus paper (Science, 8 October)
-            and Anthropic's Lean percolation proof concern problems outside this catalogue.</p>
+          <p>No status changes. N2 (MUBs in dimension six) gains an independent second proof: a topological, interval-arithmetic
+            and partly Lean-formalized argument that also classifies every mutually unbiased triple. For M5 (Haldane gap), Tasaki's notes endorse the analytic argument while leaving its
+            numerics unchecked, and two papers build on the method. Both entries stay <a href="#claimed-solved">“Claimed solved”</a>
+            {" "}until peer review or an independent rerun of the certificates.</p>
+          <p>OpenAI announced on 26 October a 4D Yang–Mills (and QCD) existence proof. A committee chaired by David Gross holds the
+            proof and will release it after review. The announcement excludes the mass gap and no manuscript is public, so QF1 stays open.
+            Other progress: a classical-oracle separation of MA and StoqMA (A9), oracle classical verification beyond PH (A19),
+            further loss-based simulation of BosonSampling (A12), correlated catalysis (E11), continuity of distillable entanglement (E9),
+            all-to-all Gibbs-sampler mixing (O10), chiral-gauge follow-ups including Witten's (QF5) and
+            neural-network evidence for a Dirac spin liquid on the kagome lattice (B15). QIP 2027 decisions are due on 30 November.</p>
           <p><a href={LITERATURE_UPDATE.reportUrl} target="_blank" rel="noreferrer">Read the dated update, source versions and remaining questions →</a></p>
           <p>Earlier literature updates: {LITERATURE_UPDATES.slice(1).map((update, i) => <span key={update.date}>
             {i > 0 ? " · " : ""}<a href={update.reportUrl} target="_blank" rel="noreferrer">{update.label}</a>

@@ -14,6 +14,12 @@ https://openquantumproblems.com/
 
 ### Timeline
 
+**8 November 2026 — November literature and OpenAI follow-ups**
+
+- Screened 3,281 arXiv records (quant-ph, math-ph, cond-mat.str-el, hep-th, cs.CC; submitted 14 October to 5 November, overlapping the 26 October update), the OpenAI Math Release update of 29 October, and related announcements. See the [dated literature report](docs/reviews/2026-11-08-literature-update.md).
+- Thirteen entries updated; no status changes. N2 gains an independent second proof of $M(6)=3$ (Cárdenes Wuttig–Tindall). M5 records Tasaki's notes on the analytic argument and two follow-up papers. QF1 records OpenAI's announced, unpublished 4D Yang–Mills existence proof, which does not claim the mass gap.
+- Further progress recorded in A9, A12, A19, B15, E9, E11, M6, N1, O10 and QF5.
+- Counts unchanged since 26 October: 113 active entries, 46 Improved, 12 Claimed solved, zero Solved.
 **26 October 2026 — October literature, FOCS 2026 and large-group publications**
 
 - Screened arXiv announcements from 14 to 23 October (1,370 records across quant-ph, math-ph, cond-mat.str-el, hep-th and cs.CC), the FOCS 2026 accepted-paper list, the 26 October update of the [OpenAI Math Release](https://github.com/openai/math/tree/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a) repository, and public results from Google DeepMind, Anthropic, Quantinuum and IBM. See the [dated literature report](docs/reviews/2026-10-26-literature-update.md) for sources, scope notes and exclusions.

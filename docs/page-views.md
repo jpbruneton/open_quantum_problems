@@ -24,6 +24,15 @@ Compteur silencieux, non affiché sur le site (même mécanisme que thermo-book)
 
 ## Lire le compteur
 
+```
+npm run views
+```
+
+Le script lit les identifiants dans l'environnement, puis `.env.local`, puis
+`../thermo-book/.env.local` (même base). Sur Vercel les variables sont
+« sensitive » : `vercel env pull` les renvoie vides.
+
+Sinon :
 Console Upstash → Data Browser → clé `oqm:views:home`, ou :
 
 ```

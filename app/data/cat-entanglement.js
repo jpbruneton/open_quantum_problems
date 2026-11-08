@@ -199,7 +199,14 @@ Preprint progress (28 September 2026, v1): Shchukin and van Loock claim a rigidi
     ] },
 
   { id: "E9", cat: "entanglement", horizon: "incremental",
+    reviewedAt: "2026-11-08",
     relations: [{ id: "E5", type: "related" }, { id: "E6", type: "related" }, { id: "E10", type: "related" }, { id: "U4", type: "related" }],
+    evidence: [
+      { kind: "preprint", summary: "Explicit asymptotic continuity bound for distillable entanglement, logarithmic in dimension, via an LOCC protocol interconverting nearby states at vanishing ebit cost. A continuity ingredient, not an algorithm with a certified stopping rule.", url: "https://arxiv.org/abs/2610.35722v1", date: "2026-10-26", version: "v1" },
+    ],
+    provenance: [
+      { summary: "Schmitt and Sutter acknowledge GPT 6 Astra for assistance in developing the proof.", url: "https://arxiv.org/abs/2610.35722v1", version: "v1" },
+    ],
     title: "Certified evaluation of regularized entanglement and correlation measures",
     statement: r`For each of $E_C$, $E_D$, $E_R^\infty$ and the total-correlation quantity $E_P^\infty$, determine whether rational finite-dimensional inputs admit two-sided approximation to any rational accuracy with a certified stopping rule, and separately identify efficient structured cases.`,
     context: r`Many operational quantities involve an asymptotic limit over copies. Entanglement cost is $E_C=E_F^\infty$; regularized relative entropy and entanglement of purification also involve many-copy optimization. Entanglement of purification measures total correlations and is not, in general, an LOCC entanglement monotone.
@@ -208,11 +215,14 @@ Nonadditivity of entanglement of formation and related channel quantities invali
 
 Published progress (2026): Beigi–Rubboli–Tomamichel give structural single-copy criteria for additivity of quantum relative-entropy optimizations. These can certify useful special cases; they do not provide a general computability theorem for all the quantities listed here.
 
+Preprint progress (26 October 2026, v1): Schmitt and Sutter prove that distillable entanglement $E_D$ is asymptotically continuous, with an explicit bound depending logarithmically on dimension. The proof is an explicit LOCC protocol converting either of two nearby states into the other at an ebit cost that vanishes with their trace distance. The bound has the same structure as known continuity bounds for entanglement cost and relative entropy of entanglement. Continuity allows approximation from rational inputs, but certified evaluation of $E_D$ still needs computable two-sided bounds that converge, which remain missing.
+
 The task must be specified quantity by quantity, with input encoding, additive accuracy and a two-sided certificate. Efficient algorithms, computable convergence rates and analytic formulas are distinct levels of success.`,
     refs: [
       {"label":"Beigi, Rubboli & Tomamichel, 'Additivity of quantum relative entropies as a single-copy criterion', CMP 407, 134 (2026)","url":"https://arxiv.org/abs/2507.05696"},
       { label: "Hastings, 'Superadditivity of communication capacity using entangled inputs', Nat. Phys. 5 (2009)", url: "https://arxiv.org/abs/0809.3972" },
       { label: "Huang, 'Computing quantum discord is NP-complete', New J. Phys. 16 (2014)", url: "https://arxiv.org/abs/1305.5941" },
+      { label: "Schmitt & Sutter, 'Distillable entanglement is continuous' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.35722v1" },
     ] },
 
   { id: "E10", cat: "entanglement", horizon: "sharp", status: "claimed-solved",
@@ -248,8 +258,16 @@ New claimed resolution (2 October 2026, v1): Baghali Khanian and Negari claim ca
     ] },
 
   { id: "E11", cat: "entanglement", horizon: "incremental", status: "improved",
+    reviewedAt: "2026-11-08",
     relations: [{ id: "E4", type: "related" }, { id: "E5", type: "related" }, { id: "E6", type: "related" }],
-    evidence: [{ kind: "preprint", summary: "Monotones for PPT operations with correlated catalysts, and an irreversibility example. Because LOCC is contained in PPT operations, these also constrain correlated-catalytic LOCC conversions; no necessary-and-sufficient criterion follows. Cross-listed from E6.", url: "https://arxiv.org/abs/2608.20063", date: "2026-08-20" }],
+    evidence: [
+      { kind: "preprint", summary: "Correlated-catalytic conversion is possible iff the marginal asymptotic rate is at least one, under general assumptions; under LOCC this fully characterizes conversion from any bipartite state to entangled pure targets via $E_D$. Correlated catalysts cannot raise $E_D$, distillable key or two-way private capacity.", url: "https://arxiv.org/abs/2611.06573v1", date: "2026-11-04", version: "v1" },
+      { kind: "preprint", summary: "With correlated catalysis, the optimal asymptotic distillation fidelity at rate $R>E_D$ is $E_D/R$ for every distillable state, removing the strong converse; catalyst size requirements are characterized.", url: "https://arxiv.org/abs/2611.03148v1", date: "2026-11-02", version: "v1" },
+      { kind: "preprint", summary: "Monotones for PPT operations with correlated catalysts, and an irreversibility example. Because LOCC is contained in PPT operations, these also constrain correlated-catalytic LOCC conversions; no necessary-and-sufficient criterion follows. Cross-listed from E6.", url: "https://arxiv.org/abs/2608.20063", date: "2026-08-20" }],
+    provenance: [
+      { summary: "Ao, Philip and Streltsov report using ChatGPT for language editing, literature searches and discussions of mathematical arguments, and take full responsibility for the content.", url: "https://arxiv.org/abs/2611.06573v1", version: "v1" },
+      { summary: "Masajada, Philip and Streltsov state that ChatGPT 6 Astra was used in preparing the manuscript and that they checked and verified all results.", url: "https://arxiv.org/abs/2611.03148v1", version: "v1" },
+    ],
     title: "Entanglement catalysis",
     statement: r`For specified mixed or multipartite LOCC conversion families, characterize feasibility and catalyst cost separately for exact product return, exact marginal return with correlations, and approximate return with a stated error–dimension bound.`,
     context: r`A catalyst is an auxiliary state enabling a conversion while being returned according to a specified convention. Exact uncorrelated return requires an output $\sigma\otimes\tau$ with the original catalyst $\tau$. Correlated catalysis may return only the marginal $\tau$, and approximate return allows a perturbation. These are inequivalent resource theories.
@@ -258,11 +276,15 @@ For pure bipartite states, Jonathan–Plenio discovered exact catalysis; catalyt
 
 Related preprint progress (August 2026): Ao–Philip–Streltsov provide monotones and an irreversibility example under the larger class of PPT operations with correlated catalysts. Since every LOCC protocol is a PPT operation, their obstructions also apply to correlated-catalytic LOCC conversion. The same paper is recorded under E6, with its provenance; it is one advance cross-listed in two entries, not two independent results.
 
+Preprint progress (2–4 November 2026, v1): Ao, Philip and Streltsov prove that, under general operational assumptions, correlated-catalytic conversion is possible exactly when the marginal asymptotic conversion rate is at least one. Under LOCC, this fully characterizes correlated-catalytic conversion from an arbitrary bipartite state to an entangled pure state in terms of distillable entanglement. This settles the marginal-return-with-correlations convention for that mixed-to-pure family. They also show that correlated catalysts cannot increase distillable entanglement or key, and so cannot activate bound entanglement. Masajada, Philip and Streltsov show that correlated catalysis removes the strong converse for distillation: above $E_D$ the optimal fidelity is $E_D/R$. Exact product return, mixed targets, multipartite families and explicit catalyst-dimension trade-offs remain open.
+
 Useful benchmarks fix source/target families, trace-distance accuracy, allowed correlations and catalyst dimension or entanglement cost. Necessary-and-sufficient criteria in these controlled settings remain the incremental target.`,
     refs: [
       {"label":"Kondra, Datta & Streltsov, 'Catalytic transformations of pure entangled states', PRL 127, 150503 (2021)","url":"https://arxiv.org/abs/2102.11136"},
       { label: "Jonathan & Plenio, 'Entanglement-assisted local manipulation of pure quantum states', PRL 83, 3566 (1999)", url: "https://doi.org/10.1103/PhysRevLett.83.3566" },
       { label: "Ao, Philip & Streltsov, 'PPT Entanglement with Correlated Catalysis: Monotones and Irreversibility' (2026 preprint)", url: "https://arxiv.org/abs/2608.20063" },
+      { label: "Ao, Philip & Streltsov, 'Equivalence of Correlated Catalytic and Marginal Asymptotic Transformations in Quantum Resource Theories' (2026 preprint, v1)", url: "https://arxiv.org/abs/2611.06573v1" },
+      { label: "Masajada, Philip & Streltsov, 'Correlated Catalysis Removes the Strong Converse for Entanglement Distillation' (2026 preprint, v1)", url: "https://arxiv.org/abs/2611.03148v1" },
     ] },
 
   { id: "E12", cat: "entanglement", horizon: "incremental", status: "improved",

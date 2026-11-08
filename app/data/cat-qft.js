@@ -2,15 +2,29 @@ const r = String.raw;
 
 export const QFT = [
   { id: "QF1", cat: "qft", horizon: "sharp",
+    reviewedAt: "2026-11-08",
+    evidence: [
+      { kind: "preprint", summary: "First construction of the non-Abelian Yang–Mills–Higgs measure on the two-dimensional torus, by stochastic quantisation, for any fixed couplings. A two-dimensional benchmark, not a four-dimensional construction.", url: "https://arxiv.org/abs/2611.03640v1", date: "2026-11-02", version: "v1" },
+    ],
+    provenance: [
+      { summary: "Bringmann, Cao, Hairer and Zhao state that the main ideas and nearly all of the write-up were produced without AI, and that GPT-6 Astra and GPT-5.6 Sol proved seven listed technical lemmas and propositions, each reviewed before inclusion; ChatGPT Pro and Claude helped with exposition, literature search and proofreading.", url: "https://arxiv.org/abs/2611.03640v1", version: "v1" },
+    ],
     title: "Yang–Mills existence and mass gap",
     statement: r`For every compact simple gauge group $G$, construct a nontrivial quantum Yang–Mills theory on $\mathbb{R}^4$ satisfying suitable axioms and prove its Hamiltonian has a mass gap $\Delta>0$.`,
     context: r`This is a Clay Millennium Problem. One must construct four-dimensional quantum Yang–Mills theory as a well-defined quantum field theory (satisfying, e.g., the Wightman or Osterwalder–Schrader axioms) and prove a positive excitation threshold above the vacuum despite the massless classical gauge fields. This spectral gap must not be conflated with screening of external colour charges or the confinement criterion in QF2.
 
 What is known: Two-dimensional Yang–Mills has rigorous constructions. Strong-coupling lattice results and lower-dimensional constructions provide important benchmarks, but a lattice mass gap at fixed spacing is not a positive gap in the four-dimensional continuum limit. Asymptotic freedom (Gross–Wilczek–Politzer) controls short-distance perturbation theory; it does not construct the theory or prove its nonperturbative gap.
 
-The Clay problem remains open: control both continuum and infinite-volume limits, preserve suitable axioms, and obtain a strictly positive physical mass scale. The cited Chandra–Chevyrev–Hairer–Shen work concerns the 2D Yang–Mills measure, not a 3D or 4D continuum construction. Confinement (QF2) is a separate property and does not follow from a mass gap alone. Related: QF2, QF6.`,
+The Clay problem remains open: control both continuum and infinite-volume limits, preserve suitable axioms, and obtain a strictly positive physical mass scale. The cited Chandra–Chevyrev–Hairer–Shen work concerns the 2D Yang–Mills measure, not a 3D or 4D continuum construction. Confinement (QF2) is a separate property and does not follow from a mass gap alone. Related: QF2, QF6.
+
+Two-dimensional benchmark (2 November 2026, v1): Bringmann, Cao, Hairer and Zhao construct the non-Abelian Yang–Mills–Higgs measure on the two-dimensional torus by stochastic quantisation. The construction is nonperturbative and works for any fixed couplings. Like the 2D Yang–Mills measure above, it does not address four dimensions.
+
+Announced, unpublished claim (late October 2026): OpenAI announced that an internal model had produced a rigorous existence proof for four-dimensional quantum Yang–Mills theory, including coupling to fermions (QCD). Secondary reports also mention a Standard Model completion. A shepherding committee chaired by David Gross (with Douglas, Jaffe, Klebanov and Nekrasov) has custody of the roughly 1,147-page proof. According to the committee, Balaban's constructive renormalization-group ideas were among the important elements that let the proof reach the continuum limit at infinite distances. It also states that the mass gap and confinement remain open. It plans to release the proof, with a Lean formalization, only after checking that the definitions match the standard problem. No manuscript was public on 8 November 2026. Even if correct, the announced result concerns the existence half of the statement and not the mass gap. The entry therefore stays open, and nothing here is recorded as evidence until a manuscript can be read.`,
     relations: [{ id: "QF2", type: "related" }, { id: "QF6", type: "related" }],
     refs: [
+      { label: "Douglas, Gross (chair), Jaffe, Klebanov & Nekrasov, 'Proof by OpenAI of the Existence of Quantum Yang–Mills theory: statement by the shepherding committee' (KITP, October 2026)", url: "https://www.kitp.ucsb.edu/sites/default/files/YM_working_group.pdf" },
+      { label: "OpenAI, 'Working with academic communities to build scientific understanding' (announcement, 26 October 2026)", url: "https://openai.com/index/building-scientific-understanding-with-academic-communities/" },
+      { label: "Bringmann, Cao, Hairer & Zhao, 'Construction of the 2D non-Abelian Yang–Mills–Higgs measure via stochastic quantisation' (2026 preprint, v1)", url: "https://arxiv.org/abs/2611.03640v1" },
       { label: "Clay Mathematics Institute — Yang–Mills & Mass Gap", url: "https://www.claymath.org/millennium/yang-mills-the-maths-gap/" },
       { label: "Jaffe & Witten, 'Quantum Yang–Mills theory' (official problem description)", url: "https://www.claymath.org/wp-content/uploads/2022/02/MPPc.pdf" },
       { label: "Chandra, Chevyrev, Hairer, Shen, 'Langevin dynamic for the 2D Yang–Mills measure', Publ. IHÉS (2022)", url: "https://arxiv.org/abs/2006.04987" },
@@ -58,13 +72,17 @@ This historical umbrella is merged into QF1, QF3 and QF5. Their results must ult
     ] },
 
   { id: "QF5", cat: "qft", horizon: "programme", status: "improved",
-    reviewedAt: "2026-10-26",
+    reviewedAt: "2026-11-08",
     evidence: [
       { kind: "preprint", summary: "Standard Model with gauge and Higgs fields on a finite lattice and continuum Weyl fermions: a gauge-invariant chiral determinant via anomaly cancellation, a finite gauge-invariant bosonic integral at fixed spacing and volume, and reflection positivity for a variant at zero Yukawa coupling and theta; the bosonic continuum limit is stated to remain open.", url: "https://arxiv.org/abs/2610.29019v1", date: "2026-10-21", version: "v1" },
       { kind: "preprint", summary: "Claimed nonperturbative gauge-invariant overlap-fermion measure on 4D lattices for a class of non-Abelian chiral gauge theories including the Standard Model, on admissible gauge fields; the interacting continuum theory is not constructed.", url: "https://arxiv.org/abs/2610.09093v1", date: "2026-10-06", version: "v1" },
+      { kind: "preprint", summary: "Witten describes a variant of Craig's algorithm that couples a continuum interpolation of the lattice gauge field to continuum chiral fermions. It is implementable in principle in any dimension for anomaly-free representations, but not by Monte Carlo because the chiral fermion path integral is not positive.", url: "https://arxiv.org/abs/2611.05051v1", date: "2026-11-03", version: "v1" },
+      { kind: "numerical", summary: "Gauge-invariant Hamiltonian lattice regularization of 1+1D Abelian chiral gauge theories with finite-dimensional qudits and exact mod-$N$ anomaly; iMPS simulation of the 34-50 model matches continuum predictions. Abelian and two-dimensional only.", url: "https://arxiv.org/abs/2611.06880v1", date: "2026-11-04", version: "v1" },
     ],
     provenance: [
       { summary: "Hsu states that GPT and Claude were used extensively, that the technical appendix is entirely AI-led (mostly GPT Astra with verification by Claude and other models), and that the author takes responsibility for the results.", url: "https://arxiv.org/html/2610.29019v1", version: "v1" },
+      { summary: "Witten thanks Claude Opus 5.5 for assistance on many details and credits it with suggesting the variant that gives a smooth interpolation.", url: "https://arxiv.org/abs/2611.05051v1", version: "v1" },
+      { summary: "Lootens and Singh report that, after they conceived the idea and did initial analytic work, Claude (Anthropic) wrote almost all of the simulation and figure code, which they spot-checked against their own code.", url: "https://arxiv.org/abs/2611.06880v1", version: "v1" },
       { summary: "Craig, who lists affiliations including OpenAI, states that GPT-6 Astra was essential: after iterations with Astra and outside experts, the proof is Astra-led, the manuscript combines author-written sections with rewrites of Astra's proof, and Astra carried out Lean and other checks.", url: "https://arxiv.org/abs/2610.09093v1", version: "v1" },
     ],
     title: "Chiral gauge theories on the lattice",
@@ -79,10 +97,14 @@ Preprint progress (6 October 2026, v1): Craig claims a nonperturbative gauge-inv
 
 Preprint progress (21 October 2026, v1): Hsu proposes a hybrid regularization in which gauge and Higgs fields live on a finite lattice while quarks and leptons remain continuum Weyl fermions, so that anomalies, spectral flow and zero modes keep their continuum description. Anomaly cancellation in the Standard Model is used to define a gauge-invariant chiral determinant, Yukawa couplings enter through a gauge-covariant vertex cutoff removable with one-loop local subtractions, and the resulting bosonic integral is claimed finite and exactly gauge invariant at fixed spacing and volume under stated smoothness conditions. Reflection positivity is established only for a variant at zero Yukawa coupling and zero theta, and the bosonic continuum limit is stated to remain open. This is a different regularization strategy from Craig's purely lattice measure; neither constructs the interacting continuum theory.
 
+Follow-up (3–4 November 2026, v1): Witten's note describes a variant of Craig's algorithm, also proposed by Hsu, that couples a continuum interpolation of the lattice gauge field to continuum chiral fermions. For any anomaly-free representation it can in principle be run on a computer, but not by Monte Carlo, because the chiral fermion path integral is not positive. Separately, Lootens and Singh give a gauge-invariant Hamiltonian lattice regularization of 1+1-dimensional Abelian chiral gauge theories with finite-dimensional local Hilbert spaces, in which the 't Hooft anomaly survives exactly mod $N$. Their infinite-MPS simulation of the 34-50 model agrees with continuum predictions. Both clarify the regulator landscape. Neither proves the four-dimensional non-Abelian continuum statement.
+
 A general, nonperturbative construction of an arbitrary anomaly-free non-abelian chiral gauge theory with the correct continuum limit is still open. Related: QF4.`,
     refs: [
       { label: "Craig, 'A gauge-invariant measure for lattice chiral fermions' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.09093v1" },
       { label: "Hsu, 'The Standard Model on a finite bosonic lattice with continuum Weyl fermions' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.29019v1" },
+      { label: "Witten, 'A Note On Lattice Definition of Gauge Theories With Chiral Fermions' (2026 preprint, v1)", url: "https://arxiv.org/abs/2611.05051v1" },
+      { label: "Lootens & Singh, 'Simulating a chiral gauge theory' (2026 preprint, v1)", url: "https://arxiv.org/abs/2611.06880v1" },
       { label: "Nielsen & Ninomiya, 'Absence of neutrinos on a lattice: (I). Proof by homotopy theory', Nucl. Phys. B185, 20–40 (1981)", url: "https://doi.org/10.1016/0550-3213(81)90361-8" },
       { label: "Lüscher, 'Abelian chiral gauge theories on the lattice with exact gauge invariance', Nucl. Phys. B549 (1999)", url: "https://arxiv.org/abs/hep-lat/9811032" },
       { label: "Kaplan, 'Chiral gauge theory at the boundary between topological phases', PRL 132, 141603 (2024; preprint 2023)", url: "https://arxiv.org/abs/2312.01494" },

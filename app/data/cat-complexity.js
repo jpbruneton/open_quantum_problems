@@ -206,10 +206,19 @@ More recent positive cases include Irani–Jiang's two-dimensional qutrit settin
 
 What is known: Aharonov–Grilo–Liu show that suitable general StoqMA error reduction would imply equality with MA. Liu proves soundness-reduction and other restricted results, but the general completeness-amplification obstacle remains. This is a sharp class-comparison question.
 
-July 2026 preprint: Karakashian–Hen propose vanishing geometric phase (VGP) as a wider Hamiltonian class. They establish StoqMA-completeness of the VGP local-Hamiltonian problem, MA membership of its frustration-free variant, hard-to-stoquastize examples, and PSPACE-completeness of recognizing VGP in their general geometrically local setting. These results refine the landscape without settling StoqMA = MA or general error amplification. Related: B11.`,
-    evidence: [{ kind: "preprint", summary: "VGP Hamiltonian complexity and recognition results; no resolution of StoqMA versus MA.", url: "https://arxiv.org/abs/2607.18596v1", date: "2026-07-21", version: "v1" }],
+July 2026 preprint: Karakashian–Hen propose vanishing geometric phase (VGP) as a wider Hamiltonian class. They establish StoqMA-completeness of the VGP local-Hamiltonian problem, MA membership of its frustration-free variant, hard-to-stoquastize examples, and PSPACE-completeness of recognizing VGP in their general geometrically local setting. These results refine the landscape without settling StoqMA = MA or general error amplification. Related: B11.
+
+Relativized separation (5 November 2026, v1): Hamoudi, Le Borgne and Teganahally Sridhara prove $\mathsf{MA}\subsetneq\mathsf{StoqMA}$ relative to a classical oracle. The separating problem asks whether a sparse high-girth graph, given by an adjacency-list oracle, has a large or small Perron–Frobenius eigenvalue. This is a stoquastic ground-energy task. The result shows that relativizing techniques cannot prove StoqMA = MA, and so cannot prove it through error amplification. The unrelativized question remains open.`,
+    reviewedAt: "2026-11-08",
+    evidence: [
+      { kind: "preprint", summary: "Classical-oracle separation $\\mathsf{MA}\\subsetneq\\mathsf{StoqMA}$ via a Perron–Frobenius eigenvalue problem on oracle-given sparse high-girth graphs. Relativized; it does not decide the unrelativized equality.", url: "https://arxiv.org/abs/2611.08180v1", date: "2026-11-05", version: "v1" },
+      { kind: "preprint", summary: "VGP Hamiltonian complexity and recognition results; no resolution of StoqMA versus MA.", url: "https://arxiv.org/abs/2607.18596v1", date: "2026-07-21", version: "v1" }],
+    provenance: [
+      { summary: "Hamoudi, Le Borgne and Teganahally Sridhara report using ChatGPT 5.6 while searching for a suitable NO-instance construction; it helped identify an NP protocol for an earlier construction.", url: "https://arxiv.org/abs/2611.08180v1", version: "v1" },
+    ],
     relations: [{ id: "B11", type: "related" }],
     refs: [
+      { label: "Hamoudi, Le Borgne & Teganahally Sridhara, 'Quantum Advantage with Sign-Free Proofs: An Oracle Separation between StoqMA and MA' (2026 preprint, v1)", url: "https://arxiv.org/abs/2611.08180v1" },
       { label: "Bravyi, Bessen & Terhal, 'Merlin-Arthur Games and Stoquastic Complexity' (2006)", url: "https://arxiv.org/abs/quant-ph/0611021" },
       { label: "Bravyi, DiVincenzo, Oliveira & Terhal, 'The complexity of stoquastic local Hamiltonian problems', Quantum Inf. Comput. 8 (2008)", url: "https://arxiv.org/abs/quant-ph/0606140" },
       { label: "Aharonov, Grilo & Liu, 'StoqMA vs. MA: the power of error reduction', Quantum 9, 1853 (2025)", url: "https://quantum-journal.org/papers/q-2025-09-11-1853/" },
@@ -264,7 +273,6 @@ Revision (20 October 2026, v2): Liu and Mutreja extend their simulation theorem 
     ] },
 
   { id: "A12", cat: "complexity", horizon: "sharp", status: "improved",
-    reviewedAt: "2026-10-26",
     title: "Approximate average-case hardness for BosonSampling",
     statement: r`Prove average-case approximate hardness for complex-Gaussian permanents, together with a robust reduction strong enough to rule out polynomial-time classical sampling within inverse-polynomial total-variation error for standard BosonSampling under standard worst-case complexity assumptions.`,
     context: r`Standard BosonSampling output probabilities involve squared permanents of interferometer submatrices; appropriate submatrices approach Gaussian matrices in the relevant hiding regime. The Aaronson–Arkhipov route to approximate-sampling hardness needs average-case approximate permanent hardness and anticoncentration, not merely worst-case hardness or exact probability evaluation.
@@ -273,17 +281,26 @@ July 2026 preprint: Koehler–Leung claim the full permanent anticoncentration c
 
 August 2026 preprints concern separate variants. Shou–Gorshkov–Galitski–Miller prove the Gaussian-BosonSampling hiding conjecture with $K$ equally squeezed inputs in the regime $N=o(\sqrt K)$, where $N$ is the detected-photon number. Go–Jeong–Oh establish average-case hardness of probability estimation for threshold and parity BosonSampling in a linear-mode regime. Neither proves the stated approximate-sampling theorem for standard BosonSampling. Related: A13.
 
-Simulability result (19 October 2026, v1): Go and Jeong give a polynomial-time classical sampler for lossy BosonSampling whenever a constant fraction of the $N$ input photons survives, in the fixed-loss model with uniformly random loss and in the uniform-transmission model at any fixed transmission rate, within total-variation error $\varepsilon$ with high probability over Haar-random interferometers. This extends the provably simulable regime from $O(\sqrt{\varepsilon N})$ surviving photons to linear survival. It concerns lossy experiments, not the ideal sampling problem stated above, and it narrows the robustness that any hardness reduction for noisy BosonSampling could offer.`,
+Simulability result (19 October 2026, v1): Go and Jeong give a polynomial-time classical sampler for lossy BosonSampling whenever a constant fraction of the $N$ input photons survives, in the fixed-loss model with uniformly random loss and in the uniform-transmission model at any fixed transmission rate, within total-variation error $\varepsilon$ with high probability over Haar-random interferometers. This extends the provably simulable regime from $O(\sqrt{\varepsilon N})$ surviving photons to linear survival. It concerns lossy experiments, not the ideal sampling problem stated above, and it narrows the robustness that any hardness reduction for noisy BosonSampling could offer.
+
+Further loss results (1–5 November 2026, v1): two further preprints extend this picture. Lim covers any fixed nonzero uniform loss rate, for Fock-state and equally squeezed Gaussian inputs. Angrisani and Mhiri cover fixed thermal or pure loss, and also fermion sampling with magic inputs. Together with Go and Jeong, these results bound where noisy experiments can claim hardness. They do not concern the ideal, noiseless average-case hardness asked for here, which remains open.`,
+    reviewedAt: "2026-11-08",
     evidence: [
       { kind: "preprint", summary: "Polynomial-time classical simulation of lossy BosonSampling at any constant surviving fraction over Haar-random interferometers; a simulability result for lossy experiments, not a hardness theorem for the ideal problem.", url: "https://arxiv.org/abs/2610.27065v1", date: "2026-10-19", version: "v1" },
+      { kind: "preprint", summary: "Efficient average-case classical sampling for Fock and equally squeezed Gaussian BosonSampling at any fixed nonzero uniform loss rate. A noisy regime.", url: "https://arxiv.org/abs/2611.01434v1", date: "2026-11-01", version: "v1" },
+      { kind: "preprint", summary: "Unified polynomial-time simulation of boson and fermion sampling under fixed thermal or pure loss, at inverse-polynomial total-variation error over Haar-random interferometers. A noisy regime.", url: "https://arxiv.org/abs/2611.08444v1", date: "2026-11-05", version: "v1" },
       { kind: "preprint", summary: "Claims the complex-Gaussian permanent anticoncentration conjecture; approximate average-case hardness is still missing.", url: "https://arxiv.org/abs/2607.20329v1", date: "2026-07-22", version: "v1" },
       { kind: "preprint", summary: "Hiding theorem for Gaussian BosonSampling with equally squeezed inputs in the stated N = o(sqrt K) regime.", url: "https://arxiv.org/abs/2608.19314v1", date: "2026-08-19", version: "v1" },
       { kind: "preprint", summary: "Average-case probability-estimation hardness for threshold/parity variants, not a general approximate-sampling theorem.", url: "https://arxiv.org/abs/2608.24008v1", date: "2026-08-25", version: "v1" },
     ],
     provenance: [{ summary: "Shou et al. report GPT-5.5 Thinking/Pro and GPT-5.6 Sol use for proof ideas, methods, checking and proofreading, and say they wrote the paper and checked every result and proof.", url: "https://arxiv.org/abs/2608.19314v1", version: "v1" },
-      { summary: "Go and Jeong state that generative AI assisted with analytical cross-checks and editing, and that they reviewed all outputs and take responsibility.", url: "https://arxiv.org/html/2610.27065v1", version: "v1" }],
+      { summary: "Go and Jeong state that generative AI assisted with analytical cross-checks and editing, and that they reviewed all outputs and take responsibility.", url: "https://arxiv.org/html/2610.27065v1", version: "v1" },
+      { summary: "Lim reports obtaining the main results personally, with GPT-6 and Fable 5.1 used under the author's direction to explore and sharpen arguments, check calculations and edit text.", url: "https://arxiv.org/abs/2611.01434v1", version: "v1" },
+      { summary: "Angrisani and Mhiri report using ChatGPT (GPT-5.2 through 6 Astra) to identify the polynomial basis and literature, prove technical results and draft parts of the manuscript.", url: "https://arxiv.org/abs/2611.08444v1", version: "v1" }],
     relations: [{ id: "A13", type: "related" }],
     refs: [
+      { label: "Lim, 'Boson sampling is fragile to loss' (2026 preprint, v1)", url: "https://arxiv.org/abs/2611.01434v1" },
+      { label: "Angrisani & Mhiri, 'Polynomial-time classical simulation of boson and fermion sampling under thermal loss' (2026 preprint, v1)", url: "https://arxiv.org/abs/2611.08444v1" },
       { label: "Aaronson & Arkhipov, 'The computational complexity of linear optics', Theory of Computing 9 (2013)", url: "https://arxiv.org/abs/1011.3245" },
       { label: "Koehler & Leung, 'Anticoncentration of the Permanent in Ginibre Ensembles' (2026 preprint)", url: "https://arxiv.org/abs/2607.20329v1" },
       { label: "Shou et al., 'Proof of the hiding conjecture for Gaussian boson sampling with an arbitrary number of squeezed input modes' (2026 preprint)", url: "https://arxiv.org/abs/2608.19314v1" },
@@ -431,8 +448,9 @@ Conference record (October 2026): the Breuckmann–Golowich–Vazirani adversari
     ] },
 
   { id: "A19", cat: "complexity", horizon: "sharp", status: "improved",
-    reviewedAt: "2026-10-05",
+    reviewedAt: "2026-11-08",
     provenance: [
+      { summary: "Mantri reports that discussions with GPT-6.1 Sol and GPT-6 Astra contributed substantially to developing the proof of Theorem 1.7 and assisted with the Appendix B argument, and that Claude Opus helped draft and revise the exposition.", url: "https://arxiv.org/abs/2610.37635v1", version: "v1" },
       { summary: "The authors report ChatGPT assistance with representation analysis and Claude assistance with circuits, several proof ideas, review and writing; they take responsibility for all content.", url: "https://arxiv.org/html/2609.38060v1", version: "v1" },
       { summary: "The authors credit ChatGPT 6 Astra with an initial one-sided proof idea; interactions and their own discussions led to the two-sided Forrelation argument. They report verification, simplification and responsibility.", url: "https://arxiv.org/html/2609.25680v1", version: "v1" },
     ],
@@ -446,8 +464,11 @@ An April 2026 preprint by Aaronson–Natarajan–Tal–Villanyi proves $\mathsf{
 
 Preprint obstruction (22 September 2026, v1): Bouland, Huang, Natarajan, Shalit and Tal construct an oracle relative to which $\mathsf{BQP}\not\subseteq\mathsf{IP}$, using Forrelation. In that oracle model, polynomial-query classical verification with polynomial communication fails even with an unbounded prover. This rules out fully relativizing approaches to the desired protocol, not unrelativized classical verification; a non-relativizing construction remains possible.
 
-Cryptographic progress (29 September 2026, v1): Holler and Natarajan obtain single-prover classical verification with total resources quasilinear in the delegated circuit size, up to security-parameter and logarithmic factors. Their main theorem assumes subexponential LWE hardness against nonuniform quantum adversaries and gives computational soundness. It improves the cryptographic benchmark without meeting A19's unrestricted-cheater, assumption-free target.`,
+Cryptographic progress (29 September 2026, v1): Holler and Natarajan obtain single-prover classical verification with total resources quasilinear in the delegated circuit size, up to security-parameter and logarithmic factors. Their main theorem assumes subexponential LWE hardness against nonuniform quantum adversaries and gives computational soundness. It improves the cryptographic benchmark without meeting A19's unrestricted-cheater, assumption-free target.
+
+Positive oracle result (27 October 2026, v1): Mantri gives a public-coin interactive proof with a classical polynomial-time verifier, an efficient quantum honest prover, perfect completeness and soundness error at most $1/4$. It applies, relative to a classical oracle, to a language that is decided exactly in quantum polynomial time and lies outside the polynomial hierarchy. The language is a recursive Fourier-sampling variant. This shows that oracle barriers like the one above do not block every hard quantum language. It is still relativized, covers one language rather than all of BQP, and leaves the unrelativized question open.`,
     evidence: [
+      { kind: "preprint", summary: "Relative to a classical oracle, classical verification with an efficient quantum prover and unconditional soundness for one BQP language outside the polynomial hierarchy. Not all of BQP; relativized.", url: "https://arxiv.org/abs/2610.37635v1", date: "2026-10-27", version: "v1" },
       { kind: "preprint", summary: "Quasilinear-resource classical verification under subexponential quantum LWE hardness, with computational soundness.", url: "https://arxiv.org/abs/2609.38060v1", date: "2026-09-29", version: "v1" },
       { kind: "preprint", summary: "Oracle separation BQP not contained in IP gives a barrier to relativizing verification protocols, not an unrelativized impossibility theorem.", url: "https://arxiv.org/abs/2609.25680v1", date: "2026-09-22", version: "v1" },
       { kind: "published", summary: "Mahadev achieves classical verification with computational soundness under a lattice hardness assumption; the assumption-free target is stronger.", url: "https://arxiv.org/abs/1804.01082" },
@@ -455,6 +476,7 @@ Cryptographic progress (29 September 2026, v1): Holler and Natarajan obtain sing
     ],
     relations: [{ id: "A1", type: "related" }, { id: "A3", type: "related" }, { id: "A10", type: "related" }],
     refs: [
+      { label: "Mantri, 'Classical Verification of Quantum Computation Beyond the Polynomial Hierarchy' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.37635v1" },
       { label: "Finn Holler, Anand Natarajan, 'Classical Verification of Quantum Computation with Quasilinear Resources, from Compiled Nonlocal Games' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.38060v1" },
       { label: "Bouland, Huang, Natarajan, Shalit & Tal, 'BQP ⊆ IP Does Not Relativize' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.25680v1" },
       { label: "Mahadev, 'Classical Verification of Quantum Computations', FOCS 2018", url: "https://arxiv.org/abs/1804.01082" },

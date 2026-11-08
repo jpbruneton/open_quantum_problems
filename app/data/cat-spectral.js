@@ -104,13 +104,18 @@ The status is genuinely contested. De Roeck and Huveneers develop an ETH-based a
     ] },
 
   { id: "M5", cat: "spectral", horizon: "sharp", status: "claimed-solved",
-    reviewedAt: "2026-10-17",
+    reviewedAt: "2026-11-08",
     evidence: [
       { kind: "preprint", summary: "Claimed uniform positive gap for the pure spin-1 Heisenberg chain on even periodic rings; OpenAI GitHub manuscript with a finite numerical verifier, pending assessment.", url: `${OAI}preprints/The-periodic-spin-one-Haldane-gap-September-24-2026/paper.pdf`, date: "2026-10-06", version: "v1" },
       { kind: "preprint", summary: "Companion gap for odd open chains with endpoint field $h=3/5$; a boundary-selected variant, not the periodic benchmark.", url: `${OAI}preprints/A-boundary-field-gap-for-the-spin-one-Heisenberg-chain-September-24-2026/paper.pdf`, date: "2026-10-06", version: "v1" },
+      { kind: "preprint", summary: "Tasaki's expository notes report a careful study of the analytic argument of the periodic paper and find that it proves the standard periodic formulation; the computer-assisted estimates were not independently checked. A single expert's notes, not a refereed assessment.", url: "https://haltasaki.github.io/writings/AI/OpenAI_Haldane.html", date: "2026-10-19" },
+      { kind: "preprint", summary: "Builds on the OpenAI analytic machinery and imports its numerical certificates (not recomputed) to prove uniqueness of the translation-invariant ground state of the infinite chain and convergence of finite-chain ground states. An extension, not an independent verification.", url: "https://arxiv.org/abs/2610.34330v2", date: "2026-10-25", version: "v2" },
+      { kind: "preprint", summary: "Generalizes the 'purity bootstrap' behind the OpenAI proof to higher dimensions, near-degenerate low-energy sectors, fermions and PEPS correlation decay, with new finite-size certificates. Engages with the method; does not re-check the spin-1 certificates.", url: "https://arxiv.org/abs/2611.07400v1", date: "2026-11-05", version: "v1" },
     ],
     provenance: [
       { summary: "OpenAI lists itself as author and states that an unreleased internal model produced the manuscript collection. No Lean formalization is listed for this family; the README states that its finite checks do not replace the analytic uniform-gap argument. This is OpenAI's account.", url: `${OAI}preprints/The-periodic-spin-one-Haldane-gap-September-24-2026/README.md` },
+      { summary: "Tasaki writes that ChatGPT Astra developed the proofs of the convergence statements and found the separated-insertion uniqueness argument, under the author's problem selection and direction; the author revised the draft, checked the arguments and takes responsibility. The imported OpenAI numerical certificates were not recomputed.", url: "https://arxiv.org/abs/2610.34330v2", version: "v2" },
+      { summary: "Grover reports extensive use of ChatGPT Astra and Codex to understand the OpenAI proof, refine arguments, implement numerical calculations and develop much of the PEPS bootstrap argument; the author developed the main extension ideas and rewrote AI-drafted explanations.", url: "https://arxiv.org/abs/2611.07400v1", version: "v1" },
     ],
     title: "Haldane gap for the spin-1 Heisenberg chain",
     statement: r`For the spin-1 antiferromagnetic Heisenberg chain $H_L=\sum_{j=1}^L\vec S_j\cdot\vec S_{j+1}$ with periodic boundary conditions, coupling one and even length $L$, prove $\liminf_{L\to\infty,\,L\in2\mathbb N}(E_1(L)-E_0(L))>0$, where $E_1$ is the first energy strictly above the ground space.`,
@@ -122,8 +127,13 @@ The gap of the pure Heisenberg $S=1$ chain remains the target: the AKLT theorem 
 
 Statement correction (17 October 2026): the statement now specifies even $L$. Odd periodic rings are geometrically frustrated for an antiferromagnet and are not part of the standard periodic formulation; the earlier wording took the limit inferior over all lengths.
 
-Claimed resolution (OpenAI Math Release, public 6 October 2026; manuscript dated 24 September): a uniform positive gap with explicit length-independent bounds is claimed for the pure bilinear spin-1 chain on even periodic rings. The argument combines spatial-moment bounds with two finite thermal initializations checked by a supplied numerical verifier. A companion treats odd open chains with a boundary field. The manuscripts are GitHub releases, not arXiv preprints, and no Lean formalization is listed. Marked “Claimed solved” pending independent assessment.`,
+Claimed resolution (OpenAI Math Release, public 6 October 2026; manuscript dated 24 September): a uniform positive gap with explicit length-independent bounds is claimed for the pure bilinear spin-1 chain on even periodic rings. The argument combines spatial-moment bounds with two finite thermal initializations checked by a supplied numerical verifier. A companion treats odd open chains with a boundary field. The manuscripts are GitHub releases, not arXiv preprints, and no Lean formalization is listed. Marked “Claimed solved” pending independent assessment.
+
+Expert engagement (18 October to 5 November 2026): Hal Tasaki published expository notes on the analytic argument, reporting a careful study of it. The notes conclude that it proves the conjecture in the standard periodic formulation, and state that the computer-assisted estimates were not independently checked. Tasaki then used the same machinery and imported numerical inputs to prove uniqueness of the translation-invariant ground state of the infinite chain (25 October, v2 reviewed). Grover extended the underlying “purity bootstrap” to higher dimensions, nearly degenerate sectors, fermions and tensor-network states (5 November). This is substantive, favorable engagement with the analytic argument. The finite numerical certificates have still not been independently recomputed, so the entry remains “Claimed solved”.`,
     refs: [
+      { label: "Tasaki, 'OpenAI's proof of the Haldane gap in the S=1 antiferromagnetic Heisenberg chain' (expository notes, October 2026)", url: "https://haltasaki.github.io/writings/AI/OpenAI_Haldane.html" },
+      { label: "Tasaki, 'On the uniqueness of translation-invariant ground states of the S=1 Heisenberg and J–D antiferromagnetic chains' (2026 preprint, v2)", url: "https://arxiv.org/abs/2610.34330v2" },
+      { label: "Grover, 'Extensions of the Haldane gap proof: higher dimensions, near degeneracy, fermions and tensor-network states' (2026 preprint, v1)", url: "https://arxiv.org/abs/2611.07400v1" },
       { label: "OpenAI, 'The periodic spin-one Haldane gap' (OpenAI Math Release manuscript, dated 24 September 2026; public 6 October 2026)", url: `${OAI}preprints/The-periodic-spin-one-Haldane-gap-September-24-2026/paper.pdf` },
       { label: "Haldane, 'Nonlinear field theory of large-spin Heisenberg antiferromagnets: Semiclassically quantized solitons of the one-dimensional easy-axis Néel state', PRL 50, 1153 (1983)", url: "https://doi.org/10.1103/PhysRevLett.50.1153" },
       { label: "Affleck, Kennedy, Lieb & Tasaki, 'Valence bond ground states in isotropic quantum antiferromagnets', Comm. Math. Phys. 115, 477 (1988)", url: "https://doi.org/10.1007/BF01218021" },
@@ -133,14 +143,24 @@ Claimed resolution (OpenAI Math Release, public 6 October 2026; manuscript dated
     ] },
 
   { id: "M6", cat: "spectral", horizon: "incremental",
+    reviewedAt: "2026-11-08",
+    evidence: [
+      { kind: "preprint", summary: "Infinite-volume gap stability and quasi-local ground-state transport for gapped free fermions (pairing allowed) under weak even many-body perturbations, with polynomial decay $\\varpi>2d$ and linear gap loss. Refines the known weakly interacting fermion class rather than opening a new family.", url: "https://arxiv.org/abs/2610.40299v1", date: "2026-10-29", version: "v1" },
+    ],
+    provenance: [
+      { summary: "Teufel reports using ChatGPT Pro (GPT-5.6 Sol) to explore and critically examine arguments and literature, and GPT-6 Astra to check and polish the final version; the author reviewed the result.", url: "https://arxiv.org/abs/2610.40299v1", version: "v1" },
+    ],
     title: "Gap stability beyond controlled classes",
     statement: r`Extend verifiable bulk-gap stability criteria to a specified interacting lattice family outside current theorems. Fix the unperturbed gap, ground-space assumptions and interaction-decay norm, and prove a system-size-independent perturbation radius preserving a positive bulk gap.`,
     context: r`Whether a spectral gap survives adding small local perturbations underpins the very notion of a gapped quantum phase of matter. If the gap can close under arbitrarily small perturbations, 'gapped phase' is not well defined.
 
 What is known: The original Bravyi–Hastings–Michalakis theorem treats geometrically local commuting-projector Hamiltonians satisfying its topological-order conditions, including toric-code-type examples. Michalakis–Zwolak extend stability to frustration-free systems with local topological order and local-gap assumptions. Later work of Nachtergaele–Sims–Young develops further bulk and quasi-local stability tools. These are different sets of sufficient hypotheses, not a theorem for every frustration-free gapped model.
 
-Residual targets include quantitatively weaker decay assumptions or a chosen frustrated family not covered by an existing criterion. They must be checked against later stability theorems: neither degeneracy nor frustration alone puts a model outside all known results. Specify, for example, a weighted interaction norm with an explicit power-law exponent, and distinguish an infinite-volume bulk gap from gaps of finite regions with physical edges. Stability of a low-energy band is not the same as keeping every finite-volume ground-state splitting zero.`,
+Residual targets include quantitatively weaker decay assumptions or a chosen frustrated family not covered by an existing criterion. They must be checked against later stability theorems: neither degeneracy nor frustration alone puts a model outside all known results. Specify, for example, a weighted interaction norm with an explicit power-law exponent, and distinguish an infinite-volume bulk gap from gaps of finite regions with physical edges. Stability of a low-energy band is not the same as keeping every finite-volume ground-state splitting zero.
+
+Preprint progress (29 October 2026, v1): Teufel proves gap stability directly in infinite volume for gapped free-fermion systems, pairing terms included, under weak even many-body perturbations. Hopping, pairing and interaction terms may decay polynomially, with exponent $\varpi>2d$ for two-site terms. The proof also gives a quasi-local spectral flow with matching locality, and the gap loss is linear in the coupling. Hastings, Koma and De Roeck–Salmhofer had already treated weakly interacting fermions, and De Roeck–Salmhofer allow polynomial decay. The advance is in the infinite-volume formulation, the ground-state transport and the quantitative estimates, not a new uncovered family, so M6 stays open.`,
     refs: [
+      { label: "Teufel, 'Bulk gap stability and spectral flow for fermions with weak long-range interactions' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.40299v1" },
       { label: "Bravyi, Hastings, Michalakis, 'Topological quantum order: stability under local perturbations', J. Math. Phys. 51, 093512 (2010)", url: "https://arxiv.org/abs/1001.0344" },
       { label: "Michalakis & Zwolak, 'Stability of frustration-free Hamiltonians', Comm. Math. Phys. 322 (2013)", url: "https://arxiv.org/abs/1109.1588" },
       { label: "Nachtergaele, Sims & Young, 'Quasi-locality bounds for quantum lattice systems. Part I. Lieb–Robinson bounds, quasi-local maps, and spectral flow automorphisms', J. Math. Phys. 60 (2019)", url: "https://arxiv.org/abs/1810.02428" },

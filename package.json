@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "test": "node --test scripts/catalogue.test.cjs",
+    "views": "node scripts/views.mjs",
     "lint": "next lint"
   },
   "dependencies": {
