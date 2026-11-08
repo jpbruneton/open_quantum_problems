@@ -260,7 +260,8 @@ Standard reference: Irani, Natarajan, Nirkhe, Rao and Yuen, “Quantum search-to
       { label: "Irani, Natarajan, Nirkhe, Rao & Yuen, 'Quantum search-to-decision reductions and the state synthesis problem', CCC 2022", url: "https://arxiv.org/abs/2111.02999" },
     ] },
 
-  { id: "A11", cat: "complexity", horizon: "sharp", status: "improved",
+  { id: "A11", cat: "complexity", horizon: "sharp", status: "claimed-solved",
+    lean: { url: "https://github.com/physical-superintelligence/aaronson-ambainis", note: "The full conjecture, in Aaronson and Ambainis's normalisation, is formalized in Lean 4 according to PSI; the build was not rerun here." },
     reviewedAt: "2026-11-08",
     title: "Aaronson–Ambainis influential-variable conjecture",
     statement: r`Do universal constants $c,C>0$ exist such that every multilinear $p:\{-1,1\}^{n}\to[0,1]$ of degree $d\ge1$ and positive variance has some variable $i$ with $\operatorname{Inf}_i(p)\ge c(\operatorname{Var}(p)/d)^C$? Use the uniform measure and $\operatorname{Inf}_i(p)=\mathbb E[(p(x)-p(x^{\oplus i}))^2]/4$.`,
@@ -272,14 +273,26 @@ Aaronson and Ambainis show it would imply that a $T$-query quantum algorithm's a
 - Constantly many oracle-query rounds are thus a positive restricted case; physical gate depth, unrestricted adaptive queries and sampling advantage are separate notions. These bounded-round results were moved here from A16.
 - On 4 September 2026 (v1), Escudero Gutiérrez, Saucedo and Palazuelos proved optimal inequalities for completely bounded polynomials, including an optimal root-influence bound for block-multilinear forms, with improved limitations on quantum query algorithms ([arXiv:2609.05201](https://arxiv.org/abs/2609.05201v1)). The added completely bounded structure does not cover every bounded low-degree polynomial, and the paper restates the general conjecture as open.
 - On 28 September 2026 (v1), Girish, Mittal, Nehoran and Raz proved equivalence of the influential-variable conjecture under the uniform measure, fixed-bias product measures and fixed-density Hamming slices ([arXiv:2609.35327](https://arxiv.org/abs/2609.35327v1)). They separately establish analogous equivalences for the weaker average-input query-simulation conjecture. These reductions transfer the open questions between distributions; they prove neither conjecture.`,
-    residual: r`The influential-variable conjecture and the unrestricted adaptive simulation conjecture remain open. A16 retains the input/output/data-access comparison methods and the historical record; it is not counted as a second conjecture.`,
+    claim: r`**David Turturean (PSI), [“A proof of the Aaronson–Ambainis conjecture”](https://github.com/physical-superintelligence/aaronson-ambainis/blob/main/paper/aaronson_ambainis_paper.pdf)** (paper and Lean 4 formalization on [GitHub](https://github.com/physical-superintelligence/aaronson-ambainis), announced by Physical Superintelligence on [6 November 2026](https://psi.inc/research/aaronson-ambainis/); not on arXiv).
+
+What it claims:
+- For every real polynomial $p$ of degree at most $d$ with $0\le p\le1$ on $\{0,1\}^N$ and variance at least $\varepsilon>0$, some variable has influence at least $\tfrac{8\sqrt{15}}{125\pi^4}\,\varepsilon^{5/2}/d^6\ge(\varepsilon/d)^7$. This is Aaronson and Ambainis's conjecture with explicit exponents.
+- A Lean 4 formalization (Mathlib) whose top-level statement, defined in a file that imports only Mathlib, is the conjecture in Aaronson and Ambainis's normalisation.
+- By Aaronson and Ambainis's reduction, the claim implies that quantum query algorithms can be classically simulated, up to polynomial overhead, on most uniformly random inputs.
+
+Caveats:
+- Not peer reviewed, and the Lean build was not rerun here. Hence “Claimed solved” rather than “Solved”.
+- PSI states that the proof was found by an internal research system running a non-public Anthropic model, and that Blanc, Docter, Strassle and Tan are reading the proof and writing a shorter exposition; this is PSI's account.`,
+    residual: r`If the claim holds, both the influential-variable conjecture and its average-case query-simulation consequence are settled. The optimal exponents remain open: averaging dictator functions shows that an exponent of at least 2 on the variance is necessary, and the PSI paper asks whether 2 is achievable. A16 retains the input/output/data-access comparison methods and the historical record; it is not counted as a second conjecture.`,
     evidence: [
+      { kind: "preprint", role: "claimed-solution", summary: "Claimed proof of the Aaronson–Ambainis conjecture with influence at least (8√15/(125π⁴))·ε^(5/2)/d⁶, formalized in Lean 4; GitHub paper and code, not peer reviewed.", lean: true, url: "https://github.com/physical-superintelligence/aaronson-ambainis/blob/main/paper/aaronson_ambainis_paper.pdf", date: "2026-11-06", version: "v1" },
       { kind: "preprint", role: "progress", summary: "Optimal completely bounded polynomial inequalities and resulting limits on quantum query algorithms; the general Aaronson–Ambainis conjecture is restated as open.", url: "https://arxiv.org/abs/2609.05201v1", date: "2026-09-04", version: "v1" },
       { kind: "preprint", role: "progress", summary: "Equivalence of uniform, fixed-bias and fixed-density-slice variants, separately for influence and query simulation; the original conjectures remain open.", url: "https://arxiv.org/abs/2609.35327v1", date: "2026-09-28", version: "v1" },
       { kind: "preprint", role: "progress", summary: "Bounded-round acceptance-probability simulation on most uniform inputs, with t^{O(d^2)} classical queries at fixed error parameters; accepted to FOCS 2026.", url: "https://arxiv.org/abs/2608.19158v1", date: "2026-08-19", version: "v1" },
       { kind: "preprint", role: "progress", summary: "v2 extends the parallel-query simulation theorem to constant rounds of adaptivity and bounded-prefix algorithms; sampling and unrestricted adaptivity are different targets.", url: "https://arxiv.org/abs/2608.20297v2", date: "2026-10-20", version: "v2" },
     ],
     provenance: [
+      { summary: "PSI states that a research system developed internally, running instances of a non-public Anthropic model, found the proof and its Lean formalization; the paper is credited to David Turturean (PSI). This is PSI's account.", url: "https://psi.inc/research/aaronson-ambainis/" },
       { summary: "Escudero Gutiérrez, Saucedo and Palazuelos acknowledge ChatGPT Pro in the proof of Theorem 1.4, obtained in conversations about deriving a junta theorem.", url: "https://arxiv.org/abs/2609.05201v1", version: "v1" },
       { summary: "The authors credit Gemini with the inner-gadget idea in Lemma 3.7 and ChatGPT with other proofs and exposition, reporting material assistance across the technical results and author verification of the content.", url: "https://arxiv.org/html/2609.35327v1", version: "v1" },
       { summary: "Blanc et al. report ChatGPT 5.4 use for literature search, note transcription, proof checking and copyediting; this is an author disclosure, not independent verification of the workflow.", url: "https://arxiv.org/abs/2608.19158v1", version: "v1" },
@@ -290,6 +303,8 @@ Aaronson and Ambainis show it would imply that a $T$-query quantum algorithm's a
       { label: "Escudero Gutiérrez, Saucedo & Palazuelos, 'Optimal inequalities for completely bounded polynomials and the limitations of quantum query algorithms' (2026 preprint, v1) (found via the QIQCOP Zoo)", url: "https://arxiv.org/abs/2609.05201v1" },
       { label: "Uma Girish, Kunal Mittal, Barak Nehoran, Ran Raz, 'Distributional Variants of the Aaronson-Ambainis Conjecture' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.35327v1" },
       { label: "Aaronson & Ambainis, 'The need for structure in quantum speedups', Theory of Computing 10 (2014)", url: "https://theoryofcomputing.org/articles/v010a006/" },
+      { label: "Turturean (PSI), 'A proof of the Aaronson–Ambainis conjecture' (GitHub paper and Lean 4 formalization, November 2026)", url: "https://github.com/physical-superintelligence/aaronson-ambainis" },
+      { label: "Physical Superintelligence, 'A proof of the Aaronson-Ambainis conjecture' (announcement, 6 November 2026)", url: "https://psi.inc/research/aaronson-ambainis/" },
       { label: "Blanc, Docter, Strassle & Tan, 'Quantum Speedups Require Structure or Depth' (2026 preprint; FOCS 2026)", url: "https://arxiv.org/abs/2608.19158v1" },
       { label: "Liu & Mutreja, 'Parallel Quantum Advantage with Limited Adaptivity Requires Structure' (2026 preprint, v2)", url: "https://arxiv.org/abs/2608.20297v2" },
     ] },
@@ -848,11 +863,11 @@ What it claims:
 
 Caveats:
 - Not peer reviewed, and no independent assessment was found. Hence “Claimed solved” rather than “Solved”.
-- He, Ou and Zhao (November 2026) already use this claim to prove unitaryQIP = unitaryPSPACE ([arXiv:2611.02819](https://arxiv.org/abs/2611.02819v1)); that is downstream use, not an assessment.
+- He, Ou and Zhao (2 November 2026) build on this claim to prove unitaryQIP = unitaryPSPACE ([arXiv:2611.02819](https://arxiv.org/abs/2611.02819v1)). Along the way they push the synthesis to exponentially small error: oracle circuits with error below $2^{-\beta-1}$ and size polynomial in $n$ and $\beta$ (their Theorem 4.6), with a PSPACE oracle for families with PSPACE-computable entries (Lemma 4.7). This is downstream use, not an assessment.
 - OpenAI lists itself as author and states that an unreleased internal model produced the manuscript collection. The scope of any Lean formalization for this family was not checked here.`,
     evidence: [
       { kind: "preprint", role: "claimed-solution", summary: "Claimed positive answer to the constant-error unitary synthesis problem with a polynomial-size circuit and one Boolean oracle; OpenAI GitHub manuscript, pending assessment.", url: "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Polynomial-Time-Unitary-Synthesis-from-a-Boolean-Oracle-October-5-2026/paper.pdf", date: "2026-10-06", version: "v1" },
-      { kind: "preprint", role: "progress", summary: "Uses the claimed unitary synthesis result to prove unitaryQIP = unitaryPSPACE; downstream use, not verification.", url: "https://arxiv.org/abs/2611.02819v1", date: "2026-11-02", version: "v1" },
+      { kind: "preprint", role: "progress", summary: "Uses the claimed unitary synthesis result to prove unitaryQIP = unitaryPSPACE, and extends the synthesis to error 2^{-β-1} at size poly(n, β) (Theorem 4.6); downstream use, not verification.", url: "https://arxiv.org/abs/2611.02819v1", date: "2026-11-02", version: "v1" },
       { kind: "preprint", role: "progress", summary: "Explicit unitaries requiring two oracle queries, sharpening the one-query lower bound.", url: "https://arxiv.org/abs/2607.26478v1", date: "2026-07-29", version: "v1" },
     ],
     provenance: [

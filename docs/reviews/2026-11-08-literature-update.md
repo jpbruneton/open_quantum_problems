@@ -121,6 +121,21 @@ Author AI disclosures are recorded per entry. Most incorporated manuscripts disc
 
 Only the changed and new entries receive `reviewedAt: 2026-11-08`. No existing statement, ID, title or archive target changes. The homepage, review page and README summarize this update.
 
+## Findings from the review of the AI-suggested problems
+
+The referee-style review of the 46 AI-suggested problems surfaced four catalogue findings. Each was checked against its source before the change.
+
+| Entry | Change | Source |
+|---|---|---|
+| E18 Bipartite bound information | Open → **Claimed solved** | Pauwels, Gisin & Renner, [arXiv:2607.25838v2](https://arxiv.org/abs/2607.25838v2) (8 September 2026): an explicit two-bit-and-trit source with zero secret-key rate and positive intrinsic information (Theorem 1). The authors credit ChatGPT (GPT-5.6 Sol) with a decisive pointer. |
+| A11 Aaronson–Ambainis conjecture | Improved → **Claimed solved** | Turturean (PSI), [paper and Lean 4 formalization](https://github.com/physical-superintelligence/aaronson-ambainis), announced 6 November 2026: influence at least $(8\sqrt{15}/(125\pi^4))\,\varepsilon^{5/2}/d^6\ge(\varepsilon/d)^7$. PSI states that the proof was found by an internal system running a non-public Anthropic model. The Lean build was not rerun. |
+| N4 Minimal separation of quantum correlation models | Updated (Improved) | Beigi, Quantum 5, 389 (2021), [arXiv:2004.11103](https://arxiv.org/abs/2004.11103): non-closure of $C_q$ already at four binary inputs. Douglas, [arXiv:2609.05555v2](https://arxiv.org/abs/2609.05555v2), and Krohn-Grimberghe, [arXiv:2609.29693](https://arxiv.org/abs/2609.29693): claimed non-closure at three binary inputs, via the I3322 value. |
+| A31 Unitary synthesis | Updated (Claimed solved) | He, Ou & Zhao, [arXiv:2611.02819](https://arxiv.org/abs/2611.02819v1), Theorem 4.6: error below $2^{-\beta-1}$ at size polynomial in $n$ and $\beta$, building on the claimed solution. |
+
+Totals after these changes: 135 active entries, 46 Improved, 20 Claimed solved, 69 Open and zero Solved.
+
+The same review removed 7 of the 46 suggested problems from the New problems page: P8, P26 and P31 as already answered, and P18, P39, P40 and P43 as ill-posed. Their keys are not reused.
+
 ## Validation
 
 - `npm test`: catalogue tests pass, including new checks that N2 and M5 remain Claimed solved with their independent sources, and that QF1 remains Open with the mass gap still required.

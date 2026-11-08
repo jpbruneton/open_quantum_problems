@@ -7,7 +7,7 @@ A literature-reviewed catalogue of open problems in quantum theory, for human re
 The site has two parts:
 
 1. **[Known open problems](#1-known-open-problems)**: the catalogue of open problems recognized in the literature, with their progress and claimed solutions.
-2. **[New problems and new results](#2-new-problems-and-new-results)**: questions formulated by AI from the catalogue, and new results obtained while working on them.
+2. **[New problems suggested by AI](#2-new-problems-suggested-by-ai)**: candidate questions formulated by AI from the catalogue.
 
 ## 1. Known open problems
 
@@ -35,15 +35,14 @@ Open problems that are already posed in the literature, from long-standing conje
   No entry is marked *solved*: none of the claimed resolutions has yet been independently verified or fully machine-checked.
 - **Cross-references.** Entries shared with the [QIQCOP Zoo](https://qiqc-op.com/) or the [IQOQI Vienna list of open quantum problems](https://oqp.iqoqi.oeaw.ac.at/) link to them under the title.
 
-## 2. New problems and new results
+## 2. New problems suggested by AI
 
-Material that is not in the literature yet. None of it is part of the catalogue above: it carries no status, is not counted, and awaits human selection and refereeing.
+Questions that are not in the literature yet. They are not part of the catalogue above: they carry no status, are not counted, and await human selection and refereeing.
 
 - **[New problems suggested by AI](https://openquantumproblems.com/#new-problems).**
-  - **What they are:** 46 candidate questions, plus 24 secondary leads, that an AI model formulated from the catalogue and from the open-questions sections of the 2026 claimed resolutions. Each says which result opened it.
-  - **What each page shows:** the motivation, the baseline literature, and the verdict of a separate AI literature review. The review verified the cited sources and searched for earlier answers. Its verdicts: open and substantive, open but modest, routine or false, already known, ill-posed, or under review.
+  - **What they are:** 38 candidate questions, plus 24 secondary leads, that an AI model formulated from the catalogue and from the open-questions sections of the 2026 claimed resolutions. Each says which result opened it.
+  - **What each page shows:** the motivation, the baseline literature, and the verdict of a separate AI literature review. The review verified the cited sources and searched for earlier answers. Each candidate is marked open and substantive, open but modest, or under review.
   - **Sources:** the full proposal, with its verification marks, is in [`docs/reviews/2026-11-08-new-problems-proposal.md`](docs/reviews/2026-11-08-new-problems-proposal.md).
-- **New results.** Results obtained along the way, each stated with its proof or proof sketch and its status (not refereed unless stated otherwise). The first, R1, is about the exponential cost of conditionally independent witnesses under a conservation law. Further results will be added here as their write-ups are released.
 
 ## How it is maintained
 

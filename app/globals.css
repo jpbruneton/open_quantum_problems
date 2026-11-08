@@ -402,3 +402,6 @@ td.stmt a { color: var(--text); }
 .verdict-ill-posed { color: #a0521a; background: #a0521a12; }
 .verdict-under-review { color: var(--muted); }
 .detail .review-block { border-left: 3px solid var(--border); padding-left: 16px; }
+.badge.lean-badge { color: #7a5a00; background: linear-gradient(135deg, #fff4c2, #f3d36b); border-color: #c9a227; font-weight: 600; }
+.lean-link { text-decoration: none; }
+.lean-link:hover .lean-badge { border-color: #7a5a00; }

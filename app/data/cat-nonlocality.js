@@ -133,10 +133,13 @@ Complete complex MUBs are not known to be equivalent to finite affine or project
     ] },
 
   { id: "N4", cat: "nonlocality", horizon: "incremental", status: "improved",
-    reviewedAt: "2026-10-17",
+    reviewedAt: "2026-11-08",
     relations: [{ id: "N5", type: "related" }, { id: "N6", type: "related" }],
     evidence: [
-      { kind: "preprint", role: "progress", summary: "Explicit binary linear system game separating $C_{qa}$ from $C_{qc}$, with the separation and exact classical value formalized in Lean 4; explicit but far from minimal.", url: "https://arxiv.org/abs/2610.10248v2", date: "2026-10-07", version: "v2" },
+      { kind: "published", role: "progress", summary: "$C_q^{(4,4,2,2)}\\ne C_{qs}^{(4,4,2,2)}$, hence $C_q$ is not closed with four binary measurements per party; also $C_{qs}^{(4,4,3,3)}\\ne C_{qa}^{(4,4,3,3)}$.", url: "https://doi.org/10.22331/q-2021-01-28-389", date: "2021-01-28" },
+      { kind: "preprint", role: "progress", summary: "Claims that the I3322 quantum value is attained by a spatial strategy but by no finite-dimensional one, so $C_q(3,3;2,2)$ is not closed; v2 replaces an unsupported step of v1. Numerical, scalar and finite facts are checked in Lean; the analytic proof is not formalized.", url: "https://arxiv.org/abs/2609.05555v2", date: "2026-09-11", version: "v2" },
+      { kind: "preprint", role: "progress", summary: "Computer-assisted identification of the I3322 quantum value, certified to 55 digits, with no finite-dimensional strategy attaining it; implies non-closure at three binary inputs.", url: "https://arxiv.org/abs/2609.29693v1", date: "2026-08-31", version: "v1" },
+      { kind: "preprint", role: "progress", summary: "Explicit binary linear system game separating $C_{qa}$ from $C_{qc}$, with the separation and exact classical value formalized in Lean 4; explicit but far from minimal.", lean: true, url: "https://arxiv.org/abs/2610.10248v2", date: "2026-10-07", version: "v2" },
     ],
     provenance: [
       { summary: "Gao, Yu and Zhi report GPT 6 Astra and Fable 5.1 assistance with mathematical exploration, proof development, implementation and computational verification of the construction, Lean 4 code and manuscript drafting.", url: "https://arxiv.org/abs/2610.10248v2", version: "v2" },
@@ -148,9 +151,11 @@ Complete complex MUBs are not known to be equivalent to finite affine or project
 Both separations are known to occur in some scenario. The question is how small a scenario can witness each one, and how explicit the witness can be.`,
     progress: r`- Slofstra proved that the set of finite-dimensional quantum correlations is not closed ([arXiv:1703.08618](https://arxiv.org/abs/1703.08618)).
 - Dykema, Paulsen and Prakash gave an explicit five-input, two-output nonclosure example ([arXiv:1709.05032](https://arxiv.org/abs/1709.05032)).
+- Beigi lowered this to four binary inputs per party: $C_q^{(4,4,2,2)}\ne C_{qs}^{(4,4,2,2)}$, and since $C_{qs}$ lies in the closure of $C_q$, the set $C_q^{(4,4,2,2)}$ is not closed. He also proved $C_{qs}^{(4,4,3,3)}\ne C_{qa}^{(4,4,3,3)}$ (Quantum 5, 389 (2021), [arXiv:2004.11103](https://arxiv.org/abs/2004.11103)).
+- In August–September 2026, Douglas ([arXiv:2609.05555](https://arxiv.org/abs/2609.05555v2), v2) and Krohn-Grimberghe ([arXiv:2609.29693](https://arxiv.org/abs/2609.29693v1)) claimed that the quantum value of the I3322 inequality is attained by an infinite-dimensional spatial strategy but by no finite-dimensional one. This would show that $C_q(3,3;2,2)$ is not closed. With two binary inputs per party the set is closed (Jordan's lemma reduces to qubits), so three inputs would be minimal for binary outputs. Both proofs are computer-assisted and only partly machine-checked.
 - MIP*=RE establishes $C_{qa}\ne C_{qc}$ and refutes the corresponding Tsirelson and Connes conjectures ([arXiv:2001.04383](https://arxiv.org/abs/2001.04383)). Its construction is effective: calling all these proofs nonconstructive is inaccurate, although the resulting examples can be complicated.
 - In October 2026 (reviewed at v2), Gao, Yu and Zhi gave an explicit binary linear system game with a perfect commuting-operator strategy whose value over $C_{qa}$ is strictly below one, a concrete counterexample to the approximate Tsirelson problem ([arXiv:2610.10248](https://arxiv.org/abs/2610.10248)). The system has 1,417,152 equations in 1,889,684 variables and is specified in Lean 4, where the separation and the exact classical value are formalized. This makes the $C_{qa}\ne C_{qc}$ witness explicit and machine-checked, but it is far from minimal.`,
-    residual: r`The small-witness question remains open for both separations. A benchmark must specify which two sets are compared and what “smallest” means. Setting counts and output counts form a partial order, so distinct Pareto-minimal scenarios may matter.
+    residual: r`If the three-input claims hold, the binary-output case of $C_q\ne C_{qa}$ is settled at $(3,3;2,2)$; scenarios with more outputs and fewer inputs, such as $(2,2;3,3)$, remain open. The small-witness question remains open for $C_{qa}\ne C_{qc}$. A benchmark must specify which two sets are compared and what “smallest” means. Setting counts and output counts form a partial order, so distinct Pareto-minimal scenarios may matter.
 
 Useful advances:
 - smaller certified examples;
@@ -159,6 +164,9 @@ Useful advances:
     refs: [
       { label: "Gao, Yu & Zhi, 'An Explicit Counterexample to Tsirelson's Problem via a Linear System Game' (2026 preprint, v2)", url: "https://arxiv.org/abs/2610.10248v2" },
       {"label":"Dykema, Paulsen & Prakash, 'Non-closure of the set of quantum correlations via graphs' (published 2019)","url":"https://arxiv.org/abs/1709.05032"},
+      { label: "Beigi, 'Separation of quantum, spatial quantum, and approximate quantum correlations', Quantum 5, 389 (2021)", url: "https://arxiv.org/abs/2004.11103" },
+      { label: "Douglas, 'The I3322 quantum value is attained spatially but not in finite dimension' (2026 preprint, v2)", url: "https://arxiv.org/abs/2609.05555v2" },
+      { label: "Krohn-Grimberghe, 'Certified exact identification of the I3322 quantum value' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.29693v1" },
       {"label":"Ji et al., 'MIP*=RE'","url":"https://arxiv.org/abs/2001.04383"},
       { label: "Slofstra, 'The set of quantum correlations is not closed', Forum Math. Pi 7 (2019)", url: "https://arxiv.org/abs/1703.08618" },
     ] },

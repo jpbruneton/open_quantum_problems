@@ -134,7 +134,7 @@ test("targeted literature updates preserve untouched review dates and expose pen
     assert.equal(getProblem(id).status, id === "C5" ? "improved" : "claimed-solved", `${id}: distinguish partial progress from a full pending claim`);
     assert.ok(getProblem(id).evidence.some((e) => e.kind === "preprint" && e.url.includes(source)), id);
   }
-  assert.deepEqual(PROBLEMS.filter((p) => p.status === "claimed-solved").map((p) => p.id).sort(), ["A20", "A30", "A31", "A4", "A7", "B1", "B13", "B17", "B18", "C12", "C4", "E10", "E16", "M1", "M2", "M5", "N1", "N2"]);
+  assert.deepEqual(PROBLEMS.filter((p) => p.status === "claimed-solved").map((p) => p.id).sort(), ["A11", "A20", "A30", "A31", "A4", "A7", "B1", "B13", "B17", "B18", "C12", "C4", "E10", "E16", "E18", "M1", "M2", "M5", "N1", "N2"]);
   assert.equal(getProblem("C10").status, "improved", "a solved subcase must not close the broader programme");
   assert.equal(PROBLEMS.filter((p) => p.status === "solved").length, 0, "pending claims must not count as established solutions");
   const earlierE10 = getProblem("E10").evidence.find((e) => e.url.includes("2609.29539v1"));
@@ -236,8 +236,8 @@ test("home, all categories, filtered lists and missing-page views render", () =>
   assert.ok(!home.includes("#review") && home.includes("Powered by Astra &amp; Opus 5.5"));
   assert.ok(home.includes('href="#improved"'));
   assert.ok(home.includes('href="#claimed-solved"'));
-  assert.ok(home.includes('aria-label="See all 47 improved problems"'));
-  assert.ok(home.includes('aria-label="See all 18 claimed solved problems"'));
+  assert.ok(home.includes('aria-label="See all 46 improved problems"'));
+  assert.ok(home.includes('aria-label="See all 20 claimed solved problems"'));
   assert.ok(home.includes('href="https://quantumlectures.org/en"'));
   assert.ok(home.includes('href="https://learnthermo.org/"'));
   assert.ok(!home.includes("IDs M1–"), "category count must not fabricate contiguous IDs");
@@ -261,7 +261,7 @@ test("home, all categories, filtered lists and missing-page views render", () =>
   assert.ok(home.includes("Zero entries are Solved"));
   assert.ok(!home.includes("Evidence matters"));
   // New-problems page: proposals render, link only to existing entries, are not counted.
-  const { PROPOSALS, SECONDARY_PROPOSALS, PROPOSAL_COUNT, NEW_RESULTS } = loadApp("app/data/proposals.js");
+  const { PROPOSALS, SECONDARY_PROPOSALS, PROPOSAL_COUNT } = loadApp("app/data/proposals.js");
   const newProblems = render(views.NewProblemsView);
   assert.ok(newProblems.includes("New problems suggested by AI") && newProblems.includes("not counted"));
   assert.ok(!newProblems.includes("katex-error"), "proposals: math rendering error");
@@ -280,11 +280,6 @@ test("home, all categories, filtered lists and missing-page views render", () =>
   for (const it of SECONDARY_PROPOSALS) {
     assert.ok(!keys.has(it.key), `duplicate proposal key ${it.key}`); keys.add(it.key);
     for (const id of it.extends) assert.ok(getProblem(id), `${it.key}: extends unknown ${id}`);
-  }
-  for (const it of NEW_RESULTS) {
-    assert.ok(!keys.has(it.key), `duplicate proposal key ${it.key}`); keys.add(it.key);
-    for (const id of it.extends) assert.ok(getProblem(id), `${it.key}: related unknown ${id}`);
-    assert.ok(newProblems.includes(it.key) && newProblems.includes("Proof sketch") && newProblems.includes("What remains open"), `${it.key}: not rendered`);
   }
   for (const match of newProblems.matchAll(/href="#p\/([^"<>]+)"/g)) assert.ok(getProblem(match[1]), `proposals: broken link ${match[1]}`);
   assert.ok(newProblems.includes(`${PROBLEMS.length} active entries`), "proposals page keeps the catalogue count unchanged");

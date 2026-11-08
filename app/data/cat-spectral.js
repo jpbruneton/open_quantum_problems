@@ -309,7 +309,12 @@ This is the full-spectrum two-dimensional localization question, not the three-d
 - OpenAI's Math Release (public 6 October 2026; a GitHub release, not an arXiv preprint) claims that for each fixed disorder width the square-lattice uniform-potential operator has almost-surely pure-point spectral type on all of $[-4-h,4+h]$, via fractional Green-function moments, resonant-cell estimates and a Simon–Wolff readout ([manuscript](${OAI}preprints/Pure-Point-Spectrum-for-the-Two-Dimensional-Anderson-Model-at-Every-Positive-Disorder-September-23-2026/paper.pdf)). The manuscript explicitly does not assert exponential eigenfunction decay, dynamical localization or one probability-one event for all disorders. Its Lean formalization proves only the almost-sure spectrum, not the pure-point type. The pure-point half of the statement is therefore claimed, pending assessment.`,
     residual: r`Exponential localization of the eigenfunctions remains open, even granting the pure-point claim.
 
-The stated target is spectral localization. Uniform-in-time dynamical localization with quantified moment or eigenfunction-correlator bounds is a stronger, separate target.`,
+The stated target is spectral localization. A stronger, separate target is dynamical localization at every disorder:
+- fractional-moment bounds uniform in energy over each compact interval $I$, which by the Aizenman–Molchanov and Aizenman–Graf framework give decay of the eigenfunction correlator (a fixed-energy bound followed by Simon–Wolff gives only the spectral type);
+- hence $\sup_t\mathbb E\sum_x(1+|x|)^p|\langle\delta_x,e^{-itH}\chi_I(H)\delta_0\rangle|^2<\infty$ for every $p>0$ (some $p>0$ is already a useful sub-target);
+- in its strong form, exponential decay of the eigenfunction correlator.
+
+The OpenAI manuscript states that it asserts neither a bound uniform in energy nor a dynamical-localization theorem. The one-dimensional analogue is a theorem (Bucaj et al., [arXiv:1706.06135](https://arxiv.org/abs/1706.06135)).`,
     relations: [{ id: "M2", type: "related" }],
     refs: [
       { label: "OpenAI, 'Pure-Point Spectrum for the Two-Dimensional Anderson Model at Every Positive Disorder' (OpenAI Math Release manuscript, dated 23 September 2026; public 6 October 2026)", url: `${OAI}preprints/Pure-Point-Spectrum-for-the-Two-Dimensional-Anderson-Model-at-Every-Positive-Disorder-September-23-2026/paper.pdf` },

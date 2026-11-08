@@ -242,10 +242,11 @@ Nonadditivity of entanglement of formation and related channel quantities, made 
     ] },
 
   { id: "E10", cat: "entanglement", horizon: "sharp", status: "claimed-solved",
+    lean: { url: "https://arxiv.org/html/2610.03630v1", note: "Canonical optimality and nonadditivity are formalized in Lean according to the authors; the formalization was not rebuilt here." },
     reviewedAt: "2026-10-05",
     relations: [{ id: "E9", type: "related" }],
     evidence: [
-      { kind: "preprint", role: "claimed-solution", summary: "New von Neumann nonadditivity claim; Appendix D gives a counterexample to Lemma 2 of the earlier claimed proof. Independent assessment pending.", url: "https://arxiv.org/abs/2610.03630v1", date: "2026-10-02", version: "v1" },
+      { kind: "preprint", role: "claimed-solution", summary: "New von Neumann nonadditivity claim; Appendix D gives a counterexample to Lemma 2 of the earlier claimed proof. Independent assessment pending.", lean: true, url: "https://arxiv.org/abs/2610.03630v1", date: "2026-10-02", version: "v1" },
       { kind: "challenged", summary: "Earlier claimed proof of nonadditivity, challenged: Baghali Khanian and Negari give a counterexample to its Lemma 2 in arXiv:2610.03630v1, Appendix D. Retained as a historical claim, not supporting evidence for the current resolution.", url: "https://arxiv.org/abs/2609.29539v1", date: "2026-08-25", version: "v1" },
       { kind: "numerical", role: "progress", summary: "Werner-state calculations support nonadditivity but do not constitute a rigorously certified counterexample.", url: "https://arxiv.org/abs/1206.1307" }, { kind: "preprint", role: "progress", summary: "Rényi results for alpha below 1 and at least 2 do not settle ordinary entanglement of purification at alpha=1.", url: "https://arxiv.org/abs/2608.28897", date: "2026-08-28" }],
     provenance: [
@@ -470,7 +471,7 @@ The key reference is Christandl, Schuch and Winter, “Entanglement of the Antis
       { label: "Wang & Duan, 'Irreversibility of Asymptotic Entanglement Manipulation Under Quantum Operations Completely Preserving Positivity of Partial Transpose', PRL 119 (2017)", url: "https://arxiv.org/abs/1606.09421" },
     ] },
 
-  { id: "E18", cat: "entanglement", horizon: "sharp",
+  { id: "E18", cat: "entanglement", horizon: "sharp", status: "claimed-solved",
     reviewedAt: "2026-11-08",
     title: "Bipartite bound information",
     statement: r`Is there a classical tripartite distribution $P_{XYZ}$ with intrinsic information $I(X;Y\downarrow Z)>0$ but zero secret-key rate $S(X;Y\|Z)=0$ under public two-way communication — the classical analogue of bound entanglement?`,
@@ -478,13 +479,28 @@ The key reference is Christandl, Schuch and Winter, “Entanglement of the Antis
 
 Gisin and Wolf asked whether it exists ([arXiv:quant-ph/0005042](https://arxiv.org/abs/quant-ph/0005042)). The question is listed as problem 47 in the IQOQI Vienna list (Christandl).`,
     progress: r`- Renner and Wolf showed that the gap between the cost of forming correlations and the key that can be extracted from them can be strict for related quantities.
-- Acín, Cirac and Masanes proved that multipartite bound information exists and can be activated ([arXiv:quant-ph/0311064](https://arxiv.org/abs/quant-ph/0311064v1)). In the bipartite case, the question is open.`,
-    residual: r`A sharp answer is an explicit distribution with a proof of zero key rate and positive intrinsic information, or a proof that positive intrinsic information always yields key. Quantum key from entangled states is the separate question E16.`,
+- Acín, Cirac and Masanes proved that multipartite bound information exists and can be activated ([arXiv:quant-ph/0311064](https://arxiv.org/abs/quant-ph/0311064v1)).`,
+    claim: r`**Pauwels, Gisin and Renner, [“Bipartite Bound Information Exists”](https://arxiv.org/abs/2607.25838v2)** (arXiv preprint, v2 of 8 September 2026; v1 of 28 July 2026).
+
+What it claims:
+- An explicit source of two bits and a trit (Alice and Bob each hold a bit, Eve a trit) with zero secret-key rate under public two-way communication and positive intrinsic information (their Theorem 1). This is bipartite bound information, answering the Gisin–Wolf question.
+- The example sits in a two-parameter family with the same properties.
+- The distributions obtained by measuring the bound entangled states that motivated the original conjecture, in the standard basis, have no bound information; suitable measurements of purifications of separable states do.
+
+Caveats:
+- Not peer reviewed, and no independent assessment was found. Hence “Claimed solved” rather than “Solved”.
+- The authors report that the construction emerged from an exploratory dialogue with ChatGPT (GPT-5.6 Sol), whose decisive contribution was to point them to a proposition of Gohari, Günlü and Kramer.`,
+    residual: r`If the claim holds, the existence question is settled. Whether bipartite bound information can be activated, as in the multipartite case, remains open, and the paper proposes its examples as test cases. Quantum key from entangled states is the separate question E16.`,
     evidence: [
-      { kind: "preprint", role: "progress", summary: "Multipartite bound information exists and can be activated; the bipartite question remains open.", url: "https://arxiv.org/abs/quant-ph/0311064v1", date: "2003-11-11", version: "v1" },
+      { kind: "preprint", role: "claimed-solution", summary: "Explicit two-bit-and-trit source with zero secret-key rate and positive intrinsic information (Theorem 1); bipartite bound information exists. Not peer reviewed.", url: "https://arxiv.org/abs/2607.25838v2", date: "2026-09-08", version: "v2" },
+      { kind: "preprint", role: "progress", summary: "Multipartite bound information exists and can be activated.", url: "https://arxiv.org/abs/quant-ph/0311064v1", date: "2003-11-11", version: "v1" },
+    ],
+    provenance: [
+      { summary: "Pauwels, Gisin and Renner state that the construction emerged from an extended exploratory dialogue with ChatGPT (GPT-5.6 Sol, July 2026), which they directed to test conjectures, search for counterexamples and check calculations; its decisive contribution was identifying Proposition 1 of Gohari, Günlü and Kramer.", url: "https://arxiv.org/html/2607.25838v2", version: "v2" },
     ],
     relations: [{ id: "E16", type: "related" }, { id: "E1", type: "related" }],
     refs: [
+      { label: "Pauwels, Gisin & Renner, 'Bipartite Bound Information Exists' (2026 preprint, v2)", url: "https://arxiv.org/abs/2607.25838v2" },
       { label: "Gisin & Wolf, 'Linking Classical and Quantum Key Agreement: Is There “Bound Information”?', CRYPTO 2000", url: "https://arxiv.org/abs/quant-ph/0005042" },
       { label: "Acín, Cirac & Masanes, 'Multipartite Bound Information exists and can be activated', PRL 92 (2004)", url: "https://arxiv.org/abs/quant-ph/0311064" },
       { label: "IQOQI Vienna Open Quantum Problems, problem 47: 'Is there bound information?' (M. Christandl)", url: "https://oqp.iqoqi.oeaw.ac.at/is-there-bound-information" },

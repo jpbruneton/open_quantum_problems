@@ -15,7 +15,7 @@ import {
   getCategory,
   consolidatedInto,
 } from "./data/problems";
-import { PROPOSALS, SECONDARY_PROPOSALS, PROPOSALS_META, PROPOSAL_COUNT, NEW_RESULTS } from "./data/proposals";
+import { PROPOSALS, SECONDARY_PROPOSALS, PROPOSALS_META, PROPOSAL_COUNT } from "./data/proposals";
 
 // ---------- tiny hash router ----------
 function useHashRoute() {
@@ -54,6 +54,13 @@ function HorizonBadge({ h }) {
     </span>
   );
 }
+const LEAN_TITLE = "The main theorem is formalized in Lean according to its authors; the Lean build was not rerun here.";
+function LeanBadge({ lean }) {
+  if (!lean) return null;
+  const inner = <span className="badge lean-badge" title={lean.note || LEAN_TITLE}>Lean verified</span>;
+  return lean.url ? <a href={lean.url} target="_blank" rel="noreferrer" className="lean-link">{inner}</a> : inner;
+}
+
 function StatusBadge({ s }) {
   return (
     <span className={`badge st-${s}`} title={STATUSES[s].desc}>
@@ -97,7 +104,7 @@ function EvidenceList({ items, progressLabels = false }) {
     <ul className="evidence-list">
       {items.map((item, i) => (
         <li key={i}>
-          <span className={`badge ev-${item.kind}`} title={EVIDENCE_KINDS[item.kind]?.desc}>{progressLabels && item.kind === "preprint" ? "Preprint claimed progress" : (EVIDENCE_KINDS[item.kind]?.label || item.kind)}</span>
+          {item.lean && <LeanBadge lean={{ note: "Formalized in Lean according to the authors; the Lean build was not rerun here." }} />}{item.lean && " "}<span className={`badge ev-${item.kind}`} title={EVIDENCE_KINDS[item.kind]?.desc}>{progressLabels && item.kind === "preprint" ? "Preprint claimed progress" : (EVIDENCE_KINDS[item.kind]?.label || item.kind)}</span>
           <p><MathText text={item.summary} /></p>
           <a href={item.url} target="_blank" rel="noreferrer">Source{item.version ? ` · ${item.version}` : ""}{item.date ? ` · ${item.date}` : ""}</a>
         </li>
@@ -189,7 +196,7 @@ function Home() {
             <a className="box box-new" href="#new-problems">
               <div className="box-kicker">New page</div>
               <h2>New problems suggested by AI</h2>
-              <p>{PROPOSAL_COUNT} candidate successor questions opened by the 2026 claimed resolutions, {SECONDARY_PROPOSALS.length} secondary leads, and {NEW_RESULTS.length} new result found on the way. Not counted; not yet catalogue entries.</p>
+              <p>{PROPOSAL_COUNT} candidate successor questions opened by the 2026 claimed resolutions and {SECONDARY_PROPOSALS.length} secondary leads. Not counted; not yet catalogue entries.</p>
               <span className="box-cta">Browse the proposals <span aria-hidden="true">→</span></span>
             </a>
           </div>
@@ -329,7 +336,7 @@ function CategoryView({ slug }) {
                       </div>
                     </td>
                     <td><HorizonBadge h={p.horizon} /></td>
-                    <td><StatusBadge s={p.status} /></td>
+                    <td><StatusBadge s={p.status} />{p.lean && <div style={{ marginTop: 6 }}><LeanBadge lean={p.lean} /></div>}</td>
                   </tr>
                 ))}
                 {rows.length === 0 && (
@@ -429,7 +436,7 @@ function FilteredProblemsView({ status = null }) {
                         <MathText text={truncate(p.statement, 150)} />
                       </div>
                     </td>
-                    <td>{status ? <HorizonBadge h={p.horizon} /> : <StatusBadge s={p.status} />}</td>
+                    <td>{status ? <HorizonBadge h={p.horizon} /> : <StatusBadge s={p.status} />}{p.lean && <div style={{ marginTop: 6 }}><LeanBadge lean={p.lean} /></div>}</td>
                   </tr>
                 ))}
                 {rows.length === 0 && (
@@ -462,6 +469,7 @@ function ProblemView({ id }) {
             <span className="badge" style={{ color: "var(--muted)" }}>{p.id}</span>
             <HorizonBadge h={p.horizon} />
             {p.archive ? <span className="badge">{p.archive.kind === "merged" ? "Merged entry" : "Background"}</span> : <StatusBadge s={p.status} />}
+            <LeanBadge lean={p.lean} />
           </div>
           <h2>{p.title}</h2>
           {p.statusNote && (
@@ -677,15 +685,14 @@ function NewProblemsView() {
       <section className="body">
         <div className="container">
           <h2>New problems suggested by AI</h2>
-          <p className="intro">Proposed {PROPOSALS_META.label} · {PROPOSAL_COUNT} priority candidates, {SECONDARY_PROPOSALS.length} secondary leads and {NEW_RESULTS.length} new result</p>
-          <p>We prompted an AI model (Fable 5.1, high effort) to suggest new open problems, starting from the current catalogue and its own knowledge of the literature. It produced {PROPOSAL_COUNT} priority candidates, {SECONDARY_PROPOSALS.length} secondary leads and {NEW_RESULTS.length} small new result. These suggestions await human selection and critical review. They are not catalogue entries: they carry no status and are not counted.</p>
+          <p className="intro">Proposed {PROPOSALS_META.label} · {PROPOSAL_COUNT} priority candidates and {SECONDARY_PROPOSALS.length} secondary leads</p>
+          <p>We prompted an AI model (Fable 5.1, high effort) to suggest new open problems, starting from the current catalogue and its own knowledge of the literature. It produced {PROPOSAL_COUNT} priority candidates and {SECONDARY_PROPOSALS.length} secondary leads. These suggestions await human selection and critical review. They are not catalogue entries: they carry no status and are not counted.</p>
           <p>Horizons use the same badges as the catalogue, and “extends” links each suggestion to the entries it grows out of. Click a row to open the full page of a suggestion: motivation, baseline literature and caveats.</p>
-          <p>Each suggestion was then checked by a separate AI literature review (8 November 2026), which verified the cited sources and searched for prior answers. Its verdict is shown under the status: open and substantive, open but modest, routine or false, already known, ill-posed, or under review. These verdicts are not human-refereed.</p>
+          <p>Each suggestion was then checked by a separate AI literature review (8 November 2026), which verified the cited sources and searched for prior answers. Its verdict is shown under the status: open and substantive, open but modest, or under review. These verdicts are not human-refereed.</p>
           <p><a href={PROPOSALS_META.reportUrl} target="_blank" rel="noreferrer">Read the full proposal with verification marks and caveats →</a></p>
           <nav className="proposal-nav" aria-label="Areas">
             {PROPOSALS.map((g) => <a key={g.cat} href={`#new-problems`} onClick={(e) => scrollTo(e, g.cat)}>{g.name} ({g.items.length})</a>)}
             <a href="#new-problems" onClick={(e) => scrollTo(e, "secondary")}>Secondary leads ({SECONDARY_PROPOSALS.length})</a>
-            <a href="#new-problems" className="nav-results" onClick={(e) => scrollTo(e, "results")}>New results ({NEW_RESULTS.length})</a>
           </nav>
           {PROPOSALS.map((g) => (
             <section key={g.cat} id={`np-${g.cat}`} className="proposal-group">
@@ -736,24 +743,6 @@ function NewProblemsView() {
               </li>
             ))}
           </ul>
-          <h3 id="np-results">New results suggested by AI</h3>
-          <p>Small theorems reached while assessing proposed conjectures. They are proof sketches, not refereed results, and each one states what it leaves open.</p>
-          {NEW_RESULTS.map((it) => (
-            <article key={it.key} className="proposal proposal-result">
-              <div className="badge-row">
-                <span className="proposal-key">{it.key}</span>
-                <span className="badge st-claimed-solved"><span className="dot" style={{ background: "var(--claimed-solved)" }} />Proof sketch</span>
-                {it.extends.length > 0 && <span className="proposal-extends">related to {it.extends.map((id, i) => <span key={id}>{i > 0 ? ", " : ""}<a href={`#p/${id}`}>{id}</a></span>)}</span>}
-              </div>
-              <h4>{it.title}</h4>
-              <p className="proposal-meta">{it.status}</p>
-              <p><b>Setting.</b> <MathText text={it.setting} /></p>
-              <div className="statement"><MathText text={it.statement} /></div>
-              <p><b>Sketch.</b> <MathText text={it.sketch} /></p>
-              <p><b>What remains open.</b> <MathText text={it.open} /></p>
-              <p className="proposal-meta"><b>Context.</b> {it.baseline}</p>
-            </article>
-          ))}
           <p className="disclaimer">These proposals were produced by an AI-assisted review and checked against the cited sources, not refereed. A candidate becomes a catalogue entry only after a human curator assigns an ID, statement and baseline through the usual review process.</p>
         </div>
       </section>
