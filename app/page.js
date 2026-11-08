@@ -36,7 +36,7 @@ function useHashRoute() {
   if (parts[0] === "improved") return { view: "improved" };
   if (parts[0] === "claimed-solved") return { view: "claimed-solved" };
   if (parts[0] === "new-problems") return { view: "new-problems" };
-  if (parts[0] === "about") return { view: "about" };
+  if (parts[0] === "similar" || parts[0] === "about") return { view: "similar" };
   return { view: "home" };
 }
 function go(to) {
@@ -92,7 +92,7 @@ function Header({ crumbs }) {
           </svg>
           <span>GitHub</span>
         </a>
-        <a className="gh-link about-link" href="#about">About &amp; similar projects</a>
+        <a className="gh-link about-link" href="#similar">Similar projects</a>
         <span className="powered-by">Powered by Astra &amp; Opus 5.5</span>
         </div>
         {crumbs && (
@@ -155,7 +155,7 @@ function Home() {
             <ul>
               <li>Independent <a href="#p/N2">second proof that dimension six has only three MUBs</a>; experts have engaged with the <a href="#p/M5">Haldane-gap proof</a>.</li>
               <li>OpenAI's announced <a href="#p/QF1">4D Yang–Mills existence proof</a> is not public and does not claim the mass gap.</li>
-              <li>Checked against <a href="#about">similar catalogues</a> (QIQCOP Zoo, IQOQI Vienna): shared problems are now cross-referenced on each page. This found an all-dimension <a href="#p/N1">SIC existence claim</a>, now “Claimed solved”, and added <a href="#p/A20">PARITY ∉ QAC0</a> and ten other questions.</li>
+              <li>Checked against <a href="#similar">similar catalogues</a> (QIQCOP Zoo, IQOQI Vienna): shared problems are now cross-referenced on each page. This found an all-dimension <a href="#p/N1">SIC existence claim</a>, now “Claimed solved”, and added <a href="#p/A20">PARITY ∉ QAC0</a> and ten other questions.</li>
             </ul>
           </div>
 
@@ -627,10 +627,7 @@ function NotFound() {
   );
 }
 
-// ---------- about & similar projects ----------
-const AUTHOR_LINKS = [
-  { label: "GitHub", href: "https://github.com/jpbruneton" },
-];
+// ---------- similar projects ----------
 const SIMILAR_PROJECTS = [
   { name: "QIQCOP Zoo", href: "https://qiqc-op.com/", desc: "Quantum Information and Quantum Computation Open Problem Zoo: about 220 audited problems in quantum information, computation, communication, cryptography and error correction, marked Solved or Unsolved, with a public JSON API (source on GitHub: Naixu-Guo/quantum-open-problems). Entries shared with this catalogue are cross-referenced on each problem page." },
   { name: "Open Quantum Problems (IQOQI Vienna)", href: "https://oqp.iqoqi.oeaw.ac.at/open-quantum-problems", desc: "The historical list started by Reinhard Werner, maintained by IQOQI Vienna: about thirty classic questions in entanglement, foundations, communication and complexity, with a separate page of solved problems." },
@@ -640,18 +637,13 @@ const SIMILAR_PROJECTS = [
   { name: "FrontierMath: Open Problems (Epoch AI)", href: "https://epoch.ai/latest/benchmarking-ai-on-unsolved-math-problems", desc: "Unsolved research mathematics problems with computationally verifiable answers, used to benchmark AI systems." },
 ];
 
-function AboutView() {
+function SimilarProjectsView() {
   return (
     <>
-      <Header crumbs={[{ label: "About & similar projects" }]} />
+      <Header crumbs={[{ label: "Similar projects" }]} />
       <section className="body">
         <div className="container detail">
-          <h2>About</h2>
-          <p>This catalogue is maintained by <b>Jean-Philippe Bruneton</b>, a physicist at Université Paris Cité, France.</p>
-          <div className="about-links">
-            {AUTHOR_LINKS.map((l) => <a key={l.label} href={l.href} target="_blank" rel="noreferrer">{l.label}</a>)}
-          </div>
-          <h3>Similar projects</h3>
+          <h2>Similar projects</h2>
           <p>Other catalogues of open problems, in quantum physics or aimed at AI systems. This catalogue differs by its breadth (spectral theory, many-body physics, QFT, foundations, open systems and undecidability as well as quantum information), by its separate “Claimed solved” status for announced resolutions, and by recording authors' AI-use disclosures.</p>
           <ul className="similar-list">
             {SIMILAR_PROJECTS.map((s) => (
@@ -720,6 +712,6 @@ export default function Page() {
   if (route.view === "improved") return <ImprovedView />;
   if (route.view === "claimed-solved") return <ClaimedSolvedView />;
   if (route.view === "new-problems") return <NewProblemsView />;
-  if (route.view === "about") return <AboutView />;
+  if (route.view === "similar") return <SimilarProjectsView />;
   return <Home />;
 }
