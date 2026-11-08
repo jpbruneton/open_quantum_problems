@@ -4,9 +4,13 @@ const OAI = "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a
 
 export const CHANNELS = [
   { id: "C1", cat: "channels", horizon: "incremental", status: "improved",
-    reviewedAt: "2026-10-26",
+    reviewedAt: "2026-11-08",
     relations: [{ id: "C11", type: "benchmark" }, { id: "U4", type: "related" }, { id: "C4", type: "related" }, { id: "C5", type: "related" }],
     evidence: [
+      { kind: "preprint", summary: "Counterexamples to additivity of minimum output p-Rényi entropy for every p>0.", url: "https://arxiv.org/abs/2607.15210v2", date: "2026-07-16", version: "v2" },
+      { kind: "preprint", summary: "Superadditivity of classical communication from random permutations instead of Haar unitaries, toward derandomization.", url: "https://arxiv.org/abs/2608.25961v2", date: "2026-08-26", version: "v2" },
+      { kind: "preprint", summary: "Deterministic polynomial-time construction of channels with minimum-output-entropy nonadditivity.", url: "https://arxiv.org/abs/2608.31081v1", date: "2026-08-31", version: "v1" },
+      { kind: "preprint", summary: "Exact certificate of a positive-order Rényi additivity violation for an explicit channel pair, with an archived verification artifact.", url: "https://arxiv.org/abs/2608.17376v2", date: "2026-08-18", version: "v2" },
       { kind: "preprint", summary: "Claimed unassisted classical capacity of every qubit generalized amplitude-damping channel, with Holevo-capacity and minimum-output-entropy additivity against every finite-dimensional partner; classical, not quantum, capacity. OpenAI GitHub manuscript.", url: `${OAI}preprints/Classical-capacity-and-entropy-inequalities-for-generalized-amplitude-damping-September-24-2026/paper.pdf`, date: "2026-10-06", version: "v1" },
       { kind: "preprint", summary: "Claimed additivity for qubit channels with a pure output, including amplitude-damping classical capacity and parallel entanglement cost.", url: "https://arxiv.org/abs/2609.28592v1", date: "2026-09-23", version: "v1" },
       { kind: "preprint", summary: "Convergent amplitude-damping capacity series and truncation bounds; classical capacity relies on the preceding additivity claim.", url: "https://arxiv.org/abs/2609.31609v1", date: "2026-09-25", version: "v1" },
@@ -14,6 +18,10 @@ export const CHANNELS = [
       { kind: "preprint", summary: "Explicit channels with strictly subadditive minimum output Rényi entropy for every $p>1$, from subspaces of high geometric measure of entanglement; accepted to FOCS 2026. A nonadditivity result, not a capacity formula.", url: "https://arxiv.org/abs/2510.07547v2", date: "2026-01-25", version: "v2" },
       { kind: "preprint", summary: "Explicit qutrit zero-Q, zero-P channel outside the PPT and antidegradable classes; not a general capacity-computability theorem.", url: "https://arxiv.org/abs/2607.24693", date: "2026-07-27" }],
     provenance: [
+      { summary: "Leung, Lovitz, Nechita and Wu acknowledge ChatGPT 5.4 and 5.5 in preparing the first version, including constructions and initial ideas.", url: "https://arxiv.org/abs/2607.15210v2", version: "v2" },
+      { summary: "Lovitz and Wu report that a key finite-dimensional approximation was proposed by ChatGPT 5.6 Sol and later simplified by the authors.", url: "https://arxiv.org/abs/2608.25961v2", version: "v2" },
+      { summary: "Zhen, Zhu, Chen and Wang report LLM assistance with literature search, which surfaced the deterministic spectral results they use.", url: "https://arxiv.org/abs/2608.31081v1", version: "v1" },
+      { summary: "Krohn-Grimberghe reports that the four verification programs in the artifact were produced with AI assistance under the author's direction.", url: "https://arxiv.org/abs/2608.17376v2", version: "v2" },
       { summary: "OpenAI lists itself as author and states that an unreleased internal model produced the manuscript collection. It reports a Lean formalization of the generalized amplitude-damping capacity and additivity statement; it was not rebuilt here.", url: `${OAI}lean/docs/276.md` },
       { summary: "The authors credit frontier language models with proofs of Theorems 4.1–4.2 and ChatGPT-6 Astra with writing. They report human verification and Lean formalization, which was not rebuilt here.", url: "https://arxiv.org/html/2609.28592v1", version: "v1" },
       { summary: "Pirandola credits GPT-5.6 Sol and GPT-6 Astra with candidate derivations, proof development and presentation; he reports checking the results and takes responsibility.", url: "https://arxiv.org/html/2609.31609v1", version: "v1" },
@@ -33,8 +41,14 @@ Preprint progress (23–25 September 2026): Tang, Zhu, Bai and Wang claim strong
 
 Preprint progress (OpenAI Math Release, public 6 October 2026; manuscript dated 24 September): the unassisted classical capacity of every qubit generalized amplitude-damping channel, at all damping and thermal parameters, is claimed to equal its one-shot Holevo capacity, given by a one-variable maximum. Holevo capacity, minimum output entropy and regularized classical capacity are claimed additive under tensor products with every finite-dimensional channel. This extends the September pure-output amplitude-damping result to the thermal family. It concerns classical capacity, so the quantum-capacity formulas targeted here remain open. The manuscript is a GitHub release, not an arXiv preprint.
 
-Conference record (October 2026): Derksen and Lovitz's explicit channels with strictly subadditive minimum output Rényi entropy for every order $p>1$ (October 2025 preprint, revised January 2026), built from subspaces of high geometric measure of entanglement, are accepted at FOCS 2026 (8–11 November). Together with the Shou–Gorshkov von Neumann counterexample this makes explicit nonadditivity available at every Rényi order; it is a negative result for single-letter formulas, not a capacity theorem.`,
+Conference record (October 2026): Derksen and Lovitz's explicit channels with strictly subadditive minimum output Rényi entropy for every order $p>1$ (October 2025 preprint, revised January 2026), built from subspaces of high geometric measure of entanglement, are accepted at FOCS 2026 (8–11 November). Together with the Shou–Gorshkov von Neumann counterexample this makes explicit nonadditivity available at every Rényi order; it is a negative result for single-letter formulas, not a capacity theorem.
+
+Minimum-output-entropy nonadditivity, July–August 2026 (all v1/v2 preprints). Leung, Lovitz, Nechita and Wu prove violations of minimum output $p$-Rényi additivity for every $p>0$, closing most of the previously open range $0<p<1$. Lovitz and Wu show that Haar randomness in Hastings-type superadditivity can be replaced by random permutations, a route to derandomization. Zhen, Zhu, Chen and Wang give a deterministic polynomial-time construction of channels violating minimum-output-entropy additivity. Krohn-Grimberghe certifies exactly a positive-order Rényi violation for the explicit Cubitt–Harrow–Leung–Montanaro–Winter channel pair. These sharpen explicit nonadditivity; the structural capacity formulas asked for here remain open.`,
     refs: [
+      { label: "Leung, Lovitz, Nechita & Wu, 'Counterexamples to additivity of minimum output p-Rényi entropy of quantum channels for all p≥0' (2026 preprint, v2) (found via the QIQCOP Zoo)", url: "https://arxiv.org/abs/2607.15210v2" },
+      { label: "Lovitz & Wu, 'Superadditivity of classical communication over quantum channels via random and deterministic permutations' (2026 preprint, v2) (found via the QIQCOP Zoo)", url: "https://arxiv.org/abs/2608.25961v2" },
+      { label: "Zhen, Zhu, Chen & Wang, 'Deterministic Minimum-Output-Entropy Nonadditivity via Haagerup's Inequality' (2026 preprint, v1) (found via the QIQCOP Zoo)", url: "https://arxiv.org/abs/2608.31081v1" },
+      { label: "Krohn-Grimberghe, 'Exact certification of a positive-order Rényi additivity violation for an explicit channel pair' (2026 preprint, v2) (found via the QIQCOP Zoo)", url: "https://arxiv.org/abs/2608.17376v2" },
       { label: "OpenAI, 'Classical capacity and entropy inequalities for generalized amplitude damping' (OpenAI Math Release manuscript, dated 24 September 2026; public 6 October 2026)", url: `${OAI}preprints/Classical-capacity-and-entropy-inequalities-for-generalized-amplitude-damping-September-24-2026/paper.pdf` },
       { label: "Tang, Zhu, Bai & Wang, 'Classical Capacity and Entanglement Cost of the Amplitude Damping Channel' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.28592v1" },
       { label: "Pirandola, 'Exact series formulas for the capacities of the amplitude damping channel' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.31609v1" },
@@ -48,6 +62,13 @@ Conference record (October 2026): Derksen and Lovitz's explicit channels with st
     ] },
 
   { id: "C2", cat: "channels", horizon: "incremental",
+    provenance: [
+      { summary: "Mele, Catalano, Fanizza, Giovannetti and Lami credit ChatGPT with substantial help in finding the non-Gaussian counterexample after their own attempts.", url: "https://arxiv.org/abs/2607.27449v1", version: "v1" },
+    ],
+    evidence: [
+      { kind: "preprint", summary: "Thermal-input bound optimal among single-mode Gaussian inputs; a certified non-Gaussian input gives positive capacity beyond the Gaussian threshold.", url: "https://arxiv.org/abs/2607.27449v1", date: "2026-07-29", version: "v1" },
+    ],
+    reviewedAt: "2026-11-08",
     relations: [{ id: "C3", type: "related" }, { id: "C10", type: "parent" }],
     title: "Quantum capacity of the thermal attenuator",
     statement: r`For a bosonic thermal attenuator with transmissivity $\eta$, environment mean occupation $N_{\rm th}$ and mean input-photon budget $N_S$ per use, determine the unassisted quantum capacity $Q(\eta,N_{\rm th},N_S)$ outside known zero-capacity and pure-loss cases. Treat private capacity as a separate subtarget.`,
@@ -57,8 +78,11 @@ The zero-temperature pure-loss channel has known degradable/antidegradable regim
 
 Rosati–Mari–Giovannetti provide important bounds. Correlated multimode Gaussian coding can improve upon product thermal-input strategies, as demonstrated by published 2020 work. Thus “Gaussian optimization” must not silently mean a one-mode product ansatz, nor should all remaining upper/lower gaps be called uniformly small.
 
-The target is matching achievable and converse bounds for fixed $(\eta,N_{\rm th},N_S)$. Across this three-parameter family, progress is incremental: closing the gap on a specified parameter region counts, and no single proof or counterexample settles every point. Private capacity requires its own coding and secrecy definition and should not be assumed equal to quantum capacity.`,
+The target is matching achievable and converse bounds for fixed $(\eta,N_{\rm th},N_S)$. Across this three-parameter family, progress is incremental: closing the gap on a specified parameter region counts, and no single proof or counterexample settles every point. Private capacity requires its own coding and secrecy definition and should not be assumed equal to quantum capacity.
+
+Preprint progress (29 July 2026, v1): Mele, Catalano, Fanizza, Giovannetti and Lami prove that the Holevo–Werner thermal-input lower bound is the exact optimum over single-mode Gaussian inputs, and that a non-Gaussian input beats it. Hence the capacity is positive in a region where the channel is not antidegradable but every single-mode Gaussian input gives zero coherent information. For one thermal environment photon they narrow the positivity threshold to $0.75\le\eta_c\le0.7841<4/5$. The exact capacity and the exact threshold remain open.`,
     refs: [
+      { label: "Mele, Catalano, Fanizza, Giovannetti & Lami, 'Bosonic quantum communication beyond the thermal threshold' (2026 preprint, v1) (found via the QIQCOP Zoo)", url: "https://arxiv.org/abs/2607.27449v1" },
       {"label":"Rosati, Mari & Giovannetti, 'Narrow bounds for the quantum capacity of thermal attenuators', Nature Communications 9, 4339 (2018)","url":"https://www.nature.com/articles/s41467-018-06848-0"},
       {"label":"Noh, Pirandola & Jiang, 'Enhanced energy-constrained quantum communication over bosonic Gaussian channels', Nature Communications 11, 457 (2020)","url":"https://www.nature.com/articles/s41467-020-14329-6"},
       { label: "Pirandola, Laurenza, Ottaviani, Banchi, 'Fundamental limits of repeaterless quantum communications', Nat. Commun. 8, 15043 (2017)", url: "https://arxiv.org/abs/1510.08863" },
@@ -315,14 +339,18 @@ Preprint progress (August 2026): starting from the public states of Agarwal et a
 
 Deposited progress (October 2026): a Zenodo dataset by Harish Santhanalakshmi Ganesan applies the unchanged Krohn-Grimberghe exact certifier to a further polished 45-copy rank-two symmetric-subspace input and reports certified-positive coherent information at per-Pauli $p=32483/500000=0.064966$, total error $q=0.194898$, with enclosure $I_c\in[2.31,2.78]\times10^{-8}$ bits; the deposit includes the state, both certificate documents, an independent floating-point evaluator and the search log. The input state was found by an autonomous AI search agent; the sign check is the deposited exact computation, not peer review, and this catalogue has not rerun it. If correct, this gives $q_*\geq0.194898$, again a candidate-specific lower bound rather than a threshold.
 
-This benchmark was promoted from C1 to keep the precise threshold question and its noise normalization visible. Unassisted vanishing-error capacity is intended; two-way, zero-error and restricted-code capacities are different quantities.`,
+This benchmark was promoted from C1 to keep the precise threshold question and its noise normalization visible. Unassisted vanishing-error capacity is intended; two-way, zero-error and restricted-code capacities are different quantities.
+
+Converse progress (2 August 2026, v1): Kondra, Brinster, Kampermann, Bruß and Wyderka prove exponential strong converses for degradable and antidegradable channels. For full-support qubit Pauli channels they obtain an efficiently computable bound which, for the depolarizing channel, vanishes exactly at the antidegradability threshold and beats the regularized Rains bound at high noise. It sharpens the converse side; it is not the threshold itself.`,
     evidence: [
+      { kind: "preprint", summary: "Exponential strong converses for degradable and antidegradable channels; improved high-noise depolarizing converse vanishing at the antidegradability threshold.", url: "https://arxiv.org/abs/2608.01308v1", date: "2026-08-02", version: "v1" },
       { kind: "preprint", summary: "Exact-arithmetic positive coherent-information certificate for a 45-copy rank-two input at total Pauli error q=0.194868; not an exact threshold.", url: "https://arxiv.org/abs/2608.15870", date: "2026-08-16" },
       { kind: "numerical", summary: "Deposited 19 October 2026: exact-arithmetic certificates (same certifier) of positive coherent information for a further polished 45-copy rank-two input at per-Pauli p=32483/500000, total Pauli error q=0.194898; candidate-specific lower bound found by an AI search agent, not peer reviewed, not an exact threshold.", url: "https://doi.org/10.5281/zenodo.23484691", date: "2026-10-19", version: "v1" }],
     provenance: [
       { summary: "Krohn-Grimberghe reports an AI-driven numerical search and AI assistance with code, calculations, mechanical proof derivations and drafting under author direction. The author takes responsibility; the verification chain is intended to be independent of witness discovery.", url: "https://arxiv.org/abs/2608.15870" },
       { summary: "Harish Santhanalakshmi Ganesan reports that the October 2026 input state was produced autonomously by an AI research agent (EVO discovery harness, Claude Sonnet 5.5) polishing the Krohn-Grimberghe state, that the evaluator, task scaffolding and write-up were made with Claude Fable 5.1 under the contributor's direction, and that the exact certificates come from the unchanged Krohn-Grimberghe certifier run by the contributor.", url: "https://doi.org/10.5281/zenodo.23484691" }],
     refs: [
+      { label: "Kondra, Brinster, Kampermann, Bruß & Wyderka, 'Sharp Quantum Capacity Thresholds: Exponential Strong Converses for Degradable and Antidegradable Channels' (2026 preprint, v1) (found via the QIQCOP Zoo)", url: "https://arxiv.org/abs/2608.01308v1" },
       { label: "Krohn-Grimberghe, 'A certified lower bound on the quantum-capacity threshold of the depolarizing channel' (2026 preprint)", url: "https://arxiv.org/abs/2608.15870" },
       { label: "Harish Santhanalakshmi Ganesan, 'Certified positive coherent information of the qubit depolarizing channel at per-Pauli p = 32483/500000 (45 qubits, rank-2 symmetric input): state, exact certificates, evaluator' (Zenodo dataset, 19 October 2026)", url: "https://doi.org/10.5281/zenodo.23484691" },
       { label: "Agarwal, Kalra, Lee, Leung, Schaeffer, Sinha & Smith, 'Enhanced quantum capacity thresholds from symmetry' (2026 preprint)", url: "https://arxiv.org/abs/2605.09138" },

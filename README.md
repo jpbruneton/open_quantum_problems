@@ -14,6 +14,12 @@ https://openquantumproblems.com/
 
 ### Timeline
 
+**8 November 2026 — classic quant-ph questions**
+
+- Checked well-known open problems from the 2000–2020 quant-ph literature against the catalogue, with a web search for each to establish its current status. Ten entries were added. Four are open: A26 Quantum Max-Cut approximation, A27 random circuits as pseudorandom unitaries, A28 Hamiltonian structure learning at any temperature, A29 public-key quantum money from standard assumptions. B16 3D self-correcting memory is Improved. E19 separability from spectrum is open. Four are **Claimed solved**: B17 Néel order in the 2D spin-1/2 antiferromagnet (bootstrap proof, 2 November 2026), B18 3D Heisenberg ferromagnet magnetization (OpenAI), A30 quantum Hamming bound for qubit codes, and A31 unitary synthesis (OpenAI). The corresponding watchlist items were removed.
+- Not added: the robust Brown–Susskind conjecture, already proved (Chen et al. 2024); tight k-distinctness, claimed in April 2026 for large alphabets; entropic uncertainty for d+1 MUBs, known; lockability of distillable entanglement, considered too narrow.
+- Counts: 135 active entries, 47 Improved, 18 Claimed solved, zero Solved.
+
 **8 November 2026 — comparison with similar catalogues**
 
 - Compared with the QIQCOP Zoo and the IQOQI Vienna list. Shared problems now link to those catalogues from each problem page, and a new About & similar projects page links them.

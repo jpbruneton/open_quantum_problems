@@ -200,9 +200,12 @@ Preprint progress (20–22 October 2026, v1): Gao, Guo and Wang prove a complete
 
 Preprint progress (29 October 2026, v1): Bertoni and De Palma prove logarithmic mixing for KMS Gibbs samplers of two-local Hamiltonians on arbitrary interaction graphs, including all-to-all couplings, under a quantum Dobrushin condition in a high-temperature regime. Like the results above it stays within the high-temperature or 1D regimes, so the 2D target beyond high temperature remains open.
 
-Tool (14 September 2026, v1): Gao and Guo show that the modified log-Sobolev constant of a quantum Markov semigroup is equivalent, up to a constant, to a BKM coercivity constant, and that complete MLSI holds exactly when this constant is positive for a qubit auxiliary system. This gives a criterion for the size-independent inequalities above, not a 2D mixing theorem.`,
+Tool (14 September 2026, v1): Gao and Guo show that the modified log-Sobolev constant of a quantum Markov semigroup is equivalent, up to a constant, to a BKM coercivity constant, and that complete MLSI holds exactly when this constant is positive for a qubit auxiliary system. This gives a criterion for the size-independent inequalities above, not a 2D mixing theorem.
+
+Earlier 1D result (October 2025, v2 reviewed): Bergamaschi and Chen prove that every short-range 1D Hamiltonian admits a KMS-detailed-balance Gibbs sampler with a size-independent spectral gap at every finite temperature, giving polylogarithmic-depth preparation and exponential clustering. This predates and complements the October 2026 one-dimensional results above.`,
     relations: [{ id: "O2", type: "related" }, { id: "O9", type: "related" }, { id: "B5", type: "related" }],
     evidence: [
+      { kind: "preprint", summary: "Size-independent spectral gap of a Gibbs sampler for every short-range 1D Hamiltonian at every finite temperature; one-dimensional.", url: "https://arxiv.org/abs/2510.08533v2", date: "2025-10-09", version: "v2" },
       { kind: "preprint", summary: "MLSI characterized by a BKM coercivity constant; complete MLSI criterion via qubit amplification. A tool, not a 2D result.", url: "https://arxiv.org/abs/2609.15902v1", date: "2026-09-14", version: "v1" },
 
       { kind: "preprint", summary: "Logarithmic mixing for KMS Gibbs samplers of two-local Hamiltonians on arbitrary interaction graphs, including all-to-all, under a quantum Dobrushin condition; a high-temperature regime.", url: "https://arxiv.org/abs/2610.40361v1", date: "2026-10-29", version: "v1" },
@@ -220,6 +223,7 @@ Tool (14 September 2026, v1): Gao and Guo show that the modified log-Sobolev con
       { kind: "preprint", summary: "Polynomial-time thermalization is proved for particular generator families and high-temperature lattices, weakly interacting fermions and 1D chains, not all 2D low-temperature models.", url: "https://arxiv.org/abs/2601.16154v1", date: "2026-01-22", version: "v1" },
     ],
     refs: [
+      { label: "Bergamaschi & Chen, 'Fast Mixing of Quantum Spin Chains at All Temperatures' (2025 preprint, v2) (found via the QIQCOP Zoo)", url: "https://arxiv.org/abs/2510.08533v2" },
       { label: "Gao & Guo, 'Relative Entropy Decay via BKM coercivity for Quantum Markov Semigroups' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.15902v1" },
       { label: "Bertoni & De Palma, 'Rapid mixing for Gibbs samplers for quantum spin systems with all-to-all interactions' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.40361v1" },
       { label: "Leeseok Kim, 'Rapid mixing of quantum spin chains at any finite temperature' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.01190v1" },

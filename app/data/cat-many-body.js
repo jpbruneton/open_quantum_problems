@@ -320,4 +320,72 @@ Numerical evidence (3 November 2026, v1): Sun, Roth, Chen and Heyl optimize neur
       { label: "Jiang et al., 'Quantifying the phase diagram and Hamiltonian of S = 1/2 kagome antiferromagnets: bridging theory and experiment', npj Comput. Mater. 12, 91 (2026) — extended J2/DM Hamiltonians", url: "https://www.nature.com/articles/s41524-026-01959-5" },
     ],
   },
+
+  { id: "B16", cat: "many-body", horizon: "sharp", status: "improved",
+    reviewedAt: "2026-11-08",
+    title: "Self-correcting quantum memory in three dimensions",
+    statement: r`Is there a family of geometrically local, bounded-strength Hamiltonians on finite-dimensional spins in $\mathbb R^3$ whose ground space encodes at least one qubit such that, under local thermal dynamics (e.g. Davies generators) at some fixed positive temperature with no active correction, the encoded qubit, prepared in the ground space, can be recovered after a time growing super-polynomially (ideally exponentially) in system size?`,
+    context: r`A self-correcting memory stores quantum information passively, as a magnet stores a classical bit. The 4D toric code is self-correcting; in 2D, no commuting stabilizer code is. Three dimensions remained open: Haah's cubic code has no string logical operators and a logarithmic energy barrier, giving a lifetime that grows only up to a temperature-dependent size (Bravyi and Haah); layer codes show partial self-correction (Williamson).
+
+Negative result (30 September 2026, v1): Stengele, Caha, Capel and Warzel prove that Haah's cubic code thermalizes rapidly at every positive temperature, so it is not self-correcting.
+
+Claimed construction (May 2026, v1): Balasubramanian, Davydova and Lin build a 3D CSS stabilizer Hamiltonian by recursive transformations of a seed code and prove an exponential memory lifetime at low temperature with an explicit renormalization decoder. Their theorem uses a thermal encoding, the logical state tensored with a Gibbs state of the syndromes, and the authors explicitly do not address passive initialization from the ground space. The QIQCOP Zoo keeps the problem unsolved for this reason. Marked “Improved”: the remaining step is the same lifetime from a ground-space encoding, or a proof that the two initializations are equivalent. This entry replaces two former watchlist items.`,
+    evidence: [
+      { kind: "preprint", summary: "3D stabilizer Hamiltonian with proved exponential memory lifetime at low temperature under a thermal syndrome encoding; ground-space initialization not addressed.", url: "https://arxiv.org/abs/2605.10943v1", date: "2026-05-11", version: "v1" },
+      { kind: "preprint", summary: "Haah's cubic code thermalizes rapidly at every positive temperature, ruling it out as a self-correcting memory.", url: "https://arxiv.org/abs/2609.39959v1", date: "2026-09-30", version: "v1" },
+      { kind: "preprint", summary: "Partial self-correction in layer codes: exponential lifetime up to a temperature-dependent size cutoff.", url: "https://arxiv.org/abs/2510.09218v1", date: "2025-10-10", version: "v1" },
+    ],
+    provenance: [
+      { summary: "Balasubramanian, Davydova and Lin thank ChatGPT 5.5 for help improving the clarity of the manuscript.", url: "https://arxiv.org/abs/2605.10943v1", version: "v1" },
+    ],
+    relations: [{ id: "B8", type: "related" }, { id: "A18", type: "related" }],
+    refs: [
+      { label: "Brown, Loss, Pachos, Self & Wootton, 'Quantum memories at finite temperature', Rev. Mod. Phys. 88 (2016)", url: "https://arxiv.org/abs/1411.6643" },
+      { label: "Haah, 'Local stabilizer codes in three dimensions without string logical operators', PRA 83 (2011)", url: "https://arxiv.org/abs/1101.1962" },
+      { label: "Bravyi & Haah, 'Quantum Self-Correction in the 3D Cubic Code Model', PRL 111 (2013)", url: "https://arxiv.org/abs/1105.4159" },
+      { label: "Williamson, 'Partial Self-Correction in Layer Codes' (2025 preprint)", url: "https://arxiv.org/abs/2510.09218" },
+      { label: "Balasubramanian, Davydova & Lin, 'A passive self-correcting quantum memory in three dimensions' (2026 preprint, v1)", url: "https://arxiv.org/abs/2605.10943v1" },
+      { label: "Stengele, Caha, Capel & Warzel, 'Haah's 3D cubic code thermalizes rapidly' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.39959v1" },
+    ] },
+
+  { id: "B17", cat: "many-body", horizon: "sharp", status: "claimed-solved",
+    reviewedAt: "2026-11-08",
+    title: "Néel order in the 2D spin-1/2 Heisenberg antiferromagnet",
+    statement: r`For the spin-$1/2$ nearest-neighbour Heisenberg antiferromagnet on $\mathbb Z^2$, prove that the ground state has Néel long-range order: the staggered magnetization (or the staggered two-point correlation at large distance) stays bounded away from zero in the thermodynamic limit.`,
+    context: r`Long-range order in the 2D spin-$1/2$ Heisenberg antiferromagnet, the parent model of the cuprates, has overwhelming numerical support but resisted proof. Dyson, Lieb and Simon proved order at low temperature in 3D using reflection positivity and infrared bounds. Kennedy, Lieb and Shastry, and earlier Neves and Perez, extended ground-state order in 2D to spin $S\ge1$ and to some anisotropic models. Their method reduces order to bounds on finite-distance correlators that were not available for $S=1/2$.
+
+Claimed resolution (2 November 2026, v1): Chadha, Wang, Nosov, Scheer and Khalaf use a bootstrap (semidefinite) method that generalizes the Kennedy–Lieb–Shastry inequalities. They derive a strictly positive lower bound on the Néel order parameter in the thermodynamic limit for a discrete set of anisotropies in $[0,2]$, including the isotropic point. The numerical bounds are converted into exact rational certificates, which the authors present as a complete computer-assisted proof. Not peer reviewed; certificates not rerun here. Marked “Claimed solved” pending independent assessment.`,
+    evidence: [
+      { kind: "preprint", summary: "Claimed computer-assisted proof of Néel order in the 2D spin-1/2 XXZ model, including the Heisenberg point, via bootstrap bounds with exact rational certificates; pending assessment.", url: "https://arxiv.org/abs/2611.03241v1", date: "2026-11-02", version: "v1" },
+    ],
+    provenance: [
+      { summary: "Chadha et al. report using Claude Opus 5.5, Fable 5.1 and ChatGPT 6.1 for literature search, and Claude Opus 5.5 and Fable 5.1 for coding assistance.", url: "https://arxiv.org/abs/2611.03241v1", version: "v1" },
+    ],
+    relations: [{ id: "B10", type: "related" }, { id: "B18", type: "related" }],
+    refs: [
+      { label: "Dyson, Lieb & Simon, 'Phase transitions in quantum spin systems with isotropic and nonisotropic interactions', J. Stat. Phys. 18 (1978)", url: "https://doi.org/10.1007/BF01106729" },
+      { label: "Kennedy, Lieb & Shastry, 'Existence of Néel order in some spin-1/2 Heisenberg antiferromagnets', J. Stat. Phys. 53 (1988)", url: "https://doi.org/10.1007/BF01023854" },
+      { label: "Chadha, Wang, Nosov, Scheer & Khalaf, 'Establishing Néel order in the square-lattice antiferromagnetic Heisenberg model: a bootstrap proof' (2026 preprint, v1)", url: "https://arxiv.org/abs/2611.03241v1" },
+    ] },
+
+  { id: "B18", cat: "many-body", horizon: "sharp", status: "claimed-solved",
+    reviewedAt: "2026-11-08",
+    title: "Spontaneous magnetization of the 3D quantum Heisenberg ferromagnet",
+    statement: r`For the nearest-neighbour isotropic quantum Heisenberg ferromagnet on $\mathbb Z^3$ (spin $S=1/2$ in particular), prove that at sufficiently low positive temperature there is a translation-invariant equilibrium (KMS) state with nonzero spontaneous magnetization.`,
+    context: r`Ferromagnetic order at low temperature in three dimensions is textbook physics, yet for the quantum Heisenberg ferromagnet it was a long-standing open problem. Reflection positivity, which proves order for the classical Heisenberg model and the quantum antiferromagnet (Fröhlich, Simon and Spencer; Dyson, Lieb and Simon), fails for the quantum ferromagnet. Partial results include the free energy at large spin (Correggi, Giuliani and Seiringer) and random-loop representations (Tóth; Ueltschi).
+
+Claimed resolution (OpenAI Math Release, public 6 October 2026; manuscript dated 24 September): for every $d\ge3$ and every spin $S$, the nearest-neighbour isotropic ferromagnet is claimed to have a translation-invariant, spontaneously magnetized KMS state at every sufficiently low positive temperature, with magnetization at least $S/4$. Companion manuscripts in the same release claim Bloch's law and its first lattice correction. The manuscripts are GitHub releases, not arXiv preprints, and Lean scope was not checked here. Until 8 November this claim was on the watchlist. Marked “Claimed solved” pending independent assessment.`,
+    evidence: [
+      { kind: "preprint", summary: "Claimed spontaneous magnetization (at least S/4) in a translation-invariant KMS state at low temperature for d>=3 and every spin; OpenAI GitHub manuscript, pending assessment.", url: "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Spontaneous-magnetization-in-the-quantum-Heisenberg-ferromagnet-September-24-2026/paper.pdf", date: "2026-10-06", version: "v1" },
+    ],
+    provenance: [
+      { summary: "OpenAI lists itself as author and states that an unreleased internal model produced the manuscript collection. Lean scope for this family was not checked here.", url: "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Spontaneous-magnetization-in-the-quantum-Heisenberg-ferromagnet-September-24-2026/README.md" },
+    ],
+    relations: [{ id: "B17", type: "related" }],
+    refs: [
+      { label: "Dyson, Lieb & Simon, 'Phase transitions in quantum spin systems with isotropic and nonisotropic interactions', J. Stat. Phys. 18 (1978)", url: "https://doi.org/10.1007/BF01106729" },
+      { label: "Correggi, Giuliani & Seiringer, 'Validity of the spin-wave approximation for the free energy of the Heisenberg ferromagnet', Comm. Math. Phys. 339 (2015)", url: "https://arxiv.org/abs/1312.7873" },
+      { label: "Ueltschi, 'Random loop representations for quantum spin systems', J. Math. Phys. 54 (2013)", url: "https://arxiv.org/abs/1301.0811" },
+      { label: "OpenAI, 'Spontaneous magnetization in the quantum Heisenberg ferromagnet' (OpenAI Math Release manuscript, dated 24 September 2026)", url: "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Spontaneous-magnetization-in-the-quantum-Heisenberg-ferromagnet-September-24-2026/paper.pdf" },
+    ] },
 ];

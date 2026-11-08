@@ -144,9 +144,16 @@ Preprint progress (30 September 2026, v1): Takagi et al. and Tirone et al. indep
     ] },
 
   { id: "E6", cat: "entanglement", horizon: "incremental", status: "improved",
+    reviewedAt: "2026-11-08",
     relations: [{ id: "E5", type: "parent" }, { id: "E9", type: "related" }, { id: "E11", type: "related" }],
-    evidence: [{ kind: "preprint", summary: "Irreversibility persists for an explicit state under PPT operations with correlated catalysts; this is not an LOCC equality classification.", url: "https://arxiv.org/abs/2608.20063", date: "2026-08-20" }],
-    provenance: [{ summary: "Ao, Philip and Streltsov report ChatGPT 5.6 assistance with editing, organization, references and exploration/verification of mathematical arguments, while asserting independent author review and responsibility.", url: "https://arxiv.org/abs/2608.20063" }],
+    evidence: [
+      { kind: "preprint", summary: "Very strong irreversibility: restoring reversibility incurs an error exponential in the number of copies, even for non-entangling operations.", url: "https://arxiv.org/abs/2607.27195v1", date: "2026-07-29", version: "v1" },
+      { kind: "preprint", summary: "Flower states: one ebit of distillable entanglement in every dimension, with a large gap to the LOCC entanglement cost.", url: "https://arxiv.org/abs/2608.02587v1", date: "2026-08-03", version: "v1" },
+      { kind: "preprint", summary: "Irreversibility persists for an explicit state under PPT operations with correlated catalysts; this is not an LOCC equality classification.", url: "https://arxiv.org/abs/2608.20063", date: "2026-08-20" }],
+    provenance: [
+      { summary: "Kondra et al. report that some technical proof details were developed with ChatGPT (GPT-5.6 Sol), with all output checked by the authors.", url: "https://arxiv.org/abs/2607.27195v1", version: "v1" },
+      { summary: "Sen and Lami report using ChatGPT 5.5 for literature search and to complete the proof of one theorem.", url: "https://arxiv.org/abs/2608.02587v1", version: "v1" },
+      { summary: "Ao, Philip and Streltsov report ChatGPT 5.6 assistance with editing, organization, references and exploration/verification of mathematical arguments, while asserting independent author review and responsibility.", url: "https://arxiv.org/abs/2608.20063" }],
     title: "Irreversibility of mixed-state entanglement",
     statement: r`Give a structural characterization of finite-dimensional bipartite states satisfying $E_C(\rho)=E_D(\rho)$ under ordinary asymptotic LOCC with vanishing error and no catalysts.`,
     context: r`Pure-state entanglement is reversible: entropy of entanglement governs both formation and distillation. Mixed-state irreversibility is established by explicit examples, including bound-entangled states with $E_D=0<E_C$. It is not correct to treat every mixed state as irreversible: locally distinguishable flagged mixtures of suitable pure resources provide reversible mixed subclasses.
@@ -155,8 +162,12 @@ A complete characterization has no single yes/no resolution: progress is a large
 
 Preprint progress (August 2026): Ao, Philip and Streltsov claim full additivity and strong superadditivity of regularized PPT relative entropy, and an explicit state with an irreversible formation–distillation gap even with correlated catalysts under PPT operations. This does not supply the missing equality criterion for ordinary LOCC.
 
-The target is the boundary between reversible and irreversible states under the fixed convention, not merely another example of a gap.`,
+The target is the boundary between reversible and irreversible states under the fixed convention, not merely another example of a gap.
+
+Preprint progress (29 July–3 August 2026, v1). Kondra, Brinster, Kampermann, Bruß and Wyderka construct states for which any attempt to restore reversibility, even under non-entangling operations, incurs an error growing exponentially with the number of copies. Sen and Lami compute all main measures for “flower states”: distillable entanglement is one ebit in every local dimension, while the LOCC entanglement cost is much larger. Both sharpen irreversibility examples; neither gives the equality criterion asked for here.`,
     refs: [
+      { label: "Kondra, Brinster, Kampermann, Bruß & Wyderka, 'Very Strong Irreversibility of Quantum Entanglement' (2026 preprint, v1) (found via the QIQCOP Zoo)", url: "https://arxiv.org/abs/2607.27195v1" },
+      { label: "Sen & Lami, 'Entanglement of flower states' (2026 preprint, v1) (found via the QIQCOP Zoo)", url: "https://arxiv.org/abs/2608.02587v1" },
       { label: "Vidal & Cirac, 'Irreversibility in asymptotic manipulations of entanglement', PRL 86, 5803 (2001)", url: "https://arxiv.org/abs/quant-ph/0102036" },
       { label: "Lami & Regula, 'No second law of entanglement manipulation after all', Nat. Phys. 19 (2023)", url: "https://doi.org/10.1038/s41567-022-01873-9" },
       { label: "Ao, Philip & Streltsov, 'PPT Entanglement with Correlated Catalysis: Monotones and Irreversibility' (2026 preprint)", url: "https://arxiv.org/abs/2608.20063" },
@@ -208,6 +219,7 @@ Preprint progress (28 September 2026, v1): Shchukin and van Loock claim a rigidi
     reviewedAt: "2026-11-08",
     relations: [{ id: "E5", type: "related" }, { id: "E6", type: "related" }, { id: "E10", type: "related" }, { id: "U4", type: "related" }],
     evidence: [
+      { kind: "preprint", summary: "Efficient approximation of regularized relative entropies between structured sequences of sets, with convergence guarantees; certified evaluation for structured cases.", url: "https://arxiv.org/abs/2502.15659v2", date: "2025-02-21", version: "v2" },
       { kind: "preprint", summary: "Exact entanglement cost of every two-qubit Bell-diagonal state, equal to its entanglement of formation; new lower bounds for qudit isotropic states. A structured exact evaluation, not a general certified algorithm.", url: "https://arxiv.org/abs/2610.00187v1", date: "2026-09-17", version: "v1" },
 
       { kind: "preprint", summary: "Explicit asymptotic continuity bound for distillable entanglement, logarithmic in dimension, via an LOCC protocol interconverting nearby states at vanishing ebit cost. A continuity ingredient, not an algorithm with a certified stopping rule.", url: "https://arxiv.org/abs/2610.35722v1", date: "2026-10-26", version: "v1" },
@@ -229,8 +241,11 @@ Preprint progress (26 October 2026, v1): Schmitt and Sutter prove that distillab
 
 The task must be specified quantity by quantity, with input encoding, additive accuracy and a two-sided certificate. Efficient algorithms, computable convergence rates and analytic formulas are distinct levels of success.
 
-Exact structured case (17 September 2026, v1): Fang determines the entanglement cost of every two-qubit Bell-diagonal state, in particular every qubit isotropic and Werner state, and shows that it equals the entanglement of formation. The proof combines log-Sobolev entropy bounds with an exact tensorization theorem of Dong et al. For qudit isotropic states it gives new lower bounds that do not close the gap for $d\ge3$. This settles $E_C$ for a family singled out in the QIQCOP Zoo, where the higher-dimensional Werner and isotropic cases remain listed as open.`,
+Exact structured case (17 September 2026, v1): Fang determines the entanglement cost of every two-qubit Bell-diagonal state, in particular every qubit isotropic and Werner state, and shows that it equals the entanglement of formation. The proof combines log-Sobolev entropy bounds with an exact tensorization theorem of Dong et al. For qudit isotropic states it gives new lower bounds that do not close the gap for $d\ge3$. This settles $E_C$ for a family singled out in the QIQCOP Zoo, where the higher-dimensional Werner and isotropic cases remain listed as open.
+
+Algorithmic progress (2025, v2 reviewed): Fang, Fawzi and Fawzi show that, under structural assumptions and with efficient descriptions of the sets involved, regularized relative entropies between sequences of sets can be approximated efficiently with convergence guarantees. Applications include resource-theoretic bounds. This gives certified evaluation for structured relative-entropy quantities; it does not cover $E_C$, $E_D$ or $E_P^\infty$ in general.`,
     refs: [
+      { label: "Fang, Fawzi & Fawzi, 'Efficient approximation of regularized relative entropies and applications' (2025 preprint, v2) (found via the QIQCOP Zoo)", url: "https://arxiv.org/abs/2502.15659v2" },
       { label: "Fang, 'Entanglement cost of quantum depolarization' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.00187v1" },
       {"label":"Beigi, Rubboli & Tomamichel, 'Additivity of quantum relative entropies as a single-copy criterion', CMP 407, 134 (2026)","url":"https://arxiv.org/abs/2507.05696"},
       { label: "Hastings, 'Superadditivity of communication capacity using entangled inputs', Nat. Phys. 5 (2009)", url: "https://arxiv.org/abs/0809.3972" },
@@ -429,12 +444,15 @@ Claimed resolution (OpenAI Math Release, public 6 October 2026; manuscript dated
 
 What is known: $E_D>0$ since the state is one-copy distillable. For $d=3$ the bounds are roughly $1/3\le E_D\le\log_2(5/3)$; the logarithmic negativity and Rains bound give upper bounds, and the PPT-operation relaxation is known exactly, $\log_2(1+2/d)$. Wang and Duan established strict PPT irreversibility on the $3\otimes3$ antisymmetric subspace.
 
-A complete answer gives an LOCC protocol and a matching converse for some $d$; the asymptotic constant is a separate sharp target. Related: E6 (irreversibility).`,
+A complete answer gives an LOCC protocol and a matching converse for some $d$; the asymptotic constant is a separate sharp target. Related: E6 (irreversibility).
+
+Related (29 July 2026, v1): Kondra, Brinster, Kampermann, Bruß and Wyderka build analytically solvable families from antisymmetric states that show exponential strong-converse irreversibility under PPT operations. Their statements concern cost and error exponents, and the LOCC analogues are left open; the vanishing-error LOCC rate asked here is not evaluated.`,
     evidence: [
       { kind: "published", summary: "Distillable key, hence distillable entanglement, of the antisymmetric state is O(1/d), while its entanglement cost stays bounded below (Comm. Math. Phys. 311, 2012).", url: "https://arxiv.org/abs/0910.4151", date: "2012-04-01" },
     ],
     relations: [{ id: "E6", type: "related" }, { id: "E9", type: "related" }],
     refs: [
+      { label: "Kondra, Brinster, Kampermann, Bruß & Wyderka, 'Very Strong Irreversibility of Quantum Entanglement' (2026 preprint, v1) (found via the QIQCOP Zoo)", url: "https://arxiv.org/abs/2607.27195v1" },
       { label: "Christandl, Schuch & Winter, 'Entanglement of the Antisymmetric State', Comm. Math. Phys. 311 (2012)", url: "https://arxiv.org/abs/0910.4151" },
       { label: "Yura, 'Entanglement Cost of Three-Level Antisymmetric States', J. Phys. A 36 (2003)", url: "https://arxiv.org/abs/quant-ph/0302163" },
       { label: "Rains, 'A semidefinite program for distillable entanglement', IEEE Trans. Inf. Theory 47 (2001)", url: "https://arxiv.org/abs/quant-ph/0008047" },
@@ -459,5 +477,30 @@ A sharp answer is an explicit distribution with a proof of zero key rate and pos
       { label: "Gisin & Wolf, 'Linking Classical and Quantum Key Agreement: Is There “Bound Information”?', CRYPTO 2000", url: "https://arxiv.org/abs/quant-ph/0005042" },
       { label: "Acín, Cirac & Masanes, 'Multipartite Bound Information exists and can be activated', PRL 92 (2004)", url: "https://arxiv.org/abs/quant-ph/0311064" },
       { label: "IQOQI Vienna Open Quantum Problems, problem 47: 'Is there bound information?' (M. Christandl)", url: "https://oqp.iqoqi.oeaw.ac.at/is-there-bound-information" },
+    ] },
+
+  { id: "E19", cat: "entanglement", horizon: "sharp",
+    reviewedAt: "2026-11-08",
+    title: "Separability from spectrum: absolutely separable versus absolutely PPT",
+    statement: r`Call a bipartite state on $\mathbb C^m\otimes\mathbb C^n$ absolutely separable if $U\rho U^\dagger$ is separable for every global unitary $U$, and absolutely PPT if every $U\rho U^\dagger$ has positive partial transpose. Are the two sets equal for all $m,n$? In particular, decide the qutrit–qudit case $m=3$.`,
+    context: r`Whether separability can be read from the spectrum alone was asked by Knill (IQOQI problem 15). The absolutely PPT states are characterized by explicit linear matrix inequalities on the eigenvalues (Hildebrand), so equality would give a complete spectral criterion for absolute separability.
+
+What is known: equality holds for all qubit–qudit systems (Verstraete, Audenaert and De Moor for $2\otimes2$; Johnston for $2\otimes n$). Arunachalam, Johnston and Russo reduced the general question and settled special cases. In the symmetric subspace, the analogous statement fails (Louvet et al., 2024). November 2026 preprints show that the maximal purity of absolutely separable and absolutely PPT states coincides for every $3\otimes n$ system (two independent preprints). This is necessary for equality but not sufficient. The general question, already open for $3\otimes3$, remains open.
+
+Structural progress (4 August 2026, v2 reviewed): Ahiable, Kothakonda and Winter study the geometry of the spectra of absolutely separable and absolutely PPT states. They give a permutation-symmetric reformulation of the absolute PPT criterion and show that the absolutely PPT spectra form a spectrahedron for all $m\le n$. The equality question for $m\ge3$ is left open.`,
+    evidence: [
+      { kind: "preprint", summary: "Geometry of absolutely separable and absolutely PPT spectra; absolutely PPT spectra form a spectrahedron; equality for m>=3 left open.", url: "https://arxiv.org/abs/2608.03390v2", date: "2026-08-04", version: "v2" },
+      { kind: "preprint", summary: "Maximum purity of absolutely separable and absolutely PPT states coincides in every qutrit–qudit system; equal maxima, not equal sets.", url: "https://arxiv.org/abs/2611.01306v1", date: "2026-11-01", version: "v1" },
+      { kind: "preprint", summary: "Purity maxima and spectral volumes of absolutely PPT states, with absolute-separability comparisons.", url: "https://arxiv.org/abs/2611.01492v1", date: "2026-11-01", version: "v1" },
+      { kind: "preprint", summary: "In the symmetric subspace, symmetric absolutely PPT does not imply symmetric absolute separability.", url: "https://arxiv.org/abs/2411.16461v2", date: "2024-11-25", version: "v2" },
+    ],
+    relations: [{ id: "E3", type: "related" }],
+    refs: [
+      { label: "Ahiable, Kothakonda & Winter, 'The geometry of absolute separability and other convex matrix properties from spectrum' (2026 preprint, v2) (found via the QIQCOP Zoo)", url: "https://arxiv.org/abs/2608.03390v2" },
+      { label: "Kuś & Życzkowski, 'Geometry of entangled states', PRA 63 (2001)", url: "https://arxiv.org/abs/quant-ph/0006068" },
+      { label: "Johnston, 'Separability from Spectrum for Qubit-Qudit States', PRA 88 (2013)", url: "https://arxiv.org/abs/1309.2006" },
+      { label: "Arunachalam, Johnston & Russo, 'Is absolute separability determined by the partial transpose?', QIC 15 (2015)", url: "https://arxiv.org/abs/1405.5853" },
+      { label: "Louvet, Serrano-Ensástiga, Bastin & Martin, 'Nonequivalence between absolute separability and positive partial transposition in the symmetric subspace' (2024)", url: "https://arxiv.org/abs/2411.16461" },
+      { label: "IQOQI Vienna Open Quantum Problems, problem 15: 'Separability from spectrum' (E. Knill)", url: "https://oqp.iqoqi.oeaw.ac.at/separability-from-spectrum/" },
     ] },
 ];

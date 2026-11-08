@@ -74,7 +74,42 @@ The catalogue was compared with the [QIQCOP Zoo](https://qiqc-op.com/) (217 prob
 - **Ten new open entries** taken from questions both lists treat as central and that this catalogue lacked: A21 dihedral HSP, A22 polynomial-time quantum lattice algorithms, A23 triangle-finding query complexity, A24 stabilizer rank of $|T\rangle^{\otimes n}$, A25 shadow-tomography copy complexity, C13 two-way capacity of amplitude damping, E17 distillable entanglement of the antisymmetric state, E18 bipartite bound information (IQOQI #47), N12 many-copy nonlocality of entangled states, N13 semialgebraicity of the closed quantum correlation set. N14 (CGLMP inequalities, IQOQI problem 27) was added after GitHub issue #2 pointed out that this IQOQI problem was missing.
 - **External contribution:** C11 records the Zenodo deposit 10.5281/zenodo.23484691 (Harish Santhanalakshmi Ganesan, 19 October 2026) from pull request #1: exact certificates of positive coherent information at per-Pauli $p=32483/500000$. The certificate was not rerun here. Statements were rewritten for this catalogue, and every arXiv reference was checked against the arXiv API.
 - **Sources added to existing entries:** F3 (Das Bhowmik–Banik, arXiv:2610.41444), E9 (Fang, arXiv:2610.00187), E1 (Lei et al., arXiv:2608.03710), E14 (Cha, arXiv:2603.13442; Wójcik et al., arXiv:2603.18193), A7 (Li–Li–Liu, arXiv:2604.01874), A12 (Zhao, arXiv:2609.01008, 2610.00112), A13 (Go–Oh–Jeong, arXiv:2607.20804), O10 (Gao–Guo, arXiv:2609.15902). Context notes were added to C4 (the two strong-converse proofs share an author), F9 (extensible causality and purification) and E13 (Zhang–Yeung benchmark). AI-use disclosures were recorded where found.
+- **Recent sources taken from QIQCOP records (second check).** For each entry linked to the QIQCOP Zoo, the Zoo's references were compared with ours (282 missing references in total, mostly background). Only recent papers that report a claimed resolution, a withdrawal or the latest improvement for our exact question were added, each labelled "found via the QIQCOP Zoo". The additions:
+  - A11: Escudero Gutiérrez–Saucedo–Palazuelos.
+  - A12: Zhang's Zenodo hafnian anticoncentration.
+  - A20: Joshi–Tal–Vasconcelos–Wright.
+  - A21: Gupte–Ragavan–Zhandry's refutation of a 2026 dihedral coset problem (DCP) algorithm.
+  - C1: four 2026 nonadditivity papers.
+  - C2: Mele et al., non-Gaussian beats the thermal threshold.
+  - C11: Kondra et al., strong converses.
+  - E6 and E17: Kondra et al.; Sen–Lami.
+  - E9: Fang–Fawzi–Fawzi.
+  - E19: Ahiable–Kothakonda–Winter.
+  - N1: Joka's withdrawn SIC claim.
+  - O10: Bergamaschi–Chen.
+- **Correction.** The cross-reference from A18 to "Tough error models" (QIQCOP; IQOQI 14) was removed: that problem concerns guaranteed code dimension for a given error space, not fault tolerance under correlated noise.
 - **Status differences that come from policy only.** QIQCOP marks complete preprint resolutions “Solved” (C4, C12, E16); they stay “Claimed solved” here. QIQCOP still lists E10 and A7 as unsolved; their audits predate the preprints cited here.
+
+## Classic quant-ph questions (third pass, 8 November)
+
+Well-known open problems from the 2000–2020 quant-ph literature were listed from memory and checked against the catalogue, watchlist and proposals page. Each candidate's current status was then checked by web search, and its key references against the arXiv API. Ten entries were added:
+
+| Entry | Status | Basis |
+| --- | --- | --- |
+| A26 Approximating Quantum Max-Cut | Open | Best classical ratio 0.603 (Gribling–Sinjorgo–Sotirov, arXiv:2504.11120); UGC hardness about 0.956; bipartite case in BQP (July 2026, arXiv:2607.14401, 2607.10765), BPP open (QIQCOP). |
+| A27 Random circuits as pseudorandom unitaries | Open | Designs known, PRUs from one-way functions (Ma–Huang); the random-circuit PRU conjecture is still open (Raza–Eisert–Fefferman, arXiv:2609.03065). |
+| A28 Hamiltonian structure learning at any temperature | Open | Solved only at high temperature (Lewis–Tang–Wright, arXiv:2606.30358); known-structure learning at any temperature (Bakshi et al.). |
+| A29 Public-key quantum money from standard assumptions | Open | One-shot signatures from iO plus LWE (Shmueli–Zhandry 2025); nothing from LWE alone. |
+| A30 Degenerate codes and the quantum Hamming bound | Claimed solved | Zhang–Chen, arXiv:2606.15558, for exact binary subspace codes. |
+| A31 Unitary synthesis problem | Claimed solved | OpenAI manuscript, 5 October 2026; previously on the watchlist. |
+| B16 3D self-correcting quantum memory | Improved | Balasubramanian–Davydova–Lin (arXiv:2605.10943), proved with a thermal encoding; ground-space initialization is open. Haah's cubic code is ruled out (arXiv:2609.39959). Replaces two watchlist items. |
+| B17 Néel order, 2D spin-1/2 antiferromagnet | Claimed solved | Chadha–Wang–Nosov–Scheer–Khalaf, arXiv:2611.03241 (2 November 2026), a bootstrap proof with exact rational certificates. |
+| B18 3D quantum Heisenberg ferromagnet | Claimed solved | OpenAI manuscript, 24 September 2026; previously on the watchlist. |
+| E19 Absolutely separable vs absolutely PPT | Open | Solved for qubit–qudit; symmetric-subspace counterexample; equal maximal purity for 3⊗n (November 2026). Also IQOQI problem 15. |
+
+Not added: the robust Brown–Susskind conjecture, already proved (Chen, Haah, Haferkamp, Liu, Metger, Tan, arXiv:2406.07478). Tight k-distinctness lower bound, claimed (Belovs, arXiv:2604.05133) for large alphabets. Entropic uncertainty for d+1 MUBs, known since Sánchez-Ruiz; only intermediate numbers of bases remain open. Lockability of distillable entanglement (IQOQI 25), considered too narrow. No proof or certificate was rerun.
+
+Totals after this pass: 135 active entries, 47 Improved, 18 Claimed solved, 70 Open and zero Solved.
 
 ## Status, provenance and implementation
 

@@ -151,11 +151,12 @@ function Home() {
           </div>
 
           <div className="review-note">
-            <b>Last update · {LITERATURE_UPDATE.label}.</b> {LITERATURE_UPDATE.ids.length - 12} entries updated and 12 new entries added.
+            <b>Last update · {LITERATURE_UPDATE.label}.</b> {LITERATURE_UPDATE.ids.length - 22} entries updated and 22 new entries added.
             <ul>
               <li>Independent <a href="#p/N2">second proof that dimension six has only three MUBs</a>; experts have engaged with the <a href="#p/M5">Haldane-gap proof</a>.</li>
               <li>OpenAI's announced <a href="#p/QF1">4D Yang–Mills existence proof</a> is not public and does not claim the mass gap.</li>
               <li>Checked against <a href="#similar">similar catalogues</a> (QIQCOP Zoo, IQOQI Vienna): shared problems are now cross-referenced on each page. This found an all-dimension <a href="#p/N1">SIC existence claim</a>, now “Claimed solved”, and added <a href="#p/A20">PARITY ∉ QAC0</a> and eleven other questions.</li>
+              <li>Ten classic quant-ph questions added: <a href="#p/B17">Néel order in the 2D spin-½ Heisenberg antiferromagnet</a> (claimed proved on 2 November), the <a href="#p/B18">3D Heisenberg ferromagnet</a>, <a href="#p/A31">unitary synthesis</a>, the <a href="#p/A30">quantum Hamming bound</a>, <a href="#p/B16">3D self-correcting memory</a>, <a href="#p/A26">Quantum Max-Cut</a>, <a href="#p/A29">public-key quantum money</a> and three more.</li>
             </ul>
           </div>
 
