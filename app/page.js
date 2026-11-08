@@ -208,7 +208,7 @@ function Home() {
           </div>
 
           <div className="review-note">
-            <b>Last update · {LITERATURE_UPDATE.label}.</b> {LITERATURE_UPDATE.ids.length - 33} entries updated and 33 new entries added.
+            <b>Last update · {LITERATURE_UPDATE.label}.</b> {LITERATURE_UPDATE.ids.length - 37} entries updated and 37 new entries added.
             <ul>
               <li>Independent <a href="#p/N2">second proof that dimension six has only three MUBs</a>; experts have engaged with the <a href="#p/M5">Haldane-gap proof</a>.</li>
               <li>OpenAI's announced <a href="#p/QF1">4D Yang–Mills existence proof</a> is not public and does not claim the mass gap.</li>

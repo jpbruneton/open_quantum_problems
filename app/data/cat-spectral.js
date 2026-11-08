@@ -4,34 +4,44 @@ const OAI = "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a
 
 export const SPECTRAL = [
   { id: "M1", cat: "spectral", horizon: "sharp", status: "claimed-solved",
-    reviewedAt: "2026-10-17",
+    reviewedAt: "2026-11-08",
     provenance: [
       { summary: "OpenAI lists itself as author and states that an unreleased internal model produced the manuscript collection. The linked Lean formalization covers generalized ionization-energy and outer-radius asymptotics, not the excess-charge bound $Z+CM$. This is OpenAI's account; the formalization was not rebuilt here.", url: `${OAI}lean/docs/263.md` },
     ],
-    title: "Ionization conjecture for atoms",
-    statement: r`For the nonrelativistic Coulomb Hamiltonian of fermionic spin-1/2 electrons and a fixed point nucleus of charge $Z$, prove that the maximal number of bound electrons satisfies $N_c(Z)\le Z+C$, with $C$ independent of $Z$.`,
-    definition: r`**The ionization conjecture** asks how many electrons a nucleus of charge $Z$ can bind. For the many-body Schrödinger operator $H=\sum_i(-\Delta_i-Z/|x_i|)+\sum_{i<j}1/|x_i-x_j|$ of fermionic spin-1/2 electrons, let $N_c(Z)$ be the maximal number of bound electrons; the conjecture is that $N_c(Z)-Z$ stays bounded uniformly in $Z$.
+    title: "Ionization conjecture for atoms and molecules",
+    statement: r`For the nonrelativistic Coulomb Hamiltonian of fermionic spin-1/2 electrons and $M\ge1$ fixed point nuclei with positive integer charges $z_1,\dots,z_M$ at arbitrary distinct positions, prove that the maximal number of bound electrons satisfies $N_c\le Z+CM$, where $Z=\sum_mz_m$ and $C$ is independent of $M$, the charges and the positions. For an atom ($M=1$) this reads $N_c(Z)\le Z+C$.`,
+    definition: r`**The ionization conjecture** asks how many electrons a set of nuclei can bind. For $H_N=\sum_{i=1}^N\big(-\Delta_i+V(x_i)\big)+\sum_{i<j}1/|x_i-x_j|$ with $V(x)=-\sum_{m=1}^Mz_m/|x-R_m|$, acting on fermionic spin-1/2 electrons, let $E_N=\inf\sigma(H_N)$ and let $N_c$ be the largest $N$ with $E_N<E_{N-1}$. By the HVZ theorem $E_N$ is then an eigenvalue below the essential spectrum. The conjecture, due to Lieb in the 1980s and Problem 10C of Simon's 1984 list, is that the excess charge $N_c-Z$ is at most a universal constant times the number of nuclei.
 
-Physically atoms bind at most one or two extra electrons, so one expects a bound $N_c(Z)\le Z+C$. For the full many-electron operator the obstruction is controlling electron–electron screening rigorously without a self-consistent mean field. Uniform ionization-energy and radius bounds are related but separate targets. Standard reference: Lieb and Seiringer, The Stability of Matter in Quantum Mechanics (CUP, 2010), [book page](https://www.cambridge.org/core/books/the-stability-of-matter-in-quantum-mechanics/BC90EBAF135B745979EA749076A2F931).`,
+Physically atoms bind at most one or two extra electrons, so one expects a small constant; Lewin asks ideally for $C=1$ or $C=2$. The Pauli principle is essential: a nucleus binds about $1.21\,Z$ bosonic "electrons" at large $Z$ (Benguria and Lieb; Solovej). For the full many-electron operator the obstruction is controlling electron–electron screening rigorously without a self-consistent mean field. Uniform ionization-energy and radius bounds are related but separate targets. Standard reference: Lieb and Seiringer, The Stability of Matter in Quantum Mechanics (CUP, 2010), [book page](https://www.cambridge.org/core/books/the-stability-of-matter-in-quantum-mechanics/BC90EBAF135B745979EA749076A2F931). The molecular form is Open Problem 1 in Lewin, C. R. Physique 26, 369–380 (2025), [doi:10.5802/crphys.249](https://doi.org/10.5802/crphys.249).`,
     progress: r`- Zhislin proved that a neutral or positive net charge always binds: $N_c(Z)\ge Z$.
-- On the upper side, Ruskai and Sigal showed that $N_c(Z)$ is finite, and Lieb's argument gives $N_c(Z)<2Z+1$ ([doi:10.1103/PhysRevA.29.3018](https://doi.org/10.1103/PhysRevA.29.3018)).
+- On the upper side, Ruskai and Sigal showed that $N_c$ is finite, and Lieb's argument gives $N_c<2Z+M$, hence $N_c(Z)<2Z+1$ for atoms, without using the Pauli principle ([doi:10.1103/PhysRevA.29.3018](https://doi.org/10.1103/PhysRevA.29.3018)).
 - Lieb, Sigal, Simon and Thirring showed $N_c(Z)/Z\to1$ as $Z\to\infty$. Fefferman–Seco ([doi:10.1007/BF02097048](https://doi.org/10.1007/BF02097048)) and Seco–Sigal–Solovej ([doi:10.1007/BF02161416](https://doi.org/10.1007/BF02161416)) sharpened this asymptotically to $N_c(Z)\le Z+O(Z^{5/7})$.
 - Nam improved the explicit bound to roughly $N_c(Z)\le 1.22\,Z + 3Z^{1/3}$ ([arXiv:1009.2367](https://arxiv.org/abs/1009.2367)).
+- For molecules, Goto extended Nam's bound to $N_c<\min\{2Z+1,\,1.22Z+3Z^{1/3}\}$. In Hartree–Fock and Müller theories he proved $N_c\le Z+CMR_{\min}^{-3}$, with $R_{\min}$ the smallest internuclear distance, so the constant degenerates as nuclei approach each other ([arXiv:2107.01826](https://arxiv.org/abs/2107.01826)).
+- On 7 October 2026 (v1; v2 on 9 October 2026), Chen and Wu proved $N\le Z+CZ^{153/154}(1+\log Z)^{3/8}$ for two nuclei in Thomas–Fermi–Dirac–von Weizsäcker theory, uniformly in charges and positions ([arXiv:2610.09997](https://arxiv.org/abs/2610.09997v2)). This is asymptotic neutrality in a mean-field model, not the many-body statement.
 - The sharp form $N_c(Z)\le Z+C$ has been proved in mean-field surrogates: Solovej established it for Hartree–Fock theory ([arXiv:math-ph/0012026](https://arxiv.org/abs/math-ph/0012026)), and analogous statements hold in Thomas–Fermi-type and reduced density-matrix models.
 - In 2025, Hundertmark, Pattakos and Schulz reported $N_c(Z)<1.1185Z+O(Z^{1/3})$ ([arXiv:2504.18487](https://arxiv.org/abs/2504.18487)). This improves an explicit non-asymptotic estimate, not the already known asymptotic bound $Z+O(Z^{5/7})$ and not the uniform excess-charge conjecture.`,
     claim: r`**OpenAI, [“Uniform excess charge for Coulomb molecules and the outer radius of neutral atoms”](${OAI}preprints/Uniform-excess-charge-for-Coulomb-molecules-and-the-outer-radius-of-neutral-atoms-September-24-2026/paper.pdf)** (OpenAI Math Release on GitHub, not on arXiv; public 6 October 2026).
 
 What it claims:
-- For the full nonrelativistic two-spin Coulomb Hamiltonian, a molecule with $M$ fixed nuclei of charges at least one and total charge $Z$ binds at most $Z+CM$ electrons, with $C$ universal. Taking $M=1$ gives the stated atomic bound $N_c(Z)\le Z+C$.
+- For the full nonrelativistic two-spin Coulomb Hamiltonian, a molecule with $M$ fixed nuclei of real charges at least one, at arbitrary distinct positions, with total charge $Z$, strictly binds at most $Z+CM$ electrons, with $C$ universal. This covers the integer charges of the statement; $M=1$ gives $N_c(Z)\le Z+C$.
 - Companion manuscripts claim universal two-sided bounds on first ionization energies and outer radii of neutral atoms.
 
 Caveats:
 - OpenAI lists itself as author and states that an unreleased internal model produced the manuscript collection.
 - The main excess-charge theorem is not among the Lean-formalized statements; the linked formalization covers ionization-energy and outer-radius asymptotics.
+- The constant $C$ is universal but not computed.
 - It has not been peer reviewed, and no independent assessment was found. Hence “Claimed solved” rather than “Solved”.`,
+    residual: r`Independent assessment of the claimed molecular theorem is what remains for the stated target. Further targets, not required by it:
+- a reasonable explicit constant: the claimed $C$ is not computed, whereas Lewin asks ideally for $C=1$ or $C=2$;
+- possible ground states at threshold: the count $N_c$ uses strict binding $E_N<E_{N-1}$, and the manuscript states that it does not exclude an eigenvalue at $E_N=E_{N-1}$;
+- uniform first-ionization-energy and radius bounds for molecules; the companion manuscripts claim them only for neutral atoms.`,
     evidence: [
       { kind: "preprint", role: "claimed-solution", summary: "Claimed universal excess-charge bound $N\\le Z+CM$ for the full Coulomb molecule, hence $N_c(Z)\\le Z+C$ for atoms; OpenAI GitHub manuscript, pending assessment.", url: `${OAI}preprints/Uniform-excess-charge-for-Coulomb-molecules-and-the-outer-radius-of-neutral-atoms-September-24-2026/paper.pdf`, date: "2026-10-06", version: "v1" },
-      { kind: "preprint", role: "progress", summary: "An improved explicit ionization bound, not a proof of uniformly bounded excess charge.", url: "https://arxiv.org/abs/2504.18487" }],
+      { kind: "preprint", role: "progress", summary: "An improved explicit ionization bound, not a proof of uniformly bounded excess charge.", url: "https://arxiv.org/abs/2504.18487" },
+    { kind: "preprint", role: "progress", summary: "Molecular extension of Nam's explicit bound, and the molecular conjecture in Hartree–Fock and Müller theories with a constant depending on the minimal internuclear distance.", url: "https://arxiv.org/abs/2107.01826v1", date: "2021-07-05", version: "v1" },
+    ],
+    relations: [{ id: "M15", type: "related" }],
     refs: [
       { label: "Lieb, 'Bound on the maximum negative ionization of atoms and molecules', PRA 29, 3018 (1984)", url: "https://doi.org/10.1103/PhysRevA.29.3018" },
       { label: "Solovej, 'The ionization conjecture in Hartree–Fock theory', Ann. of Math. 158 (2003)", url: "https://arxiv.org/abs/math-ph/0012026" },
@@ -42,6 +52,11 @@ Caveats:
       { label: "Hundertmark, Pattakos & Schulz, 'On the Excess Charge Problem of Atoms' (2025 preprint)", url: "https://arxiv.org/abs/2504.18487" },
       { label: "Solovej, Quantissima lectures on the ionization conjecture (2025)", url: "https://bruneau.perso.math.cnrs.fr/quantissima2025/slidesweek2/Solovej_Quantissima2025_Lectures.pdf" },
       { label: "OpenAI, 'Uniform excess charge for Coulomb molecules and the outer radius of neutral atoms' (OpenAI Math Release manuscript, dated 24 September 2026; public 6 October 2026)", url: `${OAI}preprints/Uniform-excess-charge-for-Coulomb-molecules-and-the-outer-radius-of-neutral-atoms-September-24-2026/paper.pdf` },
+    { label: "Lewin, 'Some open mathematical problems concerning charged quantum particles', C. R. Physique 26, 369–380 (2025), Open Problem 1", url: "https://doi.org/10.5802/crphys.249" },
+    { label: "Goto, 'The maximal negative ion of molecules in Schrödinger, Hartree-Fock, and Müller theories' (2021 preprint)", url: "https://arxiv.org/abs/2107.01826" },
+    { label: "Chen & Wu, 'Asymptotic Neutrality for the Ionization Conjecture in the Two-Center Thomas-Fermi-Dirac-von Weizsäcker Theory' (2026 preprint, v2)", url: "https://arxiv.org/abs/2610.09997v2" },
+    { label: "Benguria & Lieb, 'Proof of the stability of highly negative ions in the absence of the Pauli principle', PRL 50, 1771 (1983)", url: "https://doi.org/10.1103/PhysRevLett.50.1771" },
+    { label: "Solovej, 'Asymptotics for bosonic atoms', Lett. Math. Phys. 20, 165–172 (1990)", url: "https://doi.org/10.1007/BF00398282" },
     ] },
 
   { id: "M2", cat: "spectral", horizon: "sharp", status: "claimed-solved",
@@ -374,5 +389,61 @@ Hägele's refinement, [IQOQI problem 40](https://oqp.iqoqi.oeaw.ac.at/refinement
       { label: "Dinh, Le & Vuong, 'Positive Planar Measures for Spectral Pinching and the Corrected BMV Conjecture' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.31851v1" },
       { label: "Hägele, 'On the lower bound of the refined Bessis–Moussa–Villani conjecture: proof of the cases S_{6,3} and S_{7,3} for 3x3 matrices' (2026 preprint, v1)", url: "https://arxiv.org/abs/2611.00129v1" },
       { label: "IQOQI Vienna Open Quantum Problems, problem 40: 'Refinement of the Bessis-Moussa-Villani conjecture' (D. Hägele, communicated by R. F. Werner)", url: "https://oqp.iqoqi.oeaw.ac.at/refinement-of-the-bessis-moussa-villani-conjecture/" },
+    ] },
+
+  { id: "M15", cat: "spectral", horizon: "sharp",
+    reviewedAt: "2026-11-08",
+    title: "Convexity of the ground-state energy in the number of electrons",
+    statement: r`Let $H(V,N)=\sum_{j=1}^N\big(-\tfrac12\Delta_j+V(x_j)\big)+\sum_{1\le j<k\le N}|x_j-x_k|^{-1}$ act on antisymmetric wavefunctions of $N$ spin-1/2 electrons, with $V(x)=-\sum_{m=1}^M z_m/|x-R_m|$, positive integer charges $z_m$ and distinct positions $R_m\in\mathbb R^3$. With $E(V,N)=\inf\sigma(H(V,N))$ and $E(V,0)=0$, prove or disprove that $E(V,N)-E(V,N-1)\le E(V,N+1)-E(V,N)$ for every $N\ge1$, every $M\ge1$ and every choice of integer charges and positions.`,
+    definition: r`**Convexity of the ground-state energy in $N$** means that the successive ionization energies $I_N=E(V,N-1)-E(V,N)\ge0$ never increase with $N$: removing the electrons of a molecule one at a time costs more and more. All experimental atomic curves are convex, and for non-interacting electrons convexity is automatic; the question is whether electron–electron correlation can break it. In density functional theory, convexity guarantees that the zero-temperature ensemble at fractional particle number mixes only the two neighbouring integers, as used by Perdew, Parr, Levy and Balduz, PRL 49, 1691 (1982), [doi:10.1103/PhysRevLett.49.1691](https://doi.org/10.1103/PhysRevLett.49.1691).
+
+Parr and Yang conjectured convexity for all atoms and molecules in their 1989 monograph; Lieb asked it for every external potential, Int. J. Quantum Chem. 24, 243 (1983), Question 7, [doi:10.1002/qua.560240302](https://doi.org/10.1002/qua.560240302); Simon's 1984 list states it for atoms as Problem 10A. Lewin poses it as Open Problem 2 in C. R. Physique 26, 369–380 (2025), [doi:10.5802/crphys.249](https://doi.org/10.5802/crphys.249), where he asks more broadly for the class of potentials $V$ for which convexity holds. The statement keeps the physical case of integer nuclear charges.`,
+    progress: r`- Monotonicity, $E(V,N)\le E(V,N-1)$, holds for every potential vanishing at infinity, by the HVZ theorem. Convexity is the next property and does not follow from it.
+- For atoms, $Z^{-7/3}E(-Z/|x|,\lambda Z)$ converges as $Z\to\infty$ to the Thomas–Fermi curve, which is convex in $\lambda$ (Lieb and Simon; review in Lieb, Rev. Mod. Phys. 53, 603 (1981), [doi:10.1103/RevModPhys.53.603](https://doi.org/10.1103/RevModPhys.53.603)). This leading-order statement does not control the order-one energy differences in the statement.
+- Convexity fails for other interactions: Lieb gave a two-particle counterexample with a hard-core repulsion, and Ayers extended it to Riesz interactions $|x-y|^{-s}$ with $s>\log_34\approx1.26$, J. Chem. Phys. 160, 044110 (2024), [doi:10.1063/5.0179137](https://doi.org/10.1063/5.0179137). Further failures are known for harmonic models and the one-dimensional Hubbard chain.
+- Di Marino, Lewin and Nenna gave the first Coulomb counterexample, J. Phys. Chem. A 128, 10697–10706 (2024), [arXiv:2409.08632](https://arxiv.org/abs/2409.08632). Six far-apart nuclei with small fractional charges $z_m\ll1$ give $E(V,3)>\tfrac12\big(E(V,2)+E(V,4)\big)$; they bind 2 or 4 electrons but not 3. The construction rests on their grand-canonical optimal transport analysis, Arch. Ration. Mech. Anal. 249, 12 (2025), [arXiv:2201.06859](https://arxiv.org/abs/2201.06859). It disproves Lieb's version for arbitrary potentials, works equally for bosons, and needs non-integer charges, so it does not touch the statement.`,
+    residual: r`Open for every class of integer-charge nuclei, including single atoms ($M=1$, Simon's form). A proof for atoms alone would be substantial partial progress. A counterexample with integer charges, for instance an adaptation of the far-apart construction, would close the problem negatively. Lewin's broader question, characterizing all potentials $V$ for which convexity holds, goes beyond this statement.`,
+    evidence: [
+      { kind: "published", role: "progress", summary: "First Coulomb counterexample: six far-apart nuclei with small fractional charges, N = 3 above the average of N = 2 and N = 4. Disproves the all-potential version, not the integer-charge statement.", url: "https://doi.org/10.1021/acs.jpca.4c06345", date: "2024-11-27" },
+      { kind: "published", role: "progress", summary: "Non-convexity for Riesz interactions with exponent above log₃4 ≈ 1.26; not the Coulomb case.", url: "https://doi.org/10.1063/5.0179137", date: "2024-01-26" },
+    ],
+    relations: [{ id: "M1", type: "related" }, { id: "M16", type: "related" }],
+    refs: [
+      { label: "Lewin, 'Some open mathematical problems concerning charged quantum particles', C. R. Physique 26, 369–380 (2025), Open Problem 2", url: "https://doi.org/10.5802/crphys.249" },
+      { label: "Di Marino, Lewin & Nenna, 'Ground state energy is not always convex in the number of electrons', J. Phys. Chem. A 128, 10697–10706 (2024)", url: "https://arxiv.org/abs/2409.08632" },
+      { label: "Di Marino, Lewin & Nenna, 'Grand-canonical optimal transport', Arch. Ration. Mech. Anal. 249, 12 (2025)", url: "https://arxiv.org/abs/2201.06859" },
+      { label: "Ayers, 'Energy is not a convex function of particle number for r^−k interparticle potentials with k > log₃4', J. Chem. Phys. 160, 044110 (2024)", url: "https://doi.org/10.1063/5.0179137" },
+      { label: "Perdew, Parr, Levy & Balduz, 'Density-functional theory for fractional particle number: derivative discontinuities of the energy', PRL 49, 1691 (1982)", url: "https://doi.org/10.1103/PhysRevLett.49.1691" },
+      { label: "Lieb, 'Density functionals for Coulomb systems', Int. J. Quantum Chem. 24, 243–277 (1983)", url: "https://doi.org/10.1002/qua.560240302" },
+      { label: "Lieb, 'Thomas-Fermi and related theories of atoms and molecules', Rev. Mod. Phys. 53, 603–641 (1981)", url: "https://doi.org/10.1103/RevModPhys.53.603" },
+    ] },
+
+  { id: "M16", cat: "spectral", horizon: "sharp",
+    reviewedAt: "2026-11-08",
+    title: "Isomerization without dissociation",
+    statement: r`Consider a neutral Born–Oppenheimer molecule: $N=Z$ fermionic spin-1/2 electrons and $M\ge2$ classical nuclei with positive integer charges $z_m$, $Z=\sum_mz_m$. Its energy $E(Y)$ at nuclear positions $Y=(y_1,\dots,y_M)$ is the bottom of the spectrum of the electronic Hamiltonian plus the nuclear repulsion $\sum_{k<m}z_kz_m/|y_k-y_m|$. Let $Y_0,Y_1$ be two local minima of $E$, and let $c=\inf_\gamma\max_{t\in[0,1]}E(\gamma(t))$ over continuous paths $\gamma$ from $Y_0$ to $Y_1$. Assuming $c>\max\{E(Y_0),E(Y_1)\}$, prove that some min-maxing sequence of paths $\gamma_n$, with $\max_tE(\gamma_n(t))\to c$, keeps all nuclei in a fixed ball after a common translation: $|y_{n,j}(t)|\le R$ for all $j$, $n$ and $t$.`,
+    definition: r`**An isomerization** is a reaction in which a molecule passes from one stable geometry to another made of the same atoms, as in HCN → CNH. On the Born–Oppenheimer energy surface it is a mountain-pass problem. The conjecture is that the optimal reaction never needs to break the molecule into separated fragments. Compactness of min-maxing paths then yields a transition state, a critical point at the mountain-pass level. Since $E$ is Lipschitz but need not be differentiable where the electronic ground state is degenerate, the critical point is meant in the generalized sense of Lewin's framework, in which the electronic state varies along the path: Lewin, Ann. Henri Poincaré 5, 477–521 (2004), [doi:10.1007/s00023-004-0176-6](https://doi.org/10.1007/s00023-004-0176-6).
+
+The physical input is the van der Waals attraction between neutral fragments, which Lieb and Thirring proved, PRA 34, 40 (1986), [doi:10.1103/PhysRevA.34.40](https://doi.org/10.1103/PhysRevA.34.40); it implies that every neutral molecule has a global energy minimum. The statement is Conjecture 1.2 of Anapolitanos and Lewin, Arch. Ration. Mech. Anal. 236, 505–576 (2020), [arXiv:1809.06110](https://arxiv.org/abs/1809.06110), and Open Problem 3 in Lewin, C. R. Physique 26, 369–380 (2025), [doi:10.5802/crphys.249](https://doi.org/10.5802/crphys.249).`,
+    progress: r`- Lewin (2004) treated a molecule made of two rigid sub-molecules. Min-maxing paths are compact when the mountain-pass level differs from the lowest energy $e$ of the two fragments at infinity, or equals it only through a splitting into charged fragments; above $e$, a path leaving to infinity can be cut and reconnected. The hard case is the level $c=e$ reached by neutral fragments. He settled it for fragments with non-degenerate ground states and nonzero dipoles, using the fact that positive-energy critical points of the dipole–dipole interaction have Morse index at least two.
+- Lewin, Ann. Henri Poincaré 7, 365–379 (2006), [doi:10.1007/s00023-005-0252-6](https://doi.org/10.1007/s00023-005-0252-6), treated a molecule with one free atom, as in HCN → CNH. The escaping atom has no average multipole, so only the attractive van der Waals force acts.
+- Anapolitanos and Lewin (2020) proved that the distance between two rigid sub-molecules stays bounded, under assumptions on their multipole moments. Their proof combines the critical points and Morse indices of multipole interactions with an improved van der Waals expansion.
+- Anapolitanos, Olivieri and Zalczer, J. Funct. Anal. 288, 110713 (2025), [arXiv:2212.11938](https://arxiv.org/abs/2212.11938), relaxed the assumptions on the sub-molecules' ground-state eigenspaces and allowed semirelativistic kinetic energy, still for two rigid fragments.`,
+    residual: r`Every proved case freezes the internal geometry of at most two fragments, or moves a single atom; general flexible molecules are open. The difficult regime is dissociation into neutral fragments, where only multipole and van der Waals forces act. Anapolitanos and Lewin recall the separate conjecture that the lowest energy of two separated fragments is attained only with neutral fragments. Natural intermediate targets:
+- one rigid and one flexible fragment, or three or more fragments;
+- degenerate fragment ground states with vanishing low multipoles beyond the treated cases;
+- an optimal path, not only a critical point, at the mountain-pass level.`,
+    evidence: [
+      { kind: "published", role: "progress", summary: "Boundedness of reaction paths for two rigid sub-molecules under multipole assumptions; transition state at the mountain-pass level. States the general compactness conjecture.", url: "https://doi.org/10.1007/s00205-019-01475-5", date: "2019-12-09" },
+      { kind: "published", role: "progress", summary: "Extension to relaxed ground-state assumptions and semirelativistic kinetic energy, still two rigid fragments.", url: "https://doi.org/10.1016/j.jfa.2024.110713" },
+    ],
+    relations: [{ id: "M15", type: "related" }],
+    refs: [
+      { label: "Lewin, 'Some open mathematical problems concerning charged quantum particles', C. R. Physique 26, 369–380 (2025), Open Problem 3", url: "https://doi.org/10.5802/crphys.249" },
+      { label: "Anapolitanos & Lewin, 'Compactness of molecular reaction paths in quantum mechanics', Arch. Ration. Mech. Anal. 236, 505–576 (2020)", url: "https://arxiv.org/abs/1809.06110" },
+      { label: "Anapolitanos, Olivieri & Zalczer, 'On boundedness of isomerization paths for non- and semirelativistic molecules', J. Funct. Anal. 288, 110713 (2025)", url: "https://arxiv.org/abs/2212.11938" },
+      { label: "Lewin, 'A mountain pass for reacting molecules', Ann. Henri Poincaré 5, 477–521 (2004)", url: "https://doi.org/10.1007/s00023-004-0176-6" },
+      { label: "Lewin, 'Solution of a mountain pass problem for the isomerization of a molecule with one free atom', Ann. Henri Poincaré 7, 365–379 (2006)", url: "https://doi.org/10.1007/s00023-005-0252-6" },
+      { label: "Lieb & Thirring, 'Universal nature of van der Waals forces for Coulomb systems', PRA 34, 40 (1986)", url: "https://doi.org/10.1103/PhysRevA.34.40" },
     ] },
 ];

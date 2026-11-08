@@ -56,8 +56,8 @@ function validUrl(value, label) {
 }
 
 test("all 111 original IDs remain addressable; 12 additions and 10 archives are counted correctly", () => {
-  assert.equal(ALL_PROBLEMS.length, 156);
-  assert.equal(PROBLEMS.length, 146);
+  assert.equal(ALL_PROBLEMS.length, 160);
+  assert.equal(PROBLEMS.length, 150);
   assert.equal(ARCHIVED_PROBLEMS.length, 10);
   assert.equal(new Set(ALL_PROBLEMS.map((p) => p.id)).size, ALL_PROBLEMS.length);
   for (const [prefix, n] of Object.entries(originalSeries)) {
@@ -134,7 +134,7 @@ test("targeted literature updates preserve untouched review dates and expose pen
     assert.equal(getProblem(id).status, id === "C5" ? "improved" : "claimed-solved", `${id}: distinguish partial progress from a full pending claim`);
     assert.ok(getProblem(id).evidence.some((e) => e.kind === "preprint" && e.url.includes(source)), id);
   }
-  assert.deepEqual(PROBLEMS.filter((p) => p.status === "claimed-solved").map((p) => p.id).sort(), ["A11", "A20", "A30", "A31", "A4", "A7", "B1", "B13", "B17", "B18", "C12", "C4", "E10", "E16", "E18", "M1", "M2", "M5", "N1", "N2"]);
+  assert.deepEqual(PROBLEMS.filter((p) => p.status === "claimed-solved").map((p) => p.id).sort(), ["A11", "A20", "A30", "A31", "A4", "A7", "B1", "B13", "B17", "B18", "C12", "C4", "E10", "E16", "E18", "M1", "M2", "M5", "N1", "N16", "N2"]);
   assert.equal(getProblem("C10").status, "improved", "a solved subcase must not close the broader programme");
   assert.equal(PROBLEMS.filter((p) => p.status === "solved").length, 0, "pending claims must not count as established solutions");
   const earlierE10 = getProblem("E10").evidence.find((e) => e.url.includes("2609.29539v1"));
@@ -232,12 +232,12 @@ test("every active and archived detail view renders with valid links and Astra &
 
 test("home, all categories, filtered lists and missing-page views render", () => {
   const home = render(views.Home);
-  assert.ok(home.includes("146") && home.includes("Active entries"));
+  assert.ok(home.includes("150") && home.includes("Active entries"));
   assert.ok(!home.includes("#review") && home.includes("Powered by Astra &amp; Opus 5.5"));
   assert.ok(home.includes('href="#improved"'));
   assert.ok(home.includes('href="#claimed-solved"'));
-  assert.ok(home.includes('aria-label="See all 53 improved problems"'));
-  assert.ok(home.includes('aria-label="See all 20 claimed solved problems"'));
+  assert.ok(home.includes('aria-label="See all 55 improved problems"'));
+  assert.ok(home.includes('aria-label="See all 21 claimed solved problems"'));
   assert.ok(home.includes('href="https://quantumlectures.org/en"'));
   assert.ok(home.includes('href="https://learnthermo.org/"'));
   assert.ok(!home.includes("IDs M1–"), "category count must not fabricate contiguous IDs");

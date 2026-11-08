@@ -1,6 +1,8 @@
 const r = String.raw;
 // OpenAI Math Release, pinned to the commit reviewed on 17 October 2026.
 const OAI = "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/";
+// PSI Open Quantum Problems batch, pinned to the 23 October 2026 snapshot cited in its CITATIONS.bib.
+const PSI = "https://github.com/physical-superintelligence/oqp-batch-2026/blob/7049357c42a8fe85262da08fdc10d57b4d9e67a0/";
 
 export const CHANNELS = [
   { id: "C1", cat: "channels", horizon: "incremental", status: "improved",
@@ -392,11 +394,12 @@ This benchmark was promoted from C1 to keep the precise threshold question and i
 
   { id: "C12", cat: "channels", horizon: "sharp", status: "claimed-solved",
     lean: { url: `${OAI}lean/docs/272.md`, note: "Both counterexamples (the trace-preserving PPT channel on M_21 and the dimension-ten PPT pair) are formalized in Lean according to OpenAI; the build was not rerun here." },
-    reviewedAt: "2026-10-17",
+    reviewedAt: "2026-11-08",
     title: "PPT-squared conjecture",
     relations: [{ id: "E1", type: "related" }, { id: "C1", type: "related" }, { id: "E16", type: "related" }],
     provenance: [
       { summary: "OpenAI lists itself as author and states that an unreleased internal model produced the manuscript collection. It reports Lean formalizations of both counterexamples: the dimension-ten PPT pair and the trace-preserving channel on $M_{21}(\\mathbb C)$. These were not rebuilt here.", url: `${OAI}lean/docs/272.md` },
+      { summary: "PSI states that the mathematics of the $2(d-1)$ bound was developed by PSI researchers working with OpenAI's GPT-5.6-Sol, GPT-5.6 Pro and GPT-6-Astra and Anthropic's Claude Opus 5 in automated research workflows, and that the Lean formalization was written by AI agents (Claude Opus 5.5 in Claude Code and GPT-6-Astra in Codex) under PSI's direction. David Turturean and Ning Bao are named as responsible for the correctness of the paper. This is PSI's account.", url: `${PSI}ppt-composition-bound/README.md` },
     ],
     statement: r`Is $\Psi\circ\Phi$ entanglement breaking for every pair of compatible finite-dimensional complex completely positive, trace-preserving maps whose Choi matrices have positive partial transpose?`,
     definition: r`**The PPT-squared conjecture** asserts that the composition of two PPT channels is always entanglement breaking. A PPT channel has a Choi matrix that stays positive under partial transpose; an entanglement-breaking channel destroys entanglement with every reference system, equivalently it has a separable Choi matrix. The conjecture asks whether two compatible PPT stages always suffice, and it connects channel composition with limits on entanglement swapping across PPT-entangled links.
@@ -406,7 +409,8 @@ Special cases were developed by Christandl, Müller-Hermes and Wolf ([arXiv:1807
 - The straightforward real-Hilbert-space analogue of the conjecture is false (Chiribella, Davidson, Paulsen and Rahaman, [arXiv:2207.02510](https://arxiv.org/abs/2207.02510)).
 - Partial results cover symplectic-covariant maps (Park, [arXiv:2602.09860](https://arxiv.org/abs/2602.09860)) and Cartan-covariant maps (Prudhoe, [arXiv:2501.03959](https://arxiv.org/abs/2501.03959)).
 - An and Lee claim a stronger qutrit composition theorem involving one-copy-undistillable Choi matrices and Schmidt number at most two (July 2026) ([arXiv:2607.15947](https://arxiv.org/abs/2607.15947)). It does not settle arbitrary higher dimension.
-- Park claims that every PPT channel has a finite entanglement-breaking index, with an index-at-most-three bound for a restricted family (August 2026) ([arXiv:2608.13551](https://arxiv.org/abs/2608.13551)). Eventual entanglement breaking is therefore not listed as the open question: a finite number of iterations depending on the map does not show that two always suffice.`,
+- Park claims that every PPT channel has a finite entanglement-breaking index, with an index-at-most-three bound for a restricted family (August 2026) ([arXiv:2608.13551](https://arxiv.org/abs/2608.13551)). Eventual entanglement breaking is therefore not listed as the open question: a finite number of iterations depending on the map does not show that two always suffice.
+- Turturean and Bao (PSI, October 2026; GitHub, not peer reviewed) claim a bound uniform over all maps: for every $d\ge2$, any $2(d-1)$ PPT maps on $M_d(\mathbb C)$, possibly different and not necessarily trace preserving, compose to an entanglement-breaking map. Hence every PPT map on $M_d(\mathbb C)$ has entanglement-breaking index at most $2(d-1)$. The key step, suggested by Christandl, Müller-Hermes and Wolf, is that every pair of PPT maps breaks entanglement with a qubit reference; each pair then lowers the Schmidt number by at least one. The main theorem is formalized in Lean 4 according to PSI ([paper](${PSI}ppt-composition-bound/paper/ppt-composition-bound.pdf)).`,
     claim: r`**OpenAI, [“Entanglement with zero distillable secret key in local dimension ten”](https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Entanglement-with-zero-distillable-secret-key-in-local-dimension-ten-September-27-2026/paper.pdf)** (OpenAI Math Release on GitHub, public 6 October 2026; not on arXiv), Theorems 1.2 and 1.3.
 
 What it claims:
@@ -418,8 +422,11 @@ Caveats:
 - OpenAI lists itself as author and states that an unreleased internal model produced the manuscript collection.
 - OpenAI reports Lean formalizations of both counterexamples; they were not rebuilt here.
 - The manuscript is a GitHub release, not peer reviewed, and no independent assessment was found. Hence “Claimed solved” rather than “Solved”.`,
-    residual: r`If the counterexample is confirmed, the stated conjecture is settled in the negative. A general proof, or one complex finite-dimensional pair of PPT channels whose composition is not entanglement breaking, resolves it. Questions about eventual entanglement breaking (finite index) are separate and not listed here as open.`,
-    evidence: [{ kind: "preprint", lean: true, role: "claimed-solution", summary: "Claimed counterexample: a trace-preserving PPT channel on $M_{21}(\\mathbb C)$ whose square is not entanglement breaking, plus a dimension-ten PPT pair; reported Lean-formalized. OpenAI GitHub manuscript, pending assessment.", url: `${OAI}preprints/Entanglement-with-zero-distillable-secret-key-in-local-dimension-ten-September-27-2026/paper.pdf`, date: "2026-10-06", version: "v1" }, { kind: "preprint", role: "progress", summary: "Every PPT channel is claimed to become entanglement breaking after finitely many iterations; this does not settle the two-step conjecture.", url: "https://arxiv.org/abs/2608.13551v2", date: "2026-08-17", version: "v2" }, { kind: "preprint", role: "progress", summary: "Qutrit composition result beyond the PPT setting, not an arbitrary-dimensional resolution.", url: "https://arxiv.org/abs/2607.15947", date: "2026-07-17" }],
+    residual: r`If the counterexample is confirmed, the stated conjecture is settled in the negative. A general proof, or one complex finite-dimensional pair of PPT channels whose composition is not entanglement breaking, resolves it. Questions about eventual entanglement breaking (finite index) are separate and not listed here as open.
+
+If both claims hold, the natural quantitative question is the least number $N(d)$ such that every composition of $N(d)$ PPT maps on $M_d(\mathbb C)$ is entanglement breaking. The counterexample gives $N(10)\ge3$ and the PSI bound gives $N(d)\le2(d-1)$, so $3\le N(10)\le18$. Whether $N(d)$ grows with $d$ or stays bounded, and the same question for the entanglement-breaking index of a single channel, are open.`,
+    evidence: [
+      { kind: "preprint", role: "progress", lean: true, summary: "Claimed uniform bound: any $2(d-1)$ PPT maps on $M_d(\\mathbb C)$, possibly different and not trace preserving, compose to an entanglement-breaking map, so every PPT map has entanglement-breaking index at most $2(d-1)$. PSI GitHub paper with a Lean 4 formalization of the main theorem; not peer reviewed. It does not bear on whether two maps suffice.", url: `${PSI}ppt-composition-bound/paper/ppt-composition-bound.pdf`, date: "2026-10-23", version: "v1" },{ kind: "preprint", lean: true, role: "claimed-solution", summary: "Claimed counterexample: a trace-preserving PPT channel on $M_{21}(\\mathbb C)$ whose square is not entanglement breaking, plus a dimension-ten PPT pair; reported Lean-formalized. OpenAI GitHub manuscript, pending assessment.", url: `${OAI}preprints/Entanglement-with-zero-distillable-secret-key-in-local-dimension-ten-September-27-2026/paper.pdf`, date: "2026-10-06", version: "v1" }, { kind: "preprint", role: "progress", summary: "Every PPT channel is claimed to become entanglement breaking after finitely many iterations; this does not settle the two-step conjecture.", url: "https://arxiv.org/abs/2608.13551v2", date: "2026-08-17", version: "v2" }, { kind: "preprint", role: "progress", summary: "Qutrit composition result beyond the PPT setting, not an arbitrary-dimensional resolution.", url: "https://arxiv.org/abs/2607.15947", date: "2026-07-17" }],
     refs: [
       { label: "Christandl, Müller-Hermes & Wolf, 'When Do Composed Maps Become Entanglement Breaking?', Annales Henri Poincaré (2019)", url: "https://arxiv.org/abs/1807.01266" },
       { label: "OpenAI, 'Entanglement with zero distillable secret key in local dimension ten' (OpenAI Math Release manuscript, dated 27 September 2026; public 6 October 2026) — Theorems 1.2 and 1.3", url: `${OAI}preprints/Entanglement-with-zero-distillable-secret-key-in-local-dimension-ten-September-27-2026/paper.pdf` },
@@ -428,6 +435,8 @@ Caveats:
       { label: "An & Lee, 'Beyond the Positive Partial Transpose Squared Conjecture: The Qutrit Case' (2026 preprint)", url: "https://arxiv.org/abs/2607.15947" },
       { label: "Park, 'Every PPT channel has finite entanglement breaking index' (2026 preprint, v2)", url: "https://arxiv.org/abs/2608.13551v2" },
       { label: "Chiribella, Davidson, Paulsen & Rahaman, 'Positive maps and entanglement in real Hilbert spaces' (real-analogue counterexample)", url: "https://arxiv.org/abs/2207.02510" },
+      { label: "Turturean & Bao, 'Entanglement Breaking after 2(d−1) PPT Maps' (PSI paper, repository snapshot of 23 October 2026; GitHub, not peer reviewed)", url: `${PSI}ppt-composition-bound/paper/ppt-composition-bound.pdf` },
+      { label: "PSI, Lean 4 formalization of the 2(d−1) bound (statement map in docs/FIDELITY.md)", url: `${PSI}ppt-composition-bound/lean/docs/FIDELITY.md` },
     ] },
 
   { id: "C13", cat: "channels", horizon: "sharp",

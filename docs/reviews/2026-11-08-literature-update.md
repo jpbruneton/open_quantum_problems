@@ -159,6 +159,35 @@ Each of the 14 IQOQI open problems without an OQM entry was checked against the 
 
 Totals after these additions: 146 active entries, 53 Improved, 20 Claimed solved and zero Solved.
 
+## PSI results on IQOQI problems, Lewin's Coulomb problems, and multiparameter metrology
+
+**PSI batch of 23 October 2026.** Five papers with Lean formalizations ([announcement](https://psi.inc/research/oqp-batch-2026/), [repository](https://github.com/physical-superintelligence/oqp-batch-2026), pinned at commit 7049357). The models used are listed per entry in `provenance`.
+
+| Entry | Change |
+|---|---|
+| N16 Bell violation by the vacuum at large separations | Open → **Claimed solved** (Turturean). Negative answer for every radius; Lean verified according to PSI. |
+| N14 The power of CGLMP inequalities | Open → Improved. Part B is claimed for projective measurements by PSI (Turturean and Bao) and by Mishra and Senthilkumar; general POVMs remain open. Part A was already answered in 2010: Bancal, Gisin and Pironio found non-CGLMP facets for d = 4. |
+| C12 PPT-squared | Updated: any composition of 2(d−1) PPT maps is entanglement breaking. |
+| F9 | Updated: claimed four-qubit counterexample to IQOQI #43 (purifiability of extensibly causal processes). |
+| E1 | Updated: three-copy Werner results. Lean covers the qutrit case only, so the source carries no Lean badge. |
+
+**Lewin, C. R. Physique 26, 369–380 (2025), [doi:10.5802/crphys.249](https://doi.org/10.5802/crphys.249).**
+
+| Problem | Change |
+|---|---|
+| 1 Maximal ionization | M1 extended to molecules (statement, definition, residual); still Claimed solved on the OpenAI molecular theorem. |
+| 2 Convexity of N ↦ E(V,N) | New entry M15 (open). |
+| 3 Isomerization without dissociation | New entry M16 (open). |
+| 4–5 Jellium symmetry breaking and the BCC lattice | New entry B19 (open); replaces the corresponding watchlist item. |
+| 6 Tools for the phase diagram | Context in B19, not a separate entry. |
+
+**Five open problems in quantum information (PRX Quantum 3, 010101 (2022)).** Four were already covered (N1, N2, E1). The fifth, single-copy saturability of the multiparameter quantum Cramér–Rao bound, becomes N19 (incremental, Improved).
+- Nurdin's 2024 conditions were withdrawn for general POVMs by the published corrections.
+- The 2026 characterizations by Yang, Imai and Pezzè are existential.
+- What remains open is a criterion that can be computed from the state and its derivatives.
+
+Totals after these changes: 150 active entries, 55 Improved, 21 Claimed solved and zero Solved.
+
 ## Validation
 
 - `npm test`: catalogue tests pass, including new checks that N2 and M5 remain Claimed solved with their independent sources, and that QF1 remains Open with the mass gap still required.
