@@ -1,7 +1,7 @@
 /* ------------------------------------------------------------------
    Open Problems in Quantum Mechanics — "annals" theme.
-   Warm paper, ink rules, a serif display face (Fraunces), a technical
-   sans for reading (IBM Plex Sans) and a mono for identifiers.
+   Warm paper, ink rules and a single typeface (IBM Plex Sans) for
+   headings, text and labels.
    ------------------------------------------------------------------ */
 :root {
   --bg: #f6f3ec;          /* paper */
@@ -25,9 +25,9 @@
   --claimed-solved: #8f4a0f;
   --solved: #2e7d5b;
 
-  --serif: var(--font-serif), "Iowan Old Style", Georgia, serif;
+  --serif: var(--sans);
   --sans: var(--font-sans), -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --mono: var(--font-mono), ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --mono: var(--sans);
 }
 
 * { box-sizing: border-box; }
@@ -47,16 +47,15 @@ html, body {
 a { color: var(--accent); text-decoration: none; text-underline-offset: 3px; }
 a:hover { text-decoration: underline; text-decoration-thickness: 1px; }
 
-h1, h2, h3 { font-family: var(--serif); font-optical-sizing: auto; font-variation-settings: "SOFT" 50; }
+h1, h2, h3 { font-family: var(--sans); }
 
 .container { max-width: 1140px; margin: 0 auto; padding: 0 24px; }
 
 /* Header ----------------------------------------------------------- */
-.site-header {
-  border-bottom: 3px double var(--rule);
-  background: var(--bg);
-}
+.site-header { background: var(--bg); }
 .site-header .inner { padding: 40px 24px 24px; position: relative; }
+.site-header .inner::after { content: ""; position: absolute; left: 24px; right: 24px; bottom: 0; border-bottom: 3px double var(--rule); }
+.home-link { position: absolute; top: 40px; right: 24px; margin: 0; }
 h1.title {
   font-size: clamp(30px, 4.6vw, 52px);
   line-height: 1.04;
@@ -82,7 +81,7 @@ h1.title {
 .review-link, .about-link { margin-left: 8px; }
 .powered-by {
   margin: 0 0 0 auto; color: var(--text);
-  font-family: var(--serif); font-style: italic; font-size: 15px; font-weight: 500;
+  font-size: 14px; font-weight: 600;
 }
 a:focus-visible, button:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 button, input { font: inherit; }
@@ -230,7 +229,8 @@ td.stmt a { color: var(--text); }
 .note { margin-top: 44px; padding: 14px 0 0; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px; font-style: italic; }
 
 /* Footer ----------------------------------------------------------- */
-.site-footer { border-top: 3px double var(--rule); padding: 26px 0 34px; color: var(--muted-2); font-size: 13px; }
+.site-footer { padding: 0 0 34px; color: var(--muted-2); font-size: 13px; }
+.site-footer .container > span:first-child { display: block; padding-top: 26px; border-top: 3px double var(--rule); }
 .footer-meta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px; margin-top: 10px; }
 .footer-resources { display: inline-flex; align-items: baseline; gap: 16px; }
 .footer-resources a { color: var(--accent); text-decoration: underline; text-decoration-thickness: 1px; }
@@ -326,6 +326,8 @@ td.stmt a { color: var(--text); }
   html, body { font-size: 15px; }
   .container { padding: 0 16px; }
   .site-header .inner { padding: 24px 16px 18px; }
+  .site-header .inner::after { left: 16px; right: 16px; }
+  .home-link { position: static; display: inline-flex; margin: 0 0 14px; }
   h1.title { font-size: 30px; margin-top: 0; }
   .subtitle { font-size: 14.5px; }
   .header-links { gap: 8px; margin-top: 14px; }
@@ -368,7 +370,7 @@ td.stmt a { color: var(--text); }
   .detail h4 { margin: 24px 0 8px; }
 
   .note { margin-top: 28px; font-size: 12.5px; }
-  .site-footer { padding: 18px 0 26px; font-size: 12px; }
+  .site-footer { padding: 0 0 26px; font-size: 12px; }
 }
 
 @media (max-width: 380px) {

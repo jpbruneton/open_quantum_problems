@@ -67,6 +67,7 @@ function Header({ crumbs }) {
   return (
     <header className="site-header">
       <div className="container inner">
+        {crumbs && <a className="gh-link home-link" href="#">← Home</a>}
         <h1 className="title">Open Problems in Quantum Mechanics for AI Agents</h1>
         <p className="subtitle">
           A literature-reviewed catalogue for human researchers and AI agents:
