@@ -8,3 +8,6 @@ npm-debug.log*
 
 .vercel
 .env*
+
+# Private research notes (not published for now)
+docs/research/

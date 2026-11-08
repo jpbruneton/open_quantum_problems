@@ -559,6 +559,20 @@ function ProblemView({ id }) {
               </ul>
             </>
           )}
+
+          {(() => {
+            const list = problemsByCat(p.cat);
+            const i = list.findIndex((x) => x.id === p.id);
+            if (i < 0) return null;
+            const prev = list[i - 1];
+            const next = list[i + 1];
+            return (
+              <nav className="proposal-pager" aria-label={`Other entries in ${cat.name}`}>
+                {prev ? <a href={`#p/${prev.id}`}>← {prev.id} · {prev.title}</a> : <span />}
+                {next ? <a href={`#p/${next.id}`}>{next.id} · {next.title} →</a> : <span />}
+              </nav>
+            );
+          })()}
         </div>
       </section>
       <Footer />
@@ -567,6 +581,21 @@ function ProblemView({ id }) {
 }
 
 // ---------- new problems suggested by AI ----------
+const VERDICTS = {
+  "open-substantive": { label: "Open, substantive", desc: "Genuinely open and non-trivial." },
+  "open-minor": { label: "Open, modest", desc: "Open, but a modest technical extension of known results." },
+  evident: { label: "Routine or false", desc: "A routine consequence of known results, or a conjecture that turns out to be false." },
+  known: { label: "Already known", desc: "Already answered in the literature." },
+  "ill-posed": { label: "Ill-posed", desc: "Not well defined as written." },
+  "under-review": { label: "Under review", desc: "Status being checked." },
+};
+
+function VerdictBadge({ a }) {
+  if (!a) return null;
+  const v = VERDICTS[a.verdict] || { label: a.verdict };
+  return <span className={`badge verdict verdict-${a.verdict}`} title={v.desc}>{v.label}</span>;
+}
+
 const ALL_PROPOSALS = PROPOSALS.flatMap((g) => g.items.map((it) => ({ ...it, cat: g.cat, catName: g.name })));
 
 function ProposalView({ pkey }) {
@@ -603,6 +632,16 @@ function ProposalView({ pkey }) {
           <h4>Why it is open now</h4>
           <div className="context"><Paras text={it.why} /></div>
 
+          {it.assessment && (
+            <>
+              <h4>Critical review</h4>
+              <div className="context review-block">
+                <p><VerdictBadge a={it.assessment} />{it.assessment.confidence && <span className="review-meta"> · confidence {it.assessment.confidence}</span>}</p>
+                <Paras text={it.assessment.summary} />
+              </div>
+            </>
+          )}
+
           {baseline.length > 0 && (
             <>
               <h4>Baseline literature</h4>
@@ -621,6 +660,7 @@ function ProposalView({ pkey }) {
           </nav>
         </div>
       </section>
+      <Footer />
     </>
   );
 }
@@ -640,6 +680,7 @@ function NewProblemsView() {
           <p className="intro">Proposed {PROPOSALS_META.label} · {PROPOSAL_COUNT} priority candidates, {SECONDARY_PROPOSALS.length} secondary leads and {NEW_RESULTS.length} new result</p>
           <p>We prompted an AI model (Fable 5.1, high effort) to suggest new open problems, starting from the current catalogue and its own knowledge of the literature. It produced {PROPOSAL_COUNT} priority candidates, {SECONDARY_PROPOSALS.length} secondary leads and {NEW_RESULTS.length} small new result. These suggestions await human selection and critical review. They are not catalogue entries: they carry no status and are not counted.</p>
           <p>Horizons use the same badges as the catalogue, and “extends” links each suggestion to the entries it grows out of. Click a row to open the full page of a suggestion: motivation, baseline literature and caveats.</p>
+          <p>Each suggestion was then checked by a separate AI literature review (8 November 2026), which verified the cited sources and searched for prior answers. Its verdict is shown under the status: open and substantive, open but modest, routine or false, already known, ill-posed, or under review. These verdicts are not human-refereed.</p>
           <p><a href={PROPOSALS_META.reportUrl} target="_blank" rel="noreferrer">Read the full proposal with verification marks and caveats →</a></p>
           <nav className="proposal-nav" aria-label="Areas">
             {PROPOSALS.map((g) => <a key={g.cat} href={`#new-problems`} onClick={(e) => scrollTo(e, g.cat)}>{g.name} ({g.items.length})</a>)}
@@ -672,7 +713,10 @@ function NewProblemsView() {
                             {it.extends.length > 0 && <div className="proposal-extends" style={{ fontSize: 12, marginTop: 4 }}>extends {it.extends.map((id, i) => <span key={id}>{i > 0 ? ", " : ""}<a href={`#p/${id}`}>{id}</a></span>)}</div>}
                           </td>
                           <td><HorizonBadge h={it.horizon} /></td>
-                          <td><span className="badge st-proposed" title="Candidate question, not a catalogue entry"><span className="dot" style={{ background: "var(--muted-2)" }} />Proposed</span></td>
+                          <td>
+                            <span className="badge st-proposed" title="Candidate question, not a catalogue entry"><span className="dot" style={{ background: "var(--muted-2)" }} />Proposed</span>
+                            {it.assessment && <div style={{ marginTop: 6 }}><VerdictBadge a={it.assessment} /></div>}
+                          </td>
                         </tr>
                       </Fragment>
                     ))}
@@ -721,7 +765,7 @@ function NewProblemsView() {
 function NotFound() {
   return (
     <>
-      <Header />
+      <Header crumbs={[{ label: "Not found" }]} />
       <section className="body"><div className="container"><p>Not found. <a href="#">Back home</a>.</p></div></section>
       <Footer />
     </>

@@ -56,6 +56,7 @@ h1, h2, h3 { font-family: var(--sans); }
 .site-header .inner { padding: 40px 24px 24px; position: relative; }
 .site-header .inner::after { content: ""; position: absolute; left: 24px; right: 24px; bottom: 0; border-bottom: 3px double var(--rule); }
 .home-link { position: absolute; top: 58px; right: 24px; margin: 0; }
+.home-link + h1.title { padding-right: 130px; }
 h1.title {
   font-size: clamp(30px, 4.6vw, 52px);
   line-height: 1.04;
@@ -330,6 +331,7 @@ td.stmt a { color: var(--text); }
   .site-header .inner { padding: 24px 16px 18px; }
   .site-header .inner::after { left: 16px; right: 16px; }
   .home-link { position: static; display: inline-flex; margin: 0 0 14px; }
+  .home-link + h1.title { padding-right: 0; }
   h1.title { font-size: 30px; margin-top: 0; }
   .subtitle { font-size: 14.5px; }
   .header-links { gap: 8px; margin-top: 14px; }
@@ -393,3 +395,10 @@ td.stmt a { color: var(--text); }
 .proposal-pager { display: flex; justify-content: space-between; gap: 16px; margin-top: 28px; padding-top: 14px; border-top: 1px solid var(--border); font-size: 14px; }
 .proposal-pager a { color: var(--accent); text-decoration: none; max-width: 48%; }
 .proposal-pager a:hover { text-decoration: underline; }
+.badge.verdict { font-weight: 600; }
+.verdict-open-substantive { color: #1f6f4a; background: #1f6f4a10; }
+.verdict-open-minor { color: #5b6b2a; background: #5b6b2a10; }
+.verdict-evident, .verdict-known { color: #9b2635; background: #9b263510; }
+.verdict-ill-posed { color: #a0521a; background: #a0521a12; }
+.verdict-under-review { color: var(--muted); }
+.detail .review-block { border-left: 3px solid var(--border); padding-left: 16px; }

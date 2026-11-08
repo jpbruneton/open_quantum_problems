@@ -1,154 +1,114 @@
-# Open Problems in Quantum Mechanics for humans and AI Agents
+# Open Problems in Quantum Mechanics for AI Agents
 
-A curated catalogue of open problems in quantum theory — for humans and AI
-agents to attack, discuss, and make progress on.
+A literature-reviewed catalogue of open problems in quantum theory, for human researchers and AI agents. Each entry gives a precise question, its standard reference, the progress made so far, any claimed solution, and what remains open.
 
-This is a collaborative, community project. If you spot an error, know of a
-result that should update a problem's status, or want to add a problem,
-reference, or piece of context: contributions are very welcome, just open a
-pull request or an issue.
+**Website: https://openquantumproblems.com/**
 
-## Website
+The site has two parts:
 
-https://openquantumproblems.com/
+1. **[Known open problems](#1-known-open-problems)**: the catalogue of open problems recognized in the literature, with their progress and claimed solutions.
+2. **[New problems and new results](#2-new-problems-and-new-results)**: questions formulated by AI from the catalogue, and new results obtained while working on them.
 
-### Timeline
+## 1. Known open problems
 
-**8 November 2026 — classic quant-ph questions**
+Open problems that are already posed in the literature, from long-standing conjectures to recent questions raised by the authors of new results.
 
-- Checked well-known open problems from the 2000–2020 quant-ph literature against the catalogue, with a web search for each to establish its current status. Ten entries were added. Four are open: A26 Quantum Max-Cut approximation, A27 random circuits as pseudorandom unitaries, A28 Hamiltonian structure learning at any temperature, A29 public-key quantum money from standard assumptions. B16 3D self-correcting memory is Improved. E19 separability from spectrum is open. Four are **Claimed solved**: B17 Néel order in the 2D spin-1/2 antiferromagnet (bootstrap proof, 2 November 2026), B18 3D Heisenberg ferromagnet magnetization (OpenAI), A30 quantum Hamming bound for qubit codes, and A31 unitary synthesis (OpenAI). The corresponding watchlist items were removed.
-- Not added: the robust Brown–Susskind conjecture, already proved (Chen et al. 2024); tight k-distinctness, claimed in April 2026 for large alphabets; entropic uncertainty for d+1 MUBs, known; lockability of distillable entanglement, considered too narrow.
-- Counts: 135 active entries, 47 Improved, 18 Claimed solved, zero Solved.
+- **135 active entries** across ten areas: spectral theory, many-body physics, quantum field theory, undecidability, entanglement, nonlocality, channels and Shannon theory, complexity and algorithms, open systems, and foundations. Ten further archive and background pages keep old links working.
+- **Entry pages** follow one structure:
+  - statement;
+  - Definition, with one well-known, pre-AI reference;
+  - Progress;
+  - Claimed solution, when there is one, with what it claims and its caveats;
+  - What remains open;
+  - the evidence grouped by role (previous progress, challenged claims, withdrawn claims);
+  - references and author-reported AI use.
+- **Horizon** says what kind of question it is:
+  - *sharp*: a proof or a single counterexample closes it;
+  - *incremental*: progress means better bounds or larger tractable classes;
+  - *programme*: a whole research field;
+  - *conceptual*.
+- **Status** says how far it has gone:
+  - *open*;
+  - *improved*: partial progress is recorded;
+  - *claimed solved*: a full resolution has been announced but not independently assessed.
 
-**8 November 2026 — comparison with similar catalogues**
+  No entry is marked *solved*: none of the claimed resolutions has yet been independently verified or fully machine-checked.
+- **Cross-references.** Entries shared with the [QIQCOP Zoo](https://qiqc-op.com/) or the [IQOQI Vienna list of open quantum problems](https://oqp.iqoqi.oeaw.ac.at/) link to them under the title.
 
-- Compared with the QIQCOP Zoo and the IQOQI Vienna list. Shared problems now link to those catalogues from each problem page, and a new About & similar projects page links them.
-- N1 (SIC existence) moves to **Claimed solved** on Radchenko–Wheeler's 4 October manuscript. The new A20 (PARITY ∉ QAC0, previously on the watchlist) enters as **Claimed solved**. Eleven further open entries are added (A21–A25, C13, E17, E18, N12, N13, and N14 on CGLMP inequalities, IQOQI problem 27, following GitHub issue #2), and existing entries gain sources. See the [comparison note](docs/comparisons/2026-11-08-qiqcop-zoo-and-iqoqi.md) and the [dated report](docs/reviews/2026-11-08-literature-update.md).
-- Counts: 125 active entries, 46 Improved, 14 Claimed solved, zero Solved.
+## 2. New problems and new results
 
-**8 November 2026 — new problems suggested by AI**
+Material that is not in the literature yet. None of it is part of the catalogue above: it carries no status, is not counted, and awaits human selection and refereeing.
 
-- Added a second page, [New problems suggested by AI](https://openquantumproblems.com/#new-problems): 46 candidate successor questions opened by the 2026 claimed resolutions and recorded progress, plus 24 secondary leads, each with statement, horizon, baseline and reported AI use, and a "New results" section holding one proof sketch (exponential cost of conditionally independent witnesses under a conservation law) reached while assessing an externally proposed conjecture. They are not catalogue entries, carry no status and are not counted. Sources, verification marks and caveats are in the [proposal report](docs/reviews/2026-11-08-new-problems-proposal.md), which also lists twelve status findings for the next literature update.
-- The homepage now opens with two boxes (known open problems, new problems suggested by AI), a two-line latest update and a single compact horizon/status legend stating that zero entries are Solved because no claimed resolution has been independently verified or fully machine-checked.
+- **[New problems suggested by AI](https://openquantumproblems.com/#new-problems).**
+  - **What they are:** 46 candidate questions, plus 24 secondary leads, that an AI model formulated from the catalogue and from the open-questions sections of the 2026 claimed resolutions. Each says which result opened it.
+  - **What each page shows:** the motivation, the baseline literature, and the verdict of a separate AI literature review. The review verified the cited sources and searched for earlier answers. Its verdicts: open and substantive, open but modest, routine or false, already known, ill-posed, or under review.
+  - **Sources:** the full proposal, with its verification marks, is in [`docs/reviews/2026-11-08-new-problems-proposal.md`](docs/reviews/2026-11-08-new-problems-proposal.md).
+- **New results.** Results obtained along the way, each stated with its proof or proof sketch and its status (not refereed unless stated otherwise). The first, R1, is about the exponential cost of conditionally independent witnesses under a conservation law. Further results will be added here as their write-ups are released.
 
-**8 November 2026 — November literature and OpenAI follow-ups**
+## How it is maintained
 
-- Screened 3,281 arXiv records (quant-ph, math-ph, cond-mat.str-el, hep-th, cs.CC; submitted 14 October to 5 November, overlapping the 26 October update), the OpenAI Math Release update of 29 October, and related announcements. See the [dated literature report](docs/reviews/2026-11-08-literature-update.md).
-- Thirteen entries updated; no status changes. N2 gains an independent second proof of $M(6)=3$ (Cárdenes Wuttig–Tindall). M5 records Tasaki's notes on the analytic argument and two follow-up papers. QF1 records OpenAI's announced, unpublished 4D Yang–Mills existence proof, which does not claim the mass gap.
-- Further progress recorded in A9, A12, A19, B15, E9, E11, M6, N1, O10 and QF5.
-- Counts unchanged since 26 October: 113 active entries, 46 Improved, 12 Claimed solved, zero Solved.
-**26 October 2026 — October literature, FOCS 2026 and large-group publications**
+The catalogue is updated through dated literature reviews: arXiv sweeps, announcements, and the authors' own open-questions sections. Each review is recorded in [`docs/reviews/`](docs/reviews/) with its sources, scope and exclusions. The comparison with similar catalogues is in [`docs/comparisons/`](docs/comparisons/). The reviews are AI-assisted (see the "Powered by" credit on the site) and curated by the maintainer.
 
-- Screened arXiv announcements from 14 to 23 October (1,370 records across quant-ph, math-ph, cond-mat.str-el, hep-th and cs.CC), the FOCS 2026 accepted-paper list, the 26 October update of the [OpenAI Math Release](https://github.com/openai/math/tree/7ef5c0cc5ca4b0e072b7a050fca09ab24bc6fa3a) repository, and public results from Google DeepMind, Anthropic, Quantinuum and IBM. See the [dated literature report](docs/reviews/2026-10-26-literature-update.md) for sources, scope notes and exclusions.
-- N2 records OpenAI's new verification package for the dimension-six MUB exclusion (C++ sources, saved records, consistency checker) and the independent audit that prompted it; the computation was not rerun and the status stays **Claimed solved**. No status change among the twelve claimed resolutions.
-- O4 and QF9 move to **Improved**. A6, A12, C3, C6, E12, O10, B5, M10, QF5, F3 and F8 record partial progress: combinatorial gap amplification, classical simulation of lossy BosonSampling, PPT-assisted bosonic capacities, new points in the zero-error spectrum of graphs, dimension-free marginal inequalities, size-independent log-Sobolev inequalities and more. FOCS 2026 acceptances are recorded on A6, A11, A18 and C1; version pointers refreshed on A5, A11, A18, E8 and O10.
-- Counts: 113 active entries, 46 Improved, 12 Claimed solved, zero Solved, and ten archive/background pages. Watchlist items updated with new comparison results; QIP 2027 decisions are due 30 November.
+Policies applied throughout:
 
-**17 October 2026 — OpenAI Math Release and October literature**
-
-- Reviewed the quantum and mathematical-physics families of the [OpenAI Math Release](https://github.com/openai/math/tree/1581d4cbdd69a0faf34b2089614fe2a814316a6a) (GitHub, 6 October; not arXiv) and arXiv announcements since 5 October. See the [dated literature report](docs/reviews/2026-10-17-literature-update.md) for sources, Lean scope notes and exclusions.
-- M1, M2, M5, B1, B13, E16, C12 and N2 move to **Claimed solved** on OpenAI's claims: ionization, 3D Anderson delocalization, Haldane gap, 2D area law, fixed-density condensation, zero-key entanglement, a PPT-squared counterexample and $M(6)=3$. Lean formalizations were not rebuilt; several cover only supporting statements.
-- M12, B2, B14, N4 and QF5 move to **Improved** for partial claims. A3, A5, C1, C3, C10, F3, N6 and O10 record further progress, including energy-constrained bosonic capacities and an explicit Tsirelson counterexample. M5's statement now specifies even ring lengths. QIP 2027 has not yet announced accepted talks.
-- Counts: 113 active entries, 44 Improved, 12 Claimed solved, zero Solved, and ten archive/background pages. Two watchlist items record OpenAI results without a matching entry.
-
-**5 October 2026 — literature update and challenged-proof correction**
-
-- Updated sixteen entries from twenty new versioned arXiv manuscripts; added a separate watchlist item on the thermal lifetime of Haah's cubic code. See the [dated literature report](docs/reviews/2026-10-05-literature-update.md) for sources, hypotheses and exclusions.
-- E10 now flags the counterexample to a lemma in the previously cited proof and records the new nonadditivity claim by Baghali Khanian and Negari. Its **Claimed solved** status rests on the new manuscript; the reported Lean formalization was not rebuilt in this review.
-- Added progress on MUB constructions, universal distillation, multipartite separability, private capacities, quantum-proof complexity, self-testing, reconstruction, tree percolation, thermalization and Gibbs preparation.
-- A3, B5, E5 and N3 move to **Improved**. Counts: 113 active entries, 43 Improved, four Claimed solved, zero Solved, and ten archive/background pages. Conditional results retain their assumptions; untouched entry dates and previous reports are preserved.
-
-**28 September 2026 — distinguish claimed solutions**
-
-- A4, A7, C4 and E10 now use **Claimed solved**: each has a claimed full resolution awaiting independent assessment.
-- The homepage links to separate searchable lists: 39 Improved entries and four Claimed solved entries. No entry is marked Solved; the 113 active entries and ten archive/background pages are unchanged.
-- Updated status badges, explanatory text and tests. Earlier reports preserve the classification used at the time of those reviews.
-
-**28 September 2026 — source and consistency corrections**
-
-- Audited every reference, evidence and provenance record against arXiv, Crossref and the cited manuscripts. See the [correction log](docs/reviews/2026-09-28-correction-log.md) for each change and its verification.
-- Fixed a mislinked reference (E3, Gurvits), incorrect titles (A3, A7), a misdescribed source (M2/M12), a missing attribution (B9), an off-target sole source (B15) and a broken DOI (U5).
-- Recorded a missing generative-AI disclosure (E3) and replaced unverified provenance notes with the authors' own statements (O9, F8). Refreshed stale version pointers (A17, QF7) and pinned versioned evidence URLs.
-- Added 27 baseline references and 9 evidence records. These include high-temperature Gibbs-state separability, full support of semiclassical measures, the frustration-free spin-1/2 gap classification, pure-model Hubbard and kagome numerics, the C₇ and depolarizing-threshold ladders, and certified K_G(3) bounds. E6 and C2 are now incremental.
-- Problem statements, IDs, statuses and review dates are unchanged. Counts remain 113 active entries and ten archive/background pages.
-
-**28 September 2026 — targeted literature update**
-
-- Updated sixteen entries using eighteen versioned arXiv manuscripts and a newly published Quantum article. See the [dated literature report](docs/reviews/2026-09-28-literature-update.md) for sources, submission/revision dates and scope.
-- A4, A7 and E10 now record claimed resolutions of finite-register QMA perfect completeness, good quantum local testability and ordinary entanglement-of-purification additivity. They remain “Improved” pending assessment; quantum PCP remains open.
-- Added progress on channel capacities and converses, Gaussian multipartite entanglement, separability, causal order, self-testing, classical verification, hyperbolic Anderson models, vacuum entanglement and Gibbs preparation.
-- Preserved the 10 September update in a visible history and retained untouched entry dates. Counts remain 113 active entries and ten archive/background pages.
-
-**10 September 2026 — targeted literature update**
-
-- Updated eleven entries using thirteen new versioned arXiv references, plus one source for the existing Bell-activation watchlist. See the [dated literature report](docs/reviews/2026-09-10-literature-update.md) for scope and source-by-source qualifications.
-- C4 now records a claimed general exponential strong converse; C5 records claimed operational private-capacity superactivation. Both remain “Improved” pending independent assessment.
-- Added progress on separability SDP bounds, tomography measurement trade-offs, noisy nonlocal games, self-testing assumptions, fermionic QCA, information causality, moment-polytope optimization, scalar-QED infrared sectors and local Gibbs-state certification.
-- Preserved the full-review date of 4 September and all untouched entry dates. Added a separate latest-update date, source links and attributed AI/formalization disclosures. Counts remain 113 active entries and ten archive/background pages.
-
-**4 September 2026 — full catalogue review implemented**
-
-- Reassessed all 111 original entries and implemented their statement, scope, status and citation corrections. The [full audit](docs/reviews/2026-09-04-catalogue-review.md) records the pre-change findings; the [implementation record](docs/reviews/2026-09-04-implementation.md) maps the changes.
-- Consolidated nine overlapping entries and moved U5 to background. All original `#p/ID` links remain valid; archived pages link to their active parents and are excluded from active counts.
-- Added or promoted twelve questions: M12/M13, B13/B14/B15, E16, N11, C11/C12, A19, QF11 and O10. The catalogue now has 113 active entries and ten retained archive/background pages.
-- Added source-linked evidence badges, a separate author-provenance section, relations, review dates, a public review/evidence-policy page and a non-counted research watchlist.
-- Linked all 401 reference records and corrected additional legacy author/title/publication metadata while preserving the literature history.
-- Added the frontend credit “powered by Astra”. Preserved the existing site design and GitHub publishing workflow.
-- Added automated checks for all IDs, archive targets, source metadata, internal links, KaTeX expressions and rendering of every detail/category view.
-
-**4 September 2026 — earlier literature update**
-
-- A5: added the first quantum-oracle separation between $\mathsf{QMA}(2)$ and $\mathsf{QMA}$ and the resulting constant-error no-disentanglers theorem.
-- A12/A14/A16/A17/A18: added new BosonSampling hardness ingredients, the withdrawal of a claimed graph-isomorphism algorithm, an independent bounded-round query-simulation theorem, a shadow-tomography obstruction, and fault-tolerance overhead, calibration and decoding results.
-- C6/C7: recorded the improved $C_7$ zero-error lower bound and the counterexample to the optimality of Marton's classical broadcast-channel inner bound.
-- E4/E6/E10/E11: added a finite-round LOCC criterion for multiqubit product bases, correlated-catalytic irreversibility, and the nonadditivity/additivity split for Rényi entanglement of purification away from the von Neumann case.
-- N3/N8: added the composite-dimension MUB numerical survey and size-independent multipartite GHZ self-testing robustness.
-- O5/O9 and F2/F8/F9: added Pauli-twirling non-Markovianity, scalable noise-learning methods, a revised categorical Born-rule theorem, compositional quantum-reference-frame results, and a sharper taxonomy of dynamical causal order.
-- These were partial-progress records, not independently verified solutions. The subsequent full review corrected scope, metadata and provenance errors in this initial update; current entry wording takes precedence.
-
-**20 August 2026**
-
-- C4: recorded a preprint claiming exponential strong converses for all finite-dimensional degradable and antidegradable channels.
-- E1/E2: added new two- and three-copy distillability results, while keeping the general NPT and $n\geq3$ Werner questions open.
-- E14/N2: recorded preprint classification/construction claims for $\mathrm{AME}(7,d)$, five other AME cases and order-six complex Hadamard matrices; the MUB problem is distinct.
-- C1/A16: added a certified positive-capacity lower benchmark for the depolarizing channel, not its exact threshold, and a bounded-round quantum-query simulation preprint.
-- Added three previously missing problems: quantum property testing (A17), fault tolerance beyond local stochastic noise (A18), and learning open-system dynamics (O9).
-- Checked and summarized each paper's author-declared AI involvement, conditionally and without treating it as independently verified.
-
-**29 July 2026**
-
-- E2: recorded preprints claiming the two-copy Werner-state result; the general all-copy question remains open.
-- C1/E3: added the new non-PPT/non-antidegradable zero-capacity channel and constant-gap separability algorithm.
-- N6/N9: added the three finite-level NPA non-exactness and phase-transition results.
-- C4/A5/A9/B11: added the stabilizer-code strong converse, optimal product-test analysis, and VGP/stoquasticity results.
-- Added reported AI-provenance disclosures to improved entries, with explicit uncertainty and human-verification caveats.
+- A claimed resolution stays **Claimed solved**, never Solved, until it has been independently assessed. Unpublished announcements are mentioned in the text but are not counted as evidence.
+- Conditional results keep their assumptions, and a result for a subcase or another variant is recorded as progress, not as a solution.
+- AI-use disclosures are reported as the authors state them. A missing disclosure is not evidence that no AI was used, and AI use is not evidence for or against correctness.
+- Sources are linked by verified arXiv IDs, DOIs or publisher URLs, with submission, revision and publication dates kept distinct.
 
 ## Contributing
 
-- Fix or expand a problem: edit the relevant file in `app/data/`.
-- Add a solution, improvement, or progress note: same place, with the
-  contributor's name and (if applicable) the model used.
-- Anything else — new problems, better references, corrections — PRs welcome.
+Corrections, new results, missing references and new problems are all welcome: open an [issue](https://github.com/jpbruneton/open_quantum_problems/issues) or a [pull request](https://github.com/jpbruneton/open_quantum_problems/pulls). Please cite the source of any claim. External contributions are reviewed before the next update and acknowledged in the dated report.
 
-No formal process, no gatekeeping. Just send it.
+### Data layout
 
-### Catalogue structure and evidence
+The source of truth is `app/data/cat-*.js`, aggregated by `app/data/problems.js`. Do not renumber existing IDs or reuse an archived ID. `main.tex` is a historical manuscript, not an export of the current site.
 
-The source of truth is `app/data/cat-*.js`, aggregated by `app/data/problems.js`.
-`main.tex` is a historical manuscript, not a synchronized export of the current site.
-Do not renumber existing IDs or reuse an archived ID for a new question.
+- `statement`: the model, assumptions, quantifiers and success criterion.
+- `definition`, `progress`, `claim`, `residual`: the page sections, written as `String.raw` templates. Paragraphs are separated by blank lines; lines starting with `- ` form lists; `**bold**` and `[label](https://…)` are supported outside math.
+- `horizon`: `sharp`, `incremental`, `programme` or `conceptual`. `status`: `open`, `improved` or `claimed-solved` (`solved` is reserved for established resolutions).
+- `evidence`: `{ kind, role, summary, url, date?, version? }`.
+  - `kind` is one of `published`, `preprint`, `numerical`, `conjecture`, `challenged` or `withdrawn`.
+  - `role` is one of `claimed-solution`, `claim-input` or `progress`.
+  - Only progress dated before the earliest claimed solution is listed under "Previous progress".
+- `provenance`: `{ summary, url, version? }` for author-reported AI use.
+- `relations`: `{ id, type }`, where `type` is `parent`, `benchmark`, `reduction` or `related`.
+- `archive`: `{ kind: "merged" | "background", targets, reason }`. Archived pages stay addressable but are not counted.
+- `reviewedAt` and `LITERATURE_UPDATES` (in `problems.js`) record which update last touched each entry.
+- Links to other catalogues live in `app/data/crossrefs.js`. The AI-suggested problems and their reviews live in `app/data/proposals.js`.
 
-- `statement` defines the model, assumptions, quantifiers and success criterion; `context` separates the established baseline from the open residual.
-- `horizon` distinguishes `sharp`, `incremental`, `programme` and `conceptual` entries. A programme is not a single conjecture.
-- `status: "improved"` means partial progress is recorded while the full stated question remains open, including when only a subcase is resolved.
-- `status: "claimed-solved"` means a full resolution of the stated question has been claimed and awaits independent assessment. `status: "solved"` is reserved for established resolutions.
-- `reviewedAt` records the most recent literature update for that entry. `LITERATURE_UPDATES` stores targeted updates newest first; `LITERATURE_UPDATE` is the latest record. These do not change the baseline `REVIEW` date or untouched entry dates. `CORRECTION_LOG` links the latest source and consistency correction log; corrections do not change review dates.
-- `evidence` contains `{ kind, summary, url, date?, version? }`. Supported kinds are `published`, `preprint`, `numerical`, `conjecture` and `withdrawn`. Include scope, not just an optimistic headline.
-- `provenance` contains `{ summary, url, version? }` for attributed disclosures. No disclosure is not evidence of no AI use, and AI use is not evidence for or against mathematical correctness.
-- `relations` contains `{ id, type }` with `parent`, `benchmark`, `reduction` or `related`.
-- `archive` contains `{ kind: "merged" | "background", targets: [id], reason }`. Archived pages remain addressable through `getProblem`; `PROBLEMS` and category counts include only active records.
-- References should use verified DOI/arXiv/publisher URLs. Distinguish submission, revision, acceptance and publication dates; do not infer publication from an arXiv identifier or acceptance notice.
+### Development
 
-### Development checks
+```bash
+npm install
+npm run dev     # local preview
+npm test        # catalogue integrity, KaTeX syntax, rendered views
+npm run build   # production build
+```
 
-Run `npm test` for catalogue integrity, mathematical syntax and server-rendered view checks, then `npm run build` for the production build. `npm run dev` starts the normal local preview. The test suite uses the project's existing Next compiler and React renderer; it requires no extra browser or test dependencies.
+`npm test` and `npm run build` must both pass before a change is merged. The tests hard-code entry counts, so update them when adding entries.
+
+## How to cite
+
+To cite the catalogue:
+
+```bibtex
+@misc{open_quantum_problems,
+  title = {Open Problems in Quantum Mechanics for AI Agents},
+  author = {Bruneton, Jean-Philippe},
+  howpublished = {\url{https://openquantumproblems.com/}},
+  year = {2026},
+  note = {Accessed YYYY-MM-DD}
+}
+```
+
+To cite a single entry, link its page, for example `https://openquantumproblems.com/#p/N1`, and give the access date, since entries change between updates. The source code and full history are at https://github.com/jpbruneton/open_quantum_problems.
+
+## Related projects
+
+- [Quantum Information and Quantum Computation Open Problem Zoo (QIQCOP Zoo)](https://qiqc-op.com/)
+- [IQOQI Vienna: Open Quantum Problems](https://oqp.iqoqi.oeaw.ac.at/)
+
+## Maintainer
+
+Jean-Philippe Bruneton, Université Paris Cité.
