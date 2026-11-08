@@ -77,18 +77,25 @@ function Paras({ text }) {
   });
 }
 
-const EVIDENCE_GROUPS = [
-  { key: "claim", label: "Claimed solution — sources", match: (e) => e.kind !== "withdrawn" && e.role === "claimed-solution" },
-  { key: "progress", label: "Progress — sources", match: (e) => e.kind !== "withdrawn" && e.role !== "claimed-solution" },
-  { key: "withdrawn", label: "Withdrawn claims", match: (e) => e.kind === "withdrawn" },
-];
+// Structured entries: the claimed solution is described in the "Claimed solution" text itself,
+// so its sources are not listed again. "Previous progress" keeps only progress sources dated
+// before the earliest claimed solution; later partial results are not listed.
+function evidenceGroups(evidence) {
+  const claimDates = evidence.filter((e) => e.role === "claimed-solution" && e.date).map((e) => e.date).sort();
+  const cutoff = claimDates[0];
+  return [
+    { key: "progress", label: "Previous progress", progressLabels: true,
+      items: evidence.filter((e) => e.kind !== "withdrawn" && e.role !== "claimed-solution" && e.role !== "claim-input" && (!cutoff || !e.date || e.date < cutoff)) },
+    { key: "withdrawn", label: "Withdrawn claims", items: evidence.filter((e) => e.kind === "withdrawn") },
+  ];
+}
 
-function EvidenceList({ items }) {
+function EvidenceList({ items, progressLabels = false }) {
   return (
     <ul className="evidence-list">
       {items.map((item, i) => (
         <li key={i}>
-          <span className={`badge ev-${item.kind}`} title={EVIDENCE_KINDS[item.kind]?.desc}>{EVIDENCE_KINDS[item.kind]?.label || item.kind}</span>
+          <span className={`badge ev-${item.kind}`} title={EVIDENCE_KINDS[item.kind]?.desc}>{progressLabels && item.kind === "preprint" ? "Preprint claimed progress" : (EVIDENCE_KINDS[item.kind]?.label || item.kind)}</span>
           <p><MathText text={item.summary} /></p>
           <a href={item.url} target="_blank" rel="noreferrer">Source{item.version ? ` · ${item.version}` : ""}{item.date ? ` · ${item.date}` : ""}</a>
         </li>
@@ -509,15 +516,12 @@ function ProblemView({ id }) {
           )}
 
           {p.evidence.length > 0 && (p.evidence.some((e) => e.role) ? (
-            EVIDENCE_GROUPS.map((g) => {
-              const items = p.evidence.filter(g.match);
-              return items.length > 0 && (
-                <div key={g.key}>
-                  <h4>{g.label}</h4>
-                  <EvidenceList items={items} />
-                </div>
-              );
-            })
+            evidenceGroups(p.evidence).map((g) => g.items.length > 0 && (
+              <div key={g.key}>
+                <h4>{g.label}</h4>
+                <EvidenceList items={g.items} progressLabels={g.progressLabels} />
+              </div>
+            ))
           ) : (
             <>
               <h4>Evidence &amp; scope</h4>
