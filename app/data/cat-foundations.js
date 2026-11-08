@@ -38,12 +38,14 @@ This entry is archived as merged. Compare axiom independence and composition und
 
   { id: "F3", cat: "foundations", horizon: "conceptual", status: "improved",
     provenance: [
+      { summary: "Das Bhowmik and Banik state that the problem was conceived and the principal results obtained by the authors, and that Claude (Anthropic) assisted with editing the prose, checking numerical thresholds and preparing the figure.", url: "https://arxiv.org/abs/2610.41444v1", version: "v1" },
+
       { summary: "Pompili and Budroni state that the main results were obtained solely by the authors, that Claude Opus 5.5 assisted with the expansion around zero-capacity channels and exposed a mistake in an earlier version, and that LLMs were used for grammar; they take responsibility for the final manuscript.", url: "https://arxiv.org/html/2610.32783v1", version: "v1" },
       { summary: "Pompili and Weilenmann report GPT-5.6 Sol assistance: suggesting an initial version of Theorem 2, pointing to literature, checking calculations and correcting grammar. They report verifying all arguments.", url: "https://arxiv.org/abs/2610.06604v1", version: "v1" },
       { summary: "Hoffreumon and Woods report Grammarly for editing and ChatGPT 5.6 Sol for identifying and expanding overly terse passages.", url: "https://arxiv.org/html/2610.03644v1", version: "v1" },
       { summary: "Dmello et al. state that artificial intelligence was not used in any meaningful capacity in this work. This is their declaration, not an independent provenance audit.", url: "https://arxiv.org/html/2610.03694v1", version: "v1" },
     ],
-    reviewedAt: "2026-10-26",
+    reviewedAt: "2026-11-08",
     title: "Operational reconstruction of quantum theory",
     statement: r`For specified operational axioms and composite-system rules, establish their independence and reconstruction power, and determine which alternative theories are experimentally distinguishable; extend controlled reconstructions beyond their finite-dimensional assumptions.`,
     context: r`Quantum theory's mathematical apparatus — Hilbert spaces, composition, completely positive maps and outcome probabilities — is usually postulated. Reconstruction asks which operational or information-theoretic axioms select the usual quantum predictions, and which assumptions rule out physically different alternatives rather than equivalent representations.
@@ -62,8 +64,12 @@ Hoffreumon and Woods' same-day clarification argues that operational source inde
 
 Principle-based characterizations (5–6 October 2026, v1): Ramanathan shows that the convex hull of no-signalling behaviors obeying a common-overlap no-disturbance-without-uncertainty condition equals the finite-dimensional quantum set when one party has two binary measurements, including the full simplest Bell scenario. Pompili and Weilenmann show that information causality, in all known formulations, admits post-quantum correlations already with three inputs and two outcomes per party. The first characterizes quantum correlations in restricted scenarios, and the second shows a candidate principle failing to do so. Neither reconstructs states, transformations or composition rules.
 
-Preprint progress (16–23 October 2026, v1): Pompili and Budroni reduce the single-copy information-causality problem to an optimization with a deterministic reduction, show that adaptive multi-copy protocols are single-copy protocols applied to a wired effective behavior, so that excluding single-copy violations suffices for families closed under wirings, and show that second-order constraints around full-support zero-capacity channels characterize exactly macroscopic locality in the CHSH scenario. Cavendish formalizes a no-signaling hypothesis between isolated systems and shows that, given the standard composite-experiment representation and two textbook marginal-probability claims, it is equivalent to the universality of the POVM framework, deriving most but not all of the probability-generating fragment of nonrelativistic quantum mechanics. Both sharpen which principles fix which fragment; neither is a full operational reconstruction.`,
+Preprint progress (16–23 October 2026, v1): Pompili and Budroni reduce the single-copy information-causality problem to an optimization with a deterministic reduction, show that adaptive multi-copy protocols are single-copy protocols applied to a wired effective behavior, so that excluding single-copy violations suffices for families closed under wirings, and show that second-order constraints around full-support zero-capacity channels characterize exactly macroscopic locality in the CHSH scenario. Cavendish formalizes a no-signaling hypothesis between isolated systems and shows that, given the standard composite-experiment representation and two textbook marginal-probability claims, it is equivalent to the universality of the POVM framework, deriving most but not all of the probability-generating fragment of nonrelativistic quantum mechanics. Both sharpen which principles fix which fragment; neither is a full operational reconstruction.
+
+Preprint progress (30 October 2026, v1): Das Bhowmik and Banik show that almost-quantum correlations, the $1+AB$ level of the NPA hierarchy, violate information causality, and do so without bound. Their violation uses rare zero-error certificates rather than biased guesses. Almost-quantum correlations satisfy several other proposed principles (nontrivial communication complexity, macroscopic locality, local orthogonality), so the result shows that information causality is strictly stronger than these principles on that set. It does not identify the quantum set. The question was listed in the QIQCOP Zoo, which marks it solved by this preprint.`,
     evidence: [
+      { kind: "preprint", summary: "Almost-quantum correlations violate information causality, without bound, through zero-error certificates; a candidate principle separates the almost-quantum set from the quantum set but does not characterize the latter.", url: "https://arxiv.org/abs/2610.41444v1", date: "2026-10-30", version: "v1" },
+
       { kind: "preprint", summary: "Single-copy reduction of information causality, closure under wirings, and exact recovery of macroscopic locality in the CHSH scenario from second-order constraints; a characterization of a principle's reach, not a reconstruction.", url: "https://arxiv.org/abs/2610.32783v1", date: "2026-10-23", version: "v1" },
       { kind: "preprint", summary: "Under stated composite-experiment and marginal-probability assumptions, a no-signaling hypothesis is equivalent to the universality of POVMs; derives most but not all of the probability-generating fragment of nonrelativistic quantum mechanics.", url: "https://arxiv.org/abs/2610.22823v1", date: "2026-10-16", version: "v1" },
       { kind: "preprint", summary: "A no-disturbance-without-uncertainty condition yields exactly the quantum behavior set when one party has two binary measurements; a restricted Bell-scenario characterization.", url: "https://arxiv.org/abs/2610.08749v1", date: "2026-10-06", version: "v1" },
@@ -75,6 +81,7 @@ Preprint progress (16–23 October 2026, v1): Pompili and Budroni reduce the sin
       { kind: "preprint", summary: "Operational source independence and product-state independence are distinguished in real simulations of quantum protocols.", url: "https://arxiv.org/abs/2603.19208v1", date: "2026-03-19", version: "v1" },
     ],
     refs: [
+      { label: "Das Bhowmik & Banik, 'Almost-Quantum Correlations Violate Information Causality' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.41444v1" },
       { label: "Pompili & Budroni, 'Bounding single-copy information causality violations' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.32783v1" },
       { label: "Cavendish, 'On the relationship between the POVM framework and the no-signaling hypothesis' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.22823v1" },
       { label: "Ramanathan, 'No-Disturbance-without-Uncertainty generates the Quantum set in the simplest Bell scenario' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.08749v1" },
@@ -187,7 +194,7 @@ Preprint progress (20–22 October 2026, v1): Chataignier and Smith formulate qu
     ] },
 
   { id: "F9", cat: "foundations", horizon: "conceptual", status: "improved",
-    reviewedAt: "2026-09-28",
+    reviewedAt: "2026-11-08",
     title: "Physical boundary of indefinite causal order",
     statement: r`Determine how the physically realizable process class changes when specified closed-laboratory, spacetime-localization or background-causality assumptions are relaxed, and give operational implementations or obstructions for the resulting models.`,
     context: r`The process-matrix framework (Oreshkov–Costa–Brukner) generalizes quantum theory to allow operations without a fixed causal order between them. Some 'processes' are causally nonseparable — they cannot be explained by any definite (even probabilistic) ordering of events — raising the question of which are physically realizable.
@@ -200,7 +207,9 @@ Separate accepted-paper progress: Mothe–Abbott–Branciard classify non-influe
 
 Remaining questions require a specified change of model: relax a closed-lab condition, allow different localization or continuous relativistic implementations, or specify a nonclassical background. Characterize the new achievable processes and observable signatures; do not keep the characterized closed-lab regime open by omitting its assumptions. Related: F10.
 
-Preprint progress (16–17 September 2026, v1): Wei–Pang and Wechs–Abbott–Branciard give two teleportation-based constructions identifying extensibly causally separable multipartite processes with circuits whose order is classically controlled (QC-CC). The ancillary-extension convention is essential; the latter paper uses the corresponding strengthened notion of causal separability. This characterizes the causally separable class, not the realizability of every causally nonseparable process. It is separate from the QC-QC closed-laboratory theorem above.`,
+Preprint progress (16–17 September 2026, v1): Wei–Pang and Wechs–Abbott–Branciard give two teleportation-based constructions identifying extensibly causally separable multipartite processes with circuits whose order is classically controlled (QC-CC). The ancillary-extension convention is essential; the latter paper uses the corresponding strengthened notion of causal separability. This characterizes the causally separable class, not the realizability of every causally nonseparable process. It is separate from the QC-QC closed-laboratory theorem above.
+
+A concrete residual recorded in the IQOQI list (problem 43, Araújo and Brukner) and the QIQCOP Zoo: is every finite-dimensional extensibly causal process matrix purifiable? For two laboratories every purifiable process is extensibly causal; the converse implication is open, and Araújo, Feix, Navascués and Brukner give a noisy test process.`,
     evidence: [
       { kind: "preprint", summary: "Claimed operational equivalence of extensible causal separability and QC-CC, including global past/future systems.", url: "https://arxiv.org/abs/2609.18559v1", date: "2026-09-16", version: "v1" },
       { kind: "preprint", summary: "Concurrent characterization using coherent teleportation and the ancilla-stable multipartite causal-separability definition; not a theorem for all nonseparable processes.", url: "https://arxiv.org/abs/2609.20774v1", date: "2026-09-17", version: "v1" },

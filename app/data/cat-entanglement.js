@@ -4,8 +4,11 @@ const OAI = "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a
 
 export const ENTANGLEMENT = [
   { id: "E1", cat: "entanglement", horizon: "sharp", status: "improved",
+    reviewedAt: "2026-11-08",
     relations: [{ id: "E2", type: "reduction" }, { id: "E5", type: "related" }, { id: "E16", type: "related" }],
-    evidence: [{ kind: "preprint", summary: "Two-copy distillation is claimed for a distinguished state and neighborhoods in the two-parameter DiVincenzo family, not the general Werner or NPT problem.", url: "https://arxiv.org/abs/2608.08836", date: "2026-08-09" }],
+    evidence: [
+      { kind: "preprint", summary: "One-copy undistillability on the open interval of a rank-five symmetric two-qutrit NPT family, and a structural obstruction for two copies; all-copy undistillability is not proved.", url: "https://arxiv.org/abs/2608.03710v1", date: "2026-08-04", version: "v1" },
+{ kind: "preprint", summary: "Two-copy distillation is claimed for a distinguished state and neighborhoods in the two-parameter DiVincenzo family, not the general Werner or NPT problem.", url: "https://arxiv.org/abs/2608.08836", date: "2026-08-09" }],
     provenance: [{ summary: "Tabia, Chen and Hsieh report GPT-5.6 Thinking assistance with reasoning, searches and exact certificates under Tabia's direction, and state that they reconstructed and verified the calculations. This is the authors' account, not independent verification.", url: "https://arxiv.org/abs/2608.08836" }],
     title: "NPT bound entanglement",
     statement: r`Determine whether every bipartite state with negative partial transpose is distillable, or construct an NPT state whose distillable entanglement is zero.`,
@@ -15,8 +18,11 @@ What is known: All NPT states in $2\times n$ systems are distillable. The genera
 
 Preprint progress (August 2026): Tabia, Chen and Hsieh report that a distinguished one-copy-undistillable state in the two-parameter DiVincenzo family is two-copy distillable in every local dimension $d\geq3$. Their witnesses cover a neighborhood, and further three-copy witnesses enlarge the distillable region. This addresses that family's proposed undistillable region, not the Werner conjecture or general NPT question. Independent proof verification is not claimed here.
 
-NPT bound entanglement would have major consequences for activation and the nonadditivity of distillability. A single explicit all-copy-undistillable NPT state, or a proof that no such state exists, resolves the question.`,
+NPT bound entanglement would have major consequences for activation and the nonadditivity of distillability. A single explicit all-copy-undistillable NPT state, or a proof that no such state exists, resolves the question.
+
+Rank-five route (4 August 2026, v1): Lei, Song, Chen and Liu study a family of rank-five symmetric NPT two-qutrit states. They prove one-copy undistillability on the previously open parameter interval and find a structural obstruction to two-copy distillability by Schmidt-rank-two vectors, with numerical exploration beyond it. A rank-five example undistillable for every number of copies would settle the question; this is the formulation used by the QIQCOP Zoo.`,
     refs: [
+      { label: "Lei, Song, Chen & Liu, 'Entanglement Distillation of some Rank-Five Symmetric NPT States in Two-Qutrit Systems' (2026 preprint, v1)", url: "https://arxiv.org/abs/2608.03710v1" },
       {"label":"DiVincenzo, Shor, Smolin, Terhal & Thapliyal, 'Evidence for bound entangled states with negative partial transpose', PRA 61, 062312 (2000)","url":"https://doi.org/10.1103/PhysRevA.61.062312"},
       { label: "Horodecki, Horodecki, Horodecki, Horodecki, 'Quantum entanglement', Rev. Mod. Phys. 81, 865 (2009)", url: "https://doi.org/10.1103/RevModPhys.81.865" },
       { label: "Tabia, Chen & Hsieh, 'Two-copy distillability of one-copy-undistillable negative-partial-transpose states in every dimension' (2026 preprint)", url: "https://arxiv.org/abs/2608.08836" },
@@ -202,9 +208,13 @@ Preprint progress (28 September 2026, v1): Shchukin and van Loock claim a rigidi
     reviewedAt: "2026-11-08",
     relations: [{ id: "E5", type: "related" }, { id: "E6", type: "related" }, { id: "E10", type: "related" }, { id: "U4", type: "related" }],
     evidence: [
+      { kind: "preprint", summary: "Exact entanglement cost of every two-qubit Bell-diagonal state, equal to its entanglement of formation; new lower bounds for qudit isotropic states. A structured exact evaluation, not a general certified algorithm.", url: "https://arxiv.org/abs/2610.00187v1", date: "2026-09-17", version: "v1" },
+
       { kind: "preprint", summary: "Explicit asymptotic continuity bound for distillable entanglement, logarithmic in dimension, via an LOCC protocol interconverting nearby states at vanishing ebit cost. A continuity ingredient, not an algorithm with a certified stopping rule.", url: "https://arxiv.org/abs/2610.35722v1", date: "2026-10-26", version: "v1" },
     ],
     provenance: [
+      { summary: "Fang states that OpenAI GPT-6 Astra was used to explore proof strategies, plot figures and support the writing, and that the AI-assisted material was verified.", url: "https://arxiv.org/abs/2610.00187v1", version: "v1" },
+
       { summary: "Schmitt and Sutter acknowledge GPT 6 Astra for assistance in developing the proof.", url: "https://arxiv.org/abs/2610.35722v1", version: "v1" },
     ],
     title: "Certified evaluation of regularized entanglement and correlation measures",
@@ -217,8 +227,11 @@ Published progress (2026): Beigi–Rubboli–Tomamichel give structural single-c
 
 Preprint progress (26 October 2026, v1): Schmitt and Sutter prove that distillable entanglement $E_D$ is asymptotically continuous, with an explicit bound depending logarithmically on dimension. The proof is an explicit LOCC protocol converting either of two nearby states into the other at an ebit cost that vanishes with their trace distance. The bound has the same structure as known continuity bounds for entanglement cost and relative entropy of entanglement. Continuity allows approximation from rational inputs, but certified evaluation of $E_D$ still needs computable two-sided bounds that converge, which remain missing.
 
-The task must be specified quantity by quantity, with input encoding, additive accuracy and a two-sided certificate. Efficient algorithms, computable convergence rates and analytic formulas are distinct levels of success.`,
+The task must be specified quantity by quantity, with input encoding, additive accuracy and a two-sided certificate. Efficient algorithms, computable convergence rates and analytic formulas are distinct levels of success.
+
+Exact structured case (17 September 2026, v1): Fang determines the entanglement cost of every two-qubit Bell-diagonal state, in particular every qubit isotropic and Werner state, and shows that it equals the entanglement of formation. The proof combines log-Sobolev entropy bounds with an exact tensorization theorem of Dong et al. For qudit isotropic states it gives new lower bounds that do not close the gap for $d\ge3$. This settles $E_C$ for a family singled out in the QIQCOP Zoo, where the higher-dimensional Werner and isotropic cases remain listed as open.`,
     refs: [
+      { label: "Fang, 'Entanglement cost of quantum depolarization' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.00187v1" },
       {"label":"Beigi, Rubboli & Tomamichel, 'Additivity of quantum relative entropies as a single-copy criterion', CMP 407, 134 (2026)","url":"https://arxiv.org/abs/2507.05696"},
       { label: "Hastings, 'Superadditivity of communication capacity using entangled inputs', Nat. Phys. 5 (2009)", url: "https://arxiv.org/abs/0809.3972" },
       { label: "Huang, 'Computing quantum discord is NP-complete', New J. Phys. 16 (2014)", url: "https://arxiv.org/abs/1305.5941" },
@@ -329,7 +342,9 @@ For up to three parties, the basic inequalities — nonnegativity, subadditivity
 
 For quantum states, nontrivial constrained inequalities have long been established by Linden–Winter and Cadney–Linden–Winter. Thus the unresolved sharp subquestion is about universal unconstrained linear inequalities, not the existence of any constrained inequality. Recent work on the tip of the cone further distinguishes exact entropy-vector realizability from closure; holographic inequalities likewise concern a special state class, not arbitrary states.
 
-A new independent universal inequality would be a major advance but would not by itself characterize the entire cone. Complete characterization is therefore labeled a programme.`,
+A new independent universal inequality would be a major advance but would not by itself characterize the entire cone. Complete characterization is therefore labeled a programme.
+
+A concrete unconstrained benchmark, listed in the QIQCOP Zoo: does the four-party Zhang–Yeung non-Shannon inequality hold for von Neumann entropies of every finite-dimensional state? Either a proof for all density operators or a rigorously certified violating state would decide it; numerical minimization alone is a search tool.`,
     refs: [
       {"label":"He, Hubeny & Rota, 'Inner bounding the quantum entropy cone with subadditivity and subsystem coarse grainings', PRA 109, 052407 (2024)","url":"https://doi.org/10.1103/PhysRevA.109.052407"},
       {"label":"Christandl, Durhuus & Wolff, 'Tip of the Quantum Entropy Cone', PRL 131, 240201 (2023)","url":"https://doi.org/10.1103/PhysRevLett.131.240201"},
@@ -338,8 +353,12 @@ A new independent universal inequality would be a major advance but would not by
     ] },
 
   { id: "E14", cat: "entanglement", horizon: "incremental", status: "improved",
+    reviewedAt: "2026-11-08",
     relations: [{ id: "N1", type: "related" }, { id: "E12", type: "related" }],
-    evidence: [{ kind: "preprint", summary: "Claimed completion of the seven-party existence row: AME(7,d) exactly for d at least 3.", url: "https://arxiv.org/abs/2608.01011", date: "2026-08-02" }, { kind: "preprint", summary: "Explicit code constructions for five previously unresolved parameter pairs.", url: "https://arxiv.org/abs/2608.05781", date: "2026-08-06" }],
+    evidence: [
+      { kind: "preprint", summary: "Reduction theorem for stabilizer AME states in composite dimension: obstructions at a prime-power factor propagate.", url: "https://arxiv.org/abs/2603.13442v2", date: "2026-03-13", version: "v2" },
+      { kind: "preprint", summary: "No AME canonical graph states of 4n qudits in even local dimension; combined with the prime-power reduction this excludes stabilizer AME(4,6).", url: "https://arxiv.org/abs/2603.18193v3", date: "2026-03-18", version: "v3" },
+{ kind: "preprint", summary: "Claimed completion of the seven-party existence row: AME(7,d) exactly for d at least 3.", url: "https://arxiv.org/abs/2608.01011", date: "2026-08-02" }, { kind: "preprint", summary: "Explicit code constructions for five previously unresolved parameter pairs.", url: "https://arxiv.org/abs/2608.05781", date: "2026-08-06" }],
     provenance: [{ summary: "Shi et al. disclose GPT-5.6 assistance with the odd-q AME(7,2q) construction and state that they verified it independently.", url: "https://arxiv.org/abs/2608.01011" }, { summary: "Bevins and Bidav disclose extensive author-directed Claude Fable 5 and ChatGPT 5.6 Sol use for search, code, exact checks and manuscript preparation, and state that they reviewed the constructions and text.", url: "https://arxiv.org/abs/2608.05781" }],
     title: "Absolutely maximally entangled states",
     statement: r`Extend the certified existence/nonexistence table for $\mathrm{AME}(n,d)$ with explicit constructions or impossibility proofs for unresolved parameter pairs, keeping minimal-support and unrestricted AME questions distinct.`,
@@ -349,8 +368,12 @@ Classical MDS codes and index-one orthogonal arrays construct minimal-support AM
 
 For qubits, AME states exist for $n=2,3,5,6$, not for $n=4$ or $n\geq7$. Many higher-dimensional constructions come from classical MDS codes and multiunitary matrices. The four-party row is known for all $d\geq3$.
 
-Preprint progress (August 2026): Shi–Zhang–Zhao–Li claim completion of the seven-party row, with existence exactly for $d\geq3$. Bevins–Bidav report explicit constructions for $(12,5)$, $(18,11)$, $(18,13)$, $(17,11)$ and $(17,13)$. These manuscript results close particular cells, not the full diagram. A parameter table should track proof status and the support restriction for each cell rather than label the entire classification one sharp conjecture.`,
+Preprint progress (August 2026): Shi–Zhang–Zhao–Li claim completion of the seven-party row, with existence exactly for $d\geq3$. Bevins–Bidav report explicit constructions for $(12,5)$, $(18,11)$, $(18,13)$, $(17,11)$ and $(17,13)$. These manuscript results close particular cells, not the full diagram. A parameter table should track proof status and the support restriction for each cell rather than label the entire classification one sharp conjecture.
+
+Stabilizer obstructions (March 2026): Cha proves that a stabilizer $\mathrm{AME}(n,D)$ state in composite dimension yields stabilizer AME states for every sub-product of the prime-power factors of $D$, so an obstruction at one prime power propagates. Wójcik, Makuta, Bruzda and Augusiak show that AME states of $4n$ qudits of even local dimension are never canonical graph states over $\mathbb Z_d$; with Cha's reduction this excludes all pure stabilizer $\mathrm{AME}(4,6)$ states. A real or nonstabilizer $\mathrm{AME}(4,6)$, and the eight-ququart $\mathrm{AME}(8,4)$, remain open; both are separate QIQCOP Zoo entries.`,
     refs: [
+      { label: "Cha, 'Non-existence of stabilizer absolutely maximally entangled states across infinitely many configurations' (2026 preprint, v2)", url: "https://arxiv.org/abs/2603.13442v2" },
+      { label: "Wójcik, Makuta, Bruzda & Augusiak, 'On Non-Existence of Absolutely Maximally Entangled Canonical Graph States in Even Local Dimensions' (2026 preprint, v3)", url: "https://arxiv.org/abs/2603.18193v3" },
       {"label":"Rather et al., 'Thirty-six entangled officers of Euler', PRL 128, 080507 (2022)","url":"https://arxiv.org/abs/2104.05122"},
       { label: "Huber, Gühne, Siewert, 'Absolutely maximally entangled states of seven qubits do not exist', PRL 118, 200502 (2017)", url: "https://arxiv.org/abs/1608.06228" },
       { label: "Goyeneche, Alsina, Latorre, Riera, Życzkowski, 'Absolutely maximally entangled states, combinatorial designs, and multiunitary matrices', PRA 92 (2015)", url: "https://arxiv.org/abs/1506.08857" },
@@ -396,5 +419,45 @@ Claimed resolution (OpenAI Math Release, public 6 October 2026; manuscript dated
       { label: "OpenAI, 'Entanglement with zero distillable secret key in local dimension ten' (OpenAI Math Release manuscript, dated 27 September 2026; public 6 October 2026)", url: `${OAI}preprints/Entanglement-with-zero-distillable-secret-key-in-local-dimension-ten-September-27-2026/paper.pdf` },
       { label: "Horodecki, Sikorski, Das & Wilde, 'Cost of quantum secret key', Quantum 10, 2098 (2026)", url: "https://doi.org/10.22331/q-2026-05-06-2098" },
       { label: "Horodecki et al., 'Secure key from bound entanglement', PRL 94, 160502 (2005)", url: "https://doi.org/10.1103/PhysRevLett.94.160502" },
+    ] },
+
+  { id: "E17", cat: "entanglement", horizon: "sharp",
+    reviewedAt: "2026-11-08",
+    title: "Distillable entanglement of the antisymmetric state",
+    statement: r`For $d\ge3$ let $\rho_{\rm as}^{(d)}=\frac{2}{d(d-1)}P_{\rm as}$ be the normalized projector onto the antisymmetric subspace of $\mathbb C^d\otimes\mathbb C^d$. Determine its LOCC distillable entanglement $E_D(\rho_{\rm as}^{(d)})$ exactly, starting with $d=3$, and the limit of $d\,E_D(\rho_{\rm as}^{(d)})$ as $d\to\infty$.`,
+    context: r`The antisymmetric state is the standard example of extreme irreversibility. Its entanglement cost is one ebit at $d=3$ (Yura) and stays bounded below for all $d$, while Christandl, Schuch and Winter proved that its distillable key, hence $E_D$, is $O(1/d)$.
+
+What is known: $E_D>0$ since the state is one-copy distillable. For $d=3$ the bounds are roughly $1/3\le E_D\le\log_2(5/3)$; the logarithmic negativity and Rains bound give upper bounds, and the PPT-operation relaxation is known exactly, $\log_2(1+2/d)$. Wang and Duan established strict PPT irreversibility on the $3\otimes3$ antisymmetric subspace.
+
+A complete answer gives an LOCC protocol and a matching converse for some $d$; the asymptotic constant is a separate sharp target. Related: E6 (irreversibility).`,
+    evidence: [
+      { kind: "published", summary: "Distillable key, hence distillable entanglement, of the antisymmetric state is O(1/d), while its entanglement cost stays bounded below (Comm. Math. Phys. 311, 2012).", url: "https://arxiv.org/abs/0910.4151", date: "2012-04-01" },
+    ],
+    relations: [{ id: "E6", type: "related" }, { id: "E9", type: "related" }],
+    refs: [
+      { label: "Christandl, Schuch & Winter, 'Entanglement of the Antisymmetric State', Comm. Math. Phys. 311 (2012)", url: "https://arxiv.org/abs/0910.4151" },
+      { label: "Yura, 'Entanglement Cost of Three-Level Antisymmetric States', J. Phys. A 36 (2003)", url: "https://arxiv.org/abs/quant-ph/0302163" },
+      { label: "Rains, 'A semidefinite program for distillable entanglement', IEEE Trans. Inf. Theory 47 (2001)", url: "https://arxiv.org/abs/quant-ph/0008047" },
+      { label: "Vidal & Werner, 'A computable measure of entanglement', PRA 65 (2002)", url: "https://arxiv.org/abs/quant-ph/0102117" },
+      { label: "Wang & Duan, 'Irreversibility of Asymptotic Entanglement Manipulation Under Quantum Operations Completely Preserving Positivity of Partial Transpose', PRL 119 (2017)", url: "https://arxiv.org/abs/1606.09421" },
+    ] },
+
+  { id: "E18", cat: "entanglement", horizon: "sharp",
+    reviewedAt: "2026-11-08",
+    title: "Bipartite bound information",
+    statement: r`Is there a classical tripartite distribution $P_{XYZ}$ with intrinsic information $I(X;Y\downarrow Z)>0$ but zero secret-key rate $S(X;Y\|Z)=0$ under public two-way communication — the classical analogue of bound entanglement?`,
+    context: r`Gisin and Wolf asked whether “bound information” exists, by analogy with bound entanglement: correlations that cost secrecy to create but from which no key can be distilled. Distributions obtained by measuring bound entangled states are natural candidates.
+
+What is known: Acín, Cirac and Masanes proved that multipartite bound information exists and can be activated. In the bipartite case, the question is open. Renner and Wolf showed that the gap between the cost of forming correlations and the key that can be extracted from them can be strict for related quantities. The question is listed as problem 47 in the IQOQI Vienna list (Christandl).
+
+A sharp answer is an explicit distribution with a proof of zero key rate and positive intrinsic information, or a proof that positive intrinsic information always yields key. Quantum key from entangled states is the separate question E16.`,
+    evidence: [
+      { kind: "preprint", summary: "Multipartite bound information exists and can be activated; the bipartite question remains open.", url: "https://arxiv.org/abs/quant-ph/0311064v1", date: "2003-11-11", version: "v1" },
+    ],
+    relations: [{ id: "E16", type: "related" }, { id: "E1", type: "related" }],
+    refs: [
+      { label: "Gisin & Wolf, 'Linking Classical and Quantum Key Agreement: Is There “Bound Information”?', CRYPTO 2000", url: "https://arxiv.org/abs/quant-ph/0005042" },
+      { label: "Acín, Cirac & Masanes, 'Multipartite Bound Information exists and can be activated', PRL 92 (2004)", url: "https://arxiv.org/abs/quant-ph/0311064" },
+      { label: "IQOQI Vienna Open Quantum Problems, problem 47: 'Is there bound information?' (M. Christandl)", url: "https://oqp.iqoqi.oeaw.ac.at/is-there-bound-information" },
     ] },
 ];

@@ -107,7 +107,7 @@ Preprint progress (19 October 2026, v1): Barber and Pirandola claim the exact qu
     ] },
 
   { id: "C4", cat: "channels", horizon: "sharp", status: "claimed-solved",
-    reviewedAt: "2026-09-28",
+    reviewedAt: "2026-11-08",
     relations: [{ id: "C1", type: "related" }, { id: "C11", type: "related" }],
     evidence: [
       { kind: "preprint", summary: "Second claimed general exponential quantum strong converse, via a fully quantum blowing-up lemma; not independent proof validation.", url: "https://arxiv.org/abs/2609.11771v1", date: "2026-09-10", version: "v1" },
@@ -131,7 +131,9 @@ The July and August manuscripts concern restricted classes. The September claim 
 
 Claimed resolution (8 September 2026, v1): Cheng and Tomamichel claim an exponential strong converse for unassisted quantum communication over every finite-dimensional memoryless channel, as well as for unassisted classical communication at its respective capacity. Their entanglement-generation bound covers arbitrary codes and implies the transmission statement above. The argument uses integral representations and asymptotic continuity of regularized Rényi capacities. This claims to settle the full finite-dimensional question, rather than another restricted channel class; it remains a preprint awaiting independent assessment here. The catalogue marks this “Claimed solved” pending that assessment. No exact capacity formula, infinite-dimensional extension or assisted-capacity theorem follows merely from this claim.
 
-Additional full-resolution claim (10 September 2026, v1): Beigi and Tomamichel claim exponential fidelity decay above quantum capacity for every finite-dimensional memoryless channel. Their route uses a fully quantum blowing-up lemma and a polynomial approximation controlling a Stinespring-image projector's projective norm. This is a second proposed argument, with an author shared with Cheng–Tomamichel, not independent validation of either manuscript. Status is “Claimed solved”.`,
+Additional full-resolution claim (10 September 2026, v1): Beigi and Tomamichel claim exponential fidelity decay above quantum capacity for every finite-dimensional memoryless channel. Their route uses a fully quantum blowing-up lemma and a polynomial approximation controlling a Stinespring-image projector's projective norm. This is a second proposed argument, with an author shared with Cheng–Tomamichel, not independent validation of either manuscript. Status is “Claimed solved”.
+
+Independence note (from the QIQCOP Zoo audit): the two September resolving preprints use different methods but share an author (Tomamichel), so they are not confirmations by disjoint teams. The QIQCOP Zoo marks this question Solved under its preprint policy; it remains “Claimed solved” here.`,
     refs: [
       { label: "Beigi & Tomamichel, 'Strong Converse for Quantum Capacity via a Fully Quantum Blowing-Up Lemma' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.11771v1" },
       { label: "Cheng & Tomamichel, 'No information transmission through quantum channels above capacity' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.08998v1" },
@@ -350,5 +352,23 @@ Claimed disproof (OpenAI Math Release, public 6 October 2026; manuscript dated 2
       { label: "An & Lee, 'Beyond the Positive Partial Transpose Squared Conjecture: The Qutrit Case' (2026 preprint)", url: "https://arxiv.org/abs/2607.15947" },
       { label: "Park, 'Every PPT channel has finite entanglement breaking index' (2026 preprint, v2)", url: "https://arxiv.org/abs/2608.13551v2" },
       { label: "Chiribella, Davidson, Paulsen & Rahaman, 'Positive maps and entanglement in real Hilbert spaces' (real-analogue counterexample)", url: "https://arxiv.org/abs/2207.02510" },
+    ] },
+
+  { id: "C13", cat: "channels", horizon: "sharp",
+    reviewedAt: "2026-11-08",
+    title: "Two-way quantum capacity of the amplitude-damping channel",
+    statement: r`For the qubit amplitude-damping channel $\mathcal A_p(\rho)=A_0\rho A_0^\dagger+A_1\rho A_1^\dagger$ with $A_0=|0\rangle\langle0|+\sqrt{1-p}\,|1\rangle\langle1|$ and $A_1=\sqrt p\,|0\rangle\langle1|$, determine the two-way assisted quantum capacity $Q_2(\mathcal A_p)$ for $0<p<1$.`,
+    context: r`Amplitude damping models energy relaxation and is the simplest non-unital qubit channel. Its unassisted quantum capacity is known because it is degradable for $p\le1/2$ (and zero above); with unlimited two-way classical communication the capacity is open.
+
+What is known: the reverse coherent information gives $Q_2\ge\max_u[h_2(u)-h_2(pu)]$. PLOB-type squashing and teleportation-simulation arguments give upper bounds that do not match it. Fawzi, Shayeghi and Ta's symmetry-reduced SDP hierarchy tightens the converse with several copies, still leaving a gap. The QIQCOP Zoo also points out that one printed squashing bound used a non-optimal substitution.
+
+A matching protocol and converse at any fixed $0<p<1$ would be progress; the full curve resolves the question. Secret-key capacity is a related but distinct quantity.`,
+    evidence: [
+      { kind: "preprint", summary: "Symmetry-reduced SDP hierarchy giving strong-converse bounds on two-way and PPT-assisted quantum capacity; improves the amplitude-damping converse without closing the gap.", url: "https://arxiv.org/abs/2203.02127v1", date: "2022-03-04", version: "v1" },
+    ],
+    relations: [{ id: "C3", type: "related" }, { id: "C1", type: "related" }],
+    refs: [
+      { label: "Pirandola, Laurenza, Ottaviani & Banchi, 'Fundamental limits of repeaterless quantum communications', Nat. Commun. 8 (2017)", url: "https://arxiv.org/abs/1510.08863" },
+      { label: "Fawzi, Shayeghi & Ta, 'A hierarchy of efficient bounds on quantum capacities exploiting symmetry', IEEE Trans. Inf. Theory 68 (2022)", url: "https://arxiv.org/abs/2203.02127" },
     ] },
 ];

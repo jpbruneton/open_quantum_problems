@@ -14,6 +14,12 @@ https://openquantumproblems.com/
 
 ### Timeline
 
+**8 November 2026 — comparison with similar catalogues**
+
+- Compared with the QIQCOP Zoo and the IQOQI Vienna list. Shared problems now link to those catalogues from each problem page, and a new About & similar projects page links them.
+- N1 (SIC existence) moves to **Claimed solved** on Radchenko–Wheeler's 4 October manuscript. The new A20 (PARITY ∉ QAC0, previously on the watchlist) enters as **Claimed solved**. Ten further open entries are added (A21–A25, C13, E17, E18, N12, N13), and existing entries gain sources. See the [comparison note](docs/comparisons/2026-11-08-qiqcop-zoo-and-iqoqi.md) and the [dated report](docs/reviews/2026-11-08-literature-update.md).
+- Counts: 124 active entries, 46 Improved, 14 Claimed solved, zero Solved.
+
 **8 November 2026 — new problems suggested by AI**
 
 - Added a second page, [New problems suggested by AI](https://openquantumproblems.com/#new-problems): 46 candidate successor questions opened by the 2026 claimed resolutions and recorded progress, plus 24 secondary leads, each with statement, horizon, baseline and reported AI use, and a "New results" section holding one proof sketch (exponential cost of conditionally independent witnesses under a conservation law) reached while assessing an externally proposed conjecture. They are not catalogue entries, carry no status and are not counted. Sources, verification marks and caveats are in the [proposal report](docs/reviews/2026-11-08-new-problems-proposal.md), which also lists twelve status findings for the next literature update.

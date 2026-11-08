@@ -1,6 +1,6 @@
 # Literature update — 8 November 2026
 
-Baseline: `d5cec3e`. This targeted review follows the [26 October literature update](2026-10-26-literature-update.md). This review was prepared in parallel with that update, from the 17 October baseline, and was then merged with it. Material already recorded on 26 October is not repeated: Go–Jeong (A12), Barber–Pirandola (C3), Li–Li (C6), Chen–Ding–Lu (O10), Hsu (QF5) and OpenAI's MUB verification package (N2). It covers arXiv announcements up to 5 November, the 29 October update to the OpenAI Math Release, and related announcements. Thirteen active entries change. **No status changes:** the totals remain 46 Improved, 12 Claimed solved, 55 Open and zero Solved.
+Baseline: `d5cec3e`. This targeted review follows the [26 October literature update](2026-10-26-literature-update.md). This review was prepared in parallel with that update, from the 17 October baseline, and was then merged with it. Material already recorded on 26 October is not repeated: Go–Jeong (A12), Barber–Pirandola (C3), Li–Li (C6), Chen–Ding–Lu (O10), Hsu (QF5) and OpenAI's MUB verification package (N2). It covers arXiv announcements up to 5 November, the 29 October update to the OpenAI Math Release, and related announcements. A second pass the same day compared the catalogue with similar catalogues (QIQCOP Zoo, IQOQI Vienna); see the section “Comparison with similar catalogues” below. Together the two passes change 20 existing entries and add 11 new ones. Two entries become **Claimed solved**: N1 (SIC existence) and the new A20 (PARITY ∉ QAC0). Totals: 124 active entries, 46 Improved, 14 Claimed solved, 64 Open and zero Solved.
 
 ## Scope and method
 
@@ -64,15 +64,26 @@ Screened but not incorporated:
 
 This selection does not prove that no other relevant literature exists.
 
+## Comparison with similar catalogues (second pass, 8 November)
+
+The catalogue was compared with the [QIQCOP Zoo](https://qiqc-op.com/) (217 problems, public JSON API, updated 6 November) and the [IQOQI Vienna list](https://oqp.iqoqi.oeaw.ac.at/open-quantum-problems) (29 problems). The working note is [docs/comparisons/2026-11-08-qiqcop-zoo-and-iqoqi.md](../comparisons/2026-11-08-qiqcop-zoo-and-iqoqi.md).
+
+- **Cross-references.** 34 entries now carry an “In other catalogues” section: 75 links to the matching QIQCOP and IQOQI pages, with the QIQCOP status as of 6 November. The links are stored in `app/data/crossrefs.js`. A new About page lists these and other similar projects.
+- **N1 → Claimed solved.** Radchenko and Wheeler, [*Stark units for real quadratic fields and reciprocity laws*](https://www.danrad.net/papers/stark-reciprocity.pdf) (manuscript dated 4 October 2026, author website). The manuscript claims Stark reciprocity for real quadratic fields. Its §9.2 combines this with Appleby–Flammia–Kopp, Theorem 1.46, to claim $d^2$ equiangular lines in $\mathbb C^d$ for every $d$. Its disclaimer states that it was LLM-generated and then edited by the authors. It is not peer reviewed. §9.2 and the introduction were read; the proof was not checked.
+- **New A20 (Claimed solved): PARITY ∉ QAC0.** Previously on the watchlist. The claim rests on the OpenAI manuscript and on Gao, Ji and Liu's self-contained simplification (ECCC TR26-258, 18 October). QIQCOP marks it Solved.
+- **Ten new open entries** taken from questions both lists treat as central and that this catalogue lacked: A21 dihedral HSP, A22 polynomial-time quantum lattice algorithms, A23 triangle-finding query complexity, A24 stabilizer rank of $|T\rangle^{\otimes n}$, A25 shadow-tomography copy complexity, C13 two-way capacity of amplitude damping, E17 distillable entanglement of the antisymmetric state, E18 bipartite bound information (IQOQI #47), N12 many-copy nonlocality of entangled states, N13 semialgebraicity of the closed quantum correlation set. Statements were rewritten for this catalogue, and every arXiv reference was checked against the arXiv API.
+- **Sources added to existing entries:** F3 (Das Bhowmik–Banik, arXiv:2610.41444), E9 (Fang, arXiv:2610.00187), E1 (Lei et al., arXiv:2608.03710), E14 (Cha, arXiv:2603.13442; Wójcik et al., arXiv:2603.18193), A7 (Li–Li–Liu, arXiv:2604.01874), A12 (Zhao, arXiv:2609.01008, 2610.00112), A13 (Go–Oh–Jeong, arXiv:2607.20804), O10 (Gao–Guo, arXiv:2609.15902). Context notes were added to C4 (the two strong-converse proofs share an author), F9 (extensible causality and purification) and E13 (Zhang–Yeung benchmark). AI-use disclosures were recorded where found.
+- **Status differences that come from policy only.** QIQCOP marks complete preprint resolutions “Solved” (C4, C12, E16); they stay “Claimed solved” here. QIQCOP still lists E10 and A7 as unsolved; their audits predate the preprints cited here.
+
 ## Status, provenance and implementation
 
 - **Status changes:** none.
 - **Updated within their existing status:** A9, A12, A19, B15, E9, E11, M5, M6, N1, N2, O10, QF1 and QF5.
-- **Totals:** 113 active entries, 46 Improved, 12 Claimed solved, 55 Open and zero Solved, plus ten archive/background pages.
+- **Totals:** 124 active entries, 46 Improved, 14 Claimed solved, 64 Open and zero Solved, plus ten archive/background pages (after the comparison pass below).
 
 Author AI disclosures are recorded per entry. Most incorporated manuscripts disclose substantial assistance, chiefly from GPT-6 Astra and other ChatGPT versions, and from Claude Opus 5.5. Examples include Witten's note, Cárdenes Wuttig–Tindall and Lootens–Singh's simulation code. Bringmann–Cao–Hairer–Zhao state that the main ideas were produced without AI and that seven listed lemmas were proved with GPT models. No disclosure was found by text search in Bertoni–De Palma or Sun–Roth–Chen–Heyl. Absence of a disclosure is not evidence of no AI use.
 
-Only the thirteen changed entries receive `reviewedAt: 2026-11-08`. No statement, ID, title or archive target changes. The homepage, review page and README summarize this update.
+Only the changed and new entries receive `reviewedAt: 2026-11-08`. No existing statement, ID, title or archive target changes. The homepage, review page and README summarize this update.
 
 ## Validation
 

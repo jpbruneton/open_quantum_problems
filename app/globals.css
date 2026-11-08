@@ -55,14 +55,9 @@ a:hover { text-decoration: underline; }
 .gh-link:hover { background: var(--panel-2); border-color: #b7c1d1; text-decoration: none; }
 .review-link { margin-left: 8px; }
 .header-links { display: flex; flex-wrap: wrap; align-items: center; gap: 0; }
-.powered-by {
-  margin: 16px 0 0 auto;
-  display: inline-flex; align-items: center;
-  border: 1px solid var(--accent); color: var(--accent);
-  background: var(--panel);
-  font-size: 13px; font-weight: 600;
-  border-radius: 999px; padding: 6px 14px;
-}
+.powered-by { margin-left: 8px; cursor: default; }
+.powered-by:hover { background: var(--panel); border-color: var(--border); }
+.about-link { margin-left: auto; border-color: var(--accent); color: var(--accent); }
 a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
 button, input { font: inherit; }
 .eyebrow {
@@ -268,7 +263,9 @@ td.stmt .katex { font-size: 1em; }
     margin-top: 14px;
     padding: 7px 12px; font-size: 12.5px;
   }
-  .powered-by { margin-top: 14px; padding: 7px 12px; font-size: 12.5px; }
+  .about-link { margin-left: 0; }
+  .header-links { gap: 8px; }
+  .powered-by { margin-left: 0; }
   .last-updated { font-size: 15px; }
   h1.title { margin-top: 0; font-size: 24px; }
   .subtitle { font-size: 14px; }
@@ -334,6 +331,9 @@ td.stmt .katex { font-size: 1em; }
 .legend-block p { margin: 0 0 8px; }
 .legend-block p:last-child { margin-bottom: 0; }
 .legend-block .item { white-space: nowrap; }
+.legend-block .horizon-list { list-style: none; margin: 0 0 10px; padding: 0 0 0 6px; font-size: 12.5px; line-height: 1.5; }
+.legend-block .horizon-list li { margin: 2px 0; }
+.legend-block .horizon-list .dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; vertical-align: middle; }
 .legend-block b { color: var(--text); }
 
 /* New-problems page */
@@ -355,3 +355,16 @@ td.stmt .katex { font-size: 1em; }
 
 .proposal-result { border-left: 3px solid var(--claimed-solved); }
 .nav-results { border-color: var(--claimed-solved) !important; }
+
+/* About page */
+.about-links { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 4px; }
+.about-links a { border: 1px solid var(--border); border-radius: 999px; padding: 5px 12px; font-size: 13px; background: var(--panel); }
+.similar-list { list-style: none; padding: 0; margin: 14px 0; display: grid; gap: 12px; }
+.similar-list li { border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; background: var(--panel); }
+.similar-list h4 { margin: 0 0 4px; font-size: 16px; }
+.similar-list p { margin: 4px 0 0; font-size: 14px; color: var(--muted); }
+.xref-list { margin: 6px 0 0; padding-left: 18px; }
+.xref-list li { margin: 3px 0; font-size: 14px; }
+.badge.st-proposed { color: var(--muted); }
+.proposal-detail-row td { background: var(--panel); cursor: default; }
+.proposal-detail p { margin: 6px 0; font-size: 14px; }

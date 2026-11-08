@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { Fragment, useEffect, useMemo, useState } from "react";
 import { MathText } from "./components/Math";
 import {
   CATEGORIES,
@@ -41,6 +41,7 @@ function useHashRoute() {
   if (parts[0] === "claimed-solved") return { view: "claimed-solved" };
   if (parts[0] === "review") return { view: "review" };
   if (parts[0] === "new-problems") return { view: "new-problems" };
+  if (parts[0] === "about") return { view: "about" };
   return { view: "home" };
 }
 function go(to) {
@@ -95,8 +96,8 @@ function Header({ crumbs }) {
           </svg>
           <span>GitHub</span>
         </a>
-        <a className="gh-link review-link" href="#review">Review &amp; evidence policy</a>
-        <span className="powered-by">Powered by Astra &amp; Opus 5.5</span>
+        <span className="gh-link powered-by">Powered by Astra &amp; Opus 5.5</span>
+        <a className="gh-link about-link" href="#about">About &amp; similar projects</a>
         </div>
         {crumbs && (
           <nav className="crumbs">
@@ -154,22 +155,27 @@ function Home() {
           </div>
 
           <div className="review-note">
-            <b>Last update · {LITERATURE_UPDATE.label}.</b> {LITERATURE_UPDATE.ids.length} entries updated, no status changed.
+            <b>Last update · {LITERATURE_UPDATE.label}.</b> {LITERATURE_UPDATE.ids.length - 11} entries updated and 11 new entries added.
             <ul>
               <li>Independent <a href="#p/N2">second proof that dimension six has only three MUBs</a>; experts have engaged with the <a href="#p/M5">Haldane-gap proof</a>.</li>
               <li>OpenAI's announced <a href="#p/QF1">4D Yang–Mills existence proof</a> is not public and does not claim the mass gap.</li>
+              <li>Checked against <a href="#about">similar catalogues</a> (QIQCOP Zoo, IQOQI Vienna): shared problems are now cross-referenced on each page. This found an all-dimension <a href="#p/N1">SIC existence claim</a>, now “Claimed solved”, and added <a href="#p/A20">PARITY ∉ QAC0</a> and ten other questions.</li>
             </ul>
-            <a href="#review">Sources &amp; scope →</a>
           </div>
 
           <div className="legend-block">
-            <p><b>Horizon</b> says what counts as progress:
-              {Object.entries(HORIZONS).map(([k, v], i) => (
-                <span className="item" key={k}>{i > 0 ? " · " : " "}<span className="dot" style={{ background: `var(--${k})` }} /> <b>{v.label}</b> — {v.desc}</span>
+            <p><b>Four different horizons:</b></p>
+            <ul className="horizon-list">
+              {Object.entries(HORIZONS).map(([k, v]) => (
+                <li key={k}><span className="dot" style={{ background: `var(--${k})` }} /> <b>{v.label}</b>: {v.desc}</li>
               ))}
-            </p>
-            <p><b>Status</b> says how far it has gone: <b>Improved</b> — partial progress · <a href="#claimed-solved"><b>Claimed solved</b></a> — full resolution awaiting independent assessment · <b>Solved</b> — established.
-              {" "}Zero entries are Solved: no claimed resolution has yet been independently verified or fully machine-checked. Author-reported AI use is recorded apart from status; no disclosure does not mean no AI use.</p>
+            </ul>
+            <p><b>Status</b> says how far it has gone:</p>
+            <ul className="horizon-list">
+              <li><span className="dot" style={{ background: "var(--improved)" }} /> <b>Improved</b>: partial progress.</li>
+              <li><span className="dot" style={{ background: "var(--claimed-solved)" }} /> <a href="#claimed-solved"><b>Claimed solved</b></a>: full resolution awaiting independent assessment.</li>
+              <li><span className="dot" style={{ background: "var(--solved)" }} /> <b>Solved</b>: established. Zero entries are Solved: no claimed resolution has yet been independently verified or fully machine-checked.</li>
+            </ul>
           </div>
 
           <div className="grid">
@@ -474,6 +480,20 @@ function ProblemView({ id }) {
             ))}
           </ul>
 
+          {p.catalogues.length > 0 && (
+            <>
+              <h4>In other catalogues</h4>
+              <ul className="refs xref-list">
+                {p.catalogues.map((x, i) => (
+                  <li key={i}>
+                    <b>{x.catalogue}</b>: <a href={x.url} target="_blank" rel="noreferrer">{x.title}</a>
+                    {x.status ? ` (${x.status})` : ""}{x.note ? <> — <MathText text={x.note} /></> : null}
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+
           {p.provenance.length > 0 && (
             <>
               <h4>Author-reported provenance</h4>
@@ -596,6 +616,12 @@ function ReviewView() {
 }
 
 function NewProblemsView() {
+  const [open, setOpen] = useState(() => new Set());
+  const toggle = (key) => setOpen((prev) => {
+    const next = new Set(prev);
+    if (next.has(key)) next.delete(key); else next.add(key);
+    return next;
+  });
   const scrollTo = (e, cat) => {
     e.preventDefault();
     const el = document.getElementById(`np-${cat}`);
@@ -605,10 +631,10 @@ function NewProblemsView() {
     <>
       <Header crumbs={[{ label: "New problems suggested by AI" }]} />
       <section className="body">
-        <div className="container detail">
+        <div className="container">
           <h2>New problems suggested by AI</h2>
           <p className="intro">Proposed {PROPOSALS_META.label} · {PROPOSAL_COUNT} priority candidates, {SECONDARY_PROPOSALS.length} secondary leads and {NEW_RESULTS.length} new result · not counted as catalogue entries</p>
-          <p>Each candidate is a successor question: what the 2026 claimed resolutions and recorded progress now leave open. They carry no status, are not counted in the catalogue, and await human selection. Horizons use the same badges as the catalogue; “extends” links the entries they grow out of.</p>
+          <p>Each candidate is a successor question: what the 2026 claimed resolutions and recorded progress now leave open. They carry no status, are not counted in the catalogue, and await human selection. Horizons use the same badges as the catalogue; “extends” links the entries they grow out of. Click a row to show the motivation, baseline and caveats.</p>
           <p>{PROPOSALS_META.method}</p>
           <p><a href={PROPOSALS_META.reportUrl} target="_blank" rel="noreferrer">Read the full proposal with verification marks and caveats →</a></p>
           <nav className="proposal-nav" aria-label="Areas">
@@ -619,21 +645,47 @@ function NewProblemsView() {
           {PROPOSALS.map((g) => (
             <section key={g.cat} id={`np-${g.cat}`} className="proposal-group">
               <h3>{g.name}</h3>
-              {g.items.map((it) => (
-                <article key={it.key} className="proposal">
-                  <div className="badge-row">
-                    <span className="proposal-key">{it.key}</span>
-                    <HorizonBadge h={it.horizon} />
-                    {it.extends.length > 0 && <span className="proposal-extends">extends {it.extends.map((id, i) => <span key={id}>{i > 0 ? ", " : ""}<a href={`#p/${id}`}>{id}</a></span>)}</span>}
-                  </div>
-                  <h4>{it.title}</h4>
-                  <div className="statement"><MathText text={it.statement} /></div>
-                  <p><b>Why now.</b> <MathText text={it.why} /></p>
-                  {it.baseline && <p className="proposal-meta"><b>Baseline.</b> {it.baseline}</p>}
-                  {it.ai && <p className="proposal-meta"><b>Reported AI use.</b> {it.ai}</p>}
-                  {it.caveat && <p className="proposal-meta proposal-caveat"><b>Caveat.</b> {it.caveat}</p>}
-                </article>
-              ))}
+              <div className="table-wrap">
+                <table>
+                  <thead>
+                    <tr>
+                      <th style={{ width: 56 }}>ID</th>
+                      <th>Problem</th>
+                      <th style={{ width: 130 }}>Horizon</th>
+                      <th style={{ width: 150 }}>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {g.items.map((it) => (
+                      <Fragment key={it.key}>
+                        <tr onClick={(event) => { if (!event.target.closest("a")) toggle(it.key); }} aria-expanded={open.has(it.key)}>
+                          <td className="id">{it.key}</td>
+                          <td className="stmt">
+                            <div style={{ fontWeight: 600, marginBottom: 4 }}>{it.title}</div>
+                            <div style={{ color: "var(--muted)", fontSize: 13 }}>
+                              {open.has(it.key) ? <MathText text={it.statement} /> : <MathText text={truncate(it.statement, 150)} />}
+                            </div>
+                            {it.extends.length > 0 && <div className="proposal-extends" style={{ fontSize: 12, marginTop: 4 }}>extends {it.extends.map((id, i) => <span key={id}>{i > 0 ? ", " : ""}<a href={`#p/${id}`}>{id}</a></span>)}</div>}
+                          </td>
+                          <td><HorizonBadge h={it.horizon} /></td>
+                          <td><span className="badge st-proposed" title="Candidate question, not a catalogue entry"><span className="dot" style={{ background: "var(--muted-2)" }} />Proposed</span></td>
+                        </tr>
+                        {open.has(it.key) && (
+                          <tr className="proposal-detail-row">
+                            <td />
+                            <td colSpan={3} className="proposal-detail">
+                              <p><b>Why now.</b> <MathText text={it.why} /></p>
+                              {it.baseline && <p className="proposal-meta"><b>Baseline.</b> {it.baseline}</p>}
+                              {it.ai && <p className="proposal-meta"><b>Reported AI use.</b> {it.ai}</p>}
+                              {it.caveat && <p className="proposal-meta proposal-caveat"><b>Caveat.</b> {it.caveat}</p>}
+                            </td>
+                          </tr>
+                        )}
+                      </Fragment>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </section>
           ))}
           <h3 id="np-secondary">Secondary leads</h3>
@@ -678,6 +730,58 @@ function NotFound() {
     <>
       <Header />
       <section className="body"><div className="container"><p>Not found. <a href="#">Back home</a>.</p></div></section>
+      <Footer />
+    </>
+  );
+}
+
+// ---------- about & similar projects ----------
+const AUTHOR_LINKS = [
+  { label: "Google Scholar", href: "https://scholar.google.com/citations?user=_IWT-z0AAAAJ&hl=en&oi=sra" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/jean-philippe-bruneton-a5014822/" },
+  { label: "X", href: "https://x.com/_quantumphy_" },
+  { label: "GitHub", href: "https://github.com/jpbruneton" },
+];
+const BOOKS = [
+  { title: "Quantum Mechanics — A Modern Introduction", href: "https://quantumlectures.org", desc: "A free, rigorous course on quantum mechanics, from foundational experiments to Hilbert spaces, the postulates and their applications, with worked exercises (English and French)." },
+  { title: "Thermodynamics — Elementary and Advanced", href: "https://learnthermo.org", desc: "A free course from the foundational principles to differential geometry, non-equilibrium and quantum thermodynamics, with a library of worked exercises (French, English and more)." },
+];
+const SIMILAR_PROJECTS = [
+  { name: "QIQCOP Zoo", href: "https://qiqc-op.com/", desc: "Quantum Information and Quantum Computation Open Problem Zoo: about 220 audited problems in quantum information, computation, communication, cryptography and error correction, marked Solved or Unsolved, with a public JSON API (source on GitHub: Naixu-Guo/quantum-open-problems). Entries shared with this catalogue are cross-referenced on each problem page." },
+  { name: "Open Quantum Problems (IQOQI Vienna)", href: "https://oqp.iqoqi.oeaw.ac.at/open-quantum-problems", desc: "The historical list started by Reinhard Werner, maintained by IQOQI Vienna: about thirty classic questions in entanglement, foundations, communication and complexity, with a separate page of solved problems." },
+  { name: "QMBL — Quantum Many-Body Leaderboard", href: "https://github.com/quantum-many-body-leaderboard/open-problems", desc: "A record book of the best verified ground-state energies for hundreds of many-body models without an exact solution (Hubbard, J1–J2, electron gases, hydrogen chains…), designed as a benchmark for scientists and AI systems." },
+  { name: "OpenProblemBench", href: "https://arxiv.org/abs/2610.11118", desc: "A benchmark of 82 literature-grounded open problems in mathematics and theoretical physics, including quantum information, used to evaluate AI models on research-level questions (Li et al., October 2026)." },
+  { name: "Erdős problems", href: "https://www.erdosproblems.com/", desc: "The database of Paul Erdős's problems that inspired the format of this catalogue: precise statements, status and references. Mathematics rather than physics." },
+  { name: "FrontierMath: Open Problems (Epoch AI)", href: "https://epoch.ai/latest/benchmarking-ai-on-unsolved-math-problems", desc: "Unsolved research mathematics problems with computationally verifiable answers, used to benchmark AI systems." },
+];
+
+function AboutView() {
+  return (
+    <>
+      <Header crumbs={[{ label: "About & similar projects" }]} />
+      <section className="body">
+        <div className="container detail">
+          <h2>About</h2>
+          <p>This catalogue is maintained by <b>Jean-Philippe Bruneton</b>, a physicist at Université Paris Cité, France. His research interests include the laws of gravitation, quantum mechanics and its foundations, and symbolic regression as a machine-learning task. The catalogue is written and reviewed with AI assistance (Astra and Claude Opus 5.5); every update is documented in a dated report, and corrections are welcome through GitHub.</p>
+          <div className="about-links">
+            {AUTHOR_LINKS.map((l) => <a key={l.label} href={l.href} target="_blank" rel="noreferrer">{l.label}</a>)}
+          </div>
+          <h3>Course books by the same author</h3>
+          <ul className="similar-list">
+            {BOOKS.map((b) => (
+              <li key={b.href}><h4><a href={b.href} target="_blank" rel="noreferrer">{b.title}</a></h4><p>{b.desc}</p></li>
+            ))}
+          </ul>
+          <h3>Similar projects</h3>
+          <p>Other catalogues of open problems, in quantum physics or aimed at AI systems. This catalogue differs by its breadth (spectral theory, many-body physics, QFT, foundations, open systems and undecidability as well as quantum information), by its separate “Claimed solved” status for announced resolutions, and by recording authors' AI-use disclosures.</p>
+          <ul className="similar-list">
+            {SIMILAR_PROJECTS.map((s) => (
+              <li key={s.href}><h4><a href={s.href} target="_blank" rel="noreferrer">{s.name}</a></h4><p>{s.desc}</p></li>
+            ))}
+          </ul>
+          <p><a href="#review">Review &amp; evidence policy →</a></p>
+        </div>
+      </section>
       <Footer />
     </>
   );
@@ -741,5 +845,6 @@ export default function Page() {
   if (route.view === "claimed-solved") return <ClaimedSolvedView />;
   if (route.view === "review") return <ReviewView />;
   if (route.view === "new-problems") return <NewProblemsView />;
+  if (route.view === "about") return <AboutView />;
   return <Home />;
 }

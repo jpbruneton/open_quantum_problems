@@ -12,6 +12,7 @@
 // relations: [{ id, type: "parent"|"benchmark"|"reduction"|"related" }]
 // evidence: [{ kind, summary, url, date?, version? }]
 // provenance: [{ summary, url, version? }] — author disclosures, not proof status.
+// catalogues: [{ catalogue, title, url, status?, note? }] — the same question in other open-problem catalogues.
 //
 // Problem statements, context and references live in the per-category files
 // imported below. References are curated entry points, not exhaustive
@@ -27,6 +28,7 @@ import { COMPLEXITY } from "./cat-complexity";
 import { UNDECIDABILITY } from "./cat-undecidability";
 import { OPENSYSTEMS } from "./cat-open-systems";
 import { FOUNDATIONS } from "./cat-foundations";
+import { CROSSREFS } from "./crossrefs";
 
 export const CATEGORIES = [
   { slug: "spectral", code: "M", name: "Mathematical QM & spectral theory",
@@ -64,7 +66,7 @@ export const REVIEW = {
 export const LITERATURE_UPDATES = [{
   date: "2026-11-08",
   label: "8 November 2026",
-  ids: ["A9", "A12", "A19", "B15", "E9", "E11", "M5", "M6", "N1", "N2", "O10", "QF1", "QF5"],
+  ids: ["A7", "A9", "A12", "A13", "A19", "A20", "A21", "A22", "A23", "A24", "A25", "B15", "C4", "C13", "E1", "E9", "E11", "E14", "E17", "E18", "F3", "F9", "M5", "M6", "N1", "N2", "N12", "N13", "O10", "QF1", "QF5"],
   reportUrl: "https://github.com/jpbruneton/open_quantum_problems/blob/main/docs/reviews/2026-11-08-literature-update.md",
 }, {
   date: "2026-10-26",
@@ -119,8 +121,10 @@ export const ALL_PROBLEMS = [
   evidence: [],
   provenance: [],
   relations: [],
+  catalogues: [],
   reviewedAt: REVIEW.date,
   ...p,
+  catalogues: [...(p.catalogues || []), ...(CROSSREFS[p.id] || [])],
 }));
 
 // Archived IDs remain addressable, but do not inflate open-problem counts.
@@ -143,7 +147,7 @@ export function getCategory(slug) {
 export const HORIZONS = {
   sharp: { label: "Sharp", desc: "A proof or single counterexample closes it." },
   incremental: { label: "Incremental", desc: "Progress = a better bound or larger tractable class." },
-  programme: { label: "Programme", desc: "A research field; not closable by one submission." },
+  programme: { label: "Programme", desc: "A whole research field." },
   conceptual: { label: "Conceptual", desc: "No community-agreed success criterion (yet)." },
 };
 export const STATUSES = {
