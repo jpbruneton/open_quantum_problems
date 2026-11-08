@@ -10,7 +10,7 @@ export function MathText({ text }) {
   return (
     <>
       {parts.map((part, i) => {
-        if (part.type === "text") return <span key={i}>{part.value}</span>;
+        if (part.type === "text") return <span key={i}>{renderInline(part.value)}</span>;
         let html = "";
         try {
           html = katex.renderToString(part.value, {
@@ -27,6 +27,22 @@ export function MathText({ text }) {
       })}
     </>
   );
+}
+
+// Minimal inline markup outside math: **bold** and [label](https://url).
+function renderInline(text) {
+  const out = [];
+  const re = /\*\*([^*]+)\*\*|\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g;
+  let last = 0;
+  let m;
+  while ((m = re.exec(text)) !== null) {
+    if (m.index > last) out.push(text.slice(last, m.index));
+    if (m[1] !== undefined) out.push(<b key={m.index}>{renderInline(m[1])}</b>);
+    else out.push(<a key={m.index} href={m[3]} target="_blank" rel="noreferrer">{m[2]}</a>);
+    last = re.lastIndex;
+  }
+  if (last < text.length) out.push(text.slice(last));
+  return out;
 }
 
 function splitMath(text) {

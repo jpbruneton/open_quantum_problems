@@ -62,6 +62,41 @@ function StatusBadge({ s }) {
   );
 }
 
+// ---------- problem text helpers ----------
+// Paragraphs split on blank lines; a paragraph whose lines all start with "- " becomes a list.
+function Paras({ text }) {
+  return String(text || "").split(/\n\n+/).map((para, i) => {
+    const lines = para.trim().split("\n");
+    const isItem = (l) => l.trim().startsWith("- ");
+    const list = (items) => <ul className="context-list">{items.map((l, j) => <li key={j}><MathText text={l.trim().slice(2)} /></li>)}</ul>;
+    if (lines.every(isItem)) return <div key={i}>{list(lines)}</div>;
+    if (lines.length > 1 && !isItem(lines[0]) && lines.slice(1).every(isItem)) {
+      return <div key={i}><p className="list-lead"><MathText text={lines[0].trim()} /></p>{list(lines.slice(1))}</div>;
+    }
+    return <p key={i}><MathText text={para.trim()} /></p>;
+  });
+}
+
+const EVIDENCE_GROUPS = [
+  { key: "claim", label: "Claimed solution — sources", match: (e) => e.kind !== "withdrawn" && e.role === "claimed-solution" },
+  { key: "progress", label: "Progress — sources", match: (e) => e.kind !== "withdrawn" && e.role !== "claimed-solution" },
+  { key: "withdrawn", label: "Withdrawn claims", match: (e) => e.kind === "withdrawn" },
+];
+
+function EvidenceList({ items }) {
+  return (
+    <ul className="evidence-list">
+      {items.map((item, i) => (
+        <li key={i}>
+          <span className={`badge ev-${item.kind}`} title={EVIDENCE_KINDS[item.kind]?.desc}>{EVIDENCE_KINDS[item.kind]?.label || item.kind}</span>
+          <p><MathText text={item.summary} /></p>
+          <a href={item.url} target="_blank" rel="noreferrer">Source{item.version ? ` · ${item.version}` : ""}{item.date ? ` · ${item.date}` : ""}</a>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 // ---------- header ----------
 function Header({ crumbs }) {
   return (
@@ -420,17 +455,25 @@ function ProblemView({ id }) {
             {p.archive ? <span className="badge">{p.archive.kind === "merged" ? "Merged entry" : "Background"}</span> : <StatusBadge s={p.status} />}
           </div>
           <h2>{p.title}</h2>
+          {p.statusNote && (
+            <aside className="status-note" aria-label="Why this status">
+              <b>Why this status.</b> <MathText text={p.statusNote} />
+            </aside>
+          )}
+
           <div className="xref-block">
             <h4>In other catalogues</h4>
             {p.catalogues.length > 0 ? (
+              <>
               <ul className="refs xref-list">
                 {p.catalogues.map((x, i) => (
                   <li key={i}>
                     <b>{x.catalogue}</b>: <a href={x.url} target="_blank" rel="noreferrer">{x.title}</a>
-                    {x.status ? ` (${x.status})` : ""}{x.note ? <> — <MathText text={x.note} /></> : null}
+                    {x.note ? <> — <MathText text={x.note} /></> : null}
                   </li>
                 ))}
               </ul>
+              </>
             ) : (
               <p className="review-meta">Not found in other catalogues.</p>
             )}
@@ -450,27 +493,37 @@ function ProblemView({ id }) {
 
           <div className="statement"><MathText text={p.statement} /></div>
 
-          <h4>{p.archive ? "Retained context & background" : "Known results & open residual"}</h4>
-          <div className="context">
-            {String(p.context).split(/\n\n+/).map((para, i) => (
-              <p key={i}><MathText text={para.trim()} /></p>
-            ))}
-          </div>
-
-          {p.evidence.length > 0 && (
+          {p.definition ? (
             <>
-              <h4>Evidence &amp; scope</h4>
-              <ul className="evidence-list">
-                {p.evidence.map((item, i) => (
-                  <li key={i}>
-                    <span className={`badge ev-${item.kind}`} title={EVIDENCE_KINDS[item.kind]?.desc}>{EVIDENCE_KINDS[item.kind]?.label || item.kind}</span>
-                    <p><MathText text={item.summary} /></p>
-                    <a href={item.url} target="_blank" rel="noreferrer">Source{item.version ? ` · ${item.version}` : ""}{item.date ? ` · ${item.date}` : ""}</a>
-                  </li>
-                ))}
-              </ul>
+              <h4>Definition</h4>
+              <div className="context"><Paras text={p.definition} /></div>
+              {p.progress && (<><h4>Progress</h4><div className="context"><Paras text={p.progress} /></div></>)}
+              {p.claim && (<><h4>Claimed solution</h4><div className="context claim-block"><Paras text={p.claim} /></div></>)}
+              {p.residual && (<><h4>What remains open</h4><div className="context"><Paras text={p.residual} /></div></>)}
+            </>
+          ) : (
+            <>
+              <h4>{p.archive ? "Retained context & background" : "Known results & open residual"}</h4>
+              <div className="context"><Paras text={p.context} /></div>
             </>
           )}
+
+          {p.evidence.length > 0 && (p.evidence.some((e) => e.role) ? (
+            EVIDENCE_GROUPS.map((g) => {
+              const items = p.evidence.filter(g.match);
+              return items.length > 0 && (
+                <div key={g.key}>
+                  <h4>{g.label}</h4>
+                  <EvidenceList items={items} />
+                </div>
+              );
+            })
+          ) : (
+            <>
+              <h4>Evidence &amp; scope</h4>
+              <EvidenceList items={[...p.evidence].sort((a, b) => (a.kind === "withdrawn") - (b.kind === "withdrawn"))} />
+            </>
+          ))}
 
           {(p.relations.length > 0 || children.length > 0) && (
             <>

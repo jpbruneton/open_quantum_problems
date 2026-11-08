@@ -80,7 +80,8 @@ test("archives point to active parents and never appear in active category lists
 
 test("every entry has valid metadata, references and internal relations", () => {
   for (const p of ALL_PROBLEMS) {
-    for (const key of ["id", "title", "statement", "context", "cat"]) assert.ok(typeof p[key] === "string" && p[key].trim(), `${p.id}.${key}`);
+    for (const key of ["id", "title", "statement", "cat"]) assert.ok(typeof p[key] === "string" && p[key].trim(), `${p.id}.${key}`);
+    assert.ok(typeof (p.definition || p.context) === "string" && (p.definition || p.context).trim(), `${p.id}: definition or context`);
     assert.ok(CATEGORIES.some((c) => c.slug === p.cat), p.id);
     assert.ok(HORIZONS[p.horizon] && STATUSES[p.status], p.id);
     assert.equal(new Date(p.reviewedAt).toISOString().slice(0, 10), p.reviewedAt, `${p.id}: review date`);
@@ -197,7 +198,7 @@ test("priority scientific corrections retain the supporting sources", () => {
 
 test("all mathematical expressions parse with KaTeX and have balanced delimiters", () => {
   for (const p of ALL_PROBLEMS) {
-    const texts = [p.statement, p.context, ...p.evidence.map((e) => e.summary), ...p.provenance.map((e) => e.summary)];
+    const texts = [p.statement, p.context, p.definition, p.progress, p.claim, p.residual, p.statusNote, ...p.evidence.map((e) => e.summary), ...p.provenance.map((e) => e.summary)].filter(Boolean);
     for (const text of texts) {
       let at = 0;
       while ((at = text.indexOf("$", at)) !== -1) {

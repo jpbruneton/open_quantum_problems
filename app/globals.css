@@ -380,3 +380,9 @@ td.stmt a { color: var(--text); }
 .detail .similar-list { padding: 0; }
 .detail .xref-block h4 { margin-top: 4px; }
 .detail .xref-block { margin-bottom: 4px; }
+.status-note { margin: 4px 0 18px; padding: 12px 16px; border: 1px solid var(--border); border-left: 3px solid var(--claimed-solved); background: var(--panel); font-size: 14.5px; }
+.status-note b { color: var(--claimed-solved); }
+.detail .context-list { color: var(--text); margin: 0 0 12px; }
+.detail .context-list li { margin-bottom: 6px; }
+.detail .claim-block { border-left: 3px solid var(--claimed-solved); padding-left: 16px; }
+.detail .list-lead { margin: 0 0 4px; font-weight: 600; }
