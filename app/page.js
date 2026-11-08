@@ -75,6 +75,7 @@ function Header({ crumbs }) {
           precise questions, research programmes, known results and the work
           still to do. Corrections and contributions are welcome.
         </p>
+        <div className="header-links">
         <a
           className="gh-link"
           href="https://github.com/jpbruneton/open_quantum_problems"
@@ -93,6 +94,8 @@ function Header({ crumbs }) {
           <span>GitHub</span>
         </a>
         <a className="gh-link review-link" href="#review">Review &amp; evidence policy</a>
+        <span className="powered-by">Powered by Astra &amp; Opus 5.5</span>
+        </div>
         {crumbs && (
           <nav className="crumbs">
             <a href="#">Home</a>
@@ -122,7 +125,7 @@ function Home() {
       <Header />
       <section className="body">
         <div className="container">
-          <p className="last-updated">Literature update: {LITERATURE_UPDATE.label} · Full review: {REVIEW.label}</p>
+          <p className="last-updated">Last update: <b>{LITERATURE_UPDATE.label}</b></p>
           <div className="stats-row">
             <div className="stats">
               <div className="stat"><div className="n">{total}</div><div className="l">Active entries</div></div>
@@ -147,11 +150,6 @@ function Home() {
             {" "}engaged with the <a href="#p/M5">Haldane-gap proof</a>. OpenAI's announced
             {" "}<a href="#p/QF1">4D Yang–Mills existence proof</a> is not yet public and does not claim the mass gap.
             No status changed; twelve entries remain “Claimed solved”, not verified. <a href="#review">Sources &amp; scope →</a>
-          </div>
-          <div className="review-note">
-            <b>Full catalogue review.</b> All {REVIEW.reviewed} original entries reassessed;
-            {" "}{REVIEW.added} questions added or promoted. Merged entries and background pages
-            remain accessible but are excluded from active counts. <a href="#review">What changed →</a>
           </div>
 
           <p className="intro" style={{ marginTop: 26 }}>

@@ -54,6 +54,15 @@ a:hover { text-decoration: underline; }
 }
 .gh-link:hover { background: var(--panel-2); border-color: #b7c1d1; text-decoration: none; }
 .review-link { margin-left: 8px; }
+.header-links { display: flex; flex-wrap: wrap; align-items: center; gap: 0; }
+.powered-by {
+  margin: 16px 0 0 auto;
+  display: inline-flex; align-items: center;
+  border: 1px solid var(--accent); color: var(--accent);
+  background: var(--panel);
+  font-size: 13px; font-weight: 600;
+  border-radius: 999px; padding: 6px 14px;
+}
 a:focus-visible, button:focus-visible, input:focus-visible { outline: 3px solid var(--accent); outline-offset: 4px; }
 button, input { font: inherit; }
 .eyebrow {
@@ -78,9 +87,15 @@ h1.title {
 
 /* Stats row */
 .last-updated {
+  display: inline-block;
   margin: 0 0 8px;
-  color: var(--muted);
-  font-size: 13px;
+  padding: 8px 16px;
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent);
+  border-radius: 10px;
+  background: var(--panel);
+  color: var(--text);
+  font-size: 16px;
 }
 .stats-row {
   display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
@@ -253,6 +268,8 @@ td.stmt .katex { font-size: 1em; }
     margin-top: 14px;
     padding: 7px 12px; font-size: 12.5px;
   }
+  .powered-by { margin-top: 14px; padding: 7px 12px; font-size: 12.5px; }
+  .last-updated { font-size: 15px; }
   h1.title { margin-top: 0; font-size: 24px; }
   .subtitle { font-size: 14px; }
   .crumbs { margin-top: 14px; }

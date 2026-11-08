@@ -165,7 +165,7 @@ test("targeted literature updates preserve untouched review dates and expose pen
   assert.match(getProblem("QF1").statement, /mass gap/);
   assert.match(getProblem("QF1").context, /No manuscript was public/);
   const home = render(views.Home);
-  assert.ok(home.includes(LITERATURE_UPDATE.label) && home.includes(REVIEW.label));
+  assert.ok(home.includes(LITERATURE_UPDATE.label) && home.includes("Last update"));
   const policy = render(views.ReviewView);
   for (const update of LITERATURE_UPDATES) assert.ok(policy.includes(update.reportUrl));
   for (const id of ids) assert.ok(policy.includes(`#p/${id}`), `missing update link ${id}`);
