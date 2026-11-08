@@ -19,6 +19,7 @@ import {
   getCategory,
   consolidatedInto,
 } from "./data/problems";
+import { PROPOSALS, SECONDARY_PROPOSALS, PROPOSALS_META, PROPOSAL_COUNT, NEW_RESULTS } from "./data/proposals";
 
 // ---------- tiny hash router ----------
 function useHashRoute() {
@@ -39,6 +40,7 @@ function useHashRoute() {
   if (parts[0] === "improved") return { view: "improved" };
   if (parts[0] === "claimed-solved") return { view: "claimed-solved" };
   if (parts[0] === "review") return { view: "review" };
+  if (parts[0] === "new-problems") return { view: "new-problems" };
   return { view: "home" };
 }
 function go(to) {
@@ -116,7 +118,6 @@ function Header({ crumbs }) {
 function Home() {
   const total = PROBLEMS.length;
   const nSharp = PROBLEMS.filter((p) => p.horizon === "sharp").length;
-  const nSolved = PROBLEMS.filter((p) => p.status === "solved").length;
   const nImproved = PROBLEMS.filter((p) => p.status === "improved").length;
   const nClaimedSolved = PROBLEMS.filter((p) => p.status === "claimed-solved").length;
 
@@ -125,52 +126,51 @@ function Home() {
       <Header />
       <section className="body">
         <div className="container">
-          <p className="last-updated">Last update: <b>{LITERATURE_UPDATE.label}</b></p>
-          <div className="stats-row">
-            <div className="stats">
-              <div className="stat"><div className="n">{total}</div><div className="l">Active entries</div></div>
-              <div className="stat"><div className="n">{CATEGORIES.length}</div><div className="l">Areas</div></div>
-              <div className="stat"><div className="n">{nSharp}</div><div className="l">Sharp questions</div></div>
-              <a className="stat stat-link" href="#improved" aria-label={`See all ${nImproved} improved problems`}>
-                <div className="n">{nImproved}</div><div className="l">Improved <span aria-hidden="true">→</span></div>
-              </a>
-              <a className="stat stat-link stat-claimed" href="#claimed-solved" aria-label={`See all ${nClaimedSolved} claimed solved problems`}>
-                <div className="n">{nClaimedSolved}</div><div className="l">Claimed solved <span aria-hidden="true">→</span></div>
-              </a>
-              <div className="stat"><div className="n">{nSolved}</div><div className="l">Solved</div></div>
+          <div className="two-boxes">
+            <div className="box box-current">
+              <div className="box-kicker">This page</div>
+              <h2>Known open problems</h2>
+              <p>{total} literature-reviewed entries across {CATEGORIES.length} areas, each with its status and evidence.</p>
+              <div className="stats">
+                <div className="stat"><div className="n">{total}</div><div className="l">Active entries</div></div>
+                <div className="stat"><div className="n">{nSharp}</div><div className="l">Sharp questions</div></div>
+                <a className="stat stat-link" href="#improved" aria-label={`See all ${nImproved} improved problems`}>
+                  <div className="n">{nImproved}</div><div className="l">Improved <span aria-hidden="true">→</span></div>
+                </a>
+                <a className="stat stat-link stat-claimed" href="#claimed-solved" aria-label={`See all ${nClaimedSolved} claimed solved problems`}>
+                  <div className="n">{nClaimedSolved}</div><div className="l">Claimed solved <span aria-hidden="true">→</span></div>
+                </a>
+              </div>
+              <button className="cta-sharp" onClick={() => go("sharp")}>
+                ⚡ See all {nSharp} sharp problems
+              </button>
             </div>
-            <button className="cta-sharp" onClick={() => go("sharp")}>
-              ⚡ See all {nSharp} sharp problems
-            </button>
+            <a className="box box-new" href="#new-problems">
+              <div className="box-kicker">New page</div>
+              <h2>New problems suggested by AI</h2>
+              <p>{PROPOSAL_COUNT} candidate successor questions opened by the 2026 claimed resolutions, {SECONDARY_PROPOSALS.length} secondary leads, and {NEW_RESULTS.length} new result found on the way. Not counted; not yet catalogue entries.</p>
+              <span className="box-cta">Browse the proposals <span aria-hidden="true">→</span></span>
+            </a>
           </div>
 
           <div className="review-note">
-            <b>Latest literature update.</b> {LITERATURE_UPDATE.ids.length} entries updated. An independent
-            {" "}<a href="#p/N2">second proof that dimension six has only three MUBs</a> has appeared, and experts have
-            {" "}engaged with the <a href="#p/M5">Haldane-gap proof</a>. OpenAI's announced
-            {" "}<a href="#p/QF1">4D Yang–Mills existence proof</a> is not yet public and does not claim the mass gap.
-            No status changed; twelve entries remain “Claimed solved”, not verified. <a href="#review">Sources &amp; scope →</a>
+            <b>Last update · {LITERATURE_UPDATE.label}.</b> {LITERATURE_UPDATE.ids.length} entries updated, no status changed.
+            <ul>
+              <li>Independent <a href="#p/N2">second proof that dimension six has only three MUBs</a>; experts have engaged with the <a href="#p/M5">Haldane-gap proof</a>.</li>
+              <li>OpenAI's announced <a href="#p/QF1">4D Yang–Mills existence proof</a> is not public and does not claim the mass gap.</li>
+            </ul>
+            <a href="#review">Sources &amp; scope →</a>
           </div>
 
-          <p className="intro" style={{ marginTop: 26 }}>
-            Each problem carries a <b>horizon</b> badge indicating what would
-            count as progress:
-          </p>
-          <div className="legend">
-            {Object.entries(HORIZONS).map(([k, v]) => (
-              <span className="item" key={k}>
-                <span className="dot" style={{ background: `var(--${k})` }} />
-                <b style={{ color: "var(--text)" }}>{v.label}</b>&nbsp;— {v.desc}
-              </span>
-            ))}
+          <div className="legend-block">
+            <p><b>Horizon</b> says what counts as progress:
+              {Object.entries(HORIZONS).map(([k, v], i) => (
+                <span className="item" key={k}>{i > 0 ? " · " : " "}<span className="dot" style={{ background: `var(--${k})` }} /> <b>{v.label}</b> — {v.desc}</span>
+              ))}
+            </p>
+            <p><b>Status</b> says how far it has gone: <b>Improved</b> — partial progress · <a href="#claimed-solved"><b>Claimed solved</b></a> — full resolution awaiting independent assessment · <b>Solved</b> — established.
+              {" "}Zero entries are Solved: no claimed resolution has yet been independently verified or fully machine-checked. Author-reported AI use is recorded apart from status; no disclosure does not mean no AI use.</p>
           </div>
-          <p className="disclaimer">
-            <b>Evidence matters:</b> “Improved” records partial progress.
-            {" "}<a href="#claimed-solved">“Claimed solved”</a> identifies a full resolution awaiting
-            independent assessment; “Solved” denotes an established resolution.
-            Author-reported AI use is recorded
-            separately from mathematical status. No disclosure does not mean no AI use.
-          </p>
 
           <div className="grid">
             {CATEGORIES.map((c) => {
@@ -595,6 +595,84 @@ function ReviewView() {
   );
 }
 
+function NewProblemsView() {
+  const scrollTo = (e, cat) => {
+    e.preventDefault();
+    const el = document.getElementById(`np-${cat}`);
+    if (el) el.scrollIntoView({ behavior: "smooth" });
+  };
+  return (
+    <>
+      <Header crumbs={[{ label: "New problems suggested by AI" }]} />
+      <section className="body">
+        <div className="container detail">
+          <h2>New problems suggested by AI</h2>
+          <p className="intro">Proposed {PROPOSALS_META.label} · {PROPOSAL_COUNT} priority candidates, {SECONDARY_PROPOSALS.length} secondary leads and {NEW_RESULTS.length} new result · not counted as catalogue entries</p>
+          <p>Each candidate is a successor question: what the 2026 claimed resolutions and recorded progress now leave open. They carry no status, are not counted in the catalogue, and await human selection. Horizons use the same badges as the catalogue; “extends” links the entries they grow out of.</p>
+          <p>{PROPOSALS_META.method}</p>
+          <p><a href={PROPOSALS_META.reportUrl} target="_blank" rel="noreferrer">Read the full proposal with verification marks and caveats →</a></p>
+          <nav className="proposal-nav" aria-label="Areas">
+            {PROPOSALS.map((g) => <a key={g.cat} href={`#new-problems`} onClick={(e) => scrollTo(e, g.cat)}>{g.name} ({g.items.length})</a>)}
+            <a href="#new-problems" onClick={(e) => scrollTo(e, "secondary")}>Secondary leads ({SECONDARY_PROPOSALS.length})</a>
+            <a href="#new-problems" className="nav-results" onClick={(e) => scrollTo(e, "results")}>New results ({NEW_RESULTS.length})</a>
+          </nav>
+          {PROPOSALS.map((g) => (
+            <section key={g.cat} id={`np-${g.cat}`} className="proposal-group">
+              <h3>{g.name}</h3>
+              {g.items.map((it) => (
+                <article key={it.key} className="proposal">
+                  <div className="badge-row">
+                    <span className="proposal-key">{it.key}</span>
+                    <HorizonBadge h={it.horizon} />
+                    {it.extends.length > 0 && <span className="proposal-extends">extends {it.extends.map((id, i) => <span key={id}>{i > 0 ? ", " : ""}<a href={`#p/${id}`}>{id}</a></span>)}</span>}
+                  </div>
+                  <h4>{it.title}</h4>
+                  <div className="statement"><MathText text={it.statement} /></div>
+                  <p><b>Why now.</b> <MathText text={it.why} /></p>
+                  {it.baseline && <p className="proposal-meta"><b>Baseline.</b> {it.baseline}</p>}
+                  {it.ai && <p className="proposal-meta"><b>Reported AI use.</b> {it.ai}</p>}
+                  {it.caveat && <p className="proposal-meta proposal-caveat"><b>Caveat.</b> {it.caveat}</p>}
+                </article>
+              ))}
+            </section>
+          ))}
+          <h3 id="np-secondary">Secondary leads</h3>
+          <p>Sharp but with thinner baselines, lower confidence that they are open, or overlapping an existing entry.</p>
+          <ul className="archive-list">
+            {SECONDARY_PROPOSALS.map((it) => (
+              <li key={it.key}>
+                <b>{it.key} · {it.title}</b>
+                {it.extends.length > 0 && <span className="proposal-extends"> extends {it.extends.map((id, i) => <span key={id}>{i > 0 ? ", " : ""}<a href={`#p/${id}`}>{id}</a></span>)}</span>}
+                <p><MathText text={it.note} /></p>
+              </li>
+            ))}
+          </ul>
+          <h3 id="np-results">New results suggested by AI</h3>
+          <p>Small theorems reached while assessing proposed conjectures. They are proof sketches, not refereed results, and each one states what it leaves open.</p>
+          {NEW_RESULTS.map((it) => (
+            <article key={it.key} className="proposal proposal-result">
+              <div className="badge-row">
+                <span className="proposal-key">{it.key}</span>
+                <span className="badge st-claimed-solved"><span className="dot" style={{ background: "var(--claimed-solved)" }} />Proof sketch</span>
+                {it.extends.length > 0 && <span className="proposal-extends">related to {it.extends.map((id, i) => <span key={id}>{i > 0 ? ", " : ""}<a href={`#p/${id}`}>{id}</a></span>)}</span>}
+              </div>
+              <h4>{it.title}</h4>
+              <p className="proposal-meta">{it.status}</p>
+              <p><b>Setting.</b> <MathText text={it.setting} /></p>
+              <div className="statement"><MathText text={it.statement} /></div>
+              <p><b>Sketch.</b> <MathText text={it.sketch} /></p>
+              <p><b>What remains open.</b> <MathText text={it.open} /></p>
+              <p className="proposal-meta"><b>Context.</b> {it.baseline}</p>
+            </article>
+          ))}
+          <p className="disclaimer">These proposals were produced by an AI-assisted review and checked against the cited sources, not refereed. A candidate becomes a catalogue entry only after a human curator assigns an ID, statement and baseline through the usual review process.</p>
+        </div>
+      </section>
+      <Footer />
+    </>
+  );
+}
+
 function NotFound() {
   return (
     <>
@@ -662,5 +740,6 @@ export default function Page() {
   if (route.view === "improved") return <ImprovedView />;
   if (route.view === "claimed-solved") return <ClaimedSolvedView />;
   if (route.view === "review") return <ReviewView />;
+  if (route.view === "new-problems") return <NewProblemsView />;
   return <Home />;
 }

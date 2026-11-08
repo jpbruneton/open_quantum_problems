@@ -484,9 +484,12 @@ communication, Eve holding a purification). Known $3\le d_{\min}\le10$. Sharp
 sub-question: is $K_D(\rho)>0$ for every entangled two-qutrit state?
 
 Why now. E16 is claimed solved by a $10\otimes10$ state which, per the manuscript
-(Lemma 2.1 remark, verified), is PPT; minimality is disclaimed. Since every NPT
-$2\times n$ state is distillable and every PPT $2\times n$ state is separable,
-$d_{\min}\ge3$. Pauwels–Gisin–Renner (arXiv:2607.25838, listing; cited by OpenAI)
+(Lemma 2.1 remark, verified), is PPT; minimality is disclaimed. Every entangled
+two-qubit state is NPT (Horodecki 1996) and every NPT $2\times n$ state is
+distillable (Dür–Cirac–Lewenstein–Bruß 2000), hence has key, so $d_{\min}\ge3$
+for $d\otimes d$. PPT entangled states exist already in $2\times4$, so a
+$2\otimes n$ zero-key state is a separate sub-question. (Corrected 8 Nov 2026: an
+earlier wording wrongly stated that all PPT $2\times n$ states are separable.) Pauwels–Gisin–Renner (arXiv:2607.25838, listing; cited by OpenAI)
 prove positive two-way key for the Horodecki two-qutrit bound-entangled states
 with $3<\alpha\le4$, so the only $3\otimes3$ family tested so far has key.
 Horodecki–Sikorski–Das–Wilde, Quantum 10, 2098 (2026) (verified) work under the
@@ -608,9 +611,12 @@ and rewritten.
 
 **P30. Holevo additivity for every qubit channel** (extends C1) — sharp
 
-Statement. For every qubit channel $\Phi$ and every finite-dimensional channel
-$\Omega$, is $\chi(\Phi\otimes\Omega)=\chi(\Phi)+\chi(\Omega)$; equivalently is
-$C(\Phi)=\chi(\Phi)$ for every qubit channel?
+Statement. Two statements of increasing strength. (Weak) For every qubit channel
+$\Phi$, is $C(\Phi)=\lim_n\chi(\Phi^{\otimes n})/n=\chi(\Phi)$? (Strong) For every
+qubit channel $\Phi$ and every finite-dimensional channel $\Omega$, is
+$\chi(\Phi\otimes\Omega)=\chi(\Phi)+\chi(\Omega)$? Strong additivity implies the
+weak form; the converse is not known. (Corrected 8 Nov 2026: an earlier wording
+called the two forms equivalent.)
 
 Why now. King (2002) settled unital qubit channels; the generalized
 amplitude-damping channel is the first full non-unital family (OpenAI family 276,
@@ -762,10 +768,15 @@ Statement. Bakshi–Moitra–Tan (arXiv:2604.08408v2, verified) give a sampler m
 in $O(\log(n/\varepsilon))$ for the nearest-neighbour Fermi–Hubbard model on a
 $d$-dimensional lattice whenever $\beta\le c/(d^3t_{\max})$, with $U,\mu$
 arbitrary. (i) Is the true threshold $\beta t_{\max}\le c'$ with $c'$ independent of
-$d$? (ii) Since the 2D SU(2)-symmetric Hubbard model has no finite-temperature
-transition (Mermin–Wagner), conjecture that for every fixed $\beta$, $U/t$ and
-filling there is a quasi-local reversible sampler with $t_{\rm mix}=\mathrm{poly}(n)$
-on the square lattice; or prove a bottleneck lower bound at some finite $\beta$.
+$d$? (ii) For the repulsive 2D model, Mermin–Wagner excludes magnetic long-range
+order at any $T>0$ but not discrete-symmetry or Kosterlitz–Thouless transitions
+(stripe or pairing orders away from half filling; the attractive model has a
+finite-temperature superconducting transition). Conjecture that for every fixed
+$\beta$, $U/t>0$ and filling at which the Gibbs state has no finite-temperature
+transition there is a quasi-local reversible sampler with
+$t_{\rm mix}=\mathrm{poly}(n)$ on the square lattice; and identify a region where a
+bottleneck lower bound gives superpolynomial mixing at finite $\beta$. (Corrected
+8 Nov 2026: an earlier wording invoked Mermin–Wagner for all transitions.)
 
 Why now. O10 is restricted to spin Hamiltonians; fermionic Gibbs preparation and
 the Hubbard model (B10) are not catalogued. Šmíd–Meister–Berta–Bondesan
@@ -1058,3 +1069,40 @@ $n\ge3$; nonlocality).
 - P34 depends on an announcement that has no arXiv manuscript yet.
 - Suggested ID ranges are placeholders; assignment, relations and `reviewedAt`
   fields are left to the integration step, together with `npm test`.
+
+---
+
+## 5. Deferred: two externally proposed programmes to revisit later
+
+Source: an unpublished exploratory note, "Trois pistes de recherche en physique
+quantique, Étape 1" (8 November 2026, produced with ChatGPT Astra for the
+maintainer). Its first proposal (cost of conditionally independent witnesses
+under a conservation law) was assessed here as an elementary corollary of
+block-diagonality under total charge and a path-graph bound on the achievable
+total-variation distance, with log(1+W_min) between (R/2)·L and R·L,
+L = −½ log(4p(1−p)). At the maintainer's request it is kept on the site as a
+"New result" (R1, proof sketch, not refereed), with the exact constant left open.
+The other two are kept as programmes to
+revisit after an anteriority audit; they are not catalogue entries and are not
+shown on the site.
+
+D1. Classicalization of hydrodynamic memory in U(1)-symmetric random circuits.
+Conjecture: at fixed window size, the averaged operational distance of the
+observed multi-time process to the class of classical-memory processes decays
+exponentially in the inter-intervention time, while the distance to memoryless
+processes decays only algebraically (ratio → 0). Points to settle first: the
+per-realization versus averaged-process formulation (only the Haar-averaged
+process has an autonomous classical charge dynamics); whether the algebraic
+non-conserved tails of Khemani–Vishwanath–Huse are reproducible by classical
+memory; a witness excluding all classical-memory models, not one model.
+
+D2. Quantum connectivity visible only in time. Question: is there a controlled
+graph Hamiltonian H = ΩX_G + Σ_g |g⟩⟨g|⊗H_g on three or four sites such that a
+single classical fluctuating-graph law reproduces every single-time channel
+Φ_t exactly on [0,T], while some multi-time process with interventions on the
+particle alone lies at distance ≥ ε⋆ from every classical-memory model? Points to
+settle first: with the maximally mixed control, Φ_t equals the static mixture of
+U_0 and U_1 to order t²; deviations at order Ω²t³ exclude Markovian telegraph
+noise but not renewal processes; compute the order-t⁴ obstruction on the
+chain/star pair; audit the literature on witnesses of quantum versus classical
+two-level fluctuators and on dimension-bounded quantum memory (Taranto et al.).

@@ -18,7 +18,7 @@ function loadApp(relative) {
   if (cache.has(filename)) return cache.get(filename).exports;
   let source = fs.readFileSync(filename, "utf8");
   if (relative === "app/page.js") {
-    source += "\nexport const testViews = { Home, CategoryView, SharpView, ImprovedView, ClaimedSolvedView, ProblemView, ReviewView, NotFound, truncate };";
+    source += "\nexport const testViews = { Home, CategoryView, SharpView, ImprovedView, ClaimedSolvedView, ProblemView, ReviewView, NewProblemsView, NotFound, truncate };";
   }
   const { code } = transformSync(source, {
     filename,
@@ -258,6 +258,38 @@ test("home, all categories, filtered lists, policy and missing-page views render
   for (const p of ARCHIVED_PROBLEMS) assert.ok(policy.includes(`#p/${p.id}`), p.id);
   assert.ok(policy.includes("Research watchlist"));
   assert.ok(render(views.ProblemView, { id: "missing" }).includes("Not found"));
+  // Home: two entry boxes and the compact legend.
+  assert.ok(home.includes("Known open problems") && home.includes('href="#new-problems"'));
+  assert.ok(home.includes("Zero entries are Solved"));
+  assert.ok(!home.includes("Evidence matters"));
+  // New-problems page: proposals render, link only to existing entries, are not counted.
+  const { PROPOSALS, SECONDARY_PROPOSALS, PROPOSAL_COUNT, NEW_RESULTS } = loadApp("app/data/proposals.js");
+  const newProblems = render(views.NewProblemsView);
+  assert.ok(newProblems.includes("New problems suggested by AI") && newProblems.includes("not counted"));
+  assert.ok(!newProblems.includes("katex-error"), "proposals: math rendering error");
+  assert.equal(PROPOSAL_COUNT, PROPOSALS.reduce((n, g) => n + g.items.length, 0));
+  const keys = new Set();
+  for (const group of PROPOSALS) {
+    assert.ok(CATEGORIES.some((c) => c.slug === group.cat), `proposals: unknown category ${group.cat}`);
+    for (const it of group.items) {
+      assert.ok(!keys.has(it.key), `duplicate proposal key ${it.key}`); keys.add(it.key);
+      assert.ok(HORIZONS[it.horizon], `${it.key}: horizon`);
+      assert.ok(it.statement.length > 40 && it.why.length > 40, `${it.key}: incomplete`);
+      for (const id of it.extends) assert.ok(getProblem(id), `${it.key}: extends unknown ${id}`);
+      assert.ok(newProblems.includes(it.title.replace(/&/g, "&amp;")) || newProblems.includes(it.key), `${it.key}: not rendered`);
+    }
+  }
+  for (const it of SECONDARY_PROPOSALS) {
+    assert.ok(!keys.has(it.key), `duplicate proposal key ${it.key}`); keys.add(it.key);
+    for (const id of it.extends) assert.ok(getProblem(id), `${it.key}: extends unknown ${id}`);
+  }
+  for (const it of NEW_RESULTS) {
+    assert.ok(!keys.has(it.key), `duplicate proposal key ${it.key}`); keys.add(it.key);
+    for (const id of it.extends) assert.ok(getProblem(id), `${it.key}: related unknown ${id}`);
+    assert.ok(newProblems.includes(it.key) && newProblems.includes("Proof sketch") && newProblems.includes("What remains open"), `${it.key}: not rendered`);
+  }
+  for (const match of newProblems.matchAll(/href="#p\/([^"<>]+)"/g)) assert.ok(getProblem(match[1]), `proposals: broken link ${match[1]}`);
+  assert.ok(newProblems.includes(`${PROBLEMS.length} active entries`), "proposals page keeps the catalogue count unchanged");
   assert.ok(render(views.CategoryView, { slug: "missing" }).includes("Not found"));
 });
 

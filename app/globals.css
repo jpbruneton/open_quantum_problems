@@ -313,3 +313,45 @@ td.stmt .katex { font-size: 1em; }
 @media (max-width: 380px) {
   .stat { flex: 1 1 100%; }
 }
+
+/* Two entry boxes (home) */
+.two-boxes { display: grid; grid-template-columns: 2fr 1fr; gap: 14px; margin: 0 0 20px; }
+.box {
+  display: block; color: var(--text); text-decoration: none;
+  background: var(--panel); border: 1px solid var(--border);
+  border-radius: 14px; padding: 18px 20px;
+}
+.box-kicker { font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted-2); margin-bottom: 6px; }
+.box h2 { margin: 0 0 6px; font-size: 20px; }
+.box p { margin: 0 0 14px; color: var(--muted); font-size: 14px; }
+.box-current .stats { margin-bottom: 14px; }
+.box-new { border-left: 3px solid var(--accent-2); transition: transform .15s, border-color .15s; }
+.box-new:hover { transform: translateY(-2px); border-color: var(--accent-2); text-decoration: none; background: var(--panel-2); }
+.box-cta { color: var(--accent-2); font-weight: 700; font-size: 14px; }
+.review-note ul { margin: 8px 0 8px 18px; padding: 0; }
+.review-note li { margin: 3px 0; }
+.legend-block { max-width: 920px; margin: 20px 0 26px; padding: 12px 14px; border-left: 3px solid var(--border); color: var(--muted); font-size: 13.5px; line-height: 1.55; }
+.legend-block p { margin: 0 0 8px; }
+.legend-block p:last-child { margin-bottom: 0; }
+.legend-block .item { white-space: nowrap; }
+.legend-block b { color: var(--text); }
+
+/* New-problems page */
+.proposal-nav { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 22px; }
+.proposal-nav a { font-size: 13px; padding: 5px 11px; border: 1px solid var(--border); border-radius: 999px; background: var(--panel); color: var(--text); }
+.proposal-group h3 { margin: 30px 0 10px; font-size: 20px; }
+.proposal { border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; margin: 0 0 14px; background: var(--panel); }
+.proposal h4 { margin: 8px 0 8px; font-size: 16.5px; }
+.proposal .statement { margin: 8px 0 10px; }
+.proposal-key { font-weight: 700; font-size: 12.5px; color: var(--muted-2); letter-spacing: .06em; }
+.proposal-extends { font-size: 12.5px; color: var(--muted); }
+.proposal-meta { font-size: 13px; color: var(--muted); margin: 4px 0; }
+.proposal-caveat { color: var(--claimed-solved); }
+
+@media (max-width: 760px) {
+  .two-boxes { grid-template-columns: 1fr; }
+  .legend-block .item { white-space: normal; }
+}
+
+.proposal-result { border-left: 3px solid var(--claimed-solved); }
+.nav-results { border-color: var(--claimed-solved) !important; }

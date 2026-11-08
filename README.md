@@ -14,6 +14,11 @@ https://openquantumproblems.com/
 
 ### Timeline
 
+**8 November 2026 — new problems suggested by AI**
+
+- Added a second page, [New problems suggested by AI](https://openquantumproblems.com/#new-problems): 46 candidate successor questions opened by the 2026 claimed resolutions and recorded progress, plus 24 secondary leads, each with statement, horizon, baseline and reported AI use, and a "New results" section holding one proof sketch (exponential cost of conditionally independent witnesses under a conservation law) reached while assessing an externally proposed conjecture. They are not catalogue entries, carry no status and are not counted. Sources, verification marks and caveats are in the [proposal report](docs/reviews/2026-11-08-new-problems-proposal.md), which also lists twelve status findings for the next literature update.
+- The homepage now opens with two boxes (known open problems, new problems suggested by AI), a two-line latest update and a single compact horizon/status legend stating that zero entries are Solved because no claimed resolution has been independently verified or fully machine-checked.
+
 **8 November 2026 — November literature and OpenAI follow-ups**
 
 - Screened 3,281 arXiv records (quant-ph, math-ph, cond-mat.str-el, hep-th, cs.CC; submitted 14 October to 5 November, overlapping the 26 October update), the OpenAI Math Release update of 29 October, and related announcements. See the [dated literature report](docs/reviews/2026-11-08-literature-update.md).
