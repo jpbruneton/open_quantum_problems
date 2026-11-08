@@ -9,5 +9,18 @@ npm-debug.log*
 .vercel
 .env*
 
-# Private research notes (not published for now)
-docs/research/
+# Local working material: TODOs, reviews, research notes, and scratch notes
+/todo/
+/todos/
+/review/
+/reviews/
+/research/
+/notes/
+/docs/todo/
+/docs/todos/
+/docs/review/
+/docs/reviews/
+/docs/research/
+/docs/notes/
+/TODO*
+/REVIEW*
