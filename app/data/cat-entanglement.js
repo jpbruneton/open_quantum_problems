@@ -31,7 +31,7 @@ NPT bound entanglement would have major consequences for activation and the nona
   { id: "E2", cat: "entanglement", horizon: "sharp", status: "improved",
     archive: { kind: "merged", targets: ["E1"], reason: "The Werner-state problem is the canonical reduction of NPT bound entanglement, not an independent conjecture. Its benchmark and source history remain here." },
     relations: [{ id: "E1", type: "parent" }],
-    evidence: [{ kind: "preprint", summary: "Three July manuscripts claim full two-copy Werner nondistillability in the one-copy-undistillable range; the general three-copy and all-copy questions remain unresolved.", url: "https://arxiv.org/abs/2607.21367v2", date: "2026-07-27", version: "v2" }],
+    evidence: [{ kind: "preprint", role: "progress", summary: "Three July 2026 manuscripts claim full two-copy Werner nondistillability in the one-copy-undistillable range; the general three-copy and all-copy questions remain unresolved.", url: "https://arxiv.org/abs/2607.21367v2", date: "2026-07-27", version: "v2" }],
     provenance: [
       { summary: "Fu, Gao and Park's v2 reports language/LaTeX assistance and proof-development ideas arising from GPT-5.5 and GPT-5.6 Sol; the authors state that they independently examined and verified the arguments.", url: "https://arxiv.org/html/2607.21367v2", version: "v2" },
       { summary: "Bharti, Gajjala and Haug report initial proofs generated with ChatGPT 5.6 Sol and subsequently verified, reconstructed and revised by the authors.", url: "https://arxiv.org/abs/2607.24479" },
@@ -39,15 +39,13 @@ NPT bound entanglement would have major consequences for activation and the nona
     ],
     title: "Distillability of NPT Werner states",
     statement: r`Benchmark retained under E1: for $\rho_\alpha=(I+\alpha F)/(d^2+\alpha d)$ with $d\geq3$ and $-1/2\leq\alpha<-1/d$, decide whether some $n$ and Schmidt-rank-two $|\psi\rangle$ satisfy $\langle\psi|(\rho_\alpha^{T_B})^{\otimes n}|\psi\rangle<0$.`,
-    context: r`This is the concrete reduction of E1, retained as an archival benchmark rather than counted as a separate active conjecture. Distillability is equivalent to the existence of a Schmidt-rank-two vector with negative expectation against a finite tensor power of the partial transpose.
+    definition: r`**Werner-state distillability** is the concrete reduction of E1, kept here as an archived benchmark rather than a separate active conjecture. A state is distillable exactly when some Schmidt-rank-two vector has negative expectation against a finite tensor power of its partial transpose. For the Werner state $\rho_\alpha=(I+\alpha F)/(d^2+\alpha d)$, with $F$ the swap operator, the state is NPT for $\alpha<-1/d$ and one-copy distillable exactly for $\alpha<-1/2$; the intervening range requires uniform control over tensor powers.
 
-Here $F$ is the swap operator. The Werner state is NPT for $\alpha<-1/d$ and one-copy distillable exactly for $\alpha<-1/2$. The intervening range requires uniform control over tensor powers. Pankowski–Piani–Horodecki–Horodecki developed useful formulations and bounds; related approaches use positive maps, partial-trace inequalities and real algebraic geometry.
-
-Preprint progress (July 2026): Fu–Gao–Park, Bharti–Gajjala–Haug and Fraser–Huber–Pozsgay–Vona independently claim the full $n=2$ result: one-copy and two-copy distillability have the same threshold $\alpha<-1/2$. These manuscript claims use sharp partial-trace inequalities; this catalogue does not independently certify their proofs. The general problem for $n\geq3$ remains unresolved.
-
-Further preprint progress (submitted 31 July 2026): Wu and Zou analyze the three-copy Werner endpoint and claim nonnegativity for positive-semidefinite rank-two coefficient operators, the normal rank-two sector and specified nonnormal cases. This does not settle the full three-copy problem. The initial submission date precedes August despite the arXiv identifier.
-
-Resolving the all-copy Werner question resolves E1. Author attributions and version-specific disclosures are recorded in the references and provenance below.`,
+The Werner candidates were proposed by DiVincenzo, Shor, Smolin, Terhal and Thapliyal, PRA 61, 062312 (2000), [doi:10.1103/PhysRevA.61.062312](https://doi.org/10.1103/PhysRevA.61.062312).`,
+    progress: r`- Pankowski, Piani, Horodecki and Horodecki developed useful formulations and bounds ([arXiv:0711.2613](https://arxiv.org/abs/0711.2613)); related approaches use positive maps, partial-trace inequalities and real algebraic geometry.
+- In July 2026, Fu–Gao–Park ([arXiv:2607.21367](https://arxiv.org/abs/2607.21367v2)), Bharti–Gajjala–Haug ([arXiv:2607.24479](https://arxiv.org/abs/2607.24479)) and Fraser–Huber–Pozsgay–Vona ([arXiv:2607.24309](https://arxiv.org/abs/2607.24309)) independently claim the full $n=2$ result: one-copy and two-copy distillability have the same threshold $\alpha<-1/2$. The proofs use sharp partial-trace inequalities and have not been independently certified.
+- Wu and Zou (submitted 31 July 2026) analyze the three-copy Werner endpoint and claim nonnegativity for positive-semidefinite rank-two coefficient operators, the normal rank-two sector and specified nonnormal cases ([arXiv:2608.02647](https://arxiv.org/abs/2608.02647)). This does not settle the full three-copy problem.`,
+    residual: r`The general problem for $n\geq3$ copies remains open. Resolving the all-copy Werner question resolves E1.`,
     refs: [
       { label: "Pankowski, Piani, Horodecki, Horodecki, 'A few steps more towards NPT bound entanglement', IEEE Trans. Inf. Theory 56 (2010)", url: "https://arxiv.org/abs/0711.2613" },
       { label: "DiVincenzo, Shor, Smolin, Terhal & Thapliyal, 'Evidence for bound entangled states with negative partial transpose', PRA 61, 062312 (2000)", url: "https://doi.org/10.1103/PhysRevA.61.062312" },
@@ -248,7 +246,7 @@ Nonadditivity of entanglement of formation and related channel quantities, made 
     relations: [{ id: "E9", type: "related" }],
     evidence: [
       { kind: "preprint", role: "claimed-solution", summary: "New von Neumann nonadditivity claim; Appendix D gives a counterexample to Lemma 2 of the earlier claimed proof. Independent assessment pending.", url: "https://arxiv.org/abs/2610.03630v1", date: "2026-10-02", version: "v1" },
-      { kind: "preprint", role: "progress", summary: "Earlier proof challenged: Baghali Khanian and Negari give a counterexample to its Lemma 2 in arXiv:2610.03630v1, Appendix D. Retained as a historical claim, not supporting evidence for the current resolution.", url: "https://arxiv.org/abs/2609.29539v1", date: "2026-08-25", version: "v1" },
+      { kind: "challenged", summary: "Earlier claimed proof of nonadditivity, challenged: Baghali Khanian and Negari give a counterexample to its Lemma 2 in arXiv:2610.03630v1, Appendix D. Retained as a historical claim, not supporting evidence for the current resolution.", url: "https://arxiv.org/abs/2609.29539v1", date: "2026-08-25", version: "v1" },
       { kind: "numerical", role: "progress", summary: "Werner-state calculations support nonadditivity but do not constitute a rigorously certified counterexample.", url: "https://arxiv.org/abs/1206.1307" }, { kind: "preprint", role: "progress", summary: "Rényi results for alpha below 1 and at least 2 do not settle ordinary entanglement of purification at alpha=1.", url: "https://arxiv.org/abs/2608.28897", date: "2026-08-28" }],
     provenance: [
       { summary: "Baghali Khanian and Negari report AI-assisted calculations and Lean formalization of canonical optimality and nonadditivity, with author checks of the theorem statements, axioms and assumptions. No model is named. The formalization was not rebuilt in this review.", url: "https://arxiv.org/html/2610.03630v1", version: "v1" },
@@ -402,11 +400,13 @@ Goyeneche, Alsina, Latorre, Riera and Życzkowski linked AME states to combinato
     relations: [{ id: "F7", type: "parent" }],
     title: "Entanglement of identical particles",
     statement: r`Operational special case retained under F7: with accessible mode algebras, superselection restrictions and allowed local operations fixed, compare the entanglement resources available in specified bosonic or fermionic tasks.`,
-    context: r`For distinguishable systems, entanglement is relative to a subsystem structure. Identical particles do not have physically labeled particle tensor factors in the same sense; antisymmetrization or symmetrization alone must not be mistaken for an operationally extractable resource.
+    definition: r`**Entanglement of identical particles.** For distinguishable systems, entanglement is relative to a subsystem structure. Identical particles do not have physically labeled particle tensor factors in the same sense, so antisymmetrization or symmetrization alone is not an operationally extractable resource.
 
-Several consistent frameworks already exist. Mode entanglement uses accessible mode algebras and may be restricted by particle-number superselection. Particle-based correlation measures answer other questions. Wiseman–Vaccaro and related work quantify resource restrictions in concrete tasks. Benatti–Floreanini–Franchini–Marzolino propose operational consistency criteria and argue that a mode-based approach satisfies them; the literature does not simply lack a framework.
-
-A unique universal definition independent of laboratories, observables and free operations is not the appropriate sharp target. The useful residual work is operational comparison under explicit assumptions. This entry is merged into F7's subsystem-structure programme while preserving the identical-particle history.`,
+Standard review: Benatti, Floreanini, Franchini and Marzolino, Physics Reports 878 (2020), [arXiv:2007.06253](https://arxiv.org/abs/2007.06253).`,
+    progress: r`- Several consistent frameworks already exist. Mode entanglement uses accessible mode algebras and may be restricted by particle-number superselection. Particle-based correlation measures answer other questions.
+- Wiseman–Vaccaro and related work quantify resource restrictions in concrete tasks ([arXiv:quant-ph/0210002](https://arxiv.org/abs/quant-ph/0210002)).
+- Benatti, Floreanini, Franchini and Marzolino propose operational consistency criteria and argue that a mode-based approach satisfies them; the literature does not simply lack a framework.`,
+    residual: r`A unique universal definition, independent of laboratories, observables and free operations, is not a meaningful sharp target. The remaining work is operational comparison under explicit assumptions, now part of F7's subsystem-structure programme.`,
     refs: [
       {"label":"Benatti et al., 'Entanglement in indistinguishable particle systems', Physics Reports 878 (2020)","url":"https://arxiv.org/abs/2007.06253"},
       { label: "Wiseman & Vaccaro, 'Entanglement of indistinguishable particles shared between two parties', PRL 91, 097902 (2003)", url: "https://arxiv.org/abs/quant-ph/0210002" },

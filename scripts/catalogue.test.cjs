@@ -148,7 +148,7 @@ test("targeted literature updates preserve untouched review dates and expose pen
     assert.ok(source && source.kind === "preprint" && source.url.startsWith("https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/"), `${id}: pinned OpenAI source`);
     assert.match(source.summary, /OpenAI GitHub manuscript|OpenAI/, id);
   }
-  assert.match(getProblem("M12").context, /does not assert exponential eigenfunction decay|explicitly does not assert exponential/);
+  assert.match(getProblem("M12").progress, /does not assert exponential eigenfunction decay|explicitly does not assert exponential/);
   assert.match(getProblem("M5").statement, /even length/);
   // 26 October 2026: the OpenAI verification package is recorded as numerical evidence pinned to its own commit, without a status change.
   const mubPackage = getProblem("N2").evidence.find((e) => e.url.includes("verification/saved-run/VERIFY.md"));
@@ -168,7 +168,7 @@ test("targeted literature updates preserve untouched review dates and expose pen
   assert.ok(getProblem("M5").evidence.some((e) => e.url.includes("2610.34330v2")), "M5: follow-up recorded");
   assert.equal(getProblem("QF1").status, "open", "an unpublished existence announcement without a mass gap must not move QF1");
   assert.match(getProblem("QF1").statement, /mass gap/);
-  assert.match(getProblem("QF1").context, /No manuscript was public/);
+  assert.match(getProblem("QF1").progress, /No manuscript was public/);
   const home = render(views.Home);
   assert.ok(home.includes(LITERATURE_UPDATE.label) && home.includes("Last update"));
 });

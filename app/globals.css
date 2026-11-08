@@ -252,6 +252,7 @@ td.stmt a { color: var(--text); }
 .ev-preprint, .ev-conjecture { color: #87550a; background: #a8661a10; }
 .ev-published { color: #2e6b4f; background: #2e7d5b10; }
 .ev-numerical { color: var(--incremental); background: #1d4e8910; }
+.ev-challenged { color: #a0521a; background: #a0521a12; }
 .ev-withdrawn { color: #9b2635; background: #9b263510; }
 .context, .statement, .evidence-list, .archive-list { overflow-wrap: anywhere; }
 .katex-display { overflow-x: auto; overflow-y: hidden; padding: 3px 0; }
