@@ -386,3 +386,4 @@ td.stmt a { color: var(--text); }
 .detail .context-list li { margin-bottom: 6px; }
 .detail .claim-block { border-left: 3px solid var(--claimed-solved); padding-left: 16px; }
 .detail .list-lead { margin: 0 0 4px; font-weight: 600; }
+.footer-author { color: var(--text); font-weight: 600; }
