@@ -18,7 +18,7 @@ function loadApp(relative) {
   if (cache.has(filename)) return cache.get(filename).exports;
   let source = fs.readFileSync(filename, "utf8");
   if (relative === "app/page.js") {
-    source += "\nexport const testViews = { Home, CategoryView, SharpView, ImprovedView, ClaimedSolvedView, ProblemView, ReviewView, NewProblemsView, NotFound, truncate };";
+    source += "\nexport const testViews = { Home, CategoryView, SharpView, ImprovedView, ClaimedSolvedView, ProblemView, NewProblemsView, NotFound, truncate };";
   }
   const { code } = transformSync(source, {
     filename,
@@ -170,17 +170,13 @@ test("targeted literature updates preserve untouched review dates and expose pen
   assert.match(getProblem("QF1").context, /No manuscript was public/);
   const home = render(views.Home);
   assert.ok(home.includes(LITERATURE_UPDATE.label) && home.includes("Last update"));
-  const policy = render(views.ReviewView);
-  for (const update of LITERATURE_UPDATES) assert.ok(policy.includes(update.reportUrl));
-  for (const id of ids) assert.ok(policy.includes(`#p/${id}`), `missing update link ${id}`);
 });
 
-test("correction log is published and linked from the review page", () => {
+test("correction log is published", () => {
   const { CORRECTION_LOG } = data;
   validUrl(CORRECTION_LOG.reportUrl, "correction log");
   assert.ok(CORRECTION_LOG.reportUrl.endsWith(`${CORRECTION_LOG.date}-correction-log.md`));
   assert.ok(fs.existsSync(path.join(root, "docs/reviews", `${CORRECTION_LOG.date}-correction-log.md`)), "missing correction log");
-  assert.ok(render(views.ReviewView).includes(CORRECTION_LOG.reportUrl));
 });
 
 test("priority scientific corrections retain the supporting sources", () => {
@@ -219,7 +215,7 @@ test("all mathematical expressions parse with KaTeX and have balanced delimiters
 test("every active and archived detail view renders with valid links and Astra & Opus 5.5 credit", () => {
   for (const p of ALL_PROBLEMS) {
     const html = render(views.ProblemView, { id: p.id });
-    assert.ok(html.includes("powered by Astra &amp; Opus 5.5"), p.id);
+    assert.ok(html.includes("Powered by Astra &amp; Opus 5.5"), p.id);
     assert.ok(!html.includes("katex-error"), `${p.id}: math rendering error`);
     assert.ok(!html.includes('href="undefined"'), `${p.id}: broken href`);
     for (const match of html.matchAll(/href="#p\/([^"<>]+)"/g)) assert.ok(getProblem(match[1]), `${p.id}: broken rendered link ${match[1]}`);
@@ -233,10 +229,10 @@ test("every active and archived detail view renders with valid links and Astra &
   }
 });
 
-test("home, all categories, filtered lists, policy and missing-page views render", () => {
+test("home, all categories, filtered lists and missing-page views render", () => {
   const home = render(views.Home);
   assert.ok(home.includes("124") && home.includes("Active entries"));
-  assert.ok(home.includes("#review") && home.includes("powered by Astra &amp; Opus 5.5"));
+  assert.ok(!home.includes("#review") && home.includes("Powered by Astra &amp; Opus 5.5"));
   assert.ok(home.includes('href="#improved"'));
   assert.ok(home.includes('href="#claimed-solved"'));
   assert.ok(home.includes('aria-label="See all 46 improved problems"'));
@@ -258,9 +254,6 @@ test("home, all categories, filtered lists, policy and missing-page views render
     assert.equal(improved.includes(`href="#p/${p.id}"`), !p.archive && p.status === "improved", `${p.id}: improved list membership`);
     assert.equal(claimedSolved.includes(`href="#p/${p.id}"`), !p.archive && p.status === "claimed-solved", `${p.id}: claimed-solved list membership`);
   }
-  const policy = render(views.ReviewView);
-  for (const p of ARCHIVED_PROBLEMS) assert.ok(policy.includes(`#p/${p.id}`), p.id);
-  assert.ok(policy.includes("Research watchlist"));
   assert.ok(render(views.ProblemView, { id: "missing" }).includes("Not found"));
   // Home: two entry boxes and the compact legend.
   assert.ok(home.includes("Known open problems") && home.includes('href="#new-problems"'));

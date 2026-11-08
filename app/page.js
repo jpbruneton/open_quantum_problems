@@ -6,12 +6,8 @@ import {
   CATEGORIES,
   PROBLEMS,
   ARCHIVED_PROBLEMS,
-  REVIEW,
   LITERATURE_UPDATE,
-  LITERATURE_UPDATES,
-  CORRECTION_LOG,
   EVIDENCE_KINDS,
-  WATCHLIST,
   HORIZONS,
   STATUSES,
   problemsByCat,
@@ -39,7 +35,6 @@ function useHashRoute() {
   if (parts[0] === "sharp") return { view: "sharp" };
   if (parts[0] === "improved") return { view: "improved" };
   if (parts[0] === "claimed-solved") return { view: "claimed-solved" };
-  if (parts[0] === "review") return { view: "review" };
   if (parts[0] === "new-problems") return { view: "new-problems" };
   if (parts[0] === "about") return { view: "about" };
   return { view: "home" };
@@ -80,7 +75,7 @@ function Header({ crumbs }) {
         </p>
         <div className="header-links">
         <a
-          className="gh-link"
+          className="gh-link gh-blue"
           href="https://github.com/jpbruneton/open_quantum_problems"
           target="_blank"
           rel="noreferrer"
@@ -96,8 +91,8 @@ function Header({ crumbs }) {
           </svg>
           <span>GitHub</span>
         </a>
-        <span className="gh-link powered-by">Powered by Astra &amp; Opus 5.5</span>
         <a className="gh-link about-link" href="#about">About &amp; similar projects</a>
+        <span className="powered-by">Powered by Astra &amp; Opus 5.5</span>
         </div>
         {crumbs && (
           <nav className="crumbs">
@@ -423,7 +418,7 @@ function ProblemView({ id }) {
             {p.archive ? <span className="badge">{p.archive.kind === "merged" ? "Merged entry" : "Background"}</span> : <StatusBadge s={p.status} />}
           </div>
           <h2>{p.title}</h2>
-          <p className="review-meta">Literature reviewed {p.reviewedAt} · <a href="#review">Scope &amp; verification limits</a></p>
+          <p className="review-meta">Literature reviewed {p.reviewedAt}</p>
 
           {p.archive && (
             <aside className="archive-note" aria-label="Catalogue disposition">
@@ -543,78 +538,7 @@ function ProblemView({ id }) {
   );
 }
 
-// ---------- review policy and non-counted background ----------
-function ReviewView() {
-  return (
-    <>
-      <Header crumbs={[{ label: "Catalogue review" }]} />
-      <section className="body">
-        <div className="container detail">
-          <h2>Clear questions. Explicit evidence.</h2>
-          <p className="intro">Latest literature update · {LITERATURE_UPDATE.label}</p>
-          <p>A targeted check of arXiv manuscripts submitted up to 5 November 2026, of the OpenAI Math Release update of
-            29 October, and of related announcements updated {LITERATURE_UPDATE.ids.length} entries:
-            {" "}{LITERATURE_UPDATE.ids.map((id, i) => <span key={id}>{i > 0 ? ", " : ""}<a href={`#p/${id}`}>{id}</a></span>)}.
-            The remaining entries retain their earlier review dates. This is a literature and scope check, not an independent verification of the proofs.</p>
-          <p>No status changes. N2 (MUBs in dimension six) gains an independent second proof: a topological, interval-arithmetic
-            and partly Lean-formalized argument that also classifies every mutually unbiased triple. For M5 (Haldane gap), Tasaki's notes endorse the analytic argument while leaving its
-            numerics unchecked, and two papers build on the method. Both entries stay <a href="#claimed-solved">“Claimed solved”</a>
-            {" "}until peer review or an independent rerun of the certificates.</p>
-          <p>OpenAI announced on 26 October a 4D Yang–Mills (and QCD) existence proof. A committee chaired by David Gross holds the
-            proof and will release it after review. The announcement excludes the mass gap and no manuscript is public, so QF1 stays open.
-            Other progress: a classical-oracle separation of MA and StoqMA (A9), oracle classical verification beyond PH (A19),
-            further loss-based simulation of BosonSampling (A12), correlated catalysis (E11), continuity of distillable entanglement (E9),
-            all-to-all Gibbs-sampler mixing (O10), chiral-gauge follow-ups including Witten's (QF5) and
-            neural-network evidence for a Dirac spin liquid on the kagome lattice (B15). QIP 2027 decisions are due on 30 November.</p>
-          <p><a href={LITERATURE_UPDATE.reportUrl} target="_blank" rel="noreferrer">Read the dated update, source versions and remaining questions →</a></p>
-          <p>Earlier literature updates: {LITERATURE_UPDATES.slice(1).map((update, i) => <span key={update.date}>
-            {i > 0 ? " · " : ""}<a href={update.reportUrl} target="_blank" rel="noreferrer">{update.label}</a>
-          </span>)}</p>
-          <p className="intro">Source and consistency corrections · {CORRECTION_LOG.label}</p>
-          <p>A follow-up audit of every cited source corrected mislabelled or mislinked references,
-            a missing AI-use disclosure, stale version pointers, reader-facing editing notes, status and
-            horizon inconsistencies, and added missing baseline results. Problem statements, IDs and
-            review dates are unchanged.
-            {" "}<a href={CORRECTION_LOG.reportUrl} target="_blank" rel="noreferrer">Read the correction log →</a></p>
-          <p className="intro">Full catalogue review · {REVIEW.label}</p>
-          <p>All {REVIEW.reviewed} original entries were reassessed. The review recommended retaining 27, reframing 74, consolidating nine and moving one broad methods proposal to background. Twelve missing or underexposed questions have now been added or promoted.</p>
-          <p>There are currently {PROBLEMS.length} active entries across {CATEGORIES.length} areas. Stable IDs are never renumbered: the gaps in a category’s numbering reflect consolidation, not missing pages.</p>
-          <p><a href={REVIEW.reportUrl} target="_blank" rel="noreferrer">Read the complete audit and its four source-linked appendices →</a></p>
-
-          <h4>How to read a problem</h4>
-          <p>The statement specifies the target and assumptions. The context separates known results, solved subcases and the open residual. A sharp question has a definite resolution; an incremental target, programme or conceptual issue need not.</p>
-          <p>“Improved” records partial progress on the stated problem. “Claimed solved” records a full resolution awaiting independent assessment. “Solved” is reserved for an established resolution. A restricted theorem can resolve a subcase while the broader entry remains “Improved”. Computational hardness, uncomputability and failure of a particular method are different claims.</p>
-          <ul className="evidence-list">
-            {Object.entries(EVIDENCE_KINDS).map(([kind, info]) => <li key={kind}><span className={`badge ev-${kind}`}>{info.label}</span><p>{info.desc}</p></li>)}
-          </ul>
-          <p>AI-use disclosures are versioned provenance, separate from mathematical status. No disclosure is not evidence of no AI use. This literature audit is not an independent proof verification or an exhaustive review of every paper in quantum science; corrections remain welcome.</p>
-
-          <h4>Merged entries &amp; background</h4>
-          <p>These pages preserve their references and original links, but are excluded from active counts and the sharp-question list.</p>
-          <ul className="archive-list">
-            {ARCHIVED_PROBLEMS.map((p) => (
-              <li key={p.id}>
-                <a href={`#p/${p.id}`}>{p.id} · {p.title}</a>
-                <p>{p.archive.reason}</p>
-                {p.archive.targets.length > 0 && <span>Continue with {p.archive.targets.map((id, i) => <span key={id}>{i > 0 ? ", " : ""}<a href={`#p/${id}`}>{id}</a></span>)}</span>}
-              </li>
-            ))}
-          </ul>
-
-          <h4>Research watchlist — not yet counted as open problems</h4>
-          <p>These candidates need a further scoped status check before promotion. In particular, a deferred proof in a recent manuscript is not automatically an established open problem.</p>
-          <ul className="archive-list">
-            {WATCHLIST.map((item) => <li key={item.title}><b>{item.title}</b><p>{item.summary}</p><a href={item.url} target="_blank" rel="noreferrer">Starting source</a></li>)}
-          </ul>
-          <h4>Contributing an update</h4>
-          <p>Include the exact statement affected, its assumptions, a stable DOI or arXiv link and the version/date checked. Distinguish submission, revision, acceptance and publication dates. Explain what remains open and link related entries instead of counting the same advance repeatedly.</p>
-        </div>
-      </section>
-      <Footer />
-    </>
-  );
-}
-
+// ---------- new problems suggested by AI ----------
 function NewProblemsView() {
   const [open, setOpen] = useState(() => new Set());
   const toggle = (key) => setOpen((prev) => {
@@ -633,9 +557,9 @@ function NewProblemsView() {
       <section className="body">
         <div className="container">
           <h2>New problems suggested by AI</h2>
-          <p className="intro">Proposed {PROPOSALS_META.label} · {PROPOSAL_COUNT} priority candidates, {SECONDARY_PROPOSALS.length} secondary leads and {NEW_RESULTS.length} new result · not counted as catalogue entries</p>
-          <p>Each candidate is a successor question: what the 2026 claimed resolutions and recorded progress now leave open. They carry no status, are not counted in the catalogue, and await human selection. Horizons use the same badges as the catalogue; “extends” links the entries they grow out of. Click a row to show the motivation, baseline and caveats.</p>
-          <p>{PROPOSALS_META.method}</p>
+          <p className="intro">Proposed {PROPOSALS_META.label} · {PROPOSAL_COUNT} priority candidates, {SECONDARY_PROPOSALS.length} secondary leads and {NEW_RESULTS.length} new result</p>
+          <p>We prompted an AI model (Fable 5.1, high effort) to suggest new open problems, starting from the current catalogue and its own knowledge of the literature. It produced {PROPOSAL_COUNT} priority candidates, {SECONDARY_PROPOSALS.length} secondary leads and {NEW_RESULTS.length} small new result. These suggestions await human selection and critical review. They are not catalogue entries: they carry no status and are not counted.</p>
+          <p>Horizons use the same badges as the catalogue, and “extends” links each suggestion to the entries it grows out of. Click a row to see the motivation, baseline and caveats.</p>
           <p><a href={PROPOSALS_META.reportUrl} target="_blank" rel="noreferrer">Read the full proposal with verification marks and caveats →</a></p>
           <nav className="proposal-nav" aria-label="Areas">
             {PROPOSALS.map((g) => <a key={g.cat} href={`#new-problems`} onClick={(e) => scrollTo(e, g.cat)}>{g.name} ({g.items.length})</a>)}
@@ -737,14 +661,7 @@ function NotFound() {
 
 // ---------- about & similar projects ----------
 const AUTHOR_LINKS = [
-  { label: "Google Scholar", href: "https://scholar.google.com/citations?user=_IWT-z0AAAAJ&hl=en&oi=sra" },
-  { label: "LinkedIn", href: "https://www.linkedin.com/in/jean-philippe-bruneton-a5014822/" },
-  { label: "X", href: "https://x.com/_quantumphy_" },
   { label: "GitHub", href: "https://github.com/jpbruneton" },
-];
-const BOOKS = [
-  { title: "Quantum Mechanics — A Modern Introduction", href: "https://quantumlectures.org", desc: "A free, rigorous course on quantum mechanics, from foundational experiments to Hilbert spaces, the postulates and their applications, with worked exercises (English and French)." },
-  { title: "Thermodynamics — Elementary and Advanced", href: "https://learnthermo.org", desc: "A free course from the foundational principles to differential geometry, non-equilibrium and quantum thermodynamics, with a library of worked exercises (French, English and more)." },
 ];
 const SIMILAR_PROJECTS = [
   { name: "QIQCOP Zoo", href: "https://qiqc-op.com/", desc: "Quantum Information and Quantum Computation Open Problem Zoo: about 220 audited problems in quantum information, computation, communication, cryptography and error correction, marked Solved or Unsolved, with a public JSON API (source on GitHub: Naixu-Guo/quantum-open-problems). Entries shared with this catalogue are cross-referenced on each problem page." },
@@ -762,16 +679,10 @@ function AboutView() {
       <section className="body">
         <div className="container detail">
           <h2>About</h2>
-          <p>This catalogue is maintained by <b>Jean-Philippe Bruneton</b>, a physicist at Université Paris Cité, France. His research interests include the laws of gravitation, quantum mechanics and its foundations, and symbolic regression as a machine-learning task. The catalogue is written and reviewed with AI assistance (Astra and Claude Opus 5.5); every update is documented in a dated report, and corrections are welcome through GitHub.</p>
+          <p>This catalogue is maintained by <b>Jean-Philippe Bruneton</b>, a physicist at Université Paris Cité, France.</p>
           <div className="about-links">
             {AUTHOR_LINKS.map((l) => <a key={l.label} href={l.href} target="_blank" rel="noreferrer">{l.label}</a>)}
           </div>
-          <h3>Course books by the same author</h3>
-          <ul className="similar-list">
-            {BOOKS.map((b) => (
-              <li key={b.href}><h4><a href={b.href} target="_blank" rel="noreferrer">{b.title}</a></h4><p>{b.desc}</p></li>
-            ))}
-          </ul>
           <h3>Similar projects</h3>
           <p>Other catalogues of open problems, in quantum physics or aimed at AI systems. This catalogue differs by its breadth (spectral theory, many-body physics, QFT, foundations, open systems and undecidability as well as quantum information), by its separate “Claimed solved” status for announced resolutions, and by recording authors' AI-use disclosures.</p>
           <ul className="similar-list">
@@ -779,7 +690,6 @@ function AboutView() {
               <li key={s.href}><h4><a href={s.href} target="_blank" rel="noreferrer">{s.name}</a></h4><p>{s.desc}</p></li>
             ))}
           </ul>
-          <p><a href="#review">Review &amp; evidence policy →</a></p>
         </div>
       </section>
       <Footer />
@@ -793,12 +703,10 @@ function Footer() {
       <div className="container">
         <span>Open Problems in Quantum Mechanics for AI Agents · {PROBLEMS.length} active entries · LaTeX rendered with KaTeX.</span>
         <div className="footer-meta">
-          <a href="#review">Evidence policy &amp; catalogue review</a>
           <span className="footer-resources">
             <a href="https://quantumlectures.org/en">Quantum Lectures</a>
-            <a className="footer-resource-secondary" href="https://learnthermo.org/">LearnThermo</a>
+            <a href="https://learnthermo.org/">LearnThermo</a>
           </span>
-          <span className="astra-credit">powered by Astra &amp; Opus 5.5</span>
         </div>
       </div>
     </footer>
@@ -843,7 +751,6 @@ export default function Page() {
   if (route.view === "sharp") return <SharpView />;
   if (route.view === "improved") return <ImprovedView />;
   if (route.view === "claimed-solved") return <ClaimedSolvedView />;
-  if (route.view === "review") return <ReviewView />;
   if (route.view === "new-problems") return <NewProblemsView />;
   if (route.view === "about") return <AboutView />;
   return <Home />;
