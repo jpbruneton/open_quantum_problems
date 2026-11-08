@@ -178,15 +178,16 @@ Totals after these additions: 146 active entries, 53 Improved, 20 Claimed solved
 | 1 Maximal ionization | M1 extended to molecules (statement, definition, residual); still Claimed solved on the OpenAI molecular theorem. |
 | 2 Convexity of N ↦ E(V,N) | New entry M15 (open). |
 | 3 Isomerization without dissociation | New entry M16 (open). |
-| 4–5 Jellium symmetry breaking and the BCC lattice | New entry B19 (open); replaces the corresponding watchlist item. |
+| 4–5 Jellium symmetry breaking and the BCC lattice | New entry B19 (open); replaces the corresponding watchlist item. The BCC target requires a complete periodic/diffraction characterization up to Euclidean motions, not merely a subset of compatible peaks. |
 | 6 Tools for the phase diagram | Context in B19, not a separate entry. |
 
-**Five open problems in quantum information (PRX Quantum 3, 010101 (2022)).** Four were already covered (N1, N2, E1). The fifth, single-copy saturability of the multiparameter quantum Cramér–Rao bound, becomes N19 (incremental, Improved).
+**Five open problems in quantum information (PRX Quantum 3, 010101 (2022)).** Four were already covered (N1, N2, E1). The fifth, single-copy saturability of the multiparameter quantum Cramér–Rao bound, becomes N19 (sharp, Claimed solved).
 - Nurdin's 2024 conditions were withdrawn for general POVMs by the published corrections.
-- The 2026 characterizations by Yang, Imai and Pezzè are existential.
-- What remains open is a criterion that can be computed from the state and its derivatives.
+- Yang, Imai and Pezzè, arXiv:2601.21801v1, claim a general necessary-and-sufficient geometric criterion and numerical algorithms that construct a saturating POVM. This is recorded as a pending resolution of the original measurement-level question, not merely as progress.
+- Equality of the classical and quantum Fisher matrices does not by itself prove that one observed outcome admits an exactly locally unbiased estimator attaining covariance $F_Q^{-1}$. The entry now keeps that estimator-level question separate.
+- Independent assessment, scalable certified algorithms and a simpler closed-form commutator criterion remain useful successor questions; the last is not substituted for the original PRX problem.
 
-Totals after these changes: 150 active entries, 55 Improved, 21 Claimed solved and zero Solved.
+Totals after these changes: 150 active entries, 54 Improved, 22 Claimed solved and zero Solved.
 
 ## Validation
 

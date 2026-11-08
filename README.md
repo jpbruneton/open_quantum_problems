@@ -32,8 +32,15 @@ Open problems that are already posed in the literature, from long-standing conje
   - *improved*: partial progress is recorded;
   - *claimed solved*: a full resolution has been announced but not independently assessed.
 
-  No entry is marked *solved*: none of the claimed resolutions has yet been independently verified or fully machine-checked.
-- **Cross-references.** Entries shared with the [QIQCOP Zoo](https://qiqc-op.com/) or the [IQOQI Vienna list of open quantum problems](https://oqp.iqoqi.oeaw.ac.at/) link to them under the title.
+  At present 74 entries are open, 55 improved and 21 claimed solved. No entry is marked *solved*: the catalogue retains these resolutions as claims pending independent assessment of their proofs.
+- **Lean verified** (gold badge): the main theorem of a claimed solution, or of a progress item, is formalized in Lean according to its authors. The Lean builds are not rerun by the maintainer, and a formal proof does not replace refereeing of the definitions it formalizes. Four entries carry the badge.
+- **Cross-references.** Links under each title point to the same question or related subproblems in the [QIQCOP Zoo](https://qiqc-op.com/) and the [IQOQI Vienna list of open quantum problems](https://oqp.iqoqi.oeaw.ac.at/); scope notes distinguish related tasks where needed. Where Google DeepMind's [Formal Conjectures](https://github.com/google-deepmind/formal-conjectures) has a Lean statement of the problem, it is linked too.
+- **Sources of problems.** Besides the literature itself, the catalogue has been checked against:
+  - every open problem of the IQOQI Vienna list;
+  - the five problems of Horodecki et al., [PRX Quantum 3, 010101 (2022)](https://doi.org/10.1103/PRXQuantum.3.010101);
+  - Lewin's six problems on Coulomb systems, [C. R. Physique 26 (2025)](https://doi.org/10.5802/crphys.249).
+
+  Problems that were not added, and why, are listed in the dated reports.
 
 ## 2. New problems suggested by AI
 
@@ -48,10 +55,13 @@ Questions that are not in the literature yet. They are not part of the catalogue
 
 The catalogue is updated through dated literature reviews: arXiv sweeps, announcements, and the authors' own open-questions sections. Each review is recorded in [`docs/reviews/`](docs/reviews/) with its sources, scope and exclusions. The comparison with similar catalogues is in [`docs/comparisons/`](docs/comparisons/). The reviews are AI-assisted (see the "Powered by" credit on the site) and curated by the maintainer.
 
+On **8 November 2026**, a separate AI-assisted scientific description review covered all 150 active entries across ten thematic reports, including the fit between each claimed resolution and its stated problem. It checked formulations and compared selected primary-source statements, without checking proofs, searching for solutions or repeating the link audit. The review and its correction log are retained as private working documents; corrections were applied to 44 entries. B13 was reclassified as *improved*: the cited announcements cover bounded radial potentials and hard spheres, rather than the full interaction class in the reference problem. This was a documentary review, not a certification of the cited results.
+
 Policies applied throughout:
 
 - A claimed resolution stays **Claimed solved**, never Solved, until it has been independently assessed. Unpublished announcements are mentioned in the text but are not counted as evidence.
 - Conditional results keep their assumptions, and a result for a subcase or another variant is recorded as progress, not as a solution.
+- Corrections restore the problem and result descriptions supported by the cited literature; they do not introduce new conjectures or narrow a problem merely to match a claimed solution.
 - AI-use disclosures are reported as the authors state them. A missing disclosure is not evidence that no AI was used, and AI use is not evidence for or against correctness.
 - Sources are linked by verified arXiv IDs, DOIs or publisher URLs, with submission, revision and publication dates kept distinct.
 
@@ -61,7 +71,7 @@ Corrections, new results, missing references and new problems are all welcome: o
 
 ### Data layout
 
-The source of truth is `app/data/cat-*.js`, aggregated by `app/data/problems.js`. Do not renumber existing IDs or reuse an archived ID. `main.tex` is a historical manuscript, not an export of the current site.
+The source of truth is `app/data/cat-*.js`, aggregated by `app/data/problems.js`. Do not renumber existing IDs or reuse an archived ID.
 
 - `statement`: the model, assumptions, quantifiers and success criterion.
 - `definition`, `progress`, `claim`, `residual`: the page sections, written as `String.raw` templates. Paragraphs are separated by blank lines; lines starting with `- ` form lists; `**bold**` and `[label](https://…)` are supported outside math.
@@ -71,10 +81,11 @@ The source of truth is `app/data/cat-*.js`, aggregated by `app/data/problems.js`
   - `role` is one of `claimed-solution`, `claim-input` or `progress`.
   - Only progress dated before the earliest claimed solution is listed under "Previous progress".
 - `provenance`: `{ summary, url, version? }` for author-reported AI use.
+- `lean`: on an entry, `{ url, note }` when the main theorem of its claimed solution is formalized in Lean according to the authors; on an evidence item, `lean: true`. Partial formalizations do not get the flag.
 - `relations`: `{ id, type }`, where `type` is `parent`, `benchmark`, `reduction` or `related`.
 - `archive`: `{ kind: "merged" | "background", targets, reason }`. Archived pages stay addressable but are not counted.
-- `reviewedAt` and `LITERATURE_UPDATES` (in `problems.js`) record which update last touched each entry.
-- Links to other catalogues live in `app/data/crossrefs.js`. The AI-suggested problems and their reviews live in `app/data/proposals.js`.
+- `reviewedAt` and `LITERATURE_UPDATES` (in `problems.js`) record the latest literature update for each entry. Documentary corrections are recorded separately in the dated correction logs; `CORRECTION_LOG` points to the latest published one and does not reset these review dates.
+- Links to other catalogues live in `app/data/crossrefs.js`. The AI-suggested problems and their review verdicts (`assessment`) live in `app/data/proposals.js`.
 
 ### Development
 
@@ -107,7 +118,8 @@ To cite a single entry, link its page, for example `https://openquantumproblems.
 
 - [Quantum Information and Quantum Computation Open Problem Zoo (QIQCOP Zoo)](https://qiqc-op.com/)
 - [IQOQI Vienna: Open Quantum Problems](https://oqp.iqoqi.oeaw.ac.at/)
+- [Google DeepMind: Formal Conjectures](https://github.com/google-deepmind/formal-conjectures), Lean statements of open conjectures, including the IQOQI problems
 
 ## Maintainer
 
-Jean-Philippe Bruneton, Université Paris Cité.
+Jean-Philippe Bruneton, Université Paris Cité · X: [@_quantumphy_](https://x.com/_quantumphy_)

@@ -229,7 +229,7 @@ function Home() {
             <ul className="horizon-list">
               <li><span className="dot" style={{ background: "var(--improved)" }} /> <b>Improved</b>: partial progress.</li>
               <li><span className="dot" style={{ background: "var(--claimed-solved)" }} /> <a href="#claimed-solved"><b>Claimed solved</b></a>: full resolution awaiting independent assessment.</li>
-              <li><span className="dot" style={{ background: "var(--solved)" }} /> <b>Solved</b>: established. Zero entries are Solved: no claimed resolution has yet been independently verified or fully machine-checked.</li>
+              <li><span className="dot" style={{ background: "var(--solved)" }} /> <b>Solved</b>: established. Zero entries are Solved: the catalogue records these resolutions as claims pending independent assessment.</li>
             </ul>
           </div>
 

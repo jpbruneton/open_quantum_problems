@@ -276,7 +276,7 @@ Aaronson and Ambainis show it would imply that a $T$-query quantum algorithm's a
     claim: r`**David Turturean (PSI), [“A proof of the Aaronson–Ambainis conjecture”](https://github.com/physical-superintelligence/aaronson-ambainis/blob/main/paper/aaronson_ambainis_paper.pdf)** (paper and Lean 4 formalization on [GitHub](https://github.com/physical-superintelligence/aaronson-ambainis), announced by Physical Superintelligence on [6 November 2026](https://psi.inc/research/aaronson-ambainis/); not on arXiv).
 
 What it claims:
-- For every real polynomial $p$ of degree at most $d$ with $0\le p\le1$ on $\{0,1\}^N$ and variance at least $\varepsilon>0$, some variable has influence at least $\tfrac{8\sqrt{15}}{125\pi^4}\,\varepsilon^{5/2}/d^6\ge(\varepsilon/d)^7$. This is Aaronson and Ambainis's conjecture with explicit exponents.
+- For every real polynomial $p$ of degree at most $d$ with $0\le p\le1$ on $\{0,1\}^N$ and variance at least $\varepsilon>0$, some variable has influence at least $\tfrac{8\sqrt{15}}{125\pi^4}\,\varepsilon^{5/2}/d^6\ge(\varepsilon/d)^7$ in the original Aaronson–Ambainis normalization, $\mathbb E[(p(X)-p(X^{\oplus i}))^2]$. In the statement's normalization with a factor $1/4$, both lower bounds are divided by four. This still gives the conjecture's universal polynomial bound with explicit exponents.
 - A Lean 4 formalization (Mathlib) whose top-level statement, defined in a file that imports only Mathlib, is the conjecture in Aaronson and Ambainis's normalisation.
 - By Aaronson and Ambainis's reduction, the claim implies that quantum query algorithms can be classically simulated, up to polynomial overhead, on most uniformly random inputs.
 
@@ -589,7 +589,7 @@ The dihedral case is central because Regev reduced unique-SVP-type lattice probl
     progress: r`- Kuperberg's sieve solves the problem in time $2^{O(\sqrt{\log N})}$ ([arXiv:quant-ph/0302112](https://arxiv.org/abs/quant-ph/0302112)), and Regev gave a polynomial-space variant ([arXiv:quant-ph/0406151](https://arxiv.org/abs/quant-ph/0406151)). Kuperberg's later collimation sieve improves the subexponential algorithm ([arXiv:1112.3333](https://arxiv.org/abs/1112.3333)).
 - Standard Fourier sampling with few coset states is insufficient, and no polynomial-time algorithm is known.
 - A polynomial-time algorithm for the dihedral coset problem claimed in August 2026 ([IACR ePrint 2026/1591](https://eprint.iacr.org/2026/1591), Simon) was refuted by Gupte, Ragavan and Zhandry ([IACR ePrint 2026/1693](https://eprint.iacr.org/2026/1693)). They prove that the algorithm cannot extract even the least-significant bit of the secret, and that the no-go covers a broad class of Regev-type templates.`,
-    residual: r`The sharp target is a polynomial-time algorithm in the standard oracle model, or a lower bound excluding it for a natural class of algorithms.`,
+    residual: r`The sharp target is whether a polynomial-time algorithm exists in the standard oracle model. A lower bound excluding a natural class of algorithms would count as progress, but would not exclude algorithms outside that class.`,
     evidence: [
       { kind: "preprint", role: "progress", summary: "Shows that the August 2026 ePrint 2026/1591 algorithm does not solve the dihedral coset problem, with a no-go for a broad class of similar algorithms.", url: "https://eprint.iacr.org/2026/1693", date: "2026-08-15" },
       { kind: "preprint", role: "progress", summary: "Kuperberg's collimation sieve: an improved subexponential-time algorithm; the general regime remains subexponential.", url: "https://arxiv.org/abs/1112.3333v1", date: "2011-12-14", version: "v1" },
@@ -614,7 +614,7 @@ Standard reference: Regev, “On lattices, learning with errors, random linear c
 - Chen, Liu and Zhandry solve LWE-like variants when samples are supplied as quantum states, outside the hard regime ([arXiv:2108.11015](https://arxiv.org/abs/2108.11015)).
 - Chen's 2024 claimed polynomial-time algorithm for certain LWE parameters was withdrawn after a bug was found ([IACR ePrint 2024/555](https://eprint.iacr.org/2024/555)).
 - Reductions to extrapolated dihedral coset problems connect LWE with A21, and a quasi-polynomial EDCP algorithm with many states does not transfer to standard LWE.`,
-    residual: r`The target is a polynomial-time quantum algorithm in the stated regime, or evidence such as a barrier for natural algorithm classes.`,
+    residual: r`The target is whether a polynomial-time quantum algorithm exists in the stated regime. A barrier for natural algorithm classes would be evidence and partial progress, not a negative answer for all quantum algorithms.`,
     evidence: [
       { kind: "preprint", role: "progress", summary: "Polynomial-time quantum algorithms for average-case lattice variants with quantum-state inputs; the standard hard regime is not reached.", url: "https://arxiv.org/abs/2108.11015v2", date: "2021-08-25", version: "v2" },
       { kind: "withdrawn", summary: "Claimed polynomial-time quantum algorithm for LWE with certain polynomial modulus-to-noise ratios; withdrawn by the author after a bug in Step 9.", url: "https://eprint.iacr.org/2024/555", date: "2024-04-10" },
@@ -659,8 +659,8 @@ Standard reference: Magniez, Santha and Szegedy, “Quantum algorithms for the t
 
 Standard reference: Bravyi, Smith and Smolin, “Trading classical and quantum computational resources”, PRX 6 (2016), [arXiv:1506.01396](https://arxiv.org/abs/1506.01396).`,
     progress: r`- The best upper bound is $O(2^{\alpha n})$ with $\alpha\approx0.396$ (Qassim, Pashayan and Gosset, [arXiv:2106.07740](https://arxiv.org/abs/2106.07740)), improving earlier constructions of Bravyi et al. ([arXiv:1808.00128](https://arxiv.org/abs/1808.00128)).
-- Unconditional exact-rank lower bounds are only linear, $\Omega(n)$ (Peleg, Shpilka and Volk, [arXiv:2106.03214](https://arxiv.org/abs/2106.03214); also Labib, and Lovitz–Steffan).
-- For approximate rank, Mehraban and Tahmasbi prove a quadratic lower bound up to polylogarithmic factors ([arXiv:2305.10277](https://arxiv.org/abs/2305.10277)).`,
+- Earlier unconditional exact-rank lower bounds reached $\Omega(n)$ (Peleg, Shpilka and Volk, [arXiv:2106.03214](https://arxiv.org/abs/2106.03214); also Labib, and Lovitz–Steffan).
+- For approximate rank, Mehraban and Tahmasbi prove a quadratic lower bound up to polylogarithmic factors in their stated approximation regimes ([arXiv:2305.10277](https://arxiv.org/abs/2305.10277)). This also lower-bounds the exact rank, since every exact decomposition is an admissible approximate one.`,
     residual: r`Any super-polynomial unconditional bound would be a major advance in circuit-complexity terms.`,
     evidence: [
       { kind: "preprint", role: "progress", summary: "Quadratic lower bound, up to polylogarithmic factors, on approximate stabilizer rank of magic-state tensor powers (STOC 2024).", url: "https://arxiv.org/abs/2305.10277v4", date: "2023-05-17", version: "v4" },
@@ -699,15 +699,15 @@ Standard reference: Aaronson, “Shadow tomography of quantum states”, STOC 20
   { id: "A26", cat: "complexity", horizon: "incremental",
     reviewedAt: "2026-11-08",
     title: "Approximating Quantum Max-Cut",
-    statement: r`For Quantum Max-Cut on a weighted graph, $H_G=\sum_{\{i,j\}\in E}w_{ij}\,\frac{1}{4}(I-X_iX_j-Y_iY_j-Z_iZ_j)$ (the antiferromagnetic Heisenberg model), determine the best ratio $\alpha^*$ such that a classical polynomial-time algorithm outputs a value within factor $\alpha^*$ of $\lambda_{\max}(H_G)$ on every graph. Separately: is ground-energy estimation for bipartite graphs to inverse-polynomial additive precision in $\mathsf{BPP}$?`,
-    definition: r`**Quantum Max-Cut** is the quantum analogue of Max-Cut, the antiferromagnetic Heisenberg model on a weighted graph, and the main testbed for approximation algorithms for local Hamiltonians. Its exact energy is QMA-complete, so the question is how well efficient classical algorithms can approximate it.
+    statement: r`For Quantum Max-Cut on a graph with nonnegative, finitely encoded weights, $H_G=\sum_{\{i,j\}\in E}w_{ij}\,\frac{1}{4}(I-X_iX_j-Y_iY_j-Z_iZ_j)$, determine the best ratio $\alpha^*$ such that a classical polynomial-time algorithm outputs a value within factor $\alpha^*$ of $\lambda_{\max}(H_G)$ on every graph. Separately: is estimation of $\lambda_{\max}(H_G)$ for bipartite graphs to inverse-polynomial additive precision in $\mathsf{BPP}$?`,
+    definition: r`**Quantum Max-Cut** is the quantum analogue of Max-Cut and a main testbed for approximation algorithms for local Hamiltonians. Maximizing the positive singlet-projector sum $H_G$ is equivalent to finding the ground energy of the antiferromagnetic Hamiltonian $H_{\mathrm{AF}}=-H_G$, up to an optional additive constant. The associated energy-threshold promise problem with an inverse-polynomial gap is QMA-complete on general graphs; this is not a claim about outputting an exact real-valued energy.
 
 Standard reference: Gharibian and Parekh, “Almost optimal classical approximation algorithms for a quantum generalization of Max-Cut”, APPROX 2019, [arXiv:1909.08846](https://arxiv.org/abs/1909.08846).`,
     progress: r`- Product-state rounding of an SDP gives $0.498$ (Gharibian and Parekh).
 - Entangled-state algorithms beat the product-state limit (Anshu, Gosset and Morenz, [arXiv:2003.14394](https://arxiv.org/abs/2003.14394)), followed by $0.582$ (King, [arXiv:2209.02589](https://arxiv.org/abs/2209.02589)), $0.595$ via matchings (Lee and Parekh, [arXiv:2401.03616](https://arxiv.org/abs/2401.03616)) and $0.603$ on general graphs, $0.614$ on triangle-free and $0.816$ on bipartite graphs (Gribling, Sinjorgo and Sotirov, [arXiv:2504.11120](https://arxiv.org/abs/2504.11120v1)).
 - On the hardness side, Hwang, Neeman, Parekh, Thompson and Wright show that beating about $0.956$ is Unique-Games-hard, assuming a vector-valued Borell conjecture ([arXiv:2111.01254](https://arxiv.org/abs/2111.01254)).
 - A June 2026 hybrid algorithm with a Rydberg annealer reports a conditional $0.651$ ([arXiv:2606.27224](https://arxiv.org/abs/2606.27224v1)).
-- For bipartite graphs the model is stoquastic. In July 2026, Rayudu and Takahashi ([arXiv:2607.10765](https://arxiv.org/abs/2607.10765v1)) and Bravyi, Gosset, Liu and Wong ([arXiv:2607.14401](https://arxiv.org/abs/2607.14401v1)) independently gave efficient quantum (BQP) algorithms for the ground energy via Lee–Yang spectral-gap bounds.`,
+- For bipartite graphs, the antiferromagnetic Hamiltonian $H_{\mathrm{AF}}$ is stoquastic after a local basis change. In July 2026, Rayudu and Takahashi ([arXiv:2607.10765](https://arxiv.org/abs/2607.10765v1)) and Bravyi, Gosset, Liu and Wong ([arXiv:2607.14401](https://arxiv.org/abs/2607.14401v1)) independently gave efficient quantum (BQP) algorithms for its ground energy via Lee–Yang spectral-gap bounds, equivalently for $\lambda_{\max}(H_G)$.`,
     residual: r`For bipartite graphs, whether a classical randomized algorithm suffices is open. Any improved ratio with proof, or tighter hardness, counts as progress; the full answer is the exact $\alpha^*$.`,
     evidence: [
       { kind: "preprint", role: "progress", summary: "Best proven classical ratios: 0.603 on general graphs, 0.614 on triangle-free and 0.816 on bipartite graphs.", url: "https://arxiv.org/abs/2504.11120v1", date: "2025-04-15", version: "v1" },
@@ -739,7 +739,7 @@ Standard reference: Gharibian and Parekh, “Almost optimal classical approximat
 
 Pseudorandom states and unitaries were introduced by Ji, Liu and Song, CRYPTO 2018, [arXiv:1711.00385](https://arxiv.org/abs/1711.00385).`,
     progress: r`- Approximate $t$-designs are known: random circuits of depth $O(nt^{5+o(1)})$ (Haferkamp, [arXiv:2203.16571](https://arxiv.org/abs/2203.16571); Brandão, Harrow and Horodecki, [arXiv:1208.0692](https://arxiv.org/abs/1208.0692)) and multiplicative-error designs with $\tilde O(n^2t)$ gates (Chen, Haah, Haferkamp, Liu, Metger and Tan, [arXiv:2406.07478](https://arxiv.org/abs/2406.07478)).
-- PRUs exist assuming one-way functions (Ma and Huang, [arXiv:2410.10116](https://arxiv.org/abs/2410.10116)), and specially assembled constructions reach very low depth (Schuster, Haferkamp and Huang, [arXiv:2407.07754](https://arxiv.org/abs/2407.07754)).
+- PRUs exist assuming quantum-secure one-way functions (Ma and Huang, [arXiv:2410.10116](https://arxiv.org/abs/2410.10116)), and specially assembled constructions reach very low depth (Schuster, Haferkamp and Huang, [arXiv:2407.07754](https://arxiv.org/abs/2407.07754)).
 - Dujmovic (2026) shows that moment matching does not generically imply pseudorandomness ([IACR ePrint 2026/2303](https://eprint.iacr.org/2026/2303)).
 - Raza, Eisert and Fefferman (September 2026) study a distinctness threshold for PRUs and still describe the random-circuit conjecture as open ([arXiv:2609.03065](https://arxiv.org/abs/2609.03065v1)).`,
     residual: r`The gap is the order of quantifiers. A design for every fixed $t$ does not imply that one fixed polynomial-size ensemble defeats every polynomial-time adversary.
@@ -767,7 +767,7 @@ A proof would make the simplest physical model of chaos a cryptographic object; 
   { id: "A28", cat: "complexity", horizon: "sharp",
     reviewedAt: "2026-11-08",
     title: "Learning Hamiltonian structure from Gibbs states at any temperature",
-    statement: r`Fix locality $k$, degree $g$ and inverse temperature $\beta>0$. For an $n$-qubit Hamiltonian $H=\sum_P a_PP$ with $|a_P|\le1$, Pauli terms of weight at most $k$, each qubit in at most $g$ terms, and unknown support, can the coefficients be learned to accuracy $\varepsilon$ from $\mathrm{poly}(n,1/\varepsilon)$ copies of $e^{-\beta H}/\mathrm{Tr}\,e^{-\beta H}$ in polynomial classical time, for every fixed $\beta$?`,
+    statement: r`Fix locality $k$, degree $g$ and inverse temperature $\beta>0$. For an $n$-qubit Hamiltonian $H=\sum_{P\ne I}a_PP$ with real coefficients $|a_P|\le1$, nonidentity Pauli terms of weight at most $k$, each qubit in at most $g$ terms, and unknown support, can the coefficients be learned to accuracy $\varepsilon$ from $\mathrm{poly}(n,1/\varepsilon)$ copies of $e^{-\beta H}/\mathrm{Tr}\,e^{-\beta H}$ in polynomial classical time, for every fixed $\beta$? The identity coefficient is excluded because a constant energy shift leaves the Gibbs state unchanged.`,
     definition: r`**Hamiltonian learning from Gibbs states** asks to recover the coefficients of a local Hamiltonian from copies of its thermal state; in structure learning the set of interaction terms is unknown. This is the basic inverse problem of quantum many-body physics and a benchmark for quantum learning theory.
 
 Anshu, Arunachalam, Kuwahara and Soleimanifar gave sample-efficient learning, Nat. Phys. 17 (2021), [arXiv:2004.07266](https://arxiv.org/abs/2004.07266).`,
@@ -801,7 +801,7 @@ Standard reference: Aaronson and Christiano, “Quantum money from hidden subspa
     progress: r`- Aaronson and Christiano gave a scheme relative to an oracle and a hidden-subspace candidate; many concrete candidates (knots, lattices, group actions) were later broken.
 - Zhandry introduced quantum lightning, which implies public-key money, from non-collapsing hash functions ([arXiv:1711.02276](https://arxiv.org/abs/1711.02276)), and constructions from indistinguishability obfuscation followed.
 - In 2025, Shmueli and Zhandry built one-shot signatures, which imply public-key quantum money, from post-quantum iO plus LWE, or unconditionally relative to a classical oracle ([arXiv:2507.12456](https://arxiv.org/abs/2507.12456)); Huang and Vaikuntanathan simplified the scheme ([arXiv:2510.10899](https://arxiv.org/abs/2510.10899v2)). These rely on iO, whose post-quantum security is itself not based on a standard assumption.`,
-    residual: r`A scheme from LWE alone, or another standard assumption, would resolve the question; so would a black-box separation.`,
+    residual: r`A scheme from LWE alone, or another standard assumption, would resolve the construction question. A black-box separation would establish a barrier for the specified class of reductions, without excluding non-black-box constructions.`,
     evidence: [
       { kind: "preprint", role: "progress", summary: "One-shot signatures, implying public-key quantum money, from post-quantum iO plus LWE, or relative to a classical oracle (CRYPTO 2025); not from LWE alone.", url: "https://arxiv.org/abs/2507.12456v1", date: "2025-07-16", version: "v1" },
       { kind: "preprint", role: "progress", summary: "Simpler one-shot signature scheme with perfect correctness; plain-model security still uses obfuscation.", url: "https://arxiv.org/abs/2510.10899v2", date: "2025-10-13", version: "v2" },

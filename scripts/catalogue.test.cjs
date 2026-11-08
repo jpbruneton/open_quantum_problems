@@ -134,7 +134,7 @@ test("targeted literature updates preserve untouched review dates and expose pen
     assert.equal(getProblem(id).status, id === "C5" ? "improved" : "claimed-solved", `${id}: distinguish partial progress from a full pending claim`);
     assert.ok(getProblem(id).evidence.some((e) => e.kind === "preprint" && e.url.includes(source)), id);
   }
-  assert.deepEqual(PROBLEMS.filter((p) => p.status === "claimed-solved").map((p) => p.id).sort(), ["A11", "A20", "A30", "A31", "A4", "A7", "B1", "B13", "B17", "B18", "C12", "C4", "E10", "E16", "E18", "M1", "M2", "M5", "N1", "N16", "N2"]);
+  assert.deepEqual(PROBLEMS.filter((p) => p.status === "claimed-solved").map((p) => p.id).sort(), ["A11", "A20", "A30", "A31", "A4", "A7", "B1", "B17", "B18", "C12", "C4", "E10", "E16", "E18", "M1", "M2", "M5", "N1", "N16", "N19", "N2"]);
   assert.equal(getProblem("C10").status, "improved", "a solved subcase must not close the broader programme");
   assert.equal(PROBLEMS.filter((p) => p.status === "solved").length, 0, "pending claims must not count as established solutions");
   const earlierE10 = getProblem("E10").evidence.find((e) => e.url.includes("2609.29539v1"));
@@ -142,7 +142,7 @@ test("targeted literature updates preserve untouched review dates and expose pen
   assert.match(earlierE10.summary, /historical claim/);
   for (const id of ["A3", "B5", "E5", "N3"]) assert.equal(getProblem(id).status, "improved", id);
   // Partial OpenAI claims must not be promoted beyond their stated scope.
-  for (const id of ["M12", "B2", "B14", "N4", "QF5"]) assert.equal(getProblem(id).status, "improved", id);
+  for (const id of ["M12", "B2", "B13", "B14", "N4", "QF5"]) assert.equal(getProblem(id).status, "improved", id);
   for (const [id, path] of [["M1", "Uniform-excess-charge"], ["M2", "Absolutely-Continuous-Spectrum"], ["M5", "The-periodic-spin-one-Haldane-gap"], ["B1", "A-two-dimensional-area-law"], ["B13", "A-density-uniform-condensate-bound"], ["E16", "Entanglement-with-zero-distillable-secret-key"], ["C12", "Entanglement-with-zero-distillable-secret-key"], ["N2", "The-maximum-number-of-mutually-unbiased-bases"]]) {
     const source = getProblem(id).evidence.find((e) => e.url.includes(path));
     assert.ok(source && source.kind === "preprint" && source.url.startsWith("https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/"), `${id}: pinned OpenAI source`);
@@ -169,6 +169,11 @@ test("targeted literature updates preserve untouched review dates and expose pen
   assert.equal(getProblem("QF1").status, "open", "an unpublished existence announcement without a mass gap must not move QF1");
   assert.match(getProblem("QF1").statement, /mass gap/);
   assert.match(getProblem("QF1").progress, /No manuscript was public/);
+  assert.equal(getProblem("N19").status, "claimed-solved", "the general geometric criterion is a pending resolution claim");
+  assert.ok(getProblem("N19").evidence.some((e) => e.role === "claimed-solution" && e.url.includes("2601.21801v1")));
+  assert.doesNotMatch(getProblem("N19").statement, /locally unbiased estimator then attains it/);
+  assert.match(getProblem("N19").statement, /measurement level/);
+  assert.match(getProblem("B19").statement, /BCC periodic order/);
   const home = render(views.Home);
   assert.ok(home.includes(LITERATURE_UPDATE.label) && home.includes("Last update"));
 });

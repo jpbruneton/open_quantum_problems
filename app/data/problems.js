@@ -97,7 +97,8 @@ export const LITERATURE_UPDATES = [{
 
 export const LITERATURE_UPDATE = LITERATURE_UPDATES[0];
 
-// Source and consistency corrections. They do not change entry review dates.
+// Latest published correction report; private reviews do not change this link.
+// Source and consistency corrections do not change entry review dates.
 export const CORRECTION_LOG = {
   date: "2026-09-28",
   label: "28 September 2026",
