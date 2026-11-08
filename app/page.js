@@ -419,7 +419,21 @@ function ProblemView({ id }) {
             {p.archive ? <span className="badge">{p.archive.kind === "merged" ? "Merged entry" : "Background"}</span> : <StatusBadge s={p.status} />}
           </div>
           <h2>{p.title}</h2>
-          <p className="review-meta">Literature reviewed {p.reviewedAt}</p>
+          <div className="xref-block">
+            <h4>In other catalogues</h4>
+            {p.catalogues.length > 0 ? (
+              <ul className="refs xref-list">
+                {p.catalogues.map((x, i) => (
+                  <li key={i}>
+                    <b>{x.catalogue}</b>: <a href={x.url} target="_blank" rel="noreferrer">{x.title}</a>
+                    {x.status ? ` (${x.status})` : ""}{x.note ? <> — <MathText text={x.note} /></> : null}
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="review-meta">Not found in other catalogues.</p>
+            )}
+          </div>
 
           {p.archive && (
             <aside className="archive-note" aria-label="Catalogue disposition">
@@ -475,20 +489,6 @@ function ProblemView({ id }) {
               </li>
             ))}
           </ul>
-
-          {p.catalogues.length > 0 && (
-            <>
-              <h4>In other catalogues</h4>
-              <ul className="refs xref-list">
-                {p.catalogues.map((x, i) => (
-                  <li key={i}>
-                    <b>{x.catalogue}</b>: <a href={x.url} target="_blank" rel="noreferrer">{x.title}</a>
-                    {x.status ? ` (${x.status})` : ""}{x.note ? <> — <MathText text={x.note} /></> : null}
-                  </li>
-                ))}
-              </ul>
-            </>
-          )}
 
           {p.provenance.length > 0 && (
             <>

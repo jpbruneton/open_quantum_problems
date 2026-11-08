@@ -378,3 +378,5 @@ td.stmt a { color: var(--text); }
   .stat { flex: 1 1 100%; }
 }
 .detail .similar-list { padding: 0; }
+.detail .xref-block h4 { margin-top: 4px; }
+.detail .xref-block { margin-bottom: 4px; }
