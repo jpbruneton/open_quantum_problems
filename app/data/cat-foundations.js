@@ -306,4 +306,66 @@ The conjecture was spelled out by Tony Short, among others, in 2012. It is [IQOQ
       { label: "Umekawa, Hokkyo, Arai & Takasan, 'Entanglement Generation Beyond Quantum Theory: From Product States to Popescu-Rohrlich Boxes' (2026 preprint, v1)", url: "https://arxiv.org/abs/2608.02403v1" },
       { label: "IQOQI Vienna Open Quantum Problems, problem 42: 'Reversible dynamics on composite systems'", url: "https://oqp.iqoqi.oeaw.ac.at/reversible-dynamics-on-composite-systems/" },
     ] },
+  // Added 9 November 2026 (promoted from the new-problems page).
+  { id: "F13", cat: "foundations", horizon: "sharp",
+    reviewedAt: "2026-11-09",
+    relations: [{ id: "F1", type: "parent" }, { id: "QF11", type: "related" }, { id: "F14", type: "related" }],
+    title: "Relativistic collapse model for interacting fields",
+    statement: r`Is there a collapse dynamics that is (i) Lorentz covariant, (ii) non-signalling, (iii) with finite energy production per unit volume and time, (iv) defined for an interacting quantum field theory, and (v) reducing in the non-relativistic limit to a translation-covariant model of GRW/CSL type? If not, strengthen the known no-go theorems beyond their assumptions (Minkowski space, vacuum stability, state-independent operators).`,
+    definition: r`**Spontaneous collapse models** (GRW, CSL, Diósi–Penrose) add a stochastic, nonlinear term to the Schrödinger equation that localizes macroscopic superpositions, one precise answer to the measurement problem (F1). They are formulated non-relativistically; a relativistic version for interacting fields has been sought since Pearle's “Toward a relativistic theory of statevector reduction” (1990) and Ghirardi, Grassi, Pearle, Found. Phys. 20 (1990) 1271. Review: Bassi et al., Rev. Mod. Phys. 85, 471 (2013), [arXiv:1204.4325](https://arxiv.org/abs/1204.4325).`,
+    progress: r`- Tumulka (2004): a relativistic GRW model for non-interacting particles. Bedingham's models use a non-standard mediating field; Pearle's satisfy only some of the requirements.
+- No-go results: Myrvold (2017), a Markovian relativistic collapse theory needs non-standard degrees of freedom; Jones, Guaita and Bassi (2019), an obstruction to a relativistic GRW for particles.
+- Muciño, Okon, Sudarsky and Wiedemann (August 2026) argue that the conceptual objections are surmountable and list the remaining technical obstacles: energy divergence, covariant smearing, non-signalling.
+- Piccione (October 2026) proposes a flash-based framework, foliation independent and non-signalling (by microscopic parameter independence), with a "dynamical vacuum subtraction" for vacuum stability; the resulting map is not positive on all standard density operators, and the new space of physical states is left uncharacterized. Finite energy production is shown for a free massive scalar only, so (iv) remains open.
+- Experiments constrain the non-relativistic limit: XENONnT (2025) excludes the original CSL parameter values for the first time, so (v) should target a still-viable variant (coloured or dissipative CSL, large $r_C$).`,
+    residual: r`A construction meeting (i)–(v), or a no-go theorem with listed assumptions. Related: F1 (measurement problem), F14 (nonlinear dynamics), QF11 (causal local operations).`,
+    evidence: [
+      { kind: "preprint", role: "progress", summary: "Argues that relativistic objective collapse is viable, rebuts the conceptual objections and lists the remaining technical challenges.", url: "https://arxiv.org/abs/2608.26474v1", date: "2026-08-27", version: "v1" },
+      { kind: "preprint", role: "progress", summary: "Flash-based relativistic collapse framework: foliation independent, non-signalling, with dynamical vacuum subtraction; finite energy production shown for a free massive scalar only.", url: "https://arxiv.org/abs/2610.10980v1", date: "2026-10-07", version: "v1" },
+    ],
+    refs: [
+      { label: "Bassi, Lochan, Satin, Singh, Ulbricht, Rev. Mod. Phys. 85, 471 (2013)", url: "https://arxiv.org/abs/1204.4325" },
+      { label: "Tumulka, relativistic GRW model (2004)", url: "https://arxiv.org/abs/quant-ph/0406094" },
+      { label: "Myrvold, no-go for relativistic collapse (2017)", url: "https://arxiv.org/abs/1709.03219" },
+      { label: "Jones, Guaita, Bassi (2019)", url: "https://arxiv.org/abs/1907.02370" },
+      { label: "Muciño, Okon, Sudarsky, Wiedemann, 'Demystifying relativistic quantum collapse' (2026)", url: "https://arxiv.org/abs/2608.26474" },
+      { label: "XENONnT collaboration, bounds on collapse models (2025)", url: "https://arxiv.org/abs/2506.05507" },
+      { label: "Piccione, 'A flash-based relativistic collapse model for quantum fields' (2026)", url: "https://arxiv.org/abs/2610.10980" },
+    ] },
+
+  { id: "F14", cat: "foundations", horizon: "sharp",
+    reviewedAt: "2026-11-09",
+    relations: [{ id: "F13", type: "related" }, { id: "F12", type: "related" }],
+    title: "Causal nonlinear quantum mechanics",
+    statement: r`Is there a nonlinear extension of quantum mechanics, defined on composite systems and mixed states, that is non-signalling, compatible with a measurement rule, and not equivalent to linear quantum mechanics with an environment? If not, prove a rigidity theorem.`,
+    definition: r`**Nonlinear quantum mechanics** replaces the linear Schrödinger equation by a nonlinear one. Weinberg proposed a precise framework (1989); Gisin and Polchinski showed that such theories generically allow superluminal signalling once combined with entanglement and measurement. Kaplan and Rajendran revived the question with a causal framework: “A causal framework for non-linear quantum mechanics”, PRD 105, 055002 (2022), [arXiv:2106.10576](https://arxiv.org/abs/2106.10576).`,
+    progress: r`- Weinberg (1989): the proposal. Gisin (1990) and Polchinski (1991): signalling, unless the theory is restricted.
+- Under non-signalling and the Born rule on final records, a stochastic modification is equivalent to a linear, completely positive mean dynamics (exposition in Bassi et al. 2013); this is the rigidity a theorem would extend.
+- Kaplan and Rajendran (2021): a causal framework in which the nonlinearity depends on the state on the past light cone.`,
+    residual: r`The precise class of composite and mixed-state extensions must be fixed before the question is a single statement. Related: F12 (reversible dynamics beyond quantum theory), F13.`,
+    evidence: [
+      { kind: "published", role: "progress", summary: "A causal framework for nonlinear quantum mechanics in which the nonlinearity depends on the state on the past light cone; PRD 105, 055002 (2022).", url: "https://arxiv.org/abs/2106.10576v2", date: "2022-03-09", version: "v2" },
+    ],
+    refs: [
+      { label: "Kaplan, Rajendran, 'A causal framework for non-linear quantum mechanics', PRD 105, 055002 (2022)", url: "https://arxiv.org/abs/2106.10576" },
+      { label: "Bassi, Lochan, Satin, Singh, Ulbricht, Rev. Mod. Phys. 85, 471 (2013)", url: "https://arxiv.org/abs/1204.4325" },
+    ] },
+
+  { id: "F15", cat: "foundations", horizon: "sharp",
+    reviewedAt: "2026-11-09",
+    relations: [{ id: "F3", type: "related" }, { id: "F12", type: "related" }],
+    title: "A reasonable theory with higher-order interference",
+    statement: r`Sorkin's hierarchy of interference terms stops at order two in quantum mechanics ($I_3=0$). Is there a generalized probabilistic theory satisfying explicit physical principles (purification, causality, local composition, stability under composition) with $I_3\neq0$? Equivalently: which minimal principles force $I_3=0$, and does any model with $I_3\neq0$ compose consistently?`,
+    definition: r`**Higher-order interference**: in quantum theory, the interference pattern of three or more paths is determined by the pairwise patterns, because probabilities are quadratic in amplitudes. Sorkin (1994) defined the hierarchy of interference terms $I_n$; a non-zero $I_3$ would signal a departure from the Born rule. Three-slit experiments bound it (Sinha et al., Science 2010, [arXiv:0811.2068](https://arxiv.org/abs/0811.2068)).`,
+    progress: r`- Lee and Selby (2017) exclude higher-order interference under causality, purification and symmetry principles.
+- Barnum, Müller and Ududec (2014) characterize quantum theory by the absence of third-order interference together with other postulates; Dakić, Paterek and Brukner (2014) propose “density cubes” as a candidate theory with $I_3\neq0$.
+- Experimental bounds must account for non-classical paths (Sawant et al. 2014).`,
+    residual: r`The minimal set of principles is not known, nor whether a model with $I_3\neq0$ composes consistently. Related: F3 (operational reconstruction), F12.`,
+    evidence: [
+      { kind: "published", role: "progress", summary: "Higher-order interference excluded under causality, purification and symmetry principles; Found. Phys. (2017).", url: "https://arxiv.org/abs/1510.03860v2", date: "2017-01-25", version: "v2" },
+    ],
+    refs: [
+      { label: "Lee, Selby, 'Higher-order interference in extensions of quantum theory', Found. Phys. (2017)", url: "https://arxiv.org/abs/1510.03860" },
+      { label: "Sinha et al., three-slit test of Born's rule, Science (2010)", url: "https://arxiv.org/abs/0811.2068" },
+    ] },
 ];

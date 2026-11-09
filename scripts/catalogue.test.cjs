@@ -56,8 +56,8 @@ function validUrl(value, label) {
 }
 
 test("all 111 original IDs remain addressable; 12 additions and 10 archives are counted correctly", () => {
-  assert.equal(ALL_PROBLEMS.length, 160);
-  assert.equal(PROBLEMS.length, 150);
+  assert.equal(ALL_PROBLEMS.length, 191);
+  assert.equal(PROBLEMS.length, 181);
   assert.equal(ARCHIVED_PROBLEMS.length, 10);
   assert.equal(new Set(ALL_PROBLEMS.map((p) => p.id)).size, ALL_PROBLEMS.length);
   for (const [prefix, n] of Object.entries(originalSeries)) {
@@ -174,6 +174,12 @@ test("targeted literature updates preserve untouched review dates and expose pen
   assert.doesNotMatch(getProblem("N19").statement, /locally unbiased estimator then attains it/);
   assert.match(getProblem("N19").statement, /measurement level/);
   assert.match(getProblem("B19").statement, /BCC periodic order/);
+  // 9 November 2026: four new areas and 31 promoted entries.
+  for (const slug of ["semiclassical-gravity", "holography", "quantum-gravity", "renormalization"]) assert.ok(problemsByCat(slug).length >= 4, slug);
+  assert.equal(LITERATURE_UPDATE.date, "2026-11-09");
+  assert.equal(LITERATURE_UPDATE.ids.length, 31);
+  for (const id of ["H1", "G1", "QG3"]) assert.equal(getProblem(id).status, "open", `${id}: an unassessed or partial claim must not move the status`);
+  assert.match(getProblem("H1").residual, /would not settle \(a\)/);
   const home = render(views.Home);
   assert.ok(home.includes(LITERATURE_UPDATE.label) && home.includes("Last update"));
 });
@@ -237,11 +243,11 @@ test("every active and archived detail view renders with valid links and Astra &
 
 test("home, all categories, filtered lists and missing-page views render", () => {
   const home = render(views.Home);
-  assert.ok(home.includes("150") && home.includes("Active entries"));
+  assert.ok(home.includes("181") && home.includes("Active entries"));
   assert.ok(!home.includes("#review") && home.includes("Powered by Astra &amp; Opus 5.5"));
   assert.ok(home.includes('href="#improved"'));
   assert.ok(home.includes('href="#claimed-solved"'));
-  assert.ok(home.includes('aria-label="See all 55 improved problems"'));
+  assert.ok(home.includes('aria-label="See all 57 improved problems"'));
   assert.ok(home.includes('aria-label="See all 21 claimed solved problems"'));
   assert.ok(home.includes('href="https://quantumlectures.org/en"'));
   assert.ok(home.includes('href="https://learnthermo.org/"'));
@@ -266,20 +272,14 @@ test("home, all categories, filtered lists and missing-page views render", () =>
   assert.ok(home.includes("Zero entries are Solved"));
   assert.ok(!home.includes("Evidence matters"));
   // New-problems page: proposals render, link only to existing entries, are not counted.
-  const { PROPOSALS, SECONDARY_PROPOSALS, PROPOSAL_COUNT, NEW_AREA_COUNT, PROPOSAL_THEMES, PROPOSALS_META_NEW_AREAS, proposalBatch } = loadApp("app/data/proposals.js");
+  const { PROPOSALS, SECONDARY_PROPOSALS, PROPOSAL_COUNT, PROPOSALS_META_NEW_AREAS, proposalBatch } = loadApp("app/data/proposals.js");
   const newProblems = render(views.NewProblemsView);
   assert.ok(newProblems.includes("New problems suggested by AI") && newProblems.includes("not counted"));
   assert.ok(!newProblems.includes("katex-error"), "proposals: math rendering error");
   assert.equal(PROPOSAL_COUNT, PROPOSALS.reduce((n, g) => n + g.items.length, 0));
   const keys = new Set();
   for (const group of PROPOSALS) {
-    if (group.theme) {
-      const theme = PROPOSAL_THEMES.find((t) => t.slug === group.cat);
-      assert.ok(theme && theme.name === group.name, `proposals: unknown theme ${group.cat}`);
-      assert.ok(newProblems.includes(theme.blurb.replace(/&/g, "&amp;")), `proposals: theme blurb not rendered ${group.cat}`);
-    } else {
-      assert.ok(CATEGORIES.some((c) => c.slug === group.cat), `proposals: unknown category ${group.cat}`);
-    }
+    assert.ok(CATEGORIES.some((c) => c.slug === group.cat), `proposals: unknown category ${group.cat}`);
     for (const it of group.items) {
       assert.ok(!keys.has(it.key), `duplicate proposal key ${it.key}`); keys.add(it.key);
       assert.ok(HORIZONS[it.horizon], `${it.key}: horizon`);
@@ -288,19 +288,11 @@ test("home, all categories, filtered lists and missing-page views render", () =>
       assert.ok(newProblems.includes(it.title.replace(/&/g, "&amp;")) || newProblems.includes(it.key), `${it.key}: not rendered`);
     }
   }
-  // New-area themes: distinct from catalogue areas, each used exactly once, and the
-  // second batch links to its own report.
-  for (const t of PROPOSAL_THEMES) {
-    assert.ok(!CATEGORIES.some((c) => c.slug === t.slug || c.name === t.name), `theme ${t.slug} duplicates a catalogue area`);
-    assert.equal(PROPOSALS.filter((g) => g.cat === t.slug).length, 1, `theme ${t.slug} used once`);
-  }
-  assert.equal(NEW_AREA_COUNT, 38);
-  assert.equal(PROPOSAL_COUNT, 76);
-  assert.ok(newProblems.includes("Areas not yet in the catalogue"));
-  for (const group of PROPOSALS) for (const it of group.items) {
-    if (group.theme) assert.equal(proposalBatch(it), PROPOSALS_META_NEW_AREAS, `${it.key}: batch`);
-    if (it.batch) assert.ok(it.assessment && it.baseline, `${it.key}: second batch needs assessment and baseline`);
-  }
+  // 9 November 2026: well-known problems were promoted to the catalogue; six candidates remain.
+  assert.equal(PROPOSAL_COUNT, 44);
+  const secondBatch = PROPOSALS.flatMap((g) => g.items).filter((it) => proposalBatch(it) === PROPOSALS_META_NEW_AREAS).map((it) => it.key);
+  assert.deepEqual(secondBatch.sort(), ["P55", "P56", "P58", "P59", "P64", "P81"]);
+  for (const key of ["P47", "P57", "P75", "P84"]) assert.ok(!keys.has(key), `${key} was promoted and must not remain a proposal`);
   for (const it of SECONDARY_PROPOSALS) {
     assert.ok(!keys.has(it.key), `duplicate proposal key ${it.key}`); keys.add(it.key);
     for (const id of it.extends) assert.ok(getProblem(id), `${it.key}: extends unknown ${id}`);

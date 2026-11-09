@@ -1,4 +1,4 @@
-import { PROPOSAL_THEMES, NEW_AREA_PROPOSALS, NEW_AREAS_BATCH, AL1 } from "./proposals-new-areas";
+import { NEW_AREA_PROPOSALS, NEW_AREAS_BATCH } from "./proposals-new-areas";
 
 const r = String.raw;
 
@@ -13,16 +13,14 @@ export const PROPOSALS_META = {
   method: "The 113 active entries were read in full. Five parallel literature sweeps opened the resolving manuscripts (OpenAI Math Release at commit 4eaee87, their Lean scope notes, the October–November 2026 arXiv follow-ups, the KITP statement), extracted the authors' own open-questions sections and ran arXiv sweeps through 8 November 2026. Each candidate states what result opened it. Openness is asserted only when the resolving papers say so or no contrary source was found.",
 };
 
-// Second batch: problems in areas the catalogue does not cover yet (gravity, holography,
-// cosmology, renormalization group, collapse models). Items carry batch: NEW_AREAS_BATCH.
+// Second batch (9 November 2026): candidates in gravity and holography. Items carry
+// batch: NEW_AREAS_BATCH; their detail pages link to this batch's report.
 export const PROPOSALS_META_NEW_AREAS = {
   date: NEW_AREAS_BATCH,
   label: "9 November 2026",
   reportUrl: "https://github.com/jpbruneton/open_quantum_problems/blob/main/docs/reviews/2026-11-09-new-problems-new-areas.md",
-  method: "About fifty candidates in gravity, holography, cosmology, the renormalization group and collapse models were drafted with AI assistance, then triaged by a separate AI review for notoriety, openness, sharpness and bibliography. The candidates kept here are named problems posed in the arXiv literature, with no resolution found as of 9 November 2026.",
+  method: "About fifty candidates in gravity, holography, cosmology, the renormalization group and collapse models were drafted with AI assistance and triaged by a separate AI review. Well-known open problems among them became catalogue entries; the candidates kept here are new formulations or narrow sub-questions.",
 };
-
-export { PROPOSAL_THEMES };
 
 export function proposalBatch(it) {
   return it.batch === NEW_AREAS_BATCH ? PROPOSALS_META_NEW_AREAS : PROPOSALS_META;
@@ -259,7 +257,6 @@ export const PROPOSALS = [
       why: r`Section VI asks whether the three-bipartite and single-tripartite intermediate structures can be distinguished. The authors propose $P^{\rm CHSH=2\sqrt2}(a,b|x,y)\delta_{b=c=d}$ as a candidate witness, without proving its incompatibility with (a). Their Quantum Inflation construction has the same single-party operators and commutation rules for both DAGs. That observation is a limitation of the stated test, not a proof that the correlation sets differ. The structural question should be distinguished from the success or failure of this particular witness.`,
       baseline: r`Centeno–Wolfe, Distinguishing quantum causal scenarios with indistinguishable classical analogs: The significance of intermediate latents, PRA 112, 042206 (2025), arXiv:2412.10238v3, §VI, Fig. 8 and Eqs. (5)–(6).`,
       assessment: { verdict: "under-review", confidence: "low", summary: r`The question is posed in [Centeno–Wolfe, §VI](https://arxiv.org/html/2412.10238v3). Their displayed CHSH distribution is a proposed witness, not an established separation. This entry asks about the full correlation sets; its status remains under review.` } },
-    AL1,
   ]},
   ...NEW_AREA_PROPOSALS,
 ];
@@ -293,4 +290,3 @@ export const SECONDARY_PROPOSALS = [
 ];
 
 export const PROPOSAL_COUNT = PROPOSALS.reduce((n, g) => n + g.items.length, 0);
-export const NEW_AREA_COUNT = PROPOSALS.reduce((n, g) => n + g.items.filter((it) => it.batch === NEW_AREAS_BATCH).length, 0);
