@@ -15,7 +15,7 @@ import {
   getCategory,
   consolidatedInto,
 } from "./data/problems";
-import { PROPOSALS, SECONDARY_PROPOSALS, PROPOSALS_META, PROPOSAL_COUNT } from "./data/proposals";
+import { PROPOSALS, SECONDARY_PROPOSALS, PROPOSALS_META, PROPOSALS_META_NEW_AREAS, PROPOSAL_COUNT, NEW_AREA_COUNT, PROPOSAL_THEMES, proposalBatch } from "./data/proposals";
 
 // ---------- tiny hash router ----------
 function useHashRoute() {
@@ -202,7 +202,7 @@ function Home() {
             <a className="box box-new" href="#new-problems">
               <div className="box-kicker">New page</div>
               <h2>New problems suggested by AI</h2>
-              <p>{PROPOSAL_COUNT} candidate successor questions opened by the 2026 claimed resolutions and {SECONDARY_PROPOSALS.length} secondary leads. Not counted; not yet catalogue entries.</p>
+              <p>{PROPOSAL_COUNT} candidate questions: successors of the 2026 claimed resolutions, and {NEW_AREA_COUNT} problems in areas the catalogue does not cover yet (black holes, holography, entropy bounds, cosmology, renormalization group, collapse models). Plus {SECONDARY_PROPOSALS.length} secondary leads. Not counted; not yet catalogue entries.</p>
               <span className="box-cta">Browse the proposals <span aria-hidden="true">→</span></span>
             </a>
           </div>
@@ -667,7 +667,7 @@ function ProposalView({ pkey }) {
           {it.caveat && (<><h4>Caveats</h4><div className="context"><Paras text={it.caveat} /></div></>)}
           {it.ai && (<><h4>Reported AI use</h4><div className="context"><Paras text={it.ai} /></div></>)}
 
-          <p className="disclaimer">Suggested by AI on {PROPOSALS_META.label} ({it.catName}). Not a catalogue entry: no status, not counted, awaiting human selection and critical review. <a href={PROPOSALS_META.reportUrl} target="_blank" rel="noreferrer">Full proposal with verification marks →</a></p>
+          <p className="disclaimer">Suggested by AI on {proposalBatch(it).label} ({it.catName}). Not a catalogue entry: no status, not counted, awaiting human selection and critical review. <a href={proposalBatch(it).reportUrl} target="_blank" rel="noreferrer">Full proposal with verification marks →</a></p>
 
           <nav className="proposal-pager" aria-label="Other proposals">
             {prev ? <a href={`#np/${prev.key}`}>← {prev.key} · {prev.title}</a> : <span />}
@@ -692,18 +692,25 @@ function NewProblemsView() {
       <section className="body">
         <div className="container">
           <h2>New problems suggested by AI</h2>
-          <p className="intro">Proposed {PROPOSALS_META.label} · {PROPOSAL_COUNT} priority candidates and {SECONDARY_PROPOSALS.length} secondary leads</p>
-          <p>We prompted an AI model (Fable 5.1, high effort) to suggest new open problems, starting from the current catalogue and its own knowledge of the literature. It produced {PROPOSAL_COUNT} priority candidates and {SECONDARY_PROPOSALS.length} secondary leads. These suggestions await human selection and critical review. They are not catalogue entries: they carry no status and are not counted.</p>
+          <p className="intro">Proposed {PROPOSALS_META.label} and {PROPOSALS_META_NEW_AREAS.label} · {PROPOSAL_COUNT} priority candidates and {SECONDARY_PROPOSALS.length} secondary leads</p>
+          <p>We prompted an AI model (Fable 5.1, high effort) to suggest new open problems, starting from the current catalogue and its own knowledge of the literature. It produced {PROPOSAL_COUNT - NEW_AREA_COUNT} priority candidates and {SECONDARY_PROPOSALS.length} secondary leads ({PROPOSALS_META.label}). A second AI-assisted round ({PROPOSALS_META_NEW_AREAS.label}) looked beyond the catalogue's ten areas; {NEW_AREA_COUNT} of its candidates were kept, most of them in <a href="#new-problems" onClick={(e) => scrollTo(e, "new-areas")}>{PROPOSAL_THEMES.length} new areas</a>. These suggestions await human selection and critical review. They are not catalogue entries: they carry no status and are not counted.</p>
           <p>Horizons use the same badges as the catalogue, and “extends” links each suggestion to the entries it grows out of. Click a row to open the full page of a suggestion: motivation, baseline literature and caveats.</p>
-          <p>Each suggestion was then checked by a separate AI literature review (8 November 2026), which verified the cited sources and searched for prior answers. Its verdict is shown under the status: open and substantive, open but modest, or under review. These verdicts are not human-refereed.</p>
-          <p><a href={PROPOSALS_META.reportUrl} target="_blank" rel="noreferrer">Read the full proposal with verification marks and caveats →</a></p>
+          <p>Each suggestion was then checked by a separate AI literature review, which verified the cited sources and searched for prior answers. Its verdict is shown under the status: open and substantive, open but modest, or under review. These verdicts are not human-refereed.</p>
+          <p>Read the full proposals with verification marks and caveats: <a href={PROPOSALS_META.reportUrl} target="_blank" rel="noreferrer">{PROPOSALS_META.label} →</a> · <a href={PROPOSALS_META_NEW_AREAS.reportUrl} target="_blank" rel="noreferrer">{PROPOSALS_META_NEW_AREAS.label}, new areas →</a></p>
           <nav className="proposal-nav" aria-label="Areas">
             {PROPOSALS.map((g) => <a key={g.cat} href={`#new-problems`} onClick={(e) => scrollTo(e, g.cat)}>{g.name} ({g.items.length})</a>)}
             <a href="#new-problems" onClick={(e) => scrollTo(e, "secondary")}>Secondary leads ({SECONDARY_PROPOSALS.length})</a>
           </nav>
-          {PROPOSALS.map((g) => (
+          {PROPOSALS.map((g, gi) => (
             <section key={g.cat} id={`np-${g.cat}`} className="proposal-group">
-              <h3>{g.name}</h3>
+              {g.theme && !PROPOSALS[gi - 1]?.theme && (
+                <div id="np-new-areas" className="proposal-areas-intro">
+                  <h3>Areas not yet in the catalogue</h3>
+                  <p>The catalogue's ten areas do not cover gravity, cosmology or the renormalization group. The groups below collect the candidates of {PROPOSALS_META_NEW_AREAS.label} in those directions. They are proposal areas only: they become catalogue areas if entries are accepted.</p>
+                </div>
+              )}
+              <h3>{g.name}{g.theme && <span className="badge proposal-new-area" title="Area not yet in the catalogue">New area</span>}</h3>
+              {g.theme && <p className="proposal-blurb">{PROPOSAL_THEMES.find((t) => t.slug === g.cat)?.blurb}</p>}
               <div className="table-wrap">
                 <table>
                   <thead>
