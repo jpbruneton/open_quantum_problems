@@ -1,5 +1,13 @@
 # New problems in areas the catalogue does not cover — proposal (9 November 2026)
 
+> **Later the same day.** Most selected candidates are well-known open problems, so
+> 31 entries (from 32 candidates; P52 and P53 merged) were promoted to the catalogue in
+> four new areas (G, H, QG, R) and Foundations (F13–F15). Only P55, P56, P58, P59, P64
+> and P81 remain proposals, filed under the new catalogue areas. See
+> [2026-11-09-literature-update.md](2026-11-09-literature-update.md), which also corrects
+> three attributions below (arXiv:2308.14517 is Kay's review, arXiv:2112.04248 is by
+> Aizenman alone, arXiv:2310.19655 appeared in Class. Quantum Grav.).
+
 This report adds a second batch of candidates to the "New problems suggested by AI"
 page. The first batch (8 November 2026,
 [2026-11-08-new-problems-proposal.md](2026-11-08-new-problems-proposal.md)) asked what

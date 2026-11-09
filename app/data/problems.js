@@ -28,6 +28,10 @@ import { COMPLEXITY } from "./cat-complexity";
 import { UNDECIDABILITY } from "./cat-undecidability";
 import { OPENSYSTEMS } from "./cat-open-systems";
 import { FOUNDATIONS } from "./cat-foundations";
+import { SEMICLASSICAL_GRAVITY } from "./cat-semiclassical-gravity";
+import { HOLOGRAPHY } from "./cat-holography";
+import { QUANTUM_GRAVITY } from "./cat-quantum-gravity";
+import { RENORMALIZATION } from "./cat-renormalization";
 import { CROSSREFS } from "./crossrefs";
 
 export const CATEGORIES = [
@@ -51,6 +55,14 @@ export const CATEGORIES = [
     blurb: "Lindblad generators, dynamics learning, memory, thermal operations and Gibbs preparation." },
   { slug: "foundations", code: "F", name: "Quantum foundations & operational frameworks",
     blurb: "Measurement, reconstruction, subsystem structure, causal order and quantum reference frames." },
+  { slug: "semiclassical-gravity", code: "G", name: "Black holes & semiclassical gravity",
+    blurb: "Hawking radiation, Cauchy horizons, back-reaction, quantum focusing, energy conditions and the generalized second law." },
+  { slug: "holography", code: "H", name: "Holography & gravitational complexity",
+    blurb: "Pure AdS₃ gravity, AdS instability, and the complexity of black-hole interiors and of decoding Hawking radiation." },
+  { slug: "quantum-gravity", code: "QG", name: "Quantum gravity & cosmology",
+    blurb: "UV finiteness, S-matrix bootstrap, swampland conjectures, asymptotic safety, tests of quantum gravity, the no-boundary state and de Sitter." },
+  { slug: "renormalization", code: "R", name: "Renormalization group & critical phenomena",
+    blurb: "Irreversibility of RG flows, scale versus conformal invariance, gradient flows and the 3D Ising scaling limit." },
 ];
 
 export const REVIEW = {
@@ -64,6 +76,11 @@ export const REVIEW = {
 
 // A targeted literature update does not reset the full-review date of every entry.
 export const LITERATURE_UPDATES = [{
+  date: "2026-11-09",
+  label: "9 November 2026",
+  ids: ["G1", "G2", "G3", "G4", "G5", "G6", "G7", "G8", "G9", "G10", "H1", "H2", "H3", "H4", "H5", "H6", "QG1", "QG2", "QG3", "QG4", "QG5", "QG6", "QG7", "QG8", "R1", "R2", "R3", "R4", "F13", "F14", "F15"],
+  reportUrl: "https://github.com/jpbruneton/open_quantum_problems/blob/main/docs/reviews/2026-11-09-literature-update.md",
+}, {
   date: "2026-11-08",
   label: "8 November 2026",
   ids: ["A7", "A9", "A11", "A12", "A13", "A19", "A20", "A21", "A22", "A23", "A24", "A25", "B15", "C1", "C2", "C4", "C11", "C12", "C13", "E1", "E6", "E9", "E11", "E14", "E17", "E18", "F3", "F9", "M5", "M6", "N1", "N2", "N12", "N13", "N14", "O10", "QF1", "QF5", "N4", "A26", "A27", "A28", "A29", "A30", "A31", "B16", "B17", "B18", "E19", "N15", "N16", "N17", "N18", "E20", "E21", "E22", "A32", "A33", "M14", "F12", "M1", "M15", "M16", "B19", "N19"],
@@ -116,6 +133,10 @@ export const ALL_PROBLEMS = [
   ...UNDECIDABILITY,
   ...OPENSYSTEMS,
   ...FOUNDATIONS,
+  ...SEMICLASSICAL_GRAVITY,
+  ...HOLOGRAPHY,
+  ...QUANTUM_GRAVITY,
+  ...RENORMALIZATION,
 ].map((p) => ({
   status: "open",
   submissions: [],
