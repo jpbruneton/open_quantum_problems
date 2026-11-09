@@ -61,6 +61,39 @@ not linear, complexity growth) are partial results on the stated problems. H1 st
 non-chiral part (b). Easson's (G3), Xu's (G10) and Aziz–Howl's (QG6) claims are
 reported as context, not as resolutions.
 
+## Check of recent literature (September to November 2026)
+
+Before merging, every entry and remaining proposal was searched for papers from
+the last two months that improve or claim to solve it. Web search was used (the
+arXiv API and listing pages were not reachable), and each candidate found was
+opened on its arXiv page. No status changes.
+
+- **F13**: Piccione, arXiv:2610.10980 (7 October 2026), a flash-based relativistic
+  collapse framework, non-signalling and foliation independent, with finite energy
+  production shown only for a free massive scalar. Added to progress and evidence;
+  the interacting case (iv) is still open, so F13 stays Open.
+- **H3**: Li, arXiv:2609.17457 (15 September 2026), an $\Omega(T/\log T)$ bound for
+  random circuits, not for a fixed Hamiltonian. Added to progress; status
+  unchanged (Improved).
+- **H4**: Bhattacharya, Narde, Parrikar, Paul, arXiv:2608.12472 (12 August 2026),
+  python's lunch and stabilizer complexity, under a pseudorandomness assumption.
+  Added to progress; stays Open.
+- **P59** (proposal): Kibe and Roy, arXiv:2605.15272 (v1 May 2026, v3 12 October
+  2026), claim the Rényi QNEC for every integer $n\ge2$ in general local QFT, for
+  half-sided modular translations. Unassessed. If correct, it answers the integer
+  case of the proposal; the verdict is set to "Under review". Their
+  arXiv:2609.04016 (3 September 2026) is noted too.
+- Checked with nothing relevant that changes the status: G3 (arXiv:2611.09606 is
+  classical strong cosmic censorship for Kerr–Newman–de Sitter), G5
+  (arXiv:2604.01047, linearised problem around Minkowski only), QG8
+  (arXiv:2610.05957, one-loop and functional RG, not rigorous), QG5
+  (arXiv:2610.29717, a vertex computation), and the QG6 controversy (replies to
+  Aziz–Howl from April and July 2026, already context). Nothing was found for the
+  other entries.
+
+Search coverage of very recent preprints is incomplete, so this check lowers but
+does not exclude the chance of a missed result.
+
 ## Remaining proposals
 
 Six candidates of the same review stay on the new-problems page, filed under the new

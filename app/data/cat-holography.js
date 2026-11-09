@@ -58,7 +58,7 @@ export const HOLOGRAPHY = [
     title: "Linear growth of complexity for a fixed Hamiltonian",
     statement: r`For a fixed local (or SYK-type) chaotic Hamiltonian $H$ on $n$ qubits and a typical product state, prove a linear lower bound $\mathcal C\big(e^{-iHt}|\psi_0\rangle\big)\ge ct$ on circuit complexity up to $t\sim e^{\Omega(n)}$, or show that any proof must resolve a standard complexity-theoretic conjecture.`,
     definition: r`**The second law of complexity** (Brown–Susskind) asserts that the circuit complexity of a chaotic system grows linearly for an exponentially long time before saturating. It underlies the “complexity equals volume” and “complexity equals action” proposals for the growth of black-hole interiors. Susskind, “Computational complexity and black hole horizons” (2014), [arXiv:1402.5674](https://arxiv.org/abs/1402.5674); Brown, Susskind (2017), [arXiv:1701.01107](https://arxiv.org/abs/1701.01107).`,
-    progress: r`- Haferkamp, Faist, Kothakonda, Eisert and Yunger Halpern (2022) prove linear growth for random circuits with Haar-random gates; this does not cover a fixed Hamiltonian.
+    progress: r`- Haferkamp, Faist, Kothakonda, Eisert and Yunger Halpern (2022) prove linear growth for random circuits with Haar-random gates; this does not cover a fixed Hamiltonian. Li (September 2026) proves an almost linear $\Omega(T/\log T)$ lower bound for random circuits with no other dependence on $n$, again not for a fixed Hamiltonian.
 - Lee, Pilatowsky-Cameo and Choi (September 2026) prove, for generic time-independent local Hamiltonians and typical high-temperature product states, exponential late-time subsystem complexity and sustained growth over exponentially many times, with no generic polynomial fast-forwarding. They do not prove linearity, and identify a complexity barrier to proving it for a fixed Hamiltonian.
 - On the gravity side, many bulk quantities grow linearly (Belin et al. 2021), so the holographic dual of complexity is not unique.`,
     residual: r`A linear lower bound up to exponential time for an explicit Hamiltonian, or a reduction to a standard conjecture. The holographic question (which boundary quantity matches the bulk volume) remains conceptual. Related: A27 (random circuits as pseudorandom unitaries), H6.`,
@@ -72,6 +72,7 @@ export const HOLOGRAPHY = [
       { label: "Haferkamp, Faist, Kothakonda, Eisert, Yunger Halpern, Nat. Phys. (2022)", url: "https://arxiv.org/abs/2106.05305" },
       { label: "Belin, Myers, Ruan, Sárosi, Speranza (2021)", url: "https://arxiv.org/abs/2111.02429" },
       { label: "Lee, Pilatowsky-Cameo, Choi, 'Sustained growth of quantum circuit complexity in many-body Hamiltonian dynamics' (2026)", url: "https://arxiv.org/abs/2609.26885" },
+      { label: "Li, 'One gate at a time: complexity growth in random quantum circuits' (2026)", url: "https://arxiv.org/abs/2609.17457" },
     ] },
 
   { id: "H4", cat: "holography", horizon: "sharp",
@@ -83,6 +84,7 @@ export const HOLOGRAPHY = [
     progress: r`- Harlow–Hayden (2013) and Aaronson (2016): decoding Hawking radiation is hard under cryptographic assumptions, the origin of the approach.
 - Engelhardt, Penington and Shahbazi-Moghaddam (2021) give supporting results in tensor networks with post-selection and argue for the converse.
 - May, Pasterski, Waddell and Xu (2024) design cryptographic tests and find a tension with the naive statement in an AdS$_3$ example; refinements are proposed.
+- Bhattacharya, Narde, Parrikar and Paul (August 2026) relate the lunch to stabilizer complexity (magic): under a pseudorandomness assumption on the CFT spectrum, the Wigner negativity of a boundary subregion is $\exp[(A_{\rm out}-A_{\rm min})/8G_N]$. This is a different complexity measure from reconstruction complexity.
 - There is no gravitational proof.`,
     residual: r`A theorem in a concrete holographic model, or a counterexample stable under the refinements. Related: H5.`,
     evidence: [
@@ -95,6 +97,7 @@ export const HOLOGRAPHY = [
       { label: "Engelhardt, Penington, Shahbazi-Moghaddam (2021)", url: "https://arxiv.org/abs/2102.07774" },
       { label: "Engelhardt, Penington, Shahbazi-Moghaddam (2021)", url: "https://arxiv.org/abs/2105.09316" },
       { label: "May, Pasterski, Waddell, Xu, 'Cryptographic tests of the python's lunch conjecture', SciPost Phys. 19, 084 (2025)", url: "https://arxiv.org/abs/2411.10527" },
+      { label: "Bhattacharya, Narde, Parrikar, Paul, 'Stabilizer complexity and the Python's lunch' (2026)", url: "https://arxiv.org/abs/2608.12472" },
     ] },
 
   { id: "H5", cat: "holography", horizon: "sharp",

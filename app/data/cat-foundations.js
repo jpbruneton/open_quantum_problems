@@ -316,10 +316,12 @@ The conjecture was spelled out by Tony Short, among others, in 2012. It is [IQOQ
     progress: r`- Tumulka (2004): a relativistic GRW model for non-interacting particles. Bedingham's models use a non-standard mediating field; Pearle's satisfy only some of the requirements.
 - No-go results: Myrvold (2017), a Markovian relativistic collapse theory needs non-standard degrees of freedom; Jones, Guaita and Bassi (2019), an obstruction to a relativistic GRW for particles.
 - Muciño, Okon, Sudarsky and Wiedemann (August 2026) argue that the conceptual objections are surmountable and list the remaining technical obstacles: energy divergence, covariant smearing, non-signalling.
+- Piccione (October 2026) proposes a flash-based framework, foliation independent and non-signalling (by microscopic parameter independence), with a "dynamical vacuum subtraction" for vacuum stability; the resulting map is not positive on all standard density operators, and the new space of physical states is left uncharacterized. Finite energy production is shown for a free massive scalar only, so (iv) remains open.
 - Experiments constrain the non-relativistic limit: XENONnT (2025) excludes the original CSL parameter values for the first time, so (v) should target a still-viable variant (coloured or dissipative CSL, large $r_C$).`,
     residual: r`A construction meeting (i)–(v), or a no-go theorem with listed assumptions. Related: F1 (measurement problem), F14 (nonlinear dynamics), QF11 (causal local operations).`,
     evidence: [
       { kind: "preprint", role: "progress", summary: "Argues that relativistic objective collapse is viable, rebuts the conceptual objections and lists the remaining technical challenges.", url: "https://arxiv.org/abs/2608.26474v1", date: "2026-08-27", version: "v1" },
+      { kind: "preprint", role: "progress", summary: "Flash-based relativistic collapse framework: foliation independent, non-signalling, with dynamical vacuum subtraction; finite energy production shown for a free massive scalar only.", url: "https://arxiv.org/abs/2610.10980v1", date: "2026-10-07", version: "v1" },
     ],
     refs: [
       { label: "Bassi, Lochan, Satin, Singh, Ulbricht, Rev. Mod. Phys. 85, 471 (2013)", url: "https://arxiv.org/abs/1204.4325" },
@@ -328,6 +330,7 @@ The conjecture was spelled out by Tony Short, among others, in 2012. It is [IQOQ
       { label: "Jones, Guaita, Bassi (2019)", url: "https://arxiv.org/abs/1907.02370" },
       { label: "Muciño, Okon, Sudarsky, Wiedemann, 'Demystifying relativistic quantum collapse' (2026)", url: "https://arxiv.org/abs/2608.26474" },
       { label: "XENONnT collaboration, bounds on collapse models (2025)", url: "https://arxiv.org/abs/2506.05507" },
+      { label: "Piccione, 'A flash-based relativistic collapse model for quantum fields' (2026)", url: "https://arxiv.org/abs/2610.10980" },
     ] },
 
   { id: "F14", cat: "foundations", horizon: "sharp",
