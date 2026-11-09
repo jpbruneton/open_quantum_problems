@@ -18,7 +18,7 @@ function loadApp(relative) {
   if (cache.has(filename)) return cache.get(filename).exports;
   let source = fs.readFileSync(filename, "utf8");
   if (relative === "app/page.js") {
-    source += "\nexport const testViews = { Home, CategoryView, SharpView, ImprovedView, ClaimedSolvedView, ProblemView, NewProblemsView, NotFound, truncate };";
+    source += "\nexport const testViews = { Home, CategoryView, SharpView, ImprovedView, ClaimedSolvedView, ProblemView, NewProblemsView, ProposalView, NotFound, truncate };";
   }
   const { code } = transformSync(source, {
     filename,
@@ -291,12 +291,35 @@ test("home, all categories, filtered lists and missing-page views render", () =>
   // 9 November 2026: well-known problems were promoted to the catalogue; six candidates remain.
   assert.equal(PROPOSAL_COUNT, 44);
   const secondBatch = PROPOSALS.flatMap((g) => g.items).filter((it) => proposalBatch(it) === PROPOSALS_META_NEW_AREAS).map((it) => it.key);
-  assert.deepEqual(secondBatch.sort(), ["P55", "P56", "P58", "P59", "P64", "P81"]);
-  for (const key of ["P47", "P57", "P75", "P84"]) assert.ok(!keys.has(key), `${key} was promoted and must not remain a proposal`);
+  assert.deepEqual(secondBatch.sort(), ["PG1", "PG2", "PH1", "PH2", "PH3", "PQG1"]);
+  const formerly = new Set(PROPOSALS.flatMap((g) => g.items).map((it) => it.formerly));
+  for (const key of ["P47", "P57", "P75", "P84"]) assert.ok(!formerly.has(key), `${key} was promoted and must not remain a proposal`);
   for (const it of SECONDARY_PROPOSALS) {
     assert.ok(!keys.has(it.key), `duplicate proposal key ${it.key}`); keys.add(it.key);
     for (const id of it.extends) assert.ok(getProblem(id), `${it.key}: extends unknown ${id}`);
   }
+  // Identifiers: tier letter (P priority, S secondary) + area code + number; the area of a
+  // secondary lead is that of the first entry it extends. Old keys stay unique in `formerly`.
+  const codeOf = Object.fromEntries(CATEGORIES.map((c) => [c.slug, c.code]));
+  const codes = CATEGORIES.map((c) => c.code).sort((a, b) => b.length - a.length).join("|");
+  const idPattern = new RegExp(`^([PS])(${codes})([1-9]\\d*)$`);
+  for (const group of PROPOSALS) for (const it of group.items) {
+    const m = it.key.match(idPattern);
+    assert.ok(m && m[1] === "P" && m[2] === codeOf[group.cat], `${it.key}: identifier must be P + ${codeOf[group.cat]} + number`);
+    assert.match(it.formerly, /^P\d+$/, `${it.key}: formerly`);
+  }
+  for (const it of SECONDARY_PROPOSALS) {
+    const m = it.key.match(idPattern);
+    const area = it.extends[0].match(/^[A-Z]+/)[0];
+    assert.ok(m && m[1] === "S" && m[2] === area, `${it.key}: identifier must be S + ${area} + number`);
+    assert.match(it.formerly, /^S\d+$/, `${it.key}: formerly`);
+  }
+  const allFormerly = [...PROPOSALS.flatMap((g) => g.items), ...SECONDARY_PROPOSALS].map((it) => it.formerly);
+  assert.equal(new Set(allFormerly).size, allFormerly.length, "formerly keys must be unique");
+  // Old links keep working: #np/P20 and #np/PU2 open the same page.
+  const byNew = render(views.ProposalView, { pkey: "PU2" });
+  assert.ok(byNew.includes("Explicit frustration-freeness cutoffs") && byNew.includes("Formerly P20"));
+  assert.equal(render(views.ProposalView, { pkey: "P20" }), byNew);
   for (const match of newProblems.matchAll(/href="#p\/([^"<>]+)"/g)) assert.ok(getProblem(match[1]), `proposals: broken link ${match[1]}`);
   assert.ok(newProblems.includes(`${PROBLEMS.length} active entries`), "proposals page keeps the catalogue count unchanged");
   assert.ok(render(views.CategoryView, { slug: "missing" }).includes("Not found"));

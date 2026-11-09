@@ -50,6 +50,7 @@ Questions that are not in the literature yet. They are not part of the catalogue
   - **What they are:** 38 candidate questions, plus 24 secondary leads, that an AI model formulated from the catalogue and from the open-questions sections of the 2026 claimed resolutions. Each says which result opened it.
   - **What each page shows:** the motivation, the baseline literature, and the verdict of a separate AI literature review. The review verified the cited sources and searched for earlier answers. Each candidate is marked open and substantive, open but modest, or under review.
   - **Sources:** the full proposal, with its verification marks, is in [`docs/reviews/2026-11-08-new-problems-proposal.md`](docs/reviews/2026-11-08-new-problems-proposal.md).
+  - **Identifiers:** a tier letter, the area code and a number: P for a priority candidate (PE2), S for a secondary lead (SB1). A proposal promoted to the catalogue takes the next free entry number in its area. The former keys P1–P81 and S1–S24 still open the same pages; see [`docs/reviews/2026-11-09-proposal-identifiers.md`](docs/reviews/2026-11-09-proposal-identifiers.md).
 
 ## How it is maintained
 

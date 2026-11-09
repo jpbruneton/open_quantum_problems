@@ -612,7 +612,7 @@ function VerdictBadge({ a }) {
 const ALL_PROPOSALS = PROPOSALS.flatMap((g) => g.items.map((it) => ({ ...it, cat: g.cat, catName: g.name })));
 
 function ProposalView({ pkey }) {
-  const idx = ALL_PROPOSALS.findIndex((it) => it.key === pkey);
+  const idx = ALL_PROPOSALS.findIndex((it) => it.key === pkey || it.formerly === pkey);
   if (idx < 0) return <NotFound />;
   const it = ALL_PROPOSALS[idx];
   const prev = ALL_PROPOSALS[idx - 1];
@@ -625,11 +625,12 @@ function ProposalView({ pkey }) {
         <div className="container detail">
           <button className="back" onClick={() => go("new-problems")}>← New problems suggested by AI</button>
           <div className="badge-row" style={{ margin: "6px 0 2px" }}>
-            <span className="badge" style={{ color: "var(--muted)" }}>{it.key}</span>
+            <span className="badge" style={{ color: "var(--muted)" }} title={it.formerly ? `Formerly ${it.formerly}` : undefined}>{it.key}</span>
             <HorizonBadge h={it.horizon} />
             <span className="badge st-proposed" title="Candidate question, not a catalogue entry"><span className="dot" style={{ background: "var(--muted-2)" }} />Proposed</span>
           </div>
           <h2>{it.title}</h2>
+          {it.formerly && <p className="review-meta">Formerly {it.formerly}</p>}
 
           <div className="xref-block">
             <h4>Grows out of</h4>
@@ -693,6 +694,7 @@ function NewProblemsView() {
           <p className="intro">Proposed {PROPOSALS_META.label} · {PROPOSAL_COUNT} priority candidates and {SECONDARY_PROPOSALS.length} secondary leads</p>
           <p>We prompted an AI model (Fable 5.1, high effort) to suggest new open problems, starting from the current catalogue and its own knowledge of the literature. It produced {PROPOSAL_COUNT} priority candidates and {SECONDARY_PROPOSALS.length} secondary leads. These suggestions await human selection and critical review. They are not catalogue entries: they carry no status and are not counted.</p>
           <p>Horizons use the same badges as the catalogue, and “extends” links each suggestion to the entries it grows out of. Click a row to open the full page of a suggestion: motivation, baseline literature and caveats.</p>
+          <p>Identifiers combine a letter, the catalogue area code and a number: P for a priority candidate (PE2 is the second entanglement candidate), S for a secondary lead. A suggestion promoted to the catalogue takes the next free entry number in its area. The former identifiers P1–P81 and S1–S24 (until 9 November 2026) still open the same pages.</p>
           <p>Each suggestion was then checked by a separate AI literature review (8 November 2026), which verified the cited sources and searched for prior answers. Its verdict is shown under the status: open and substantive, open but modest, or under review. These verdicts are not human-refereed.</p>
           <p><a href={PROPOSALS_META.reportUrl} target="_blank" rel="noreferrer">Read the full proposal with verification marks and caveats →</a></p>
           <nav className="proposal-nav" aria-label="Areas">
@@ -742,7 +744,7 @@ function NewProblemsView() {
           <ul className="archive-list">
             {SECONDARY_PROPOSALS.map((it) => (
               <li key={it.key}>
-                <b>{it.key} · {it.title}</b>
+                <b title={it.formerly ? `Formerly ${it.formerly}` : undefined}>{it.key} · {it.title}</b>
                 {it.extends.length > 0 && <span className="proposal-extends"> extends {it.extends.map((id, i) => <span key={id}>{i > 0 ? ", " : ""}<a href={`#p/${id}`}>{id}</a></span>)}</span>}
                 <p><MathText text={it.note} /></p>
               </li>
