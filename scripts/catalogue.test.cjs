@@ -266,14 +266,20 @@ test("home, all categories, filtered lists and missing-page views render", () =>
   assert.ok(home.includes("Zero entries are Solved"));
   assert.ok(!home.includes("Evidence matters"));
   // New-problems page: proposals render, link only to existing entries, are not counted.
-  const { PROPOSALS, SECONDARY_PROPOSALS, PROPOSAL_COUNT } = loadApp("app/data/proposals.js");
+  const { PROPOSALS, SECONDARY_PROPOSALS, PROPOSAL_COUNT, NEW_AREA_COUNT, PROPOSAL_THEMES, PROPOSALS_META_NEW_AREAS, proposalBatch } = loadApp("app/data/proposals.js");
   const newProblems = render(views.NewProblemsView);
   assert.ok(newProblems.includes("New problems suggested by AI") && newProblems.includes("not counted"));
   assert.ok(!newProblems.includes("katex-error"), "proposals: math rendering error");
   assert.equal(PROPOSAL_COUNT, PROPOSALS.reduce((n, g) => n + g.items.length, 0));
   const keys = new Set();
   for (const group of PROPOSALS) {
-    assert.ok(CATEGORIES.some((c) => c.slug === group.cat), `proposals: unknown category ${group.cat}`);
+    if (group.theme) {
+      const theme = PROPOSAL_THEMES.find((t) => t.slug === group.cat);
+      assert.ok(theme && theme.name === group.name, `proposals: unknown theme ${group.cat}`);
+      assert.ok(newProblems.includes(theme.blurb.replace(/&/g, "&amp;")), `proposals: theme blurb not rendered ${group.cat}`);
+    } else {
+      assert.ok(CATEGORIES.some((c) => c.slug === group.cat), `proposals: unknown category ${group.cat}`);
+    }
     for (const it of group.items) {
       assert.ok(!keys.has(it.key), `duplicate proposal key ${it.key}`); keys.add(it.key);
       assert.ok(HORIZONS[it.horizon], `${it.key}: horizon`);
@@ -281,6 +287,19 @@ test("home, all categories, filtered lists and missing-page views render", () =>
       for (const id of it.extends) assert.ok(getProblem(id), `${it.key}: extends unknown ${id}`);
       assert.ok(newProblems.includes(it.title.replace(/&/g, "&amp;")) || newProblems.includes(it.key), `${it.key}: not rendered`);
     }
+  }
+  // New-area themes: distinct from catalogue areas, each used exactly once, and the
+  // second batch links to its own report.
+  for (const t of PROPOSAL_THEMES) {
+    assert.ok(!CATEGORIES.some((c) => c.slug === t.slug || c.name === t.name), `theme ${t.slug} duplicates a catalogue area`);
+    assert.equal(PROPOSALS.filter((g) => g.cat === t.slug).length, 1, `theme ${t.slug} used once`);
+  }
+  assert.equal(NEW_AREA_COUNT, 38);
+  assert.equal(PROPOSAL_COUNT, 76);
+  assert.ok(newProblems.includes("Areas not yet in the catalogue"));
+  for (const group of PROPOSALS) for (const it of group.items) {
+    if (group.theme) assert.equal(proposalBatch(it), PROPOSALS_META_NEW_AREAS, `${it.key}: batch`);
+    if (it.batch) assert.ok(it.assessment && it.baseline, `${it.key}: second batch needs assessment and baseline`);
   }
   for (const it of SECONDARY_PROPOSALS) {
     assert.ok(!keys.has(it.key), `duplicate proposal key ${it.key}`); keys.add(it.key);
