@@ -33,7 +33,7 @@ Open problems that are already posed in the literature, from long-standing conje
   - *claimed solved*: a full resolution has been announced but not independently assessed.
 
   At present 97 entries are open, 61 improved and 23 claimed solved. No entry is marked *solved*: the catalogue retains these resolutions as claims pending independent assessment of their proofs.
-- **Lean verified** (gold badge): the main theorem of a claimed solution, or of a progress item, is formalized in Lean according to its authors. The Lean builds are not rerun by the maintainer, and a formal proof does not replace refereeing of the definitions it formalizes. Thirteen entries carry the badge. Partial or conditional formalizations without a proof of their external hypotheses are described in the evidence without a badge.
+- **Lean verified** (gold badge): reserved for `claimed-solved` entries whose full claimed solution is formalized in Lean according to its authors. The Lean builds are not rerun by the maintainer, and a formal proof does not replace refereeing of the definitions it formalizes. Formalizations of partial progress or conditional results are described in the evidence without this badge.
 - **Cross-references.** Links under each title point to the same question or related subproblems in the [QIQCOP Zoo](https://qiqc-op.com/) and the [IQOQI Vienna list of open quantum problems](https://oqp.iqoqi.oeaw.ac.at/); scope notes distinguish related tasks where needed. Where Google DeepMind's [Formal Conjectures](https://github.com/google-deepmind/formal-conjectures) has a Lean statement of the problem, it is linked too.
 - **Sources of problems.** Besides the literature itself, the catalogue has been checked against:
   - every open problem of the IQOQI Vienna list;
@@ -82,7 +82,7 @@ The source of truth is `app/data/cat-*.js`, aggregated by `app/data/problems.js`
   - `role` is one of `claimed-solution`, `claim-input` or `progress`.
   - Only progress dated before the earliest claimed solution is listed under "Previous progress".
 - `provenance`: `{ summary, url, version? }` for author-reported AI use.
-- `lean`: on an entry, `{ url, note }` when the main theorem of its claimed solution is formalized in Lean according to the authors; on an evidence item, `lean: true`. Partial formalizations do not get the flag.
+- `lean`: on a `claimed-solved` entry only, `{ url, note }` when the main theorem of its claimed solution is formalized in Lean according to the authors; on an evidence item, `lean: true` records formalization, but only a claimed solution of a `claimed-solved` entry can display the badge.
 - `relations`: `{ id, type }`, where `type` is `parent`, `benchmark`, `reduction` or `related`.
 - `archive`: `{ kind: "merged" | "background", targets, reason }`. Archived pages stay addressable but are not counted.
 - `reviewedAt` and `LITERATURE_UPDATES` (in `problems.js`) record the latest literature update for each entry. Documentary corrections are recorded separately in the dated correction logs; `CORRECTION_LOG` points to the latest published one and does not reset these review dates.

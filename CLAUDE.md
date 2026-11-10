@@ -16,6 +16,7 @@ Before starting any literature update, catalogue change or site change:
 - `npm test` (catalogue integrity, KaTeX, rendered views) and `npm run build` must pass before committing.
 - Commit and push only when the maintainer asks.
 - Statuses: a full resolution that is announced but not independently assessed is "Claimed solved", never "Solved". An unpublished announcement goes in the entry's context only, not in its evidence.
+- The “Lean verified” badge applies only to `claimed-solved` entries whose full claimed solution is formalized. Partial progress may mention Lean in its evidence, but must not receive this badge or appear in the Lean verified list.
 - AI-use disclosures go in `provenance`; their absence is not evidence of no AI use.
 - Cross-references to other catalogues (QIQCOP Zoo, IQOQI Vienna) live in `app/data/crossrefs.js`.
 - The tests hard-code entry counts (total, active, claimed-solved list). Update them when adding entries.

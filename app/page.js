@@ -55,9 +55,12 @@ function HorizonBadge({ h }) {
     </span>
   );
 }
-const LEAN_TITLE = "The main theorem is formalized in Lean according to its authors; the Lean build was not rerun here.";
-function LeanBadge({ lean }) {
-  if (!lean) return null;
+const LEAN_TITLE = "Reserved for claimed solved entries: the main theorem of the full claimed solution is formalized in Lean according to its authors; the Lean build was not rerun here.";
+function isLeanVerified(p) {
+  return p.status === "claimed-solved" && Boolean(p.lean);
+}
+function LeanBadge({ lean, status }) {
+  if (!isLeanVerified({ lean, status })) return null;
   const inner = <span className="badge lean-badge" title={lean.note || LEAN_TITLE}>Lean verified</span>;
   return lean.url ? <a href={lean.url} target="_blank" rel="noreferrer" className="lean-link">{inner}</a> : inner;
 }
@@ -100,12 +103,12 @@ function evidenceGroups(evidence) {
   ];
 }
 
-function EvidenceList({ items, progressLabels = false }) {
+function EvidenceList({ items, status, progressLabels = false }) {
   return (
     <ul className="evidence-list">
       {items.map((item, i) => (
         <li key={i}>
-          {item.lean && <LeanBadge lean={{ note: "Formalized in Lean according to the authors; the Lean build was not rerun here." }} />}{item.lean && " "}<span className={`badge ev-${item.kind}`} title={EVIDENCE_KINDS[item.kind]?.desc}>{progressLabels && item.kind === "preprint" ? "Preprint claimed progress" : (EVIDENCE_KINDS[item.kind]?.label || item.kind)}</span>
+          {item.lean && <LeanBadge status={item.role === "claimed-solution" ? status : null} lean={{ note: "Formalized in Lean according to the authors; the Lean build was not rerun here." }} />}{item.lean && " "}<span className={`badge ev-${item.kind}`} title={EVIDENCE_KINDS[item.kind]?.desc}>{progressLabels && item.kind === "preprint" ? "Preprint claimed progress" : (EVIDENCE_KINDS[item.kind]?.label || item.kind)}</span>
           <p><MathText text={item.summary} /></p>
           <a href={item.url} target="_blank" rel="noreferrer">Source{item.version ? ` · ${item.version}` : ""}{item.date ? ` · ${item.date}` : ""}</a>
         </li>
@@ -165,7 +168,7 @@ function Header({ crumbs }) {
 
 // ---------- home ----------
 function isOpenSharp(p) {
-  return p.horizon === "sharp" && p.status !== "claimed-solved" && !p.lean;
+  return p.horizon === "sharp" && p.status !== "claimed-solved" && !isLeanVerified(p);
 }
 
 function Home() {
@@ -174,7 +177,7 @@ function Home() {
   const nOpenSharp = PROBLEMS.filter(isOpenSharp).length;
   const nImproved = PROBLEMS.filter((p) => p.status === "improved").length;
   const nClaimedSolved = PROBLEMS.filter((p) => p.status === "claimed-solved").length;
-  const leanVerified = PROBLEMS.filter((p) => p.lean);
+  const leanVerified = PROBLEMS.filter(isLeanVerified);
 
   return (
     <>
@@ -347,7 +350,7 @@ function CategoryView({ slug }) {
                       </div>
                     </td>
                     <td><HorizonBadge h={p.horizon} /></td>
-                    <td><StatusBadge s={p.status} />{p.lean && <div style={{ marginTop: 6 }}><LeanBadge lean={p.lean} /></div>}</td>
+                    <td><StatusBadge s={p.status} />{isLeanVerified(p) && <div style={{ marginTop: 6 }}><LeanBadge status={p.status} lean={p.lean} /></div>}</td>
                   </tr>
                 ))}
                 {rows.length === 0 && (
@@ -392,7 +395,7 @@ function FilteredProblemsView({ status = null, leanOnly = false }) {
   const label = leanOnly ? "Lean verified" : status ? STATUSES[status].label : "Open sharp";
 
   const rows = useMemo(() => {
-    let ps = PROBLEMS.filter((p) => leanOnly ? Boolean(p.lean) : status ? p.status === status : isOpenSharp(p));
+    let ps = PROBLEMS.filter((p) => leanOnly ? isLeanVerified(p) : status ? p.status === status : isOpenSharp(p));
     if (q.trim()) {
       const s = q.trim().toLowerCase();
       ps = ps.filter(
@@ -447,7 +450,7 @@ function FilteredProblemsView({ status = null, leanOnly = false }) {
                         <MathText text={truncate(p.statement, 150)} />
                       </div>
                     </td>
-                    <td>{status ? <HorizonBadge h={p.horizon} /> : <StatusBadge s={p.status} />}{p.lean && <div style={{ marginTop: 6 }}><LeanBadge lean={p.lean} /></div>}</td>
+                    <td>{status ? <HorizonBadge h={p.horizon} /> : <StatusBadge s={p.status} />}{isLeanVerified(p) && <div style={{ marginTop: 6 }}><LeanBadge status={p.status} lean={p.lean} /></div>}</td>
                   </tr>
                 ))}
                 {rows.length === 0 && (
@@ -480,7 +483,7 @@ function ProblemView({ id }) {
             <span className="badge" style={{ color: "var(--muted)" }}>{p.id}</span>
             <HorizonBadge h={p.horizon} />
             {p.archive ? <span className="badge">{p.archive.kind === "merged" ? "Merged entry" : "Background"}</span> : <StatusBadge s={p.status} />}
-            <LeanBadge lean={p.lean} />
+            <LeanBadge status={p.status} lean={p.lean} />
           </div>
           <h2>{p.title}</h2>
           {p.statusNote && (
@@ -540,13 +543,13 @@ function ProblemView({ id }) {
             evidenceGroups(p.evidence).map((g) => g.items.length > 0 && (
               <div key={g.key}>
                 <h4>{g.label}</h4>
-                <EvidenceList items={g.items} progressLabels={g.progressLabels} />
+                <EvidenceList status={p.status} items={g.items} progressLabels={g.progressLabels} />
               </div>
             ))
           ) : (
             <>
               <h4>Evidence &amp; scope</h4>
-              <EvidenceList items={[...p.evidence].sort((a, b) => (a.kind === "withdrawn") - (b.kind === "withdrawn"))} />
+              <EvidenceList status={p.status} items={[...p.evidence].sort((a, b) => (a.kind === "withdrawn") - (b.kind === "withdrawn"))} />
             </>
           ))}
 

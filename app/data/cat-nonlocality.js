@@ -486,8 +486,7 @@ Numerical searches that return many tight inequalities do not establish complete
     ] },
 
   { id: "N16", cat: "nonlocality", horizon: "sharp", status: "improved",
-    statusNote: "The PSI claim concerns fixed bounded regions. IQOQI problem 12 does not impose this restriction; growing regions and unbounded regions remain outside the claim.",
-    lean: { url: `${PSI_TREE}oqp12-vacuum-bell-correlations/lean`, note: "The main theorem (β = 1 for equal-time double cones of every radius R at centre distance L ≥ C·R) and its corollary for fixed bounded regions translated along a spacelike direction are formalized in Lean 4 according to PSI; the build was not rerun here." },
+    statusNote: "Fixed-bounded-region subproblem: claimed solved and Lean verified according to PSI; the Lean build was not rerun here. The full N16 entry remains improved: IQOQI problem 12 also permits growing regions and unbounded regions, which remain outside the claim.",
     reviewedAt: "2026-11-08",
     title: "Bell violation by the vacuum at large separations",
     statement: r`For the vacuum $\omega$ of a massive free Hermitian scalar field in $3+1$-dimensional Minkowski space, decide whether spacelike separated localization regions arbitrarily far apart can violate CHSH. Write $\beta(O_A,O_B)=\sup\tfrac12|\omega(A_1(B_1+B_2)+A_2(B_1-B_2))|$, over self-adjoint local contractions. Does $\beta>1$ occur at arbitrarily large separation? Specify the permitted region geometry and size dependence: the reference question does not restrict the regions to translates of a fixed bounded pair. The fixed-bounded-region version is a subproblem.`,
@@ -507,7 +506,7 @@ What it claims:
 - The vacuum stays entangled across the two regions at every separation, so the result separates entanglement from CHSH violation.
 
 Caveats:
-- Not peer reviewed, and the Lean build was not rerun here. This is a claimed solution of the fixed-bounded-region subproblem; the broader entry remains improved.
+- **Fixed-bounded-region subproblem: claimed solved; Lean verified according to PSI.** The double-cone theorem and its corollary for fixed bounded regions are formalized in Lean 4 according to the authors. Not peer reviewed, and the Lean build was not rerun here. These labels apply to this subproblem only; the broader N16 entry remains improved.
 - According to PSI, the mathematics was developed by PSI researchers with AI models in automated research workflows, and the Lean formalization was written by AI agents. The author states that he is responsible for the correctness of the paper.
 - The CHSH form with two settings and two outcomes per side is what is answered; Bell inequalities with more settings or outcomes are not covered.`,
     residual: r`The PSI claim excludes CHSH violations for fixed bounded regions beyond a finite separation. The reference question also requires assessing unbounded regions and region sizes growing with separation. Massless fields, interacting theories, other Bell inequalities and filtering are further variants.`,

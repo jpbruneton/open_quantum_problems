@@ -265,7 +265,7 @@ test("home, all categories, filtered lists and missing-page views render", () =>
   const leanVerified = render(views.FilteredProblemsView, { leanOnly: true });
   for (const p of PROBLEMS) {
     assert.equal(sharp.includes(`href="#p/${p.id}"`), p.horizon === "sharp" && p.status !== "claimed-solved" && !p.lean, `${p.id}: open sharp list membership`);
-    assert.equal(leanVerified.includes(`href="#p/${p.id}"`), Boolean(p.lean), `${p.id}: Lean verified list membership`);
+    assert.equal(leanVerified.includes(`href="#p/${p.id}"`), p.status === "claimed-solved" && Boolean(p.lean), `${p.id}: Lean verified list membership`);
   }
   for (const p of ARCHIVED_PROBLEMS) assert.ok(!sharp.includes(`href="#p/${p.id}"`), `archived ${p.id} in sharp list`);
   const improved = render(views.ImprovedView);
@@ -358,4 +358,16 @@ test("audit appendices cover the 111 original IDs and all relative report links 
   assert.equal(rows.length, 111);
   assert.equal(new Set(rows).size, 111);
   for (const id of rows) assert.ok(getProblem(id), id);
+});
+
+test("Lean verified is reserved for claimed solved entries", () => {
+  for (const p of ALL_PROBLEMS) {
+    if (p.lean) assert.equal(p.status, "claimed-solved", `${p.id}: entry Lean badge requires a full claim`);
+    if (p.status !== "claimed-solved") {
+      const html = renderToStaticMarkup(React.createElement(loadApp("app/page.js").testViews.ProblemView, { id: p.id }));
+      assert.ok(!html.includes(">Lean verified</span>"), `${p.id}: partial progress must not display Lean verified`);
+    }
+  }
+  assert.equal(getProblem("N16").status, "improved");
+  assert.ok(getProblem("N16").evidence.some((e) => e.lean));
 });

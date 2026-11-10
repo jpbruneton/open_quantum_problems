@@ -7,6 +7,7 @@
 //   "conceptual"  no community-agreed success criterion (foundations).
 //
 // status    : "open" | "improved" | "claimed-solved" | "solved" (default: "open").
+// lean: { url, note } only for claimed-solved entries; partial formalizations belong in evidence.
 // submissions: [{ who, model, date, kind: "solution"|"improvement"|"note", url, summary }]
 // archive: { kind: "merged"|"background", targets: [id], reason }
 // relations: [{ id, type: "parent"|"benchmark"|"reduction"|"related" }]
