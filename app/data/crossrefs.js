@@ -4,6 +4,7 @@
 // docs/comparisons/2026-11-08-qiqcop-zoo-and-iqoqi.md for the comparison and the matching criteria.
 // DeepMind Formal Conjectures (Lean statements of IQOQI problems, milestone 11): added 8 November 2026.
 export const CROSSREFS = {
+  F9: [{"catalogue": "IQOQI Open Quantum Problems", "title": "#43 Are all extensibly causal processes purifiable?", "url": "https://oqp.iqoqi.oeaw.ac.at/are-all-extensibly-causal-processes-purifiable"}],
   A5: [{"catalogue": "QIQCOP Zoo", "title": "QMA(2) versus QMA", "url": "https://qiqc-op.com/problem/op_61cc0e261b3889c6/", "status": "Unsolved"}],
   A6: [{"catalogue": "QIQCOP Zoo", "title": "The quantum PCP conjecture", "url": "https://qiqc-op.com/problem/op_bca77ec42ddd1d5c/", "status": "Unsolved"}],
   A7: [{"catalogue": "QIQCOP Zoo", "title": "Asymptotically good quantum locally testable codes", "url": "https://qiqc-op.com/problem/op_0c091a6b5a55a8fd/", "status": "Unsolved"}],

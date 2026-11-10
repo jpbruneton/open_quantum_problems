@@ -20,7 +20,8 @@ npm-debug.log*
 /docs/todo/
 /docs/todos/
 /docs/review/
-/docs/reviews/
+/docs/reviews/*
+!/docs/reviews/2026-11-10-correction-log.md
 /docs/research/
 /docs/notes/
 /TODO*

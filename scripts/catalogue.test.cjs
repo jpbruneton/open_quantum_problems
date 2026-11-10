@@ -42,7 +42,7 @@ function loadApp(relative) {
 }
 
 const data = loadApp("app/data/problems.js");
-const { ALL_PROBLEMS, PROBLEMS, ARCHIVED_PROBLEMS, CATEGORIES, HORIZONS, STATUSES, EVIDENCE_KINDS, REVIEW, LITERATURE_UPDATE, LITERATURE_UPDATES, getProblem, problemsByCat } = data;
+const { ALL_PROBLEMS, PROBLEMS, ARCHIVED_PROBLEMS, CATEGORIES, HORIZONS, STATUSES, EVIDENCE_KINDS, REVIEW, LITERATURE_UPDATE, LITERATURE_UPDATES, CORRECTION_LOG, getProblem, problemsByCat } = data;
 const views = loadApp("app/page.js").testViews;
 const render = (view, props) => renderToStaticMarkup(React.createElement(view, props));
 const originalSeries = { M: 11, B: 12, QF: 10, E: 15, N: 10, C: 10, A: 18, U: 5, O: 9, F: 11 };
@@ -103,7 +103,9 @@ test("every entry has valid metadata, references and internal relations", () => 
       validUrl(item.url, p.id);
       if (item.date) {
         assert.equal(new Date(item.date).toISOString().slice(0, 10), item.date, `${p.id}: evidence date`);
-        assert.ok(item.date <= p.reviewedAt, `${p.id}: future evidence presented as already reviewed`);
+        const sourceReviewDate = CORRECTION_LOG.ids?.includes(p.id) && CORRECTION_LOG.date > p.reviewedAt
+          ? CORRECTION_LOG.date : p.reviewedAt;
+        assert.ok(item.date <= sourceReviewDate, `${p.id}: future evidence presented as already reviewed`);
       }
       if (item.version) assert.match(item.version, /^v[1-9]\d*$/, `${p.id}: version`);
     }
@@ -134,7 +136,7 @@ test("targeted literature updates preserve untouched review dates and expose pen
     assert.equal(getProblem(id).status, id === "C5" ? "improved" : "claimed-solved", `${id}: distinguish partial progress from a full pending claim`);
     assert.ok(getProblem(id).evidence.some((e) => e.kind === "preprint" && e.url.includes(source)), id);
   }
-  assert.deepEqual(PROBLEMS.filter((p) => p.status === "claimed-solved").map((p) => p.id).sort(), ["A11", "A20", "A30", "A31", "A4", "A7", "B1", "B17", "B18", "C12", "C4", "E10", "E16", "E18", "M1", "M2", "M5", "N1", "N16", "N19", "N2"]);
+  assert.deepEqual(PROBLEMS.filter((p) => p.status === "claimed-solved").map((p) => p.id).sort(), ["A11", "A20", "A30", "A31", "A4", "A7", "B1", "B14", "B16", "B17", "B18", "C12", "C4", "E10", "E16", "E18", "M1", "M12", "M2", "M5", "N1", "N19", "N2"]);
   assert.equal(getProblem("C10").status, "improved", "a solved subcase must not close the broader programme");
   assert.equal(PROBLEMS.filter((p) => p.status === "solved").length, 0, "pending claims must not count as established solutions");
   const earlierE10 = getProblem("E10").evidence.find((e) => e.url.includes("2609.29539v1"));
@@ -142,7 +144,8 @@ test("targeted literature updates preserve untouched review dates and expose pen
   assert.match(earlierE10.summary, /historical claim/);
   for (const id of ["A3", "B5", "E5", "N3"]) assert.equal(getProblem(id).status, "improved", id);
   // Partial OpenAI claims must not be promoted beyond their stated scope.
-  for (const id of ["M12", "B2", "B13", "B14", "N4", "QF5"]) assert.equal(getProblem(id).status, "improved", id);
+  for (const id of ["B2", "B13", "N4", "N16", "QF5"]) assert.equal(getProblem(id).status, "improved", id);
+  assert.equal(getProblem("B14").status, "claimed-solved", "the restored spherical Laughlin problem has full pending claims");
   for (const [id, path] of [["M1", "Uniform-excess-charge"], ["M2", "Absolutely-Continuous-Spectrum"], ["M5", "The-periodic-spin-one-Haldane-gap"], ["B1", "A-two-dimensional-area-law"], ["B13", "A-density-uniform-condensate-bound"], ["E16", "Entanglement-with-zero-distillable-secret-key"], ["C12", "Entanglement-with-zero-distillable-secret-key"], ["N2", "The-maximum-number-of-mutually-unbiased-bases"]]) {
     const source = getProblem(id).evidence.find((e) => e.url.includes(path));
     assert.ok(source && source.kind === "preprint" && source.url.startsWith("https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/"), `${id}: pinned OpenAI source`);
@@ -158,7 +161,7 @@ test("targeted literature updates preserve untouched review dates and expose pen
   assert.equal(getProblem("A6").status, "open", "gap amplification is a tool, not a quantum PCP theorem");
   assert.ok(getProblem("A6").refs.some((r) => r.url.includes("2610.04952v1") && r.label.includes("FOCS 2026")));
   assert.ok(getProblem("A12").evidence.some((e) => e.url.includes("2610.27065v1") && /simulab/i.test(e.summary)));
-  assert.ok(getProblem("C3").evidence.some((e) => e.url.includes("2610.26783v1") && /PPT/.test(e.summary)));
+  assert.ok(getProblem("C3").evidence.some((e) => e.url.includes("2610.26783v2") && /PPT/.test(e.summary)));
   // 8 November 2026 (QIQCOP comparison): eleven new entries; N1 and A20 become pending claims.
   for (const id of ["A20", "A21", "A22", "A23", "A24", "A25", "C13", "E17", "E18", "N12", "N13", "N14", "A26", "A27", "A28", "A29", "A30", "A31", "B16", "B17", "B18", "E19"]) assert.ok(PROBLEMS.some((p) => p.id === id), `new entry ${id}`);
   assert.ok(getProblem("N1").evidence.some((e) => e.url.includes("danrad.net")), "N1: Radchenko-Wheeler claim recorded");
@@ -247,8 +250,8 @@ test("home, all categories, filtered lists and missing-page views render", () =>
   assert.ok(!home.includes("#review") && home.includes("Powered by Astra &amp; Opus 5.5"));
   assert.ok(home.includes('href="#improved"'));
   assert.ok(home.includes('href="#claimed-solved"'));
-  assert.ok(home.includes('aria-label="See all 57 improved problems"'));
-  assert.ok(home.includes('aria-label="See all 21 claimed solved problems"'));
+  assert.ok(home.includes('aria-label="See all 61 improved problems"'));
+  assert.ok(home.includes('aria-label="See all 23 claimed solved problems"'));
   assert.ok(home.includes('href="https://quantumlectures.org/en"'));
   assert.ok(home.includes('href="https://learnthermo.org/"'));
   assert.ok(!home.includes("IDs M1–"), "category count must not fabricate contiguous IDs");

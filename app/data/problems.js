@@ -117,9 +117,10 @@ export const LITERATURE_UPDATE = LITERATURE_UPDATES[0];
 // Latest published correction report; private reviews do not change this link.
 // Source and consistency corrections do not change entry review dates.
 export const CORRECTION_LOG = {
-  date: "2026-09-28",
-  label: "28 September 2026",
-  reportUrl: "https://github.com/jpbruneton/open_quantum_problems/blob/main/docs/reviews/2026-09-28-correction-log.md",
+  date: "2026-11-10",
+  label: "10 November 2026",
+  ids: ["A11","A12","A13","A15","A17","A18","A19","A20","A21","A22","A23","A24","A25","A26","A27","A28","A29","A3","A30","A31","A33","A5","A7","A9","B1","B11","B13","B14","B15","B16","B17","B18","B19","B3","B5","B6","B9","C1","C10","C11","C12","C13","C2","C3","C4","C5","C6","C7","E1","E12","E14","E16","E17","E18","E19","E20","E21","E22","E5","E6","E7","E9","F1","F12","F13","F14","F15","F3","F4","F7","F8","F9","G1","G10","G2","G3","G4","G5","G6","G7","G8","G9","H1","H2","H3","H4","H5","H6","M1","M10","M12","M15","M2","M4","M5","M7","M8","N1","N10","N11","N12","N13","N14","N15","N16","N17","N18","N19","N2","N3","N4","N5","N6","N7","N9","O1","O10","O5","O8","O9","QF1","QF11","QF3","QF5","QF7","QF8","QF9","QG1","QG2","QG3","QG4","QG5","QG6","QG7","QG8","R1","R2","R3","R4","U1","U2","U3","U4"],
+  reportUrl: "https://github.com/jpbruneton/open_quantum_problems/blob/main/docs/reviews/2026-11-10-correction-log.md",
 };
 
 export const ALL_PROBLEMS = [

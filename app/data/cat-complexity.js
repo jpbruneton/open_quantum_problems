@@ -39,8 +39,9 @@ A resolution would distinguish quantum speedups for structured problems from eff
     definition: r`**QMA versus QCMA**: QMA allows a polynomial-size quantum witness; QCMA restricts the witness to a classical string while retaining a quantum verifier. The question is whether some efficiently verifiable evidence fundamentally requires quantum information, without an oracle.
 
 Aaronson and Kuperberg gave a quantum-oracle separation of the two classes, Theory of Computing 3 (2007), [theoryofcomputing.org/articles/v003a007](https://theoryofcomputing.org/articles/v003a007/).`,
-    progress: r`- Natarajan–Nirkhe's distribution-testing separation uses a randomized classical oracle ([Quantum 8, 1377 (2024)](https://quantum-journal.org/papers/q-2024-06-17-1377/)); Ben-David–Kundu's 2024 classical-oracle result restricts adaptivity ([arXiv:2402.00298](https://arxiv.org/abs/2402.00298)). These are important intermediate models, not the unrestricted classical-oracle theorem.
-- The full standard classical-oracle separation is due to Bostanci, Haferkamp, Nirkhe and Zhandry: first posted in November 2025, revised in January 2026 and published at STOC 2026 ([arXiv:2511.09551](https://arxiv.org/abs/2511.09551v2)). It strengthens relativized evidence but does not settle the unrelativized question.
+    progress: r`- Bostanci, Huang and Vaikuntanathan give a simpler classical-oracle QMA/QCMA separation and extend it to quantum versus classical advice ([arXiv:2602.09385](https://arxiv.org/abs/2602.09385), FOCS 2026).
+- Natarajan–Nirkhe's distribution-testing separation uses a randomized classical oracle ([Quantum 8, 1377 (2024)](https://quantum-journal.org/papers/q-2024-06-17-1377/)); Ben-David–Kundu's 2024 classical-oracle result restricts adaptivity ([arXiv:2402.00298](https://arxiv.org/abs/2402.00298)). These are important intermediate models, not the unrestricted classical-oracle theorem.
+- The first standard classical-oracle separation is due to Bostanci, Haferkamp, Nirkhe and Zhandry: first posted in November 2025, revised in January 2026 and published at STOC 2026 ([arXiv:2511.09551](https://arxiv.org/abs/2511.09551v2)). It strengthens relativized evidence but does not settle the unrelativized question.
 - On 2 October 2026 (v1), Cakan constructed a classical oracle relative to which QMA is not contained in QCIP, where a quantum verifier exchanges polynomially many classical messages with an unbounded prover ([arXiv:2610.03648](https://arxiv.org/abs/2610.03648v1)). This strengthens the earlier oracle separation from QCMA to classical interaction.
 - On 5 October 2026 (v1), Cakan, Chung, Hung and Yang constructed a classical oracle relative to which $\mathsf{QCMA}\ne\mathsf{ClonableQMA}$ ([arXiv:2610.06740](https://arxiv.org/abs/2610.06740v1)). Even clonable quantum witnesses can therefore beat classical ones relative to a classical oracle, answering a question of Nehoran and Zhandry. The result concerns the mechanism behind relativized separations.`,
     residual: r`All these separations are relativized. The unrelativized QMA versus QCMA question remains open.`,
@@ -50,6 +51,7 @@ Aaronson and Kuperberg gave a quantum-oracle separation of the two classes, Theo
       { kind: "published", role: "progress", summary: "A standard classical oracle separates QMA from QCMA; the unrelativized equality remains open.", url: "https://doi.org/10.1145/3798129.3800776" }],
     relations: [{ id: "A4", type: "related" }, { id: "A5", type: "related" }, { id: "A10", type: "related" }],
     refs: [
+      { label: "Bostanci, Huang & Vaikuntanathan, Separating Quantum and Classical Advice with Good Codes (FOCS 2026)", url: "https://arxiv.org/abs/2602.09385" },
       { label: "Cakan, Chung, Hung & Yang, 'Separating ClonableQMA and QCMA Relative to a Classical Oracle' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.06740v1" },
       { label: "Alper Cakan, 'Separating QMA from QCIP with a Classical Oracle, or, the Power of Quantum Proofs over Classical Interaction for Quantum Verifiers' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.03648v1" },
       { label: "Aaronson & Kuperberg, 'Quantum versus classical proofs and advice', Theory of Computing 3 (2007)", url: "https://theoryofcomputing.org/articles/v003a007/" },
@@ -99,12 +101,12 @@ Caveats:
 Harrow and Montanaro showed that polynomially many unentangled witnesses collapse to two, with the usual constant completeness–soundness gap, J. ACM 60 (2013), [arXiv:1001.0017](https://arxiv.org/abs/1001.0017).`,
     progress: r`- Very short proofs require attention to the gap: logarithmic-size protocols with inverse-polynomial gap are not the same claim as the $\widetilde O(\sqrt n)$-size, constant-gap two-witness protocols for NP problems.
 - In July 2026, Beckey, Jeronimo and Wu determined the exact worst-case product-test acceptance curve over all product overlaps and finite local dimensions ([arXiv:2607.21477](https://arxiv.org/abs/2607.21477v1)). This settles the low-overlap analysis and strengthens one-shot soundness of a key reduction, without settling the class comparison.
-- In September 2026, Bostanci et al. constructed a quantum oracle separating QMA(2) from QMA ([arXiv:2609.02865](https://arxiv.org/abs/2609.02865v1)). They also prove the geometric no-disentanglers conjecture at constant errors $\varepsilon+\delta<1$: an approximate disentangler needs exponentially many input qubits in the number of output qubits. The class separation is relativized; the geometric theorem is not. Neither proves an unrelativized separation.
+- In September 2026, Bostanci et al. constructed a quantum oracle separating QMA(2) from QMA ([arXiv:2609.02865](https://arxiv.org/abs/2609.02865v1)). They also prove Watrous's geometric no-disentanglers conjecture (the stronger quantitative Aaronson-et-al. version was refuted) at constant errors $\varepsilon+\delta<1$: an approximate disentangler needs exponentially many input qubits in the number of output qubits. The class separation is relativized; the geometric theorem is not. Neither proves an unrelativized separation.
 - On 30 September 2026 (v1), Della Schiava and Mataraarachchi claimed $\mathsf{QMA}(2;h)=\mathsf{QMA}(2)$ for $h=O(\log n)$ shared EPR pairs ([arXiv:2609.39668](https://arxiv.org/abs/2609.39668v3)). The resource is a bounded shared-entanglement budget during witness preparation, not arbitrary entangled witnesses. Larger budgets and the comparison with ordinary QMA remain unresolved.
-- On 5 October 2026 (v1), Grewal, Mutreja and Tomer constructed a classical oracle relative to which $\mathsf{QMA}\ne\mathsf{QMA(2)}$ ([arXiv:2610.06760](https://arxiv.org/abs/2610.06760v1)). Their separable-Hamiltonian problem uses signed edge constraints on a graph. YES instances have zero-energy product states, while NO instances have entangled zero-energy states built from the antisymmetric subspace but no low-energy product states. Compressed-oracle techniques bound QMA verifiers. This answers the classical-oracle version of the question.`,
+- On 5 October 2026 (revised 4 November 2026), Grewal, Mutreja and Tomer constructed a classical oracle relative to which $\mathsf{QMA}\ne\mathsf{QMA(2)}$ ([arXiv:2610.06760](https://arxiv.org/abs/2610.06760v2)). Their separable-Hamiltonian problem uses signed edge constraints on a graph. YES instances have zero-energy product states, while NO instances have entangled zero-energy states built from the antisymmetric subspace but no low-energy product states. Compressed-oracle techniques bound QMA verifiers. This answers the classical-oracle version of the question.`,
     residual: r`The unrelativized comparison of QMA(2) with QMA remains open. The general upper bound is $\mathsf{QMA}(2)\subseteq\mathsf{NEXP}$; the intermediate target $\mathsf{QMA(2)}\subseteq\mathsf{EXP}$ is also open.`,
     evidence: [
-      { kind: "preprint", role: "progress", summary: "Classical-oracle separation of QMA from QMA(2) via a signed-edge separable-Hamiltonian problem; relativized, not an unrelativized class separation.", url: "https://arxiv.org/abs/2610.06760v1", date: "2026-10-05", version: "v1" },
+      { kind: "preprint", role: "progress", summary: "Classical-oracle separation of QMA from QMA(2) via a signed-edge separable-Hamiltonian problem; relativized, not an unrelativized class separation.", url: "https://arxiv.org/abs/2610.06760v2", date: "2026-11-04", version: "v2" },
       { kind: "preprint", role: "progress", summary: "Logarithmically many shared EPR pairs do not increase QMA(2) in the specified model; not QMA(2)=QMA. v3 (14 October 2026) changes only arXiv metadata.", url: "https://arxiv.org/abs/2609.39668v3", date: "2026-10-14", version: "v3" },
       { kind: "preprint", role: "progress", summary: "Exact product-test acceptance curve, including the previously open low-overlap regime.", url: "https://arxiv.org/abs/2607.21477v1", date: "2026-07-23", version: "v1" },
       { kind: "preprint", role: "progress", summary: "Quantum-oracle QMA(2)/QMA separation and an unrelativized no-disentanglers theorem at constant errors with epsilon + delta < 1.", url: "https://arxiv.org/abs/2609.02865v1", date: "2026-09-02", version: "v1" },
@@ -117,7 +119,7 @@ Harrow and Montanaro showed that polynomially many unentangled witnesses collaps
     ],
     relations: [{ id: "A3", type: "related" }, { id: "E3", type: "related" }],
     refs: [
-      { label: "Grewal, Mutreja & Tomer, 'A classical oracle separation between QMA and QMA(2)' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.06760v1" },
+      { label: "Grewal, Mutreja & Tomer, 'A classical oracle separation between QMA and QMA(2)' (2026 preprint, v2)", url: "https://arxiv.org/abs/2610.06760v2" },
       { label: "Alex Della Schiava, Ranitha Mataraarachchi, 'QMA(2) with Limited Shared Entanglement' (2026 preprint, v3)", url: "https://arxiv.org/abs/2609.39668v3" },
       { label: "Harrow & Montanaro, 'Testing product states, quantum Merlin-Arthur games and tensor optimization', J. ACM 60 (2013)", url: "https://arxiv.org/abs/1001.0017" },
       { label: "Aaronson, Beigi, Drucker, Fefferman & Shor, 'The power of unentanglement', Theory of Computing 5 (2009)", url: "https://theoryofcomputing.org/articles/v005a001/" },
@@ -159,9 +161,9 @@ The ordinary local-Hamiltonian promise problem is QMA-complete at inverse-polyno
   { id: "A7", cat: "complexity", horizon: "sharp", status: "claimed-solved",
     reviewedAt: "2026-11-08",
     evidence: [
-      { kind: "preprint", role: "progress", summary: "Almost-good qLDPC and quantum locally testable codes with transversal multi-controlled-Z gates; polylogarithmic losses in distance and soundness.", url: "https://arxiv.org/abs/2604.01874v2", date: "2026-04-02", version: "v2" },
+      { kind: "preprint", role: "progress", summary: "Almost-good qLDPC and quantum locally testable codes with transversal multi-controlled-Z gates; polylogarithmic losses in distance and soundness.", url: "https://arxiv.org/abs/2604.01874v2", date: "2026-07-02", version: "v2" },
 
-      { kind: "preprint", role: "progress", summary: "Good qLTCs conditional on the required lossless cubical complexes; their existence is not established in this manuscript.", url: "https://arxiv.org/abs/2610.00525v1", date: "2026-09-30", version: "v1" },
+      { kind: "preprint", role: "progress", summary: "Good qLTCs conditional on the required lossless cubical complexes; their existence is not established in this manuscript.", url: "https://arxiv.org/abs/2610.00525v2", date: "2026-10-05", version: "v2" },
       { kind: "preprint", role: "claimed-solution", summary: "Claimed explicit good binary CSS qLTCs with all required parameters constant; full resolution claim awaiting assessment.", url: "https://arxiv.org/abs/2609.20780v1", date: "2026-09-17", version: "v1" },
       { kind: "preprint", role: "progress", summary: "Separate good-qLTC construction conditional on a Reed–Solomon product-expansion conjecture.", url: "https://arxiv.org/abs/2609.26735v1", date: "2026-09-22", version: "v1" },
     ],
@@ -176,9 +178,9 @@ The ordinary local-Hamiltonian promise problem is QMA-complete at inverse-polyno
 Panteleev and Kalachev constructed asymptotically good quantum LDPC codes, with constant rate and linear distance, STOC 2022, [doi:10.1145/3519935.3520017](https://doi.org/10.1145/3519935.3520017). Good qLDPC codes and NLTS do not by themselves establish constant local-test soundness, and quantum PCP should not be identified with this particular stabilizer-code construction problem.`,
     progress: r`- Later quantum Tanner constructions provide another route to good qLDPC codes. Earlier fibre-bundle and balanced-product breakthroughs had different parameters and should not all be credited with the full good-code theorem.
 - Dinur, Lin and Vidick construct almost-good qLTCs with constant rate, bounded-size checks and inverse-polylogarithmic relative distance and soundness ([arXiv:2402.07476](https://arxiv.org/abs/2402.07476)). This does not reach the simultaneous constant-parameter target.
-- In April 2026 (v2 reviewed), Li, Li and Liu constructed qLDPC and quantum locally testable codes with parameters $[[N,\Theta(N),\tilde\Theta(N)]]$ and soundness $\tilde\Theta(1)$, supporting transversal logical multi-controlled-$Z$ gates ([arXiv:2604.01874](https://arxiv.org/abs/2604.01874v2)). These are almost good: distance and soundness are polylogarithmically below optimal.
+- Li, Li and Liu (v1 of April 2026; v2 of 2 July 2026) constructed qLDPC and quantum locally testable codes with parameters $[[N,\Theta(N),\tilde\Theta(N)]]$ and soundness $\tilde\Theta(1)$, supporting transversal logical multi-controlled-$Z$ gates ([arXiv:2604.01874](https://arxiv.org/abs/2604.01874v2)). The v2 replaces a cap-product argument the authors found invalid in v1. These are almost good: distance and soundness are polylogarithmically below optimal.
 - On 22 September 2026, Bafna, Li and Nguyen obtained good qLTCs conditional on a variant of the Reed–Solomon product-expansion conjecture ([arXiv:2609.26735](https://arxiv.org/abs/2609.26735v1)). This conditional construction is distinct from Gay–Jeronimo's unconditional claim.
-- On 30 September 2026 (v1), Cohen, Leigh, Reiner, Ta-Shma and Tzalik derived good qLTCs from sufficiently imbalanced, two-sided lossless four-dimensional cubical complexes ([arXiv:2610.00525](https://arxiv.org/abs/2610.00525v1)). They explicitly do not construct the required complexes. Their local-to-global expansion theorem supplies another conditional route; it is not an independent verification of Gay–Jeronimo's claim or a proof of quantum PCP.`,
+- On 30 September 2026 (v2 of 5 October 2026), Cohen, Leigh, Reiner, Ta-Shma and Tzalik derived good qLTCs from sufficiently imbalanced, two-sided lossless four-dimensional cubical complexes ([arXiv:2610.00525](https://arxiv.org/abs/2610.00525v2)). They explicitly do not construct the required complexes. Their local-to-global expansion theorem supplies another conditional route; it is not an independent verification of Gay–Jeronimo's claim or a proof of quantum PCP.`,
     claim: r`**Gay and Jeronimo, [“Asymptotically Good Quantum Locally Testable Codes”](https://arxiv.org/abs/2609.20780v1)** (arXiv:2609.20780, v1, 17 September 2026).
 
 What it claims:
@@ -193,7 +195,7 @@ Caveats:
     relations: [{ id: "A6", type: "related" }, { id: "A18", type: "related" }],
     refs: [
       { label: "Li, Li & Liu, 'Transversal non-Clifford gates on almost-good quantum LDPC and quantum locally testable codes' (2026 preprint, v2)", url: "https://arxiv.org/abs/2604.01874v2" },
-      { label: "Itay Cohen, Itai Leigh, Assaf Reiner, Amnon Ta-Shma, Elad Tzalik, 'Good Quantum Locally Testable Codes from Lossless Cubical Complexes' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.00525v1" },
+      { label: "Itay Cohen, Itai Leigh, Assaf Reiner, Amnon Ta-Shma, Elad Tzalik, 'Good Quantum Locally Testable Codes from Lossless Cubical Complexes' (2026 preprint, v2)", url: "https://arxiv.org/abs/2610.00525v2" },
       { label: "Gay & Jeronimo, 'Asymptotically Good Quantum Locally Testable Codes' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.20780v1" },
       { label: "Bafna, Li & Nguyen, 'Good Quantum Locally Testable Codes from Product Expansion' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.26735v1" },
       { label: "Panteleev & Kalachev, 'Asymptotically good quantum and locally testable classical LDPC codes', STOC 2022", url: "https://doi.org/10.1145/3519935.3520017" },
@@ -227,7 +229,7 @@ This is a sharp class-comparison question. Standard reference: Bravyi, Bessen an
     progress: r`- Aharonov, Grilo and Liu show that suitable general StoqMA error reduction would imply equality with MA ([Quantum 9, 1853 (2025)](https://quantum-journal.org/papers/q-2025-09-11-1853/)).
 - Liu proves soundness-reduction and other restricted results ([arXiv:2011.05733](https://arxiv.org/abs/2011.05733v3)), but the general completeness-amplification obstacle remains.
 - In July 2026, Karakashian and Hen proposed vanishing geometric phase (VGP) as a wider Hamiltonian class ([arXiv:2607.18596](https://arxiv.org/abs/2607.18596v1)). They establish StoqMA-completeness of the VGP local-Hamiltonian problem, MA membership of its frustration-free variant, hard-to-stoquastize examples, and PSPACE-completeness of recognizing VGP in their general geometrically local setting. These results refine the landscape without settling StoqMA = MA or general error amplification.
-- On 5 November 2026 (v1), Hamoudi, Le Borgne and Teganahally Sridhara proved $\mathsf{MA}\subsetneq\mathsf{StoqMA}$ relative to a classical oracle ([arXiv:2611.08180](https://arxiv.org/abs/2611.08180v1)). The separating problem asks whether a sparse high-girth graph, given by an adjacency-list oracle, has a large or small Perron–Frobenius eigenvalue, a stoquastic ground-energy task. The result shows that relativizing techniques cannot prove StoqMA = MA, and so cannot prove it through error amplification.`,
+- On 5 November 2026 (v1), Hamoudi, Le Borgne and Teganahally Sridhara proved $\mathsf{MA}\subsetneq\mathsf{StoqMA}$ relative to a classical oracle ([arXiv:2611.08180](https://arxiv.org/abs/2611.08180v1)). The separating problem asks whether a sparse high-girth graph, given by an adjacency-list oracle, has a large or small Perron–Frobenius eigenvalue, a stoquastic ground-energy task. The result shows that relativizing techniques cannot prove StoqMA = MA; any error amplification strong enough to imply equality must therefore be non-relativizing.`,
     residual: r`The unrelativized StoqMA versus MA question, and general error amplification for StoqMA, remain open.`,
     reviewedAt: "2026-11-08",
     evidence: [
@@ -269,7 +271,7 @@ Standard reference: Irani, Natarajan, Nirkhe, Rao and Yuen, “Quantum search-to
 
 Aaronson and Ambainis show it would imply that a $T$-query quantum algorithm's acceptance probability can be approximated within additive $\varepsilon$ on a $1-\delta$ fraction of uniformly random Boolean inputs using $\operatorname{poly}(T,1/\varepsilon,1/\delta)$ classical queries, Theory of Computing 10 (2014), [theoryofcomputing.org/articles/v010a006](https://theoryofcomputing.org/articles/v010a006/). This simulation consequence concerns acceptance probabilities on most inputs; it is not a worst-case simulation theorem for every promise problem, nor a theorem that a classical algorithm samples the full quantum output distribution.`,
     progress: r`- In August 2026, Blanc, Docter, Strassle and Tan proved an analogous acceptance-probability simulation for $t$ queries in $d$ parallel query rounds, with $t^{O(d^2)}$ classical queries at fixed approximation and failure parameters ([arXiv:2608.19158](https://arxiv.org/abs/2608.19158v1)). The result is accepted at FOCS 2026 (8–11 November 2026).
-- Liu and Mutreja independently established constant-round and limited-adaptivity simulation results with different quantitative bounds in August 2026 ([arXiv:2608.20297](https://arxiv.org/abs/2608.20297v2)). Their revision of 20 October 2026 (v2) extends the theorem from massively parallel queries to constant rounds of adaptivity and to algorithms with a bounded quantum-query prefix followed by a parallel stage, via a coupling between uniform oracles and dense oracle distributions.
+- Liu and Mutreja independently established parallel-query simulations with bounded-prefix and constant-round extensions, with different quantitative bounds, already in v1 of 20 August 2026 ([arXiv:2608.20297](https://arxiv.org/abs/2608.20297v2), revised 20 October 2026). Their proof couples uniform oracles and dense oracle distributions; these extensions are not new to v2.
 - Constantly many oracle-query rounds are thus a positive restricted case; physical gate depth, unrestricted adaptive queries and sampling advantage are separate notions. These bounded-round results were moved here from A16.
 - On 4 September 2026 (v1), Escudero Gutiérrez, Saucedo and Palazuelos proved optimal inequalities for completely bounded polynomials, including an optimal root-influence bound for block-multilinear forms, with improved limitations on quantum query algorithms ([arXiv:2609.05201](https://arxiv.org/abs/2609.05201v1)). The added completely bounded structure does not cover every bounded low-degree polynomial, and the paper restates the general conjecture as open.
 - On 28 September 2026 (v1), Girish, Mittal, Nehoran and Raz proved equivalence of the influential-variable conjecture under the uniform measure, fixed-bias product measures and fixed-density Hamming slices ([arXiv:2609.35327](https://arxiv.org/abs/2609.35327v1)). They separately establish analogous equivalences for the weaker average-input query-simulation conjecture. These reductions transfer the open questions between distributions; they prove neither conjecture.`,
@@ -289,7 +291,7 @@ Caveats:
       { kind: "preprint", role: "progress", summary: "Optimal completely bounded polynomial inequalities and resulting limits on quantum query algorithms; the general Aaronson–Ambainis conjecture is restated as open.", url: "https://arxiv.org/abs/2609.05201v1", date: "2026-09-04", version: "v1" },
       { kind: "preprint", role: "progress", summary: "Equivalence of uniform, fixed-bias and fixed-density-slice variants, separately for influence and query simulation; the original conjectures remain open.", url: "https://arxiv.org/abs/2609.35327v1", date: "2026-09-28", version: "v1" },
       { kind: "preprint", role: "progress", summary: "Bounded-round acceptance-probability simulation on most uniform inputs, with t^{O(d^2)} classical queries at fixed error parameters; accepted to FOCS 2026.", url: "https://arxiv.org/abs/2608.19158v1", date: "2026-08-19", version: "v1" },
-      { kind: "preprint", role: "progress", summary: "v2 extends the parallel-query simulation theorem to constant rounds of adaptivity and bounded-prefix algorithms; sampling and unrestricted adaptivity are different targets.", url: "https://arxiv.org/abs/2608.20297v2", date: "2026-10-20", version: "v2" },
+      { kind: "preprint", role: "progress", summary: "Parallel-query simulations with constant-round and bounded-prefix extensions already in v1 (20 August 2026); v2 revised 20 October. Sampling and unrestricted adaptivity are different targets.", url: "https://arxiv.org/abs/2608.20297v2", date: "2026-10-20", version: "v2" },
     ],
     provenance: [
       { summary: "PSI states that a research system developed internally, running instances of a non-public Anthropic model, found the proof and its Lean formalization; the paper is credited to David Turturean (PSI). This is PSI's account.", url: "https://psi.inc/research/aaronson-ambainis/" },
@@ -327,7 +329,7 @@ The loss results concern lossy experiments, not the ideal problem. They bound wh
     reviewedAt: "2026-11-08",
     evidence: [
       { kind: "preprint", role: "progress", summary: "Direct proof of anticoncentration for independent complex Gaussian hafnians (Zenodo collection of AI-assisted manuscripts); an ingredient, not a hardness result.", url: "https://doi.org/10.5281/zenodo.22969546", date: "2026-09-26" },
-      { kind: "preprint", role: "progress", summary: "Explicit total-variation hiding bound for Gaussian BosonSampling uniformly over the number of squeezed inputs, and relative-accuracy routes via local hafnian bounds.", url: "https://arxiv.org/abs/2609.01008v2", date: "2026-09-01", version: "v2" },
+      { kind: "preprint", role: "progress", summary: "Explicit total-variation hiding bound for Gaussian BosonSampling uniformly over the number of squeezed inputs, and relative-accuracy routes via local hafnian bounds.", url: "https://arxiv.org/abs/2609.01008v2", date: "2026-09-11", version: "v2" },
       { kind: "preprint", role: "progress", summary: "Center-uniform small-ball bounds for Gaussian hafnians, giving anticoncentration for the independent complex symmetric Gaussian ensemble; an ingredient, not a hardness theorem.", url: "https://arxiv.org/abs/2610.00112v1", date: "2026-09-09", version: "v1" },
 
       { kind: "preprint", role: "progress", summary: "Polynomial-time classical simulation of lossy BosonSampling at any constant surviving fraction over Haar-random interferometers; a simulability result for lossy experiments, not a hardness theorem for the ideal problem.", url: "https://arxiv.org/abs/2610.27065v1", date: "2026-10-19", version: "v1" },
@@ -370,7 +372,7 @@ Standard reference: Bouland, Fefferman, Nirkhe and Vazirani, “On the complexit
     progress: r`- Bouland, Fefferman, Nirkhe and Vazirani give worst-to-average reductions for exact output probabilities.
 - Movassagh's Cayley-path approach strengthens robustness at high precision ([arXiv:1909.06210](https://arxiv.org/abs/1909.06210)).
 - Anticoncentration is available for suitable sufficiently deep ensembles.
-- On 23 July 2026 (v1), Go, Oh and Jeong showed, assuming the standard average-case hardness conjecture for ideal random-circuit sampling, an architecture-general hardness bound on the local-depolarizing noise strength separating hard from classically simulable regimes ([arXiv:2607.20804](https://arxiv.org/abs/2607.20804v1)). The underlying ideal hardness conjecture, the statement here, is assumed rather than proved.`,
+- On 23 July 2026 (v1), Go, Oh and Jeong showed, assuming average-case $\#\mathsf P$-hardness for ideal output probabilities, an architecture-general hardness bound on noisy random-circuit sampling ([arXiv:2607.20804](https://arxiv.org/abs/2607.20804v1)). That conjecture is a missing ingredient for the sampling-hardness statement here, rather than the statement itself.`,
     residual: r`The missing ingredient is hardness at an approximation scale strong enough for the total-variation sampling reduction, not exact arithmetic alone.
 
 Noisy experimental output distributions are separate targets. Classical simulation results at constant noise strength have assumptions on the noise, depth, circuit ensemble and approximation criterion; they are not a universal theorem for every noisy quantum circuit. The question above is for ideal circuits.`,
@@ -403,12 +405,12 @@ Babai's quasipolynomial-time classical algorithm is the comparison baseline, not
 
 Regev's reduction relates suitable LWE regimes to worst-case approximate lattice problems using quantum computation, J. ACM 56 (2009), [arXiv:2401.03703](https://arxiv.org/abs/2401.03703). It is a conditional hardness reduction, not a quantum algorithm breaking LWE.`,
     progress: r`- Known quantum techniques can improve exponential running-time constants, so “no quantum improvement” would be too strong; such improvements are different from a polynomial-time algorithm.
-- Chen's 2024 claimed polynomial-time quantum LWE algorithm developed an acknowledged error and is not an established attack ([IACR ePrint 2024/583](https://eprint.iacr.org/2024/583)).`,
+- Chen retracted his 2024 polynomial-time quantum LWE claim after an error in Step 9 was identified; the manuscript remains online with the author's correction ([IACR ePrint 2024/555](https://eprint.iacr.org/2024/555)).`,
     residual: r`The running-time frontier must be determined for each concrete parameter family. Security conclusions require the exact parameter family and reduction; the safety or failure of deployed cryptographic schemes does not follow from the unresolved broad programme.`,
     relations: [{ id: "A2", type: "related" }, { id: "A14", type: "related" }],
     refs: [
       { label: "Regev, 'On lattices, learning with errors, random linear codes, and cryptography', J. ACM 56 (2009; arXiv deposit 2024)", url: "https://arxiv.org/abs/2401.03703" },
-      { label: "Chen, 'Quantum Algorithms for Lattice Problems' (2024 claim; error notice)", url: "https://eprint.iacr.org/2024/583" },
+      { label: "Chen, 'Quantum Algorithms for Lattice Problems' (2024 claim; error notice)", url: "https://eprint.iacr.org/2024/555" },
     ] },
 
   { id: "A16", cat: "complexity", horizon: "programme", status: "improved",
@@ -436,10 +438,10 @@ Aaronson's “Read the fine print” explains the role of state preparation, con
     definition: r`**Quantum state certification** asks to test whether copies of an unknown state equal a known reference state or are far from it in trace distance. A full reference-state description can itself be exponentially long in $N$; computational costs must count its input length. Rank, spectrum and the reference eigenbasis relative to the allowed local measurements can matter. This concrete certification target is distinct from estimating an unknown state's spectral functional or learning many observable expectations.
 
 Haah, Harrow, Ji, Wu and Yu establish sample-optimal tomography bounds in their collective-measurement model, IEEE Trans. Inf. Theory 63 (2017), [arXiv:1508.01797](https://arxiv.org/abs/1508.01797).`,
-    progress: r`- In August 2026, Wang gave a framework with nearly tight lower bounds for entropy, closeness and spectrum estimation and for rank, Schmidt-rank and MPS testing ([arXiv:2608.02600](https://arxiv.org/abs/2608.02600v3)); its 8 September 2026 v3 is retitled as a unified complexity framework for quantum property testing.
-- In August 2026, Acharya, Dharmavarapu, Liu and Yu nearly determined mixedness testing under single-qubit Pauli measurements, with $\widetilde\Theta((\sqrt{10})^N/\varepsilon^2)$ copies ([arXiv:2608.18839](https://arxiv.org/abs/2608.18839v1)); their 23 September 2026 v3 adds fixed-Pauli-protocol bounds. The maximally mixed reference is a benchmark, not a solution for every reference state or measurement trade-off.
+    progress: r`- In August 2026, Wang gave a framework with nearly tight lower bounds for entropy, closeness and spectrum estimation and for rank testing ([arXiv:2608.02600](https://arxiv.org/abs/2608.02600v3)); its 8 September 2026 v3 adds Schmidt-rank and MPS testing and is retitled as a unified complexity framework for quantum property testing; v4 appeared on 29 October 2026.
+- In August 2026, Acharya, Dharmavarapu, Liu and Yu nearly determined mixedness testing under single-qubit Pauli measurements, with $\widetilde\Theta((\sqrt{10})^N/\varepsilon^2)$ copies ([arXiv:2608.18839](https://arxiv.org/abs/2608.18839v1)); their 21 September 2026 v2 adds fixed-Pauli-protocol bounds; v4 (4 November 2026) adds deterministic-protocol results. The maximally mixed reference is a benchmark, not a solution for every reference state or measurement trade-off.
 - In August 2026, Stempin, Llorens and Huber disproved the fractional-colouring conjecture proposed as a route to universal triply efficient Pauli shadow tomography ([arXiv:2608.20113](https://arxiv.org/abs/2608.20113v1)). This rules out that route, not every possible algorithm.
-- Between 4 and 9 September 2026 (v1), two adjacent tomography benchmarks appeared. Keskin, Luo, Majid and Radzihovsky claim the tight arbitrary-state copy bound $\Theta(\max\{d^3/(\sqrt{k}\varepsilon^2),d^2/\varepsilon^2\})$ when measurements act on at most $k$ fresh copies, with classical adaptivity but no quantum memory between blocks ([arXiv:2609.05718](https://arxiv.org/abs/2609.05718v1)). Nayak and Zhou claim the rank-$r$ refinement $\Theta((dr/\varepsilon^2)\max\{1,r/\sqrt{t}\})$ with at most $t$ jointly measured copies, for sufficiently small error and constant success probability ([arXiv:2609.10514](https://arxiv.org/abs/2609.10514v1)). These permit entangling measurements and reconstruct an unknown state; neither settles arbitrary-reference certification with single-qubit Pauli measurements.
+- Between 4 and 9 September 2026 (v1), two adjacent tomography benchmarks appeared. Keskin, Luo, Majid and Radzihovsky claim a lower bound which, with the earlier upper bound, gives tight arbitrary-state copy complexity $\Theta(\max\{d^3/(\sqrt{k}\varepsilon^2),d^2/\varepsilon^2\})$ for every $k$ and sufficiently small $\varepsilon$, when measurements act on at most $k$ fresh copies, with classical adaptivity but no quantum memory between blocks ([arXiv:2609.05718](https://arxiv.org/abs/2609.05718v1)). Nayak and Zhou claim the rank-$r$ refinement $\Theta((dr/\varepsilon^2)\max\{1,r/\sqrt{t}\})$ with at most $t$ jointly measured copies, for sufficiently small error and constant success probability ([arXiv:2609.10514](https://arxiv.org/abs/2609.10514v1)). These permit entangling measurements and reconstruct an unknown state; neither settles arbitrary-reference certification with single-qubit Pauli measurements.
 - On 9 September 2026, Zhang et al. gave shallow phase shadows for stabilizer-state fidelity estimation ([arXiv:2609.10408](https://arxiv.org/abs/2609.10408v1)). The constant-depth implementation assumes all-to-all connectivity, mid-circuit measurements and classical feedforward; without auxiliary systems the stated depth is logarithmic. Its entangling readout and restricted observables do not remove the measurement restrictions of the statement or the earlier obstruction to a universal Pauli-shadow route.`,
     evidence: [
       { kind: "preprint", role: "progress", summary: "Matching tomography lower bound for adaptive fresh-copy blocks with no quantum memory between blocks; entangling block measurements are allowed.", url: "https://arxiv.org/abs/2609.05718v1", date: "2026-09-04", version: "v1" },
@@ -462,7 +464,7 @@ Haah, Harrow, Ji, Wu and Yu establish sample-optimal tomography bounds in their 
       { label: "Zhang, You, Qin, Li, Eisert & Zhou, 'Constant-depth global shadow estimation' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.10408v1" },
       { label: "Haah, Harrow, Ji, Wu & Yu, 'Sample-optimal tomography of quantum states', IEEE Trans. Inf. Theory 63 (2017)", url: "https://arxiv.org/abs/1508.01797" },
       { label: "Wang, 'A Unified Complexity Framework for Quantum Property Testing' (2026 preprint, v3; v2 titled 'A Lower Bound Framework for Quantum Functional Estimation')", url: "https://arxiv.org/abs/2608.02600v3" },
-      { label: "Acharya, Dharmavarapu, Liu & Yu, 'Quantum Mixedness Testing with Pauli Measurements' (2026 preprint, v1 reviewed; v3 of 23 September 2026 retitled 'Near-Optimal Mixedness Testing with Pauli Measurements')", url: "https://arxiv.org/abs/2608.18839v1" },
+      { label: "Acharya, Dharmavarapu, Liu & Yu, 'Quantum Mixedness Testing with Pauli Measurements' (2026 preprint, v1 reviewed; v2 of 21 September 2026 retitled 'Near-Optimal Mixedness Testing with Pauli Measurements'; v4 of 4 November 2026 adds deterministic protocols)", url: "https://arxiv.org/abs/2608.18839v1" },
       { label: "Stempin, Llorens & Huber, 'Counterexamples to the fractional coloring conjecture for triply efficient shadow tomography' (2026 preprint)", url: "https://arxiv.org/abs/2608.20113v1" },
     ] },
 
@@ -476,7 +478,7 @@ Standard reference for correlated noise: Aharonov, Kitaev and Preskill, “Fault
     progress: r`- In August 2026, Breuckmann, Golowich and Vazirani allowed a globally correlated adversary to corrupt up to $N^{1-o(1)}$ physical qudits per time step ([arXiv:2608.16857](https://arxiv.org/abs/2608.16857v2)). Their construction uses polynomial space, subpolynomial multiplicative depth overhead and, after recursive composition, constant local dimension. Reducing an unbounded alphabet is therefore not the remaining generic problem. The theorem (v2 of 30 September 2026, with minor expository edits) is accepted at FOCS 2026 (8–11 November 2026), together with its classical companion by Anshu, Breuckmann, Golowich, Nguyen and Vazirani, which tolerates almost-linearly many adversarially corrupted bits per time step and yields PCPs for NP from a detect-only variant ([arXiv:2608.16860](https://arxiv.org/abs/2608.16860v1)). Acceptance records peer review of the stated theorems.
 - Bharti, Haug and Tanggara give a logarithmic reliability contribution to memory space-time cost ([arXiv:2608.26272](https://arxiv.org/abs/2608.26272v1)): fixed small logical registers and sufficiently wide amortized computations have different relative-overhead conclusions.
 - Gong and Hu's self-calibration theorem applies to their structured control-error and local-convexity setting, not all correlated noise ([arXiv:2608.05686](https://arxiv.org/abs/2608.05686v2)).
-- Decoding milestones also need model labels. Bazzi and Khater prove additive inapproximability for minimum-weight Pauli decoding of surface/toric codes under depolarizing noise, and separate X/Z decoding for their colour-code setting ([arXiv:2608.17109](https://arxiv.org/abs/2608.17109v3)); this does not make the usual independent-error surface-code matching problem NP-hard. Krishnamoorthy et al. express CSS degenerate maximum-likelihood decoding through partition functions and give statistical certificates, or exact certificates when suitable estimators are available ([arXiv:2608.25545](https://arxiv.org/abs/2608.25545v1)). Neither supplies an unconditional efficient optimal decoder for every CSS code.`,
+- Decoding milestones also need model labels. Bazzi and Khater prove, assuming $\mathsf P\ne\mathsf{NP}$, polynomial additive inapproximability gaps for minimum-weight Pauli decoding of surface/toric codes under depolarizing noise, and separate X/Z decoding for their colour-code setting ([arXiv:2608.17109](https://arxiv.org/abs/2608.17109v3)); this does not make the usual independent-error surface-code matching problem NP-hard. Krishnamoorthy et al. express CSS degenerate maximum-likelihood decoding through partition functions and give statistical certificates, or exact certificates when suitable estimators are available ([arXiv:2608.25545](https://arxiv.org/abs/2608.25545v1)). Neither supplies an unconditional efficient optimal decoder for every CSS code.`,
     residual: r`Small-qubit architectures, quantitative constants and space overhead remain the open part of the programme.`,
     evidence: [
       { kind: "preprint", role: "progress", summary: "Adversarial fault tolerance with per-step corruption budget, polynomial space and constant alphabet after recursion; v2 (30 September 2026) makes minor expository edits; accepted to FOCS 2026.", url: "https://arxiv.org/abs/2608.16857v2", date: "2026-09-30", version: "v2" },
@@ -510,8 +512,8 @@ Standard reference for correlated noise: Aharonov, Kitaev and Preskill, “Fault
     reviewedAt: "2026-11-08",
     provenance: [
       { summary: "Mantri reports that discussions with GPT-6.1 Sol and GPT-6 Astra contributed substantially to developing the proof of Theorem 1.7 and assisted with the Appendix B argument, and that Claude Opus helped draft and revise the exposition.", url: "https://arxiv.org/abs/2610.37635v1", version: "v1" },
-      { summary: "The authors report ChatGPT assistance with representation analysis and Claude assistance with circuits, several proof ideas, review and writing; they take responsibility for all content.", url: "https://arxiv.org/html/2609.38060v1", version: "v1" },
-      { summary: "The authors credit ChatGPT 6 Astra with an initial one-sided proof idea; interactions and their own discussions led to the two-sided Forrelation argument. They report verification, simplification and responsibility.", url: "https://arxiv.org/html/2609.25680v1", version: "v1" },
+      { summary: "Holler and Natarajan report ChatGPT assistance with representation analysis and Claude assistance with circuits, several proof ideas, review and writing; they take responsibility for all content.", url: "https://arxiv.org/html/2609.38060v1", version: "v1" },
+      { summary: "Bouland, Huang, Natarajan, Shalit and Tal credit ChatGPT 6 Astra with an initial one-sided proof idea; interactions and their own discussions led to the two-sided Forrelation argument. They report verification, simplification and responsibility.", url: "https://arxiv.org/html/2609.25680v1", version: "v1" },
     ],
     title: "Noncryptographic classical verification of BQP",
     statement: r`Does every BQP decision problem admit an interactive proof with one polynomial-time honest quantum prover and a probabilistic polynomial-time classical verifier, using polynomially many rounds of classical messages, completeness at least $2/3$ and soundness at most $1/3$ against an unrestricted cheating prover? Require no computational hardness assumption, trusted quantum setup or additional noncommunicating prover.`,
@@ -536,18 +538,19 @@ Mahadev's classical-verification protocol is a landmark positive result with com
       { label: "Finn Holler, Anand Natarajan, 'Classical Verification of Quantum Computation with Quasilinear Resources, from Compiled Nonlocal Games' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.38060v1" },
       { label: "Bouland, Huang, Natarajan, Shalit & Tal, 'BQP ⊆ IP Does Not Relativize' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.25680v1" },
       { label: "Mahadev, 'Classical Verification of Quantum Computations', FOCS 2018", url: "https://arxiv.org/abs/1804.01082" },
-      { label: "Aaronson, Natarajan, Tal & Villanyi, 'A Relativizing MIP for BQP' (2026 preprint)", url: "https://arxiv.org/abs/2604.11952v1" },
+      { label: "Aaronson, Natarajan, Tal & Villanyi, 'A Relativizing MIP for BQP' (2026 preprint, v1; v2 of 5 October 2026)", url: "https://arxiv.org/abs/2604.11952v1" },
     ] },
 
   { id: "A20", cat: "complexity", horizon: "sharp", status: "claimed-solved",
+    lean: { url: "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/274.md", note: "OpenAI reports a Lean formalization of the main bounded-error parity lower bound with zero-initialized ancillary qubits. The build was not rerun here." },
     reviewedAt: "2026-11-08",
     title: "Parity is not in QAC0",
     statement: r`Prove that no family of polynomial-size, constant-depth $\mathsf{QAC}^0$ circuits (arbitrary single-qubit gates and generalized Toffoli gates, with polynomially many ancillas initialized to $|0\rangle$) outputs $\mathrm{PARITY}_n(x)=x_1\oplus\cdots\oplus x_n$ with certainty on every input $x\in\{0,1\}^n$.`,
     definition: r`**The class** $\mathsf{QAC}^0$ is the class of polynomial-size, constant-depth quantum circuits built from arbitrary single-qubit gates and generalized Toffoli gates, the quantum analogue of $\mathsf{AC}^0$. Classically, parity is famously outside $\mathsf{AC}^0$.
 
 Moore showed that parity and fanout are equivalent up to constant-depth reductions, so the question is equally whether constant-depth quantum circuits can implement fanout: Moore, “Quantum circuits: fanout, parity, and counting” (1999), [arXiv:quant-ph/9903046](https://arxiv.org/abs/quant-ph/9903046).`,
-    progress: r`- Depth-two and depth-three circuits cannot compute parity regardless of size (Rosenthal, [arXiv:2008.07470](https://arxiv.org/abs/2008.07470); Joshi, Tal, Vasconcelos and Wright, STOC 2026, [arXiv:2512.14643](https://arxiv.org/abs/2512.14643)).
-- Strong lower bounds hold when ancillas are restricted (Nadimpalli, Parham, Vasconcelos and Yuen, [arXiv:2311.09631](https://arxiv.org/abs/2311.09631); Anshu, Dong, Ou and Yao).
+    progress: r`- Circuits with two layers of multi-qubit gates cannot even approximate parity, while depth-three circuits cannot compute it exactly, regardless of size (Rosenthal, [arXiv:2008.07470](https://arxiv.org/abs/2008.07470); Joshi, Tal, Vasconcelos and Wright, STOC 2026, [arXiv:2512.14643](https://arxiv.org/abs/2512.14643)).
+- Strong lower bounds hold when ancillas are restricted (Nadimpalli, Parham, Vasconcelos and Yuen, [arXiv:2311.09631](https://arxiv.org/abs/2311.09631); Anshu, Dong, Ou and Yao, [arXiv:2410.06499](https://arxiv.org/abs/2410.06499)).
 - Gretta, Gupta and Joshi (FOCS 2026) proved that parity $\notin\mathsf{QAC}^0$ is equivalent to a Fourier-concentration property of $\mathsf{QAC}^0$, and that inverse-polynomial correlation with parity can be amplified to exact computation ([arXiv:2604.02793](https://arxiv.org/abs/2604.02793v2)).`,
     claim: r`**OpenAI, [“Product-projection localization and the QAC0 parity lower bound”](https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Product-projection-localization-and-the-QAC0-parity-lower-bound-September-24-2026/paper.pdf)** (OpenAI Math Release on GitHub, public 6 October 2026, not on arXiv).
 
@@ -555,18 +558,18 @@ Moore showed that parity and fanout are equivalent up to constant-depth reductio
 
 What it claims:
 - For every fixed depth and polynomially many qubits, no $\mathsf{QAC}^0$ circuit achieves success probability $1/2+\varepsilon$ on every input, for any fixed $\varepsilon>0$ and all large $n$. This implies the exact statement above.
-- Gao, Ji and Liu give a self-contained simplified proof of the same theorem, an independent engagement with OpenAI's result.
+- Gao, Ji and Liu give a self-contained simplified proof of the same theorem, a self-contained simplification of OpenAI's proof by independent authors.
 
 Caveats:
-- Two consistent proofs, neither peer reviewed. Hence “Claimed solved” rather than “Solved”.
-- OpenAI lists itself as author and states that an unreleased internal model produced the manuscript collection. The scope of any Lean formalization was not checked here.`,
+- The original proof and a simplified self-contained version by independent authors; neither is peer reviewed. Hence “Claimed solved” rather than “Solved”.
+- OpenAI lists itself as author and states that an internal OpenAI model produced the manuscript collection. Its scope note reports the main positive-advantage parity lower bound formalized in Lean; the build was not rerun here.`,
     evidence: [
-      { kind: "preprint", role: "claimed-solution", summary: "Claimed proof that PARITY is not in QAC0, in the strong form that no constant-depth polynomial-size circuit beats random guessing by a fixed margin on all inputs; OpenAI GitHub manuscript, pending assessment.", url: "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Product-projection-localization-and-the-QAC0-parity-lower-bound-September-24-2026/paper.pdf", date: "2026-10-06", version: "v1" },
+      { kind: "preprint", role: "claimed-solution", lean: true, summary: "Claimed proof that PARITY is not in QAC0, in the strong form that no constant-depth polynomial-size circuit beats random guessing by a fixed margin on all inputs; OpenAI GitHub manuscript, pending assessment.", url: "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Product-projection-localization-and-the-QAC0-parity-lower-bound-September-24-2026/paper.pdf", date: "2026-10-06", version: "v1" },
       { kind: "preprint", role: "claimed-solution", summary: "Self-contained simplified proof of the OpenAI theorem; independent engagement, not peer reviewed.", url: "https://eccc.weizmann.ac.il/report/2026/258/", date: "2026-10-18" },
-      { kind: "preprint", role: "progress", summary: "Equivalence of PARITY not in QAC0 with Fourier concentration of QAC0, and amplification of weak correlation to exact computation (FOCS 2026).", url: "https://arxiv.org/abs/2604.02793v2", date: "2026-04-03", version: "v2" },
+      { kind: "preprint", role: "progress", summary: "Equivalence of PARITY not in QAC0 with Fourier concentration of QAC0, and amplification of weak correlation to exact computation (FOCS 2026).", url: "https://arxiv.org/abs/2604.02793v2", date: "2026-08-25", version: "v2" },
     ],
     provenance: [
-      { summary: "OpenAI lists itself as author and states that an unreleased internal model produced the manuscript collection. This is OpenAI's account; any Lean scope note was not checked here.", url: "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Product-projection-localization-and-the-QAC0-parity-lower-bound-September-24-2026/README.md" },
+      { summary: "OpenAI lists itself as author and states that an internal OpenAI model produced the manuscript collection. Its Lean scope note reports a formalization of the main parity lower bound; this is the author's account, not an independently rerun build.", url: "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/README.md" },
     ],
     relations: [{ id: "A16", type: "related" }],
     refs: [
@@ -587,16 +590,17 @@ Caveats:
 
 The dihedral case is central because Regev reduced unique-SVP-type lattice problems to a dihedral coset problem, so an efficient algorithm would bear on lattice cryptography (see A22): Regev, “Quantum computation and lattice problems”, SIAM J. Comput. 33 (2004), [arXiv:cs/0304005](https://arxiv.org/abs/cs/0304005).`,
     progress: r`- Kuperberg's sieve solves the problem in time $2^{O(\sqrt{\log N})}$ ([arXiv:quant-ph/0302112](https://arxiv.org/abs/quant-ph/0302112)), and Regev gave a polynomial-space variant ([arXiv:quant-ph/0406151](https://arxiv.org/abs/quant-ph/0406151)). Kuperberg's later collimation sieve improves the subexponential algorithm ([arXiv:1112.3333](https://arxiv.org/abs/1112.3333)).
-- Standard Fourier sampling with few coset states is insufficient, and no polynomial-time algorithm is known.
-- A polynomial-time algorithm for the dihedral coset problem claimed in August 2026 ([IACR ePrint 2026/1591](https://eprint.iacr.org/2026/1591), Simon) was refuted by Gupte, Ragavan and Zhandry ([IACR ePrint 2026/1693](https://eprint.iacr.org/2026/1693)). They prove that the algorithm cannot extract even the least-significant bit of the secret, and that the no-go covers a broad class of Regev-type templates.`,
+- A polynomial-time algorithm for the dihedral coset problem was claimed by Simon in August 2026 ([IACR ePrint 2026/1591](https://eprint.iacr.org/2026/1591)). Gupte, Ragavan and Zhandry argue that it cannot recover the least-significant secret bit with non-negligible advantage, with a broader no-go for related templates ([IACR ePrint 2026/1693](https://eprint.iacr.org/2026/1693)). Simon maintains the paper with a response note. The dispute is unresolved here; neither preprint is peer reviewed.`,
     residual: r`The sharp target is whether a polynomial-time algorithm exists in the standard oracle model. A lower bound excluding a natural class of algorithms would count as progress, but would not exclude algorithms outside that class.`,
     evidence: [
-      { kind: "preprint", role: "progress", summary: "Shows that the August 2026 ePrint 2026/1591 algorithm does not solve the dihedral coset problem, with a no-go for a broad class of similar algorithms.", url: "https://eprint.iacr.org/2026/1693", date: "2026-08-15" },
+      { kind: "preprint", role: "progress", summary: "Argues that Simon's algorithm does not solve DCP, with a no-go for related templates; Simon has posted a response. The dispute is not assessed here.", url: "https://eprint.iacr.org/2026/1693", date: "2026-08-15" },
+      { kind: "challenged", summary: "Claimed polynomial-time DCP algorithm, challenged by ePrint 2026/1693 and maintained by its author with a response.", url: "https://eprint.iacr.org/2026/1591", date: "2026-08-03" },
       { kind: "preprint", role: "progress", summary: "Kuperberg's collimation sieve: an improved subexponential-time algorithm; the general regime remains subexponential.", url: "https://arxiv.org/abs/1112.3333v1", date: "2011-12-14", version: "v1" },
     ],
     relations: [{ id: "A22", type: "related" }, { id: "A14", type: "related" }],
     refs: [
       { label: "Gupte, Ragavan & Zhandry, 'The ePrint:2026/1591 Quantum Algorithm Does Not Solve DCP' (IACR ePrint 2026/1693) (found via the QIQCOP Zoo)", url: "https://eprint.iacr.org/2026/1693" },
+      { label: "Simon, 'A Polynomial-Time Quantum Algorithm for the Dihedral Coset Problem' (IACR ePrint 2026/1591; challenged, with author response)", url: "https://eprint.iacr.org/2026/1591" },
       { label: "Kuperberg, 'A subexponential-time quantum algorithm for the dihedral hidden subgroup problem', SIAM J. Comput. 35 (2005)", url: "https://arxiv.org/abs/quant-ph/0302112" },
       { label: "Regev, 'A Subexponential Time Algorithm for the Dihedral Hidden Subgroup Problem with Polynomial Space' (2004)", url: "https://arxiv.org/abs/quant-ph/0406151" },
       { label: "Kuperberg, 'Another subexponential-time quantum algorithm for the dihedral hidden subgroup problem', TQC 2013", url: "https://arxiv.org/abs/1112.3333" },
@@ -612,19 +616,20 @@ The dihedral case is central because Regev reduced unique-SVP-type lattice probl
 Standard reference: Regev, “On lattices, learning with errors, random linear codes, and cryptography”, J. ACM 56 (2009), [doi:10.1145/1568318.1568324](https://doi.org/10.1145/1568318.1568324).`,
     progress: r`- Quantum sieving and enumeration give only exponential-time improvements for SVP.
 - Chen, Liu and Zhandry solve LWE-like variants when samples are supplied as quantum states, outside the hard regime ([arXiv:2108.11015](https://arxiv.org/abs/2108.11015)).
-- Chen's 2024 claimed polynomial-time algorithm for certain LWE parameters was withdrawn after a bug was found ([IACR ePrint 2024/555](https://eprint.iacr.org/2024/555)).
-- Reductions to extrapolated dihedral coset problems connect LWE with A21, and a quasi-polynomial EDCP algorithm with many states does not transfer to standard LWE.`,
+- Chen's 2024 claimed polynomial-time algorithm for certain LWE parameters had its main claim retracted by the author after a bug was found; the paper remains online ([IACR ePrint 2024/555](https://eprint.iacr.org/2024/555)).
+- Reductions to extrapolated dihedral coset problems connect LWE with A21. The Chen–Liu–Zhandry algorithms apply only in their specified EDCP parameter regimes; no general standard-LWE algorithm follows.
+- Simon's DCP announcement also claims lattice consequences, including SVP and LWE, and is challenged by Gupte–Ragavan–Zhandry; see A21 for the dispute and the author's response.`,
     residual: r`The target is whether a polynomial-time quantum algorithm exists in the stated regime. A barrier for natural algorithm classes would be evidence and partial progress, not a negative answer for all quantum algorithms.`,
     evidence: [
-      { kind: "preprint", role: "progress", summary: "Polynomial-time quantum algorithms for average-case lattice variants with quantum-state inputs; the standard hard regime is not reached.", url: "https://arxiv.org/abs/2108.11015v2", date: "2021-08-25", version: "v2" },
-      { kind: "withdrawn", summary: "Claimed polynomial-time quantum algorithm for LWE with certain polynomial modulus-to-noise ratios; withdrawn by the author after a bug in Step 9.", url: "https://eprint.iacr.org/2024/555", date: "2024-04-10" },
+      { kind: "preprint", role: "progress", summary: "Polynomial-time quantum algorithms for average-case lattice variants with quantum-state inputs; the standard hard regime is not reached.", url: "https://arxiv.org/abs/2108.11015v2", date: "2021-10-06", version: "v2" },
+      { kind: "withdrawn", summary: "Claimed polynomial-time quantum algorithm for LWE with certain polynomial modulus-to-noise ratios; main claim retracted by the author after a bug in Step 9; paper remains online.", url: "https://eprint.iacr.org/2024/555", date: "2024-04-10" },
     ],
     relations: [{ id: "A21", type: "related" }, { id: "A2", type: "related" }],
     refs: [
       { label: "Regev, 'On lattices, learning with errors, random linear codes, and cryptography', J. ACM 56 (2009)", url: "https://doi.org/10.1145/1568318.1568324" },
       { label: "Regev, 'Quantum Computation and Lattice Problems', SIAM J. Comput. 33 (2004)", url: "https://arxiv.org/abs/cs/0304005" },
       { label: "Chen, Liu & Zhandry, 'Quantum Algorithms for Variants of Average-Case Lattice Problems via Filtering', EUROCRYPT 2022", url: "https://arxiv.org/abs/2108.11015" },
-      { label: "Chen, 'Quantum Algorithms for Lattice Problems' (IACR ePrint 2024/555; withdrawn)", url: "https://eprint.iacr.org/2024/555" },
+      { label: "Chen, 'Quantum Algorithms for Lattice Problems' (IACR ePrint 2024/555; main claim retracted by the author)", url: "https://eprint.iacr.org/2024/555" },
     ] },
 
   { id: "A23", cat: "complexity", horizon: "incremental",
@@ -638,10 +643,10 @@ Standard reference: Magniez, Santha and Szegedy, “Quantum algorithms for the t
 - Belovs's learning graphs gave $O(n^{35/27})$.
 - Le Gall reached $\tilde O(n^{5/4})$ ([arXiv:1407.0085](https://arxiv.org/abs/1407.0085)), and Carette, Laurière and Magniez removed the logarithmic factors ([arXiv:1609.07786](https://arxiv.org/abs/1609.07786)).
 - The only general lower bound is the trivial $\Omega(n)$.
-- For the edge-weighted triangle-sum variant, Belovs and Rosmanis proved $\Omega(n^{9/7}/\sqrt{\log n})$, showing that non-adaptive learning graphs cannot go below $n^{9/7}$ for weighted problems ([arXiv:1210.3279](https://arxiv.org/abs/1210.3279)).`,
+- For the edge-weighted triangle-sum variant, Belovs and Rosmanis proved $\Omega(n^{9/7}/\sqrt{\log n})$, which also limits non-adaptive learning-graph algorithms for unweighted triangle finding to $\Omega(n^{9/7}/\sqrt{\log n})$ queries ([arXiv:1210.3279](https://arxiv.org/abs/1210.3279)).`,
     residual: r`Any polynomial improvement of either bound counts. Time complexity, sparse-graph regimes and the weighted variant are distinct benchmarks.`,
     evidence: [
-      { kind: "preprint", role: "progress", summary: "Extended learning graphs remove the logarithmic overhead, giving the best general upper bound O(n^{5/4}).", url: "https://arxiv.org/abs/1609.07786v2", date: "2016-09-25", version: "v2" },
+      { kind: "preprint", role: "progress", summary: "Extended learning graphs remove the logarithmic overhead, giving the best general upper bound O(n^{5/4}).", url: "https://arxiv.org/abs/1609.07786v2", date: "2016-10-11", version: "v2" },
     ],
     relations: [{ id: "A16", type: "related" }],
     refs: [
@@ -663,7 +668,7 @@ Standard reference: Bravyi, Smith and Smolin, “Trading classical and quantum c
 - For approximate rank, Mehraban and Tahmasbi prove a quadratic lower bound up to polylogarithmic factors in their stated approximation regimes ([arXiv:2305.10277](https://arxiv.org/abs/2305.10277)). This also lower-bounds the exact rank, since every exact decomposition is an admissible approximate one.`,
     residual: r`Any super-polynomial unconditional bound would be a major advance in circuit-complexity terms.`,
     evidence: [
-      { kind: "preprint", role: "progress", summary: "Quadratic lower bound, up to polylogarithmic factors, on approximate stabilizer rank of magic-state tensor powers (STOC 2024).", url: "https://arxiv.org/abs/2305.10277v4", date: "2023-05-17", version: "v4" },
+      { kind: "preprint", role: "progress", summary: "Quadratic lower bound, up to polylogarithmic factors, on approximate stabilizer rank of magic-state tensor powers (STOC 2024).", url: "https://arxiv.org/abs/2305.10277v4", date: "2024-03-29", version: "v4" },
     ],
     relations: [{ id: "A1", type: "related" }],
     refs: [
@@ -683,10 +688,10 @@ Standard reference: Bravyi, Smith and Smolin, “Trading classical and quantum c
 Standard reference: Aaronson, “Shadow tomography of quantum states”, STOC 2018, [arXiv:1711.01053](https://arxiv.org/abs/1711.01053).`,
     progress: r`- Bădescu and O'Donnell gave $\tilde O(\log^2 M\log d/\varepsilon^4)$ ([arXiv:2011.10908](https://arxiv.org/abs/2011.10908)).
 - Chen, Li and Liu attained the optimal logarithmic rate in a high-precision regime ([arXiv:2407.13874](https://arxiv.org/abs/2407.13874)).
-- Jeronimo, Huang and Liu (August 2026, revised) report dimension-free polylogarithmic copy complexity, $O(\log M\log(M/\delta)/\varepsilon^2)$, settling the existence of dimension-free shadow tomography ([arXiv:2608.06345](https://arxiv.org/abs/2608.06345v3)).`,
+- Jeronimo, Huang and Liu (August 2026, revised) report dimension-free polylogarithmic copy complexity, $O(\log M\log(M/\delta)/\varepsilon^2)$, settling whether a dimension-free bound polylogarithmic in $M$ exists ([arXiv:2608.06345](https://arxiv.org/abs/2608.06345v3)).`,
     residual: r`At constant failure probability the worst-case gap is between $\log M$ and $\log^2 M$. Computational efficiency is a separate target.`,
     evidence: [
-      { kind: "preprint", role: "progress", summary: "Dimension-free polylogarithmic shadow tomography from sequential pretty-good measurements; a log M factor separates it from the lower bound.", url: "https://arxiv.org/abs/2608.06345v3", date: "2026-08-06", version: "v3" },
+      { kind: "preprint", role: "progress", summary: "Dimension-free polylogarithmic shadow tomography from sequential pretty-good measurements; a log M factor separates it from the lower bound.", url: "https://arxiv.org/abs/2608.06345v3", date: "2026-09-30", version: "v3" },
     ],
     relations: [{ id: "A17", type: "related" }],
     refs: [
@@ -704,7 +709,7 @@ Standard reference: Aaronson, “Shadow tomography of quantum states”, STOC 20
 
 Standard reference: Gharibian and Parekh, “Almost optimal classical approximation algorithms for a quantum generalization of Max-Cut”, APPROX 2019, [arXiv:1909.08846](https://arxiv.org/abs/1909.08846).`,
     progress: r`- Product-state rounding of an SDP gives $0.498$ (Gharibian and Parekh).
-- Entangled-state algorithms beat the product-state limit (Anshu, Gosset and Morenz, [arXiv:2003.14394](https://arxiv.org/abs/2003.14394)), followed by $0.582$ (King, [arXiv:2209.02589](https://arxiv.org/abs/2209.02589)), $0.595$ via matchings (Lee and Parekh, [arXiv:2401.03616](https://arxiv.org/abs/2401.03616)) and $0.603$ on general graphs, $0.614$ on triangle-free and $0.816$ on bipartite graphs (Gribling, Sinjorgo and Sotirov, [arXiv:2504.11120](https://arxiv.org/abs/2504.11120v1)).
+- Entangled-state algorithms beat the product-state limit (Anshu, Gosset and Morenz, [arXiv:2003.14394](https://arxiv.org/abs/2003.14394)), followed by $0.582$ on triangle-free graphs (King, [arXiv:2209.02589](https://arxiv.org/abs/2209.02589)), $0.595$ on general graphs via matchings (Lee and Parekh, [arXiv:2401.03616](https://arxiv.org/abs/2401.03616)) and $0.603$ on general graphs, $0.614$ on triangle-free and $0.816$ on bipartite graphs (Gribling, Sinjorgo and Sotirov, [arXiv:2504.11120](https://arxiv.org/abs/2504.11120v1)).
 - On the hardness side, Hwang, Neeman, Parekh, Thompson and Wright show that beating about $0.956$ is Unique-Games-hard, assuming a vector-valued Borell conjecture ([arXiv:2111.01254](https://arxiv.org/abs/2111.01254)).
 - A June 2026 hybrid algorithm with a Rydberg annealer reports a conditional $0.651$ ([arXiv:2606.27224](https://arxiv.org/abs/2606.27224v1)).
 - For bipartite graphs, the antiferromagnetic Hamiltonian $H_{\mathrm{AF}}$ is stoquastic after a local basis change. In July 2026, Rayudu and Takahashi ([arXiv:2607.10765](https://arxiv.org/abs/2607.10765v1)) and Bravyi, Gosset, Liu and Wong ([arXiv:2607.14401](https://arxiv.org/abs/2607.14401v1)) independently gave efficient quantum (BQP) algorithms for its ground energy via Lee–Yang spectral-gap bounds, equivalently for $\lambda_{\max}(H_G)$.`,
@@ -740,14 +745,13 @@ Standard reference: Gharibian and Parekh, “Almost optimal classical approximat
 Pseudorandom states and unitaries were introduced by Ji, Liu and Song, CRYPTO 2018, [arXiv:1711.00385](https://arxiv.org/abs/1711.00385).`,
     progress: r`- Approximate $t$-designs are known: random circuits of depth $O(nt^{5+o(1)})$ (Haferkamp, [arXiv:2203.16571](https://arxiv.org/abs/2203.16571); Brandão, Harrow and Horodecki, [arXiv:1208.0692](https://arxiv.org/abs/1208.0692)) and multiplicative-error designs with $\tilde O(n^2t)$ gates (Chen, Haah, Haferkamp, Liu, Metger and Tan, [arXiv:2406.07478](https://arxiv.org/abs/2406.07478)).
 - PRUs exist assuming quantum-secure one-way functions (Ma and Huang, [arXiv:2410.10116](https://arxiv.org/abs/2410.10116)), and specially assembled constructions reach very low depth (Schuster, Haferkamp and Huang, [arXiv:2407.07754](https://arxiv.org/abs/2407.07754)).
-- Dujmovic (2026) shows that moment matching does not generically imply pseudorandomness ([IACR ePrint 2026/2303](https://eprint.iacr.org/2026/2303)).
-- Raza, Eisert and Fefferman (September 2026) study a distinctness threshold for PRUs and still describe the random-circuit conjecture as open ([arXiv:2609.03065](https://arxiv.org/abs/2609.03065v1)).`,
+- Dujmovic, Haferkamp and Poremba (2026) study pseudorandomness of simple quantum processes ([IACR ePrint 2026/2303](https://eprint.iacr.org/2026/2303)).
+- Raza, Eisert and Fefferman (September 2026) study a distinctness threshold for dedicated PRU constructions, rather than proving a result about the plain random-circuit ensemble in this entry ([arXiv:2609.03065](https://arxiv.org/abs/2609.03065v1)).`,
     residual: r`The gap is the order of quantifiers. A design for every fixed $t$ does not imply that one fixed polynomial-size ensemble defeats every polynomial-time adversary.
 
 A proof would make the simplest physical model of chaos a cryptographic object; an efficient distinguisher for a natural random-circuit family would be equally decisive.`,
     evidence: [
-      { kind: "preprint", role: "progress", summary: "Distinctness threshold for pseudorandom unitaries; the random-circuit PRU question is left open.", url: "https://arxiv.org/abs/2609.03065v1", date: "2026-09-02", version: "v1" },
-      { kind: "preprint", role: "progress", summary: "Pseudorandom unitaries exist assuming quantum-secure one-way functions, by a dedicated construction rather than plain random circuits.", url: "https://arxiv.org/abs/2410.10116v3", date: "2024-10-14", version: "v3" },
+      { kind: "preprint", role: "progress", summary: "Pseudorandom unitaries exist assuming quantum-secure one-way functions, by a dedicated construction rather than plain random circuits.", url: "https://arxiv.org/abs/2410.10116v3", date: "2025-05-21", version: "v3" },
     ],
     provenance: [
       { summary: "Raza, Eisert and Fefferman report that ChatGPT 5.5 and 5.6 Pro were used to devise proof strategies for all main results and that one counterexample (Theorem III.5) was proposed by ChatGPT 5.6 Sol.", url: "https://arxiv.org/abs/2609.03065v1", version: "v1" },
@@ -756,11 +760,11 @@ A proof would make the simplest physical model of chaos a cryptographic object; 
     refs: [
       { label: "Brandão, Harrow & Horodecki, 'Local random quantum circuits are approximate polynomial-designs', Comm. Math. Phys. 346 (2016)", url: "https://arxiv.org/abs/1208.0692" },
       { label: "Haferkamp, 'Random quantum circuits are approximate unitary t-designs in depth O(nt^{5+o(1)})', Quantum 6 (2022)", url: "https://arxiv.org/abs/2203.16571" },
-      { label: "Chen, Haah, Haferkamp, Liu, Metger & Tan, 'Incompressibility and spectral gaps of random circuits' (2024)", url: "https://arxiv.org/abs/2406.07478" },
+      { label: "Chen, Haah, Haferkamp, Liu, Metger & Tan, 'Incompressibility and spectral gaps of random circuits', FOCS 2025, 1304–1312", url: "https://arxiv.org/abs/2406.07478" },
       { label: "Ji, Liu & Song, 'Pseudorandom States, Non-Cloning Theorems and Quantum Money', CRYPTO 2018", url: "https://arxiv.org/abs/1711.00385" },
       { label: "Ma & Huang, 'How to Construct Random Unitaries', STOC 2025", url: "https://arxiv.org/abs/2410.10116" },
       { label: "Schuster, Haferkamp & Huang, 'Random unitaries in extremely low depth', Science 389 (2025)", url: "https://arxiv.org/abs/2407.07754" },
-      { label: "Dujmovic, 'On the pseudorandomness of simple quantum processes' (IACR ePrint 2026/2303)", url: "https://eprint.iacr.org/2026/2303" },
+      { label: "Dujmovic, Haferkamp, Poremba, 'On the pseudorandomness of simple quantum processes' (IACR ePrint 2026/2303)", url: "https://eprint.iacr.org/2026/2303" },
       { label: "Raza, Eisert & Fefferman, 'Distinctness threshold for pseudorandom unitaries' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.03065v1" },
     ] },
 
@@ -773,11 +777,11 @@ A proof would make the simplest physical model of chaos a cryptographic object; 
 Anshu, Arunachalam, Kuwahara and Soleimanifar gave sample-efficient learning, Nat. Phys. 17 (2021), [arXiv:2004.07266](https://arxiv.org/abs/2004.07266).`,
     progress: r`- Haah, Kothari and Tang gave optimal high-temperature algorithms ([arXiv:2108.04842](https://arxiv.org/abs/2108.04842)).
 - Bakshi, Liu, Moitra and Tang learn the coefficients at any constant temperature in polynomial time, when the interaction structure is known ([arXiv:2310.02243](https://arxiv.org/abs/2310.02243)).
-- Structure learning is solved only at high temperature: Lewis, Tang and Wright (June 2026) give an efficient algorithm below an explicit inverse-temperature threshold, and explicitly leave the all-temperature case open ([arXiv:2606.30358](https://arxiv.org/abs/2606.30358v2)).`,
+- Structure learning is solved only at high temperature: Lewis, Tang and Wright (June 2026; v2 of 2 October 2026) give an efficient algorithm below an explicit inverse-temperature threshold, and explicitly leave the all-temperature case open ([arXiv:2606.30358](https://arxiv.org/abs/2606.30358v2)).`,
     residual: r`Supplying all candidate Pauli terms to the known-structure algorithms breaks their bounded-degree assumption. A positive answer for every fixed $\beta$, or a hardness result at low temperature, would settle the question.`,
     evidence: [
-      { kind: "preprint", role: "progress", summary: "Efficient structure learning from high-temperature Gibbs states; the all-temperature case is explicitly left open.", url: "https://arxiv.org/abs/2606.30358v2", date: "2026-06-29", version: "v2" },
-      { kind: "preprint", role: "progress", summary: "Polynomial-time learning of Hamiltonian coefficients from Gibbs states at any constant temperature, with known interaction structure (STOC 2024).", url: "https://arxiv.org/abs/2310.02243v2", date: "2023-10-03", version: "v2" },
+      { kind: "preprint", role: "progress", summary: "Efficient structure learning from high-temperature Gibbs states; the all-temperature case is explicitly left open.", url: "https://arxiv.org/abs/2606.30358v2", date: "2026-10-02", version: "v2" },
+      { kind: "preprint", role: "progress", summary: "Polynomial-time learning of Hamiltonian coefficients from Gibbs states at any constant temperature, with known interaction structure (STOC 2024).", url: "https://arxiv.org/abs/2310.02243v2", date: "2026-05-08", version: "v2" },
     ],
     provenance: [
       { summary: "Lewis, Tang and Wright state that the main technical proofs, except the lower bound, were written without AI, checked with ChatGPT 5.6 Sol (which found issues they repaired), and that the lower-bound proof was generated with ChatGPT 6 Astra; the final proofs were written and verified by the authors.", url: "https://arxiv.org/abs/2606.30358v2", version: "v2" },
@@ -798,13 +802,13 @@ Anshu, Arunachalam, Kuwahara and Soleimanifar gave sample-efficient learning, Na
     definition: r`**Public-key quantum money** uses no-cloning to make unforgeable banknotes that anyone can verify. Quantum money goes back to Wiesner; private-key schemes are well understood, and public verification is the hard part.
 
 Standard reference: Aaronson and Christiano, “Quantum money from hidden subspaces”, STOC 2012, [arXiv:1203.4740](https://arxiv.org/abs/1203.4740).`,
-    progress: r`- Aaronson and Christiano gave a scheme relative to an oracle and a hidden-subspace candidate; many concrete candidates (knots, lattices, group actions) were later broken.
+    progress: r`- Aaronson and Christiano gave a scheme relative to an oracle and a hidden-subspace candidate; some concrete candidates, including a lattice-based scheme, were later broken; knots and group-action constructions require their own security assessments.
 - Zhandry introduced quantum lightning, which implies public-key money, from non-collapsing hash functions ([arXiv:1711.02276](https://arxiv.org/abs/1711.02276)), and constructions from indistinguishability obfuscation followed.
-- In 2025, Shmueli and Zhandry built one-shot signatures, which imply public-key quantum money, from post-quantum iO plus LWE, or unconditionally relative to a classical oracle ([arXiv:2507.12456](https://arxiv.org/abs/2507.12456)); Huang and Vaikuntanathan simplified the scheme ([arXiv:2510.10899](https://arxiv.org/abs/2510.10899v2)). These rely on iO, whose post-quantum security is itself not based on a standard assumption.`,
+- In 2025, Shmueli and Zhandry built one-shot signatures, which imply public-key quantum money, from sub-exponentially secure post-quantum iO plus LWE, or unconditionally relative to a classical oracle ([arXiv:2507.12456](https://arxiv.org/abs/2507.12456)); Huang and Vaikuntanathan simplified the scheme ([arXiv:2510.10899](https://arxiv.org/abs/2510.10899v2)). These rely on iO, whose post-quantum security is itself not based on a standard assumption.`,
     residual: r`A scheme from LWE alone, or another standard assumption, would resolve the construction question. A black-box separation would establish a barrier for the specified class of reductions, without excluding non-black-box constructions.`,
     evidence: [
-      { kind: "preprint", role: "progress", summary: "One-shot signatures, implying public-key quantum money, from post-quantum iO plus LWE, or relative to a classical oracle (CRYPTO 2025); not from LWE alone.", url: "https://arxiv.org/abs/2507.12456v1", date: "2025-07-16", version: "v1" },
-      { kind: "preprint", role: "progress", summary: "Simpler one-shot signature scheme with perfect correctness; plain-model security still uses obfuscation.", url: "https://arxiv.org/abs/2510.10899v2", date: "2025-10-13", version: "v2" },
+      { kind: "preprint", role: "progress", summary: "One-shot signatures, implying public-key quantum money, from sub-exponentially secure post-quantum iO plus LWE, or relative to a classical oracle (CRYPTO 2025); not from LWE alone.", url: "https://arxiv.org/abs/2507.12456v1", date: "2025-07-16", version: "v1" },
+      { kind: "preprint", role: "progress", summary: "Simpler one-shot signature scheme with perfect correctness; plain-model security still uses obfuscation.", url: "https://arxiv.org/abs/2510.10899v2", date: "2026-07-27", version: "v2" },
     ],
     relations: [{ id: "A22", type: "related" }],
     refs: [
@@ -835,13 +839,13 @@ Caveats:
     residual: r`Qudit codes are outside the scope of the claimed proof.`,
     evidence: [
       { kind: "preprint", role: "claimed-solution", summary: "Claimed proof that every exact binary subspace code with K>1 obeys the quantum Hamming bound, including degenerate codes; pending assessment.", url: "https://arxiv.org/abs/2606.15558v1", date: "2026-06-14", version: "v1" },
-      { kind: "preprint", role: "progress", summary: "No ((n,K,d)) code with d<127 can violate the quantum Hamming bound.", url: "https://arxiv.org/abs/2208.11800v2", date: "2022-08-25", version: "v2" },
+      { kind: "preprint", role: "progress", summary: "No ((n,K,d)) code with d<127 can violate the quantum Hamming bound.", url: "https://arxiv.org/abs/2208.11800v2", date: "2022-12-13", version: "v2" },
     ],
     relations: [{ id: "A7", type: "related" }],
     refs: [
       { label: "Gottesman, 'Stabilizer Codes and Quantum Error Correction' (PhD thesis, 1997)", url: "https://arxiv.org/abs/quant-ph/9705052" },
       { label: "Sarvepalli & Klappenecker, 'Degenerate quantum codes and the quantum Hamming bound', PRA 81 (2010)", url: "https://arxiv.org/abs/0812.2674" },
-      { label: "Dallas, Andreadakis & Lidar, 'No ((n,K,d<127)) code can violate the quantum Hamming bound' (2022)", url: "https://arxiv.org/abs/2208.11800" },
+      { label: "Dallas, Andreadakis & Lidar, 'No ((n,K,d<127)) code can violate the quantum Hamming bound', IEEE BITS 2, 33–38 (2022)", url: "https://arxiv.org/abs/2208.11800" },
       { label: "Zhang & Chen, 'Degeneracy Cannot Violate the Quantum Hamming Bound' (2026 preprint, v1)", url: "https://arxiv.org/abs/2606.15558v1" },
     ] },
 
@@ -858,27 +862,28 @@ The question is due to Aaronson and Kuperberg, “Quantum versus classical proof
     claim: r`**OpenAI, [“Polynomial-Time Unitary Synthesis from a Boolean Oracle”](https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Polynomial-Time-Unitary-Synthesis-from-a-Boolean-Oracle-October-5-2026/paper.pdf)** (OpenAI Math Release on GitHub, public 6 October 2026, not on arXiv).
 
 What it claims:
-- A positive answer to the constant-error formulation.
+- A positive answer with diamond-norm error at most $1/2$ (without dividing the norm by two). No efficient classical procedure to construct the Boolean oracle from a description of $U$ is asserted.
 - A polynomial-time classical algorithm outputs, for each $n$, a circuit with polynomially many gates and Boolean-oracle calls that implements any $n$-qubit unitary for a suitable oracle.
 
 Caveats:
 - Not peer reviewed, and no independent assessment was found. Hence “Claimed solved” rather than “Solved”.
-- He, Ou and Zhao (2 November 2026) build on this claim to prove unitaryQIP = unitaryPSPACE ([arXiv:2611.02819](https://arxiv.org/abs/2611.02819v1)). Along the way they push the synthesis to exponentially small error: oracle circuits with error below $2^{-\beta-1}$ and size polynomial in $n$ and $\beta$ (their Theorem 4.6), with a PSPACE oracle for families with PSPACE-computable entries (Lemma 4.7). This is downstream use, not an assessment.
-- OpenAI lists itself as author and states that an unreleased internal model produced the manuscript collection. The scope of any Lean formalization for this family was not checked here.`,
+- He, Ou and Zhao (2 November 2026) use this claim to prove unitaryQIP = unitaryPSPACE ([arXiv:2611.02819](https://arxiv.org/abs/2611.02819v1)). Their Theorem 4.6 restates the synthesis result with error below $2^{-\beta-1}$ and polynomial size, attributed to OpenAI. Appendix B gives a self-contained exposition of the construction. This is independent engagement and downstream use, not a refereed assessment.
+- OpenAI lists itself as author and states that an internal OpenAI model produced the manuscript collection. No Lean formalization is listed for this family at the cited commit.`,
     evidence: [
       { kind: "preprint", role: "claimed-solution", summary: "Claimed positive answer to the constant-error unitary synthesis problem with a polynomial-size circuit and one Boolean oracle; OpenAI GitHub manuscript, pending assessment.", url: "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Polynomial-Time-Unitary-Synthesis-from-a-Boolean-Oracle-October-5-2026/paper.pdf", date: "2026-10-06", version: "v1" },
-      { kind: "preprint", role: "progress", summary: "Uses the claimed unitary synthesis result to prove unitaryQIP = unitaryPSPACE, and extends the synthesis to error 2^{-β-1} at size poly(n, β) (Theorem 4.6); downstream use, not verification.", url: "https://arxiv.org/abs/2611.02819v1", date: "2026-11-02", version: "v1" },
+      { kind: "preprint", role: "progress", summary: "Re-exposes the synthesis construction in Appendix B and uses it for unitaryQIP = unitaryPSPACE; its exponentially precise Theorem 4.6 is attributed to OpenAI. Not a refereed assessment.", url: "https://arxiv.org/abs/2611.02819v1", date: "2026-11-02", version: "v1" },
       { kind: "preprint", role: "progress", summary: "Explicit unitaries requiring two oracle queries, sharpening the one-query lower bound.", url: "https://arxiv.org/abs/2607.26478v1", date: "2026-07-29", version: "v1" },
     ],
     provenance: [
-      { summary: "OpenAI lists itself as author and states that an unreleased internal model produced the manuscript collection. Lean scope for this family was not checked here.", url: "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Polynomial-Time-Unitary-Synthesis-from-a-Boolean-Oracle-October-5-2026/README.md" },
+      { summary: "OpenAI lists itself as author and states that an internal OpenAI model produced the manuscript collection. No Lean formalization is listed for this family at the cited commit.", url: "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/README.md" },
+      { summary: "He, Ou and Zhao report extensive GPT-6 assistance with formulation, proof checks, typesetting and language; they state that they reviewed the manuscript and take responsibility for it.", url: "https://arxiv.org/abs/2611.02819v1", version: "v1" },
     ],
     relations: [{ id: "A10", type: "related" }, { id: "A27", type: "related" }],
     refs: [
       { label: "Aaronson & Kuperberg, 'Quantum Versus Classical Proofs and Advice', Theory of Computing 3 (2007)", url: "https://arxiv.org/abs/quant-ph/0604056" },
       { label: "Lombardi, Ma & Wright, 'A one-query lower bound for unitary synthesis and breaking quantum cryptography', STOC 2024", url: "https://eprint.iacr.org/2023/1602" },
       { label: "Brakerski & Yuen, 'On Scalable Pseudorandom Unitaries and the Unitary Synthesis Problem' (2026 preprint)", url: "https://arxiv.org/abs/2605.09957" },
-      { label: "Dong, Lombardi & Ma, 'Explicit Separations for One-Query Unitary Synthesis' (2026 preprint, v1)", url: "https://arxiv.org/abs/2607.26478v1" },
+      { label: "Dong, Lombardi & Ma, 'Explicit Separations for One-Query Unitary Synthesis' (FOCS 2026; preprint v1)", url: "https://arxiv.org/abs/2607.26478v1" },
       { label: "OpenAI, 'Polynomial-Time Unitary Synthesis from a Boolean Oracle' (OpenAI Math Release manuscript, dated 5 October 2026)", url: "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Polynomial-Time-Unitary-Synthesis-from-a-Boolean-Oracle-October-5-2026/paper.pdf" },
       { label: "He, Ou & Zhao, 'unitaryQIP = unitaryPSPACE' (2026 preprint, v1)", url: "https://arxiv.org/abs/2611.02819v1" },
     ] },
@@ -933,7 +938,7 @@ The question of how the complexity of $|\psi\rangle^{\otimes n}$ depends on $n$ 
     refs: [
       { label: "Kretschmer, 'Quantum Mass Production Theorems', TQC 2023, LIPIcs 266", url: "https://arxiv.org/abs/2212.14399" },
       { label: "Shende, Bullock & Markov, 'Synthesis of Quantum Logic Circuits', IEEE Trans. CAD 25 (2006)", url: "https://arxiv.org/abs/quant-ph/0406176" },
-      { label: "Gosset, Kothari & Wu, 'Quantum state preparation with optimal T-count', Quantum (2026)", url: "https://arxiv.org/abs/2411.04790v3" },
+      { label: "Gosset, Kothari & Wu, 'Quantum state preparation with optimal T-count', Quantum 10, 2168 (2026)", url: "https://arxiv.org/abs/2411.04790v3" },
       { label: "Huggins, Khattar & Wiebe, 'Productionizing Quantum Mass Production' (2025 preprint, v1)", url: "https://arxiv.org/abs/2506.00132v1" },
       { label: "IQOQI Vienna Open Quantum Problems, problem 16: 'Complexity of product preparations'", url: "https://oqp.iqoqi.oeaw.ac.at/complexity-of-product-preparations/" },
     ] },
