@@ -35,6 +35,7 @@ function useHashRoute() {
   if (parts[0] === "sharp") return { view: "sharp" };
   if (parts[0] === "improved") return { view: "improved" };
   if (parts[0] === "claimed-solved") return { view: "claimed-solved" };
+  if (parts[0] === "lean-verified") return { view: "lean-verified" };
   if (parts[0] === "new-problems") return { view: "new-problems" };
   if (parts[0] === "np" && parts[1]) return { view: "proposal", key: parts[1] };
   if (parts[0] === "similar" || parts[0] === "about") return { view: "similar" };
@@ -163,9 +164,14 @@ function Header({ crumbs }) {
 }
 
 // ---------- home ----------
+function isOpenSharp(p) {
+  return p.horizon === "sharp" && p.status !== "claimed-solved" && !p.lean;
+}
+
 function Home() {
   const total = PROBLEMS.length;
   const nSharp = PROBLEMS.filter((p) => p.horizon === "sharp").length;
+  const nOpenSharp = PROBLEMS.filter(isOpenSharp).length;
   const nImproved = PROBLEMS.filter((p) => p.status === "improved").length;
   const nClaimedSolved = PROBLEMS.filter((p) => p.status === "claimed-solved").length;
   const leanVerified = PROBLEMS.filter((p) => p.lean);
@@ -190,13 +196,13 @@ function Home() {
                   <div className="n">{nClaimedSolved}</div><div className="l">Claimed solved <span aria-hidden="true">→</span></div>
                 </a>
                 {leanVerified.length > 0 && (
-                  <div className="stat stat-lean" title={`Claimed solutions whose main theorem is formalized in Lean according to the authors: ${leanVerified.map((p) => p.id).join(", ")}`}>
-                    <div className="n">{leanVerified.length}</div><div className="l">Lean verified</div>
-                  </div>
+                  <a className="stat stat-link stat-lean" href="#lean-verified" aria-label={`See all ${leanVerified.length} Lean verified problems`} title={`Claimed solutions whose main theorem is formalized in Lean according to the authors: ${leanVerified.map((p) => p.id).join(", ")}`}>
+                    <div className="n">{leanVerified.length}</div><div className="l">Lean verified <span aria-hidden="true">→</span></div>
+                  </a>
                 )}
               </div>
               <button className="cta-sharp" onClick={() => go("sharp")}>
-                <span aria-hidden="true">🔥</span> See all {nSharp} sharp problems
+                <span aria-hidden="true">🔥</span> See open sharp problems ({nOpenSharp})
               </button>
             </div>
             <a className="box box-new" href="#new-problems">
@@ -381,12 +387,12 @@ function ClaimedSolvedView() {
   return <FilteredProblemsView status="claimed-solved" />;
 }
 
-function FilteredProblemsView({ status = null }) {
+function FilteredProblemsView({ status = null, leanOnly = false }) {
   const [q, setQ] = useState("");
-  const label = status ? STATUSES[status].label : "Sharp";
+  const label = leanOnly ? "Lean verified" : status ? STATUSES[status].label : "Open sharp";
 
   const rows = useMemo(() => {
-    let ps = PROBLEMS.filter((p) => status ? p.status === status : p.horizon === "sharp");
+    let ps = PROBLEMS.filter((p) => leanOnly ? Boolean(p.lean) : status ? p.status === status : isOpenSharp(p));
     if (q.trim()) {
       const s = q.trim().toLowerCase();
       ps = ps.filter(
@@ -397,7 +403,7 @@ function FilteredProblemsView({ status = null }) {
       );
     }
     return ps;
-  }, [q, status]);
+  }, [q, status, leanOnly]);
 
   return (
     <>
@@ -405,21 +411,21 @@ function FilteredProblemsView({ status = null }) {
       <section className="body">
         <div className="container">
           <p className="intro">
-            {status
+            {leanOnly ? LEAN_TITLE : status
               ? STATUSES[status].desc
-              : "Sharp problems: a single proof or counterexample closes them. These are the cleanest targets for a solution."}
+              : "Open sharp problems: a single proof or counterexample closes them. Excludes claimed solved and Lean verified entries."}
           </p>
 
           <div className="toolbar">
             <input
-              aria-label={status ? `Filter ${label.toLowerCase()} problems` : "Filter sharp questions"}
+              aria-label={`Filter ${label.toLowerCase()} problems`}
               placeholder="Filter by keyword…"
               value={q}
               onChange={(e) => setQ(e.target.value)}
             />
           </div>
 
-          {status && <p className="review-meta" role="status">{rows.length} {label.toLowerCase()} {rows.length === 1 ? "problem" : "problems"}</p>}
+          <p className="review-meta" role="status">{rows.length} {label.toLowerCase()} {rows.length === 1 ? "problem" : "problems"}</p>
           <div className="table-wrap">
             <table>
               <thead>
@@ -854,6 +860,7 @@ export default function Page() {
   if (route.view === "sharp") return <SharpView />;
   if (route.view === "improved") return <ImprovedView />;
   if (route.view === "claimed-solved") return <ClaimedSolvedView />;
+  if (route.view === "lean-verified") return <FilteredProblemsView leanOnly />;
   if (route.view === "new-problems") return <NewProblemsView />;
   if (route.view === "proposal") return <ProposalView pkey={route.key} />;
   if (route.view === "similar") return <SimilarProjectsView />;

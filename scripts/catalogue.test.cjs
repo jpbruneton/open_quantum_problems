@@ -18,7 +18,7 @@ function loadApp(relative) {
   if (cache.has(filename)) return cache.get(filename).exports;
   let source = fs.readFileSync(filename, "utf8");
   if (relative === "app/page.js") {
-    source += "\nexport const testViews = { Home, CategoryView, SharpView, ImprovedView, ClaimedSolvedView, ProblemView, NewProblemsView, ProposalView, NotFound, truncate };";
+    source += "\nexport const testViews = { Home, CategoryView, SharpView, ImprovedView, ClaimedSolvedView, FilteredProblemsView, ProblemView, NewProblemsView, ProposalView, NotFound, truncate };";
   }
   const { code } = transformSync(source, {
     filename,
@@ -250,6 +250,8 @@ test("home, all categories, filtered lists and missing-page views render", () =>
   assert.ok(!home.includes("#review") && home.includes("Powered by Astra &amp; Opus 5.5"));
   assert.ok(home.includes('href="#improved"'));
   assert.ok(home.includes('href="#claimed-solved"'));
+  assert.ok(home.includes('href="#lean-verified"'));
+  assert.ok(home.includes('See open sharp problems'));
   assert.ok(home.includes('aria-label="See all 61 improved problems"'));
   assert.ok(home.includes('aria-label="See all 23 claimed solved problems"'));
   assert.ok(home.includes('href="https://quantumlectures.org/en"'));
@@ -260,6 +262,11 @@ test("home, all categories, filtered lists and missing-page views render", () =>
     for (const p of problemsByCat(c.slug)) assert.ok(html.includes(`#p/${p.id}`), `${c.slug}: missing ${p.id}`);
   }
   const sharp = render(views.SharpView);
+  const leanVerified = render(views.FilteredProblemsView, { leanOnly: true });
+  for (const p of PROBLEMS) {
+    assert.equal(sharp.includes(`href="#p/${p.id}"`), p.horizon === "sharp" && p.status !== "claimed-solved" && !p.lean, `${p.id}: open sharp list membership`);
+    assert.equal(leanVerified.includes(`href="#p/${p.id}"`), Boolean(p.lean), `${p.id}: Lean verified list membership`);
+  }
   for (const p of ARCHIVED_PROBLEMS) assert.ok(!sharp.includes(`href="#p/${p.id}"`), `archived ${p.id} in sharp list`);
   const improved = render(views.ImprovedView);
   const claimedSolved = render(views.ClaimedSolvedView);
