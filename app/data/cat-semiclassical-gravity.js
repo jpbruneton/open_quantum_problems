@@ -138,7 +138,7 @@ The **island formula** reproduces it in models where the radiation is collected 
     ] },
 
   { id: "G6", cat: "semiclassical-gravity", horizon: "sharp",
-    reviewedAt: "2026-11-09",
+    reviewedAt: "2026-11-12",
     relations: [{ id: "G7", type: "related" }, { id: "G8", type: "related" }, { id: "G10", type: "related" }],
     title: "Quantum focusing conjecture in four dimensions",
     statement: r`For a codimension-2 surface $\sigma$ and a null congruence from it, define the quantum expansion $\Theta[\sigma;y]=\frac{4G\hbar}{\sqrt h}\frac{\delta S_{\rm gen}}{\delta V(y)}$. The quantum focusing conjecture (QFC) states $\delta\Theta[\sigma;y]/\delta V(y')\le0$ for all $y,y'$. For Einstein gravity in $D=4$ coupled to free fields or a CFT, in the regime where quantum effects are small compared with the area, decide whether (i) the QFC holds, (ii) only the restricted QFC holds (derivatives at quantum-marginal surfaces, $\Theta=0$), or (iii) counterexamples already exist.`,
@@ -147,10 +147,17 @@ The **island formula** reproduces it in models where the radiation is collected 
 - Fu, Koeller and Marolf (2017) find pointwise violations of the QFC in Einstein–Gauss–Bonnet gravity in $D\ge5$ and argue that they persist for gravity coupled to generic massive fields there, leaving $D\le4$ open; Leichenauer (2017) argues that the violation disappears once the geometric terms are smeared over the cutoff scale ([arXiv:1705.05469](https://arxiv.org/abs/1705.05469)).
 - Shahbazi-Moghaddam (2022) proposes the restricted QFC and proves it for braneworlds dual to Einstein gravity under a technical assumption.
 - Franken, Kaya, Rondeau, Shahbazi-Moghaddam and Tran (2025) construct counterexamples to the original QFC in JT gravity with 2D matter, in regimes without higher-dimensional uplift, and prove the restricted QFC there; they do not regard this as strong evidence against the QFC in higher dimensions.
-- Bousso and Tabor (2024) reformulate the QFC as discrete max-focusing, from which the QNEC and the Bousso bound follow.`,
+- Bousso and Tabor (2024) reformulate the QFC as discrete max-focusing, from which the QNEC and the Bousso bound follow.
+- Faulkner posted two preprints on 9 November 2026 (v1), both in the algebraic framework of half-sided modular inclusions. The first removes the finite-null-energy purification assumption of earlier algebraic QNEC proofs. In physical terms, the relative entropy to the Hartle–Hawking state is convex in the horizon cut. It also gives a weight-based version argued to be relevant to evaporating black holes in flat space ([arXiv:2611.11920](https://arxiv.org/abs/2611.11920v1)). The second proves convexity of the sandwiched (Araki–Masuda) Rényi relative entropy along the inclusion for every $p\ge2$, i.e. Rényi index $\alpha=p/2\ge1$, for diagonal shape variations ([arXiv:2611.11760](https://arxiv.org/abs/2611.11760v1)). Both concern QFT without gravitational back-reaction, so neither bears directly on the QFC itself.`,
     residual: r`In $D=4$: a proof for free fields beyond the QNEC, or a counterexample in the weakly coupled semiclassical regime. Weaker consequences that are separately open: the quantum Bousso bound beyond weak gravity and the Rényi QNEC for interacting theories (both on the new-problems page). Related: G7, G8, G10.`,
     evidence: [
       { kind: "published", role: "progress", summary: "Counterexamples to the original QFC in two-dimensional JT gravity with matter, outside the regime that uplifts to higher dimension; proof of the restricted QFC in the same model; JHEP 05 (2026) 111.", url: "https://arxiv.org/abs/2510.13961v3", date: "2026-06-29", version: "v3" },
+      { kind: "preprint", role: "progress", summary: "Algebraic QNEC (half-sided modular inclusions) without the finite-null-energy purification assumption, plus a weight-based version; flat-space QFT, not the QFC.", url: "https://arxiv.org/abs/2611.11920v1", date: "2026-11-09", version: "v1" },
+      { kind: "preprint", role: "progress", summary: "Diagonal Rényi QNEC for every p ≥ 2 (α = p/2 ≥ 1) via Araki–Masuda weighted L_p norms, for half-sided modular inclusions; a QFT statement, not the QFC.", url: "https://arxiv.org/abs/2611.11760v1", date: "2026-11-09", version: "v1" },
+    ],
+    provenance: [
+      { summary: "Faulkner reports that Claude Opus 5.5 and GPT-6 Astra helped with editing and proof checking, found a gap in the original formulation of Theorem 5, and contributed substantially to the ideas of Appendix B.4, which removes an assumption in the weight QNEC. Faulkner states that the main proof ideas predate AI assistance and takes full responsibility.", url: "https://arxiv.org/abs/2611.11920v1", version: "v1" },
+      { summary: "Faulkner reports that Claude Opus 5.5 and GPT-6 Astra helped with editing, checking and streamlining some proofs and clarifying edge cases; the main proof ideas predate AI assistance.", url: "https://arxiv.org/abs/2611.11760v1", version: "v1" },
     ],
     refs: [
       { label: "Bousso, Fisher, Leichenauer, Wall, 'Quantum focusing conjecture', PRD 93 (2016)", url: "https://arxiv.org/abs/1506.02669" },
@@ -162,6 +169,8 @@ The **island formula** reproduces it in models where the radiation is collected 
       { label: "Shahbazi-Moghaddam, 'Restricted quantum focusing', PRD 109, 066023 (2024)", url: "https://arxiv.org/abs/2212.03881" },
       { label: "Franken, Kaya, Rondeau, Shahbazi-Moghaddam, Tran, 'Tests of restricted quantum focusing and a new CFT bound', JHEP 05 (2026) 111", url: "https://arxiv.org/abs/2510.13961" },
       { label: "Bousso, Tabor, 'Discrete max-focusing', JHEP 06 (2025) 240", url: "https://arxiv.org/abs/2410.18192" },
+      { label: "Faulkner, 'Proof of the QNEC, without assumptions and under a weight' (2026 preprint, v1)", url: "https://arxiv.org/abs/2611.11920v1" },
+      { label: "Faulkner, 'Proof of the Rényi QNEC' (2026 preprint, v1)", url: "https://arxiv.org/abs/2611.11760v1" },
     ] },
 
   { id: "G7", cat: "semiclassical-gravity", horizon: "sharp",

@@ -217,11 +217,11 @@ function Home() {
           </div>
 
           <div className="review-note">
-            <b>Last update · {LITERATURE_UPDATE.label}.</b> {LITERATURE_UPDATE.ids.length} new entries added, in four new areas and in Foundations.
+            <b>Last update · {LITERATURE_UPDATE.label}.</b> {LITERATURE_UPDATE.ids.length} entries updated after a review of arXiv announcements from 9 to 11 November.
             <ul>
-              <li>New areas: <a href="#c/semiclassical-gravity">black holes &amp; semiclassical gravity</a>, <a href="#c/holography">holography &amp; gravitational complexity</a>, <a href="#c/quantum-gravity">quantum gravity &amp; cosmology</a> and <a href="#c/renormalization">the renormalization group</a>.</li>
-              <li>Among them: the <a href="#p/G6">quantum focusing conjecture</a>, <a href="#p/H1">extremal CFTs and pure AdS₃ gravity</a>, the <a href="#p/R1">a-theorem in six dimensions</a>, the <a href="#p/R4">3D Ising scaling limit</a> and <a href="#p/QG1">seven-loop N = 8 supergravity</a>.</li>
-              <li>Foundations: <a href="#p/F13">relativistic collapse models</a>, <a href="#p/F14">causal nonlinear quantum mechanics</a> and <a href="#p/F15">higher-order interference</a>.</li>
+              <li>The <a href="#p/A11">Aaronson–Ambainis proof</a> is now on arXiv, with an independent short proof and an expert exposition. The finite certificates of the <a href="#p/M5">Haldane-gap proof</a> have been independently reproduced. Both stay “Claimed solved”.</li>
+              <li><a href="#p/O6">Coherent thermal conversion</a> is now “Improved”: the optimal catalyst-free asymptotic rate between pure states has been determined.</li>
+              <li>New partial results on the <a href="#p/G6">QNEC and Rényi QNEC</a>, <a href="#p/QG6">classical-mediator models of gravity</a>, <a href="#p/F9">simulating the quantum switch</a>, the <a href="#p/B15">kagome antiferromagnet</a>, <a href="#p/QF5">lattice chiral gauge theories</a> and <a href="#p/N15">facet Bell inequalities</a>.</li>
             </ul>
           </div>
 

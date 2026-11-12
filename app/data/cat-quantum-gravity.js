@@ -104,16 +104,21 @@ export const QUANTUM_GRAVITY = [
     ] },
 
   { id: "QG6", cat: "quantum-gravity", horizon: "sharp",
-    reviewedAt: "2026-11-09",
+    reviewedAt: "2026-11-12",
     title: "Gravitationally mediated entanglement as a witness of quantum gravity",
     statement: r`In the Bose–Marletto–Vedral setting (two masses in spatial superposition, Newtonian interaction only), specify a class $\mathcal C$ of theories in which the gravitational field is a classical degree of freedom (phase-space variable, not superposable, relativistically non-signalling, Newtonian limit, stochastic back-reaction allowed). Prove that every theory in $\mathcal C$ produces strictly less entanglement than linearized quantum gravity for fixed experimental parameters, or exhibit a member of $\mathcal C$ that reproduces it; state whether the locality assumption is information-theoretic or spatio-temporal.`,
     definition: r`**The gravitational entanglement witness** proposes to test whether gravity is quantum by checking whether it can entangle two masses: local operations and classical communication cannot create entanglement, so a classical mediator could not either. Bose et al., “Spin entanglement witness for quantum gravity”, PRL 119 (2017), [arXiv:1707.06050](https://arxiv.org/abs/1707.06050); Marletto, Vedral, PRL 119 (2017), [arXiv:1707.06036](https://arxiv.org/abs/1707.06036).`,
     progress: r`- Theorems with information-theoretic locality: Marletto–Vedral (2020) beyond quantum theory; Galley–Giacomini–Selby (2022) in generalized probabilistic theories.
 - Oppenheim, Sparaciari, Šoda and Weller-Davies (2023): classical-quantum gravity implies a decoherence–diffusion trade-off.
-- Aziz and Howl (Nature, 2025) claim that classical gravity produces entanglement through QFT on a classical background. Several groups contest this, reducing the effect to free QFT on a fixed background or to a material channel. Di Biagio (arXiv 2025; PRD 2026) argues that detection alone is insufficient without quantitative predictions.`,
+- Aziz and Howl (Nature, 2025) claim that classical gravity produces entanglement through QFT on a classical background. Several groups contest this, reducing the effect to free QFT on a fixed background or to a material channel. Di Biagio (arXiv 2025; PRD 2026) argues that detection alone is insufficient without quantitative predictions.
+- Feng and Vedral (9 November 2026, v1; v2 of 10 November) study the dephased Bose–Marletto–Vedral setup, in which the final state may hold no entanglement at all ([arXiv:2611.12229](https://arxiv.org/abs/2611.12229v2)). With independently characterized which-path dephasing held fixed, they prove an exact finite-time distinction between the gravitational conditional-phase evolution and every passive stochastic local-phase model induced by a classical mediator, even for inputs that stay separable. Through a diagonal PPT relaxation, the distinction extends to population-preserving classical measurement and feedback. This is a dynamical witness for a specified class of classical-mediator models, not an entanglement bound for the full class $\mathcal C$ of the statement.`,
     residual: r`A theorem with purely spatio-temporal locality assumptions and a quantitative bound on classically mediated entanglement, or an explicit classical model reaching the quantum prediction. Experimental feasibility is outside the question.`,
     evidence: [
       { kind: "published", role: "progress", summary: "Claims that classical theories of gravity produce entanglement through QFT on a classical background; contested by several groups. Nature (2025).", url: "https://arxiv.org/abs/2510.19714v3", date: "2026-07-01", version: "v3" },
+      { kind: "preprint", role: "progress", summary: "Exact finite-time distinction between gravitational conditional-phase dynamics and every passive stochastic local-phase classical-mediator model under fixed dephasing, also for separable inputs; a restricted model class and a dynamical rather than entanglement witness.", url: "https://arxiv.org/abs/2611.12229v2", date: "2026-11-10", version: "v2" },
+    ],
+    provenance: [
+      { summary: "Feng and Vedral report that AI tools assisted with grammar, wording, coding, algebraic checks and proof exploration, and that GPT-assisted tools were used for exploratory derivations and consistency checks in parts of the diagonal-PPT analysis behind Theorem 2 and Appendix G. They take full responsibility.", url: "https://arxiv.org/abs/2611.12229v2", version: "v2" },
     ],
     refs: [
       { label: "Bose et al., 'Spin entanglement witness for quantum gravity', PRL 119 (2017)", url: "https://arxiv.org/abs/1707.06050" },
@@ -123,6 +128,7 @@ export const QUANTUM_GRAVITY = [
       { label: "Christodoulou, Rovelli (2018)", url: "https://arxiv.org/abs/1808.05842" },
       { label: "Oppenheim, Sparaciari, Šoda, Weller-Davies (2022)", url: "https://arxiv.org/abs/2203.01982" },
       { label: "Aziz, Howl, 'Classical theories of gravity produce entanglement', Nature (2025)", url: "https://arxiv.org/abs/2510.19714" },
+      { label: "Feng & Vedral, 'Testing non-classical gravitational phase dynamics under strong dephasing' (2026 preprint, v2)", url: "https://arxiv.org/abs/2611.12229v2" },
       { label: "Diósi, 'No, classical gravity does not entangle quantized matter fields' (2025; revised 2026)", url: "https://arxiv.org/abs/2511.00852" },
       { label: "Gundhi, Infantino, Bassi, 'Can classical theories of gravity produce entanglement?' (2026)", url: "https://arxiv.org/abs/2604.19696" },
       { label: "Di Biagio, Gravity-induced entanglement is not a theory-independent witness of nonclassicality of the gravitational field, PRD 114, 084050 (2026)", url: "https://arxiv.org/abs/2511.02683" },

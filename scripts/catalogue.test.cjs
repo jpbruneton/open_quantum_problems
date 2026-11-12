@@ -179,8 +179,14 @@ test("targeted literature updates preserve untouched review dates and expose pen
   assert.match(getProblem("B19").statement, /BCC periodic order/);
   // 9 November 2026: four new areas and 31 promoted entries.
   for (const slug of ["semiclassical-gravity", "holography", "quantum-gravity", "renormalization"]) assert.ok(problemsByCat(slug).length >= 4, slug);
-  assert.equal(LITERATURE_UPDATE.date, "2026-11-09");
-  assert.equal(LITERATURE_UPDATE.ids.length, 31);
+  assert.equal(LITERATURE_UPDATES[1].date, "2026-11-09");
+  assert.equal(LITERATURE_UPDATES[1].ids.length, 31);
+  // 12 November 2026: arXiv review of 9–11 November; claims and partial progress only, no new entries.
+  assert.equal(LITERATURE_UPDATE.date, "2026-11-12");
+  assert.equal(getProblem("O6").status, "improved", "O6: catalyst-free asymptotic pure-state rate determined");
+  for (const id of ["A11", "M5"]) assert.equal(getProblem(id).status, "claimed-solved", `${id}: expert engagement is not peer review`);
+  assert.ok(!getProblem("M5").lean, "M5: Lu's Lean formalization keeps finite trace totals as hypotheses");
+  assert.ok(getProblem("A11").evidence.some((e) => e.role === "claimed-solution" && e.url.includes("2611.09773v1")));
   for (const id of ["H1", "G1", "QG3"]) assert.equal(getProblem(id).status, "open", `${id}: an unassessed or partial claim must not move the status`);
   assert.match(getProblem("H1").residual, /would not settle \(a\)/);
   const home = render(views.Home);
@@ -252,7 +258,7 @@ test("home, all categories, filtered lists and missing-page views render", () =>
   assert.ok(home.includes('href="#claimed-solved"'));
   assert.ok(home.includes('href="#lean-verified"'));
   assert.ok(home.includes('See open sharp problems'));
-  assert.ok(home.includes('aria-label="See all 61 improved problems"'));
+  assert.ok(home.includes('aria-label="See all 62 improved problems"'));
   assert.ok(home.includes('aria-label="See all 23 claimed solved problems"'));
   assert.ok(home.includes('href="https://quantumlectures.org/en"'));
   assert.ok(home.includes('href="https://learnthermo.org/"'));
