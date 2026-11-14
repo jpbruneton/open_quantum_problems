@@ -951,4 +951,44 @@ The question of how the complexity of $|\psi\rangle^{\otimes n}$ depends on $n$ 
       { label: "Huggins, Khattar & Wiebe, 'Productionizing Quantum Mass Production' (2025 preprint, v1)", url: "https://arxiv.org/abs/2506.00132v1" },
       { label: "IQOQI Vienna Open Quantum Problems, problem 16: 'Complexity of product preparations'", url: "https://oqp.iqoqi.oeaw.ac.at/complexity-of-product-preparations/" },
     ] },
+
+  { id: "A34", cat: "complexity", horizon: "sharp", status: "claimed-solved",
+    reviewedAt: "2026-11-14",
+    title: "Quantum query complexity beyond n/2",
+    statement: r`(Kimmel; Aaronson 2014, question 5.) Is there a Boolean function $f:\{0,1\}^n\to\{0,1\}$ whose bounded-error quantum query complexity $Q_\varepsilon(f)$ is strictly greater than $n/2$?`,
+    definition: r`**The $n/2$ threshold.** Parity needs exactly $\lceil n/2\rceil$ quantum queries, even with bounded error (Beals, Buhrman, Cleve, Mosca and de Wolf, [arXiv:quant-ph/9802049](https://arxiv.org/abs/quant-ph/9802049)). Van Dam's oracle interrogation recovers the whole input with $n/2+O(\sqrt n)$ queries, so every Boolean function costs at most that ([arXiv:quant-ph/9805006](https://arxiv.org/abs/quant-ph/9805006)). The polynomial method cannot prove more than $n/2$, since the degree of any Boolean function is at most $n$.
+
+The question was posed by Shelby Kimmel and listed as question 5 of Aaronson's [“The NEW ten most annoying questions in quantum computing”](https://scottaaronson.blog/?p=1792) (May 2014).`,
+    progress: r`- Farhi, Goldstone, Gutmann and Sipser showed that the $\sqrt n$ overhead is optimal for recovering the whole input ([arXiv:quant-ph/9901012](https://arxiv.org/abs/quant-ph/9901012)), but that task has many output bits.
+- Ambainis, Backurs, Smotrovs and de Wolf (STACS 2013) proved that almost all Boolean functions need $n/2-o(n)$ queries, using the sum-of-squares structure of acceptance probabilities ([arXiv:1208.1122](https://arxiv.org/abs/1208.1122)).
+- Paturi characterized the approximate degree of symmetric functions up to constant factors (STOC 1992).`,
+    claim: r`**Deng, Hao, Lin, Liu, Mirrokni, Shao and Woodruff, [“Beyond the $n/2$ Threshold: Quantum Query Complexity for Computing Hamming Weight and Symmetric Functions”](https://arxiv.org/abs/2611.09809v1)** (arXiv:2611.09809, v1, 6 November 2026).
+
+What it claims:
+- A positive answer: the symmetric function $H_{2m}(x)=\mathrm{PARITY}(x)\oplus\mathbf 1[|x|\ge m]$ needs at least $m+1$ queries at every fixed error below $1/2$, for large $m$ (Theorem 1.3).
+- An explicit symmetric family $F_n$ needs $n/2+\Omega(n^{1/3})$ queries at a fixed constant error (Theorem 1.2).
+- Every symmetric function, and the exact Hamming weight, can be computed with $n/2+O(n^{1/3})$ queries (Theorem 1.1). The additive order $n^{1/3}$ is therefore tight for symmetric functions at small constant error.
+
+Caveats:
+- A single preprint, not peer reviewed and not yet independently assessed. Hence “Claimed solved” rather than “Solved”.
+- The Lean formalization covers all the lower bounds (Theorems 1.2–1.4 and Section 5), which answer the question. It does not cover the upper bound of Theorem 1.1. The build was not rerun here.`,
+    residual: r`For non-symmetric functions, it is open whether some single-bit function needs $n/2+\Omega(\sqrt n)$ queries, matching the overhead for recovering the whole input, or whether van Dam's bound can be improved to $n/2+o(\sqrt n)$ for single-bit outputs. The authors note that their lower-bound argument relies on symmetry.`,
+    lean: { url: "https://drive.google.com/file/d/1YByxN8GeiwrGXNzsDj_wpVjKhYLUqT8q/view?usp=sharing", note: "The authors link a Lean 4 package (qgap_cuberoot) that formalizes all the lower bounds, including Theorem 1.3 (one query beyond n/2) and Theorem 1.2 (n/2 + Ω(n^{1/3})), in two operational query models. The algorithmic upper bound is outside its scope. The build was not rerun here." },
+    evidence: [
+      { kind: "preprint", role: "claimed-solution", lean: true, summary: "Explicit symmetric functions needing m+1 queries on 2m bits, and n/2 + Ω(n^{1/3}) queries, at constant error; matching n/2 + O(n^{1/3}) algorithm for Hamming weight. Lower bounds formalized in Lean according to the authors; pending assessment.", url: "https://arxiv.org/abs/2611.09809v1", date: "2026-11-06", version: "v1" },
+      { kind: "published", role: "progress", summary: "Almost all n-bit Boolean functions need n/2 − o(n) bounded-error quantum queries (STACS 2013).", url: "https://doi.org/10.4230/LIPIcs.STACS.2013.446", date: "2013-02-26" },
+    ],
+    provenance: [
+      { summary: "The authors' AI-methodology statement reports AI use for the approach, proof development, writing and bug checking. OpenAI's GPT 6 Astra Ultra found the upper bound. Google's Stellar Colosseum produced the matching lower bound, its Lean formalization and a simpler hard function. The authors state that they rewrote the analysis themselves.", url: "https://arxiv.org/abs/2611.09809v1", version: "v1" },
+      { summary: "Google Research's 13 November 2026 blog post on Antigravity's /teamwork feature presents this result among its multi-agent research outcomes.", url: "https://research.google/blog/advancing-science-engineering-with-antigravitys-teamwork-feature/" },
+    ],
+    relations: [{ id: "A11", type: "related" }, { id: "A23", type: "related" }],
+    refs: [
+      { label: "Aaronson, 'The NEW ten most annoying questions in quantum computing', Shtetl-Optimized (May 2014), question 5", url: "https://scottaaronson.blog/?p=1792" },
+      { label: "van Dam, 'Quantum oracle interrogation: getting all information for almost half the price', FOCS 1998", url: "https://arxiv.org/abs/quant-ph/9805006" },
+      { label: "Beals, Buhrman, Cleve, Mosca & de Wolf, 'Quantum lower bounds by polynomials', J. ACM 48 (2001)", url: "https://arxiv.org/abs/quant-ph/9802049" },
+      { label: "Farhi, Goldstone, Gutmann & Sipser, 'How many functions can be distinguished with k quantum queries?', PRA 60 (1999)", url: "https://arxiv.org/abs/quant-ph/9901012" },
+      { label: "Ambainis, Backurs, Smotrovs & de Wolf, 'Optimal quantum query bounds for almost all Boolean functions', STACS 2013", url: "https://arxiv.org/abs/1208.1122" },
+      { label: "Deng, Hao, Lin, Liu, Mirrokni, Shao & Woodruff, 'Beyond the n/2 Threshold' (2026 preprint, v1)", url: "https://arxiv.org/abs/2611.09809v1" },
+    ] },
 ];

@@ -56,8 +56,8 @@ function validUrl(value, label) {
 }
 
 test("all 111 original IDs remain addressable; 12 additions and 10 archives are counted correctly", () => {
-  assert.equal(ALL_PROBLEMS.length, 191);
-  assert.equal(PROBLEMS.length, 181);
+  assert.equal(ALL_PROBLEMS.length, 192);
+  assert.equal(PROBLEMS.length, 182);
   assert.equal(ARCHIVED_PROBLEMS.length, 10);
   assert.equal(new Set(ALL_PROBLEMS.map((p) => p.id)).size, ALL_PROBLEMS.length);
   for (const [prefix, n] of Object.entries(originalSeries)) {
@@ -136,7 +136,7 @@ test("targeted literature updates preserve untouched review dates and expose pen
     assert.equal(getProblem(id).status, id === "C5" ? "improved" : "claimed-solved", `${id}: distinguish partial progress from a full pending claim`);
     assert.ok(getProblem(id).evidence.some((e) => e.kind === "preprint" && e.url.includes(source)), id);
   }
-  assert.deepEqual(PROBLEMS.filter((p) => p.status === "claimed-solved").map((p) => p.id).sort(), ["A11", "A20", "A30", "A31", "A4", "A7", "B1", "B14", "B16", "B17", "B18", "C12", "C4", "E10", "E16", "E18", "M1", "M12", "M2", "M5", "N1", "N19", "N2"]);
+  assert.deepEqual(PROBLEMS.filter((p) => p.status === "claimed-solved").map((p) => p.id).sort(), ["A11", "A20", "A30", "A31", "A34", "A4", "A7", "B1", "B14", "B16", "B17", "B18", "C12", "C4", "E10", "E16", "E18", "M1", "M12", "M2", "M5", "N1", "N19", "N2"]);
   assert.equal(getProblem("C10").status, "improved", "a solved subcase must not close the broader programme");
   assert.equal(PROBLEMS.filter((p) => p.status === "solved").length, 0, "pending claims must not count as established solutions");
   const earlierE10 = getProblem("E10").evidence.find((e) => e.url.includes("2609.29539v1"));
@@ -179,16 +179,23 @@ test("targeted literature updates preserve untouched review dates and expose pen
   assert.match(getProblem("B19").statement, /BCC periodic order/);
   // 9 November 2026: four new areas and 31 promoted entries.
   for (const slug of ["semiclassical-gravity", "holography", "quantum-gravity", "renormalization"]) assert.ok(problemsByCat(slug).length >= 4, slug);
-  assert.equal(LITERATURE_UPDATES[1].date, "2026-11-09");
-  assert.equal(LITERATURE_UPDATES[1].ids.length, 31);
+  assert.equal(LITERATURE_UPDATES[2].date, "2026-11-09");
+  assert.equal(LITERATURE_UPDATES[2].ids.length, 31);
   // 12 November 2026: arXiv review of 9–11 November; claims and partial progress only, no new entries.
-  assert.equal(LITERATURE_UPDATE.date, "2026-11-12");
+  assert.equal(LITERATURE_UPDATES[1].date, "2026-11-12");
   assert.equal(getProblem("O6").status, "improved", "O6: catalyst-free asymptotic pure-state rate determined");
   for (const id of ["A11", "M5"]) assert.equal(getProblem(id).status, "claimed-solved", `${id}: expert engagement is not peer review`);
   assert.ok(!getProblem("M5").lean, "M5: Lu's Lean formalization keeps finite trace totals as hypotheses");
   assert.ok(getProblem("A11").evidence.some((e) => e.role === "claimed-solution" && e.url.includes("2611.09773v1")));
   for (const id of ["H1", "G1", "QG3"]) assert.equal(getProblem(id).status, "open", `${id}: an unassessed or partial claim must not move the status`);
   assert.match(getProblem("H1").residual, /would not settle \(a\)/);
+  // 14 November 2026: new entry A34 (Kimmel's n/2 query question), a pending claim whose lower bounds are formalized.
+  assert.equal(LITERATURE_UPDATE.date, "2026-11-14");
+  assert.deepEqual(LITERATURE_UPDATE.ids, ["A34"]);
+  assert.equal(getProblem("A34").status, "claimed-solved", "A34: a single unrefereed preprint");
+  assert.ok(getProblem("A34").lean, "A34: the lower bounds that answer the question are formalized");
+  assert.ok(getProblem("A34").evidence.some((e) => e.role === "claimed-solution" && e.url.includes("2611.09809v1")));
+  assert.match(getProblem("A34").residual, /non-symmetric/);
   const home = render(views.Home);
   assert.ok(home.includes(LITERATURE_UPDATE.label) && home.includes("Last update"));
 });
@@ -252,14 +259,14 @@ test("every active and archived detail view renders with valid links and Astra &
 
 test("home, all categories, filtered lists and missing-page views render", () => {
   const home = render(views.Home);
-  assert.ok(home.includes("181") && home.includes("Active entries"));
+  assert.ok(home.includes("182") && home.includes("Active entries"));
   assert.ok(!home.includes("#review") && home.includes("Powered by Astra &amp; Opus 5.5"));
   assert.ok(home.includes('href="#improved"'));
   assert.ok(home.includes('href="#claimed-solved"'));
   assert.ok(home.includes('href="#lean-verified"'));
   assert.ok(home.includes('See open sharp problems'));
   assert.ok(home.includes('aria-label="See all 62 improved problems"'));
-  assert.ok(home.includes('aria-label="See all 23 claimed solved problems"'));
+  assert.ok(home.includes('aria-label="See all 24 claimed solved problems"'));
   assert.ok(home.includes('href="https://quantumlectures.org/en"'));
   assert.ok(home.includes('href="https://learnthermo.org/"'));
   assert.ok(!home.includes("IDs M1–"), "category count must not fabricate contiguous IDs");

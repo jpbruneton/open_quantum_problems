@@ -217,11 +217,9 @@ function Home() {
           </div>
 
           <div className="review-note">
-            <b>Last update · {LITERATURE_UPDATE.label}.</b> {LITERATURE_UPDATE.ids.length} entries updated after a review of arXiv announcements from 9 to 11 November.
+            <b>Last update · {LITERATURE_UPDATE.label}.</b> One new entry, claimed solved.
             <ul>
-              <li>The <a href="#p/A11">Aaronson–Ambainis proof</a> is now on arXiv, with an independent short proof and an expert exposition. The finite certificates of the <a href="#p/M5">Haldane-gap proof</a> have been independently reproduced. Both stay “Claimed solved”.</li>
-              <li><a href="#p/O6">Coherent thermal conversion</a> is now “Improved”: the optimal catalyst-free asymptotic rate between pure states has been determined.</li>
-              <li>New partial results on the <a href="#p/G6">QNEC and Rényi QNEC</a>, <a href="#p/QG6">classical-mediator models of gravity</a>, <a href="#p/F9">simulating the quantum switch</a>, the <a href="#p/B15">kagome antiferromagnet</a>, <a href="#p/QF5">lattice chiral gauge theories</a> and <a href="#p/N15">facet Bell inequalities</a>.</li>
+              <li><a href="#p/A34">Quantum query complexity beyond n/2</a> (Kimmel; Aaronson’s 2014 list): a November 2026 preprint gives symmetric functions needing more than n/2 quantum queries, with matching n/2 + Θ(n<sup>1/3</sup>) bounds for symmetric functions. The authors report a Lean formalization of the lower bounds.</li>
             </ul>
           </div>
 
