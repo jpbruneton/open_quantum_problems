@@ -215,7 +215,8 @@ function Home() {
           </div>
 
           <div className="grid">
-            {CATEGORIES.map((c) => {
+            {CATEGORIES.map((c, _, all) => {
+              const maxCatSize = Math.max(...all.map((x) => problemsByCat(x.slug).length));
               const ps = problemsByCat(c.slug);
               const counts = {
                 sharp: ps.filter((p) => p.horizon === "sharp").length,
@@ -229,17 +230,19 @@ function Home() {
                   <h3>{c.name}</h3>
                   <p>{c.blurb}</p>
                   <div className="foot">
-                    <div className="mini-bars">
-                      {Object.entries(counts).map(([k, n]) =>
-                        n > 0 ? (
-                          <span
-                            key={k}
-                            className="mini-bar"
-                            title={`${n} ${HORIZONS[k].label}`}
-                            style={{ width: 10 + n * 8, background: `var(--${k})` }}
-                          />
-                        ) : null
-                      )}
+                    <div className="mini-bars-track">
+                      <div className="mini-bars" style={{ width: `${Math.round((100 * ps.length) / maxCatSize)}%` }}>
+                        {Object.entries(counts).map(([k, n]) =>
+                          n > 0 ? (
+                            <span
+                              key={k}
+                              className="mini-bar"
+                              title={`${n} ${HORIZONS[k].label}`}
+                              style={{ flexGrow: n, background: `var(--${k})` }}
+                            />
+                          ) : null
+                        )}
+                      </div>
                     </div>
                     <span className="count">Open →</span>
                   </div>
