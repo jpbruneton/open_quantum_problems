@@ -22,6 +22,7 @@ npm-debug.log*
 /docs/review/
 /docs/reviews/*
 !/docs/reviews/2026-11-10-correction-log.md
+!/docs/reviews/2026-11-17-proposal-formulations.md
 /docs/research/
 /docs/notes/
 /TODO*

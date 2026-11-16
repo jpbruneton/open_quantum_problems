@@ -15,7 +15,7 @@ import {
   consolidatedInto,
 } from "./data/problems";
 import { TRENDS } from "./data/trends-data";
-import { PROPOSALS, SECONDARY_PROPOSALS, PROPOSALS_META, PROPOSALS_META_NEW_AREAS, PROPOSALS_META_CARTE_V2, PROPOSAL_COUNT, proposalBatch } from "./data/proposals";
+import { PROPOSALS, SECONDARY_PROPOSALS, PROPOSALS_META, PROPOSALS_META_NEW_AREAS, PROPOSALS_META_CARTE_V2, PROPOSALS_FORMULATION_REVIEW, PROPOSAL_COUNT, proposalBatch } from "./data/proposals";
 
 // Server components only: the catalogue is rendered to HTML and never shipped as JavaScript.
 // Rows with data-href are clickable through a delegated handler in components/ClientEffects.js.
@@ -574,7 +574,7 @@ function ProposalView({ pkey }) {
             ) : <p className="review-meta">No specific catalogue entry.</p>}
           </div>
 
-          <div className="statement"><MathText text={it.statement} /></div>
+          <div className="statement"><Paras text={it.statement} /></div>
 
           <h4>Why it is open now</h4>
           <div className="context"><Paras text={it.why} /></div>
@@ -625,6 +625,7 @@ function NewProblemsView() {
           <p>Identifiers combine a letter, the catalogue area code and a number: P for a priority candidate (PE2 is the second entanglement candidate), S for a secondary lead. A suggestion promoted to the catalogue takes the next free entry number in its area. The former identifiers P1–P81 and S1–S24 (until 9 November 2026) still open the same pages.</p>
           <p>Separate AI literature reviews checked the cited sources and searched for prior answers: the first batch on 8 November 2026, the gravity and holography batch on 9 November, and the quant-ph map batch on 16 November. Each suggestion shows its review verdict. These verdicts are not human-refereed.</p>
           <p>Full proposals with verification marks and caveats: <a href={PROPOSALS_META.reportUrl} target="_blank" rel="noreferrer">8 November</a>{" · "}<a href={PROPOSALS_META_NEW_AREAS.reportUrl} target="_blank" rel="noreferrer">9 November</a>{" · "}<a href={PROPOSALS_META_CARTE_V2.reportUrl} target="_blank" rel="noreferrer">16 November</a>.</p>
+          <p>Formulations revised on <a href={PROPOSALS_FORMULATION_REVIEW.reportUrl} target="_blank" rel="noreferrer">{PROPOSALS_FORMULATION_REVIEW.label}</a> to spell out models, assumptions, resolution criteria and intermediate targets. This editorial revision does not change the literature-review dates above.</p>
           <nav className="proposal-nav" aria-label="Areas">
             {PROPOSALS.map((g) => <a key={g.cat} href={`#np-${g.cat}`}>{g.name} ({g.items.length})</a>)}
             <a href="#np-secondary">Secondary leads ({SECONDARY_PROPOSALS.length})</a>
@@ -674,7 +675,7 @@ function NewProblemsView() {
               <li key={it.key}>
                 <b title={it.formerly ? `Formerly ${it.formerly}` : undefined}>{it.key} · {it.title}</b>
                 {it.extends.length > 0 && <span className="proposal-extends"> extends {it.extends.map((id, i) => <span key={id}>{i > 0 ? ", " : ""}<a href={`/p/${id}`}>{id}</a></span>)}</span>}
-                <p><MathText text={it.note} /></p>
+                <div className="context"><Paras text={it.note} /></div>
               </li>
             ))}
           </ul>

@@ -219,6 +219,7 @@ td.stmt a { color: var(--text); }
 .detail p { margin: 0 0 12px; }
 .detail .context p { color: var(--text); }
 .detail .context p:last-child { margin-bottom: 0; }
+.detail .statement p:last-child { margin-bottom: 0; }
 .detail ul { margin: 0 0 12px; padding-left: 20px; color: var(--muted); }
 .detail ul li { margin-bottom: 6px; }
 .refs a { word-break: break-word; }

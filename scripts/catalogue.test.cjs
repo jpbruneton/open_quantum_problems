@@ -246,16 +246,21 @@ test("priority scientific corrections retain the supporting sources", () => {
 });
 
 test("all mathematical expressions parse with KaTeX and have balanced delimiters", () => {
-  for (const p of ALL_PROBLEMS) {
-    const texts = [p.statement, p.context, p.definition, p.progress, p.claim, p.residual, p.statusNote, ...p.evidence.map((e) => e.summary), ...p.provenance.map((e) => e.summary)].filter(Boolean);
-    for (const text of texts) {
+  const { PROPOSALS, SECONDARY_PROPOSALS } = loadApp("app/data/proposals.js");
+  const entries = [
+    ...ALL_PROBLEMS.map((p) => ({ id: p.id, texts: [p.statement, p.context, p.definition, p.progress, p.claim, p.residual, p.statusNote, ...p.evidence.map((e) => e.summary), ...p.provenance.map((e) => e.summary)] })),
+    ...PROPOSALS.flatMap((g) => g.items).map((p) => ({ id: p.key, texts: [p.statement, p.why, p.baseline, p.caveat, p.assessment?.summary] })),
+    ...SECONDARY_PROPOSALS.map((p) => ({ id: p.key, texts: [p.note] })),
+  ];
+  for (const { id, texts } of entries) {
+    for (const text of texts.filter(Boolean)) {
       let at = 0;
       while ((at = text.indexOf("$", at)) !== -1) {
         const delimiter = text.startsWith("$$", at) ? "$$" : "$";
         const end = text.indexOf(delimiter, at + delimiter.length);
-        assert.notEqual(end, -1, `${p.id}: unclosed math delimiter`);
+        assert.notEqual(end, -1, `${id}: unclosed math delimiter`);
         const math = text.slice(at + delimiter.length, end);
-        assert.doesNotThrow(() => katex.renderToString(math, { throwOnError: true, strict: false, displayMode: delimiter === "$$" }), `${p.id}: ${math}`);
+        assert.doesNotThrow(() => katex.renderToString(math, { throwOnError: true, strict: false, displayMode: delimiter === "$$" }), `${id}: ${math}`);
         at = end + delimiter.length;
       }
     }
@@ -329,6 +334,10 @@ test("home, all categories, filtered lists and missing-page views render", () =>
       assert.ok(!keys.has(it.key), `duplicate proposal key ${it.key}`); keys.add(it.key);
       assert.ok(HORIZONS[it.horizon], `${it.key}: horizon`);
       assert.ok(it.statement.length > 40 && it.why.length > 40, `${it.key}: incomplete`);
+      const detail = render(views.ProposalView, { pkey: it.key });
+      assert.ok(!detail.includes("katex-error"), `${it.key}: detail math rendering error`);
+      const statementHtml = detail.split('<div class="statement">')[1].split("<h4>")[0];
+      assert.equal((statementHtml.match(/<p>/g) || []).length, it.statement.split(/\n\n+/).length, `${it.key}: statement paragraphs must stay separate`);
       for (const id of it.extends) assert.ok(getProblem(id), `${it.key}: extends unknown ${id}`);
       assert.ok(newProblems.includes(it.title.replace(/&/g, "&amp;")) || newProblems.includes(it.key), `${it.key}: not rendered`);
     }
