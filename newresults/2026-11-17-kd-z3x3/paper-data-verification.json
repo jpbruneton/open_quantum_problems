@@ -1,0 +1,59 @@
+{
+  "certificate_sha256": "858513b172ba70e00674da72eebb2ae8eb55b23cea79cce13ee48b8d9cf0c464",
+  "manuscript_sha256": "e92db4c511eda36734af7f690adb71be956aa4273132d527d7b2b1d5923a480e",
+  "printed_matrices_equal_certificate": true,
+  "witness_score_multiplicities": {
+    "18": 43,
+    "-63": 10,
+    "-144": 1
+  },
+  "construction_from_43_touching_vertices": "exactly checked",
+  "weighted_diagonal_dominance": {
+    "scales": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      2
+    ],
+    "rational_modulus_bound": "|a-b/2| + 7|b|/8",
+    "weighted_row_margins": [
+      "272027/12384000",
+      "272027/12384000",
+      "172027/7740000",
+      "188027/12384000",
+      "188027/12384000",
+      "27553/5160000",
+      "393047/30960000",
+      "393047/30960000",
+      "67003/7740000"
+    ],
+    "minimum_eigenvalue_lower_bound": "27553/10320000",
+    "proof": "Weighted Gershgorin bound and Hermiticity imply rho is positive definite."
+  },
+  "independent_realification": {
+    "certificate": "z3x3-simple-certificate.json",
+    "certificate_sha256": "858513b172ba70e00674da72eebb2ae8eb55b23cea79cce13ee48b8d9cf0c464",
+    "independent_checker_sha256": "e431c822d59fb4e8ebd27214c297d1e882cb8b02c2812ea4d66204cc85a250a6",
+    "arithmetic": "fractions only; no floating-point or optimization dependencies",
+    "pure_KD_states_rebuilt": 54,
+    "KD_minimum": "2291/1935000",
+    "trace": "1",
+    "rational_realification_dimension": 18,
+    "positive_LDL_pivots_checked": 18,
+    "LDL_reconstruction": "exactly equal for all 324 matrix entries",
+    "free_witness_maximum": "18",
+    "state_witness_value": "206973/10000",
+    "strict_gap": "26973/10000",
+    "shifted_witness_operator_norm_upper_bound": "486",
+    "trace_norm_distance_to_pure_KD_hull_lower_bound": "111/20000",
+    "conclusion": "rho is KD positive and outside convex hull of all pure KD-positive states for Z3 x Z3",
+    "novelty": "not certified",
+    "seconds": 0.031
+  },
+  "conclusion": "All checked exact arithmetic assertions of the manuscript passed."
+}

@@ -1,0 +1,27 @@
+{
+  "scales": [
+    1,
+    1,
+    1,
+    1,
+    1,
+    2,
+    1,
+    1,
+    2
+  ],
+  "rational_modulus_bound": "|a-b/2| + 7|b|/8",
+  "weighted_row_margins": [
+    "272027/12384000",
+    "272027/12384000",
+    "172027/7740000",
+    "188027/12384000",
+    "188027/12384000",
+    "27553/5160000",
+    "393047/30960000",
+    "393047/30960000",
+    "67003/7740000"
+  ],
+  "minimum_eigenvalue_lower_bound": "27553/10320000",
+  "proof": "Weighted Gershgorin bound and Hermiticity imply rho is positive definite."
+}

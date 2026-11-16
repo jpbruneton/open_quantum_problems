@@ -1,0 +1,252 @@
+{
+  "seed": {
+    "arithmetic": "exact fractions",
+    "source": "2501.12252v2 section 7.2",
+    "lambda": "1/100",
+    "leading_principal_minors": [
+      "497/4000",
+      "4694963/64000000",
+      "878770683/128000000000",
+      "57120078879/128000000000000"
+    ],
+    "minimum_KD_entry": "1/8000",
+    "pure_KD_states_enumerated": 20,
+    "free_witness_maximum": "9/20",
+    "state_witness_value": "57/125",
+    "witness_margin": "3/500",
+    "trace_norm_distance_lower_bound": "1/200",
+    "claim": "Reproduction and exact certification of an existing seed, not a novelty claim"
+  },
+  "KD_lifting_checks": [
+    {
+      "group": [
+        2,
+        2,
+        2
+      ],
+      "map": "subgroup-zero-extension",
+      "dimension": 8,
+      "all_pure_KD_inputs_checked": 128,
+      "min_KD": 0.0,
+      "max_imag_KD": 2.0780725373031646e-18,
+      "retraction_error": 0.0,
+      "free_witness_maximum": 0.45,
+      "lifted_witness_value": 0.45599999999999996,
+      "arithmetic": "floating point identity checks, tolerance 1e-12"
+    },
+    {
+      "group": [
+        2,
+        2,
+        2
+      ],
+      "map": "quotient-uniform-lift",
+      "dimension": 8,
+      "all_pure_KD_inputs_checked": 128,
+      "min_KD": -4.312215599088878e-19,
+      "max_imag_KD": 5.7481859134978864e-18,
+      "retraction_error": 4.0245584642661925e-16,
+      "free_witness_maximum": 0.45000000000000007,
+      "lifted_witness_value": 0.45599999999999996,
+      "arithmetic": "floating point identity checks, tolerance 1e-12"
+    },
+    {
+      "group": [
+        4,
+        2
+      ],
+      "map": "subgroup-zero-extension",
+      "dimension": 8,
+      "all_pure_KD_inputs_checked": 64,
+      "min_KD": -0.0,
+      "max_imag_KD": 4.156145074606329e-18,
+      "retraction_error": 0.0,
+      "free_witness_maximum": 0.45,
+      "lifted_witness_value": 0.45599999999999996,
+      "arithmetic": "floating point identity checks, tolerance 1e-12"
+    },
+    {
+      "group": [
+        4,
+        2
+      ],
+      "map": "quotient-uniform-lift",
+      "dimension": 8,
+      "all_pure_KD_inputs_checked": 64,
+      "min_KD": -9.729315266011541e-18,
+      "max_imag_KD": 1.5758721917268244e-17,
+      "retraction_error": 4.0245584642661925e-16,
+      "free_witness_maximum": 0.45000000000000007,
+      "lifted_witness_value": 0.45599999999999996,
+      "arithmetic": "floating point identity checks, tolerance 1e-12"
+    },
+    {
+      "group": [
+        4,
+        4
+      ],
+      "map": "subgroup-zero-extension",
+      "dimension": 16,
+      "all_pure_KD_inputs_checked": 240,
+      "min_KD": 0.0,
+      "max_imag_KD": 3.1171088059547473e-18,
+      "retraction_error": 0.0,
+      "free_witness_maximum": 0.45,
+      "lifted_witness_value": 0.45599999999999996,
+      "arithmetic": "floating point identity checks, tolerance 1e-12"
+    },
+    {
+      "group": [
+        4,
+        4
+      ],
+      "map": "quotient-uniform-lift",
+      "dimension": 16,
+      "all_pure_KD_inputs_checked": 240,
+      "min_KD": -6.869429645001496e-18,
+      "max_imag_KD": 1.713039432527097e-17,
+      "retraction_error": 0.0,
+      "free_witness_maximum": 0.45000000000000007,
+      "lifted_witness_value": 0.45599999999999996,
+      "arithmetic": "floating point identity checks, tolerance 1e-12"
+    },
+    {
+      "group": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "map": "subgroup-zero-extension",
+      "dimension": 16,
+      "all_pure_KD_inputs_checked": 1072,
+      "min_KD": 0.0,
+      "max_imag_KD": 1.0390362686515825e-18,
+      "retraction_error": 0.0,
+      "free_witness_maximum": 0.45,
+      "lifted_witness_value": 0.456,
+      "arithmetic": "floating point identity checks, tolerance 1e-12"
+    },
+    {
+      "group": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "map": "quotient-uniform-lift",
+      "dimension": 16,
+      "all_pure_KD_inputs_checked": 1072,
+      "min_KD": -3.5197487399345468e-34,
+      "max_imag_KD": 2.8740929567489444e-18,
+      "retraction_error": 0.0,
+      "free_witness_maximum": 0.45000000000000007,
+      "lifted_witness_value": 0.456,
+      "arithmetic": "floating point identity checks, tolerance 1e-12"
+    }
+  ],
+  "CNOT": [
+    {
+      "qubits": 2,
+      "forward_Hamming_Lipschitz": 2,
+      "inverse_Hamming_Lipschitz": 2,
+      "arithmetic": "exact exhaustive edge enumeration"
+    },
+    {
+      "qubits": 3,
+      "forward_Hamming_Lipschitz": 3,
+      "inverse_Hamming_Lipschitz": 2,
+      "arithmetic": "exact exhaustive edge enumeration"
+    },
+    {
+      "qubits": 4,
+      "forward_Hamming_Lipschitz": 4,
+      "inverse_Hamming_Lipschitz": 2,
+      "arithmetic": "exact exhaustive edge enumeration"
+    },
+    {
+      "qubits": 5,
+      "forward_Hamming_Lipschitz": 5,
+      "inverse_Hamming_Lipschitz": 2,
+      "arithmetic": "exact exhaustive edge enumeration"
+    },
+    {
+      "qubits": 6,
+      "forward_Hamming_Lipschitz": 6,
+      "inverse_Hamming_Lipschitz": 2,
+      "arithmetic": "exact exhaustive edge enumeration"
+    },
+    {
+      "qubits": 7,
+      "forward_Hamming_Lipschitz": 7,
+      "inverse_Hamming_Lipschitz": 2,
+      "arithmetic": "exact exhaustive edge enumeration"
+    },
+    {
+      "qubits": 8,
+      "forward_Hamming_Lipschitz": 8,
+      "inverse_Hamming_Lipschitz": 2,
+      "arithmetic": "exact exhaustive edge enumeration"
+    },
+    {
+      "qubits": 9,
+      "forward_Hamming_Lipschitz": 9,
+      "inverse_Hamming_Lipschitz": 2,
+      "arithmetic": "exact exhaustive edge enumeration"
+    },
+    {
+      "qubits": 10,
+      "forward_Hamming_Lipschitz": 10,
+      "inverse_Hamming_Lipschitz": 2,
+      "arithmetic": "exact exhaustive edge enumeration"
+    }
+  ],
+  "nonGaussian_covariance_obstruction": {
+    "modes": 4,
+    "bipartition": "2 modes : 2 modes, local even-parity encoded qubits",
+    "covariance_max_error": 5.551115123125783e-17,
+    "formula": "max(0,(9*p-1)/8)",
+    "points": [
+      {
+        "p": 0.0,
+        "exact_trace_norm_distance_formula": 0.0,
+        "verified_attaining_separable_distance": 0.0,
+        "witness_lower_bound": 0.0
+      },
+      {
+        "p": 0.05,
+        "exact_trace_norm_distance_formula": 0.0,
+        "verified_attaining_separable_distance": 1.3877787807814457e-17,
+        "witness_lower_bound": 0.0
+      },
+      {
+        "p": 0.1111111111111111,
+        "exact_trace_norm_distance_formula": 0.0,
+        "verified_attaining_separable_distance": 2.7755575615628914e-17,
+        "witness_lower_bound": 0.0
+      },
+      {
+        "p": 0.2,
+        "exact_trace_norm_distance_formula": 0.1,
+        "verified_attaining_separable_distance": 0.09999999999999995,
+        "witness_lower_bound": 0.09999999999999995
+      },
+      {
+        "p": 0.5,
+        "exact_trace_norm_distance_formula": 0.4375,
+        "verified_attaining_separable_distance": 0.4374999999999999,
+        "witness_lower_bound": 0.4374999999999999
+      },
+      {
+        "p": 1.0,
+        "exact_trace_norm_distance_formula": 1.0,
+        "verified_attaining_separable_distance": 0.9999999999999998,
+        "witness_lower_bound": 0.9999999999999998
+      }
+    ],
+    "claim": "Explicit diagnostic counterexample; not asserted historically new"
+  },
+  "seconds": 0.672,
+  "script_sha256": "a75e25eca28f6c730c4d8187fc624326db1a007045a00a36a5587960a124813a",
+  "scope": "Exact seed and finite identities; general lifting results require the written proof. No novelty certification."
+}

@@ -1,0 +1,12 @@
+{
+  "checked_at": "2026-11-16T23:17:13.684069+00:00",
+  "pdf_pages": 6,
+  "exact_manuscript_data_check": "pass",
+  "certificate_unit_tests": "5 passed; unittest run recorded in session",
+  "latex_compilation": "success: built-in compiler and local pdfLaTeX",
+  "undefined_references": false,
+  "overfull_boxes": false,
+  "visual_review": "All six pages inspected; bibliography grouped on final page.",
+  "novelty": "not-found-in-documented-search; priority unconfirmed",
+  "public_submission": false
+}

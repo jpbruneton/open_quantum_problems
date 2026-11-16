@@ -1,0 +1,33 @@
+{
+  "created_at": "2026-11-16T22:32:06.508810+00:00",
+  "index_epoch": "18525d1cfaeb6b2b7a317476e9d060f1ddda93499c49fb76087e2e3218956b76",
+  "implementation_sha256": "6d518a2343f038d5117775be166336477f9df64b8f1d37dc3ba408197933d077",
+  "parameters": {
+    "limit": 150,
+    "anchors": 50000,
+    "per_feature": 50000,
+    "reviewed_only": false,
+    "require_cards": false,
+    "max_seconds": 300,
+    "family_cap": 10
+  },
+  "stats": {
+    "eligible_papers": 2136,
+    "selected_anchors": 2136,
+    "processed_anchors": 2136,
+    "examined_matches": 24864,
+    "distinct_shortlisted": 2901,
+    "dismissed_pairs": 0,
+    "timed_out": false,
+    "seconds": 7.64,
+    "peak_rss_mib": 159.39
+  },
+  "meaning": "Heuristic reading priority, not a probability of novelty or theorem compatibility.",
+  "indexed_papers": 36350,
+  "clusters": 155,
+  "retained_pairs": 150,
+  "source_snapshot": "proposals-initial.json",
+  "cache": "abstracts/discovery/work/runs/2026-11-16-exhaustive",
+  "scientific_reading": "Targeted sections; not all 150 pairs or all full texts reviewed.",
+  "KD_origin": "Supplementary reading of existing geometry dossier, not top automatic pair."
+}

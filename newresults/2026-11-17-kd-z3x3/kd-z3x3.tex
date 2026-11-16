@@ -1,0 +1,390 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{remark}[theorem]{Remark}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\conv}{conv}
+\DeclareMathOperator{\dist}{dist}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\F}{\mathbb F}
+\newcommand{\E}{\mathcal E}
+\newcommand{\hull}{\mathcal C}
+\newcommand{\ket}[1]{\lvert#1\rangle}
+\newcommand{\bra}[1]{\langle#1\rvert}
+\setlength{\emergencystretch}{2em}
+\title{An exact KD-positive state outside the pure-state hull\\
+for the Fourier pair on $\Z_3\times\Z_3$}
+\author{}
+\date{17 November 2026\\\small Working draft for independent review}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+For the position and Fourier bases of $G=\Z_3\times\Z_3$, we give an explicit
+strictly positive Kirkwood--Dirac distribution whose inverse is a positive
+definite density operator outside the convex hull of all pure KD-positive
+states. An integer witness has maximum $18$ on that hull and expectation
+$206973/10000$ on our state. Weighted diagonal dominance proves positivity
+using rational arithmetic alone, and the trace-norm distance to the hull is
+at least $111/20000$. We also verify that the natural subgroup and quotient
+isometries preserve exactly the trace-norm distance to the corresponding
+pure-state hulls. This yields consequences for finite abelian groups with
+a $\Z_3^2$ subquotient. A targeted literature audit found no direct antecedent
+for this fixed Fourier pair; historical priority remains unconfirmed.
+\end{abstract}
+
+\section{Setting and statement}
+Let $G$ be a finite abelian group of cardinality $N$, with counting measure.
+Its position basis is $(\ket g)_{g\in G}$ and its Fourier basis is
+\[
+ \ket\chi=N^{-1/2}\sum_{g\in G}\chi(g)\ket g,
+ \qquad \chi\in\widehat G.
+\]
+For any operator $A$ define the KD array
+\begin{equation}\label{eq:KD}
+ Q_G(A)(g,\chi)=\bra\chi g\rangle\bra g A\ket\chi
+ =\frac1N\sum_{h\in G}A_{g,h}\chi(h-g).
+\end{equation}
+The inverse and the Hilbert--Schmidt overlap identity are
+\begin{align}
+ A_{g,h}&=\sum_{\chi\in\widehat G}Q_G(A)(g,\chi)\chi(g-h),\label{eq:inverse}\\
+ \Tr(A^*B)&=N\sum_{g,\chi}\overline{Q_G(A)(g,\chi)}Q_G(B)(g,\chi).
+ \label{eq:overlap}
+\end{align}
+Write $\E_G$ for the density operators with nonnegative real KD array and
+$\hull_G=\conv\{P\in\E_G:P\text{ is a rank-one projector}\}$.
+We use the full trace norm $\|A\|_1=\Tr\sqrt{A^*A}$, without a factor $1/2$.
+
+The classification of pure KD-positive states due to
+De Bi\`evre, Langrenez and Radchenko \cite{DLR} is an input:
+their vectors, up to global phase, are
+\begin{equation}\label{eq:pures}
+ \psi(g)=|H|^{-1/2}\gamma(g)\mathbf1_{a+H}(g),
+ \qquad H\leq G,\quad a\in G,\quad\gamma\in\widehat G.
+\end{equation}
+
+\begin{theorem}\label{thm:example}
+For the position/Fourier pair of $G=\Z_3\times\Z_3$, there exist an explicitly
+specified density operator $\rho>0$ and a Hermitian operator $W$ such that
+\begin{align}
+ \min Q_G(\rho)&=\frac{2291}{1935000}>0,\label{eq:minQ}\\
+ \max_{\sigma\in\hull_G}\Tr(W\sigma)&=18,
+ &\Tr(W\rho)&=\frac{206973}{10000},\label{eq:gap}\\
+ \dist_1(\rho,\hull_G)&\geq\frac{111}{20000}.\label{eq:distance}
+\end{align}
+In particular, $\hull_G\subsetneq\E_G$.
+\end{theorem}
+
+\section{Explicit arrays and an exact proof}
+Identify $G$ with $\F_3^2$ and put $\zeta=e^{2\pi i/3}$. Rows and columns
+are both ordered lexicographically as
+$(0,0),(0,1),(0,2),(1,0),\ldots,(2,2)$; column $c$ represents the character
+$\chi_c(g)=\zeta^{c\cdot g}$.
+Define $\rho$ and $W$ by \eqref{eq:inverse} from
+\begin{equation}\label{eq:Rdef}
+ Q_G(\rho)=\frac{R}{7740000},\qquad Q_G(W)=M,
+\end{equation}
+where
+\begin{equation}\label{eq:R}
+\begingroup\setlength{\arraycolsep}{2.8pt}
+R=\begin{pmatrix}
+99613&123096&99613&99613&123096&99613&123096&56130&103096\\
+99613&99613&123096&99613&99613&123096&123096&103096&56130\\
+123096&123096&123096&123096&123096&123096&96130&76130&76130\\
+99613&99613&123096&123096&76130&123096&123096&79613&79613\\
+99613&99613&123096&123096&99613&99613&123096&56130&103096\\
+103096&56130&79613&56130&79613&103096&76130&9164&32647\\
+123096&99613&99613&99613&123096&99613&123096&103096&56130\\
+123096&123096&76130&99613&123096&99613&123096&79613&79613\\
+56130&103096&79613&103096&79613&56130&76130&32647&9164
+\end{pmatrix},
+\endgroup
+\end{equation}
+and
+\begin{equation}\label{eq:M}
+M=\begin{pmatrix}
+-1&8&-1&-1&8&-1&8&-10&8\\
+-1&-1&8&-1&-1&8&8&8&-10\\
+8&8&8&8&8&8&-10&-10&-10\\
+-1&-1&8&8&-10&8&8&-1&-1\\
+-1&-1&8&8&-1&-1&8&-10&8\\
+8&-10&-1&-10&-1&8&-10&-28&-19\\
+8&-1&-1&-1&8&-1&8&8&-10\\
+8&8&-10&-1&8&-1&8&-1&-1\\
+-10&8&-1&8&-1&-10&-10&-19&-28
+\end{pmatrix}.
+\end{equation}
+
+\subsection{Hermiticity, normalization and positivity}
+All entries of $R$ are positive and their sum is $7740000$.
+Equation \eqref{eq:inverse} yields $\rho=A+B\zeta$ with rational matrices
+$A,B$. Direct substitution, using $\zeta^2=-1-\zeta$, gives
+\[
+ A_{ji}=A_{ij}-B_{ij},\qquad B_{ji}=-B_{ij},
+\]
+so $\rho$ is Hermitian. The same check applies to $W$. Also $\Tr\rho=1$,
+and the smallest entry of $R$ is $9164$, proving \eqref{eq:minQ}.
+
+Here is a short rational certificate for $\rho>0$. For $i\ne j$ set
+\[
+ u_{ij}=|A_{ij}-B_{ij}/2|+\frac78|B_{ij}|.
+\]
+Since $\rho_{ij}=(A_{ij}-B_{ij}/2)+i\sqrt3 B_{ij}/2$ and
+$\sqrt3/2<7/8$, one has $|\rho_{ij}|\leq u_{ij}$.
+For $s=(1,1,1,1,1,2,1,1,2)$, exact rational arithmetic gives
+\begin{equation}\label{eq:margins}
+\begin{split}
+ m_i&=s_i\rho_{ii}-\sum_{j\ne i}s_j u_{ij},\\
+ (m_i)_{i=1}^9&=\frac1{61920000}
+ (1360135,1360135,1376216,940135,940135,\\[-2pt]
+ &\hspace{36mm}330636,786094,786094,536024).
+\end{split}
+\end{equation}
+Every entry is strictly positive. With $S=\operatorname{diag}(s)$, the
+Hermitian matrix $S\rho S$ has positive diagonal and is strictly diagonally
+dominant, hence is positive definite. Equivalently, Gershgorin applied to
+$S^{-1}\rho S$ gives the useful explicit bound
+\begin{equation}\label{eq:eiglower}
+ \lambda_{\min}(\rho)\geq\min_i\frac{m_i}{s_i}
+ =\frac{27553}{10320000}>0.
+\end{equation}
+The much larger numerical eigenvalue estimate is not used in this proof.
+
+\subsection{Separation from all pure KD-positive mixtures}
+The subgroups of $\F_3^2$ are the zero subgroup, four lines, and the full
+group. For each subgroup $H$ the distinct pure projectors in
+\eqref{eq:pures} have arrays
+\begin{equation}\label{eq:masks}
+ Q_G(P)(g,c)=\frac19\mathbf1_{a+H}(g)\mathbf1_{b+H^\perp}(c).
+\end{equation}
+There are $|G/H||\widehat G/H^\perp|=9$ of them for each $H$,
+and hence $54$ in total. Each mask has nine occupied entries.
+By \eqref{eq:overlap}, $\Tr(WP)$ is the sum of the entries of $M$ on
+that mask. Enumerating the six subgroups and their cosets gives the multiset
+\begin{equation}\label{eq:scores}
+ \{\Tr(WP):P\text{ pure KD-positive}\}
+ =\{18\ (43\text{ times}),\ -63\ (10\text{ times}),\ -144\ (1\text{ time})\}.
+\end{equation}
+This is a finite integer calculation, not a numerical optimization.
+Linearity proves that the maximum over $\hull_G$ is $18$.
+On the other hand, direct substitution gives
+\[
+ \Tr(W\rho)=\frac9{7740000}\sum_{g,c}R_{g,c}M_{g,c}
+ =\frac{206973}{10000}>18.
+\]
+This proves \eqref{eq:gap} and excludes $\rho$ from $\hull_G$.
+
+For completeness the trace-norm bound has a conservative rational
+certificate as well. Write $W=A^{(W)}+B^{(W)}\zeta$ by
+\eqref{eq:inverse}. Then
+\[
+ \|W-18I\|_\infty
+ \leq\max_i\sum_j
+ \bigl(|A^{(W)}_{ij}-18\delta_{ij}|+|B^{(W)}_{ij}|\bigr)=486.
+\]
+Here Hermiticity allows the maximum absolute row sum to bound the
+operator norm. For any $\sigma\in\hull_G$, the trace of $\rho-\sigma$
+vanishes and H\"older's inequality yields
+\[
+ 486\|\rho-\sigma\|_1
+ \geq\Tr[(W-18I)(\rho-\sigma)]
+ \geq\frac{26973}{10000}.
+\]
+Since $26973/(486\cdot10000)=111/20000$, this completes the proof of
+Theorem~\ref{thm:example}.
+
+\begin{remark}
+The arrays also admit a geometric construction. If $\rho_0$ is the uniform
+average of the $43$ pure projectors with score $18$ in \eqref{eq:scores},
+then $Q_G(\rho)=Q_G(\rho_0)+M/20000$. This description explains the search;
+the explicit positivity proof above is independent of its numerical stage.
+\end{remark}
+
+\section{Subgroup and quotient embeddings}
+The following specialization of a channel-retraction argument provides
+quantitative consequences of the example. Its general norm-contraction
+mechanism is standard; the point to verify is the action on the KD hulls.
+
+\begin{theorem}\label{thm:lift}
+Let $H\leq G$ and $K=G/H$, with $m=|H|$. Let $V:\ell^2(H)\to\ell^2(G)$
+be zero extension and let $J:\ell^2(K)\to\ell^2(G)$ be the isometry
+$(Jf)(g)=m^{-1/2}f(g+H)$. Each isometry sends KD-positive states to
+KD-positive states and sends its pure-state hull into $\hull_G$.
+Moreover, for $E=V$ with $T=H$, or $E=J$ with $T=K$, and every density
+operator $\omega$ on $\ell^2(T)$,
+\begin{equation}\label{eq:isometry}
+ \dist_1(E\omega E^*,\hull_G)=\dist_1(\omega,\hull_T).
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+Equation \eqref{eq:KD} first gives the two formulas
+\begin{align}
+ Q_G(V\omega V^*)(g,\chi)
+ &=\begin{cases}\dfrac mN Q_H(\omega)(g,\chi|_H),&g\in H,\\0,&g\notin H,
+ \end{cases}\label{eq:subgroup}\\
+ Q_G(J\omega J^*)(g,\chi)
+ &=\begin{cases}\dfrac1m Q_K(\omega)(g+H,\bar\chi),&\chi|_H=1,\\0,&\chi|_H\ne1.
+ \end{cases}\label{eq:quotient}
+\end{align}
+Here $\bar\chi$ is the induced character of $K$. These prove preservation
+of KD positivity. Formula \eqref{eq:pures} proves preservation of pure
+KD-positive projectors: for $V$, extend a character of $H$ to $G$; for
+$J$, take the preimage in $G$ of the subgroup and coset in $K$.
+
+We next check compression of a pure KD-positive vector $\psi$ of $G$.
+For $V^*\psi$, its support is the intersection of a subgroup coset
+$a+L$ with $H$. This is empty or a coset of $L\cap H$, so the compression
+is zero or proportional to a vector in \eqref{eq:pures} for $H$.
+For $J^*\psi$, sum the character on each intersection of a fibre of
+$G\to K$ with $a+L$. Such an intersection is a coset of $H\cap L$.
+If the character is nontrivial on $H\cap L$, the sum vanishes.
+Otherwise its magnitude is constant on the coset $q(a+L)$, and its phase
+is a character of $q(L)$, extendible to $K$. This compression is again
+zero or proportional to a pure KD-positive vector of $K$.
+
+Fix any pure $\tau\in\hull_T$. The completely positive trace-preserving map
+\[
+ \mathcal R_E(X)=E^*XE+\Tr[(I-EE^*)X]\tau
+\]
+satisfies $\mathcal R_E(\hull_G)\subseteq\hull_T$ by the compression check,
+and $\mathcal R_E(E\omega E^*)=\omega$. The inclusion
+$E\hull_TE^*\subseteq\hull_G$ and trace-norm invariance under an isometry
+give the ``$\leq$'' direction of \eqref{eq:isometry}. For the reverse
+direction, every $\sigma\in\hull_G$ satisfies
+\[
+ \|\omega-\mathcal R_E(\sigma)\|_1
+ =\|\mathcal R_E(E\omega E^*-\sigma)\|_1
+ \leq\|E\omega E^*-\sigma\|_1,
+\]
+by channel contraction on Hermitian operators. Taking infima finishes
+the proof.
+\end{proof}
+
+\begin{corollary}
+Every finite abelian group with a $\Z_3^2$ subquotient admits a state in
+$\E_G$ at trace-norm distance at least $111/20000$ from $\hull_G$.
+In particular this holds for all noncyclic finite abelian $3$-groups.
+\end{corollary}
+\begin{proof}
+Compose the subgroup and quotient isometries in Theorem~\ref{thm:lift}.
+A noncyclic abelian $3$-group contains a subgroup $\Z_3^2$.
+\end{proof}
+
+\begin{corollary}
+Among finite abelian groups of order $2^a3^b$, with $a,b\geq0$,
+one has $\E_G=\hull_G$ exactly for the trivial group and the cyclic groups
+whose order is a power of one prime.
+\end{corollary}
+\begin{proof}
+For a noncyclic group, a Sylow subgroup is noncyclic and contains
+$\Z_2^2$ or $\Z_3^2$. Use respectively the published example
+in \cite{DLR} or Theorem~\ref{thm:example}, and then Theorem~\ref{thm:lift}.
+A cyclic group with $a,b>0$ contains $\Z_6$, another published
+counterexample \cite{DLR}. The remaining cyclic prime-power cases have
+$\E_G=\hull_G$ by \cite{DLR}.
+\end{proof}
+
+\section{Relation to earlier work and scope of originality}
+Exotic mixed KD-positive states are already known \cite{geometry,DLR}.
+Our candidate contribution is the explicit separation for the fixed pair
+$F_3\otimes F_3$, not the existence of exotic states in arbitrary bases.
+In particular, this is not the cyclic Fourier pair $F_9$.
+Results for the cyclic DFT \cite{DLR,Cai} do not identify those two pairs.
+Thio's odd-dimensional construction \cite[Theorem 2.2.3]{ThioThesis}
+uses a reflection as its transition matrix, rather than this Fourier pair.
+
+The qubit families are already explicit in \cite{Thio}, as is the use
+of polytope facets to find examples. We claim neither the qubit existence
+result nor that search principle. Recent classifications of positivity-
+preserving unitaries \cite{Burkat} address a related question, but do not
+directly supply the state and separation certified here.
+
+The general classification suggested by ordered subgroups is also not
+a new conjecture of this note: it is the finite-group specialization of
+the conjectural discussion in \cite{Spriet}. The embedding theorem reduces
+the remaining obstruction families to $\Z_p^2$ and $\Z_{pq}$ for distinct
+primes $p,q$. No uniform construction for these families is proved here.
+
+The accompanying dated audit documents targeted searches and examination
+of the nearest primary sources. No direct antecedent for this fixed-pair
+example was found. This is not a proof of historical priority, and the
+manuscript should be read as an independently checkable research draft.
+
+\section{Reproducibility and provenance}
+The construction arose in an AI-assisted local research session, following
+targeted full-text reading. The existing title/abstract embedding map
+helped organize the corpus; it was not a proof engine. NumPy was used
+to search supporting directions and propose coefficients. The final arrays
+and all assertions used above are rational or cyclotomic calculations.
+
+The file \texttt{z3x3-simple-certificate.json} stores the arrays in
+\eqref{eq:R}--\eqref{eq:M}. The standard-library-only checker
+\texttt{verify\_z3\_certificate.py} independently reconstructs all 54 pure
+arrays and certifies positivity using an $18\times18$ rational
+realification and LDL factorization. It also computes $\Tr(\rho W)$
+directly in $\mathbb Q(\zeta)$, separately from \eqref{eq:overlap}.
+The shorter \texttt{verify\_diagonal\_certificate.py} checks
+\eqref{eq:margins} and \eqref{eq:eiglower} without factorization.
+Both use exact fractions, with no solver or tolerance. A proof-data
+script checks the witness score multiplicities and the tables printed here.
+These computations do not constitute a formal proof-assistant verification.
+
+\clearpage
+\begingroup\small
+\begin{thebibliography}{9}
+\setlength{\itemsep}{2pt}
+\bibitem{DLR}
+S. De Bi\`evre, C. Langrenez and D. Radchenko,
+\emph{The Kirkwood--Dirac representation associated to the Fourier transform
+for finite abelian groups: positivity},
+\href{https://arxiv.org/abs/2501.12252v2}{arXiv:2501.12252v2};
+\href{https://doi.org/10.1007/s00023-025-01614-7}{doi:10.1007/s00023-025-01614-7}.
+
+\bibitem{geometry}
+C. Langrenez, D. R. M. Arvidsson-Shukur and S. De Bi\`evre,
+\emph{Characterizing the geometry of the Kirkwood--Dirac-positive states},
+J. Math. Phys. \textbf{65}, 072201 (2024);
+\href{https://arxiv.org/abs/2306.00086}{arXiv:2306.00086}.
+
+\bibitem{Spriet}
+M. Spriet,
+\emph{Characterizing the Kirkwood--Dirac positivity on second countable LCA groups},
+\href{https://arxiv.org/abs/2507.23628v3}{arXiv:2507.23628v3}.
+
+\bibitem{Thio}
+J. J. Thio, S. Yang, N. Yunger Halpern, S. De Bi\`evre, C. H. W. Barnes
+and D. R. M. Arvidsson-Shukur,
+\emph{Kirkwood--Dirac Nonpositivity Is a Necessary Resource for Quantum Computing},
+Phys. Rev. Lett. \textbf{137}, 080601 (2026);
+\href{https://arxiv.org/abs/2506.08092v2}{arXiv:2506.08092v2}.
+
+\bibitem{Burkat}
+J. Burkat and S. Strelchuk,
+\emph{Classification of Kirkwood--Dirac positivity-preserving unitaries},
+Phys. Rev. A \textbf{114}, 042446 (2026);
+\href{https://arxiv.org/abs/2502.11784v4}{arXiv:2502.11784v4}.
+
+\bibitem{Cai}
+L.-Y. Cai, Y.-H. Yang and Z.-J. Zheng,
+\emph{Kirkwood--Dirac classical states based on discrete Fourier transform:
+Representation with directed graph},
+\href{https://arxiv.org/abs/2603.13863v1}{arXiv:2603.13863v1}.
+
+\bibitem{ThioThesis}
+J. Thio,
+\emph{The Structure of the Kirkwood--Dirac Distribution and its Applications
+in Quantum Foundations, Computation, and Information},
+PhD thesis, University of Cambridge (2026), Theorem 2.2.3;
+\href{https://doi.org/10.17863/CAM.135674}{doi:10.17863/CAM.135674}.
+\end{thebibliography}
+\endgroup
+\end{document}
