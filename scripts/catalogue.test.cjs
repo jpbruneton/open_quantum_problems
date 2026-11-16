@@ -407,3 +407,25 @@ test("Lean verified is reserved for claimed solved entries", () => {
   assert.equal(getProblem("N16").status, "improved");
   assert.ok(getProblem("N16").evidence.some((e) => e.lean));
 });
+
+test("draft trends page renders, is not linked from home, and its entry links resolve", () => {
+  const { TRENDS } = loadApp("app/data/trends-data.js");
+  const { PROPOSALS: groups, SECONDARY_PROPOSALS: secondary } = loadApp("app/data/proposals.js");
+  const proposalKeys = new Set([...groups.flatMap((g) => g.items.map((it) => it.key)), ...secondary.map((it) => it.key)]);
+  const html = render(views.TrendsView);
+  assert.ok(html.includes("Quantum trends") && html.includes("Draft."));
+  assert.ok(html.includes("words, not meaning"), "method caveat must stay on the page");
+  assert.ok(!render(views.Home).includes('href="/trends"'), "draft page must not be linked from home");
+  const flaggedIds = new Set(TRENDS.flagged.map((f) => f.cluster));
+  for (const list of [TRENDS.rising, TRENDS.declining, TRENDS.gaps]) {
+    for (const t of list) {
+      assert.ok(!flaggedIds.has(t.cluster), `${t.label}: flagged group must not be ranked`);
+      assert.equal(t.monthly.length, TRENDS.meta.months.length, t.label);
+      for (const e of t.entries) {
+        if (e.kind === "catalogue") assert.ok(getProblem(e.id), `${t.label}: unknown entry ${e.id}`);
+        else assert.ok(proposalKeys.has(e.id), `${t.label}: unknown proposal ${e.id}`);
+      }
+    }
+  }
+  for (const t of TRENDS.gaps) assert.equal(t.entries.length, 0, `${t.label}: gap with entries`);
+});
