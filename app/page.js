@@ -15,6 +15,7 @@ import {
   getCategory,
   consolidatedInto,
 } from "./data/problems";
+import { TRENDS } from "./data/trends-data";
 import { PROPOSALS, SECONDARY_PROPOSALS, PROPOSALS_META, PROPOSAL_COUNT, proposalBatch } from "./data/proposals";
 
 // ---------- tiny hash router ----------
@@ -38,6 +39,7 @@ function useHashRoute() {
   if (parts[0] === "lean-verified") return { view: "lean-verified" };
   if (parts[0] === "new-problems") return { view: "new-problems" };
   if (parts[0] === "np" && parts[1]) return { view: "proposal", key: parts[1] };
+  if (parts[0] === "trends") return { view: "trends" };
   if (parts[0] === "similar" || parts[0] === "about") return { view: "similar" };
   return { view: "home" };
 }
@@ -148,6 +150,7 @@ function Header({ crumbs }) {
           <span>GitHub</span>
         </a>
         <a className="gh-link about-link" href="#similar">Similar projects</a>
+        {TRENDS_PUBLISHED && <a className="gh-link about-link" href="#trends">Quantum trends</a>}
         <span className="powered-by">Powered by Astra &amp; Opus 5.5</span>
         </div>
         {crumbs && (
@@ -765,6 +768,213 @@ function NewProblemsView() {
   );
 }
 
+// ---------- quantum trends (draft) ----------
+// Draft page: reachable at #trends but not linked from the home page while
+// TRENDS_PUBLISHED is false.
+const TRENDS_PUBLISHED = false;
+
+const MONTH_NAMES = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+function monthLabel(yymm) {
+  return `${MONTH_NAMES[Number(yymm.slice(2)) - 1]} 20${yymm.slice(0, 2)}`;
+}
+function fmtGrowth(g) {
+  return `×${g.toFixed(2)}`;
+}
+function fmtInt(n) {
+  return n.toLocaleString("en-US");
+}
+
+// Diverging bar on a log2 scale, centred on ×1 (follows the overall volume).
+function GrowthBar({ g }) {
+  const w = 120, mid = w / 2, max = 1.05; // log2 range shown on each side
+  const v = Math.max(-max, Math.min(max, Math.log2(g)));
+  const len = Math.max(2, Math.abs(v) / max * mid);
+  const x = v >= 0 ? mid : mid - len;
+  return (
+    <span className="growth-cell">
+      <svg width={w} height={12} viewBox={`0 0 ${w} 12`} aria-hidden="true">
+        <rect x={x} y={2} width={len} height={8} rx={2} fill={v >= 0 ? "var(--sharp)" : "var(--accent-2)"} />
+        <line x1={mid} x2={mid} y1={0} y2={12} stroke="var(--muted-2)" strokeWidth={1} />
+      </svg>
+      <span className="growth-num">{fmtGrowth(g)}</span>
+    </span>
+  );
+}
+
+// Monthly share of the corpus (papers per thousand), with the year boundary marked.
+function Sparkline({ counts, totals, months, split }) {
+  const w = 132, h = 30, pad = 2;
+  const shares = counts.map((c, i) => (1000 * c) / totals[i]);
+  const top = Math.max(...shares) || 1;
+  const xs = (i) => pad + (i * (w - 2 * pad)) / (shares.length - 1);
+  const ys = (s) => h - pad - (s / top) * (h - 2 * pad);
+  const pts = shares.map((s, i) => `${xs(i).toFixed(1)},${ys(s).toFixed(1)}`).join(" ");
+  const splitIdx = months.indexOf(split);
+  const peak = shares.indexOf(top);
+  const label = `Monthly share of the corpus, ${monthLabel(months[0])} to ${monthLabel(months[months.length - 1])}. Peak ${top.toFixed(1)}‰ in ${monthLabel(months[peak])}.`;
+  return (
+    <svg className="spark" width={w} height={h} viewBox={`0 0 ${w} ${h}`} role="img" aria-label={label}>
+      <title>{label}</title>
+      {splitIdx > 0 && <line x1={xs(splitIdx)} x2={xs(splitIdx)} y1={0} y2={h} stroke="var(--border)" strokeWidth={1} strokeDasharray="2 2" />}
+      <polyline points={pts} fill="none" stroke="var(--accent)" strokeWidth={1.5} strokeLinejoin="round" />
+    </svg>
+  );
+}
+
+function TrendEntries({ entries }) {
+  const cat = entries.filter((e) => e.kind === "catalogue");
+  const prop = entries.filter((e) => e.kind === "proposal");
+  if (!entries.length) return <span className="trend-none">none</span>;
+  return (
+    <span className="trend-entries">
+      {cat.map((e, i) => <span key={e.id}>{i > 0 ? ", " : ""}<a href={`#p/${e.id}`} title={getProblem(e.id)?.title || e.title}>{e.id}</a></span>)}
+      {prop.length > 0 && <span className="trend-props">{cat.length ? " · " : ""}proposals {prop.map((e, i) => <span key={e.id}>{i > 0 ? ", " : ""}<a href={`#np/${e.id}`} title={e.title}>{e.id}</a></span>)}</span>}
+    </span>
+  );
+}
+
+function TrendTable({ topics, meta, showEntries = true }) {
+  const splitMonth = meta.split.slice(2, 4) + meta.split.slice(5, 7);
+  return (
+    <div className="table-wrap">
+      <table className="trend-table">
+        <thead>
+          <tr>
+            <th>Topic</th>
+            <th style={{ width: 110 }}>Papers<br /><span className="th-sub">year 1 → year 2</span></th>
+            <th style={{ width: 190 }}>Relative growth</th>
+            <th style={{ width: 150 }}>Monthly share</th>
+            {showEntries && <th style={{ width: 190 }}>Nearby entries</th>}
+          </tr>
+        </thead>
+        <tbody>
+          {topics.map((t) => (
+            <tr key={t.cluster} className="trend-row">
+              <td>
+                <div className="trend-label">{t.label}</div>
+                <div className="trend-terms">{t.terms.slice(0, 4).join(" · ")}</div>
+              </td>
+              <td className="num">{fmtInt(t.year1)} → {fmtInt(t.year2)}</td>
+              <td><GrowthBar g={t.growth} /></td>
+              <td><Sparkline counts={t.monthly} totals={meta.monthlyTotal} months={meta.months} split={splitMonth} /></td>
+              {showEntries && <td><TrendEntries entries={t.entries} /></td>}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function TrendsView() {
+  const { meta, rising, declining, gaps, flagged, zones, source } = TRENDS;
+  return (
+    <>
+      <Header crumbs={[{ label: "Quantum trends" }]} />
+      <section className="body">
+        <div className="container">
+          {!TRENDS_PUBLISHED && <div className="draft-banner"><b>Draft.</b> This page is not linked from the site yet. Figures and wording may change.</div>}
+          <h2>Quantum trends</h2>
+          <p className="intro">What quant-ph has been writing about, {monthLabel("2411")} to {monthLabel("2611")}, and where the catalogue stands.</p>
+          <p>We grouped the titles and abstracts of every arXiv paper first submitted with the quant-ph category (primary or cross-list) between 10 November 2024 and 10 November 2026 into topics, then compared year 1 with year 2 (split on {meta.split}). Total volume grew from {fmtInt(meta.year1)} to {fmtInt(meta.year2)} papers (×{meta.volumeGrowth.toFixed(2)}), so growth figures below are <b>relative</b>: ×1 means a topic kept pace with quant-ph as a whole, ×2 means its share doubled.</p>
+          <p className="disclaimer">The grouping compares <b>words, not meaning</b>: papers on the same question in different vocabulary can land in different topics, and a shared writing style can create a topic of its own. Counts measure arXiv activity, not importance. Topic names were written by hand from each group’s characteristic terms and example papers.</p>
+
+          <div className="stats trend-stats">
+            <div className="stat"><div className="n">{fmtInt(meta.papers)}</div><div className="l">Papers</div></div>
+            <div className="stat"><div className="n">{meta.topics}</div><div className="l">Topics</div></div>
+            <div className="stat"><div className="n">{meta.zones}</div><div className="l">Areas</div></div>
+            <div className="stat"><div className="n">×{meta.volumeGrowth.toFixed(2)}</div><div className="l">Volume, year 2 / year 1</div></div>
+          </div>
+
+          <nav className="proposal-nav" aria-label="Sections">
+            <a href="#trends" onClick={(e) => { e.preventDefault(); document.getElementById("tr-rising")?.scrollIntoView({ behavior: "smooth" }); }}>Rising</a>
+            <a href="#trends" onClick={(e) => { e.preventDefault(); document.getElementById("tr-declining")?.scrollIntoView({ behavior: "smooth" }); }}>Declining</a>
+            <a href="#trends" onClick={(e) => { e.preventDefault(); document.getElementById("tr-areas")?.scrollIntoView({ behavior: "smooth" }); }}>By area</a>
+            <a href="#trends" onClick={(e) => { e.preventDefault(); document.getElementById("tr-gaps")?.scrollIntoView({ behavior: "smooth" }); }}>Gaps in the catalogue</a>
+            <a href="#trends" onClick={(e) => { e.preventDefault(); document.getElementById("tr-method")?.scrollIntoView({ behavior: "smooth" }); }}>Method</a>
+          </nav>
+
+          <section id="tr-rising" className="proposal-group">
+            <h3>Rising topics</h3>
+            <p>Topics of at least 80 papers whose share of quant-ph grew most. Error correction dominates: qLDPC codes, decoders and fault-tolerant compilation all grow by half or more, while Gibbs sampling and Hamiltonian learning extend a line of rigorous algorithmic work. Quantum query complexity has the sharpest rise, concentrated in September and October 2026. The same topic and Gibbs sampling also peaked in September–October 2025, which points to a seasonal effect (conference submission deadlines) amplifying the trend; it is not yet clear how much of the 2026 spike is a lasting shift.</p>
+            <TrendTable topics={rising} meta={meta} />
+            <p className="trend-caption">Relative growth: share in year 2 over share in year 1, smoothed by 5 papers; bars on a log scale centred on ×1. Monthly share: papers per thousand in the corpus, December 2024 to October 2026 (partial first and last months left out); the dashed line marks the start of year 2. “Nearby entries” are catalogue entries and proposals whose text falls closest to the topic in the same word space: a proximity of vocabulary, not proof that the papers address the problem.</p>
+          </section>
+
+          <section id="tr-declining" className="proposal-group">
+            <h3>Declining topics</h3>
+            <p>Topics whose share fell most. Most still grow in absolute numbers; they simply did not keep pace with the field. Generic quantum machine learning, time crystals and Majorana zero modes are the clearest cases among theory topics.</p>
+            <TrendTable topics={declining} meta={meta} />
+          </section>
+
+          <section id="tr-areas" className="proposal-group">
+            <h3>By area</h3>
+            <p>The {meta.zones} broad areas found at a coarser grouping, by size. The last column counts the catalogue entries (active or archived) whose text falls in each area. Experimental and platform areas (optics, atoms, superconducting circuits) are large and nearly absent from the catalogue, as expected for a list of theoretical problems; the more telling gaps are theoretical, below.</p>
+            <div className="table-wrap">
+              <table className="trend-table">
+                <thead>
+                  <tr>
+                    <th>Area</th>
+                    <th style={{ width: 120 }}>Papers</th>
+                    <th style={{ width: 190 }}>Relative growth</th>
+                    <th style={{ width: 120 }}>Catalogue entries</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {zones.map((z) => (
+                    <tr key={z.zone} className="trend-row">
+                      <td><div className="trend-label">{z.label}</div><div className="trend-terms">{z.topics} topic{z.topics > 1 ? "s" : ""}</div></td>
+                      <td className="num">{fmtInt(z.papers)}</td>
+                      <td><GrowthBar g={z.growth} /></td>
+                      <td className="num">{z.entries}{z.proposals > 0 && <span className="trend-terms"> + {z.proposals} proposal{z.proposals > 1 ? "s" : ""}</span>}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <p className="trend-caption">Area growth is the unsmoothed ratio of shares. The flagged topic below is left out of its area.</p>
+          </section>
+
+          <section id="tr-gaps" className="proposal-group">
+            <h3>Active theory with no catalogue entry</h3>
+            <p>Mostly theoretical topics (judged from a sample of annotated papers) with no catalogue entry or proposal nearby. They are candidates for new entries, not a list of missing problems: each needs a reading of the literature to find a sharp open question.</p>
+            <TrendTable topics={gaps} meta={meta} showEntries={false} />
+          </section>
+
+          <section id="tr-reading" className="proposal-group">
+            <h3>Open questions stated in abstracts</h3>
+            <div className="review-note trend-pending">
+              <b>Reading in progress.</b> Abstracts that state an open problem, a conjecture or a question that “remains open” are being read topic by topic, starting with the rising topics and the gaps above. Questions that hold up will be listed here with their sources, and the strongest proposed as catalogue entries.
+            </div>
+          </section>
+
+          <section id="tr-flagged" className="proposal-group">
+            <h3>Flagged groups</h3>
+            <ul className="archive-list">
+              {flagged.map((f) => (
+                <li key={f.cluster}><b>{f.label}</b> <span className="trend-terms">({fmtInt(f.year1)} → {fmtInt(f.year2)} papers)</span><p>{f.note}</p></li>
+              ))}
+            </ul>
+          </section>
+
+          <section id="tr-method" className="proposal-group">
+            <h3>Method</h3>
+            <ul className="context-list">
+              <li>Corpus: {fmtInt(meta.papers)} titles and abstracts from the arXiv API (quant-ph, primary or cross-list, first submitted 10 November 2024 to 10 November 2026).</li>
+              <li>Representation: TF-IDF on words and word pairs (title counted twice, formulas removed), reduced to 256 dimensions. No language model or semantic embedding was used.</li>
+              <li>Topics: Leiden community detection on the 15-nearest-neighbour graph, at two resolutions ({meta.topics} topics, {meta.zones} areas).</li>
+              <li>Catalogue placement: each of the {meta.catalogueItems} catalogue entries and proposals is projected into the same space and attached to the majority topic of its 10 nearest papers.</li>
+              <li>Topic and area names, and the selection of topics shown, were made by hand by an AI-assisted analysis and have not been reviewed by a domain expert.</li>
+            </ul>
+            <p>Data and code: {source.path} in the project’s research repository (commit {source.commit}, not yet public), built {source.builtOn}.</p>
+          </section>
+        </div>
+      </section>
+      <Footer />
+    </>
+  );
+}
+
 function NotFound() {
   return (
     <>
@@ -865,5 +1075,6 @@ export default function Page() {
   if (route.view === "new-problems") return <NewProblemsView />;
   if (route.view === "proposal") return <ProposalView pkey={route.key} />;
   if (route.view === "similar") return <SimilarProjectsView />;
+  if (route.view === "trends") return <TrendsView />;
   return <Home />;
 }
