@@ -2,7 +2,7 @@
 
 Revue séquentielle avec approfondissement au fil de l’eau. Les scores sont des priorités de lecture.
 
-**10/150 pistes consignées**, dont 0 encore en cours. 156 articles distincts dans l’instantané.
+**20/150 pistes consignées**, dont 0 encore en cours. 156 articles distincts dans l’instantané.
 
 Les rejets au niveau des résumés ne certifient ni incompatibilité universelle ni absence de résultat nouveau.
 
@@ -18,16 +18,16 @@ Les rejets au niveau des résumés ne certifient ni incompatibilité universelle
 | [8](VERDICTS.md#piste-8) | [2504.16985](https://arxiv.org/abs/2504.16985) / [2505.22720](https://arxiv.org/abs/2505.22720) | ecartee | abstracts |
 | [9](VERDICTS.md#piste-9) | [2502.19504](https://arxiv.org/abs/2502.19504) / [2509.03600](https://arxiv.org/abs/2509.03600) | non-conclue | targeted-fulltext |
 | [10](VERDICTS.md#piste-10) | [2507.14732](https://arxiv.org/abs/2507.14732) / [2507.22989](https://arxiv.org/abs/2507.22989) | ecartee | abstracts |
-| [11](VERDICTS.md#piste-11) | [2505.22720](https://arxiv.org/abs/2505.22720) / [2507.22989](https://arxiv.org/abs/2507.22989) | a-examiner | — |
-| [12](VERDICTS.md#piste-12) | [2501.10552](https://arxiv.org/abs/2501.10552) / [2509.03600](https://arxiv.org/abs/2509.03600) | a-examiner | — |
-| [13](VERDICTS.md#piste-13) | [2604.19876](https://arxiv.org/abs/2604.19876) / [2609.11811](https://arxiv.org/abs/2609.11811) | a-examiner | — |
-| [14](VERDICTS.md#piste-14) | [2602.15800](https://arxiv.org/abs/2602.15800) / [2609.09629](https://arxiv.org/abs/2609.09629) | a-examiner | — |
-| [15](VERDICTS.md#piste-15) | [2509.15201](https://arxiv.org/abs/2509.15201) / [2609.09629](https://arxiv.org/abs/2609.09629) | a-examiner | — |
-| [16](VERDICTS.md#piste-16) | [2505.22100](https://arxiv.org/abs/2505.22100) / [2507.12326](https://arxiv.org/abs/2507.12326) | a-examiner | — |
-| [17](VERDICTS.md#piste-17) | [2507.12326](https://arxiv.org/abs/2507.12326) / [2508.18532](https://arxiv.org/abs/2508.18532) | a-examiner | — |
-| [18](VERDICTS.md#piste-18) | [2412.18556](https://arxiv.org/abs/2412.18556) / [2507.12326](https://arxiv.org/abs/2507.12326) | a-examiner | — |
-| [19](VERDICTS.md#piste-19) | [2412.18556](https://arxiv.org/abs/2412.18556) / [2508.18532](https://arxiv.org/abs/2508.18532) | a-examiner | — |
-| [20](VERDICTS.md#piste-20) | [2412.18556](https://arxiv.org/abs/2412.18556) / [2608.02590](https://arxiv.org/abs/2608.02590) | a-examiner | — |
+| [11](VERDICTS.md#piste-11) | [2505.22720](https://arxiv.org/abs/2505.22720) / [2507.22989](https://arxiv.org/abs/2507.22989) | ecartee | abstracts |
+| [12](VERDICTS.md#piste-12) | [2501.10552](https://arxiv.org/abs/2501.10552) / [2509.03600](https://arxiv.org/abs/2509.03600) | connue | targeted-fulltext |
+| [13](VERDICTS.md#piste-13) | [2604.19876](https://arxiv.org/abs/2604.19876) / [2609.11811](https://arxiv.org/abs/2609.11811) | ecartee | abstracts |
+| [14](VERDICTS.md#piste-14) | [2602.15800](https://arxiv.org/abs/2602.15800) / [2609.09629](https://arxiv.org/abs/2609.09629) | non-conclue | targeted-fulltext |
+| [15](VERDICTS.md#piste-15) | [2509.15201](https://arxiv.org/abs/2509.15201) / [2609.09629](https://arxiv.org/abs/2609.09629) | ecartee | targeted-fulltext |
+| [16](VERDICTS.md#piste-16) | [2505.22100](https://arxiv.org/abs/2505.22100) / [2507.12326](https://arxiv.org/abs/2507.12326) | connue | targeted-fulltext |
+| [17](VERDICTS.md#piste-17) | [2507.12326](https://arxiv.org/abs/2507.12326) / [2508.18532](https://arxiv.org/abs/2508.18532) | ecartee | targeted-fulltext |
+| [18](VERDICTS.md#piste-18) | [2412.18556](https://arxiv.org/abs/2412.18556) / [2507.12326](https://arxiv.org/abs/2507.12326) | connue | targeted-fulltext |
+| [19](VERDICTS.md#piste-19) | [2412.18556](https://arxiv.org/abs/2412.18556) / [2508.18532](https://arxiv.org/abs/2508.18532) | ecartee | abstracts |
+| [20](VERDICTS.md#piste-20) | [2412.18556](https://arxiv.org/abs/2412.18556) / [2608.02590](https://arxiv.org/abs/2608.02590) | non-conclue | targeted-fulltext |
 | [21](VERDICTS.md#piste-21) | [2510.01356](https://arxiv.org/abs/2510.01356) / [2607.14755](https://arxiv.org/abs/2607.14755) | a-examiner | — |
 | [22](VERDICTS.md#piste-22) | [2510.01356](https://arxiv.org/abs/2510.01356) / [2607.10663](https://arxiv.org/abs/2607.10663) | a-examiner | — |
 | [23](VERDICTS.md#piste-23) | [2512.17713](https://arxiv.org/abs/2512.17713) / [2607.10663](https://arxiv.org/abs/2607.10663) | a-examiner | — |

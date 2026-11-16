@@ -1,0 +1,14 @@
+{
+  "arithmetic": "exact fractions",
+  "normalization": "T S T = I",
+  "product_inputs": 5,
+  "entangled_effect_coefficients": [
+    "7/8",
+    "-1/8",
+    "-1/8",
+    "-1/8"
+  ],
+  "coefficient_determinant": "-1/8",
+  "partial_transpose_witness": "-3/16",
+  "novelty": "not claimed; known PGM phenomenon"
+}

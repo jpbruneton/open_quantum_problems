@@ -136,7 +136,11 @@ bridge-9cb16d758fe252
 
 Flow to Nishimori universality in weakly monitored quantum circuits with qubit loss / Tensor Network Representations for Intrinsically Mixed-State Topological Orders
 
-À examiner.
+**ecartee** — lecture : abstracts.
+
+Les deux études touchent les phases bruitées et les réseaux de tenseurs, mais l'une décrit un crossover de circuits mesurés et l'autre construit des tenseurs pour des phases sous décohérence. Aucun invariant ou secteur commun n'est spécifié. La simple proposition d'utiliser la représentation tensorielle dans des simulations ne constitue pas une question mathématique nouvelle.
+
+Sources : [1](https://arxiv.org/abs/2505.22720), [2](https://arxiv.org/abs/2507.22989)
 
 ## Piste 12
 
@@ -144,7 +148,11 @@ bridge-dfe8ce6e3ab50f
 
 Parent Lindbladians for Matrix Product Density Operators / Trading Mathematical for Physical Simplicity: Bialgebraic Structures in Matrix Product Operator Symmetries
 
-À examiner.
+**connue** — lecture : targeted-fulltext.
+
+Le lien entre ces cadres n'est pas une découverte du rapprochement : le texte pré-bialgébrique cite explicitement Parent Lindbladians comme référence 27, et le cas CZX est déjà traité dans la construction dissipative. Étendre arbitrairement le théorème parent à toute pré-bialgèbre demanderait encore positivité, normalisation et canaux de renormalisation ; aucun nouvel énoncé vérifié n'en résulte ici.
+
+Sources : [1](https://arxiv.org/html/2501.10552v2), [2](https://arxiv.org/html/2509.03600v1)
 
 ## Piste 13
 
@@ -152,7 +160,11 @@ bridge-d15c7bf39f8f17
 
 Scaling at Chiral Clock Criticality via Entanglement Renormalization / Block entropy area based non-local fermionic mode optimization with gradient disentanglers
 
-À examiner.
+**ecartee** — lecture : abstracts.
+
+L'optimisation de modes fermioniques autorise des rotations non locales de la base à une particule. Elle peut modifier la signification spatiale d'une coupure utilisée pour les dimensions d'échelle de MERA. Le gain de compression ne transporte donc pas automatiquement les données critiques locales du modèle chiral. Aucun objet commun plus précis que l'optimisation tensorielle n'est identifié.
+
+Sources : [1](https://arxiv.org/abs/2604.19876), [2](https://arxiv.org/abs/2609.11811)
 
 ## Piste 14
 
@@ -160,7 +172,13 @@ bridge-52157f16e4e410
 
 Entanglement in the Dicke subspace / A Sum-of-Squares Hierarchy with Quadratic Convergence for Quantum Channel Coding
 
-À examiner.
+**non-conclue** — lecture : targeted-fulltext.
+
+Un taux quadratique pour la relaxation de séparabilité dans le sous-espace de Dicke serait utile, mais le taux relatif du codage repose sur une correction affine liée au hasard 1/k et sur des noyaux sphériques. Le dictionnaire de Dicke utilise des cônes tensoriels, des degrés et des normalisations différents. Aucun transport du taux ni de sa dépendance en dimension n'a été démontré.
+
+Suite : Écrire la relaxation de Dicke sur un domaine sphérique et comparer ses certificats à ceux du codage ; contrôler les constantes et les zéros de bord.
+
+Sources : [1](https://arxiv.org/html/2602.15800), [2](https://arxiv.org/html/2609.09629v2)
 
 ## Piste 15
 
@@ -168,7 +186,11 @@ bridge-c8879af88cb3a3
 
 Positive maps and extendibility hierarchies from copositive matrices / A Sum-of-Squares Hierarchy with Quadratic Convergence for Quantum Channel Coding
 
-À examiner.
+**ecartee** — lecture : targeted-fulltext.
+
+L'absence de certificat exact à tout niveau pour certains témoins optimaux ne contredit pas une convergence quadratique en valeur : un témoin situé au bord peut n'être atteint qu'à la limite. Le taux du codage est spécifique à une correction affine et ne résout pas l'appartenance exacte au cône copositif. Le rapprochement ne fournit donc pas la contradiction ou le transfert universel envisagés.
+
+Sources : [1](https://arxiv.org/html/2509.15201v1), [2](https://arxiv.org/html/2609.09629v2)
 
 ## Piste 16
 
@@ -176,7 +198,11 @@ bridge-095ae7137f38a2
 
 Symmetry reduction for testing $k$-block-positivity via extendibility / On approximate quantum error correction for symmetric noise
 
-À examiner.
+**connue** — lecture : targeted-fulltext.
+
+L'idée d'exploiter la symétrie unitaire du facteur maximement intriqué dans l'AQEC est déjà explicite dans 2507.12326 : la symétrie isotrope est combinée aux symétries iid, Choi et d'extendibilité. Le test de k-positivité utilise un autre objectif mais réutiliser simplement ce facteur ne donne pas une réduction nouvelle des codes.
+
+Sources : [1](https://arxiv.org/abs/2505.22100), [2](https://arxiv.org/html/2507.12326v1)
 
 ## Piste 17
 
@@ -184,7 +210,13 @@ bridge-59c89ad6821ac2
 
 On approximate quantum error correction for symmetric noise / Extendibility of Fermionic Gaussian States
 
-À examiner.
+**ecartee** — lecture : targeted-fulltext.
+
+Contrôle déjà réalisé dans la passe initiale. Le critère de covariance suffit dans le cadre gaussien mais seulement comme condition nécessaire pour un état général ; l'AQEC impose de plus une séparabilité sous contraintes de canal. Le mélange GHZ de quatre modes à covariance nulle fournit l'obstruction explicite documentée. Pas de remplacement direct du SDP par le test de covariance.
+
+[Note de recherche](../2026-11-17-kd-z3x3/diagnostics.md)
+
+Sources : [1](https://arxiv.org/html/2507.12326v1), [2](https://arxiv.org/html/2508.18532v2)
 
 ## Piste 18
 
@@ -192,7 +224,13 @@ bridge-6e6acc855a798b
 
 Extendible quantum measurements and limitations on classical communication / On approximate quantum error correction for symmetric noise
 
-À examiner.
+**connue** — lecture : targeted-fulltext.
+
+Les hiérarchies pour mesures et pour AQEC reposent déjà sur le de Finetti sous contraintes de Berta–Borderi–Fawzi–Scholz (1810.12197), cité par le texte des mesures. Le passage des états de Choi à une stratégie réalisable est précisément ce qui impose leurs contraintes distinctes. Un simple remplacement d'extendibilité ne produit donc pas un nouveau protocole de codage.
+
+[Note de recherche](notes/measurement-rounding.md)
+
+Sources : [1](https://arxiv.org/html/2412.18556v3), [2](https://arxiv.org/html/2507.12326v1), [3](https://arxiv.org/abs/1810.12197)
 
 ## Piste 19
 
@@ -200,7 +238,11 @@ bridge-7a15ffb10d53b2
 
 Extendible quantum measurements and limitations on classical communication / Extendibility of Fermionic Gaussian States
 
-À examiner.
+**ecartee** — lecture : abstracts.
+
+L'extendibilité des états fermioniques gaussiens et celle des POVM sont deux ensembles différents. Un POVM avec sortie classique, sa normalisation et ses contraintes 1-LOCC ne sont pas caractérisés par une covariance fermionique. Même restreindre les entrées à des états gaussiens ne suffit pas à fournir la représentation de mesure nécessaire. Pas de réduction démontrée.
+
+Sources : [1](https://arxiv.org/abs/2412.18556), [2](https://arxiv.org/abs/2508.18532)
 
 ## Piste 20
 
@@ -208,7 +250,15 @@ bridge-c6c97d8108b848
 
 Extendible quantum measurements and limitations on classical communication / Optimal Quantum de Finetti Theorems via Argmax Rounding
 
-À examiner.
+**non-conclue** — lecture : targeted-fulltext.
+
+La piste d'un meilleur taux pour les mesures extendibles est réelle, mais le théorème argmax des états ne garde pas automatiquement les marginales et la causalité requises. Une correction globale S^(-1/2) peut transformer cinq effets produits en une POVM possédant un effet intriqué : exemple rationnel et témoin PPT négatif vérifiés. Cela bloque la réparation naïve sans exclure un arrondi sous contraintes plus fin.
+
+Suite : Établir une version argmax sous contraintes préservant chaque normalisation conditionnelle ; rechercher ensuite un gain effectif sur le taux de 2412.18556.
+
+[Note de recherche](notes/measurement-rounding.md)
+
+Sources : [1](https://arxiv.org/html/2412.18556v3), [2](https://arxiv.org/html/2608.02590), [3](https://arxiv.org/abs/1810.12197)
 
 ## Piste 21
 
