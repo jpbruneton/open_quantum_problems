@@ -1,0 +1,109 @@
+{
+  "1": {
+    "rank": 1,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Deux usages proches des réseaux de tenseurs pour extraire des données RG lentes. Le modèle Potts non hermitien perd le principe variationnel, tandis que MERA est ici variationnel dans un modèle chiral. Le partage de vocabulaire ne donne ni transfert de borne ni nouvel invariant ; pas de cible mathématique supplémentaire suffisamment précise à ce stade.",
+    "references": [
+      "https://arxiv.org/abs/2507.14732",
+      "https://arxiv.org/abs/2604.19876"
+    ]
+  },
+  "2": {
+    "rank": 2,
+    "decision": "ecartee",
+    "reading": "targeted-fulltext",
+    "rationale": "Piste déjà étudiée dans la passe initiale. L'invariance sous conjugaison est formelle si le coût est transporté avec la dualité ; le coût physique fixé peut subir une distorsion croissante avec la taille, comme le montre la cascade CNOT. Cela n'exclut pas une estimation spécifique au code torique, mais élimine le transfert uniforme automatique proposé par l'analogie.",
+    "note": "../2026-11-17-kd-z3x3/diagnostics.md",
+    "references": [
+      "https://arxiv.org/html/2506.04197v1",
+      "https://arxiv.org/html/2508.00126v2"
+    ]
+  },
+  "3": {
+    "rank": 3,
+    "decision": "ecartee",
+    "reading": "targeted-fulltext",
+    "rationale": "Les parents dissipatifs de MPDO fixes et le critère de nonstabilizerness pour MPS purs ne partagent pas les mêmes opérations ni le même ensemble libre. Un mélange de |0^n> et |1^n> est un mélange de stabilisateurs mais possède une information mutuelle non entière à toute distance. Ce cas élimine le prolongement naïf aux mélanges. L'étude générale de la magie dans les phases mixtes est déjà proposée dans les travaux citants.",
+    "note": "notes/mixed-magic-obstruction.md",
+    "references": [
+      "https://arxiv.org/html/2501.10552v2",
+      "https://arxiv.org/abs/2502.19504",
+      "https://journals.aps.org/prl/abstract/10.1103/4t3l-hy7z"
+    ]
+  },
+  "4": {
+    "rank": 4,
+    "decision": "ecartee",
+    "reading": "targeted-fulltext",
+    "rationale": "Pour les sous-familles CSS et bruit de Pauli du second texte, les états produits restent dans l'enveloppe convexe des stabilisateurs. Une topologie intrinsèquement mixte n'implique donc pas la nonstabilizerness recherchée. Les modèles non abéliens et chiraux exigeraient un témoin propre ; aucun énoncé nouveau précis ne découle des deux constructions examinées.",
+    "note": "notes/mixed-magic-obstruction.md",
+    "references": [
+      "https://arxiv.org/abs/2502.19504",
+      "https://arxiv.org/html/2507.22989v2"
+    ]
+  },
+  "5": {
+    "rank": 5,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le flot unitaire de Floquet approche un point instable avec chauffage retardé, tandis que le parent Lindblad stabilise exactement des MPDO fixes par dissipation. Les quantités à contrôler, les temps et les opérations diffèrent ; aucun passage entre équations de flot et gap dissipatif n'est fourni par les résumés. Le motif point fixe est trop général.",
+    "references": [
+      "https://arxiv.org/abs/2412.10498",
+      "https://arxiv.org/abs/2501.10552"
+    ]
+  },
+  "6": {
+    "rank": 6,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "La renormalisation Floquet gouverne le chauffage d'une dynamique temporelle unitaire ; le flot percolation vers Nishimori concerne une transition de préparation mesurée et un modèle statistique spatial. L'instabilité d'un point fixe dans les deux textes ne fournit ni couplage commun ni identification des exposants. Pas de conséquence supplémentaire testable identifiée.",
+    "references": [
+      "https://arxiv.org/abs/2412.10498",
+      "https://arxiv.org/abs/2505.22720"
+    ]
+  },
+  "7": {
+    "rank": 7,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "L'un des textes extrait un spectre CCFT pour Potts non hermitien ; l'autre organise des symétries MPO de chaînes XX par pré-bialgèbres. Sans montrer que le Potts étudié possède précisément cette symétrie et cette représentation, le transfert de données de fusion ou de renormalisation reste une association de méthodes. Pas de candidat défini à approfondir.",
+    "references": [
+      "https://arxiv.org/abs/2507.14732",
+      "https://arxiv.org/abs/2509.03600"
+    ]
+  },
+  "8": {
+    "rank": 8,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "L'anomalie de symétrie MPO dans une phase mixte 1D et le crossover critique d'un circuit faible mesuré n'ont ici ni groupe de symétrie identifié en commun ni observable candidate. Assimiler leurs points fixes parce qu'ils sont non unitaires ne suffit pas. Les protocoles de préparation apparaissent déjà dans leurs programmes respectifs ; aucune nouvelle correspondance explicite n'est établie.",
+    "references": [
+      "https://arxiv.org/abs/2504.16985",
+      "https://arxiv.org/abs/2505.22720"
+    ]
+  },
+  "9": {
+    "rank": 9,
+    "decision": "non-conclue",
+    "reading": "targeted-fulltext",
+    "rationale": "Le lien entre spectre de transfert MPS et invariants d'une pré-bialgèbre pourrait permettre de tester une magie à longue portée dans une famille explicite. Cependant le critère pur ne se transpose pas automatiquement aux états mixtes construits et le motif algébrique ne produit pas à lui seul un témoin. L'obstruction élémentaire est consignée ; aucun résultat ni question suffisamment distincte des programmes existants n'est obtenu.",
+    "next_step": "Spécifier une famille de tenseurs purs possédant la symétrie anomale et calculer son spectre de transfert avant de formuler une conjecture.",
+    "note": "notes/mixed-magic-obstruction.md",
+    "references": [
+      "https://arxiv.org/abs/2502.19504",
+      "https://arxiv.org/html/2509.03600v1",
+      "https://journals.aps.org/prl/abstract/10.1103/4t3l-hy7z"
+    ]
+  },
+  "10": {
+    "rank": 10,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le second texte traite aussi des tenseurs, mais le phénomène est une topologie sous décohérence et non le spectre d'un Potts non hermitien. La non-hermiticité d'un Hamiltonien et l'usage d'un espace de Choi ne définissent pas un même objet. Aucun transfert quantitatif de données CCFT aux canaux présentés n'est identifié.",
+    "references": [
+      "https://arxiv.org/abs/2507.14732",
+      "https://arxiv.org/abs/2507.22989"
+    ]
+  }
+}
