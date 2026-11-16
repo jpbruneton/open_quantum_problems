@@ -175,7 +175,8 @@ Useful advances:
       { label: "Slofstra, 'The set of quantum correlations is not closed', Forum Math. Pi 7 (2019)", url: "https://arxiv.org/abs/1703.08618" },
     ] },
 
-  { id: "N5", cat: "nonlocality", horizon: "incremental",
+  { id: "N5", cat: "nonlocality", horizon: "incremental", status: "improved",
+    reviewedAt: "2026-11-16",
     relations: [{ id: "N4", type: "related" }, { id: "N6", type: "related" }, { id: "N7", type: "related" }],
     title: "Dimension required for nonlocal correlations",
     statement: r`For specified finite-dimensional tensor-product correlation families and a fixed metric, determine tight lower and upper bounds on the minimal local dimension achieving accuracy $\varepsilon$, with explicit parameter dependence.`,
@@ -184,15 +185,20 @@ Useful advances:
 Dimension witnesses certify lower bounds on the resources needed to reproduce observed Bell statistics. Standard reference: Brunner, Pironio, Acín, Gisin, Méthot and Scarani, “Testing the dimension of Hilbert spaces”, PRL 100, 210503 (2008), [arXiv:0802.0760](https://arxiv.org/abs/0802.0760).`,
     progress: r`- Known examples force the dimension to grow as the requested error decreases, sometimes extremely rapidly.
 - There can be no uniform computable dimension cutoff sufficient to approximate every unrestricted finite Bell-game value: together with bounded-dimensional optimization this would contradict MIP*=RE ([arXiv:2001.04383](https://arxiv.org/abs/2001.04383)). A general computable dimension bound is therefore not an open deliverable.
-- Specified noisy-resource models can restore computable bounds. Qin and Yao give one such result for fully quantum games using noisy maximally entangled resources ([arXiv:2211.10613](https://arxiv.org/abs/2211.10613)).`,
-    residual: r`The useful quantitative frontier is restricted families, optimal dimension witnesses and explicit dependence on accuracy, inputs and outputs.
+- Specified noisy-resource models can restore computable bounds. Qin and Yao give one such result for fully quantum games using noisy maximally entangled resources ([arXiv:2211.10613](https://arxiv.org/abs/2211.10613)).
+- For the I3322 inequality, Douglas (September 2026, v2) claims that the local dimension needed to come within $\varepsilon$ of the quantum value is $D(\varepsilon)=\Theta(\log(1/\varepsilon))$ ([arXiv:2609.05555](https://arxiv.org/abs/2609.05555v2)). The upper bound $D(\varepsilon)\le23.90\log(1/\varepsilon)$ is constructive; the lower-bound constants are only existential. The proof is computer-assisted, and Lean checks only its numerical and finite facts.`,
+    residual: r`The useful quantitative frontier is restricted families, optimal dimension witnesses and explicit dependence on accuracy, inputs and outputs. After the I3322 case, explicit lower-bound constants and other named Bell functionals are natural targets.
 
 Self-testing certifies a reference subsystem up to local isometries and unused auxiliary systems. It does not certify the exact total dimension of an unknown physical device.`,
+    evidence: [
+      { kind: "preprint", role: "progress", summary: "Claimed dimension complexity D(ε) = Θ(log(1/ε)) for approaching the I3322 quantum value, with constructive upper bound D(ε) ≤ 23.90 log(1/ε) and existential lower constants; computer-assisted, with only numerical and finite facts checked in Lean.", url: "https://arxiv.org/abs/2609.05555v2", date: "2026-09-11", version: "v2" },
+    ],
     refs: [
       {"label":"Qin & Yao, 'Decidability of fully quantum nonlocal games with noisy maximally entangled states' (2023 revision)","url":"https://arxiv.org/abs/2211.10613"},
       {"label":"Ji, Natarajan, Vidick, Wright & Yuen, 'MIP*=RE' (arXiv:2001.04383, first submitted 2020; v4 of 16 October 2026, accepted to Annals of Mathematics according to its arXiv comment)","url":"https://arxiv.org/abs/2001.04383"},
       { label: "Brunner, Cavalcanti, Pironio, Scarani, Wehner, 'Bell nonlocality', Rev. Mod. Phys. 86, 419 (2014)", url: "https://arxiv.org/abs/1303.2849" },
       { label: "Brunner, Pironio, Acín, Gisin, Méthot, Scarani, 'Testing the dimension of Hilbert spaces', PRL 100, 210503 (2008)", url: "https://arxiv.org/abs/0802.0760" },
+      { label: "Douglas, 'The I3322 quantum value is attained spatially but not in finite dimension' (2026 preprint, v2)", url: "https://arxiv.org/abs/2609.05555v2" },
     ] },
 
   { id: "N6", cat: "nonlocality", horizon: "incremental", status: "improved",
@@ -377,8 +383,8 @@ Some entangled states admit local hidden-variable models (Werner for projective 
       { label: "Renner, Lobo, Konderak, Augusiak & Acín, 'All pure entangled states can lead to fully nonlocal correlations' (2026 preprint, v1)", url: "https://arxiv.org/abs/2604.26605v1" },
     ] },
 
-  { id: "N13", cat: "nonlocality", horizon: "sharp",
-    reviewedAt: "2026-11-08",
+  { id: "N13", cat: "nonlocality", horizon: "sharp", status: "claimed-solved",
+    reviewedAt: "2026-11-16",
     title: "Semialgebraicity of the closed quantum correlation set",
     statement: r`In every fixed bipartite Bell scenario (finitely many inputs and outputs), is the closure $\mathcal C_{qa}$ of the finite-dimensional tensor-product correlation set semialgebraic, i.e. a finite Boolean combination of real polynomial equalities and inequalities?`,
     definition: r`**A semialgebraic set** is a finite Boolean combination of sets defined by real polynomial equalities and inequalities. Here the set is the closure $\mathcal C_{qa}$ of the finite-dimensional tensor-product quantum correlations in a fixed Bell scenario.
@@ -386,16 +392,30 @@ Some entangled states admit local hidden-variable models (Werner for projective 
 Tsirelson asked about descriptions of quantum correlations by analytic or polynomial inequalities (1993, Problem 2.10, as discussed by Fu–Miller–Slofstra, arXiv:2101.11087). This entry fixes the closure C_qa and asks for semialgebraicity. The question is a definability problem rather than an algorithmic one.`,
     progress: r`- For two binary measurements per party, Jordan's lemma and convexification give a semialgebraic description (Tsirelson; Masanes, [arXiv:quant-ph/0512100](https://arxiv.org/abs/quant-ph/0512100)).
 - Slofstra proved that the finite-dimensional set $\mathcal C_q$ is not closed in some fixed scenario ([arXiv:1703.08618](https://arxiv.org/abs/1703.08618)). This entry asks about its closure; non-closure alone does not exclude semialgebraicity, since semialgebraic sets need not be closed.
-- Fu, Miller and Slofstra proved that membership in $\mathcal C_{qa}$, and likewise $\mathcal C_{qc}$, is undecidable in a fixed scenario, even for algebraic behaviours ([arXiv:2101.11087](https://arxiv.org/abs/2101.11087)).`,
-    residual: r`Undecidability of membership excludes effective descriptions with computable coefficients. It does not exclude a non-effective semialgebraic presentation with arbitrary real coefficients, which is what remains open beyond the simplest scenarios.`,
+- Fu, Miller and Slofstra proved that membership in $\mathcal C_{qa}$, and likewise $\mathcal C_{qc}$, is undecidable in a fixed scenario, even for algebraic behaviours ([arXiv:2101.11087](https://arxiv.org/abs/2101.11087)). Undecidability excludes effective descriptions with computable coefficients, but not a non-effective semialgebraic presentation with arbitrary real coefficients.`,
+    claim: r`**Gao, Ji and Liu, [“Quantum Behaviors Are Not Semialgebraic”](https://arxiv.org/abs/2609.18865v1)** (arXiv:2609.18865, v1, 16 September 2026).
+
+What it claims:
+- A negative answer, already in the scenario with four binary measurements per party. Along a quadratic curve $p_\alpha$ of synchronous behaviours, $p_\alpha$ lies in $\mathcal C_t$ for $\alpha\in(1,2)$ exactly when $\alpha=2-2/m$ with $m\ge3$, for each of $t=q,qa,qc$ (Theorem 1).
+- Synchronicity forces $P_1+P_2+P_3+P_4=\alpha I$ for projections, and the Kruglyak–Rabanovich–Samoilenko classification of scalar sums of four projections restricts $\alpha$. A semialgebraic set meets a curve in finitely many intervals and points, so $\mathcal C_q$, $\mathcal C_{qa}$ and $\mathcal C_{qc}$ are not semialgebraic, whatever the real coefficients allowed.
+- None of these sets is even semianalytic near a particular classical behaviour. Hence no exact finite semidefinite representation exists, and no finite level of the NPA hierarchy characterizes them exactly.
+
+Caveats:
+- A single preprint, not peer reviewed and not yet independently assessed. Hence “Claimed solved” rather than “Solved”. The proof is short and analytic, and is not formalized.`,
+    residual: r`If the claim holds, the question is settled in the negative, since a single fixed scenario suffices. Independent assessment is pending.`,
     evidence: [
+      { kind: "preprint", role: "claimed-solution", summary: "Claims that with four binary measurements per party, C_q, its closure C_qa and C_qc all meet a quadratic curve of synchronous behaviours in the infinite discrete set α = 2 − 2/m (m ≥ 3), via the Kruglyak–Rabanovich–Samoilenko classification of sums of four projections; hence none is semialgebraic, even with arbitrary real coefficients, nor semianalytic near a classical point. Pending assessment.", url: "https://arxiv.org/abs/2609.18865v1", date: "2026-09-16", version: "v1" },
       { kind: "preprint", role: "progress", summary: "Membership in the closed quantum correlation set is undecidable for a fixed constant-sized scenario; semialgebraicity with arbitrary real coefficients is not excluded.", url: "https://arxiv.org/abs/2101.11087v5", date: "2025-04-09", version: "v5" },
+    ],
+    provenance: [
+      { summary: "Gao, Ji and Liu report that OpenAI Codex assisted with literature searches, proof development and mathematical checks, manuscript preparation, and TikZ code.", url: "https://arxiv.org/abs/2609.18865v1", version: "v1" },
     ],
     relations: [{ id: "N4", type: "related" }, { id: "N6", type: "related" }],
     refs: [
       { label: "Slofstra, 'The set of quantum correlations is not closed', Forum Math. Pi 7 (2019)", url: "https://arxiv.org/abs/1703.08618" },
       { label: "Fu, Miller & Slofstra, 'The membership problem for constant-sized quantum correlations is undecidable', Comm. Math. Phys. 406 (2025)", url: "https://arxiv.org/abs/2101.11087" },
       { label: "Masanes, 'Extremal quantum correlations for N parties with two dichotomic observables per site' (2005)", url: "https://arxiv.org/abs/quant-ph/0512100" },
+      { label: "Gao, Ji & Liu, 'Quantum Behaviors Are Not Semialgebraic' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.18865v1" },
     ] },
 
   { id: "N14", cat: "nonlocality", horizon: "incremental", status: "improved",
@@ -652,5 +672,182 @@ Caveats:
       { label: "Nurdin, 'Saturation of the multiparameter quantum Cramér–Rao bound at the single-copy level with projective measurements' (2024 preprint, withdrawn in v2)", url: "https://arxiv.org/abs/2405.01471v2" },
       { label: "Yang, Imai & Pezzè, 'A geometric criterion for optimal measurements in multiparameter quantum metrology' (2026 preprint, v1)", url: "https://arxiv.org/abs/2601.21801v1" },
       { label: "Imai, Yang & Pezzè, 'Hierarchy of saturation conditions for multiparameter quantum metrology bounds' (2026 preprint, v2)", url: "https://arxiv.org/abs/2602.12097v2" },
+    ] },
+
+  // 16 November 2026: questions from the carte v2 map of the quant-ph corpus.
+  { id: "N20",
+    cat: "nonlocality",
+    horizon: "sharp",
+    status: "improved",
+    reviewedAt: "2026-11-16",
+    title: "Fourier Kirkwood–Dirac representations whose positive states form a polytope of pure ones",
+    statement: r`For a finite abelian group $G$, consider the Kirkwood–Dirac (KD) representation on $L^2(G)$ defined by the position basis $\{|g\rangle\}$ and the Fourier (character) basis $\{|\chi\rangle\}$: $Q_\rho(g,\chi)=\langle\chi|g\rangle\langle g|\rho|\chi\rangle$. Let $\mathcal E_{KD+}$ be the set of states with $Q_\rho\ge0$ and $\mathcal E^{\rm pure}_{KD+}$ its pure elements. For which $G$ does $\mathcal E_{KD+}=\mathrm{conv}(\mathcal E^{\rm pure}_{KD+})$ hold? De Bièvre, Langrenez and Radchenko (2025, Section 8) prove it for $\mathbb Z_{p^k}$, disprove it for $\mathbb Z_6$ and $\mathbb Z_2\times\mathbb Z_2$, and state: “What the situation is for arbitrary abelian groups remains an open question.” For second-countable locally compact abelian groups, Spriet (2025) conjectures that the equality (with trace-norm-closed convex hull) holds when the open compact subgroups are totally ordered by inclusion, adding “It might also be necessary”. For finite $G$, total ordering of subgroups means $G\cong\mathbb Z_{p^k}$.`,
+    definition: r`**Kirkwood–Dirac quasiprobability.** Given two orthonormal bases $\{|a_i\rangle\}$, $\{|b_j\rangle\}$, the KD distribution of $\rho$ is $Q_{ij}=\langle b_j|a_i\rangle\langle a_i|\rho|b_j\rangle$; it is complex in general, and negative or non-real values signal non-classicality (contextuality, anomalous weak values, metrological advantage). A state is KD-positive (KD-classical) if all $Q_{ij}\ge0$. For a pair of bases in general position, the KD-positive states are only the mixtures of basis projectors (Langrenez, Arvidsson-Shukur and De Bièvre, J. Math. Phys. 65, 072201 (2024), [arXiv:2306.00086](https://arxiv.org/abs/2306.00086)). The Fourier pair on an abelian group is the opposite extreme: its pure KD-positive states are, up to the Heisenberg–Weyl action, the normalized indicator functions (Haar measures) of subgroups.
+
+The question is posed in [arXiv:2501.12252](https://arxiv.org/abs/2501.12252), Section 8, and the infinite-group conjecture in [arXiv:2507.23628](https://arxiv.org/abs/2507.23628), Section 1.`,
+    progress: r`- Langrenez, Arvidsson-Shukur and De Bièvre (2024) settle prime dimension $d=p$ for the discrete Fourier transform and construct mixed KD-positive states outside the convex hull of pure ones for other basis pairs ([arXiv:2306.00086](https://arxiv.org/abs/2306.00086)).
+- Yang, Yao, Geng, Wang and Chen (J. Phys. A 57, 435303 (2024)) prove the equality in dimension $p^2$ and believe it holds in dimension $pq$ ([arXiv:2404.09399](https://arxiv.org/abs/2404.09399)); the $\mathbb Z_6$ counterexample of 2025 refutes this for $pq=6$.
+- Xu (J. Math. Phys. 66, 102104 (2025)) shows that for the DFT in every dimension each KD-positive state is a real linear combination of pure KD-positive states ([arXiv:2412.16945](https://arxiv.org/abs/2412.16945)).
+- De Bièvre, Langrenez and Radchenko (Ann. Henri Poincaré 27, 3093 (2026)) identify the pure KD-positive states for every finite abelian group, give an equivalent condition (Theorem 5.2: every “quantum” positive function on $G\times\hat G$ splits into positive $H\times H^\perp$-periodic functions over subgroups $H$), prove the equality for all $\mathbb Z_{p^k}$ (Theorem 6.1), and exhibit KD-positive states outside the convex hull for $\mathbb Z_6$ and $\mathbb Z_2\times\mathbb Z_2$ ([arXiv:2501.12252](https://arxiv.org/abs/2501.12252)).
+- Spriet (J. Fourier Anal. Appl. 32, 99 (2026)) extends the framework to second-countable LCA groups, identifies the generalized pure KD-positive states as Haar measures on closed subgroups, and proves the closed-convex-hull equality for connected compact groups (Theorem 1.3) ([arXiv:2507.23628](https://arxiv.org/abs/2507.23628)).
+- Cai, Yang and Zheng (March 2026) give a new proof for dimension $p^r$ and a directed-graph description of pure KD-classical states in every dimension ([arXiv:2603.13863](https://arxiv.org/abs/2603.13863)).`,
+    residual: r`No other finite abelian group is decided: in particular $\mathbb Z_{pq}$ for general distinct primes, $\mathbb Z_p\times\mathbb Z_p$ for odd $p$, and $\mathbb Z_2\times\mathbb Z_4$. A reduction from $G$ to subgroups or quotients that would propagate the $\mathbb Z_6$ and $\mathbb Z_2\times\mathbb Z_2$ counterexamples is not established. For infinite groups, the sufficiency conjecture of Spriet (for example $\mathbb Z_p$ or $\mathbb Q_p$, the $p$-adic integers and numbers) is open.`,
+    evidence: [
+      { kind: "published",
+        role: "progress",
+        summary: "Equality conv(pure KD-positive) = KD-positive for G = Z_{p^k}; equivalent decomposition criterion; counterexamples for Z_6 and Z_2 × Z_2 (Ann. Henri Poincaré 27, 3093–3112).",
+        url: "https://doi.org/10.1007/s00023-025-01614-7",
+        date: "2025-09-02" },
+      { kind: "published",
+        role: "progress",
+        summary: "KD representation on second-countable LCA groups; generalized pure KD-positive states are Haar measures on closed subgroups; closed-convex-hull equality for connected compact groups; sufficiency conjecture for totally ordered open compact subgroups (J. Fourier Anal. Appl. 32, 99).",
+        url: "https://doi.org/10.1007/s00041-026-10309-4",
+        date: "2026-10-19" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Alternative proof of the convex-hull equality in dimension p^r for the DFT; directed-graph description of pure KD-classical states in arbitrary dimension.",
+        url: "https://arxiv.org/abs/2603.13863v1",
+        date: "2026-03-14",
+        version: "v1" },
+      { kind: "published",
+        role: "progress",
+        summary: "For the DFT in any dimension, every KD-positive state is a real linear combination of pure KD-positive states (J. Math. Phys. 66, 102104, 2025).",
+        url: "https://arxiv.org/abs/2412.16945v1",
+        date: "2024-12-22",
+        version: "v1" },
+      { kind: "published",
+        role: "progress",
+        summary: "Convex-hull equality in dimension p² for the DFT; equality in dimension pq conjectured but not proved (J. Phys. A 57, 435303).",
+        url: "https://doi.org/10.1088/1751-8121/ad819a",
+        date: "2024-10-10" },
+    ],
+    provenance: [],
+    relations: [
+      { id: "N10", type: "related" },
+    ],
+    refs: [
+      { label: "De Bièvre, Langrenez & Radchenko, 'The Kirkwood-Dirac representation associated to the Fourier transform for finite abelian groups: positivity', Ann. Henri Poincaré 27, 3093 (2026)",
+        url: "https://arxiv.org/abs/2501.12252" },
+      { label: "Spriet, 'Characterizing the Kirkwood-Dirac positivity on second countable LCA groups', J. Fourier Anal. Appl. 32, 99 (2026)",
+        url: "https://arxiv.org/abs/2507.23628" },
+      { label: "Langrenez, Arvidsson-Shukur & De Bièvre, 'Characterizing the geometry of the Kirkwood-Dirac positive states', J. Math. Phys. 65, 072201 (2024)",
+        url: "https://arxiv.org/abs/2306.00086" },
+      { label: "Yang, Yao, Geng, Wang & Chen, 'Geometry of Kirkwood-Dirac classical states: A case study based on discrete Fourier transform', J. Phys. A 57, 435303 (2024)",
+        url: "https://arxiv.org/abs/2404.09399" },
+      { label: "Xu, 'Hermitian Kirkwood-Dirac real operators for discrete Fourier transformations', J. Math. Phys. 66, 102104 (2025)", url: "https://arxiv.org/abs/2412.16945" },
+      { label: "Cai, Yang & Zheng, 'Kirkwood-Dirac classical states based on discrete Fourier transform: Representation with directed graph' (2026 preprint)",
+        url: "https://arxiv.org/abs/2603.13863" },
+    ] },
+
+  { id: "N21",
+    cat: "nonlocality",
+    horizon: "sharp",
+    reviewedAt: "2026-11-16",
+    title: "POVM steering threshold of two-qutrit isotropic and Werner states",
+    statement: r`Let $\rho^{\rm iso}_\eta=\eta\,|\Phi_3\rangle\langle\Phi_3|+(1-\eta)\,I/9$ with $|\Phi_3\rangle=\tfrac1{\sqrt3}\sum_{i=0}^{2}|ii\rangle$, and let $\rho^{\rm W}_\eta=\eta\,P_{\rm as}/3+(1-\eta)\,I/9$ be the two-qutrit Werner state, with $P_{\rm as}$ the rank-3 projector onto the antisymmetric subspace. Determine the critical visibilities $\eta^{\rm POVM}_{\rm iso}(3)$ and $\eta^{\rm POVM}_{\rm W}(3)$ above which these states are steerable from Alice to Bob when Alice may use arbitrary POVMs. In particular, decide whether POVMs help: is $\eta^{\rm POVM}_{\rm iso}(3)=5/12$ and $\eta^{\rm POVM}_{\rm W}(3)=2/3$, the projective-measurement thresholds? Uola, Costa, Nguyen and Gühne (Rev. Mod. Phys. 2020) state that it is unclear whether steering with projective measurements is equivalent to steering with generalized measurements, even for these states.`,
+    definition: r`**Steering and local hidden-state models.** A bipartite state is unsteerable from Alice to Bob, for a class of measurements, if every assemblage Alice can prepare on Bob's side is explained by a local hidden-state (LHS) model. The notion was formalized by Wiseman, Jones and Doherty, who found the exact projective thresholds for isotropic states, $(H_d-1)/(d-1)$ with $H_d$ the harmonic number, and for Werner states, $1-1/d$ ([arXiv:quant-ph/0612147](https://arxiv.org/abs/quant-ph/0612147)). For $d=3$ these are $5/12$ and $2/3$.
+
+**Steering and joint measurability.** Steerability of the isotropic state with visibility $\eta$ is equivalent to incompatibility of Alice's measurements after depolarization $M_a\mapsto\eta M_a+(1-\eta)\,\mathrm{Tr}(M_a)\,I/d$. The isotropic question is therefore the largest visibility at which every family of qutrit POVMs becomes jointly measurable.
+
+The open question is stated in the review of Uola, Costa, Nguyen and Gühne, Rev. Mod. Phys. 92, 015001 (2020), at the end of the subsection “LHS model for POVMs” ([arXiv:1903.06663](https://arxiv.org/abs/1903.06663)). The review notes that the known POVM models are “by no means optimal”.`,
+    progress: r`- Barrett (2002) and Almeida, Pironio, Barrett, Tóth and Acín (2007) gave an LHS model for all POVMs on isotropic states. For $d=3$ it covers $\eta\le\frac{(3d-1)(d-1)^{d-1}}{(d+1)d^d}=8/27\approx0.296$ ([arXiv:quant-ph/0107045](https://arxiv.org/abs/quant-ph/0107045), [arXiv:quant-ph/0703018](https://arxiv.org/abs/quant-ph/0703018)).
+- Nguyen and Gühne (2020) improved the response functions for Werner states, which gives unsteerability for all POVMs when $\eta\le\frac{1+(d-1)^{d+1}d^{-d}}{d+1}$, that is $43/108\approx0.398$ for $d=3$. The review collects both bounds; the POVM gaps are thus $[8/27,\,5/12]$ for isotropic and $[43/108,\,2/3]$ for Werner qutrit states ([arXiv:1903.06663](https://arxiv.org/abs/1903.06663)).
+- Bavaresco et al. (2017) computed bounds for finitely many measurements and found numerically no advantage of non-projective POVMs for steering isotropic states ([arXiv:1704.02994](https://arxiv.org/abs/1704.02994)).
+- The qubit case is closed. Zhang and Chitambar ([arXiv:2309.09960](https://arxiv.org/abs/2309.09960)) and Renner ([arXiv:2309.12290](https://arxiv.org/abs/2309.12290)) showed that two-qubit Werner states are POVM-unsteerable exactly up to $1/2$, the projective threshold (PRL 132, 250201 and 250202 (2024)). Zhang (30 July 2026, v1) extended this to all unital qubit channels ([arXiv:2607.27757](https://arxiv.org/abs/2607.27757v1)). None of these treats $d\ge3$.
+- Kotowski and Oszmaniec (16 January 2025, v1) showed that a dimension-independent constant visibility makes every POVM projective-simulable. Their bounds on the critical visibility for joint measurability of all POVMs are tight in $d$ up to a constant factor, and they suggest the constant may be removable ([arXiv:2501.09339](https://arxiv.org/abs/2501.09339v1)). This is asymptotic and does not fix $d=3$.
+- Jia, Guo, Li, Dong and Gao (v2, 20 October 2026) built LHS models by gradient-based learning. For two-qutrit isotropic states under POVMs they conjecture, from the growth of their loss function, a threshold close to $v\approx0.3$, below the projective value $5/12$. They state that analytical results are lacking ([arXiv:2512.21848](https://arxiv.org/abs/2512.21848v2)). This conflicts with the numerics of Bavaresco et al., and the value is close to the analytical bound $8/27$.`,
+    residual: r`Both qutrit thresholds remain open, and so does the question whether POVMs ever beat projective measurements for steering these states. Sub-targets: an explicit, certified LHS model for all qutrit POVMs on $\rho^{\rm iso}_\eta$ beyond $8/27$, for instance at $\eta=0.35$; or a certified POVM assemblage that is steerable at some $\eta<5/12$, which would prove a strict POVM advantage. The same targets apply to the Werner state on $[43/108,\,2/3]$. The Bell-locality analogue for two-qubit Werner states is N11.`,
+    evidence: [
+      { kind: "numerical",
+        role: "progress",
+        summary: "Learned LHS models for two-qutrit isotropic states; under arbitrary POVMs the authors conjecture a steering threshold close to v ≈ 0.3, below the projective 5/12, and state that analytical POVM bounds are lacking.",
+        url: "https://arxiv.org/abs/2512.21848v2",
+        date: "2026-10-20",
+        version: "v2" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Every POVM in dimension d becomes projective-simulable at a constant, d-independent visibility; critical visibility for joint measurability of all POVMs fixed up to a constant factor. Asymptotic, not specific to d = 3.",
+        url: "https://arxiv.org/abs/2501.09339v1",
+        date: "2025-01-16",
+        version: "v1" },
+      { kind: "published",
+        role: "progress",
+        summary: "Qubit case: all qubit POVMs become jointly measurable at visibility 1/2, so two-qubit Werner states are POVM-unsteerable exactly up to 1/2 (PRL 132, 250202 (2024)). Does not treat d ≥ 3.",
+        url: "https://arxiv.org/abs/2309.12290v2",
+        date: "2026-01-29",
+        version: "v2" },
+      { kind: "published",
+        role: "progress",
+        summary: "Review stating that the known POVM LHS models for isotropic and Werner states are not optimal and that it is unclear whether POVMs help steering for these states (Rev. Mod. Phys. 92, 015001).",
+        url: "https://arxiv.org/abs/1903.06663v3",
+        date: "2020-03-19",
+        version: "v3" },
+    ],
+    provenance: [],
+    relations: [
+      { id: "N11", type: "related" },
+      { id: "N22", type: "related" },
+    ],
+    refs: [
+      { label: "Uola, Costa, Nguyen & Gühne, 'Quantum steering', Rev. Mod. Phys. 92, 015001 (2020)", url: "https://arxiv.org/abs/1903.06663" },
+      { label: "Wiseman, Jones & Doherty, 'Steering, entanglement, nonlocality, and the EPR paradox', PRL 98, 140402 (2007)", url: "https://arxiv.org/abs/quant-ph/0612147" },
+      { label: "Almeida, Pironio, Barrett, Tóth & Acín, 'Noise robustness of the nonlocality of entangled quantum states', PRL 99, 040403 (2007)",
+        url: "https://arxiv.org/abs/quant-ph/0703018" },
+      { label: "Bavaresco et al., 'Most incompatible measurements for robust steering tests', PRA 96, 022110 (2017)", url: "https://arxiv.org/abs/1704.02994" },
+      { label: "Zhang & Chitambar, 'Exact steering bound for two-qubit Werner states', PRL 132, 250201 (2024)", url: "https://arxiv.org/abs/2309.09960" },
+      { label: "Renner, 'Compatibility of generalized noisy qubit measurements', PRL 132, 250202 (2024)", url: "https://arxiv.org/abs/2309.12290" },
+      { label: "Kotowski & Oszmaniec, 'Pretty-good simulation of all quantum measurements by projective measurements' (2025 preprint)", url: "https://arxiv.org/abs/2501.09339" },
+      { label: "Jia, Guo, Li, Dong & Gao, 'A general framework for constructing local hidden-state models to determine the steerability' (2025 preprint, v2 of 20 October 2026)",
+        url: "https://arxiv.org/abs/2512.21848" },
+    ] },
+
+  { id: "N22",
+    cat: "nonlocality",
+    horizon: "sharp",
+    reviewedAt: "2026-11-16",
+    title: "The most non-projective qutrit and ququart measurements",
+    statement: r`For a POVM $\mathbf E=\{E_a\}$ on $\mathbb C^d$, let $v^*(\mathbf E)$ be the largest $v$ such that $\{vE_a+(1-v)\,\mathrm{Tr}(E_a)\,I/d\}$ is projective-simulable, that is, a convex mixture of projective measurements followed by classical post-processing. Let $v_d=\min_{\mathbf E}v^*(\mathbf E)$. Prove that $v_3=\tfrac16\big(1+4\cos\tfrac{\pi}{9}\big)\approx0.793$, attained by the Hesse SIC-POVM. Prove or refute the conjecture of Cobucci et al. (PRL 2026) that the most non-projective ququart measurement is the “flagged Hesse SIC” (the Hesse SIC in a three-dimensional subspace of $\mathbb C^4$, completed by the projector onto the orthogonal vector), with $v_4\approx0.7823$.`,
+    definition: r`**Projective simulability.** A POVM is projective-simulable if it can be realized by randomly choosing a projective measurement and post-processing its outcome. Every POVM becomes simulable after enough depolarizing noise, and the threshold $v^*$ quantifies how genuinely non-projective it is. The framework is due to Oszmaniec, Guerini, Wittek and Acín, “Simulating positive-operator-valued measures with projective measurements”, PRL 119, 190501 (2017) ([arXiv:1609.06139](https://arxiv.org/abs/1609.06139)), and Guerini, Bavaresco, Terra Cunha and Acín, J. Math. Phys. 58, 092102 (2017) ([arXiv:1705.06343](https://arxiv.org/abs/1705.06343)). Oszmaniec et al. show that simulability is decidable by semidefinite programming for $d=2,3$.
+
+The question is posed by Cobucci, Brinster, Khandelwal, Kampermann, Bruß, Wyderka and Tavakoli, “Maximally non-projective measurements are not always symmetric informationally complete”, PRL 136, 060201 (2026) ([arXiv:2508.03652](https://arxiv.org/abs/2508.03652)). They conjecture the ququart answer explicitly and write in the Discussion that it is still left to prove; for qutrits they report “significant evidence” that the Hesse SIC is optimal.`,
+    progress: r`- For qubits, the SIC-POVM is the most non-projective measurement, with $v_2=\sqrt{2/3}\approx0.816$, a result due to Hirsch, Quintino, Vértesi, Navascués and Brunner, Quantum 1, 3 (2017) ([arXiv:1609.06114](https://arxiv.org/abs/1609.06114)), as credited by Cobucci et al.
+- Kotowski and Oszmaniec (16 January 2025, v1) proved that $v_d$ is bounded below by a positive constant independent of $d$ ([arXiv:2501.09339](https://arxiv.org/abs/2501.09339v1)).
+- Cobucci et al. (v2, 9 February 2026) developed an SDP criterion for genuine non-projectivity. For qutrits they gave an explicit projective simulation of the depolarized Hesse SIC at $v=\tfrac16(1+4\cos\tfrac\pi9)$, an upper bound on $v_3$, and their numerical searches converge to the Hesse SIC or get stuck in local extrema. Different qutrit SICs have different thresholds. For ququarts, the SIC-POVM has $v^*\approx0.826$, so it is not the most non-projective; their best search result is $v_4\lesssim0.782$, reached by the flagged Hesse SIC ([arXiv:2508.03652](https://arxiv.org/abs/2508.03652v2)).`,
+    residual: r`Both optimality claims are open: no lower bound on $v_3$ or $v_4$ matching the conjectured values is known. Sub-targets: prove $v^*(\mathbf E)\ge\tfrac16(1+4\cos\tfrac\pi9)$ for all rank-one qutrit POVMs with nine outcomes, or for all Weyl–Heisenberg covariant qutrit POVMs; or prove any explicit analytical lower bound on $v_3$, such as $v_3\ge0.75$. A dual certificate valid for all POVMs is needed. Related: N1 (existence of SIC-POVMs) and the steering thresholds of N21.`,
+    evidence: [
+      { kind: "published",
+        role: "progress",
+        summary: "SDP criterion for non-projectivity; explicit projective simulation of the depolarized Hesse SIC at v = (1 + 4cos(π/9))/6 ≈ 0.793; numerical evidence that it is the most non-projective qutrit measurement; conjecture that the flagged Hesse SIC (v ≈ 0.782) is the most non-projective ququart measurement, while the ququart SIC has v ≈ 0.826 (PRL 136, 060201 (2026)).",
+        url: "https://arxiv.org/abs/2508.03652v2",
+        date: "2026-02-09",
+        version: "v2" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Every POVM on C^d becomes projective-simulable at a constant visibility independent of d, so v_d is bounded below by a universal constant.",
+        url: "https://arxiv.org/abs/2501.09339v1",
+        date: "2025-01-16",
+        version: "v1" },
+      { kind: "published",
+        role: "progress",
+        summary: "Qubit case: optimal local models for POVMs on two-qubit Werner states; the qubit SIC-POVM is credited by Cobucci et al. as the most non-projective qubit measurement, v₂ = √(2/3) (Quantum 1, 3 (2017)).",
+        url: "https://arxiv.org/abs/1609.06114v4",
+        date: "2017-04-14",
+        version: "v4" },
+    ],
+    provenance: [],
+    relations: [
+      { id: "N1", type: "related" },
+      { id: "N21", type: "related" },
+    ],
+    refs: [
+      { label: "Cobucci, Brinster, Khandelwal, Kampermann, Bruß, Wyderka & Tavakoli, 'Maximally non-projective measurements are not always symmetric informationally complete', PRL 136, 060201 (2026)",
+        url: "https://arxiv.org/abs/2508.03652" },
+      { label: "Oszmaniec, Guerini, Wittek & Acín, 'Simulating positive-operator-valued measures with projective measurements', PRL 119, 190501 (2017)",
+        url: "https://arxiv.org/abs/1609.06139" },
+      { label: "Guerini, Bavaresco, Terra Cunha & Acín, 'Operational framework for quantum measurement simulability', J. Math. Phys. 58, 092102 (2017)",
+        url: "https://arxiv.org/abs/1705.06343" },
+      { label: "Hirsch, Quintino, Vértesi, Navascués & Brunner, 'Better local hidden variable models for two-qubit Werner states and an upper bound on the Grothendieck constant K_G(3)', Quantum 1, 3 (2017)",
+        url: "https://arxiv.org/abs/1609.06114" },
+      { label: "Kotowski & Oszmaniec, 'Pretty-good simulation of all quantum measurements by projective measurements' (2025 preprint)", url: "https://arxiv.org/abs/2501.09339" },
     ] },
 ];

@@ -641,8 +641,8 @@ Standard reference: Regev, “On lattices, learning with errors, random linear c
       { label: "Chen, 'Quantum Algorithms for Lattice Problems' (IACR ePrint 2024/555; main claim retracted by the author)", url: "https://eprint.iacr.org/2024/555" },
     ] },
 
-  { id: "A23", cat: "complexity", horizon: "incremental",
-    reviewedAt: "2026-11-08",
+  { id: "A23", cat: "complexity", horizon: "incremental", status: "claimed-solved",
+    reviewedAt: "2026-11-16",
     title: "Quantum query complexity of triangle finding",
     statement: r`Determine the bounded-error quantum query complexity $Q_\triangle(n)$ of deciding whether an $n$-vertex graph, given by its adjacency-matrix oracle, contains a triangle (and finding one). The known bounds are $\Omega(n)\le Q_\triangle(n)\le O(n^{5/4})$; give an $O(n^{5/4-\varepsilon})$ algorithm or an $\Omega(n^{1+\varepsilon})$ lower bound.`,
     definition: r`**Triangle finding** asks whether a graph given by its adjacency-matrix oracle contains a triangle. It is a benchmark for quantum-walk and learning-graph methods.
@@ -651,11 +651,24 @@ Standard reference: Magniez, Santha and Szegedy, “Quantum algorithms for the t
     progress: r`- Magniez, Santha and Szegedy obtained $\tilde O(n^{13/10})$.
 - Belovs's learning graphs gave $O(n^{35/27})$.
 - Le Gall reached $\tilde O(n^{5/4})$ ([arXiv:1407.0085](https://arxiv.org/abs/1407.0085)), and Carette, Laurière and Magniez removed the logarithmic factors ([arXiv:1609.07786](https://arxiv.org/abs/1609.07786)).
-- The only general lower bound is the trivial $\Omega(n)$.
+- Until November 2026, the only general lower bound was the trivial $\Omega(n)$ from unstructured search.
 - For the edge-weighted triangle-sum variant, Belovs and Rosmanis proved $\Omega(n^{9/7}/\sqrt{\log n})$, which also limits non-adaptive learning-graph algorithms for unweighted triangle finding to $\Omega(n^{9/7}/\sqrt{\log n})$ queries ([arXiv:1210.3279](https://arxiv.org/abs/1210.3279)).`,
-    residual: r`Any polynomial improvement of either bound counts. Time complexity, sparse-graph regimes and the weighted variant are distinct benchmarks.`,
+    claim: r`**Cornelissen, Gilani and Zhou, [“A Quantum Lower Bound for Triangle Finding”](https://arxiv.org/abs/2611.06751v1)** (arXiv:2611.06751, v1, 4 November 2026).
+
+What it claims:
+- The first superlinear lower bound: triangle finding needs $\Omega(n^{13/12})$ bounded-error quantum queries in the adjacency-matrix model (Theorem 1.1). This meets the statement's second target, an $\Omega(n^{1+\varepsilon})$ lower bound, with $\varepsilon=1/12$.
+- The same bound holds for triangle detection, and for detecting every fixed connected non-bipartite graph (Corollary 1.2).
+- The proof combines Zhandry's compressed oracle with Belovs's transfer approach. It compares graphs with a planted triangle to random graphs conditioned to be triangle-free, using conditional resampling.
+
+Caveats:
+- A single preprint, not peer reviewed and not yet independently assessed. Hence “Claimed solved” rather than “Solved”.`,
+    residual: r`The exact exponent of $Q_\triangle(n)$ remains open between $13/12$ and $5/4$; any polynomial improvement of either bound counts. Time complexity, sparse-graph regimes and the weighted variant are distinct benchmarks.`,
     evidence: [
+      { kind: "preprint", role: "claimed-solution", summary: "First superlinear quantum query lower bound, Ω(n^{13/12}), for triangle finding and detection in the adjacency-matrix model, also for every fixed connected non-bipartite subgraph; meets the Ω(n^{1+ε}) target. The exponent gap to 5/4 remains. Pending assessment.", url: "https://arxiv.org/abs/2611.06751v1", date: "2026-11-04", version: "v1" },
       { kind: "preprint", role: "progress", summary: "Extended learning graphs remove the logarithmic overhead, giving the best general upper bound O(n^{5/4}).", url: "https://arxiv.org/abs/1609.07786v2", date: "2016-10-11", version: "v2" },
+    ],
+    provenance: [
+      { summary: "The authors report that, starting from their own Ω(n√log n) proof, GPT 6 Astra developed the entire argument yielding the Ω(n^{13/12}) bound; GPT 6 Astra and Anthropic Opus 5.5 also helped with literature search, writing, and developing and checking proofs. The authors take responsibility for the content.", url: "https://arxiv.org/abs/2611.06751v1", version: "v1" },
     ],
     relations: [{ id: "A16", type: "related" }],
     refs: [
@@ -663,6 +676,7 @@ Standard reference: Magniez, Santha and Szegedy, “Quantum algorithms for the t
       { label: "Le Gall, 'Improved Quantum Algorithm for Triangle Finding via Combinatorial Arguments', FOCS 2014", url: "https://arxiv.org/abs/1407.0085" },
       { label: "Carette, Laurière & Magniez, 'Extended Learning Graphs for Triangle Finding', STACS 2017", url: "https://arxiv.org/abs/1609.07786" },
       { label: "Belovs & Rosmanis, 'On the Power of Non-Adaptive Learning Graphs', Comput. Complexity 23 (2014)", url: "https://arxiv.org/abs/1210.3279" },
+      { label: "Cornelissen, Gilani & Zhou, 'A Quantum Lower Bound for Triangle Finding' (2026 preprint, v1)", url: "https://arxiv.org/abs/2611.06751v1" },
     ] },
 
   { id: "A24", cat: "complexity", horizon: "incremental",
@@ -710,8 +724,8 @@ Standard reference: Aaronson, “Shadow tomography of quantum states”, STOC 20
       { label: "Jeronimo, Huang & Liu, 'Dimension-Free Polylogarithmic Quantum Shadow Tomography' (2026 preprint, v3)", url: "https://arxiv.org/abs/2608.06345v3" },
     ] },
 
-  { id: "A26", cat: "complexity", horizon: "incremental",
-    reviewedAt: "2026-11-08",
+  { id: "A26", cat: "complexity", horizon: "incremental", status: "improved",
+    reviewedAt: "2026-11-16",
     title: "Approximating Quantum Max-Cut",
     statement: r`For Quantum Max-Cut on a graph with nonnegative, finitely encoded weights, $H_G=\sum_{\{i,j\}\in E}w_{ij}\,\frac{1}{4}(I-X_iX_j-Y_iY_j-Z_iZ_j)$, determine the best ratio $\alpha^*$ such that a classical polynomial-time algorithm outputs a value within factor $\alpha^*$ of $\lambda_{\max}(H_G)$ on every graph. Separately: is estimation of $\lambda_{\max}(H_G)$ for bipartite graphs to inverse-polynomial additive precision in $\mathsf{BPP}$?`,
     definition: r`**Quantum Max-Cut** is the quantum analogue of Max-Cut and a main testbed for approximation algorithms for local Hamiltonians. Maximizing the positive singlet-projector sum $H_G$ is equivalent to finding the ground energy of the antiferromagnetic Hamiltonian $H_{\mathrm{AF}}=-H_G$, up to an optional additive constant. The associated energy-threshold promise problem with an inverse-polynomial gap is QMA-complete on general graphs; this is not a claim about outputting an exact real-valued energy.
@@ -719,11 +733,16 @@ Standard reference: Aaronson, “Shadow tomography of quantum states”, STOC 20
 Standard reference: Gharibian and Parekh, “Almost optimal classical approximation algorithms for a quantum generalization of Max-Cut”, APPROX 2019, [arXiv:1909.08846](https://arxiv.org/abs/1909.08846).`,
     progress: r`- Product-state rounding of an SDP gives $0.498$ (Gharibian and Parekh).
 - Entangled-state algorithms beat the product-state limit (Anshu, Gosset and Morenz, [arXiv:2003.14394](https://arxiv.org/abs/2003.14394)), followed by $0.582$ on triangle-free graphs (King, [arXiv:2209.02589](https://arxiv.org/abs/2209.02589)), $0.595$ on general graphs via matchings (Lee and Parekh, [arXiv:2401.03616](https://arxiv.org/abs/2401.03616)) and $0.603$ on general graphs, $0.614$ on triangle-free and $0.816$ on bipartite graphs (Gribling, Sinjorgo and Sotirov, [arXiv:2504.11120](https://arxiv.org/abs/2504.11120v1)).
-- On the hardness side, Hwang, Neeman, Parekh, Thompson and Wright show that beating about $0.956$ is Unique-Games-hard, assuming a vector-valued Borell conjecture ([arXiv:2111.01254](https://arxiv.org/abs/2111.01254)).
+- On the hardness side, Hwang, Neeman, Parekh, Thompson and Wright show that beating about $0.956$ is Unique-Games-hard, assuming a vector-valued Borell conjecture ([arXiv:2111.01254](https://arxiv.org/abs/2111.01254)). Heilman (July 2026) proves the needed $k=3$ case of that inequality, with a computer-assisted spectral certificate, so the $0.956$ barrier now rests on the Unique Games Conjecture alone ([arXiv:2608.00333](https://arxiv.org/abs/2608.00333v1)).
+- Without the Unique Games Conjecture, Piddock proves that approximating Quantum Max-Cut within some constant factor $\alpha<1$ is NP-hard, even on unweighted bounded-degree graphs, so there is no PTAS unless P = NP; the constant is not explicit ([arXiv:2510.07995](https://arxiv.org/abs/2510.07995v1)).
 - A June 2026 hybrid algorithm with a Rydberg annealer reports a conditional $0.651$ ([arXiv:2606.27224](https://arxiv.org/abs/2606.27224v1)).
-- For bipartite graphs, the antiferromagnetic Hamiltonian $H_{\mathrm{AF}}$ is stoquastic after a local basis change. In July 2026, Rayudu and Takahashi ([arXiv:2607.10765](https://arxiv.org/abs/2607.10765v1)) and Bravyi, Gosset, Liu and Wong ([arXiv:2607.14401](https://arxiv.org/abs/2607.14401v1)) independently gave efficient quantum (BQP) algorithms for its ground energy via Lee–Yang spectral-gap bounds, equivalently for $\lambda_{\max}(H_G)$.`,
-    residual: r`For bipartite graphs, whether a classical randomized algorithm suffices is open. Any improved ratio with proof, or tighter hardness, counts as progress; the full answer is the exact $\alpha^*$.`,
+- For bipartite graphs, the antiferromagnetic Hamiltonian $H_{\mathrm{AF}}$ is stoquastic after a local basis change. In July 2026, Rayudu and Takahashi ([arXiv:2607.10765](https://arxiv.org/abs/2607.10765v1)) and Bravyi, Gosset, Liu and Wong ([arXiv:2607.14401](https://arxiv.org/abs/2607.14401v1)) independently gave efficient quantum (BQP) algorithms for its ground energy via Lee–Yang spectral-gap bounds, equivalently for $\lambda_{\max}(H_G)$.
+- Classically, Wayland, Jorquera and Kolla (October 2026) estimate the bipartite ground energy in randomized polynomial time on dense balanced bipartite expanders, a class that contains $G(n,n,p)$ with high probability ([arXiv:2610.03670](https://arxiv.org/abs/2610.03670v1)). They state that the general bipartite case remains open.`,
+    residual: r`For general bipartite graphs, whether a classical randomized algorithm suffices is open. The exact $\alpha^*$ lies between $0.603$ and about $0.956$ (the upper end under the Unique Games Conjecture); any improved ratio with proof, or tighter hardness, counts as progress.`,
     evidence: [
+      { kind: "preprint", role: "progress", summary: "Proves the k = 3 vector-valued Borell inequality in the needed correlation range, so approximating Quantum Max-Cut beyond about 0.956 is Unique-Games-hard without the Borell conjecture; computer-assisted spectral certificate.", url: "https://arxiv.org/abs/2608.00333v1", date: "2026-07-31", version: "v1" },
+      { kind: "preprint", role: "progress", summary: "Unconditional NP-hardness of approximating Quantum Max-Cut within some non-explicit constant factor, even on unweighted bounded-degree graphs; no PTAS unless P = NP.", url: "https://arxiv.org/abs/2510.07995v1", date: "2025-10-09", version: "v1" },
+      { kind: "preprint", role: "progress", summary: "Classical randomized polynomial-time estimation of the bipartite ground energy on dense balanced bipartite expanders, including G(n,n,p) with high probability; the general bipartite case remains open.", url: "https://arxiv.org/abs/2610.03670v1", date: "2026-10-02", version: "v1" },
       { kind: "preprint", role: "progress", summary: "Best proven classical ratios: 0.603 on general graphs, 0.614 on triangle-free and 0.816 on bipartite graphs.", url: "https://arxiv.org/abs/2504.11120v1", date: "2025-04-15", version: "v1" },
       { kind: "preprint", role: "progress", summary: "Lee–Yang spectral-gap bound giving an efficient quantum adiabatic algorithm for the ground energy of bipartite Heisenberg antiferromagnets; classical complexity open.", url: "https://arxiv.org/abs/2607.14401v1", date: "2026-07-15", version: "v1" },
       { kind: "preprint", role: "progress", summary: "Independent Lee–Yang spectral-gap result for the same family, establishing BQP membership of bipartite ground-energy estimation.", url: "https://arxiv.org/abs/2607.10765v1", date: "2026-07-12", version: "v1" },
@@ -732,6 +751,8 @@ Standard reference: Gharibian and Parekh, “Almost optimal classical approximat
     provenance: [
       { summary: "Bravyi, Gosset, Liu and Wong acknowledge the use of AI tools to develop proof strategies.", url: "https://arxiv.org/abs/2607.14401v1", version: "v1" },
       { summary: "Rayudu and Takahashi report using Claude Opus 4.8, Fable 5 and ChatGPT 5.5 to suggest proof ideas, obtain technical inequalities and improve presentation, with all proofs independently checked.", url: "https://arxiv.org/abs/2607.10765v1", version: "v1" },
+      { summary: "Heilman reports that ChatGPT 5.6 assisted in preparing the manuscript, including producing the spectral certificates in Propositions 4.1 and 4.4 and Lemmas 9.3 and A.4.", url: "https://arxiv.org/abs/2608.00333v1", version: "v1" },
+      { summary: "Wayland, Jorquera and Kolla report using AI tools to find the original proof strategy; the connection to the Bogoliubov transformation was made by Claude. All authors verified the results.", url: "https://arxiv.org/abs/2610.03670v1", version: "v1" },
     ],
     relations: [{ id: "A9", type: "related" }, { id: "B11", type: "related" }],
     refs: [
@@ -743,6 +764,9 @@ Standard reference: Gharibian and Parekh, “Almost optimal classical approximat
       { label: "Hwang, Neeman, Parekh, Thompson & Wright, 'Unique Games hardness of Quantum Max-Cut, and a conjectured vector-valued Borell's inequality', SODA 2023", url: "https://arxiv.org/abs/2111.01254" },
       { label: "Bravyi, Gosset, Liu & Wong, 'Efficient quantum algorithm for Heisenberg spin systems' (2026 preprint, v1)", url: "https://arxiv.org/abs/2607.14401v1" },
       { label: "Rayudu & Takahashi, 'Spectral gap of Lee-Yang Hamiltonians' (2026 preprint, v1)", url: "https://arxiv.org/abs/2607.10765v1" },
+      { label: "Piddock, 'Quantum Max-Cut is NP hard to approximate' (2025 preprint, v1)", url: "https://arxiv.org/abs/2510.07995v1" },
+      { label: "Heilman, 'Sharp Hardness for MAX-3-CUT and Quantum MAX-CUT' (2026 preprint, v1)", url: "https://arxiv.org/abs/2608.00333v1" },
+      { label: "Wayland, Jorquera & Kolla, 'Classical Algorithms for Bipartite Quantum Max-Cut on Dense Expanders' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.03670v1" },
     ] },
 
   { id: "A27", cat: "complexity", horizon: "sharp",
@@ -777,8 +801,8 @@ A proof would make the simplest physical model of chaos a cryptographic object; 
       { label: "Raza, Eisert & Fefferman, 'Distinctness threshold for pseudorandom unitaries' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.03065v1" },
     ] },
 
-  { id: "A28", cat: "complexity", horizon: "sharp",
-    reviewedAt: "2026-11-08",
+  { id: "A28", cat: "complexity", horizon: "sharp", status: "improved",
+    reviewedAt: "2026-11-16",
     title: "Learning Hamiltonian structure from Gibbs states at any temperature",
     statement: r`Fix locality $k$, degree $g$ and inverse temperature $\beta>0$. For an $n$-qubit Hamiltonian $H=\sum_{P\ne I}a_PP$ with real coefficients $|a_P|\le1$, nonidentity Pauli terms of weight at most $k$, each qubit in at most $g$ terms, and unknown support, can the coefficients be learned to accuracy $\varepsilon$ from $\mathrm{poly}(n,1/\varepsilon)$ copies of $e^{-\beta H}/\mathrm{Tr}\,e^{-\beta H}$ in polynomial classical time, for every fixed $\beta$? The identity coefficient is excluded because a constant energy shift leaves the Gibbs state unchanged.`,
     definition: r`**Hamiltonian learning from Gibbs states** asks to recover the coefficients of a local Hamiltonian from copies of its thermal state; in structure learning the set of interaction terms is unknown. This is the basic inverse problem of quantum many-body physics and a benchmark for quantum learning theory.
@@ -786,14 +810,17 @@ A proof would make the simplest physical model of chaos a cryptographic object; 
 Anshu, Arunachalam, Kuwahara and Soleimanifar gave sample-efficient learning, Nat. Phys. 17 (2021), [arXiv:2004.07266](https://arxiv.org/abs/2004.07266).`,
     progress: r`- Haah, Kothari and Tang gave optimal high-temperature algorithms ([arXiv:2108.04842](https://arxiv.org/abs/2108.04842)).
 - Bakshi, Liu, Moitra and Tang learn the coefficients at any constant temperature in polynomial time, when the interaction structure is known ([arXiv:2310.02243](https://arxiv.org/abs/2310.02243)).
-- Structure learning is solved only at high temperature: Lewis, Tang and Wright (June 2026; v2 of 2 October 2026) give an efficient algorithm below an explicit inverse-temperature threshold, and explicitly leave the all-temperature case open ([arXiv:2606.30358](https://arxiv.org/abs/2606.30358v2)).`,
-    residual: r`Supplying all candidate Pauli terms to the known-structure algorithms breaks their bounded-degree assumption. A positive answer for every fixed $\beta$, or a hardness result at low temperature, would settle the question.`,
+- For general bounded-degree interaction graphs, structure learning is solved only at high temperature: Lewis, Tang and Wright (June 2026; v2 of 2 October 2026) give an efficient algorithm below an explicit inverse-temperature threshold, and explicitly leave the all-temperature case open ([arXiv:2606.30358](https://arxiv.org/abs/2606.30358v2)).
+- For lattice-like Hamiltonians, Bergamaschi (1 October 2026, v1) gives the first structure-learning algorithm at every fixed $\beta$ ([arXiv:2610.01074](https://arxiv.org/abs/2610.01074v1)). The unknown interaction graph must have bounded degree and polynomial volume growth, but no embedding is given to the learner. The algorithm uses $e^{\mathrm{poly}(\beta)}\log n$ copies, up to accuracy factors, and $n^{\mathrm{poly}(\beta)}$ time. Its "stationarity test" measures the rate of change of local observables under the detailed-balanced Gibbs-sampler Lindbladian of a guessed Hamiltonian.`,
+    residual: r`Supplying all candidate Pauli terms to the known-structure algorithms breaks their bounded-degree assumption. The lattice case is now covered at every fixed $\beta$; what remains is bounded-degree interaction graphs without polynomial volume growth, such as expanders. A positive answer for every fixed $\beta$ in that generality, or a hardness result at low temperature, would settle the question.`,
     evidence: [
+      { kind: "preprint", role: "progress", summary: "Structure learning at every fixed inverse temperature for k-local Hamiltonians whose unknown interaction graph has bounded degree and polynomial volume growth, with e^{poly(β)} log n samples and n^{poly(β)} time; general bounded-degree interaction graphs remain open.", url: "https://arxiv.org/abs/2610.01074v1", date: "2026-10-01", version: "v1" },
       { kind: "preprint", role: "progress", summary: "Efficient structure learning from high-temperature Gibbs states; the all-temperature case is explicitly left open.", url: "https://arxiv.org/abs/2606.30358v2", date: "2026-10-02", version: "v2" },
       { kind: "preprint", role: "progress", summary: "Polynomial-time learning of Hamiltonian coefficients from Gibbs states at any constant temperature, with known interaction structure (STOC 2024).", url: "https://arxiv.org/abs/2310.02243v2", date: "2026-05-08", version: "v2" },
     ],
     provenance: [
       { summary: "Lewis, Tang and Wright state that the main technical proofs, except the lower bound, were written without AI, checked with ChatGPT 5.6 Sol (which found issues they repaired), and that the lower-bound proof was generated with ChatGPT 6 Astra; the final proofs were written and verified by the authors.", url: "https://arxiv.org/abs/2606.30358v2", version: "v2" },
+      { summary: "Bergamaschi thanks ChatGPT 5.5–6 and Gemini Argon for help with writing proofs, checking them and producing figures, and reports that ChatGPT 5.6 helped remove a log n factor in a shadow-tomography argument and simplify Lipschitz-estimate proofs.", url: "https://arxiv.org/abs/2610.01074v1", version: "v1" },
     ],
     relations: [{ id: "O9", type: "related" }, { id: "A17", type: "related" }],
     refs: [
@@ -802,6 +829,7 @@ Anshu, Arunachalam, Kuwahara and Soleimanifar gave sample-efficient learning, Na
       { label: "Bakshi, Liu, Moitra & Tang, 'Learning quantum Hamiltonians at any temperature in polynomial time', STOC 2024", url: "https://arxiv.org/abs/2310.02243" },
       { label: "Narayanan, 'Improved algorithms for learning quantum Hamiltonians, via flat polynomials', COLT 2025", url: "https://arxiv.org/abs/2407.04540" },
       { label: "Lewis, Tang & Wright, 'Learning the structure of open quantum systems' (2026 preprint, v2)", url: "https://arxiv.org/abs/2606.30358v2" },
+      { label: "Bergamaschi, 'The stationarity test: a framework for learning quantum many-body systems from their thermal states' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.01074v1" },
     ] },
 
   { id: "A29", cat: "complexity", horizon: "sharp",
@@ -990,5 +1018,812 @@ Caveats:
       { label: "Farhi, Goldstone, Gutmann & Sipser, 'How many functions can be distinguished with k quantum queries?', PRA 60 (1999)", url: "https://arxiv.org/abs/quant-ph/9901012" },
       { label: "Ambainis, Backurs, Smotrovs & de Wolf, 'Optimal quantum query bounds for almost all Boolean functions', STACS 2013", url: "https://arxiv.org/abs/1208.1122" },
       { label: "Deng, Hao, Lin, Liu, Mirrokni, Shao & Woodruff, 'Beyond the n/2 Threshold' (2026 preprint, v1)", url: "https://arxiv.org/abs/2611.09809v1" },
+    ] },
+
+  // 16 November 2026: questions from the carte v2 map of the quant-ph corpus.
+  { id: "A35",
+    cat: "complexity",
+    horizon: "sharp",
+    status: "improved",
+    reviewedAt: "2026-11-16",
+    title: "Perfect state transfer at long distance in polynomial-size unweighted graphs",
+    statement: r`For a simple unweighted graph $G$ with adjacency matrix $A$, perfect state transfer (PST) from $u$ to $v$ occurs if $|(e^{itA})_{vu}|=1$ for some $t>0$. (Coutinho–Guo 2024, Open Problem 2.2.) Is there an infinite family of connected simple graphs with PST between vertices at distance $d\to\infty$ whose number of vertices is bounded by a polynomial in $d$? Quantitative form (Open Problem 2.1): if PST occurs in a graph with $m$ edges and diameter $D$, the best bound is $D^3\le80m$; show $m=\Omega(D^k)$ for some $k>3$.`,
+    definition: r`**Perfect state transfer** moves a qubit excitation exactly from $u$ to $v$ under the continuous-time quantum walk $e^{itA}$, as in a spin network with uniform couplings. With engineered couplings the problem is easy: Christandl, Datta, Ekert and Landahl's weighted paths transfer perfectly over any distance with $D+1$ vertices, “Perfect state transfer in quantum spin networks”, PRL 92, 187902 (2004), [arXiv:quant-ph/0309131](https://arxiv.org/abs/quant-ph/0309131). With unit weights, the standard examples, such as hypercubes and Cartesian powers of the path on three vertices, have exponentially many vertices in the transfer distance. Godsil asked for the PST graphs with fewest edges, “State transfer on graphs”, [arXiv:1102.4898](https://arxiv.org/abs/1102.4898) (Discrete Math., 2012).
+
+Coutinho and Guo restate the question as Open Problems 2.1 and 2.2 of “Selected open problems in continuous-time quantum walks”, Special Matrices 12 (2024), [arXiv:2404.02236](https://arxiv.org/abs/2404.02236): the earlier compression procedure “did not lead to an infinite family” of size polynomial in the diameter.`,
+    progress: r`- Godsil (2012) surveyed state transfer on graphs and asked for PST graphs with the fewest edges ([arXiv:1102.4898](https://arxiv.org/abs/1102.4898)).
+- Coutinho (Discrete Math., 2018) proved that the number of edges is bounded below by a cubic function of the eccentricity of a periodic vertex, which constrains PST graphs ([arXiv:1802.08734](https://arxiv.org/abs/1802.08734)).
+- Kay (2018) built uniformly coupled graphs with PST using fewer vertices than earlier constructions for a given distance. The scaling remains exponential; Coutinho, Guo and Schmeits describe the gain as being “only […] in the base of the exponent” ([arXiv:1808.00696](https://arxiv.org/abs/1808.00696v2)).
+- Coutinho, Juliano and Spier (2023) proved that $P_2$ and $P_3$ are the only trees with adjacency PST, which rules out trees as a route ([arXiv:2305.10199](https://arxiv.org/abs/2305.10199v1)).
+- Coutinho and Guo (2024) combined earlier arguments with an eigenvalue-separation result to obtain $D^3\le80m$, and posed Open Problems 2.1 and 2.2 ([arXiv:2404.02236](https://arxiv.org/abs/2404.02236v1)).
+- Coutinho, Guo and Schmeits (2025; v4 September 2026) introduced the weaker notion of peak state transfer, realised over arbitrary distances by weighted paths with transfer probability tending to $\pi/4$. They ask for the analogous edge lower bound (Open Problem 7.2) ([arXiv:2505.11986](https://arxiv.org/abs/2505.11986v4)).`,
+    residual: r`No unweighted family of size $2^{o(d)}$ is known, and no lower bound beyond cubic. Intermediate targets: a family with a subexponential number of vertices in the transfer distance; $m=\Omega(D^{3+\delta})$ for PST between strongly cospectral vertices; the analogous bound for peak state transfer. Related open problems from the same survey are a polynomial-time test for pretty good state transfer (Open Problem 2.4) and a combinatorial characterisation of strong cospectrality (Open Problem 2.3).`,
+    evidence: [
+      { kind: "published",
+        role: "progress",
+        summary: "The number of edges is at least cubic in the eccentricity of a periodic vertex, which constrains the size of PST graphs (Discrete Math., 2018).",
+        url: "https://arxiv.org/abs/1802.08734v1",
+        date: "2018-02-23",
+        version: "v1" },
+      { kind: "preprint", role: "progress", summary: "Smaller uniformly coupled PST graphs for a given distance; the size is still exponential in the distance.", url: "https://arxiv.org/abs/1808.00696v2", date: "2018-11-24", version: "v2" },
+      { kind: "preprint", role: "progress", summary: "No tree on more than three vertices admits adjacency perfect state transfer.", url: "https://arxiv.org/abs/2305.10199v1", date: "2023-05-17", version: "v1" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Bound D³ ≤ 80m for PST graphs with m edges and diameter D; Open Problems 2.1–2.2 ask for a better exponent and a polynomial-size family. Published in Special Matrices 12 (2024).",
+        url: "https://arxiv.org/abs/2404.02236v1",
+        date: "2024-04-02",
+        version: "v1" },
+    ],
+    provenance: [],
+    relations: [
+      { id: "A36", type: "related" },
+    ],
+    refs: [
+      { label: "Coutinho & Guo, 'Selected open problems in continuous-time quantum walks', Special Matrices 12 (2024), §2", url: "https://arxiv.org/abs/2404.02236" },
+      { label: "Godsil, 'State transfer on graphs', Discrete Math. (2012)", url: "https://arxiv.org/abs/1102.4898" },
+      { label: "Coutinho, 'Quantum walks and the size of the graph', Discrete Math. (2018)", url: "https://arxiv.org/abs/1802.08734" },
+      { label: "Kay, 'The Perfect State Transfer Graph Limbo' (2018 preprint)", url: "https://arxiv.org/abs/1808.00696" },
+      { label: "Christandl, Datta, Ekert & Landahl, 'Perfect state transfer in quantum spin networks', PRL 92, 187902 (2004)", url: "https://arxiv.org/abs/quant-ph/0309131" },
+      { label: "Coutinho, Juliano & Spier, 'No perfect state transfer in trees with more than 3 vertices' (2023)", url: "https://arxiv.org/abs/2305.10199" },
+      { label: "Coutinho, Guo & Schmeits, 'Peak state transfer in continuous quantum walks' (2025 preprint, v4)", url: "https://arxiv.org/abs/2505.11986" },
+    ] },
+
+  { id: "A36",
+    cat: "complexity",
+    horizon: "sharp",
+    status: "improved",
+    reviewedAt: "2026-11-16",
+    title: "Uniform mixing of continuous-time quantum walks on cycles",
+    statement: r`The continuous-time quantum walk on a graph $G$ with $n$ vertices mixes uniformly at time $\tau$ if $|(e^{i\tau A})_{uv}|^2=1/n$ for all vertices $u,v$. Conjecture (Ahmadi, Belk, Tamon and Wendler, 2003): no cycle $C_n$ with $n\ge5$ admits uniform mixing. Even cycles and prime cycles are settled, as are $C_9$ and $C_{15}$; the smallest open case is $C_{21}$ (Gray, Patel and Young, 2026). Related conjecture (Mullin; Coutinho–Guo 2024, Open Problem 3.1): if any graph mixes uniformly at time $\tau$, the eigenvalues of $e^{i\tau A}$ are roots of unity.`,
+    definition: r`**Instantaneous uniform mixing** means that the walk started at any vertex is, at time $\tau$, equally likely to be found at every vertex. For cycles the question reduces to the existence of certain cyclic $n$-roots, which is why Haagerup's results on cyclic $p$-roots and Gröbner-basis computations enter. The question goes back to Ahmadi, Belk, Tamon and Wendler, “Mixing in continuous quantum walks on graphs”, QIC 3, 611 (2003), [arXiv:quant-ph/0209106](https://arxiv.org/abs/quant-ph/0209106). Godsil, Mullin and Roy settled even and prime cycles, “Uniform mixing and association schemes”, Electron. J. Combin. 24(3), P3.22 (2017), [arXiv:1301.5889](https://arxiv.org/abs/1301.5889).
+
+The cycle conjecture is recalled as open by Cao and Zhu ([arXiv:2607.04207](https://arxiv.org/abs/2607.04207), §1 and conclusion, where Mullin's root-of-unity conjecture also appears). Gray, Patel and Young name $C_{21}$ as the next open case ([arXiv:2607.28345](https://arxiv.org/abs/2607.28345), conclusion). The general root-of-unity question is Open Problem 3.1 of Coutinho and Guo ([arXiv:2404.02236](https://arxiv.org/abs/2404.02236)).`,
+    progress: r`- Ahmadi, Belk, Tamon and Wendler (2003) studied mixing of continuous-time walks on cycles and conjectured that uniform mixing fails on $C_n$ for $n\ge5$, as recalled by Cao and Zhu; $C_3$ and $C_4$ do mix uniformly ([arXiv:quant-ph/0209106](https://arxiv.org/abs/quant-ph/0209106)).
+- Godsil, Mullin and Roy (2013; EJC 2017) proved that uniform mixing does not occur on $C_{2m}$ for $m\ge3$, nor, using a result of Haagerup on cyclic $p$-roots, on $C_p$ for primes $p\ge5$. They showed that $\varepsilon$-uniform mixing does occur on every prime cycle ([arXiv:1301.5889](https://arxiv.org/abs/1301.5889v2)). Mullin's 2013 Waterloo thesis contains the same cycle results.
+- Cao and Zhu (5 July 2026) excluded $C_9$, and $C_{15}$ using Dickson polynomials, and proved $\varepsilon$-uniform mixing on $C_{p^2}$ for every prime $p$ ([arXiv:2607.04207](https://arxiv.org/abs/2607.04207v1)).
+- Gray, Patel and Young (30 July 2026) independently excluded $C_9$ by Gröbner-basis computations ruling out all cyclic 9-roots. They identify $C_{21}$ as the next open case and report that their method is too heavy for larger $n$ ([arXiv:2607.28345](https://arxiv.org/abs/2607.28345v1)).`,
+    residual: r`Open for every odd composite $n$ other than $9$ and $15$, starting with $21$, $25$ and $27$. Sub-targets: exclude $C_{21}$; exclude $C_{3p}$ for all primes $p\ge5$, extending the Dickson-polynomial argument for $C_{15}$; exclude $C_{p^k}$ for $k\ge2$. The root-of-unity conjecture is open for general graphs; Coutinho and Guo note that it holds in every known example but has no combinatorial explanation.`,
+    evidence: [
+      { kind: "published",
+        role: "progress",
+        summary: "No uniform mixing on even cycles C_{2m} (m ≥ 3) or prime cycles C_p (p ≥ 5); ε-uniform mixing on all prime cycles. Electron. J. Combin. 24(3), P3.22 (2017).",
+        url: "https://arxiv.org/abs/1301.5889v2",
+        date: "2014-03-11",
+        version: "v2" },
+      { kind: "preprint", role: "progress", summary: "No uniform mixing on C_9 or C_15 (the latter via Dickson polynomials); ε-uniform mixing on C_{p²} for every prime p.", url: "https://arxiv.org/abs/2607.04207v1", date: "2026-07-05", version: "v1" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Independent proof that C_9 admits no uniform mixing, by Gröbner bases over cyclic 9-roots; C_21 named as the next open case.",
+        url: "https://arxiv.org/abs/2607.28345v1",
+        date: "2026-07-30",
+        version: "v1" },
+    ],
+    provenance: [],
+    relations: [
+      { id: "A35", type: "related" },
+    ],
+    refs: [
+      { label: "Ahmadi, Belk, Tamon & Wendler, 'Mixing in Continuous Quantum Walks on Graphs', QIC 3, 611 (2003)", url: "https://arxiv.org/abs/quant-ph/0209106" },
+      { label: "Godsil, Mullin & Roy, 'Uniform Mixing and Association Schemes', Electron. J. Combin. 24(3), P3.22 (2017)", url: "https://arxiv.org/abs/1301.5889" },
+      { label: "Mullin, 'Uniform Mixing of Quantum Walks and Association Schemes', PhD thesis, University of Waterloo (2013)", url: "https://uwspace.uwaterloo.ca/handle/10012/7918" },
+      { label: "Cao & Zhu, 'Uniform mixing and ε-uniform mixing on cycles' (2026 preprint)", url: "https://arxiv.org/abs/2607.04207" },
+      { label: "Gray, Patel & Young, 'The cycle C9 does not admit uniform mixing' (2026 preprint)", url: "https://arxiv.org/abs/2607.28345" },
+      { label: "Coutinho & Guo, 'Selected open problems in continuous-time quantum walks', Special Matrices 12 (2024), §3", url: "https://arxiv.org/abs/2404.02236" },
+    ] },
+
+  { id: "A37",
+    cat: "complexity",
+    horizon: "sharp",
+    reviewedAt: "2026-11-16",
+    title: "Carleman convergence for nonresonant spectra in the Siegel domain",
+    statement: r`(Jennings, Korzekwa, Lostaglio, Sornborger, Subasi and Wang, 2025–2026, §1.3.1, §5 and §8.) Let $\dot x=F_1x+F_2x^{\otimes2}$ on $\mathbb C^N$, with $F_1=Q\,\mathrm{diag}(\lambda_1,\dots,\lambda_N)Q^{-1}$ and $\mathrm{Re}\,\lambda_i\le0$. Assume the spectrum is nonresonant, $\lambda_i\neq\sum_j\alpha_j\lambda_j$ for all $\alpha\in\mathbb N_0^N$ with $|\alpha|\ge2$, and lies in the Siegel domain: $0$ belongs to the convex hull of $\{\lambda_i\}$. Assume moreover that it is of Diophantine type $(\Delta,\nu)$ with $\nu>0$: $|\lambda_i-\sum_j\alpha_j\lambda_j|\ge\Delta\,(|\alpha|-1)^{-\nu}$. Let $y^{[1]}_k(t)$ be the first block of the order-$k$ truncated Carleman embedding. Is there a smallness condition on $s\,\|Q^{-1}F_2Q^{\otimes2}\|\,\sup_t\|Q^{-1}x(t)\|/\Delta$, depending only on $\nu$ ($s$ the column sparsity of $Q^{-1}F_2Q^{\otimes2}$), under which $\sup_{t\le T}\|x(t)-y^{[1]}_k(t)\|\to0$ as $k\to\infty$, ideally with $k=\mathrm{polylog}(T/\varepsilon)$ sufficing? Or is there a Diophantine Siegel-domain system for which the truncation error does not converge at arbitrarily small nonlinearity?`,
+    definition: r`**Carleman linearization** embeds a polynomial ODE into an infinite linear system for the monomials $x,x^{\otimes2},x^{\otimes3},\dots$, truncated at order $k$. It underlies the quantum algorithms for nonlinear ODEs of Liu et al., “Efficient quantum algorithm for dissipative nonlinear differential equations”, PNAS 118, e2026805118 (2021), [arXiv:2011.03185](https://arxiv.org/abs/2011.03185). Explicit finite-time truncation bounds are due to Forets and Pouly ([arXiv:1711.02552](https://arxiv.org/abs/1711.02552)).
+
+**Poincaré and Siegel domains.** A spectrum lies in the Poincaré domain if $0$ is outside the convex hull of the eigenvalues, and in the Siegel domain otherwise. In the Poincaré domain the no-resonance denominators $|\lambda_i-\sum_j\alpha_j\lambda_j|$ grow linearly with $|\alpha|$. In the Siegel domain they can approach zero: this is the small-denominator problem of normal-form theory, treated by Siegel's linearization theorem under a Diophantine condition (see Arnold, *Geometrical Methods in the Theory of Ordinary Differential Equations*, ch. 5). Purely imaginary spectra, such as nonlinear oscillators, lie in the Siegel domain.
+
+The question is posed by Jennings et al. ([arXiv:2509.07155](https://arxiv.org/abs/2509.07155)), who write that “a complete resolution of the convergence behavior of the Carleman scheme for nonresonant systems in the Siegel domain remains an open problem” (§1.3.1).`,
+    progress: r`- Forets and Pouly (2017) gave explicit truncation-error bounds for Carleman linearization, which grow with time ([arXiv:1711.02552](https://arxiv.org/abs/1711.02552v1)).
+- Liu et al. (PNAS 2021) proved arbitrary-time convergence for dissipative systems with $R<1$ ([arXiv:2011.03185](https://arxiv.org/abs/2011.03185)). Jennings et al. later showed that the proof implicitly assumes $F_1$ normal, and corrected it.
+- Jennings et al. (Quantum 10, 2233, 2026) explicitly diagonalize the Carleman matrix of nonresonant systems. In the Poincaré domain they prove convergence when $F_0=0$ and $R_\Delta<1$, with $R_\Delta$ built from the sparsity, $\|Q^{-1}F_2Q^{\otimes2}\|$, the norm bound on $Q^{-1}x(t)$ and the normalized no-resonance gap (Theorem 5.9). In the Siegel domain, under the type-$(\Delta,\nu)$ assumption, their error bound (Theorem I.5) contains a factor $k!\,\Xi_\nu(k-1)$ that grows faster than $C^k$. It therefore does not imply convergence, even for arbitrarily small nonlinearity. They prove convergence in two special cases: $F_2$ does not couple two invariant sub-blocks that each lie in the Poincaré domain (Assumption 5.10, Theorem 5.12), and $F_2$ oscillates in time (Theorem 5.13). They state that this “does not show that Carleman convergence necessarily fails in the Siegel domain” (§5.4.2) ([arXiv:2509.07155](https://arxiv.org/abs/2509.07155v3)).
+- Boreale and Collodi (23 June 2026) give degree-aware Carleman error bounds with geometric convergence over certified finite horizons. They do not address the Siegel domain ([arXiv:2606.24473](https://arxiv.org/abs/2606.24473v1)).`,
+    residual: r`The general Siegel case is open in both directions: there is neither a convergence theorem nor a counterexample. Minimal targets: (i) $N=2$ with $\lambda_{1,2}=-\gamma\pm i\omega$ and small $\gamma\ge0$, or a purely imaginary Diophantine spectrum, without the decoupling assumption of Theorem 5.12; (ii) an explicit Diophantine example whose truncation error stays bounded away from zero as $k\to\infty$ at arbitrarily small $\|F_2\|$. A positive answer would extend the authors' efficient quantum algorithms, which also require $\kappa(Q)=O(1)$. Whether that dependence on $\kappa(Q)$ is intrinsic is a separate question the authors leave open (§1.3.2).`,
+    evidence: [
+      { kind: "published",
+        role: "progress",
+        summary: "Carleman convergence for nonresonant systems in the Poincaré domain when R_Δ < 1. In the Siegel domain, under a Diophantine type-(Δ, ν) assumption, an error bound with a k!·Ξ_ν(k−1) factor that does not imply convergence; convergence only for F₂ decoupling two Poincaré-domain blocks, or for oscillating F₂ (Quantum 10, 2233, 2026).",
+        url: "https://doi.org/10.22331/q-2026-10-08-2233",
+        date: "2026-10-08" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Degree-aware Carleman truncation bounds with geometric convergence over certified finite time horizons; the Siegel domain is not addressed.",
+        url: "https://arxiv.org/abs/2606.24473v1",
+        date: "2026-06-23",
+        version: "v1" },
+    ],
+    provenance: [],
+    relations: [],
+    refs: [
+      { label: "Jennings, Korzekwa, Lostaglio, Sornborger, Subasi & Wang, 'Quantum algorithms for general nonlinear dynamics based on the Carleman embedding', Quantum 10, 2233 (2026)",
+        url: "https://arxiv.org/abs/2509.07155" },
+      { label: "Liu, Kolden, Krovi, Loureiro, Trivisa & Childs, 'Efficient quantum algorithm for dissipative nonlinear differential equations', PNAS 118, e2026805118 (2021)",
+        url: "https://arxiv.org/abs/2011.03185" },
+      { label: "Forets & Pouly, 'Explicit Error Bounds for Carleman Linearization' (2017 preprint)", url: "https://arxiv.org/abs/1711.02552" },
+      { label: "Boreale & Collodi, 'New convergence results for Carleman linearization' (2026 preprint, v1)", url: "https://arxiv.org/abs/2606.24473" },
+    ] },
+
+  { id: "A38",
+    cat: "complexity",
+    horizon: "incremental",
+    reviewedAt: "2026-11-16",
+    title: "Global convergence of iterative QSP phase-factor solvers",
+    statement: r`(L. Lin, ICM 2026, §9; Dong, Lin, Ni and Wang, 2023.) Let $f$ be a real polynomial of degree $d$ and parity $d\bmod2$ with $\|f\|_{\infty,[-1,1]}\le1-\eta$, let $\mathbf c\in\mathbb R^{\tilde d}$, $\tilde d=\lceil(d+1)/2\rceil$, be its Chebyshev coefficients, and let $F$ map reduced symmetric phase factors $\Phi\in\mathbb R^{\tilde d}$ to the Chebyshev coefficients of the corresponding symmetric-QSP polynomial. Prove that the Newton iteration of Dong–Lin–Ni–Wang for $F(\Phi)=\mathbf c$, started at $\Phi_0=\mathbf 0$, converges (to the maximal solution) for every such $f$, with an explicit bound on the number of iterations in terms of $d$, $\eta$ and the target accuracy; or construct admissible $f$ on which it fails. The same question applies to the fixed-point iteration $\Phi_{t+1}=\Phi_t-\tfrac12(F(\Phi_t)-\mathbf c)$ beyond the proven regime $\|\mathbf c\|_1\le0.861$.`,
+    definition: r`**Quantum signal processing (QSP)** interleaves a signal rotation $e^{i\arccos(x)X}$ with phase rotations $e^{i\phi_jZ}$; a matrix element of the product is a polynomial in $x$. Finding the phase factors $\phi_j$ that realize a target polynomial is a classical preprocessing step for QSVT-based algorithms. In **symmetric QSP**, the phase factors are palindromic and the problem reduces to a square nonlinear system $F(\Phi)=\mathbf c$. Wang, Dong and Lin studied its optimization landscape, Quantum 6, 850 (2022), [arXiv:2110.04993](https://arxiv.org/abs/2110.04993).
+
+Iterative solvers started at $\Phi_0=\mathbf 0$ need no complementary polynomial and use only matrix products, which makes them simple and stable in practice; they are used in QSPPACK. The question is posed in Lin Lin's ICM 2026 survey ([arXiv:2510.00443](https://arxiv.org/abs/2510.00443)): “It remains an open question to establish the theoretical guarantees to justify the superior performance of the Newton-type algorithm” (§9).`,
+    progress: r`- Wang, Dong and Lin (Quantum 2022) showed that optimization from $\Phi_0=\mathbf 0$ converges locally when $\|f\|_\infty=O(1/d)$, at cost $O(d^2\log(1/\epsilon))$ ([arXiv:2110.04993](https://arxiv.org/abs/2110.04993v2)).
+- Dong, Lin, Ni and Wang (Quantum 2024) introduced the fixed-point iteration (FPI) and proved by a contraction argument that it converges linearly to the maximal solution when $\|\mathbf c\|_1\le0.861$ ([arXiv:2209.10162](https://arxiv.org/abs/2209.10162v3)).
+- Dong, Lin, Ni and Wang (SIAM J. Sci. Comput. 46, 2024) proposed the Newton method and observed fast convergence in all regimes tested, including the fully coherent regime $\eta\to0$. They prove convergence only in an $\ell^1$ neighbourhood of $\mathbf 0$, by the same contraction argument, and call its behaviour in the fully coherent regime “a mystery” ([arXiv:2307.12468](https://arxiv.org/abs/2307.12468v1)).
+- Ni and Ying (2024) reduced the cost per FPI iteration to $O(d\log^2d)$. Their convergence guarantee is the FPI regime $\|\hat f\|_1<0.861$, and they report that FPI fails to converge in the fully coherent regime ([arXiv:2410.06409](https://arxiv.org/abs/2410.06409v2)).
+- Non-iterative algorithms with stability proofs now exist for $\eta>0$: the Riemann–Hilbert–Weiss algorithm (Alexis, Lin, Mnatsakanyan, Thiele and Wang, CPAM 2026, [arXiv:2407.05634](https://arxiv.org/abs/2407.05634v3)) and the inverse nonlinear FFT with near-linear cost (Ni, Sarkar, Ying and Lin, [arXiv:2505.12615](https://arxiv.org/abs/2505.12615v1)). They settle the existence of a stable phase-factor algorithm, but not the behaviour of the iterative methods.`,
+    residual: r`No global convergence guarantee is known for the Newton method or for FPI beyond $\|\mathbf c\|_1\le0.861$. The metric is the class of targets covered. Intermediate targets: FPI or Newton convergence for $\|\mathbf c\|_1\le1-\eta$, or for $\|f\|_\infty\le c$ with a constant $c$ independent of $d$. A further target is an iteration bound polylogarithmic in $d/(\eta\epsilon)$ for Newton. Also open: whether the extensively observed convergence to the maximal solution reflects a unique solution of $F$ in a neighbourhood of $\mathbf 0$ (Dong–Lin–Ni–Wang). The neighbouring infinite-QSP question, whether the $L^1$ theory extends to all admissible functions, is also stated as open in the ICM survey (§5.1).`,
+    evidence: [
+      { kind: "published",
+        role: "progress",
+        summary: "Fixed-point iteration from Φ₀ = 0 converges linearly to the maximal solution when the Chebyshev coefficients satisfy ‖c‖₁ ≤ 0.861 (Quantum 8, 1558, 2024).",
+        url: "https://arxiv.org/abs/2209.10162v3",
+        date: "2024-12-07",
+        version: "v3" },
+      { kind: "published",
+        role: "progress",
+        summary: "Newton method for symmetric QSP: empirically robust in all regimes; provable convergence only in an ℓ¹ neighbourhood of 0, the fully coherent regime is unexplained (SIAM J. Sci. Comput. 46, 2024).",
+        url: "https://arxiv.org/abs/2307.12468v1",
+        date: "2023-07-24",
+        version: "v1" },
+      { kind: "published", role: "progress", summary: "Local convergence of optimization from Φ₀ = 0 when ‖f‖∞ = O(1/d) (Quantum 6, 850, 2022).", url: "https://arxiv.org/abs/2110.04993v2", date: "2022-10-27", version: "v2" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Fast fixed-point iteration with O(d log² d) cost per iteration, guaranteed only for ‖f̂‖₁ < 0.861; FPI fails numerically in the fully coherent regime.",
+        url: "https://arxiv.org/abs/2410.06409v2",
+        date: "2024-10-28",
+        version: "v2" },
+    ],
+    provenance: [],
+    relations: [],
+    refs: [
+      { label: "Lin, 'Mathematical and numerical analysis of quantum signal processing', Proceedings ICM 2026", url: "https://arxiv.org/abs/2510.00443" },
+      { label: "Dong, Lin, Ni & Wang, 'Robust iterative method for symmetric quantum signal processing in all parameter regimes', SIAM J. Sci. Comput. 46 (2024)",
+        url: "https://arxiv.org/abs/2307.12468" },
+      { label: "Dong, Lin, Ni & Wang, 'Infinite quantum signal processing', Quantum 8, 1558 (2024)", url: "https://arxiv.org/abs/2209.10162" },
+      { label: "Wang, Dong & Lin, 'On the energy landscape of symmetric quantum signal processing', Quantum 6, 850 (2022)", url: "https://arxiv.org/abs/2110.04993" },
+      { label: "Ni & Ying, 'Fast Phase Factor Finding for Quantum Signal Processing' (2024 preprint)", url: "https://arxiv.org/abs/2410.06409" },
+      { label: "Alexis, Lin, Mnatsakanyan, Thiele & Wang, 'Infinite quantum signal processing for arbitrary Szegő functions', Comm. Pure Appl. Math. 79 (2026)",
+        url: "https://arxiv.org/abs/2407.05634" },
+      { label: "Ni, Sarkar, Ying & Lin, 'Inverse nonlinear fast Fourier transform on SU(2) with applications to quantum signal processing' (2025 preprint)",
+        url: "https://arxiv.org/abs/2505.12615" },
+    ] },
+
+  { id: "A39",
+    cat: "complexity",
+    horizon: "sharp",
+    status: "improved",
+    reviewedAt: "2026-11-16",
+    title: "Bound magic states for qubits",
+    statement: r`Let $\rho$ be a single-qubit state whose Bloch vector lies outside the stabilizer octahedron, $|r_x|+|r_y|+|r_z|>1$. Stabilizer protocols may use stabilizer-state ancillas, Clifford unitaries, Pauli measurements with classical feed-forward, postselection with nonzero success probability, and partial trace. Prove or disprove that for every such $\rho$ and every $\varepsilon>0$ there are $n$ and a stabilizer protocol mapping $\rho^{\otimes n}$ to a qubit state $\varepsilon$-close to a Clifford image of $|T\rangle$ or $|H\rangle$; that is, whether qubit bound magic states exist when the number of copies is unbounded. (Bravyi–Kitaev 2005; Campbell–Browne 2010.)`,
+    definition: r`**Magic state distillation** turns many noisy copies of a non-stabilizer state into fewer, purer ones using only operations that are classically simulable on their own, which makes Clifford circuits universal. States inside the stabilizer octahedron are useless by the Gottesman–Knill theorem. Bravyi and Kitaev called the computational power of the model in the region between the octahedron and their distillation threshold “the most exciting open problem”, “Universal quantum computation with ideal Clifford gates and noisy ancillas”, PRA 71, 022316 (2005), [arXiv:quant-ph/0403025](https://arxiv.org/abs/quant-ph/0403025). By analogy with bound entanglement, Campbell and Browne called non-distillable states outside the octahedron *bound states* for magic state distillation, PRL 104, 030503 (2010), [arXiv:0908.0836](https://arxiv.org/abs/0908.0836).
+
+The question is recalled as open in 2026 by Liu, Haug, Ye, Liu and Roth ([arXiv:2512.16777](https://arxiv.org/abs/2512.16777v2), Sec. III), by Zurel, Jana and de Silva, who state that a positive answer would require protocols of increasing size whose thresholds converge to the octahedron boundary ([arXiv:2603.18560](https://arxiv.org/abs/2603.18560v2)), and by Sethi ([arXiv:2610.37807](https://arxiv.org/abs/2610.37807v1)).`,
+    progress: r`- Bravyi and Kitaev (2004) distill $|T\rangle$-type states with the five-qubit code up to $\epsilon\approx0.173$ and $|H\rangle$-type states up to $\epsilon\approx0.141$, leaving a gap to the octahedron in both directions ([arXiv:quant-ph/0403025](https://arxiv.org/abs/quant-ph/0403025v2)).
+- Reichardt (2005) improves the $H$-direction protocols to a sharp threshold, at the octahedron boundary, in that direction; the $T$ direction remains open ([arXiv:quant-ph/0411036](https://arxiv.org/abs/quant-ph/0411036)).
+- Campbell and Browne (2009–2010) prove that for every fixed number $n$ of copies, $n$-to-one protocols cannot improve states in a region just above the octahedron faces. They state that this does not rule out protocols with growing $n$ reaching a tight threshold ([arXiv:0908.0836](https://arxiv.org/abs/0908.0836v3); structure theorem in [arXiv:0908.0838](https://arxiv.org/abs/0908.0838)).
+- For qudits of odd prime dimension, states with non-negative Wigner function are efficiently simulable, so non-stabilizer Wigner-positive states are bound magic (Veitch, Ferrie, Gross and Emerson, NJP 14, 113011 (2012), [arXiv:1201.1256](https://arxiv.org/abs/1201.1256)). Frembs shows that the normalized projector onto the complement of an unextendible stabiliser set is magic and "bound magic in odd prime dimension, yet need not be for qubits" ([arXiv:2608.10202](https://arxiv.org/abs/2608.10202v1)).
+- Sethi (27 October 2026, v1) gives an explicit lower bound, as a function of $n$, on the region of non-distillable states for $n$-to-one Clifford reductions. The certified region shrinks toward the octahedron as $n$ grows ([arXiv:2610.37807](https://arxiv.org/abs/2610.37807v1)).`,
+    residual: r`Open in the $T$ direction, and for general single-qubit states. A positive answer needs a family of protocols whose thresholds converge to the octahedron faces. A negative answer needs a region of non-distillable states that is uniform in $n$, for all stabilizer protocols, including those with several outputs. Beating the five-qubit $T$ threshold, a narrower target, is listed separately.`,
+    evidence: [
+      { kind: "published",
+        role: "progress",
+        summary: "Five-qubit T-type distillation up to ε ≈ 0.173 and H-type up to ε ≈ 0.141; the region between these thresholds and the stabilizer octahedron is left open (PRA 71, 022316).",
+        url: "https://arxiv.org/abs/quant-ph/0403025v2",
+        date: "2004-12-16",
+        version: "v2" },
+      { kind: "published", role: "progress", summary: "Sharp distillation threshold in the H (edge) direction; the T direction remains open (Quant. Inf. Proc. 4, 251).", url: "https://arxiv.org/abs/quant-ph/0411036v1", date: "2004-11-04", version: "v1" },
+      { kind: "published",
+        role: "progress",
+        summary: "For every fixed number of copies, a region of non-distillable states exists just outside the stabilizer octahedron; protocols with unbounded copies are not excluded (PRL 104, 030503).",
+        url: "https://arxiv.org/abs/0908.0836v3",
+        date: "2010-02-01",
+        version: "v3" },
+      { kind: "preprint", role: "progress", summary: "Explicit n-dependent lower bound on the non-distillable region for n-to-one Clifford reductions of single-qubit states.", url: "https://arxiv.org/abs/2610.37807v1", date: "2026-10-27", version: "v1" },
+    ],
+    provenance: [],
+    relations: [
+      { id: "A40", type: "benchmark" },
+      { id: "E1", type: "related" },
+      { id: "E29", type: "related" },
+      { id: "N10", type: "related" },
+    ],
+    refs: [
+      { label: "Bravyi & Kitaev, 'Universal quantum computation with ideal Clifford gates and noisy ancillas', PRA 71, 022316 (2005)", url: "https://arxiv.org/abs/quant-ph/0403025" },
+      { label: "Campbell & Browne, 'Bound States for Magic State Distillation in Fault-Tolerant Quantum Computation', PRL 104, 030503 (2010)",
+        url: "https://arxiv.org/abs/0908.0836" },
+      { label: "Reichardt, 'Improved magic states distillation for quantum universality', Quant. Inf. Proc. 4, 251 (2005)", url: "https://arxiv.org/abs/quant-ph/0411036" },
+      { label: "Veitch, Ferrie, Gross & Emerson, 'Negative quasi-probability as a resource for quantum computation', NJP 14, 113011 (2012)",
+        url: "https://arxiv.org/abs/1201.1256" },
+      { label: "Zurel, Jana & de Silva, 'High-threshold magic state distillation with quantum quadratic residue codes', Quantum Sci. Technol. 11, 045052 (2026)",
+        url: "https://arxiv.org/abs/2603.18560" },
+      { label: "Sethi, 'Lower Bound for Region of Non-Distillable Magic States' (2026 preprint)", url: "https://arxiv.org/abs/2610.37807" },
+    ] },
+
+  { id: "A40",
+    cat: "complexity",
+    horizon: "incremental",
+    reviewedAt: "2026-11-16",
+    title: "Beating the five-qubit threshold for T-type magic state distillation",
+    statement: r`For the $T$-axis noise model $\rho_T(\epsilon)=(1-\epsilon)|T\rangle\langle T|+\epsilon|T^\perp\rangle\langle T^\perp|$, to which any single-qubit input can be twirled, the Bravyi–Kitaev five-qubit protocol distills for $\epsilon<\epsilon_5=(7-\sqrt{21})/14\approx0.1727$, and the stabilizer octahedron is reached at $\epsilon_{\max}=(1-1/\sqrt3)/2\approx0.2113$. Find a stabilizer distillation protocol for $T$-type states with threshold $\epsilon^\ast>\epsilon_5$, or prove that none exists within a stated class of protocols. (Kalra–Prakash 2025, Sec. 2 and Sec. 7.)`,
+    definition: r`**Distillation threshold.** A protocol has threshold $\epsilon^\ast$ if, iterated, it drives every input with $\epsilon<\epsilon^\ast$ to a pure magic state. For $[[n,1]]$ codes with a transversal Clifford $M_3$ of order three, the threshold is determined by the code's signed weight enumerators (Rall, [arXiv:1702.06990](https://arxiv.org/abs/1702.06990)). The five-qubit protocol is from Bravyi and Kitaev, PRA 71, 022316 (2005), [arXiv:quant-ph/0403025](https://arxiv.org/abs/quant-ph/0403025).
+
+Kalra and Prakash state that the five-qubit threshold is “the best known threshold of any qubit magic state distillation routine” and that a better one would reduce the non-simulable and possibly non-universal region of state space ([arXiv:2501.10163](https://arxiv.org/abs/2501.10163v3)). Protocols that use non-Clifford gates, such as the two-qubit permutation-invariant scheme of Leitch and Ouyang with threshold $0.5$ ([arXiv:2603.04310](https://arxiv.org/abs/2603.04310v1)), are a different resource model and do not count.`,
+    progress: r`- Kalra and Prakash search all $[[n,1]]$ $M_3$-codes with $n<20$ and find none with a threshold above the five-qubit code. They construct integer weight enumerators for $23\le n\le35$ that satisfy all known consistency conditions and would give thresholds up to about $0.2113$ (a putative $[[29,1,7]]$ code), and call the existence of such codes “a fascinating open question” ([arXiv:2501.10163](https://arxiv.org/abs/2501.10163v3)).
+- Zurel, Jana and de Silva build infinite families of quantum quadratic-residue codes with high thresholds; none surpasses the five-qubit code for $T$-type states ([arXiv:2603.18560](https://arxiv.org/abs/2603.18560v2)).`,
+    residual: r`Decide whether a code realizing one of the putative Kalra–Prakash enumerators exists, for instance at $n=23$ or the $[[29,1,7]]$ candidate; extend exhaustive searches beyond $n=20$ and to protocols with several outputs. An optimality proof for the five-qubit threshold within a broad protocol class would also settle the question. A family of thresholds converging to $\epsilon_{\max}$ would answer the $T$-direction case of the bound-magic question.`,
+    evidence: [
+      { kind: "published", role: "progress", summary: "Five-qubit code distils T-type states for ε < (7 − √21)/14 ≈ 0.173 (PRA 71, 022316).", url: "https://arxiv.org/abs/quant-ph/0403025v2", date: "2004-12-16", version: "v2" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "No [[n,1]] M₃-code with n < 20 beats the five-qubit threshold; putative weight enumerators for 23 ≤ n ≤ 35 would reach thresholds up to about 0.2113 if realizable.",
+        url: "https://arxiv.org/abs/2501.10163v3",
+        date: "2026-03-23",
+        version: "v3" },
+      { kind: "published",
+        role: "progress",
+        summary: "Infinite families of quantum quadratic-residue distillation codes with high thresholds; none surpasses the five-qubit code for T-type states (Quantum Sci. Technol. 11, 045052).",
+        url: "https://arxiv.org/abs/2603.18560v2",
+        date: "2026-09-30",
+        version: "v2" },
+    ],
+    provenance: [],
+    relations: [
+      { id: "A39", type: "parent" },
+    ],
+    refs: [
+      { label: "Kalra & Prakash, 'Invariant Theory, Magic State Distillation, and Bounds on Classical Codes' (2025 preprint, v3)", url: "https://arxiv.org/abs/2501.10163" },
+      { label: "Bravyi & Kitaev, 'Universal quantum computation with ideal Clifford gates and noisy ancillas', PRA 71, 022316 (2005)", url: "https://arxiv.org/abs/quant-ph/0403025" },
+      { label: "Rall, 'Signed quantum weight enumerators characterize qubit magic state distillation' (2017 preprint)", url: "https://arxiv.org/abs/1702.06990" },
+      { label: "Zurel, Jana & de Silva, 'High-threshold magic state distillation with quantum quadratic residue codes', Quantum Sci. Technol. 11, 045052 (2026)",
+        url: "https://arxiv.org/abs/2603.18560" },
+    ] },
+
+  { id: "A41",
+    cat: "complexity",
+    horizon: "sharp",
+    status: "improved",
+    reviewedAt: "2026-11-16",
+    title: "Minimal length of permutation-invariant qubit codes",
+    statement: r`A permutation-invariant (PI) code encoding one qubit in $n$ qubits is equivalently a code in the fixed-photon-number space $\mathrm{span}\{|k\rangle|n-k\rangle\}_{k=0}^{n}$ of two bosonic modes, where distance $d$ means correcting $d-1$ deletions (photon losses). Let $n_{\min}(d)$ be the least $n$ admitting such a code of distance $d$. Prove or disprove that $n_{\min}(d)=\lceil(3d^2+1)/4\rceil$ for all $d\ge2$; for odd $d=2t+1$ this is $3t^2+3t+1$, equivalently $d\le\sqrt{12n-3}/3$ for every qubit PI code. (Bond–Minář–Ozols–Safavi-Naini–Visnevskyi 2026, Conjecture 3.1; Giannisis Manes–Subramanian–Jiang 2026, Conjecture 4 for existence at this length.)`,
+    definition: r`**Permutation-invariant codes** live in the symmetric subspace of $n$ qubits, where errors on any $t$ qubits reduce to deletions. Pollatsek and Ruskai, “Permutationally invariant codes for quantum error correction”, Lin. Alg. Appl. 392, 255 (2004), [arXiv:quant-ph/0304153](https://arxiv.org/abs/quant-ph/0304153); Ouyang, “Permutation-invariant quantum codes”, PRA 90, 062317 (2014), [arXiv:1302.3247](https://arxiv.org/abs/1302.3247). Known analytic families need $n=d^2+O(d)$ qubits, while the quantum Singleton bound only forces $n\ge2d-1$, so even the growth rate of $n_{\min}$ is unproved. Bond et al. note that their conjecture would imply there are no good qLDPC qubit PI codes.
+
+Bond et al. state the conjecture from numerical searches, [arXiv:2603.10981](https://arxiv.org/abs/2603.10981). Giannisis Manes, Subramanian and Jiang conjecture codes at length $\lceil(3d^2+1)/4\rceil$ for every $d$ and call stronger bounds “an important open problem” ([arXiv:2610.00561](https://arxiv.org/abs/2610.00561)).`,
+    progress: r`- Ouyang (2014) and Aydin, Alekseyev and Barg (Quantum 8, 1321 (2024)) give analytic families of length $4t^2+4t+1$ and $4t^2+2t+1$ for $t$ deletions ([arXiv:1302.3247](https://arxiv.org/abs/1302.3247), [arXiv:2310.05358](https://arxiv.org/abs/2310.05358)).
+- Bond, Minář, Ozols, Safavi-Naini and Visnevskyi (March 2026) minimize the Knill–Laflamme violation numerically and find $n_{\min}=7,19,37$ for $t=1,2,3$, and $61,91$ for $t=4,5$ within a restricted family. They conjecture $n_{\min}(t)=3t^2+3t+1$ (Conjecture 3.1) ([arXiv:2603.10981](https://arxiv.org/abs/2603.10981v1)).
+- Kubischta and Teixeira (May 2026) prove that distance-two PI codes need exactly four qudits, for every local dimension, by a linear-programming bound and an explicit construction ([arXiv:2605.22439](https://arxiv.org/abs/2605.22439v1)). This is the case $d=2$, $n=4$ of the formula.
+- Giannisis Manes, Subramanian and Jiang (30 September 2026) construct codes with binary-polyhedral symmetry at $n=\lceil(3d^2+1)/4\rceil$ for every $d\le10$, including $(n,d)=(28,6),(49,8),(76,10)$. Linear-programming certificates show their codes reach the maximal distance for 21 of the 22 photon numbers $4\le n\le25$; the exception is $n=18$, where the LP allows $d=5$. For $d=6$ and $8$ the LP first allows $n=26$ and $43$, below their codes at $28$ and $49$ ([arXiv:2610.00561](https://arxiv.org/abs/2610.00561v1)).`,
+    residual: r`No lower bound of order $d^2$ is proved: the LP bound is not tight at the gaps above, and the minimality conjecture would imply that it is systematically non-tight. Sub-targets: show that no distance-5 code exists at $n=18$, so that $n_{\min}(5)=19$; prove $n_{\min}(d)\ge c\,d^2$ for some constant $c>0$; construct the conjectured binary-polyhedral family for all $d$.`,
+    evidence: [
+      { kind: "published", role: "progress", summary: "Analytic permutation-invariant codes correcting t deletions with 4t² + 2t + 1 qubits (Quantum 8, 1321).", url: "https://arxiv.org/abs/2310.05358v3", date: "2024-04-15", version: "v3" },
+      { kind: "numerical",
+        role: "progress",
+        summary: "Numerical minimal lengths 7, 19, 37 for t = 1, 2, 3 (and 61, 91 in a restricted family); conjecture n_min(t) = 3t² + 3t + 1.",
+        url: "https://arxiv.org/abs/2603.10981v1",
+        date: "2026-03-11",
+        version: "v1" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Distance-two permutation-invariant codes need exactly four qudits for every local dimension (LP bound plus construction).",
+        url: "https://arxiv.org/abs/2605.22439v1",
+        date: "2026-05-21",
+        version: "v1" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Codes at n = ⌈(3d²+1)/4⌉ for all d ≤ 10; LP certificates of maximal distance for 21 of 22 photon numbers 4 ≤ n ≤ 25, the exception being n = 18.",
+        url: "https://arxiv.org/abs/2610.00561v1",
+        date: "2026-09-30",
+        version: "v1" },
+    ],
+    provenance: [
+      { summary: "Giannisis Manes, Subramanian and Jiang state that OpenAI's Codex and ChatGPT models helped build an intertwiner, analyse numerical results, generate figures and code, workshop proofs and edit the manuscript; the authors state that they verified all outputs independently.",
+        url: "https://arxiv.org/abs/2610.00561v1",
+        version: "v1" },
+    ],
+    relations: [
+      { id: "A32", type: "related" },
+    ],
+    refs: [
+      { label: "Bond, Minář, Ozols, Safavi-Naini & Visnevskyi, 'Permutation-invariant codes: a numerical study and qudit constructions' (2026 preprint), Conjecture 3.1",
+        url: "https://arxiv.org/abs/2603.10981" },
+      { label: "Giannisis Manes, Subramanian & Jiang, 'Optimal two-mode bosonic loss codes from finite group symmetry' (2026 preprint), Conjecture 4",
+        url: "https://arxiv.org/abs/2610.00561" },
+      { label: "Pollatsek & Ruskai, 'Permutationally Invariant Codes for Quantum Error Correction', Lin. Alg. Appl. 392, 255 (2004)", url: "https://arxiv.org/abs/quant-ph/0304153" },
+      { label: "Ouyang, 'Permutation-invariant quantum codes', PRA 90, 062317 (2014)", url: "https://arxiv.org/abs/1302.3247" },
+      { label: "Aydin, Alekseyev & Barg, 'A family of permutationally invariant quantum codes', Quantum 8, 1321 (2024)", url: "https://arxiv.org/abs/2310.05358" },
+      { label: "Kubischta & Teixeira, 'Minimal Permutation-Invariant Qudit Codes from Edge-Colorings of Complete Graphs' (2026 preprint)",
+        url: "https://arxiv.org/abs/2605.22439" },
+    ] },
+
+  { id: "A42",
+    cat: "complexity",
+    horizon: "sharp",
+    status: "improved",
+    reviewedAt: "2026-11-16",
+    title: "Shallow relative-error designs from i.i.d. brickwork circuits",
+    statement: r`(Schuster, Haferkamp and Huang 2024, Discussion.) Let $\nu_d$ be the depth-$d$ one-dimensional brickwork circuit on $n$ qubits with open boundaries, every two-qubit gate drawn independently from the Haar measure on $U(4)$. Write $\Phi^{(k)}_\nu(X)=\mathbb E_{U\sim\nu}U^{\otimes k}XU^{\dagger\otimes k}$. Is there, for each fixed $k$, a constant $C_k$ such that $\nu_d$ is an $\varepsilon$-relative-error $k$-design, $(1-\varepsilon)\Phi^{(k)}_{\rm Haar}\preceq\Phi^{(k)}_{\nu_d}\preceq(1+\varepsilon)\Phi^{(k)}_{\rm Haar}$ in the completely positive order, as soon as $d\ge C_k\log(n/\varepsilon)$? Or does i.i.d. brickwork need depth $\omega(\log n)$, although specially assembled circuits reach depth $O(\log(n/\varepsilon)\,k\,\mathrm{polylog}\,k)$?`,
+    definition: r`**Approximate unitary designs.** An ensemble is an $\varepsilon$-approximate $k$-design if its $k$-th moment channel is close to that of the Haar measure. Relative (multiplicative) error, as above, is the strongest common notion; additive error in diamond norm is weaker. Brandão, Harrow and Horodecki proved that local random circuits form approximate $k$-designs in depth polynomial in $k$ and linear in $n$, Commun. Math. Phys. 346, 397 (2016), [arXiv:1208.0692](https://arxiv.org/abs/1208.0692).
+
+Schuster, Haferkamp and Huang reached logarithmic depth by gluing small random unitaries on overlapping patches in two layers ([arXiv:2407.07754](https://arxiv.org/abs/2407.07754)). In their Discussion they write: “it would be interesting to determine whether the same design depth applies to brickwork local random circuits with independent and identically-distributed gates.” Their construction is a brickwork circuit “with a small subset of the gates set to the identity”, and drawing those gates from the Haar measure seems unlikely to slow convergence, “but we cannot rule this out.” Laracuente calls “whether unstructured random circuits yield shallow multiplicative-error designs” a lingering open question ([arXiv:2510.08537](https://arxiv.org/abs/2510.08537v3), Sec. 6). Hunter-Jones and Haferkamp note in February 2026 that “it is currently unknown if the standard brickwork random quantum circuits we consider here are relative-error t-designs at log depths” ([arXiv:2602.22692](https://arxiv.org/abs/2602.22692v1)).`,
+    progress: r`- Dalzell, Hunter-Jones and Brandão (PRX Quantum 3, 010333 (2022)) prove that 1D random circuits anticoncentrate in depth $O(\log n)$ ([arXiv:2011.12277](https://arxiv.org/abs/2011.12277)).
+- Schuster, Haferkamp and Huang (2024) obtain relative-error $k$-designs in 1D in depth $O(\log(n/\varepsilon)\,k\,\mathrm{polylog}\,k)$ for the glued two-layer construction (Corollary 1). They also prove that relative-error 2-designs need depth at least of order $\log n$ in 1D ([arXiv:2407.07754](https://arxiv.org/abs/2407.07754v2)).
+- Heinrich, Haferkamp, Roth and Helsen (PRL 137, 050601 (2026)) show that anticoncentration of any local random circuit invariant under single-qubit unitaries implies a relative-error *state* 2-design, hence logarithmic depth for i.i.d. brickwork. They write that “a straightforward extension … to the unitary 2-design case is not possible” and that they “found no easy way to do so even for 1D brickwork circuits” ([arXiv:2510.23719](https://arxiv.org/abs/2510.23719v4)).
+- Belkin, Allen and Clark compute the multiplicative 2-design error of brickwork circuits exactly up to about 50 qubits; the depth fits $\log((3/\pi^2)(n/\varepsilon))/\log(5/4)$, and they say one would like to prove this formula ([arXiv:2510.23726](https://arxiv.org/abs/2510.23726v2), numerical).
+- Laracuente (v3, 18 August 2026) proves that i.i.d. 1D brickwork gives *additive*-error $k$-designs in $O(5^{\log^\ast n}\log(nk/\varepsilon)\,k\log k)$ layers, by relative-entropy decay (Corollary 3.1) ([arXiv:2510.08537](https://arxiv.org/abs/2510.08537v3)).
+- Baer and Haah (v3, 1 November 2026) prove a spectral gap of the brickwork walk independent of $n$ and $t$, so i.i.d. brickwork reaches approximate $t$-designs in $O(nt)$ steps; relative error then follows in depth linear in $n$ ([arXiv:2607.20919](https://arxiv.org/abs/2607.20919v3)).
+- Liu and Helsen (August 2026) give structured 1D relative-error designs in depth $O(\log(n/\varepsilon)+k\log k)$, a $\log k$ factor from the lower bound ([arXiv:2608.18650](https://arxiv.org/abs/2608.18650v1)).`,
+    residual: r`For i.i.d. brickwork, logarithmic depth is known for anticoncentration, relative-error state 2-designs and (up to a $5^{\log^\ast n}$ factor) additive-error designs, but relative-error unitary designs are known only in linear depth. Minimal target: $k=2$ unitary designs in depth $O(\log(n/\varepsilon))$, a question about an explicit Markov chain on $\{I,S\}^n$ with $S$ the swap. Next: relative error for fixed $k$ in depth $O(\log n\,\mathrm{polyloglog}\,n)$, by converting the additive result.`,
+    evidence: [
+      { kind: "preprint",
+        role: "progress",
+        summary: "Glued two-layer random circuits form relative-error k-designs in 1D in depth O(log(n/ε)·k·polylog k); log n depth is necessary. The authors ask whether i.i.d. brickwork achieves the same depth.",
+        url: "https://arxiv.org/abs/2407.07754v2",
+        date: "2025-01-04",
+        version: "v2" },
+      { kind: "published",
+        role: "progress",
+        summary: "Anticoncentration of local random circuits implies relative-error state 2-designs, hence log depth for i.i.d. brickwork; the unitary 2-design case is left open (PRL 137, 050601).",
+        url: "https://arxiv.org/abs/2510.23719v4",
+        date: "2026-09-28",
+        version: "v4" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "i.i.d. 1D brickwork forms additive-error k-designs in O(5^{log* n} log(nk/ε) k log k) layers via relative-entropy decay; multiplicative error left open.",
+        url: "https://arxiv.org/abs/2510.08537v3",
+        date: "2026-08-18",
+        version: "v3" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Constant spectral gap for brickwork random circuits in all representations; approximate t-designs in O(nt) steps, linear in n.",
+        url: "https://arxiv.org/abs/2607.20919v3",
+        date: "2026-11-01",
+        version: "v3" },
+      { kind: "numerical",
+        role: "progress",
+        summary: "Exact multiplicative 2-design error of brickwork circuits up to about 50 qubits; depth fits a logarithmic formula in n/ε.",
+        url: "https://arxiv.org/abs/2510.23726v2",
+        date: "2026-07-24",
+        version: "v2" },
+    ],
+    provenance: [
+      { summary: "Laracuente states that ChatGPT Pro versions were used to inspire some supplementary lemmas and to suggest corrections in editing, and that nothing was copied from AI tools without independent verification.",
+        url: "https://arxiv.org/abs/2510.08537v3",
+        version: "v3" },
+      { summary: "Liu and Helsen state that GPT5.5 Pro derived an initial version of the estimates in some lemmas, later improved by the authors.",
+        url: "https://arxiv.org/abs/2608.18650v1",
+        version: "v1" },
+    ],
+    relations: [
+      { id: "A27", type: "related" },
+      { id: "A13", type: "related" },
+    ],
+    refs: [
+      { label: "Schuster, Haferkamp & Huang, 'Random unitaries in extremely low depth', Science 389 (2025)", url: "https://arxiv.org/abs/2407.07754" },
+      { label: "Brandão, Harrow & Horodecki, 'Local random quantum circuits are approximate polynomial-designs', Comm. Math. Phys. 346 (2016)",
+        url: "https://arxiv.org/abs/1208.0692" },
+      { label: "Laracuente, 'Shallow Approximate Unitary Designs from Relative Entropy Decay of Unstructured Random Circuits' (2026 preprint, v3)",
+        url: "https://arxiv.org/abs/2510.08537" },
+      { label: "Heinrich, Haferkamp, Roth & Helsen, 'Anticoncentration is (almost) all you need', PRL 137, 050601 (2026)", url: "https://arxiv.org/abs/2510.23719" },
+      { label: "Baer & Haah, 'Random unitary circuits with constant spectral gap' (2026 preprint, v3)", url: "https://arxiv.org/abs/2607.20919" },
+      { label: "Liu & Helsen, '(Almost) quadruply optimal unitary designs in 1D' (2026 preprint, v1)", url: "https://arxiv.org/abs/2608.18650" },
+      { label: "Hunter-Jones & Haferkamp, 'Ideal random quantum circuits pass the LXEB test' (2026 preprint, v1)", url: "https://arxiv.org/abs/2602.22692" },
+    ] },
+
+  { id: "A43",
+    cat: "complexity",
+    horizon: "sharp",
+    reviewedAt: "2026-11-16",
+    title: "Scrooge hypothesis for shallow 2D random circuits",
+    statement: r`(Liu, McGinley, Schuster and Gosset 2026.) Let $U$ be a depth-$d$ brickwork circuit of independent Haar-random two-qubit gates on a $\sqrt n\times\sqrt n$ grid, applied to $|0^n\rangle$. Partition the qubits as $ABC$, with $C$ containing an $l_C\times l_C$ square. Measure $B$ in the computational basis with outcome $x_B$; the projected ensemble on $A$ is the Born-weighted ensemble of pure states obtained by also measuring $C$, with average state $\rho_A$. Conjecture: there is $d^\ast=O(1)$ such that for every $d>d^\ast$, every fixed $k$ and every $k$-copy observable $O_A\ge0$, with probability at least $1-\epsilon$ over $(U,x_B)$, where $\epsilon=\mathrm{poly}(n)\,e^{-\Omega(\min(l_C,\mathrm{dist}(A,C)))}$, (i) the $k$-th moment of the projected ensemble on $O_A$ is $\epsilon$-close in relative error to that of the Scrooge ensemble $\mathcal S_{\rho_A}$, and (ii) $S_\infty(\rho_A)=\Omega(|\partial A|)$. Prove or refute it. The same conjecture is stated for random Clifford gates, with the stabilizer Scrooge ensemble.`,
+    definition: r`**Scrooge ensemble and deep thermalization.** The Scrooge ensemble $\mathcal S_\rho$ is the ensemble of pure states with average $\rho$ that minimizes accessible information: draw a Haar-random $|\phi\rangle$ with density proportional to $\langle\phi|\rho|\phi\rangle$ and output $\rho^{1/2}|\phi\rangle$, normalized. It was introduced by Jozsa, Robb and Wootters, PRA 49, 668 (1994), [doi:10.1103/PhysRevA.49.668](https://doi.org/10.1103/PhysRevA.49.668). When measuring part of a chaotic many-body state leaves an ensemble on the rest that approaches a maximum-entropy ensemble such as Haar or Scrooge, one speaks of deep thermalization (Cotler et al., PRX Quantum 4, 010311 (2023), [arXiv:2103.03536](https://arxiv.org/abs/2103.03536)).
+
+In constant-depth 2D circuits the global state is far from a design, yet measurements induce long-range entanglement. Liu, McGinley, Schuster and Gosset state the “Scrooge hypothesis” for this regime and write: “We conjecture that the projected ensembles of SRQCs are described by the Scrooge ensemble” ([arXiv:2608.12255](https://arxiv.org/abs/2608.12255v1)). The review of Mark, Endres, Ippoliti, Ho and Choi lists characterizing when Scrooge-like limits arise among open directions ([arXiv:2609.30248](https://arxiv.org/abs/2609.30248v1)).`,
+    progress: r`- Napp, La Placa, Dalzell, Brandão and Harrow give efficient classical simulation of shallow 2D random circuits below a critical depth (PRX 12, 021021 (2022), [arXiv:2001.00021](https://arxiv.org/abs/2001.00021)); the hypothesis concerns the regime above it.
+- McGinley, Ho and Malz prove that measurement-induced entanglement is long-range above a constant critical depth in 2D brickwork and related architectures (PRX 15, 021059 (2025), [arXiv:2410.23248](https://arxiv.org/abs/2410.23248)).
+- Deep thermalization to Scrooge-type ensembles is proved in other regimes: from global Scrooge $2k$-designs and long-time chaotic dynamics (Mok, Haug, Ho and Preskill, PRX 16, 041003 (2026), [arXiv:2601.00266](https://arxiv.org/abs/2601.00266)), exactly for dual-unitary circuits (Ho and Choi, PRL 128, 060601 (2022), [arXiv:2109.07491](https://arxiv.org/abs/2109.07491)), and for matchgate circuits with a Gaussian Scrooge ensemble (Bejan, Béri and McGinley, PRL 135, 020401 (2025), [arXiv:2412.01884](https://arxiv.org/abs/2412.01884)). None covers constant-depth 2D circuits.
+- Liu, McGinley, Schuster and Gosset (12 August 2026) state the hypothesis. Their support is Clifford numerics (depth 5–7 on grids up to $100\times100$, conditional mutual information and $k$-th diagonal frame potentials against the stabilizer Scrooge ensemble), a replica analysis that they call non-rigorous, and a rigorous bound (Proposition 1) for a coarse-grained architecture limited to $k=2$ moments of diagonal observables. Assuming the hypothesis, they prove (Theorem 1) that noisy 2D circuits of depth $d>d^\ast$ with depolarizing rate $\gamma=\Omega(\log(n/\epsilon)/n)$ can be sampled classically in polynomial time ([arXiv:2608.12255](https://arxiv.org/abs/2608.12255v1)).`,
+    residual: r`Open in full. Sub-targets: point (i) for random Clifford circuits and $k=2$, a combinatorial statement about stabilizer groups; point (ii), the min-entropy bound $S_\infty(\rho_A)=\Omega(|\partial A|)$, alone; or the authors' Proposition 1 extended from the coarse-grained model to brickwork circuits, or to higher $k$. A refutation would identify structure in shallow projected ensembles beyond Scrooge and would leave open the classical simulability of weakly noisy shallow 2D circuits.`,
+    evidence: [
+      { kind: "conjecture",
+        role: "progress",
+        summary: "States the Scrooge hypothesis for projected ensembles of shallow 2D Haar and Clifford random circuits above a constant critical depth; Clifford numerics up to 100×100 grids, rigorous k = 2 bound for a coarse-grained model; under the hypothesis, weakly noisy shallow 2D circuits are classically simulable.",
+        url: "https://arxiv.org/abs/2608.12255v1",
+        date: "2026-08-12",
+        version: "v1" },
+      { kind: "published",
+        role: "progress",
+        summary: "Rigorous lower bound on long-range measurement-induced von Neumann entanglement in constant-depth 2D random circuits above a constant critical depth (PRX 15, 021059).",
+        url: "https://arxiv.org/abs/2410.23248v2",
+        date: "2025-05-19",
+        version: "v2" },
+      { kind: "published",
+        role: "progress",
+        summary: "Scrooge k-designs: global Scrooge 2k-designs induce local Scrooge k-designs on measuring the complement; does not reach constant-depth circuits (PRX 16, 041003).",
+        url: "https://arxiv.org/abs/2601.00266v3",
+        date: "2026-07-22",
+        version: "v3" },
+    ],
+    provenance: [
+      { summary: "Liu, McGinley, Schuster and Gosset acknowledge the use of generative AI to suggest proof strategies and as an aid in proofreading.",
+        url: "https://arxiv.org/abs/2608.12255v1",
+        version: "v1" },
+    ],
+    relations: [
+      { id: "A13", type: "related" },
+      { id: "B20", type: "related" },
+      { id: "B5", type: "related" },
+    ],
+    refs: [
+      { label: "Liu, McGinley, Schuster & Gosset, 'Conditional dependence and Scrooge ensembles in shallow random quantum circuits' (2026 preprint, v1)",
+        url: "https://arxiv.org/abs/2608.12255" },
+      { label: "Jozsa, Robb & Wootters, 'Lower bound for accessible information in quantum mechanics', PRA 49, 668 (1994)", url: "https://doi.org/10.1103/PhysRevA.49.668" },
+      { label: "Cotler et al., 'Emergent quantum state designs from individual many-body wavefunctions', PRX Quantum 4, 010311 (2023)", url: "https://arxiv.org/abs/2103.03536" },
+      { label: "McGinley, Ho & Malz, 'Measurement-induced entanglement and complexity in random constant-depth 2D quantum circuits', PRX 15, 021059 (2025)",
+        url: "https://arxiv.org/abs/2410.23248" },
+      { label: "Napp, La Placa, Dalzell, Brandão & Harrow, 'Efficient classical simulation of random shallow 2D quantum circuits', PRX 12, 021021 (2022)",
+        url: "https://arxiv.org/abs/2001.00021" },
+      { label: "Mok, Haug, Ho & Preskill, 'Nature is stingy: Universality of Scrooge ensembles in quantum many-body systems', PRX 16, 041003 (2026)",
+        url: "https://arxiv.org/abs/2601.00266" },
+      { label: "Mark, Endres, Ippoliti, Ho & Choi, 'Deep thermalization and Hilbert space ergodicity' (2026 review preprint, v1)", url: "https://arxiv.org/abs/2609.30248" },
+    ] },
+
+  { id: "A44",
+    cat: "complexity",
+    horizon: "sharp",
+    reviewedAt: "2026-11-16",
+    title: "Classical algorithms versus decoded quantum interferometry on Optimal Polynomial Intersection",
+    statement: r`(Jordan et al. 2024, §5 and Remark 5.2.) *Optimal Polynomial Intersection* (OPI): for a prime $p$, $m=p-1$ and sets $F_y\subseteq\mathbb F_p$ with $|F_y|=\lfloor p/2\rfloor$ for each $y\in\mathbb F_p^{*}$, find a polynomial $Q\in\mathbb F_p[x]$ with $\deg Q<n$ that maximizes $s(Q)=\frac1m\,\#\{y\in\mathbb F_p^{*}:Q(y)\in F_y\}$. Decoded quantum interferometry (DQI) with Berlekamp–Massey decoding runs in quantum polynomial time and, on every instance, reaches the asymptotic expected fraction $\frac12+\sqrt{\frac{n}{2p}\big(1-\frac{n}{2p}\big)}$, about $0.7179$ at $n/p=1/10$. The best known classical polynomial-time algorithm (Prange-type: interpolate through $n$ chosen constraints) reaches $\frac12+\frac{n}{2p}$, that is $0.55$. At $n/p=1/10$, give a classical randomized polynomial-time algorithm reaching $s(Q)\ge0.55+\varepsilon$ for a fixed $\varepsilon>0$ with constant probability, on worst-case instances or on instances with independent uniformly random $F_y$; or prove that none exists under a standard cryptographic or complexity assumption.`,
+    definition: r`**Optimal Polynomial Intersection** is a max-LINSAT problem over the Reed–Solomon code: each evaluation point $y$ contributes one constraint $Q(y)\in F_y$. **Decoded quantum interferometry** prepares a superposition weighted by a polynomial in the constraint indicators, uses the quantum Fourier transform, and turns approximate optimization into syndrome decoding of the dual code, here a Reed–Solomon code decodable by Berlekamp–Massey. The resulting guarantee is the “semicircle law” above (Jordan, Shutty, Wootters, Zalcman, Schmidhuber, King, Isakov, Khattar and Babbush, [arXiv:2408.08292](https://arxiv.org/abs/2408.08292), Nature 646, 831 (2025)).
+
+OPI-type problems appeared earlier as candidates for verifiable quantum advantage: Yamakawa and Zhandry solve an exact-search version on *folded* Reed–Solomon codes with random-oracle constraints ([arXiv:2204.02063](https://arxiv.org/abs/2204.02063), J. ACM 71(3), 20 (2024)). Jordan et al. note that their algorithm does not apply at $n/p=1/10$, where solutions satisfying all constraints are statistically likely to exist (Remark 5.1); the open part is algorithmic. In Remark 5.2 they write that proving rigorous classical hardness for OPI seems challenging, and that showing classical hardness under standard cryptographic assumptions, in a regime where $|F_y|$ grows proportionally to $p$, would be very interesting. Kramer et al. (2026, §1) state that proving hardness for scalar OPI under standard assumptions “remains open”.`,
+    progress: r`- Yamakawa and Zhandry (2022) prove a verifiable exponential quantum advantage in the random-oracle model for exact search on folded Reed–Solomon instances ([arXiv:2204.02063](https://arxiv.org/abs/2204.02063)).
+- Jordan et al. (August 2024; Nature 2025) introduce DQI, prove the semicircle law, and compare $0.7179$ with Prange's $0.55$ at $n/p=1/10$. They explain why lattice attacks on cryptographic OPI variants do not apply in this regime ([arXiv:2408.08292](https://arxiv.org/abs/2408.08292v5), v5).
+- Khattar et al. (October 2025) optimize DQI circuits for OPI ([arXiv:2510.10967](https://arxiv.org/abs/2510.10967v1)); Rosmanis (January 2026) gives a nearly linear-time DQI algorithm for OPI ([arXiv:2601.15171](https://arxiv.org/abs/2601.15171v1)).
+- Sun and Wootters (April 2026) show that, on worst case instances with $|F_y|\approx p/2$, solutions beating the semicircle law exist when $n/m\ge0.6225$, and perfect ones when $n/m\ge0.7496$. The result is existential; it does not reach $n/m=1/10$ and gives no classical algorithm ([arXiv:2604.09533](https://arxiv.org/abs/2604.09533v1)).
+- Horinaga and Yamakawa (July 2026, revised October 2026) give a worst-case quantum algorithm beyond DQI, which finds a solution satisfying all constraints when the rate exceeds $0.75$ and $|F_y|\approx p/2$, and improve the existence threshold to $0.7158$ ([arXiv:2607.14650](https://arxiv.org/abs/2607.14650v2)).
+- Wu and Yang (October 2026) prove an unconditional quantum memory advantage in a streaming model, for a Hermite-interpolation generalization of OPI: DQI satisfies $93\%$ of constraints in polylogarithmic space, while any classical algorithm reaching $76\%$ needs polynomial space ([arXiv:2610.01902](https://arxiv.org/abs/2610.01902v2)). This bounds space, not time.
+- Kramer, Gil-Fuster, Jones, Eisert and Schreiber (October 2026) prove an unconditional separation in a query (oracle) model, for *folded* OPI with random acceptance sets accessed through membership oracles. At rate $R$, DQI reaches $\frac12\big(1+\sqrt{R(2-R)}\big)$, while any classical algorithm making at most $\exp(\theta M/\log M)$ queries exceeds $\frac{1+R}{2}+\eta$ only with probability $\exp(-cM)$. They leave hardness of scalar OPI open and name instantiating the oracle under computational assumptions as the next step ([arXiv:2610.02145](https://arxiv.org/abs/2610.02145v2)).
+- Mazumder and Niroula (October 2026) show that, under worst-case Hamming-error decoding, the DQI guarantee exceeds Prange completion by at most $(\sqrt2-1)/2$, a margin OPI attains asymptotically ([arXiv:2610.06753](https://arxiv.org/abs/2610.06753v1)).`,
+    residual: r`No classical polynomial-time algorithm is known to beat $\frac12+\frac{n}{2p}$ on scalar OPI at $n/p=1/10$, and no hardness result covers scalar OPI with explicit acceptance sets. Sub-targets: a classical algorithm beating $0.55+\varepsilon$ on random $F_y$; a lower bound against a restricted class (low-degree, statistical-query or stable algorithms); an instantiation of the folded-OPI oracle separation under a cryptographic assumption, which Kramer et al. name as the open direction. Classical attacks on sparse random max-$k$-XORSAT instances of DQI (spin-glass and decoder-threshold obstructions) do not concern the Reed–Solomon structure of OPI.`,
+    evidence: [
+      { kind: "published",
+        role: "progress",
+        summary: "DQI with Berlekamp–Massey decoding reaches 1/2 + √((n/2p)(1 − n/2p)) on every OPI instance, about 0.7179 at n/p = 1/10, versus 0.55 for the best known classical (Prange-type) algorithm; classical hardness left open (Nature 646, 831, 2025).",
+        url: "https://arxiv.org/abs/2408.08292v5",
+        date: "2025-10-22",
+        version: "v5" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Oracle separation for folded OPI with random acceptance sets behind membership oracles: DQI reaches (1 + √(R(2−R)))/2, while classical algorithms with exp(θM/log M) queries cannot beat (1+R)/2 + η; scalar OPI hardness stated as open.",
+        url: "https://arxiv.org/abs/2610.02145v2",
+        date: "2026-10-02",
+        version: "v2" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Unconditional quantum memory advantage in a streaming model for a Hermite generalization of OPI (93% with polylog space versus polynomial space for 76% classically).",
+        url: "https://arxiv.org/abs/2610.01902v2",
+        date: "2026-10-03",
+        version: "v2" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Worst-case OPI solutions beating the semicircle law exist for rate n/m ≥ 0.6225; existential only, not in the n/p = 1/10 regime.",
+        url: "https://arxiv.org/abs/2604.09533v1",
+        date: "2026-04-10",
+        version: "v1" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Worst-case quantum algorithm beyond DQI: perfect OPI solutions for rate above 0.75 with half-size acceptance sets; existence threshold improved to 0.7158.",
+        url: "https://arxiv.org/abs/2607.14650v2",
+        date: "2026-10-22",
+        version: "v2" },
+    ],
+    provenance: [
+      { summary: "Kramer et al.'s AI disclosure (v2): the authors gave the question and setting to OpenAI's GPT-5.6 Sol, which proposed candidate proof strategies and draft theorem statements; the central proof strategy used in the paper emerged through that exchange. GPT-5.6 Sol, GPT-6 Astra and Anthropic's Claude Opus 5.5 then helped check calculations, compare notation with cited work and restructure the manuscript. The authors state that they verified and substantially revised all model-generated material.",
+        url: "https://arxiv.org/abs/2610.02145v2",
+        version: "v2" },
+    ],
+    relations: [
+      { id: "A13", type: "related" },
+      { id: "A45", type: "related" },
+    ],
+    refs: [
+      { label: "Jordan et al., 'Optimization by Decoded Quantum Interferometry', Nature 646, 831 (2025)", url: "https://arxiv.org/abs/2408.08292" },
+      { label: "Yamakawa & Zhandry, 'Verifiable Quantum Advantage without Structure', J. ACM 71(3), 20 (2024)", url: "https://arxiv.org/abs/2204.02063" },
+      { label: "Kramer, Gil-Fuster, Jones, Eisert & Schreiber, 'A provable quantum advantage for approximate optimization via decoded quantum interferometry' (2026 preprint)",
+        url: "https://arxiv.org/abs/2610.02145" },
+      { label: "Sun & Wootters, 'On Worst-Case Optimal Polynomial Intersection' (2026 preprint)", url: "https://arxiv.org/abs/2604.09533" },
+      { label: "Horinaga & Yamakawa, 'Worst-Case Quantum Algorithm for Optimal Polynomial Intersection Beyond Decoded Quantum Interferometry' (2026 preprint)",
+        url: "https://arxiv.org/abs/2607.14650" },
+      { label: "Wu & Yang, 'Exponential quantum advantages for decoded quantum interferometry in the streaming setting' (2026 preprint)", url: "https://arxiv.org/abs/2610.01902" },
+    ] },
+
+  { id: "A45",
+    cat: "complexity",
+    horizon: "sharp",
+    reviewedAt: "2026-11-16",
+    title: "The QAOA fixed-angle conjecture on 3-regular graphs",
+    statement: r`(Wurtz–Love 2021; Wurtz–Lykov 2021.) For MaxCut on a $d$-regular graph $G$, let $F_G(\boldsymbol\beta,\boldsymbol\gamma)$ be the expected cut of depth-$p$ QAOA and $C_G=F_G/F_{\max}(G)$ its approximation ratio. Let $f^{\rm tree}_{p,d}(\boldsymbol\beta,\boldsymbol\gamma)$ be the expected fraction of cut edges on a $d$-regular graph of girth larger than $2p+1$, which depends only on the depth-$p$ tree neighbourhood of an edge; let $(\boldsymbol\beta^{\rm tree}_{p,d},\boldsymbol\gamma^{\rm tree}_{p,d})$ maximize it, with maximum $f^{{\rm tree},*}_{p,d}$. *Fixed-angle conjecture for $d=3$:* for every $p$ and every $3$-regular graph $G$, $C_G(\boldsymbol\beta^{\rm tree}_{p,3},\boldsymbol\gamma^{\rm tree}_{p,3})\ge f^{{\rm tree},*}_{p,3}$. Prove it for $p=3$, which would give a worst-case ratio of at least $0.7924$, or for all $p$; or find a $3$-regular counterexample. The weaker *large-loop conjecture* replaces the tree angles by the optimal angles of $G$.`,
+    definition: r`**QAOA** at depth $p$ alternates $p$ cost and mixer layers with angles $\boldsymbol\gamma,\boldsymbol\beta$ (Farhi, Goldstone and Gutmann, [arXiv:1411.4028](https://arxiv.org/abs/1411.4028)). Each edge term of $F_G$ depends only on the radius-$p$ neighbourhood of the edge, so on graphs without short cycles the performance equals the tree value $f^{\rm tree}_{p,d}$. The conjecture says that short cycles can only help, even with angles tuned for the tree. Wurtz and Love proved the $p=2$ case for $3$-regular graphs and conjectured the hierarchy for all $p$ ([arXiv:2010.11209](https://arxiv.org/abs/2010.11209), Phys. Rev. A 103, 042612 (2021)); Wurtz and Lykov named and tested the fixed-angle conjecture ([arXiv:2107.00677](https://arxiv.org/abs/2107.00677)). If it holds, they note that QAOA would have a larger performance guarantee than the Goemans–Williamson algorithm on $3$-regular graphs for $p\ge11$. This name should not be confused with Quantum Max-Cut, a different Hamiltonian problem.
+
+A separate conjecture of Basso, Farhi, Marwaha, Villalonga and Zhou says that QAOA reaches the Parisi value as $p\to\infty$ on the Sherrington–Kirkpatrick model and, equivalently, on large-girth regular graphs in the large-degree limit ([arXiv:2110.14206](https://arxiv.org/abs/2110.14206)). A proof in the thermodynamic-first, fixed-angle formulation, with no bound on the depth, was announced on 25 September 2026 in an unpublished preprint in the GitHub repository [openai/math](https://github.com/openai/math) (item 281, with a Lean development). It is not on arXiv and has not been assessed here. It does not concern $3$-regular graphs at fixed degree.`,
+    progress: r`- Farhi, Goldstone and Gutmann (2014) show that depth-$1$ QAOA has approximation ratio at least $0.6924$ on every $3$-regular graph ([arXiv:1411.4028](https://arxiv.org/abs/1411.4028)).
+- Wurtz and Love (2020; Phys. Rev. A 2021) prove a worst-case ratio of $0.7559$ at $p=2$ on $3$-regular graphs, attained by graphs without cycles of length at most $5$. They conjecture that at depth $p$ the worst case is attained by graphs without cycles of length at most $2p+1$, which would give $0.7924$ at $p=3$ ([arXiv:2010.11209](https://arxiv.org/abs/2010.11209v2)).
+- Wurtz and Lykov (2021) compute tree-optimal angles with tensor networks and give numerical evidence for the fixed-angle conjecture for $p<12$ ([arXiv:2107.00677](https://arxiv.org/abs/2107.00677v2)).
+- Binkowski (September 2026) proves the fixed-angle conjecture for $p=1$ and every $d$, and for $d\le2$ and every $p$. He refutes its general form at $p=2$, $d=9$: on $K_{9,9}$ the tree-optimal angles give a ratio below $f^{{\rm tree},*}_{2,9}$ by about $0.0029$, certified with interval arithmetic. $K_{9,9}$ is not a counterexample to the large-loop conjecture. He writes that this has no direct consequence for the $3$-regular case and that hope remains for low $p$ and low $d$ ([arXiv:2609.27703](https://arxiv.org/abs/2609.27703v2)).
+- Morone, Rawat and Sels (October 2026) show that a classical local algorithm (VIRAL) beats the QAOA values on large-girth $3$-regular graphs for every $p\ge4$, and bound the limiting maximum cut fraction between $0.9127$ and $0.92386$ ([arXiv:2610.17236](https://arxiv.org/abs/2610.17236v1)). The conjecture is about a worst-case guarantee, not a quantum advantage.`,
+    residual: r`For $d=3$ the conjecture is proved only for $p\le2$. Open: $p=3$ (Wurtz–Love's conditional $0.7924$), every $p$, and the large-loop variant. For $4\le d\le8$ the fixed-angle conjecture is open already at $p=2$. A natural route for $p=3$ is to enumerate the possible depth-$3$ neighbourhoods in $3$-regular graphs and certify the inequality on each with interval arithmetic, as in the $p=2$ and $K_{9,9}$ computations; a certified search for a $3$-regular counterexample among graphs dense in short even cycles is the other direction.`,
+    evidence: [
+      { kind: "published",
+        role: "progress",
+        summary: "Depth-2 QAOA has worst-case approximation ratio 0.7559 on 3-regular graphs; worst-case graphs have no cycles of length ≤ 5; conjectured hierarchy gives 0.7924 at p = 3 (Phys. Rev. A 103, 042612, 2021).",
+        url: "https://arxiv.org/abs/2010.11209v2",
+        date: "2021-02-02",
+        version: "v2" },
+      { kind: "numerical",
+        role: "progress",
+        summary: "Numerical evidence for the fixed-angle conjecture on regular graphs for p < 12, with tree-optimal angles computed by tensor networks.",
+        url: "https://arxiv.org/abs/2107.00677v2",
+        date: "2021-07-19",
+        version: "v2" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Fixed-angle conjecture proved for p = 1 (all d) and d ≤ 2 (all p); refuted at p = 2, d = 9 on K₉,₉ by a certified interval-arithmetic computation; large-loop conjecture and the 3-regular case untouched.",
+        url: "https://arxiv.org/abs/2609.27703v2",
+        date: "2026-09-25",
+        version: "v2" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Classical local algorithm VIRAL exceeds QAOA cut fractions on large-girth 3-regular graphs for p ≥ 4; limiting maximum cut fraction between 0.9127 and 0.92386.",
+        url: "https://arxiv.org/abs/2610.17236v1",
+        date: "2026-10-12",
+        version: "v1" },
+    ],
+    provenance: [
+      { summary: "Binkowski discloses use of Claude Opus 5 and Claude Sonnet 5: Opus 5 suggested examining K_{d,d} and found identities used in the p = 1 and d ≤ 2 proofs; Sonnet 5 wrote an initial numerical proof that was flawed and was replaced by an interval-arithmetic version. The author reviewed and refactored the code and wrote the paper.",
+        url: "https://arxiv.org/abs/2609.27703v2",
+        version: "v2" },
+    ],
+    relations: [
+      { id: "A44", type: "related" },
+    ],
+    refs: [
+      { label: "Farhi, Goldstone & Gutmann, 'A Quantum Approximate Optimization Algorithm' (2014)", url: "https://arxiv.org/abs/1411.4028" },
+      { label: "Wurtz & Love, 'MAXCUT QAOA performance guarantees for p > 1', Phys. Rev. A 103, 042612 (2021)", url: "https://arxiv.org/abs/2010.11209" },
+      { label: "Wurtz & Lykov, 'The fixed angle conjecture for QAOA on regular MaxCut graphs' (2021)", url: "https://arxiv.org/abs/2107.00677" },
+      { label: "Binkowski, 'Refuting the QAOA fixed-angle conjecture' (2026 preprint)", url: "https://arxiv.org/abs/2609.27703" },
+      { label: "Morone, Rawat & Sels, 'Whither quantum advantage? New classical lower bounds for Max-Cut on large-girth 3-regular graphs' (2026 preprint)",
+        url: "https://arxiv.org/abs/2610.17236" },
+      { label: "Basso, Farhi, Marwaha, Villalonga & Zhou, 'The QAOA at High Depth for MaxCut on Large-Girth Regular Graphs and the SK Model', TQC 2022",
+        url: "https://arxiv.org/abs/2110.14206" },
+    ] },
+
+  { id: "A46",
+    cat: "complexity",
+    horizon: "sharp",
+    status: "claimed-solved",
+    reviewedAt: "2026-11-16",
+    title: "Quantum spatial search on the two-dimensional grid",
+    statement: r`(Aaronson and Ambainis 2003, Section 8.) A quantum robot moves on the $\sqrt n\times\sqrt n$ grid: each time step is a unitary that is local with respect to the grid, and the oracle is queried only at the vertex where amplitude sits. What is the time complexity of finding a unique marked vertex with bounded error? The known bounds were $\Omega(\sqrt n)$ and $O(\sqrt{n\log n})$. Either give an $O(\sqrt n)$ algorithm, or prove that the remaining $\sqrt{\log n}$ factor is necessary.`,
+    definition: r`**Spatial search.** Aaronson and Ambainis define quantum query algorithms on a graph: the robot's state is a superposition over vertices, and moving amplitude between neighbouring vertices costs one step. They introduce C-local, Z-local and H-local unitaries as candidate meanings of “local”. They search the $d$-dimensional hypercube in time $O(\sqrt n)$ for $d\ge3$ and $O(\sqrt n\log^{3/2}n)$ for $d=2$ (“Quantum search of spatial regions”, Theory of Computing 1 (2005), [arXiv:quant-ph/0303041](https://arxiv.org/abs/quant-ph/0303041)). Section 8 of the first version (March 2003) asks: “can the $O(\sqrt n\operatorname{polylog}n)$ bound for search on a 2-D grid be improved, perhaps even to $O(\sqrt n)$?”. The published version asks “what is the complexity of finding a unique marked vertex on a 2-D square grid?” and, citing the $O(\sqrt n\log n)$ walk of Ambainis, Kempe and Rivosh, whether the remaining logarithmic factor can be removed. The Grover lower bound $\Omega(\sqrt n)$ applies on every graph.
+
+This entry is distinct from A11. A11 is the Aaronson–Ambainis influential-variable conjecture on bounded low-degree polynomials, from a later paper (Theory of Computing 10 (2014)); the two share authors but not content.`,
+    progress: r`- In 2003–2004, Childs and Goldstone gave continuous-time walk searches; with an added spin (Dirac) degree of freedom they reached time $O(\sqrt N\log N)$ in $d=2$ ([arXiv:quant-ph/0405120](https://arxiv.org/abs/quant-ph/0405120)).
+- In 2004, Ambainis, Kempe and Rivosh searched the grid in $O(\sqrt N\log N)$ steps with a coined discrete-time walk and amplitude amplification ([arXiv:quant-ph/0402107](https://arxiv.org/abs/quant-ph/0402107), SODA 2005).
+- In 2008, Tulsi reached $O(\sqrt{N\log N})$ steps with an ancilla-controlled walk, stating in the abstract that whether the $O(\sqrt N\log N)$ bound could be improved was an open question (PRA 78, 012310 (2008), [arXiv:0801.0497](https://arxiv.org/abs/0801.0497)). Ambainis, Bačkurs, Nahimovs, Ozols and Rivosh matched this bound without amplitude amplification ([arXiv:1112.3337](https://arxiv.org/abs/1112.3337)).
+- Until October 2026, no lower bound beyond $\Omega(\sqrt N)$ was known for general local algorithms on the grid; stronger bounds existed only for specific walk families.`,
+    claim: r`**Weikang Li, [“Electrostatic Limits on Quantum Spatial Search”](https://arxiv.org/abs/2610.23560v1)** (arXiv:2610.23560, v1, 16 October 2026).
+
+What it claims:
+- A negative answer: on the $L\times L$ torus, $N=L^2$, any algorithm in the spatial query model with average success probability $p$ needs at least $(1-\sqrt{1-p})\sqrt{N\ln N/(8\pi)}\,(1+o(1))$ local steps, so $\Omega(\sqrt{N\log N})$, and Tulsi's algorithm is asymptotically optimal.
+- The model is generous to the algorithm: queries are free (only local steps are counted), each vertex carries a workspace of arbitrary finite dimension, and the steps may be any Z-local unitaries in Aaronson and Ambainis's terminology, which include C-local ones. H-local steps and continuous-time nearest-neighbour Hamiltonians are covered with the integrated hopping strength in place of the step count (Supplement, Sections S1.2 and S8).
+- The proof weights the overlap between the runs with and without the mark by an electrostatic potential centred on the marked vertex; the bound is set by its self-potential (an effective resistance), which grows like $\ln N$ in the plane. The bound also holds on the open $L\times L$ lattice, whose edges are torus edges, and Tulsi's walk runs there with at most twice as many steps (Supplement, Section S5).
+- For $k$ marked vertices the bound depends on their arrangement through a capacitance: $\Theta(\sqrt{(N/k)\log(N/k)})$ for periodic subgrids, and $\Theta(\sqrt{N\log(N/k)})$ in the worst case with known $k$ (Theorem S6.5).
+
+Caveats:
+- A single preprint, not peer reviewed and not yet independently assessed. Hence “Claimed solved” rather than “Solved”.
+- The framework excludes several walker models: multiple walkers that couple to the oracle, long-range hops (which change the graph), nonlinear dynamics and oracle fields extending beyond the marked vertices.`,
+    residual: r`If the claim holds, the unique-mark question is settled at $\Theta(\sqrt{N\log N})$. The optimal constant remains open: Tulsi's walk at $L=1024$ uses about 7.6 times the paper's sharpened bound. Matching bounds for an unknown number of marked vertices, for dense or freshly random marked sets, and for graphs that are not vertex-transitive (fractals, random networks) are listed as open by the author. Aaronson and Ambainis's other Section 8 questions, on the relations among C-, Z- and H-locality and the conjectured $\Theta(n^{3/4})$ bound for the “every row has a marked vertex” function on the grid, are not addressed.`,
+    evidence: [
+      { kind: "preprint",
+        role: "claimed-solution",
+        summary: "Lower bound of Ω(√(N log N)) local steps for finding a unique marked vertex on the two-dimensional lattice, for Z-local steps with free queries and unbounded local memory, and for continuous-time nearest-neighbour Hamiltonians; Tulsi's O(√(N log N)) walk is then optimal. Single-author preprint, pending assessment.",
+        url: "https://arxiv.org/abs/2610.23560v1",
+        date: "2026-10-16",
+        version: "v1" },
+      { kind: "published",
+        role: "progress",
+        summary: "Ancilla-controlled quantum walk finding a unique marked vertex on the √N×√N grid in O(√(N log N)) steps, improving the O(√N log N) coined-walk bound.",
+        url: "https://doi.org/10.1103/PhysRevA.78.012310",
+        date: "2008-07-09" },
+    ],
+    provenance: [
+      { summary: "The acknowledgments state: “We acknowledge the use of GPT-6 Astra and Opus-5.5 to assist with theoretical calculations. We checked all derivations and numerical results and take full responsibility for the content.”",
+        url: "https://arxiv.org/abs/2610.23560v1",
+        version: "v1" },
+    ],
+    relations: [
+      { id: "A34", type: "related" },
+      { id: "A23", type: "related" },
+    ],
+    refs: [
+      { label: "Aaronson & Ambainis, 'Quantum search of spatial regions', Theory of Computing 1 (2005), Section 8", url: "https://arxiv.org/abs/quant-ph/0303041" },
+      { label: "Ambainis, Kempe & Rivosh, 'Coins make quantum walks faster', SODA 2005", url: "https://arxiv.org/abs/quant-ph/0402107" },
+      { label: "Childs & Goldstone, 'Spatial search and the Dirac equation', PRA 70, 042312 (2004)", url: "https://arxiv.org/abs/quant-ph/0405120" },
+      { label: "Tulsi, 'Faster quantum-walk algorithm for the two-dimensional spatial search', PRA 78, 012310 (2008)", url: "https://arxiv.org/abs/0801.0497" },
+      { label: "Ambainis, Bačkurs, Nahimovs, Ozols & Rivosh, 'Search by quantum walks on two-dimensional grid without amplitude amplification' (2011 preprint)",
+        url: "https://arxiv.org/abs/1112.3337" },
+      { label: "Li, 'Electrostatic Limits on Quantum Spatial Search' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.23560v1" },
+    ] },
+
+  { id: "A47",
+    cat: "complexity",
+    horizon: "sharp",
+    status: "claimed-solved",
+    reviewedAt: "2026-11-16",
+    title: "Near-linear gate count for lattice Lindbladian simulation",
+    statement: r`(Mizuta 2026, Sections I, II.2 and VI.0.2.) Let $\mathcal L=\sum_e\mathcal L_e$ be a Lindbladian on $N$ sites of a lattice of fixed dimension, with finite-range Hamiltonian and jump terms of bounded norm; the jump operators need not commute or be Hermitian. Is there a circuit of $O(Nt\,\operatorname{polylog}(Nt/\varepsilon))$ one- and two-qubit gates that approximates $e^{t\mathcal L}$ within $\varepsilon$ in diamond norm? This would match the $\tilde\Omega(Nt)$ lower bound inherited from lattice Hamiltonians, as the Haah–Hastings–Kothari–Low (HHKL) algorithm does for Hamiltonians.`,
+    definition: r`**Lattice Lindbladian simulation.** For finite-range lattice Hamiltonians, HHKL decompose $e^{-iHt}$ into local blocks using Lieb–Robinson bounds. This gives $O(Nt\,\operatorname{polylog}(Nt/\varepsilon))$ gates, and they prove a matching $\Omega(Nt)$ lower bound for piecewise-constant lattice Hamiltonians ([arXiv:1801.03922](https://arxiv.org/abs/1801.03922), FOCS 2018). The decomposition uses backward evolutions, which are not completely positive for dissipative dynamics. General Lindbladian algorithms based on linear combinations of unitaries (Cleve and Wang, [arXiv:1612.09512](https://arxiv.org/abs/1612.09512); Li and Wang, [arXiv:2212.02051](https://arxiv.org/abs/2212.02051)) have near-optimal query complexity but cost about $N^2t$ gates on a lattice.
+
+Mizuta poses the question in “Lattice Lindbladian simulation by patching and merging” ([arXiv:2609.26372](https://arxiv.org/abs/2609.26372v1), 22 September 2026). He calls it “a long-standing open problem whether or how we can achieve the gate count close to the lower bound $\tilde\Omega(Nt)$ for simulating broad classes of Lindbladians” (Section II.2). Section VI.0.2 asks whether $\tilde O(Nt)$ “can be achieved only for some limited Lindbladians, or how we can construct the near-optimal algorithm for generic Lindbladians if one exists.”`,
+    progress: r`- Before September 2026, the best size dependence for generic lattice Lindbladians was $(Nt)^{3/2}\operatorname{polylog}$, from second-order product formulas with extrapolation, and only for observables. Near-linear gate counts were known only for mutually commuting Hermitian jumps with QRAM access, as surveyed by Mizuta.
+- In September 2026, Wang and Ye ([arXiv:2609.17490](https://arxiv.org/abs/2609.17490v2)) and Chen, Gao, Wang and Zhou ([arXiv:2609.18757](https://arxiv.org/abs/2609.18757v2)) reached optimal additive query complexity in the block-encoding model. Mizuta notes that this alone gives $\tilde O(N^2t)$ gates on a lattice, since the block-encoding normalization grows like $N$.
+- On 22 September 2026 (v1), Mizuta proved $\tilde O(Nt)$ gates for sparsely dissipative systems, whose dissipative domains are small and far apart, including boundary-driven chains. For generic one-dimensional Lindbladians he gets $\tilde O((Nt)^{4/3})$ gates per sample for time-evolved observables, and $\tilde O((Nt)^{3/2-1/(4d+2)})$ in dimension $d$ ([arXiv:2609.26372](https://arxiv.org/abs/2609.26372v1)).`,
+    claim: r`Three preprints, posted within ten days and apparently independently, claim the general case.
+
+**Jacob Kitchen, [“Causal Query Compression for Lindblad Dynamics: Optimal Queries and Nearly Linear Local Simulation”](https://arxiv.org/abs/2609.31312v1)** (arXiv:2609.31312, v1, 25 September 2026; single author).
+- Theorem 6.1: for finite-range, possibly time-dependent Lindbladians on $n$ sites in any fixed spatial dimension, with fixed local parameters, piecewise Hölder time dependence (variation bound $K_t$, at most $B$ breakpoints per term) and efficient coherent evaluation of the local matrices, the channel is approximated within $\varepsilon$ in diamond norm with $O(n(T+1)\operatorname{polylog}X)$ one- and two-qubit gates, where $X=\max\{e,n(T+1)(1+K_t+B)/\varepsilon\}$. The jumps need not commute. The depth is $(T+1)\operatorname{polylog}X$, with $n\operatorname{polylog}X$ working qubits.
+- The gate count includes evaluation, arithmetic, selection, routing and bath storage. Section 1.2 states: “No matching local gate lower bound is claimed.”
+
+**Rahul Trivedi, Xiehang Yu and Daniel Malz, [“Near-optimal quantum simulation of lattice Lindbladian dynamics”](https://arxiv.org/abs/2609.36203v1)** (arXiv:2609.36203, v1, 28 September 2026).
+- Theorem 2.1: $O(Nt\,\operatorname{polylog}(Nt/\varepsilon))$ geometrically local gates and $O(\operatorname{polylog}(Nt/\varepsilon))$ ancillas per site, with diamond-norm error $\varepsilon$, using a dilation in which the environmental excitations are stored in compressed form. Section 3.7 extends this to any fixed dimension, and to piecewise differentiable time dependence, with depth $O(t\,\operatorname{polylog}(Nt/\varepsilon))$.
+
+**Zheyu Shen, Yusen Wu, Xiao Yuan and Yukun Zhang, [“Shallow Quantum Circuits for Geometrically Local Lindblad Dynamics”](https://arxiv.org/abs/2610.05362v1)** (arXiv:2610.05362, v1, 4 October 2026).
+- For time-independent finite-range Lindbladians with bounded local strength and noncommuting jumps on a constant-dimensional lattice: gate count $O(nT\operatorname{polylog}(nT/\varepsilon))$ and depth $O(T\operatorname{polylog}(nT/\varepsilon))$, for $T\ge1$.
+- They also claim lower bounds of $\Omega(nT)$ expected gates and $\Omega(T)$ depth from purely dissipative transport processes, and a depth lower bound of $\Omega(\log n/\log\log n)$ at fixed time and small fixed error.
+- Their note added says the work was independent of Mizuta's and of Trivedi, Yu and Malz's, and that the latter obtain the same leading scaling. This is a mention, not an assessment. None of the three papers cites Kitchen.
+
+Caveats:
+- All three are preprints, not peer reviewed and not independently assessed. Hence “Claimed solved” rather than “Solved”. Agreement among independent constructions is not a verification.
+- The input models differ: efficient coherent evaluation of the local matrices (Kitchen), explicit local terms with bounded norms (Trivedi, Yu and Malz; Shen et al.). The polylogarithmic exponents are not optimized.`,
+    residual: r`If the claims hold, the gate-count exponent is settled for finite-range lattice Lindbladians. Several questions remain. How many ancillas does near-optimal simulation need? Trivedi, Yu and Malz use $O(t\,\operatorname{polylog})$ per site in total without refreshing, while the channel admits a dilation with $O(1)$ ancillas per site. Mizuta asks how to simulate long-range Lindbladians with power-law decay. The polylogarithmic factors could be reduced. An $\Omega(Nt)$ gate lower bound specific to purely dissipative local dynamics is posed by Trivedi, Yu and Malz and claimed by Shen et al. Time-dependent generators are covered by Kitchen, and by Trivedi, Yu and Malz under piecewise smoothness assumptions, but not by Shen et al.`,
+    evidence: [
+      { kind: "preprint",
+        role: "claimed-solution",
+        summary: "O(n(T+1) polylog) one- and two-qubit gates for finite-range, piecewise Hölder time-dependent Lindbladians with noncommuting jumps on lattices of fixed dimension, diamond-norm error, given efficient coherent evaluation of local matrices; also optimal additive query complexity in the block-encoding model. Single-author preprint, pending assessment.",
+        url: "https://arxiv.org/abs/2609.31312v1",
+        date: "2026-09-25",
+        version: "v1" },
+      { kind: "preprint",
+        role: "claimed-solution",
+        summary: "O(Nt polylog(Nt/ε)) geometrically local gates and polylogarithmic ancillas per site for geometrically local lattice Lindbladians, diamond-norm error; extended to fixed dimension and piecewise-differentiable time dependence. Pending assessment.",
+        url: "https://arxiv.org/abs/2609.36203v1",
+        date: "2026-09-28",
+        version: "v1" },
+      { kind: "preprint",
+        role: "claimed-solution",
+        summary: "Gate count O(nT polylog(nT/ε)) and depth O(T polylog) for time-independent finite-range Lindbladians with noncommuting jumps on constant-dimensional lattices, with claimed Ω(nT) gate and Ω(T) depth lower bounds from purely dissipative dynamics. Pending assessment.",
+        url: "https://arxiv.org/abs/2610.05362v1",
+        date: "2026-10-04",
+        version: "v1" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Poses the question; near-optimal Õ(Nt) gates for sparsely dissipative lattice Lindbladians and Õ((Nt)^{4/3}) per sample for time-evolved observables under generic one-dimensional Lindbladians.",
+        url: "https://arxiv.org/abs/2609.26372v1",
+        date: "2026-09-22",
+        version: "v1" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Optimal additive query complexity for Lindbladian simulation in the block-encoding model, with gate overhead linear in the query count; on a lattice this gives about N²t gates.",
+        url: "https://arxiv.org/abs/2609.18757v2",
+        date: "2026-11-09",
+        version: "v2" },
+    ],
+    provenance: [
+      { summary: "Kitchen's acknowledgment states that AI-assisted tools were used for limited editorial support in refining the prose, and that the mathematical arguments, results and conclusions are the author's.",
+        url: "https://arxiv.org/abs/2609.31312v1",
+        version: "v1" },
+      { summary: "Trivedi, Yu and Malz acknowledge OpenAI's GPT-5 (Sol) for the proofs in Section 3.5.2: it generated a possible compression scheme, which the authors checked, simplified and rewrote. LLMs otherwise assisted only with editing; the authors take responsibility for correctness.",
+        url: "https://arxiv.org/abs/2609.36203v1",
+        version: "v1" },
+      { summary: "Shen, Wu, Yuan and Zhang state that the core ideas were theirs, and that proofs and manuscript were developed through multiple rounds of interaction with GPT-5.6 and GPT-6, which assisted with calculations, proof development and writing.",
+        url: "https://arxiv.org/abs/2610.05362v1",
+        version: "v1" },
+      { summary: "Mizuta states that AI tools assisted with proofreading, checking references and identifying potential issues in definitions and proofs; ideas, proofs and the initial manuscript are the author's.",
+        url: "https://arxiv.org/abs/2609.26372v1",
+        version: "v1" },
+    ],
+    relations: [
+      { id: "O10", type: "related" },
+    ],
+    refs: [
+      { label: "Mizuta, 'Lattice Lindbladian simulation by patching and merging' (2026 preprint), Sections II.2 and VI.0.2", url: "https://arxiv.org/abs/2609.26372" },
+      { label: "Haah, Hastings, Kothari & Low, 'Quantum algorithm for simulating real time evolution of lattice Hamiltonians', FOCS 2018; SIAM J. Comput. special section",
+        url: "https://arxiv.org/abs/1801.03922" },
+      { label: "Cleve & Wang, 'Efficient Quantum Algorithms for Simulating Lindblad Evolution' (2016 preprint)", url: "https://arxiv.org/abs/1612.09512" },
+      { label: "Li & Wang, 'Simulating Markovian open quantum systems using higher-order series expansion' (2022 preprint)", url: "https://arxiv.org/abs/2212.02051" },
+      { label: "Kitchen, 'Causal Query Compression for Lindblad Dynamics' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.31312v1" },
+      { label: "Trivedi, Yu & Malz, 'Near-optimal quantum simulation of lattice Lindbladian dynamics' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.36203v1" },
+      { label: "Shen, Wu, Yuan & Zhang, 'Shallow Quantum Circuits for Geometrically Local Lindblad Dynamics' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.05362v1" },
+    ] },
+
+  { id: "A48",
+    cat: "complexity",
+    horizon: "incremental",
+    status: "improved",
+    reviewedAt: "2026-11-16",
+    title: "Polynomials achievable by multivariable QSP",
+    statement: r`(Rossi and Chuang 2022; Ito, Mori, Sakamoto and Fujii 2026, Section 5.) In $m$-variable quantum signal processing (M-QSP), a pair $(P,Q)$ of $m$-variable Laurent polynomials is achievable in $n$ steps if $\begin{pmatrix}P&Q\\-Q^*&P^*\end{pmatrix}=e^{i\phi_0\sigma_z}\prod_{k=1}^nA(a_{s_k})e^{i\phi_k\sigma_z}$ for some phases $\phi_k\in\mathbb R$ and variable sequence $s_k\in\{1,\dots,m\}$. Here $A(a)$ is the $X$-rotation with entries $(a\pm a^{-1})/2$ and $a_j\in\mathbb T$. For $m\ge2$, give a concise algebraic necessary and sufficient condition for achievability, analogous to the parity and $|P|^2+|Q|^2=1$ conditions of univariate QSP. Characterize the polynomials $P$ alone that admit some complementary $Q$.`,
+    definition: r`**Quantum signal processing.** Univariate QSP interleaves one signal rotation with fixed processing rotations. A polynomial pair is achievable if and only if it has definite parity, the right degree and $|P|^2+|Q|^2=1$ on the circle. This characterization underlies QSVT (Low and Chuang, PRL 118, 010501 (2017), [arXiv:1606.02685](https://arxiv.org/abs/1606.02685); Gilyén, Su, Low and Wiebe, STOC 2019, [arXiv:1806.01838](https://arxiv.org/abs/1806.01838)). Rossi and Chuang introduced M-QSP with several commuting signal rotations and stated a characterization that relied on a conjecture (Quantum 6, 811 (2022), [arXiv:2205.06261](https://arxiv.org/abs/2205.06261)). Multivariate Fejér–Riesz factorization fails in general, so the univariate proof does not carry over.
+
+The question is restated as open by Ito, Mori, Sakamoto and Fujii (Quantum 10, 2102 (2026), [arXiv:2410.02332](https://arxiv.org/abs/2410.02332)). Their outlook asks for an algebraic characterization “not by an algorithmic condition”, and for complementary polynomials; they write that “it remains unknown which polynomials M-QSP can implement”. Laneve (Quantum 10, 2025 (2026), [arXiv:2506.20484](https://arxiv.org/abs/2506.20484)) writes that the achievable class “seems hard to characterize”. Jing, Wang, Yu and Zhang call the characterization open in October 2026 ([arXiv:2610.03393](https://arxiv.org/abs/2610.03393v1)).`,
+    progress: r`- Mori, Mizuta and Fujii found inconsistencies in Rossi and Chuang's main theorem. A counterexample to their Conjecture 2.1 had been presented at QIP 2023. Mori, Mizuta and Fujii proposed revised necessary conditions and showed that these cannot be sufficient (Quantum 8, 1512 (2024), [arXiv:2310.00918](https://arxiv.org/abs/2310.00918)).
+- Németh, Kövér, Kulcsár, Miklósi and Gilyén extended Haah's univariate characterization to homogeneous bivariate commuting QSP, and to an inhomogeneous variant with degree at most 1 in one variable. They gave a counterexample with degree 2 in both variables that refutes the Rossi–Chuang characterization for a related class ([arXiv:2312.09072](https://arxiv.org/abs/2312.09072), December 2023).
+- Laneve and Wolf gave simpler necessary conditions and the first sufficient condition for a generally inhomogeneous multivariate polynomial, in a slightly different formalism (Quantum 9, 1641 (2025), [arXiv:2407.20823](https://arxiv.org/abs/2407.20823)).
+- Ito, Mori, Sakamoto and Fujii gave a classical algorithm, polynomial in $m$ and $n$, that decides whether a given pair $(P,Q)$ is achievable in $n$ steps and outputs the phases (Theorem 1). Its answer “True” is necessary and sufficient, so the question is settled algorithmically for given pairs. They note that no algebraic condition is known, and the algorithm needs $Q$ as input (Quantum 10, 2102 (2026), [arXiv:2410.02332](https://arxiv.org/abs/2410.02332)).
+- Laneve recast QSP as state conversion. A feasible adversary-bound solution in “triangular form” yields an M-QSP protocol (Theorem 4.13), and the set of protocols for $P$ is described as a subset of a semidefinite cone (Corollary 4.14). He conjectures that every $d$-dimensional target achievable by M-QSP admits a protocol over $SU(d)$ (Conjecture 4.15) (Quantum 10, 2025 (2026), [arXiv:2506.20484](https://arxiv.org/abs/2506.20484)).
+- In October 2026, three preprints implemented multivariate polynomial transformations in broader query models with extra workspace and arbitrary interleaved unitaries. Low characterizes the transfer functions of finite causally ordered query circuits ([arXiv:2610.01125](https://arxiv.org/abs/2610.01125v1)). Shen, Wu, Yuan, Zhang and Zhang synthesize every polynomial that is contractive on the matrix domain, under joint block access, with near-optimal normalization ([arXiv:2610.08714](https://arxiv.org/abs/2610.08714v1)). Jing, Wang, Yu and Zhang implement every multivariate trigonometric polynomial up to a coefficient normalization, with optimal per-variable query counts ([arXiv:2610.03393](https://arxiv.org/abs/2610.03393v1)). None of them characterizes the single-qubit M-QSP class. Low and Shen et al. treat Rossi–Chuang M-QSP as a distinct precedent, and Jing et al. state that its characterization is open.`,
+    residual: r`Open: an algebraic (non-algorithmic) characterization of achievable pairs for $m\ge2$, and a characterization of the achievable $P$ alone, which requires deciding whether a complementary $Q$ exists. Laneve's Conjecture 4.15 on protocol dimension is also open. A minimal sub-target is the inhomogeneous bivariate case with degree 2 in each variable, where the Rossi–Chuang conditions fail. In the broader query models of October 2026, Jing et al. ask whether the supremum norm of $P$ alone suffices at the same query count.`,
+    evidence: [
+      { kind: "published",
+        role: "progress",
+        summary: "Polynomial-time classical decision algorithm (M-QSP-CDA) whose output True is necessary and sufficient for a given pair (P, Q) to be achievable by m-variable M-QSP in n steps, with constructive phases; no algebraic characterization, and Q must be supplied.",
+        url: "https://doi.org/10.22331/q-2026-05-12-2102",
+        date: "2026-05-12" },
+      { kind: "published",
+        role: "progress",
+        summary: "Adversary-bound (state-conversion) formulation: feasible triangular catalysts yield M-QSP protocols, and the protocol set is a subset of a semidefinite cone; conjectures that SU(d) protocols suffice for d-dimensional targets.",
+        url: "https://doi.org/10.22331/q-2026-03-13-2025",
+        date: "2026-03-13" },
+      { kind: "published",
+        role: "progress",
+        summary: "Simpler necessary conditions and a first sufficient condition for achievability of generally inhomogeneous multivariate polynomials, in a modified M-QSP formalism.",
+        url: "https://doi.org/10.22331/q-2025-02-20-1641",
+        date: "2025-02-20" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Haah-type characterization for homogeneous bivariate commuting QSP and for an inhomogeneous variant of degree at most 1 in one variable; a degree-(2,2) counterexample refutes the Rossi–Chuang characterization for a related class.",
+        url: "https://arxiv.org/abs/2312.09072v1",
+        date: "2023-12-14",
+        version: "v1" },
+      { kind: "published",
+        role: "progress",
+        summary: "Identifies inconsistencies in the original M-QSP theorem, proposes revised necessary conditions and shows they cannot be sufficient.",
+        url: "https://doi.org/10.22331/q-2024-10-29-1512",
+        date: "2024-10-29" },
+    ],
+    provenance: [
+      { summary: "Low (2610.01125, v1) states that he conceptualized the project and is responsible for synthesis, interpretation, verification and writing, while large language models performed technical derivations and computational checks, drafted and edited much of the manuscript, and generated formal Lean 4 proofs of parts of the MQSP formalism. Cited here as context, not as progress on this question.",
+        url: "https://arxiv.org/abs/2610.01125v1",
+        version: "v1" },
+      { summary: "Shen, Wu, Yuan, Zhang and Zhang (2610.08714, v1) report multi-round discussions with OpenAI models from GPT-5.3 Pro to GPT-6 Astra, covering derivations, proof development and checking, searches for gaps and counterexamples, literature search, code and writing; the authors take responsibility. Cited here as context.",
+        url: "https://arxiv.org/abs/2610.08714v1",
+        version: "v1" },
+    ],
+    relations: [],
+    refs: [
+      { label: "Rossi & Chuang, 'Multivariable quantum signal processing (M-QSP): prophecies of the two-headed oracle', Quantum 6, 811 (2022)",
+        url: "https://arxiv.org/abs/2205.06261" },
+      { label: "Mori, Mizuta & Fujii, 'Comment on Multivariable quantum signal processing (M-QSP)', Quantum 8, 1512 (2024)", url: "https://arxiv.org/abs/2310.00918" },
+      { label: "Németh, Kövér, Kulcsár, Miklósi & Gilyén, 'On variants of multivariate quantum signal processing and their characterizations' (2023 preprint)",
+        url: "https://arxiv.org/abs/2312.09072" },
+      { label: "Laneve & Wolf, 'On multivariate polynomials achievable with quantum signal processing', Quantum 9, 1641 (2025)", url: "https://arxiv.org/abs/2407.20823" },
+      { label: "Ito, Mori, Sakamoto & Fujii, 'Polynomial time constructive decision algorithm for multivariable quantum signal processing', Quantum 10, 2102 (2026)",
+        url: "https://arxiv.org/abs/2410.02332" },
+      { label: "Laneve, 'An adversary bound for quantum signal processing', Quantum 10, 2025 (2026)", url: "https://arxiv.org/abs/2506.20484" },
+      { label: "Low, 'Multivariate Quantum Signal Processing' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.01125v1" },
+      { label: "Shen, Wu, Yuan, Zhang & Zhang, 'Quantum Algorithms for Multivariable Polynomial Transformations' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.08714v1" },
     ] },
 ];

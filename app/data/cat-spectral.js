@@ -196,13 +196,16 @@ Caveats:
       { label: "Tasaki, online lectures (index page; includes the webinar 'Haldane conjecture, valence-bond picture, SPT phases and all that in quantum spin chains', February 2025)", url: "https://haltasaki.github.io/OL/" },
     ] },
 
-  { id: "M6", cat: "spectral", horizon: "incremental",
-    reviewedAt: "2026-11-08",
+  { id: "M6", cat: "spectral", horizon: "incremental", status: "improved",
+    reviewedAt: "2026-11-16",
     evidence: [
+      { kind: "preprint", role: "progress", summary: "Every gapped local translation-invariant 1D spin or fermion Hamiltonian with a unique ground state has a stable gap under local perturbations of each fixed range, with a perturbation radius depending on the range; unstable 1D gaps are fine-tuned. Counterexamples: unstable gaps without translation invariance in every dimension, and fine-tuned translation-invariant ones in d ≥ 2.", url: "https://arxiv.org/abs/2611.06528v1", date: "2026-11-04", version: "v1" },
+      { kind: "preprint", role: "progress", summary: "Local topological quantum order proved for the hexagonal and Lieb-lattice AKLT models via the Kennedy–Lieb–Tasaki polymer representation, giving stability of their separately established spectral gaps under small perturbations of sufficient decay.", url: "https://arxiv.org/abs/2605.12184v3", date: "2026-05-18", version: "v3" },
       { kind: "preprint", role: "progress", summary: "Infinite-volume gap stability and quasi-local ground-state transport for gapped free fermions (pairing allowed) under weak even many-body perturbations, with polynomial decay $\\varpi>2d$ and linear gap loss. Refines the known weakly interacting fermion class rather than opening a new family.", url: "https://arxiv.org/abs/2610.40299v1", date: "2026-10-29", version: "v1" },
     ],
     provenance: [
       { summary: "Teufel reports using ChatGPT Pro (GPT-5.6 Sol) to explore and critically examine arguments and literature, and GPT-6 Astra to check and polish the final version; the author reviewed the result.", url: "https://arxiv.org/abs/2610.40299v1", version: "v1" },
+      { summary: "Li and Zou state that ChatGPT was used to get a large part of the results, and that they verified the results and take full responsibility for the content.", url: "https://arxiv.org/abs/2611.06528v1", version: "v1" },
     ],
     title: "Gap stability beyond controlled classes",
     statement: r`Extend verifiable bulk-gap stability criteria to a specified interacting lattice family outside current theorems. Fix the unperturbed gap, ground-space assumptions and interaction-decay norm, and prove a system-size-independent perturbation radius preserving a positive bulk gap.`,
@@ -212,18 +215,23 @@ The founding result is the Bravyi–Hastings–Michalakis theorem for geometrica
     progress: r`- Michalakis and Zwolak extend stability to frustration-free systems with local topological order and local-gap assumptions ([arXiv:1109.1588](https://arxiv.org/abs/1109.1588)).
 - Later work of Nachtergaele, Sims and Young develops further bulk and quasi-local stability tools ([arXiv:1810.02428](https://arxiv.org/abs/1810.02428)). These are different sets of sufficient hypotheses, not a theorem for every frustration-free gapped model.
 - Hastings, Koma and De Roeck–Salmhofer treated weakly interacting fermions; De Roeck–Salmhofer allow polynomial decay.
-- On 29 October 2026 (v1), Teufel proved gap stability directly in infinite volume for gapped free-fermion systems, pairing terms included, under weak even many-body perturbations ([arXiv:2610.40299](https://arxiv.org/abs/2610.40299v1)). Hopping, pairing and interaction terms may decay polynomially, with exponent $\varpi>2d$ for two-site terms. The proof also gives a quasi-local spectral flow with matching locality, and the gap loss is linear in the coupling. The advance is in the infinite-volume formulation, the ground-state transport and the quantitative estimates, not a new uncovered family.`,
-    residual: r`Residual targets include quantitatively weaker decay assumptions or a chosen frustrated family not covered by an existing criterion. They must be checked against later stability theorems: neither degeneracy nor frustration alone puts a model outside all known results.
+- On 29 October 2026 (v1), Teufel proved gap stability directly in infinite volume for gapped free-fermion systems, pairing terms included, under weak even many-body perturbations ([arXiv:2610.40299](https://arxiv.org/abs/2610.40299v1)). Hopping, pairing and interaction terms may decay polynomially, with exponent $\varpi>2d$ for two-site terms. The proof also gives a quasi-local spectral flow with matching locality, and the gap loss is linear in the coupling. The advance is in the infinite-volume formulation, the ground-state transport and the quantitative estimates, not a new uncovered family.
+- Jackson, Nachtergaele and Young prove local topological quantum order for the AKLT models on the hexagonal and Lieb lattices, which gives stability of their spectral gaps under small perturbations of sufficient decay ([arXiv:2605.12184](https://arxiv.org/abs/2605.12184v3)). These are named interacting 2D families that the stability criteria did not cover before.
+- Li and Zou (4 November 2026, v1) prove that in one dimension every gapped local translation-invariant Hamiltonian with a unique ground state, for spins or fermions, has a stable gap ([arXiv:2611.06528](https://arxiv.org/abs/2611.06528v1)). The perturbations are local, not necessarily translation-invariant, and of fixed range $R$; the perturbation radius depends on $R$ but not on system size. An unstable 1D gap must therefore break translation invariance and be fine-tuned. They also construct gapped Hamiltonians with a unique ground state and an unstable gap in every dimension, and fine-tuned translation-invariant ones in every dimension $d\ge2$.`,
+    residual: r`Residual targets include quantitatively weaker decay assumptions, perturbation radii uniform in the perturbation range, and a chosen family in dimension $d\ge2$ not covered by an existing criterion; the Li–Zou counterexamples show that locality and translation invariance alone do not suffice there. They must be checked against later stability theorems: neither degeneracy nor frustration alone puts a model outside all known results.
 
 A precise target specifies, for example, a weighted interaction norm with an explicit power-law exponent, and distinguishes an infinite-volume bulk gap from gaps of finite regions with physical edges. Stability of a low-energy band is not the same as keeping every finite-volume ground-state splitting zero.`,
     refs: [
       { label: "Teufel, 'Bulk gap stability and spectral flow for fermions with weak long-range interactions' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.40299v1" },
+      { label: "Li & Zou, 'Stability of energy gap of macroscopic quantum matter' (2026 preprint, v1)", url: "https://arxiv.org/abs/2611.06528v1" },
+      { label: "Jackson, Nachtergaele & Young, 'Local Topological Quantum Order and Spectral Gap Stability for the AKLT Models on the Hexagonal and Lieb Lattices' (2026 preprint, v3)", url: "https://arxiv.org/abs/2605.12184v3" },
       { label: "Bravyi, Hastings, Michalakis, 'Topological quantum order: stability under local perturbations', J. Math. Phys. 51, 093512 (2010)", url: "https://arxiv.org/abs/1001.0344" },
       { label: "Michalakis & Zwolak, 'Stability of frustration-free Hamiltonians', Comm. Math. Phys. 322 (2013)", url: "https://arxiv.org/abs/1109.1588" },
       { label: "Nachtergaele, Sims & Young, 'Quasi-locality bounds for quantum lattice systems. Part I. Lieb–Robinson bounds, quasi-local maps, and spectral flow automorphisms', J. Math. Phys. 60 (2019)", url: "https://arxiv.org/abs/1810.02428" },
     ] },
 
-  { id: "M7", cat: "spectral", horizon: "incremental",
+  { id: "M7", cat: "spectral", horizon: "incremental", status: "improved",
+    reviewedAt: "2026-11-16",
     title: "Spectral gaps of PEPS parent Hamiltonians",
     statement: r`For a stated two-dimensional PEPS tensor class, give verifiable sufficient tensor or boundary-state conditions implying a system-size-independent bulk gap of its parent Hamiltonian, with an explicit lower bound.`,
     definition: r`**PEPS parent Hamiltonians**: projected entangled-pair states (PEPS) are the two-dimensional generalization of matrix product states (MPS), and each family comes with a “parent Hamiltonian” having the PEPS as ground state. The question is which verifiable tensor or boundary conditions imply that this parent Hamiltonian has a system-size-independent bulk gap, with an explicit lower bound.
@@ -231,15 +239,26 @@ A precise target specifies, for example, a weighted interaction norm with an exp
 Whether the parent Hamiltonian is gapped in the thermodynamic limit controls whether the state represents a stable gapped phase. Review: Cirac, Pérez-García, Schuch and Verstraete, Rev. Mod. Phys. 93, 045003 (2021), [arXiv:2011.12127](https://arxiv.org/abs/2011.12127).`,
     progress: r`- Injective MPS have gapped parent Hamiltonians, with the appropriate boundary and interaction-length conventions.
 - In 2D, ordinary injectivity gives parent-state uniqueness under its hypotheses (Pérez-García, Verstraete, Wolf and Cirac, [arXiv:0707.2260](https://arxiv.org/abs/0707.2260)), whereas G-injective PEPS deliberately accommodate topological ground-state degeneracy, including on a torus (Schuch, Cirac and Pérez-García, [Ann. Phys. (2010)](https://www.sciencedirect.com/science/article/pii/S0003491610000990)). Neither property by itself supplies a uniform 2D gap.
-- Additional boundary-factorization or finite-size conditions yield positive results in controlled classes (for example Kastoryano, Lucia and Pérez-García, [arXiv:1709.07691](https://arxiv.org/abs/1709.07691)).`,
+- Additional boundary-factorization or finite-size conditions yield positive results in controlled classes (for example Kastoryano, Lucia and Pérez-García, [arXiv:1709.07691](https://arxiv.org/abs/1709.07691)).
+- For the spin-3/2 AKLT model on the hexagonal lattice, Lemm, Sandvik and Wang ([arXiv:1910.11810](https://arxiv.org/abs/1910.11810)) and Pomata and Wei ([arXiv:1911.01410](https://arxiv.org/abs/1911.01410)) proved a uniform gap by combining a rigorous finite-size criterion with numerical input.
+- Kastoryano (23 September 2026, v1) gives a sufficient condition on the response of overlapping PEPS boundary states to cutting bonds, which implies the approximate-factorization criterion and hence a uniform parent-Hamiltonian gap ([arXiv:2609.27993](https://arxiv.org/abs/2609.27993v1)). For Ising PEPS it reduces to a Dobrushin–Shlosman-type condition, and the gap then also requires compatible injective regional contractions. For the hexagonal AKLT model it gives an analytic proof of the uniform gap, without numerical input. The factorization constants are explicit, but no explicit numerical gap bound is stated. A Lean certificate checks the scalar Kotecký–Preiss estimate and the counting lemmas, not the quantum reduction.`,
     residual: r`Undecidability of the unrestricted Hamiltonian gap problem (U1) is important background, not automatically a theorem for each promised PEPS class: a reduction must preserve that class's assumptions. A successful sufficient certificate may leave other instances undecided.
 
-A precise target specifies tensor conditioning, boundary locality and the meaning of any transfer-operator gap, rather than treating correlation length alone as a complete criterion.`,
+A precise target specifies tensor conditioning, boundary locality and the meaning of any transfer-operator gap, rather than treating correlation length alone as a complete criterion. After Kastoryano's boundary-response criterion, open targets include an explicit numerical gap bound for the hexagonal AKLT model from it, and its verification for other named classes.`,
+    evidence: [
+      { kind: "preprint", role: "progress", summary: "A boundary-response condition on overlapping PEPS boundary states implies approximate factorization and a uniform parent-Hamiltonian gap; it reduces to a Dobrushin–Shlosman-type condition for Ising PEPS and gives an analytic proof of the uniform gap of the spin-3/2 hexagonal AKLT model. A Lean certificate covers the scalar Kotecký–Preiss and counting estimates, not the quantum reduction.", url: "https://arxiv.org/abs/2609.27993v1", date: "2026-09-23", version: "v1" },
+    ],
+    provenance: [
+      { summary: "Kastoryano reports extensive use of frontier AI models; Proposition 5.8 relies on automated counting, and a Lean certificate checks the scalar Kotecký–Preiss estimate and the counting lemmas.", url: "https://arxiv.org/abs/2609.27993v1", version: "v1" },
+    ],
     refs: [
       { label: "Cirac, Pérez-García, Schuch & Verstraete, 'Matrix product states and projected entangled pair states: Concepts, symmetries, and theorems', Rev. Mod. Phys. 93, 045003 (2021)", url: "https://arxiv.org/abs/2011.12127" },
       { label: "Pérez-García, Verstraete, Wolf, Cirac, 'PEPS as unique ground states of local Hamiltonians', QIC 8 (2008)", url: "https://arxiv.org/abs/0707.2260" },
       { label: "Schuch, Cirac & Pérez-García, 'PEPS as ground states: Degeneracy and topology', Ann. Phys. 325, 2153–2192 (2010)", url: "https://www.sciencedirect.com/science/article/pii/S0003491610000990" },
       { label: "Kastoryano, Lucia & Pérez-García, 'Locality at the boundary implies gap in the bulk for 2D PEPS', Comm. Math. Phys. 366, 895–926 (2019)", url: "https://arxiv.org/abs/1709.07691" },
+      { label: "Lemm, Sandvik & Wang, 'Existence of a Spectral Gap in the Affleck-Kennedy-Lieb-Tasaki Model on the Hexagonal Lattice', PRL 124, 177204 (2020)", url: "https://arxiv.org/abs/1910.11810" },
+      { label: "Pomata & Wei, 'Demonstrating the AKLT spectral gap on 2D degree-3 lattices', PRL 124, 177203 (2020)", url: "https://arxiv.org/abs/1911.01410" },
+      { label: "Kastoryano, 'Spectral Gap of the Hexagonal AKLT Model via Boundary-State Factorization' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.27993v1" },
     ] },
 
   { id: "M8", cat: "spectral", horizon: "sharp",
@@ -465,5 +484,116 @@ The physical input is the van der Waals attraction between neutral fragments, wh
       { label: "Lewin, 'A mountain pass for reacting molecules', Ann. Henri Poincaré 5, 477–521 (2004)", url: "https://doi.org/10.1007/s00023-004-0176-6" },
       { label: "Lewin, 'Solution of a mountain pass problem for the isomerization of a molecule with one free atom', Ann. Henri Poincaré 7, 365–379 (2006)", url: "https://doi.org/10.1007/s00023-005-0252-6" },
       { label: "Lieb & Thirring, 'Universal nature of van der Waals forces for Coulomb systems', PRA 34, 40 (1986)", url: "https://doi.org/10.1103/PhysRevA.34.40" },
+    ] },
+
+  // 16 November 2026: questions from the carte v2 map of the quant-ph corpus.
+  { id: "M17",
+    cat: "spectral",
+    horizon: "sharp",
+    reviewedAt: "2026-11-16",
+    title: "Amoeba formula for two-dimensional open-boundary spectra",
+    statement: r`Let $f(z_1,z_2)=\sum_{(m,n)\in S}a_{mn}z_1^mz_2^n$ be a Laurent polynomial with finite support $S\subset\mathbb Z^2$. For a bounded convex domain $\Omega\subset\mathbb R^2$ let $T_L$ be the open-boundary matrix $(T_L)_{x,y}=a_{x-y}$, $x,y\in L\Omega\cap\mathbb Z^2$, of size $N_L=|L\Omega\cap\mathbb Z^2|$. For $E\in\mathbb C$ let $R_E(\mu)=\int_{[0,2\pi]^2}\log|f(e^{\mu_1+i\theta_1},e^{\mu_2+i\theta_2})-E|\,\frac{d\theta}{(2\pi)^2}$ be the Ronkin function of $f-E$ and $\varphi(E)=\min_{\mu\in\mathbb R^2}R_E(\mu)$. Prove or disprove that, for $\Omega$ the unit disk, $\frac1{N_L}\log|\det(T_L-E)|\to\varphi(E)$ for almost every $E$, so that the eigenvalue counting measures of $T_L$ converge weakly to $\rho=\frac1{2\pi}\Delta\varphi$. Wang, Song and Wang (2022, Sec. IV) propose this identity, in the form of a generalized Szegő formula (their Eq. (34)), and state that they have no rigorous proof. Variant: determine for which convex polygons $\Omega$ the same limit holds, and identify the limit when it does not.`,
+    definition: r`**Open-boundary spectra and the amoeba.** In one dimension the limit of the spectra of banded Toeplitz matrices $T_n(f)$ is known rigorously: Schmidt and Spitzer (Math. Scand. 8, 1960) identified the limit set, Hirschman (Illinois J. Math. 11, 1967) the limiting eigenvalue distribution, and Widom (Adv. Math. 13, 1974 and 21, 1976) treated block symbols. The physicists' generalized Brillouin zone (GBZ) is a reformulation of these results. The amoeba of a Laurent polynomial is the image of its zero set under $(z_1,z_2)\mapsto(\log|z_1|,\log|z_2|)$; the Ronkin function $R_E$ is convex and affine on each complementary component of the amoeba of $f-E$ (Passare and Rullgård, Duke Math. J. 121 (2004), [doi:10.1215/S0012-7094-04-12134-7](https://doi.org/10.1215/S0012-7094-04-12134-7)).
+
+Wang, Song and Wang ([arXiv:2212.11743](https://arxiv.org/abs/2212.11743), PRX 14, 021011 (2024)) propose that the logarithmic (“Coulomb”) potential of the open-boundary spectrum in any dimension equals $\min_\mu R_E(\mu)$. They write that their proof of this identity (Eq. (24)) is incomplete “because the existence of the central hole of the amoeba is assumed”, and, for the general case (Eq. (34)), “we do not find a rigorous proof”; their concluding section states that “a fully rigorous proof of all our main results is of course desirable”. When a central hole exists, that is, when the winding of $f-E$ on some torus $|z_j|=e^{\mu_j}$ vanishes, the identity is expected from classical multidimensional Szegő theorems; the open case is $E$ in the support of $\rho$, where the skin effect occurs.
+
+In dimension $d\ge2$ the only general theorem on non-Hermitian multilevel Toeplitz eigenvalues known here is of Tilli type: if the image of the symbol has empty interior and does not separate the plane, the eigenvalues follow the symbol (Tilli, J. Math. Anal. Appl. 239 (1999), [doi:10.1006/jmaa.1999.6572](https://doi.org/10.1006/jmaa.1999.6572); multilevel block version by Donatelli, Neytcheva and Serra-Capizzano (2012), [doi:10.1007/978-3-0348-0297-0_15](https://doi.org/10.1007/978-3-0348-0297-0_15)). The two-dimensional skin effect is precisely the regime where $f(\mathbb T^2)$ has positive area, outside that theorem.`,
+    progress: r`- Wang, Song and Wang (December 2022; v3 30 April 2024; PRX 14, 021011 (2024)) state the amoeba formula, prove it for Hermitian systems and when a central hole exists, and support the general case numerically. Their numerics for the density of states show that a disk without boundary randomness already resembles the predicted density, whereas polygons can show the geometry-dependent skin effect unless boundary randomness is added ([arXiv:2212.11743](https://arxiv.org/abs/2212.11743v3)).
+- Xiong, Xing and Hu (July 2024, v1) give a geometry-adaptive spectral-potential theory. They argue that the open-boundary spectrum for a given shape lies inside the amoeba spectrum, find that the two generally differ for polygonal cuts, and conjecture that for smooth boundaries such as a disk the spectra tend to the amoeba spectrum, a statement they call “difficult to prove rigorously” ([arXiv:2407.01296](https://arxiv.org/abs/2407.01296v1)).
+- Wang, Pi, Liu, Li and Liu (2025; v3 6 November 2025) find, numerically and through strip generalized Brillouin zones, that there is “no uniform thermodynamic limit of OBC spectra” for some symbols on elongated rectangles, so the limit depends on the shape ([arXiv:2506.22743](https://arxiv.org/abs/2506.22743v3)).
+- In one dimension, Kaneshiro and Peters (v2 24 March 2026; Phys. Rev. Research 8, 013292 (2026)) use the Wiener–Hopf factorization to give a rigorous foundation for the amoeba analysis of multiband chains ([arXiv:2511.11349](https://arxiv.org/abs/2511.11349v2)), and de Bruijn and Hiltunen (v2 26 August 2026) prove that the GBZ coincides with a polar curve on which the symbol is real, for banded Toeplitz matrices with real open limit ([arXiv:2602.09734](https://arxiv.org/abs/2602.09734v2)). Neither treats $d\ge2$.`,
+    residual: r`No proof of the amoeba formula in dimension two was found, for any non-separable symbol with $f(\mathbb T^2)$ of positive area. Sub-targets:
+- the upper bound $\limsup_L\frac1{N_L}\log|\det(T_L-E)|\le\varphi(E)$ for every convex $\Omega$; a natural route (not checked in the literature) is the invariance of the determinant under the diagonal similarity that replaces $f$ by $f(e^{\mu_1}z_1,e^{\mu_2}z_2)$, combined with singular-value distribution theorems for multilevel Toeplitz matrices;
+- the matching lower bound, that is, no accumulation of exponentially small singular values, for one explicit non-separable symbol on the disk, for example $f=z_1+z_2+t\,(z_1z_2)^{-1}$;
+- for polygons, a description of the shape-dependent limit; the numerics above indicate that it differs from $\frac1{2\pi}\Delta\varphi$ in general.`,
+    evidence: [
+      { kind: "conjecture",
+        role: "progress",
+        summary: "Proposes that the logarithmic potential of the open-boundary spectrum equals the minimum of the Ronkin function, in any dimension (generalized Szegő formula, Eq. 34). Proved for Hermitian systems and when the amoeba has a central hole; the general case is supported numerically. Published in PRX 14, 021011 (2024).",
+        url: "https://arxiv.org/abs/2212.11743v3",
+        date: "2024-04-30",
+        version: "v3" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Geometry-adaptive spectral-potential theory: for a given shape the open-boundary spectrum lies within the amoeba spectrum; the two generally differ for polygonal cuts; for smooth boundaries such as a disk convergence to the amoeba spectrum is conjectured, not proved.",
+        url: "https://arxiv.org/abs/2407.01296v1",
+        date: "2024-07-01",
+        version: "v1" },
+      { kind: "numerical",
+        role: "progress",
+        summary: "Strip generalized Brillouin zones; for some two-dimensional symbols the open-boundary spectra on rectangles depend on the aspect ratio, with no uniform thermodynamic limit. Analytical arguments and numerics, no general proof.",
+        url: "https://arxiv.org/abs/2506.22743v3",
+        date: "2025-11-06",
+        version: "v3" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "One-dimensional multiband chains: Wiener–Hopf factorization gives a rigorous foundation for the amoeba (Ronkin) analysis and the generalized Szegő limit theorem. Published in Phys. Rev. Research 8, 013292 (2026). Dimension one only.",
+        url: "https://arxiv.org/abs/2511.11349v2",
+        date: "2026-03-24",
+        version: "v2" },
+    ],
+    provenance: [],
+    relations: [],
+    refs: [
+      { label: "Wang, Song & Wang, 'Amoeba Formulation of Non-Bloch Band Theory in Arbitrary Dimensions', PRX 14, 021011 (2024), Sec. IV",
+        url: "https://arxiv.org/abs/2212.11743" },
+      { label: "Schmidt & Spitzer, 'The Toeplitz matrices of an arbitrary Laurent polynomial', Math. Scand. 8, 15–38 (1960)", url: "https://doi.org/10.7146/math.scand.a-10588" },
+      { label: "Hirschman, 'The spectra of certain Toeplitz matrices', Illinois J. Math. 11, 145–159 (1967)", url: "https://doi.org/10.1215/ijm/1256054792" },
+      { label: "Widom, 'Asymptotic behavior of block Toeplitz matrices and determinants', Adv. Math. 13, 284–322 (1974)", url: "https://doi.org/10.1016/0001-8708(74)90072-3" },
+      { label: "Passare & Rullgård, 'Amoebas, Monge–Ampère measures, and triangulations of the Newton polytope', Duke Math. J. 121, 481–507 (2004)",
+        url: "https://doi.org/10.1215/S0012-7094-04-12134-7" },
+      { label: "Xiong, Xing & Hu, 'Non-Hermitian skin effect in arbitrary dimensions: non-Bloch band theory and classification' (2024 preprint)",
+        url: "https://arxiv.org/abs/2407.01296" },
+      { label: "Wang, Pi, Liu, Li & Liu, 'General theory for geometry-dependent non-Hermitian bands' (2025 preprint, v3)", url: "https://arxiv.org/abs/2506.22743" },
+      { label: "Kaneshiro & Peters, 'Wiener-Hopf factorization and non-Hermitian topology for Amoeba formulation in one-dimensional multiband systems', Phys. Rev. Research 8, 013292 (2026)",
+        url: "https://arxiv.org/abs/2511.11349" },
+    ] },
+
+  { id: "M18",
+    cat: "spectral",
+    horizon: "sharp",
+    reviewedAt: "2026-11-16",
+    title: "Spectral inequalities for the quantum Rabi model",
+    statement: r`(Lanuza 2025–2026, reformulating a conjecture of Braak 2011.) Let $H_R=\omega a^\dagger a+g\,\sigma_x(a+a^\dagger)+\Delta\,\sigma_z$ on $\ell^2(\mathbb N)\otimes\mathbb C^2$, with $\omega>0$, $g\neq0$ and $\Delta\in\mathbb R$. The parity $\Pi=-\sigma_z(-1)^{a^\dagger a}$ splits $H_R=H_+\oplus H_-$, and each block has simple discrete spectrum $E^\pm_0<E^\pm_1<\cdots$. Prove or refute that, for all $(g,\Delta)$ and all $n\ge0$,
+$$-\omega\le E^+_n-E^-_n\le\omega,\qquad E^\pm_{n+1}-E^\pm_n\le2\omega,\qquad E^\pm_n\le\left(n+\tfrac12\right)\omega-\frac{g^2}{\omega},$$
+with strict inequalities when $g\neq0$.`,
+    definition: r`**Braak's conjecture.** The quantum Rabi model couples a two-level system to one bosonic mode. Its spectrum is not given in closed form, yet it shows regularities. Braak derived the spectrum of each parity sector as the zeros of a transcendental function, “Integrability of the Rabi Model”, PRL 107, 100401 (2011), [arXiv:1103.2461](https://arxiv.org/abs/1103.2461). In the form recalled by Lanuza, the conjecture concerns the counts $B^\pm_n=\#\{k:\ n\omega-g^2/\omega\le E^\pm_k<(n+1)\omega-g^2/\omega\}$ and states $0\le B^\pm_n\le2$ and $1\le B^\pm_n+B^\pm_{n+1}\le3$ for all $n$.
+
+Lanuza reports violations at large $\Delta$, all in the odd sector $H_-$ (units $\omega=1$): $(g,\Delta)=(6,30)$ gives $B^-_4=B^-_5=2$; $(11.01,119)$ gives $B^-_1=B^-_2=B^-_3=2$; $(11.542,131.2)$ gives $B^-_1=3$. He proposes the three inequalities of the statement as a replacement, which “conjecturally hold across all parameter regimes”, and writes that proving them “exceeds the scope of this work” ([arXiv:2503.15572](https://arxiv.org/abs/2503.15572v3), abstract and main text, v3).`,
+    progress: r`- Boutet de Monvel and Zielinski derived a three-term asymptotic expansion of the large eigenvalues ([arXiv:1711.03366](https://arxiv.org/abs/1711.03366)).
+- Rudnick (November 2023, v2 May 2024) used it to prove a density-one version of Braak's conjecture: at fixed parameters, the bunching rule holds for almost all $n$ ([arXiv:2311.12622](https://arxiv.org/abs/2311.12622v2)). This says nothing about small $n$, where the counterexamples lie.
+- Lanuza (v1 March 2025, v3 6 August 2026) proves a Weyl-type bound $|E^\pm_n-n\omega+g^2/\omega|\le|\Delta|$ after displacing the mode. It implies the three inequalities, and Braak's conjecture, for $|\Delta|\le\omega/2$. A variational argument (Appendix B) gives the $n=0$ case of the third inequality, with no restriction on $\Delta$ in the appendix. Gershgorin bounds give upper bounds on all levels that are useful only for $g\gg\omega$. For $\omega\ll|g|,|\Delta|$ a harmonic-oscillator approximation describes the low spectrum, without error bounds ([arXiv:2503.15572](https://arxiv.org/abs/2503.15572v3)).
+- Malagutti and Parmeggiani (v1 January 2026, v4 21 August 2026) prove, in a perturbative model of the Rabi system, that Braak's conjecture holds for finite families of eigenvalues, using Rellich's analytic perturbation theory. They do not address the reformulated inequalities ([arXiv:2601.17924](https://arxiv.org/abs/2601.17924v4)).`,
+    residual: r`All three inequalities remain open for $|\Delta|>\omega/2$ beyond $n=0$. Sub-targets: the gap bound $E^\pm_{n+1}-E^\pm_n\le2\omega$ for $\omega/2<|\Delta|\le\omega$; the third inequality for $n=1$ and all $\Delta$, for instance by a two-state variational argument modelled on Appendix B. A counterexample would most likely come from the region $|\Delta|\gg g^2/\omega$ at moderate $n$, where the counterexamples to Braak's original rule were found.`,
+    evidence: [
+      { kind: "preprint",
+        role: "progress",
+        summary: "Counterexamples to Braak's bunching conjecture at large Δ, all in the odd-parity sector; proposes three eigenvalue inequalities and proves them, and Braak's conjecture, for |Δ| ≤ ω/2 via a Weyl-type bound; n = 0 case of the third inequality by a variational argument.",
+        url: "https://arxiv.org/abs/2503.15572v3",
+        date: "2026-08-06",
+        version: "v3" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "In a perturbative model of the Rabi system, Braak's conjecture holds for finite families of eigenvalues (Rellich perturbation theory).",
+        url: "https://arxiv.org/abs/2601.17924v4",
+        date: "2026-08-21",
+        version: "v4" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Density-one version of Braak's conjecture at fixed parameters, from the Boutet de Monvel–Zielinski three-term asymptotics of large eigenvalues.",
+        url: "https://arxiv.org/abs/2311.12622v2",
+        date: "2024-05-05",
+        version: "v2" },
+    ],
+    provenance: [],
+    relations: [],
+    refs: [
+      { label: "Braak, 'Integrability of the Rabi Model', PRL 107, 100401 (2011)", url: "https://arxiv.org/abs/1103.2461" },
+      { label: "Lanuza, 'Universal spectral bounds for the quantum Rabi model: Reformulating Braak's conjecture' (2025 preprint, v3 2026)",
+        url: "https://arxiv.org/abs/2503.15572" },
+      { label: "Rudnick, 'The Quantum Rabi model: Towards Braak's conjecture' (2023 preprint)", url: "https://arxiv.org/abs/2311.12622" },
+      { label: "Boutet de Monvel & Zielinski, 'Oscillatory behavior of large eigenvalues in quantum Rabi models' (2017 preprint)", url: "https://arxiv.org/abs/1711.03366" },
+      { label: "Malagutti & Parmeggiani, 'Perturbation Theory and the Quantum Rabi-model' (2026 preprint, v4)", url: "https://arxiv.org/abs/2601.17924" },
+      { label: "Braak, Nguyen, Reyes-Bustos & Wakayama, 'Spacing distribution for quantum Rabi models' (2023 preprint)", url: "https://arxiv.org/abs/2310.09811" },
     ] },
 ];

@@ -485,4 +485,42 @@ The standard upper bounds are those of Pirandola, Laurenza, Ottaviani and Banchi
       { label: "García-Patrón, Pirandola, Lloyd & Shapiro, 'Reverse coherent information', PRL 102, 210501 (2009)", url: "https://arxiv.org/abs/0808.0210" },
       { label: "Pirandola, 'Exact series formulas for the capacities of the amplitude damping channel' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.31609v1" },
     ] },
+
+  // 16 November 2026: questions from the carte v2 map of the quant-ph corpus.
+  { id: "C14",
+    cat: "channels",
+    horizon: "sharp",
+    reviewedAt: "2026-11-16",
+    title: "Nestedness of quantum p-Wasserstein cost operators",
+    statement: r`For a finite collection $\mathcal A=\{A_1,\dots,A_K\}$ of self-adjoint operators with finite spectra on a separable Hilbert space $\mathcal H$, let $C_{\mathcal A,p}=\sum_{k=1}^K\big|A_k\otimes I^T-I\otimes A_k^T\big|^p$, and let $\mathbf C_p(\mathcal H)$ be the set of all such $p$-cost operators. Prove or refute Conjecture 9 of Bunth, Pitrik, Titkos and Virosztek: $\mathbf C_p(\mathcal H)\subseteq\mathbf C_{p'}(\mathcal H)$ for all $0<p\le p'\le\infty$. The qubit case and the case $p\le1$ on $\mathbb C^3$ are settled. The smallest open cases are $\mathcal H=\mathbb C^3$ with $1<p<p'$, for example whether $\mathbf C_2(\mathbb C^3)\subseteq\mathbf C_3(\mathbb C^3)$, and $\mathcal H=\mathbb C^4$ with $p\le1$.`,
+    definition: r`**Quantum optimal transport with channels.** De Palma and Trevisan defined a quantum Wasserstein distance in which transport plans between two states are quantum channels, or equivalently couplings on $\mathcal H\otimes\mathcal H^*$, with a quadratic cost operator built from a family of observables (“Quantum optimal transport with quantum channels”, Ann. Henri Poincaré 22, 3199 (2021), [arXiv:1911.00803](https://arxiv.org/abs/1911.00803)). Subtracting self-distances gives the quadratic Wasserstein divergence, which they conjectured to be a metric.
+
+Bunth, Pitrik, Titkos and Virosztek extended the construction to order $p$, with cost $C_{\mathcal A,p}$ modelled on $\|x-y\|_p^p$, and defined the divergences $d_{\mathcal A,p}$ ([arXiv:2501.08066](https://arxiv.org/abs/2501.08066), Section 4, Conjecture 9). They write that the sets of $p$-cost operators should be ordered so that “the bigger the parameter, the larger the corresponding set”, and that an affirmative answer would make the definition of the $p$-Wasserstein divergence meaningful for all $0<p\le2$.`,
+    progress: r`- Bunth, Pitrik, Titkos and Virosztek (14 January 2025; v3 of 27 April 2026) proved $\mathbf C_p(\mathbb C^2)=\mathbf C_{p'}(\mathbb C^2)$ for all finite $p,p'>0$ (Corollary 6), so the conjecture holds on qubits. In any dimension, $p$-cost operators of observables with at most three eigenvalues lie in $\mathbf C_{p'}$ when $p\le1$ (Proposition 10), and Proposition 11 reduces the conjecture to an inductive decomposition. Proposition 16 shows that the triangle inequality passes from $d_{\mathcal A,p}$ to $d_{\mathcal A,p'}$ when the cost sets do not grow. They prove the triangle inequality on qubits for every $p\ge2$ (Theorem 18) and show that it fails for $0<p<2$ (Proposition 19). Proposition 3, added in v3, shows that for every $p>2$ the quantity $d^p_{\mathcal A,p}$ can be negative in dimension three ([arXiv:2501.08066](https://arxiv.org/abs/2501.08066v3)).
+- Wirth (25 November 2025, v1) proved the triangle inequality for all quadratic quantum Wasserstein divergences, resolving the De Palma–Trevisan conjecture ([arXiv:2511.20450](https://arxiv.org/abs/2511.20450v1)). This settles $p=2$ but not the nestedness of cost sets.`,
+    residual: r`Conjecture 9 is open in every dimension $d\ge3$, except that on $\mathbb C^3$ Proposition 10 already gives $\mathbf C_p\subseteq\mathbf C_{p'}$ for $p\le1$ and finite $p'$, since every qutrit observable has at most three eigenvalues. Sub-targets: decide whether $|A\otimes I^T-I\otimes A^T|^2$ is a sum $\sum_k|B_k\otimes I^T-I\otimes B_k^T|^3$ for every qutrit observable $A$ with three distinct eigenvalues, or find an obstruction; extend Proposition 10 to four eigenvalues for $p\le1$; treat $p'=\infty$, which Proposition 10 excludes. A related question, inferred from Section 6 (“p = 2 as a possible threshold for the triangle inequality”) and not posed as a conjecture there, is whether the triangle inequality holds for $p>2$ when $\dim\mathcal H\ge3$.`,
+    evidence: [
+      { kind: "conjecture",
+        role: "progress",
+        summary: "Conjecture 9 (nestedness of p-cost operator sets); proved on qubits (Corollary 6: all finite p give the same cost set) and for observables with at most three eigenvalues when p ≤ 1; triangle inequality on qubits for p ≥ 2, false for p < 2; d^p can be negative for p > 2 in dimension three.",
+        url: "https://arxiv.org/abs/2501.08066v3",
+        date: "2026-04-27",
+        version: "v3" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Triangle inequality for every quadratic quantum Wasserstein divergence, without restriction on the states; settles p = 2 only.",
+        url: "https://arxiv.org/abs/2511.20450v1",
+        date: "2025-11-25",
+        version: "v1" },
+    ],
+    provenance: [],
+    relations: [],
+    refs: [
+      { label: "Bunth, Pitrik, Titkos & Virosztek, 'Wasserstein distances and divergences of order p by quantum channels' (2025 preprint, v3 of 27 April 2026)",
+        url: "https://arxiv.org/abs/2501.08066" },
+      { label: "De Palma & Trevisan, 'Quantum optimal transport with quantum channels', Ann. Henri Poincaré 22, 3199 (2021)", url: "https://arxiv.org/abs/1911.00803" },
+      { label: "Bunth, Pitrik, Titkos & Virosztek, 'On the metric property of quantum Wasserstein divergences', PRA 110, 022211 (2024)", url: "https://arxiv.org/abs/2402.13150" },
+      { label: "Wirth, 'Triangle inequality for a quantum Wasserstein divergence' (2025 preprint)", url: "https://arxiv.org/abs/2511.20450" },
+      { label: "Beatty, 'Wasserstein distances on quantum structures: an overview' (2025 preprint)", url: "https://arxiv.org/abs/2506.09794" },
+    ] },
 ];

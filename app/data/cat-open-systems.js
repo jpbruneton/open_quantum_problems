@@ -18,7 +18,8 @@ The bounded-generator case was settled in 1976 by Lindblad and by Gorini, Kossak
       { label: "Siemon, Holevo & Werner, 'Unbounded generators of dynamical semigroups', Open Systems & Information Dynamics 24 (2017)", url: "https://arxiv.org/abs/1707.02266" },
     ] },
 
-  { id: "O2", cat: "open-systems", horizon: "incremental",
+  { id: "O2", cat: "open-systems", horizon: "incremental", status: "improved",
+    reviewedAt: "2026-11-16",
     title: "Controlled derivation of master equations",
     statement: r`For specified microscopic bath correlations and coupling operators, bound the error of a reduced master equation in a stated state or observable norm, tracking coupling strength, system size and the time window, including closing level spacings or many-body limits.`,
     definition: r`**Master equations** (Lindblad/Redfield and non-Markovian generalizations) describe the reduced dynamics of an open system and are usually derived heuristically via Born–Markov and secular approximations. Making these derivations rigorous — with quantitative error bounds relating the true reduced dynamics to the master-equation prediction on a given time scale — is a longstanding goal.
@@ -26,14 +27,26 @@ The bounded-generator case was settled in 1976 by Lindblad and by Gorini, Kossak
 Davies' weak-coupling limit gives a rigorous derivation of the Lindblad equation in the van Hove scaling (Davies, 'Markovian master equations', Comm. Math. Phys. 39 (1974), [doi:10.1007/BF01608389](https://doi.org/10.1007/BF01608389)).`,
     progress: r`- Davies' weak-coupling limit holds in the van Hove scaling ($\lambda^2 t$ fixed, $\lambda\to0$), and the singular-coupling and low-density limits are likewise rigorous.
 - Finite-time and finite-coupling error bounds have been obtained: works by Rivas, by Merkli, and by Mozgunov and Lidar ([doi:10.22331/q-2020-02-06-227](https://doi.org/10.22331/q-2020-02-06-227)) give explicit non-asymptotic bounds for coarse-grained/Redfield and Lindblad approximations, quantifying the error in terms of bath correlation times and coupling strength.
-- Complete-positivity-preserving 'universal Lindblad' forms have been derived with error control.`,
-    residual: r`The remaining target is not the first rigorous master equation. It is uniform bounds in selected regimes not covered by the existing theorems: for example increasing system size with shrinking Bohr-frequency separations, nonintegrable correlation tails, or times growing with a relaxation scale. The initial preparation, bath class and norm must be stated, and breakdown conditions identified as well as valid regimes. A bound for fixed system size or a weak-coupling scaling limit is not automatically uniform in all these parameters. Related: O1, O3, O10.`,
+- Complete-positivity-preserving 'universal Lindblad' forms have been derived with error control.
+- Many-body limits: Ikeuchi and Mori bound the error on local observables under the universal Lindblad equation in bulk-dissipated many-body systems ([arXiv:2503.14916](https://arxiv.org/abs/2503.14916v4), PRB 112, 094309 (2025)). Assuming "accelerated dissipation", which is not proved in general, the error vanishes uniformly in time in the weak- or singular-coupling limit taken after the thermodynamic limit.
+- Closing level spacings: Scandi and Alhambra derive a master equation without the secular approximation that satisfies KMS detailed balance with respect to a renormalized Hamiltonian, has quasi-local jumps and applies to spectra with exponentially small spacings; its trace-norm error grows at most linearly in time ([arXiv:2505.20064](https://arxiv.org/abs/2505.20064v2), PRX 16, 011040 (2026)).
+- Agerskov and Nathan (March 2026) give, for systems coupled to Gaussian baths, an explicit time-local Markovian master equation whose generator correction is exponentially small in the inverse coupling, of order $\Gamma e^{-2/\sqrt{\Gamma\tau}}$ up to constants ([arXiv:2603.04504](https://arxiv.org/abs/2603.04504v1)). This is a bound on the generator, not a uniform-in-time bound on the state, and the dependence on system size is not discussed.`,
+    residual: r`The remaining target is not the first rigorous master equation. It is uniform bounds in selected regimes not covered by the existing theorems: for example increasing system size with shrinking Bohr-frequency separations, nonintegrable correlation tails, or times growing with a relaxation scale. The initial preparation, bath class and norm must be stated, and breakdown conditions identified as well as valid regimes. A bound for fixed system size or a weak-coupling scaling limit is not automatically uniform in all these parameters. The 2025–2026 results above cover many-body limits under an unproved dissipation assumption, closing spacings on a time window with linear error growth, and generator-level bounds for Gaussian baths; uniform-in-time state bounds without such assumptions remain open. Related: O1, O3, O10.`,
+    evidence: [
+      { kind: "preprint", role: "progress", summary: "Rigorous error bounds for local observables under the universal Lindblad equation in bulk-dissipated many-body systems; uniform-in-time vanishing in the weak- or singular-coupling limit after the thermodynamic limit, assuming accelerated dissipation (PRB 112, 094309).", url: "https://arxiv.org/abs/2503.14916v4", date: "2025-09-29", version: "v4" },
+      { kind: "preprint", role: "progress", summary: "A first-principles KMS-detailed-balanced master equation without the rotating-wave approximation, valid for many-body spectra with vanishing level spacings, whose trace-norm error grows at most linearly in time (PRX 16, 011040).", url: "https://arxiv.org/abs/2505.20064v2", date: "2025-11-13", version: "v2" },
+      { kind: "preprint", role: "progress", summary: "For systems coupled to Gaussian baths, an explicit time-local Markovian master equation whose generator correction is exponentially small in the inverse coupling; a generator-level bound, not a uniform-in-time state bound.", url: "https://arxiv.org/abs/2603.04504v1", date: "2026-03-04", version: "v1" },
+    ],
     refs: [
       { label: "Davies, 'Markovian master equations', Comm. Math. Phys. 39 (1974)", url: "https://doi.org/10.1007/BF01608389" },
       { label: "Mozgunov & Lidar, 'Completely positive master equation for arbitrary driving and small level spacing', Quantum 4, 227 (2020)", url: "https://doi.org/10.22331/q-2020-02-06-227" },
+      { label: "Ikeuchi & Mori, 'Error bounds on the universal Lindblad equation in the thermodynamic limit', PRB 112, 094309 (2025)", url: "https://arxiv.org/abs/2503.14916" },
+      { label: "Scandi & Alhambra, 'Thermalization in open many-body systems and KMS detailed balance', PRX 16, 011040 (2026)", url: "https://arxiv.org/abs/2505.20064" },
+      { label: "Agerskov & Nathan, 'Markovian quantum master equations are exponentially accurate in the weak coupling regime' (2026 preprint, v1)", url: "https://arxiv.org/abs/2603.04504v1" },
     ] },
 
   { id: "O3", cat: "open-systems", horizon: "incremental",
+    reviewedAt: "2026-11-16",
     title: "Certified strong-coupling reduced dynamics",
     statement: r`For a specified non-Gaussian or initially correlated system–bath model, construct computationally tractable reduced-process approximations with certified finite-time error, controlled memory truncation and positivity on the stated preparation or intervention domain.`,
     definition: r`**Strong-coupling reduced dynamics** is the evolution of an open system whose coupling to its bath is not weak. Weak-coupling master equations can then be inaccurate, and the reduced equilibrium state need not be the bare Gibbs state. Strong coupling alone does not destroy complete positivity: unitary joint evolution from a fixed factorized bath state induces a CPTP map on all system inputs at any coupling. With initial correlations, a single map on arbitrary system states may be inappropriate; one specifies the preparation family or an intervention-based process instead.
@@ -42,12 +55,17 @@ Standard review: de Vega and Alonso, 'Dynamics of non-Markovian open quantum sys
     progress: r`- Exact influence functionals and process tensors already formulate reduced dynamics beyond weak coupling.
 - Reaction-coordinate mappings can improve the residual-bath treatment but do not guarantee weak residual coupling.
 - HEOM and related methods admit systematically converged calculations in suitable bath models; finite hierarchy and time discretizations need error control.
-- Polaron methods and the Hamiltonian of mean force address further dynamical and equilibrium regimes.`,
+- Polaron methods and the Hamiltonian of mean force address further dynamical and equilibrium regimes.
+- Chen and Cai (21 October 2026, v1) give a certified quantum-simulation scheme for an arbitrary system linearly coupled to a zero-mean Gaussian environment, from a factorized initial state ([arXiv:2610.29372](https://arxiv.org/abs/2610.29372v1)). A rank-$N$ approximation of the bath correlation kernel, truncation to $d$ levels and "coupling dilution" for strong coupling give explicit error bounds on the reduced state and a circuit cost polynomial in time and inverse precision, under spectral-decay and coupling-regularity assumptions. Positivity follows from the unitary dilation. This covers a Gaussian bath without initial correlations, not the non-Gaussian or initially correlated models of the statement.`,
     residual: r`The frontier is efficient approximation with certificates, not existence of a universal exact formalism. Specify a bath family, initial correlations, accessible interventions and energy bookkeeping; prove error and resource bounds for memory/compression truncations, or establish obstructions. Agreement with equilibrium thermodynamics does not by itself certify transient dynamics. Related: O2, O4, O5, O8.`,
+    evidence: [
+      { kind: "preprint", role: "progress", summary: "Certified quantum-simulation scheme for systems linearly coupled to zero-mean Gaussian baths: low-rank kernel compression and coupling dilution give explicit reduced-state error bounds and polynomial circuit cost under spectral-decay assumptions; factorized initial states only, so outside the non-Gaussian or initially correlated scope of the statement.", url: "https://arxiv.org/abs/2610.29372v1", date: "2026-10-21", version: "v1" },
+    ],
     refs: [
       { label: "de Vega & Alonso, 'Dynamics of non-Markovian open quantum systems', Rev. Mod. Phys. 89, 015001 (2017)", url: "https://arxiv.org/abs/1511.06994" },
       { label: "Rivas, 'Strong coupling thermodynamics of open quantum systems', PRL 124, 160601 (2020)", url: "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.124.160601" },
       { label: "Pollock et al., 'Operational Markov condition for quantum processes', PRL 120, 040405 (2018)", url: "https://arxiv.org/abs/1801.09811" },
+      { label: "Chen & Cai, 'Quantum Simulation of Non-Markovian Open Quantum Systems via Low-Rank Kernel Compression and Coupling Dilution' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.29372v1" },
     ] },
 
   { id: "O4", cat: "open-systems", horizon: "incremental", status: "improved",
@@ -261,5 +279,131 @@ No efficient algorithm for every Hamiltonian at every temperature is conjectured
       { label: "Li, 'Spectral Core-Tail Architecture for Locally Certified Gibbs-State Preparation' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.09291v1" },
       { label: "Hahn, Sweke, Deshpande & Shtanko, 'Efficient Quantum Gibbs Sampling with Local Circuits', PRX Quantum 7, 020314 (2026)", url: "https://journals.aps.org/prxquantum/abstract/10.1103/m5zb-z4nn" },
       { label: "Slezak et al., 'Polynomial-time thermalization and Gibbs sampling from system-bath couplings' (2026), preprint", url: "https://arxiv.org/abs/2601.16154" },
+    ] },
+
+  // 16 November 2026: questions from the carte v2 map of the quant-ph corpus.
+  { id: "O11",
+    cat: "open-systems",
+    horizon: "sharp",
+    reviewedAt: "2026-11-16",
+    title: "Rigorous absolutely stable time crystal in continuous-time open dynamics",
+    statement: r`(Machado, Zhuang, Yao and Zaletel 2021–2023.) In the Floquet–Langevin $\pi$-Toom model, classical local degrees of freedom on the two-dimensional square lattice evolve under a Hamiltonian made of a kinetic term and a time-periodic local potential, so that each drive period implements one update of the $\pi$-Toom probabilistic cellular automaton (the anti-majority north-east-centre rule). The system is coupled to a Langevin bath at temperature $T>0$. Prove that for $T$ small enough the space-time error events satisfy Toom's sparsity condition: the probability that all points of any given finite set $S$ of space-time cells carry an error is at most $\epsilon^{|S|}$, with $\epsilon$ small. Conclude that the period-doubled autocorrelation of the Ising variable stays bounded away from zero at all times in the thermodynamic limit, and that this persists under every sufficiently small local perturbation of the one-period dynamics, including perturbations that break the time-translation symmetry of the drive.`,
+    definition: r`**Absolute stability.** A time crystal is absolutely stable if its subharmonic order survives every small local perturbation, with no symmetry or fine tuning required. For discrete-time probabilistic cellular automata, Toom proved that eroder rules such as the north-east-centre majority rule keep their two phases distinct under noise satisfying a sparsity condition (Toom, 1980). Classical driven systems with noise were analyzed by Yao, Nayak, Balents and Zaletel, “Classical discrete time crystals”, Nat. Phys. 16, 438 (2020), [arXiv:1801.02628](https://arxiv.org/abs/1801.02628).
+
+Machado et al. map probabilistic cellular automata to continuous-time Langevin dynamics with a periodic Hamiltonian ([arXiv:2110.00585](https://arxiv.org/abs/2110.00585v2), PRL 131, 180402 (2023)). They find “compelling evidence that the Floquet-Langevin DTC satisfies the requisite error condition for absolute stability”, but “cannot rule out” a change of behaviour at anomalously large volume, cumulant order or inverse temperature, and conclude: “Obtaining a rigorous proof of this bound thus remains an important open question.”`,
+    progress: r`- Machado, Zhuang, Yao and Zaletel (v1 October 2021, PRL 2023, v2 December 2024) observe numerically a finite-temperature transition between a discrete time crystal and a disordered phase in the two-dimensional Floquet–Langevin $\pi$-Toom model, and test the error condition through cumulants of error indicators ([arXiv:2110.00585](https://arxiv.org/abs/2110.00585v2)).
+- McGinley, Roy and Parameswaran (PRL 129, 090404 (2022)) give a quantum analogue with partial measurements and Toom-like feedback, supported by two-dimensional Clifford-circuit simulations and smaller general simulations, not by a proof ([arXiv:2111.02499](https://arxiv.org/abs/2111.02499v2)).
+- Drechsler, Oreg and Aharonov (4 October 2026, v1) relate quantum memories of CSS codes under Pauli noise to classical stochastic processes. They prove that the 4D toric code with Toom's rule is a quantum memory under local Pauli noise below a constant threshold, for synchronous dynamics and for a Floquet Lindbladian; the time-independent case “remains open”. They do not discuss time crystals ([arXiv:2610.05589](https://arxiv.org/abs/2610.05589v1)).
+- Ogami and Tajima (6 November 2026, v1) prove go and no-go theorems for open time crystals without external thermodynamic resources (time-independent generators, covariance, detailed balance). The driven Floquet–Langevin model consumes work and lies outside these conditions ([arXiv:2611.09540](https://arxiv.org/abs/2611.09540v1)).`,
+    residual: r`The rigorous error bound for the Floquet–Langevin model is open. An intermediate target is Toom's condition for a periodically forced continuous-time Glauber dynamics without inertia. A quantum version, not posed by Machado et al., asks for a local, translation-invariant, time-periodic Lindbladian on qubits of $\mathbb Z^2$ whose period-doubled order survives every small local CPTP perturbation of the one-period channel. The case of local Pauli noise may be reachable through the reduction of Drechsler, Oreg and Aharonov; coherent and general CPTP perturbations are not covered by it. Related: passive memories (B16).`,
+    evidence: [
+      { kind: "numerical",
+        role: "progress",
+        summary: "Mapping of probabilistic cellular automata to continuous-time Floquet–Langevin dynamics; numerical evidence that the 2D π-Toom model satisfies Toom's error condition at low temperature; rigorous proof stated as open (PRL 131, 180402).",
+        url: "https://arxiv.org/abs/2110.00585v2",
+        date: "2024-12-03",
+        version: "v2" },
+      { kind: "numerical",
+        role: "progress",
+        summary: "Quantum measurement-and-feedback dynamics with Toom-like rules keeps spatiotemporal order for very long times in 2D Clifford-circuit simulations (PRL 129, 090404); no proof.",
+        url: "https://arxiv.org/abs/2111.02499v2",
+        date: "2022-08-30",
+        version: "v2" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Rigorous correspondence between CSS-code memories under local Pauli noise and classical stochastic processes; 4D toric code with Toom's rule is a memory below threshold for a Floquet Lindbladian. Not about time crystals.",
+        url: "https://arxiv.org/abs/2610.05589v1",
+        date: "2026-10-04",
+        version: "v1" },
+    ],
+    provenance: [],
+    relations: [
+      { id: "B22", type: "related" },
+      { id: "B16", type: "related" },
+    ],
+    refs: [
+      { label: "Machado, Zhuang, Yao & Zaletel, 'Absolutely stable time crystals at finite temperature', PRL 131, 180402 (2023)", url: "https://arxiv.org/abs/2110.00585" },
+      { label: "Yao, Nayak, Balents & Zaletel, 'Classical discrete time crystals', Nat. Phys. 16, 438 (2020)", url: "https://arxiv.org/abs/1801.02628" },
+      { label: "McGinley, Roy & Parameswaran, 'Absolutely Stable Spatiotemporal Order in Noisy Quantum Systems', PRL 129, 090404 (2022)", url: "https://arxiv.org/abs/2111.02499" },
+      { label: "Drechsler, Oreg & Aharonov, 'Autonomous Quantum Memories from Classical Stochastic Processes' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.05589" },
+      { label: "Ogami & Tajima, 'Open Quantum Time Crystals without External Thermodynamic Resources: Go and No-Go Theorems' (2026 preprint, v1)",
+        url: "https://arxiv.org/abs/2611.09540" },
+    ] },
+
+  { id: "O12",
+    cat: "open-systems",
+    horizon: "sharp",
+    reviewedAt: "2026-11-16",
+    title: "Triplet reduction for the Markovian Mpemba effect",
+    statement: r`(Avitan, Factor and Gelbwaser-Klimovsky 2026.) An $N$-level system with energies $E_1<\dots<E_N$ relaxes under a Pauli master equation $\dot{\mathbf p}=M\mathbf p$ whose rates obey detailed balance at bath inverse temperature $0<\beta_b<\infty$. From a thermal initial state at $\beta_{\rm in}$, write $\mathbf p(t)-\pi(\beta_b)=\sum_{k\ge2}b_k(\beta_{\rm in})e^{\lambda_kt}\mathbf v_k$ with $0>\lambda_2>\lambda_3\ge\cdots$. Following Lu and Raz, a Markovian Mpemba effect occurs if and only if $|b_2|$, as a function of $\beta_{\rm in}$, has a maximum at some $\beta_{\rm in}\neq\beta_b$. For each triplet $i<j<k$, let $\mathcal C_{ijk}$ be the three-level necessary conditions of Avitan et al. (their Eq. (3)) applied to the rates among $\{i,j,k\}$. Prove or refute: if every triplet violates $\mathcal C_{ijk}$, the $N$-level system shows no Markovian Mpemba effect.`,
+    definition: r`**The Markovian Mpemba effect** is the faster relaxation of a system prepared farther from equilibrium. For Markov jump processes, Lu and Raz reduced it to the non-monotonicity of the slowest-mode coefficient $b_2$, “Nonequilibrium thermodynamics of the Markovian Mpemba effect and its inverse”, PNAS 114, 5083 (2017), [arXiv:1609.05271](https://arxiv.org/abs/1609.05271). Klich, Raz, Hirschberg and Vucelja introduced the strong effect and the Mpemba index, PRX 9, 021060 (2019), [arXiv:1711.05829](https://arxiv.org/abs/1711.05829).
+
+The conjecture is stated by Avitan, Factor and Gelbwaser-Klimovsky in the section “Numerics for non-zero temperature baths” of [arXiv:2603.04567](https://arxiv.org/abs/2603.04567v1), with the caveat that “these results are limited to 7-level systems and may not reflect trends in larger systems”. Their abstract calls the question of which systems show the effect open.`,
+    progress: r`- Avitan, Factor and Gelbwaser-Klimovsky (4 March 2026, v1) derive necessary conditions on the rates of a three-level system. At zero bath temperature ($M$ triangular, non-degenerate eigenvalues) they prove by induction that no $N$-level system shows the effect when every triplet strongly violates the conditions. At finite temperature, random sampling of 4- to 7-level systems supports the conjecture ([arXiv:2603.04567](https://arxiv.org/abs/2603.04567v1)).
+- Gelbwaser-Klimovsky (9 September 2026, v1) gives necessary and sufficient conditions for three-level systems and an algorithm to find Mpemba parameters in $N$-level systems. He writes that “we cannot use the 3LS mechanisms to rule out or ensure the Markovian Mpemba effect in an N-level system”; four-level sampling ($5\times10^5$ realizations) is consistent with the conjecture ([arXiv:2609.09988](https://arxiv.org/abs/2609.09988v1)). That paper describes the triplet implication as shown in the earlier work, whereas the earlier work proves it only at zero bath temperature.
+- The review of Ares, Calabrese and Murciano (Nat. Rev. Phys. 7, 451 (2025)) gives no general necessary and sufficient condition for open systems ([arXiv:2502.08087](https://arxiv.org/abs/2502.08087)).`,
+    residual: r`The finite-temperature conjecture is open, as is a characterization of which $N$-level systems show the effect. Sub-targets: $N=4$ at finite $\beta_b$, using the exact three-level conditions of 2609.09988; or a four-level counterexample found by targeted optimization rather than uniform sampling. Weak versus strong violation of the triplet conditions should be kept apart: the zero-temperature proof needs strong violation.`,
+    evidence: [
+      { kind: "preprint",
+        role: "progress",
+        summary: "Three-level necessary conditions on rates; proof at zero bath temperature that strong violation by every triplet excludes the Mpemba effect in N-level systems; finite-temperature conjecture supported by sampling up to 7 levels.",
+        url: "https://arxiv.org/abs/2603.04567v1",
+        date: "2026-03-04",
+        version: "v1" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Necessary and sufficient conditions for the three-level Markovian Mpemba effect; four-level sampling consistent with the triplet conjecture; no N-level proof.",
+        url: "https://arxiv.org/abs/2609.09988v1",
+        date: "2026-09-09",
+        version: "v1" },
+    ],
+    provenance: [],
+    relations: [],
+    refs: [
+      { label: "Avitan, Factor & Gelbwaser-Klimovsky, 'Necessary conditions for the Markovian Mpemba effect' (2026 preprint, v1)", url: "https://arxiv.org/abs/2603.04567" },
+      { label: "Gelbwaser-Klimovsky, 'Efficient protocol for the Markovian Mpemba effect in N-level systems' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.09988" },
+      { label: "Lu & Raz, 'Nonequilibrium thermodynamics of the Markovian Mpemba effect and its inverse', PNAS 114, 5083 (2017)", url: "https://arxiv.org/abs/1609.05271" },
+      { label: "Klich, Raz, Hirschberg & Vucelja, 'Mpemba Index and Anomalous Relaxation', PRX 9, 021060 (2019)", url: "https://arxiv.org/abs/1711.05829" },
+      { label: "Ares, Calabrese & Murciano, 'The quantum Mpemba effects', Nat. Rev. Phys. 7, 451 (2025)", url: "https://arxiv.org/abs/2502.08087" },
+    ] },
+
+  { id: "O13",
+    cat: "open-systems",
+    horizon: "sharp",
+    status: "improved",
+    reviewedAt: "2026-11-16",
+    title: "Entanglement depth forced by fast complete battery charging",
+    statement: r`(Shi, Gan, Zhang, Wang and Yang 2025, Eq. (6).) An $N$-qubit battery with $H_b=\sum_j\sigma^z_j$ starts in $|\downarrow\rangle^{\otimes N}$ and is fully charged to $|\uparrow\rangle^{\otimes N}$ (up to a phase) at time $T$ by a time-independent charging Hamiltonian, $|\psi(t)\rangle=e^{-iH_ct}|\psi(0)\rangle$. Let $\eta=\tau_{\rm QSL}/T\le1$ be the rate normalized by the quantum speed limit $\tau_{\rm QSL}=\max\{\pi/(2\Delta H_c),\pi/(2\langle H_c\rangle)\}$, and $\operatorname{Ent}[U]=\max_{0\le t\le T}\operatorname{Ent}(|\psi(t)\rangle)$ the largest entanglement depth along the trajectory. Conjecture: $\operatorname{Ent}[U]\ge\lceil N\eta^2\rceil$ for every such fully charging evolution.`,
+    definition: r`**Entanglement depth.** A pure $N$-partite state has entanglement depth at most $k$ if it is a product across some partition into blocks of at most $k$ parties; the depth is the smallest such $k$ (Sørensen and Mølmer, PRL 86, 4431 (2001), [arXiv:quant-ph/0011035](https://arxiv.org/abs/quant-ph/0011035)). **Charging advantage.** Collective charging of $N$ cells can be faster than parallel charging, and the role of entanglement in that speed-up has been debated since Alicki and Fannes ([arXiv:1211.1209](https://arxiv.org/abs/1211.1209)), Binder et al. (NJP 17, 075015 (2015), [arXiv:1503.07005](https://arxiv.org/abs/1503.07005)) and Campaioli et al. (PRL 118, 150601 (2017), [arXiv:1612.04991](https://arxiv.org/abs/1612.04991)).
+
+Shi, Gan, Zhang, Wang and Yang state the conjecture in “Quantum Charging Advantage from Multipartite Entanglement” ([arXiv:2503.02667](https://arxiv.org/abs/2503.02667v1), March 2025, Eq. (6) and Conclusion), “based on numerical and analytical evidence”. It would make the normalized rate a witness of multipartite entanglement: $\eta>1/\sqrt N$ excludes fully separable trajectories, and $\eta=1$ forces depth $N$.`,
+    progress: r`- In the same paper, Shi et al. prove the conjecture in three cases: charging that saturates the speed limit ($\eta=1$ forces depth $N$), fully parallel charging, and SU(2) charging schemes. In the SU(2) case the bound $\lceil N/d\rceil$ at $\eta=1/\sqrt d$ is tight (Theorem 2). They also give a new lower bound on entanglement depth from “locally orthonormal pairs” (Theorem 1), used for numerical checks.
+- Sun, Lu and Jin ([arXiv:2605.16935](https://arxiv.org/abs/2605.16935v1), v1, 16 May 2026) announce the exact frontier $\eta_{\max}(k)=\lceil N/k\rceil^{-1/2}$ for pure-state complete charging under a time-independent Hamiltonian. Equivalently, a rate $\eta$ would certify $\operatorname{Ent}[U]\ge\lceil N/\lfloor\eta^{-2}\rfloor\rceil\ge\lceil N\eta^2\rceil$, which is the conjecture with an exact integer staircase. Balanced “cluster-flip” evolutions attain the frontier. The upper bound uses a Baire-category and analyticity argument to reduce a trajectory to a single product partition, then Minkowski's inequality on Fubini–Study speeds.
+- The main text of that preprint gives only a “proof sketch”. The fixed-partition lemma and the Margolus–Levitin branch bound $\tau_{\rm ML}/T\le1/m$ are said to be proved in a Supplemental Material that is not part of the arXiv posting: the five-page v1 and its source contain only the main text and one figure. The resolution is therefore not recorded as a claimed solution here.`,
+    residual: r`The conjecture remains open as a publicly checkable result. Its resolution needs the two steps that Sun, Lu and Jin defer to their unpublished Supplemental Material: the reduction to a fixed partition and the Margolus–Levitin branch bound. Outside the stated setting (closed, pure, exact complete charging under a time-independent Hamiltonian), the authors list approximate charging, mixed states, open dynamics, time-dependent controls and work extraction. Analogous speed–depth frontiers there are open, as is a version for partial charging (stored work below $2N$).`,
+    evidence: [
+      { kind: "preprint",
+        role: "progress",
+        summary: "Announces the exact frontier η_max(k) = ⌈N/k⌉^{-1/2} for pure-state complete charging under time-independent Hamiltonians, which would give Ent[U] ≥ ⌈Nη²⌉. The main text gives a proof sketch; two steps rely on a Supplemental Material that is not on arXiv, so the claim is not recorded as a full resolution.",
+        url: "https://arxiv.org/abs/2605.16935v1",
+        date: "2026-05-16",
+        version: "v1" },
+      { kind: "conjecture",
+        role: "progress",
+        summary: "Poses the conjecture Ent[U] ≥ ⌈Nη²⌉ for fully charging N-qubit batteries; proves it for QSL-saturating, fully parallel and SU(2) charging schemes, with a tight SU(2) construction.",
+        url: "https://arxiv.org/abs/2503.02667v1",
+        date: "2025-03-04",
+        version: "v1" },
+    ],
+    provenance: [],
+    relations: [
+      { id: "O7", type: "related" },
+    ],
+    refs: [
+      { label: "Shi, Gan, Zhang, Wang & Yang, 'Quantum Charging Advantage from Multipartite Entanglement' (2025 preprint), Eq. (6)", url: "https://arxiv.org/abs/2503.02667" },
+      { label: "Sørensen & Mølmer, 'Entanglement and Extreme Spin Squeezing', PRL 86, 4431 (2001)", url: "https://arxiv.org/abs/quant-ph/0011035" },
+      { label: "Campaioli et al., 'Enhancing the charging power of quantum batteries', PRL 118, 150601 (2017)", url: "https://arxiv.org/abs/1612.04991" },
+      { label: "Binder, Vinjanampathy, Modi & Goold, 'Quantacell: Powerful charging of quantum batteries', NJP 17, 075015 (2015)", url: "https://arxiv.org/abs/1503.07005" },
+      { label: "Sun, Lu & Jin, 'Exact Entanglement-Depth Speed Frontier for Complete Quantum Charging' (2026 preprint, v1)", url: "https://arxiv.org/abs/2605.16935v1" },
     ] },
 ];

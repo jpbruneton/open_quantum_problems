@@ -1,4 +1,5 @@
 import { NEW_AREA_PROPOSALS, NEW_AREAS_BATCH } from "./proposals-new-areas";
+import { CARTE_V2_PROPOSALS, CARTE_V2_BATCH, carteV2 } from "./proposals-carte-v2";
 
 const r = String.raw;
 
@@ -22,8 +23,19 @@ export const PROPOSALS_META_NEW_AREAS = {
   method: "About fifty candidates in gravity, holography, cosmology, the renormalization group and collapse models were drafted with AI assistance and triaged by a separate AI review. Well-known open problems among them became catalogue entries; the candidates kept here are new formulations or narrow sub-questions.",
 };
 
+// Third batch (16 November 2026): questions from the second semantic map of the quant-ph
+// corpus ("carte v2"). Items carry batch: CARTE_V2_BATCH and have no `formerly` key.
+export const PROPOSALS_META_CARTE_V2 = {
+  date: CARTE_V2_BATCH,
+  label: "16 November 2026",
+  reportUrl: "https://github.com/jpbruneton/open_quantum_problems/blob/main/docs/reviews/2026-11-16-new-problems-carte-v2.md",
+  method: "A semantic map of the 36,350 quant-ph abstracts of November 2024 to November 2026 found nine active theoretical themes with no entry on the site. Targeted reading of their papers produced 48 candidate questions with the authors' own formulations. Each was rechecked on 16 November 2026. Questions posed explicitly in the literature became catalogue entries; the candidates kept here are reformulated or partly inferred.",
+};
+
 export function proposalBatch(it) {
-  return it.batch === NEW_AREAS_BATCH ? PROPOSALS_META_NEW_AREAS : PROPOSALS_META;
+  if (it.batch === NEW_AREAS_BATCH) return PROPOSALS_META_NEW_AREAS;
+  if (it.batch === CARTE_V2_BATCH) return PROPOSALS_META_CARTE_V2;
+  return PROPOSALS_META;
 }
 
 // groups: cat slug as in CATEGORIES; items: { key, formerly, title, horizon, extends: [ids], statement, why, baseline?, ai?, caveat? }
@@ -246,10 +258,10 @@ export const PROPOSALS = [
       caveat: "The conjecture is a sharpening proposed here; no paper states it verbatim.",
       assessment: { verdict: "open-substantive", confidence: "medium", summary: r`Open, and the natural sharp 2D test case for O10. Static input exists, since the TFIM transition is sharp ([Björnberg–Grimmett](https://arxiv.org/abs/0901.0328)), but the step from spatial mixing to a gap is known only for commuting Hamiltonians ([Kastoryano–Brandão](https://arxiv.org/abs/1409.3435)). In 1D the analogue is settled at all temperatures ([Bergamaschi–Chen](https://arxiv.org/abs/2510.08533)).` } },
     { key: "PO2", formerly: "P38", title: "Critical spectral-gap exponent of the Davies generator for the mean-field Heisenberg ferromagnet", horizon: "incremental", extends: ["O10"],
-      statement: r`For the complete-graph Heisenberg ferromagnet on $n$ qubits with single-site Davies dynamics, Basso–Bergamaschi–Lin–Ragone–Stubbs prove $\mathrm{gap}=\Theta(1)$ for $\beta<2$ and $\Theta(n^{-1})$ for $\beta>2$, but only $\Omega(n^{-1})\le\mathrm{gap}\le O(n^{-1/2})$ at $\beta=2$. Determine the exponent $\alpha$ with $\mathrm{gap}(\beta=2)=\Theta(n^{-\alpha})$ and the crossover scaling in the window $\beta=2+cn^{-\gamma}$. Natural conjecture: $\alpha=1/2$ and $\gamma=1/2$.`,
+      statement: r`For the complete-graph Heisenberg ferromagnet on $n$ qubits with single-site Davies dynamics, Basso–Bergamaschi–Lin–Ragone–Stubbs prove $\mathrm{gap}=\Theta(1)$ for $\beta<2$ and $\Theta(n^{-1})$ for $\beta>2$, but only $\Omega(n^{-1})\le\mathrm{gap}\le O(n^{-1/2})$ at $\beta=2$. Determine the exponent $\alpha$ with $\mathrm{gap}(\beta=2)=\Theta(n^{-\alpha})$ and the crossover scaling in the window $\beta=2+cn^{-\gamma}$. Natural conjecture: $\alpha=1/2$ and $\gamma=1/2$. Raikovich, Mák, Czabán and Gilyén claim $\alpha=1/2$ (arXiv:2610.06818), so the crossover window is the remaining target.`,
       why: r`The first fully rigorous two-sided gap result across a quantum symmetry-breaking transition; the authors "leave open a complete characterization of when $\beta=2\pm o(1)$". Their Theorem 3.9 already gives $\Omega(n^{-1/2})$ on the permutation-invariant sector at $\beta=2$; the non-invariant sectors, which carry the magnetization, are what is missing. The classical critical Curie–Weiss Glauber dynamics has relaxation time of order $n^{1/2}$ (Levin–Luczak–Peres). The lattice Davies-gap question across the claimed $d\ge3$ ferromagnetic transition is untouched.`,
-      baseline: r`Basso–Bergamaschi–Lin–Ragone–Stubbs, arXiv:2607.21798; Levin–Luczak–Peres, arXiv:0712.0790.`,
-      assessment: { verdict: "open-minor", confidence: "high", summary: r`Open but incremental: a well-defined technical problem with an expected answer $\alpha=1/2$, by analogy with critical Curie–Weiss dynamics ([Levin–Luczak–Peres](https://arxiv.org/abs/0712.0790)). [Basso et al.](https://arxiv.org/abs/2607.21798) already prove $\Omega(n^{-1/2})$ on the permutation-invariant sector at $\beta=2$, so the remaining work is in the non-invariant sectors. Horizon changed from sharp to incremental.` } },
+      baseline: r`Basso–Bergamaschi–Lin–Ragone–Stubbs, arXiv:2607.21798; Levin–Luczak–Peres, arXiv:0712.0790; Raikovich–Mák–Czabán–Gilyén, arXiv:2610.06818.`,
+      assessment: { verdict: "open-minor", confidence: "high", summary: r`The exponent is claimed: [Raikovich, Mák, Czabán and Gilyén](https://arxiv.org/abs/2610.06818v1) (v1, 5 October 2026) prove $\mathrm{gap}=\Theta(n^{-1/2})$ at $\beta=2$ for single-site Davies generators with arbitrary KMS weights, including those of Basso et al., and for the coherent and operator-Fourier-transform KMS samplers. They complete the phase diagram $\Theta(1)$, $\Theta(n^{-1/2})$, $\Theta(n^{-1})$ and write that this "resolves the critical case also for the Davies generator". The claim is not yet assessed. They do not treat the crossover window $\beta=2+cn^{-\gamma}$, which is what remains open; the expected $\gamma=1/2$ comes from critical Curie–Weiss dynamics ([Levin–Luczak–Peres](https://arxiv.org/abs/0712.0790)). The authors report that LLMs helped transfer the results between generator families, sketch the zero-temperature proof, find the proof of Lemma 5 and references, and draft small sections. Horizon changed from sharp to incremental.` } },
     { key: "PO3", formerly: "P41", title: "The ultimate accuracy–entropy relation for autonomous quantum clocks", horizon: "sharp", extends: ["O7"],
       statement: r`Fix the framework: a Markovian ticking clock (Lindbladian with a designated tick channel) or the Woods–Silva–Oppenheim autonomous framework; $\Sigma_{\rm tick}$ the bath entropy per tick summed over all dissipative channels, including any feedback, reset and readout costs; bounded Hamiltonian norm per site or bounded energy per tick. With accuracy $\mathcal N=\mu^2/\sigma^2$, classical clocks obey $\mathcal N\le\Sigma_{\rm tick}/2$ (the thermodynamic uncertainty relation, saturated asymptotically by long uniform rings), while Meier et al. construct a many-body quantum clock with $\mathcal N=e^{\Omega(\Sigma_{\rm tick})}$. Prove or refute the existence of a universal $g$ with $\mathcal N\le g(\Sigma_{\rm tick})$ for all such clocks of unbounded dimension; if it exists, decide whether $g$ is exponential.`,
       why: r`Meier et al. (Nat. Phys. 21, 1147 (2025)) write that "the ultimate bounds on this relationship are unknown". The answer depends on what is charged to the clock: feedback, information flow or coherence can circumvent reservoir-entropy-only bounds, with a corrected cost restoring them (Lu–Wang; Honma–Van Vu; Miller–Erker), so the framework must be fixed. Dimension alone does not bound accuracy usefully (Woods–Silva–Pütz–Stupar–Renner: quantum precision of order $d^2$ versus $d$ classically), so any $g$ must come from entropy or energy. Nelmes et al. attain the precision–resolution exponent, a different trade-off.`,
@@ -265,6 +277,12 @@ export const PROPOSALS = [
   ]},
   ...NEW_AREA_PROPOSALS,
 ];
+
+// The carte v2 items join the group of their catalogue category.
+for (const group of PROPOSALS) group.items.push(...carteV2(group.cat));
+for (const it of CARTE_V2_PROPOSALS) {
+  if (!PROPOSALS.some((g) => g.cat === it.cat)) throw new Error(`proposal ${it.key}: no group for category ${it.cat}`);
+}
 
 // Secondary candidates: one line each. { key, title, extends, note }
 export const SECONDARY_PROPOSALS = [

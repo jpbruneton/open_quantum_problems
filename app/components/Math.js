@@ -1,5 +1,3 @@
-"use client";
-
 import katex from "katex";
 
 // Renders a string containing inline ($...$) and display ($$...$$) LaTeX.

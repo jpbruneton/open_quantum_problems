@@ -70,19 +70,25 @@ A distinct weaker target asks for trace-distance error at most $\epsilon$ on eve
       { label: "OpenAI, 'Polynomial PEPS approximation of gapped square-grid ground states' (OpenAI Math Release manuscript, dated 24 September 2026; public 6 October 2026)", url: `${OAI}preprints/Polynomial-PEPS-approximation-of-gapped-square-grid-ground-states-September-24-2026/paper.pdf` },
     ] },
 
-  { id: "B3", cat: "many-body", horizon: "incremental",
+  { id: "B3", cat: "many-body", horizon: "incremental", status: "improved",
+    reviewedAt: "2026-11-16",
     title: "Efficient contraction of physically restricted PEPS",
     statement: r`For injective 2D PEPS specified by finite-precision tensors, establish checkable boundary-mixing and conditioning promises that allow normalized bounded-support expectation values to be computed to additive error $\epsilon$ in time polynomial in input length and $1/\epsilon$. State whether a uniform parent gap suffices within the chosen class.`,
     definition: r`**PEPS contraction** is the task of extracting expectation values from a compact PEPS description of a state. Exact contraction, relative approximation of a norm, and additive approximation of a normalized observable are different computational tasks; a hardness result must specify which one and its precision promises.
 
 Worst-case hardness results obstruct a general polynomial algorithm under the corresponding complexity assumptions (Schuch, Wolf, Verstraete and Cirac, PRL 98, 140506 (2007), [arXiv:quant-ph/0611050](https://arxiv.org/abs/quant-ph/0611050)), so the question is which physically restricted classes admit efficient contraction.`,
     progress: r`- Numerical boundary-MPS and corner-transfer methods often perform well, but injectivity or finite correlation length alone is not an unconditional polynomial-time certificate.
-- Schwarz, Buerschaper and Eisert give a quasi-polynomial local-observable algorithm under explicit injectivity, gap and conditioning assumptions ([arXiv:1606.06301](https://arxiv.org/abs/1606.06301)). This is not a general polynomial contraction theorem.`,
-    residual: r`The residual is to close the algorithmic gap in a named promise family, or exhibit an obstruction preserving those promises. A target must specify accessible boundary data, tensor conditioning and bond-dimension scaling. This task is separate from existence of a representation (B2), certifying the parent gap (M7) and finding tensors from a Hamiltonian.`,
+- Schwarz, Buerschaper and Eisert give a quasi-polynomial local-observable algorithm under explicit injectivity, gap and conditioning assumptions ([arXiv:1606.06301](https://arxiv.org/abs/1606.06301)). This is not a general polynomial contraction theorem.
+- Harley, Witteveen and Malz (v2, November 2025) settle one promise family, indexed by an injectivity parameter ([arXiv:2509.19963](https://arxiv.org/abs/2509.19963v2)). Above a constant injectivity threshold, 2D PEPS of constant bond dimension have a uniform parent gap, and local observables can be estimated classically to additive error $\epsilon$ in time $\mathrm{poly}(1/\epsilon)$, independent of system size. The cost grows as $D^{O(\log 1/\epsilon)}$ in the bond dimension $D$. Below another constant threshold, evaluating local observables remains postBQP-complete. In this regime a uniform parent gap therefore suffices.`,
+    residual: r`The residual is to close the window between the two injectivity thresholds, treat translation-invariant PEPS (left open by Harley, Witteveen and Malz), or close the algorithmic gap in another named promise family, or exhibit an obstruction preserving those promises. A target must specify accessible boundary data, tensor conditioning and bond-dimension scaling. This task is separate from existence of a representation (B2), certifying the parent gap (M7) and finding tensors from a Hamiltonian.`,
+    evidence: [
+      { kind: "preprint", role: "progress", summary: "Above a constant injectivity threshold, local observables of 2D PEPS with constant bond dimension can be estimated classically to additive error ε in time poly(1/ε), independent of system size, via a uniform parent gap; below another constant threshold the task remains postBQP-complete. The intermediate injectivity window and translation-invariant PEPS remain open.", url: "https://arxiv.org/abs/2509.19963v2", date: "2025-11-12", version: "v2" },
+    ],
     refs: [
       { label: "Schuch, Wolf, Verstraete, Cirac, 'Computational complexity of PEPS', PRL 98, 140506 (2007)", url: "https://arxiv.org/abs/quant-ph/0611050" },
       { label: "Cirac, Pérez-García, Schuch & Verstraete, 'Matrix product states and projected entangled pair states: Concepts, symmetries, and theorems', Rev. Mod. Phys. 93, 045003 (2021)", url: "https://arxiv.org/abs/2011.12127" },
       { label: "Schwarz, Buerschaper & Eisert, 'Approximating local observables on projected entangled pair states', PRA 95, 060102 (2017)", url: "https://arxiv.org/abs/1606.06301" },
+      { label: "Harley, Witteveen & Malz, 'Computational complexity of injective projected entangled pair states' (2025 preprint, v2)", url: "https://arxiv.org/abs/2509.19963v2" },
     ] },
 
   { id: "B4", cat: "many-body", horizon: "incremental",
@@ -537,5 +543,171 @@ Spin order inside the crystal (ferromagnetic or antiferromagnetic) is outside th
       { label: "Azadi & Drummond, 'Low-density phase diagram of the three-dimensional electron gas', PRB 105, 245135 (2022)", url: "https://arxiv.org/abs/2201.08743" },
       { label: "OpenAI, 'Universal optimality of the triangular lattice' (OpenAI Math Release manuscript, dated 23 September 2026; public 6 October 2026)", url: `${OAI}preprints/Universal-optimality-of-the-triangular-lattice-September-23-2026/paper.pdf` },
       { label: "OpenAI, 'Triangular minimality for planar Coulomb renormalized energy' (OpenAI Math Release manuscript, dated 23 September 2026; public 6 October 2026)", url: `${OAI}preprints/Triangular-minimality-for-planar-Coulomb-renormalized-energy-September-23-2026/paper.pdf` },
+    ] },
+
+  // 16 November 2026: questions from the carte v2 map of the quant-ph corpus.
+  { id: "B20",
+    cat: "many-body",
+    horizon: "sharp",
+    reviewedAt: "2026-11-16",
+    title: "Rigorous stability of the volume-law phase in monitored random circuits",
+    statement: r`(Fisher, Khemani, Nahum and Vijay 2022, Outlook.) Take a chain of $L$ qudits of local dimension $d$, initialised in a product state. Each time step applies a brickwork layer of independent Haar-random two-qudit gates; then each qudit is measured in the computational basis independently with probability $p$, with Born-rule outcomes. Let $\overline{S}(t)$ be the half-chain von Neumann entropy averaged over gates, measurement locations and outcomes. Prove that for some finite $d$ (ideally $d=2$) there are $p_0(d)>0$ and $c>0$ with $\overline{S}(t)\ge cL$ for all $p<p_0$ and $t\ge L$. Equivalently, in the purification picture, show that an initially maximally mixed chain keeps entropy $\Omega(L)$ up to times $e^{\Omega(L)}$.`,
+    definition: r`**Measurement-induced phase transition.** In hybrid circuits of random unitaries and local measurements, the late-time entanglement of typical trajectories is believed to obey a volume law for small $p$ and an area law for large $p$, with a transition at $p_c$ (about $0.17$ for qubit Haar circuits in numerics). This was found by Skinner, Ruhman and Nahum, PRX 9, 031009 (2019), [arXiv:1808.05953](https://arxiv.org/abs/1808.05953); Li, Chen and Fisher, PRB 98, 205136 (2018), [arXiv:1808.06134](https://arxiv.org/abs/1808.06134); and Chan, Nandkishore, Pretko and Smith, PRB 99, 224307 (2019), [arXiv:1808.05949](https://arxiv.org/abs/1808.05949).
+
+The area-law side is rigorous at large $p$: the zeroth Rényi (Hartley) entropy $S_0$ equals a minimal cut in the circuit with measured bonds removed, a percolation problem, and $S_{\rm vN}\le S_0$. The open part is a lower bound on $S_{\rm vN}$ at finite $d$.
+
+The question is posed in the Outlook of Fisher, Khemani, Nahum and Vijay, “Random Quantum Circuits”, Annu. Rev. Condens. Matter Phys. 14, 335 (2023), [arXiv:2207.14280](https://arxiv.org/abs/2207.14280): “it would also be interesting to have mathematically rigorous results for the phase diagram of the measurement problem, for example a rigorous proof of the stability of the volume-law phase.” Fava, Piroli, Bernard and Nahum repeat in 2024 that “there is a lack of mathematically rigorous results for the phase structure of monitored many-body systems” ([arXiv:2407.08045](https://arxiv.org/abs/2407.08045), Sec. VIII).`,
+    progress: r`- Skinner, Ruhman and Nahum (2019) map $S_0$ to a minimal cut in a percolation problem. This gives a rigorous area law for $S_{\rm vN}$ above the percolation threshold, but no volume-law lower bound for $S_{\rm vN}$ ([arXiv:1808.05953](https://arxiv.org/abs/1808.05953)).
+- Bao, Choi and Altman and Jian, You, Vasseur and Ludwig (2019–2020) obtain an exact statistical-mechanics mapping for $d\to\infty$. At finite $d$ the analysis uses the replica limit and is not rigorous ([arXiv:1908.04305](https://arxiv.org/abs/1908.04305), [arXiv:1908.08051](https://arxiv.org/abs/1908.08051)). Numerics place $p_c\approx0.17$ for qubit Haar circuits (Zabalo et al., [arXiv:1911.00008](https://arxiv.org/abs/1911.00008)).
+- Choi, Bao, Qi and Altman (2020) and Gullans and Huse (2020) interpret the volume-law phase as a dynamically generated error-correcting code ([arXiv:1903.05124](https://arxiv.org/abs/1903.05124), [arXiv:1905.05195](https://arxiv.org/abs/1905.05195)).
+- Rigorous results exist for other quantities. Suzuki, Haferkamp, Eisert and Faist prove a transition in exact state complexity for monitored random circuits by percolation arguments (Quantum 9, 1627 (2025), [arXiv:2305.15475](https://arxiv.org/abs/2305.15475)). McGinley, Ho and Malz prove a lower bound on measurement-induced entanglement in constant-depth 2D random circuits after a single round of measurements (PRX 15, 021059 (2025), [arXiv:2410.23248](https://arxiv.org/abs/2410.23248)). Neither addresses the repeated-measurement steady state of the statement.`,
+    residual: r`No proof of $\overline{S}\ge cL$ is known for any finite-$d$ monitored Haar or Clifford circuit. Sub-targets: (i) monitored random Clifford circuits, where $S_{\rm vN}$ is an $\mathbb F_2$ rank; (ii) Haar qudits with $d\ge d_0$ finite and $p\le p_0(d)$; (iii) a linear lower bound on the Rényi-2 entropy, which suffices since $S_2\le S_{\rm vN}$; (iv) any rigorous bound $p_c^{\rm vN}\ge p_\ast>0$.`,
+    evidence: [
+      { kind: "published",
+        role: "progress",
+        summary: "The Hartley entropy S₀ of monitored random circuits equals a minimal cut with measured bonds removed, mapping its transition to percolation; this bounds S_vN from above only (PRX 9, 031009).",
+        url: "https://arxiv.org/abs/1808.05953v4",
+        date: "2019-07-26",
+        version: "v4" },
+      { kind: "published",
+        role: "progress",
+        summary: "Rigorous transition in exact state complexity of monitored random circuits: linear growth below a critical measurement rate, polynomial above it (Quantum 9, 1627). Not an entanglement-entropy statement.",
+        url: "https://arxiv.org/abs/2305.15475v6",
+        date: "2025-06-19",
+        version: "v6" },
+      { kind: "published",
+        role: "progress",
+        summary: "Rigorous lower bound on average measurement-induced von Neumann entanglement in constant-depth 2D random circuits above a constant critical depth, after one measurement round (PRX 15, 021059).",
+        url: "https://arxiv.org/abs/2410.23248v2",
+        date: "2025-05-19",
+        version: "v2" },
+    ],
+    provenance: [],
+    relations: [
+      { id: "B21", type: "related" },
+      { id: "A43", type: "related" },
+    ],
+    refs: [
+      { label: "Fisher, Khemani, Nahum & Vijay, 'Random Quantum Circuits', Annu. Rev. Condens. Matter Phys. 14, 335 (2023), Outlook", url: "https://arxiv.org/abs/2207.14280" },
+      { label: "Skinner, Ruhman & Nahum, 'Measurement-Induced Phase Transitions in the Dynamics of Entanglement', PRX 9, 031009 (2019)", url: "https://arxiv.org/abs/1808.05953" },
+      { label: "Li, Chen & Fisher, 'Quantum Zeno Effect and the Many-body Entanglement Transition', PRB 98, 205136 (2018)", url: "https://arxiv.org/abs/1808.06134" },
+      { label: "Gullans & Huse, 'Dynamical purification phase transitions induced by quantum measurements', PRX 10, 041020 (2020)", url: "https://arxiv.org/abs/1905.05195" },
+      { label: "Bao, Choi & Altman, 'Theory of the phase transition in random unitary circuits with measurements', PRB 101, 104301 (2020)",
+        url: "https://arxiv.org/abs/1908.04305" },
+      { label: "Suzuki, Haferkamp, Eisert & Faist, 'Quantum complexity phase transitions in monitored random circuits', Quantum 9, 1627 (2025)",
+        url: "https://arxiv.org/abs/2305.15475" },
+    ] },
+
+  { id: "B21",
+    cat: "many-body",
+    horizon: "sharp",
+    reviewedAt: "2026-11-16",
+    title: "Area law for monitored free fermions at every measurement rate",
+    statement: r`(Fava, Piroli, Bernard and Nahum 2024, Sec. V.A.) Consider spinless complex fermions on a chain of $L$ sites with a number-conserving quadratic hopping Hamiltonian (nearest-neighbour hopping $J$, or white-noise random hopping). Each occupation $n_j=c_j^\dagger c_j$ is continuously monitored at rate $\gamma>0$, as a quantum-state-diffusion unravelling (variant: projective measurements at Poisson rate $\gamma$). Starting from a Gaussian state, every trajectory stays Gaussian. Prove that for every $\gamma/J>0$ there is $C(\gamma/J)<\infty$ with $\sup_L\limsup_{t\to\infty}\mathbb E\,S_{\rm vN}(\rho_{[1,L/2]}(t))\le C$, which would rule out a measurement-induced transition in one dimension. Or prove a Berezinskii–Kosterlitz–Thouless-type transition to a phase with $\log L$ entanglement at small $\gamma$.`,
+    definition: r`**Monitored free fermions.** Gaussian states remain Gaussian under quadratic Hamiltonians and monitoring of occupations, so a trajectory is described by its correlation matrix $G_{ij}=\langle c_i^\dagger c_j\rangle$ and can be simulated for thousands of sites. Cao, Tilloy and De Luca found that entanglement does not grow extensively under continuous monitoring, SciPost Phys. 7, 024 (2019), [arXiv:1804.04638](https://arxiv.org/abs/1804.04638).
+
+Whether a transition survives is disputed. Replica Keldysh field theory and numerics predicted a BKT transition to a critical $\log L$ phase (Buchhold, Minoguchi, Altland and Diehl, PRX 11, 041004 (2021), [arXiv:2102.08381](https://arxiv.org/abs/2102.08381)). Nonlinear sigma models predict an area law for every $\gamma>0$, beyond a correlation length exponential in $\sqrt{J/\gamma}$ (Poboiko, Pöpperl, Gornyi and Mirlin, PRX 13, 041046 (2023), [arXiv:2304.03138](https://arxiv.org/abs/2304.03138); Fava et al., [arXiv:2407.08045](https://arxiv.org/abs/2407.08045)).
+
+Fava, Piroli, Bernard and Nahum write that “rigorous results are lacking in this subject, and it would be valuable to have a rigorous proof of the existence of a stable area law phase, for example by working with the lattice model in the opposite regime of $\Gamma\gg J$, $N_F=1$” (PRR 6, 043246 (2024), Sec. V.A). In Sec. VIII they add that even the stability of “trivial” disentangled phases is unproved. The review of Li, Zhong and Yu calls “whether a true BKT transition exists in monitored free-fermion systems” a key unresolved issue (JPCM 37, 273002 (2025), [arXiv:2503.21427](https://arxiv.org/abs/2503.21427), Outlook).`,
+    progress: r`- Alberton, Buchhold and Diehl (2021) report numerically a critical $\log L$ regime at weak monitoring and an area law at strong monitoring, with BKT-like finite-size corrections ([arXiv:2005.09722](https://arxiv.org/abs/2005.09722)).
+- Poboiko, Pöpperl, Gornyi and Mirlin (2023) derive a nonlinear sigma model for projective measurements; one-loop renormalization predicts saturation of the entanglement at order $(J/\gamma)^2$, so an area law at every rate ([arXiv:2304.03138](https://arxiv.org/abs/2304.03138)).
+- Fava, Piroli, Bernard and Nahum (2024) derive a controlled large-$N_F$ field theory for U(1)-conserving monitored fermions with random hopping; they find an area law for all monitoring rates, with an exponentially large correlation length when the bare coupling is small ([arXiv:2407.08045](https://arxiv.org/abs/2407.08045v3)).
+- Niederegger, Vovk, Starchl and Sieberer (PRB 113, 144317 (2026)) extend the sigma-model analysis to all unravelling phases $0\le\phi<\pi/2$ and find no measurement- or unravelling-induced transition; numerics agree ([arXiv:2510.19459](https://arxiv.org/abs/2510.19459v2)).
+- Yin, Fan and García-García (2026) simulate up to about 18,000 sites with disordered or quasiperiodic potentials and find a critical monitoring strength consistent with zero ([arXiv:2605.10758](https://arxiv.org/abs/2605.10758v3)).
+- None of these is a mathematical proof. Without U(1) symmetry the picture differs: monitored Majorana chains have a genuine transition out of a $(\log L)^2$ phase (Fava et al., PRX 13, 041045 (2023), [arXiv:2302.12820](https://arxiv.org/abs/2302.12820)).`,
+    residual: r`No rigorous bound uniform in $L$ is known at any rate. The sub-target named by Fava et al. is strong monitoring, $\gamma\gg J$, with one flavour: prove exponential decay of $\mathbb E|G_{ij}|^2$ in $|i-j|$ for the random product of Gaussian maps, which bounds the entropy. The full statement for small $\gamma$ is non-perturbative, since the predicted correlation length grows like $\exp(c\sqrt{J/\gamma})$.`,
+    evidence: [
+      { kind: "published",
+        role: "progress",
+        summary: "Controlled large-N_F field theory for monitored U(1) fermions with random hopping: area law at every monitoring rate, with an exponentially large correlation length at weak monitoring (PRR 6, 043246). Field theory and numerics, not a proof.",
+        url: "https://arxiv.org/abs/2407.08045v3",
+        date: "2024-12-11",
+        version: "v3" },
+      { kind: "published",
+        role: "progress",
+        summary: "Nonlinear sigma model for free fermions under random projective measurements; one-loop RG predicts saturation of entanglement, so no transition (PRX 13, 041046).",
+        url: "https://arxiv.org/abs/2304.03138v3",
+        date: "2023-12-03",
+        version: "v3" },
+      { kind: "published",
+        role: "progress",
+        summary: "Sigma-model analysis and numerics find neither measurement- nor unravelling-induced transitions for continuously monitored 1D free fermions; area law beyond an exponentially large scale (PRB 113, 144317).",
+        url: "https://arxiv.org/abs/2510.19459v2",
+        date: "2026-05-11",
+        version: "v2" },
+      { kind: "numerical",
+        role: "progress",
+        summary: "GPU simulations up to about 18,000 sites with disordered or quasiperiodic potentials: critical monitoring strength consistent with zero.",
+        url: "https://arxiv.org/abs/2605.10758v3",
+        date: "2026-08-18",
+        version: "v3" },
+    ],
+    provenance: [],
+    relations: [
+      { id: "B20", type: "related" },
+    ],
+    refs: [
+      { label: "Fava, Piroli, Bernard & Nahum, 'Monitored fermions with conserved U(1) charge', PRR 6, 043246 (2024), Sec. V.A and VIII", url: "https://arxiv.org/abs/2407.08045" },
+      { label: "Li, Zhong & Yu, 'Measurement-Induced Entanglement Phase Transition in Free Fermion Systems', JPCM 37, 273002 (2025)", url: "https://arxiv.org/abs/2503.21427" },
+      { label: "Cao, Tilloy & De Luca, 'Entanglement in a fermion chain under continuous monitoring', SciPost Phys. 7, 024 (2019)", url: "https://arxiv.org/abs/1804.04638" },
+      { label: "Buchhold, Minoguchi, Altland & Diehl, 'Effective Theory for the Measurement-Induced Phase Transition of Dirac Fermions', PRX 11, 041004 (2021)",
+        url: "https://arxiv.org/abs/2102.08381" },
+      { label: "Poboiko, Pöpperl, Gornyi & Mirlin, 'Theory of free fermions under random projective measurements', PRX 13, 041046 (2023)",
+        url: "https://arxiv.org/abs/2304.03138" },
+      { label: "Niederegger, Vovk, Starchl & Sieberer, 'Absence of measurement- and unraveling-induced entanglement transitions in continuously monitored one-dimensional free fermions', PRB 113, 144317 (2026)",
+        url: "https://arxiv.org/abs/2510.19459" },
+    ] },
+
+  { id: "B22",
+    cat: "many-body",
+    horizon: "sharp",
+    reviewedAt: "2026-11-16",
+    title: "Exponential-in-N lifetime of the many-body-localized time crystal",
+    statement: r`(Huang 2023, Conjecture 2.) Consider the Floquet chain of $N$ qubits with period 1, $H(t)=\sum_l h^z_lZ_l+\sum_lJ_lZ_lZ_{l+1}$ for $t\in[0,\tfrac12)$ and $H(t)=\sum_lh^x_lX_l$ for $t\in[\tfrac12,1)$, with parameters $(\mathbf h,\mathbf J)\in\mathbb R^{3N-1}$. An extensive perturbation is a sum of $\Theta(1)$ terms per site, each supported in a ball of constant radius around its site and of operator norm at most a sufficiently small constant. Prove or refute: there is $(\mathbf h,\mathbf J)\in[-20,20]^{\times(3N-1)}$ at which discrete-time-crystal behaviour is stable up to time $e^{\Omega(N)}$ under extensive perturbations periodic with period 1. Huang does not fix the order parameter; the standard reading is that, for $Z$-basis product initial states, $(-1)^n\langle Z_j(n)\rangle$ stays within a fixed error of $\langle Z_j(0)\rangle$ for all integers $n\le e^{cN}$, uniformly in $N$.`,
+    definition: r`**A discrete time crystal** (DTC) is a periodically driven many-body system in which some property is only approximately periodic with a multiple $m>1$ of the drive period. In the many-body-localized (MBL) scenario, disorder protects period doubling near a $\pi$ spin flip, and the order should persist up to times exponential in system size. Khemani, Lazarides, Moessner and Sondhi, “Phase Structure of Driven Quantum Systems”, PRL 116, 250401 (2016), [arXiv:1508.03344](https://arxiv.org/abs/1508.03344); Else, Bauer and Nayak, “Floquet Time Crystals”, PRL 117, 090402 (2016), [arXiv:1603.08001](https://arxiv.org/abs/1603.08001); Yao, Potter, Potirniche and Vishwanath, PRL 118, 030401 (2017), [arXiv:1608.02589](https://arxiv.org/abs/1608.02589).
+
+Huang states the conjecture in Section 5 of [arXiv:2309.05641](https://arxiv.org/abs/2309.05641v2) (New J. Phys. 26, 072001 (2024)), attributing it to the MBL–DTC literature. He writes that “Proving or disproving this conjecture is a remarkable achievement” and calls the stability of MBL at all time scales under extensive perturbations “the most important open question about MBL”.`,
+    progress: r`- Rigorous Floquet prethermalization gives heating times exponential in the drive frequency, independent of $N$ (Abanin, De Roeck, Ho and Huveneers, CMP 354, 809 (2017), [arXiv:1509.05386](https://arxiv.org/abs/1509.05386); Else, Bauer and Nayak, PRX 7, 011026 (2017), [arXiv:1607.05277](https://arxiv.org/abs/1607.05277); review by Ho, Mori, Abanin and Dalla Torre, [arXiv:2212.00041](https://arxiv.org/abs/2212.00041)). Prethermal time crystals are a different mechanism from the one targeted here.
+- Imbrie's proof of MBL for a static disordered chain rests on an unproven limited-level-attraction assumption ([arXiv:1403.7837](https://arxiv.org/abs/1403.7837)); see M4.
+- Huang (September 2023, v2 July 2024) proves that for almost every $(\mathbf h,\mathbf J)$ at finite $N$, long-time expectation values from a random product state are $e^{-\Omega(N)}$-close to periodic with the drive period, with probability $1-e^{-\Omega(N)}$. DTC order therefore has a finite lifetime at every finite $N$; the open point is its scaling with $N$ ([arXiv:2309.05641](https://arxiv.org/abs/2309.05641v2)).
+- Yu and Wei (2024; PRB 111, 174311 (2025)) give a robustness framework based on a quasi-energy gap. Their exponential-in-size heating time for “subspace-thermal” DTCs relies on an additional conjecture that local perturbations cannot disturb the relevant structure; this is conditional ([arXiv:2409.02848](https://arxiv.org/abs/2409.02848v6)).
+- Numerical finite-size scaling shows lifetimes exponential in $N$ for integrable DTCs (Chandra et al., v2 April 2026, [arXiv:2510.04326](https://arxiv.org/abs/2510.04326v2)) and for DTCs stabilized by Floquet strong Hilbert-space fragmentation (Tang, Li, Wang and Zhang, v2 May 2026, [arXiv:2512.14182](https://arxiv.org/abs/2512.14182v2)). These are other mechanisms and give no proof.`,
+    residual: r`The conjecture is open. Sub-targets: a stability time super-polynomial in $N$, or a time $\epsilon^{-p}$ for every $p$ uniformly in $N$, for a single typical disorder realization; or the conjecture for perturbations that commute with $\prod_jX_j$ and with every $Z_j$, removing one symmetry assumption at a time. The question contains the Floquet analogue of MBL stability (M4), so a full answer is expected to be very hard.`,
+    evidence: [
+      { kind: "published",
+        role: "progress",
+        summary: "For almost every parameter of the binary Floquet chain at finite N, long-time properties are e^{−Ω(N)}-close to period 1, so DTC order has finite lifetime; Conjecture 2 asks for stability up to e^{Ω(N)} (New J. Phys. 26, 072001).",
+        url: "https://arxiv.org/abs/2309.05641v2",
+        date: "2024-07-17",
+        version: "v2" },
+      { kind: "published",
+        role: "progress",
+        summary: "Robustness condition for disordered DTCs from a quasi-energy gap; exponential-in-size heating time for subspace-thermal DTCs conditional on an unproven conjecture (PRB 111, 174311).",
+        url: "https://arxiv.org/abs/2409.02848v6",
+        date: "2025-06-07",
+        version: "v6" },
+      { kind: "numerical",
+        role: "progress",
+        summary: "Finite-size scaling of the quasienergy splitting suggests DTC lifetimes exponential in system size in integrable one-dimensional Floquet chains; numerical only.",
+        url: "https://arxiv.org/abs/2510.04326v2",
+        date: "2026-04-19",
+        version: "v2" },
+    ],
+    provenance: [],
+    relations: [
+      { id: "M4", type: "parent" },
+      { id: "B7", type: "related" },
+      { id: "O11", type: "related" },
+    ],
+    refs: [
+      { label: "Huang, 'Long-time properties of generic Floquet systems are approximately periodic with the driving period', New J. Phys. 26, 072001 (2024)",
+        url: "https://arxiv.org/abs/2309.05641" },
+      { label: "Khemani, Lazarides, Moessner & Sondhi, 'Phase Structure of Driven Quantum Systems', PRL 116, 250401 (2016)", url: "https://arxiv.org/abs/1508.03344" },
+      { label: "Else, Bauer & Nayak, 'Floquet Time Crystals', PRL 117, 090402 (2016)", url: "https://arxiv.org/abs/1603.08001" },
+      { label: "Yao, Potter, Potirniche & Vishwanath, 'Discrete time crystals: rigidity, criticality, and realizations', PRL 118, 030401 (2017)",
+        url: "https://arxiv.org/abs/1608.02589" },
+      { label: "Abanin, De Roeck, Ho & Huveneers, 'A Rigorous Theory of Many-Body Prethermalization for Periodically Driven and Closed Quantum Systems', CMP 354, 809 (2017)",
+        url: "https://arxiv.org/abs/1509.05386" },
+      { label: "Yu & Wei, 'The robustness condition for general disordered discrete time crystals…', PRB 111, 174311 (2025)", url: "https://arxiv.org/abs/2409.02848" },
     ] },
 ];

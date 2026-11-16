@@ -21,3 +21,5 @@ Before starting any literature update, catalogue change or site change:
 - Cross-references to other catalogues (QIQCOP Zoo, IQOQI Vienna) live in `app/data/crossrefs.js`.
 - The tests hard-code entry counts (total, active, claimed-solved list). Update them when adding entries.
 - Write LaTeX backslashes with an editor tool, not through shell heredocs, which can alter escapes such as `\t` in `\times`.
+- Parallel work (subagents) must write its results to temporary files incrementally, question by question, so that nothing is lost if a run is stopped or a usage limit is hit. Never keep results only in the agent's final report.
+- Limit on parallel agents: at most 3 at a time when the session runs on Fable; at most 9 when it runs on Opus 5.5.

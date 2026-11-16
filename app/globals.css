@@ -127,6 +127,7 @@ button, input { font: inherit; }
   white-space: nowrap;
 }
 .cta-sharp:hover { background: var(--accent); border-color: var(--accent); }
+a.cta-sharp, a.cta-sharp:hover { color: var(--bg); text-decoration: none; }
 
 section.body { padding: 34px 0 84px; }
 
@@ -227,6 +228,7 @@ td.stmt a { color: var(--text); }
 
 .back { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 14px; margin-bottom: 8px; cursor: pointer; background: none; border: none; padding: 0; }
 .back:hover { color: var(--text); }
+a.back { text-decoration: none; }
 
 .note { margin-top: 44px; padding: 14px 0 0; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px; font-style: italic; }
 

@@ -77,6 +77,13 @@ export const REVIEW = {
 
 // A targeted literature update does not reset the full-review date of every entry.
 export const LITERATURE_UPDATES = [{
+  date: "2026-11-16",
+  label: "16 November 2026",
+  ids: ["A23", "N13", "A26", "A28", "B3", "M6", "M7", "N5", "O2", "O3", "E23", "E24", "E25", "A35", "A36", "E26", "F16", "F17", "N20", "F18", "A37", "A38", "E27", "E28", "E29", "A39", "A40", "A41", "M17", "B20", "B21", "A42", "A43", "N21", "N22", "C14", "A44", "A45", "M18", "B22", "O11", "O12", "A46", "A47", "O13", "A48"],
+  reportUrl: "https://github.com/jpbruneton/open_quantum_problems/blob/main/docs/reviews/2026-11-16-literature-update.md",
+  // The same day's carte v2 batch added 36 entries; see its own report.
+  newEntriesReportUrl: "https://github.com/jpbruneton/open_quantum_problems/blob/main/docs/reviews/2026-11-16-new-problems-carte-v2.md",
+}, {
   date: "2026-11-14",
   label: "14 November 2026",
   ids: ["A34"],

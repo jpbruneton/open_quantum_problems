@@ -2,10 +2,13 @@
 
 Compteur silencieux, non affiché sur le site (même mécanisme que thermo-book).
 
-- `app/page.js` (`usePageViewBeacon`) envoie un `POST /api/views` avec
-  `{ slug: "home" }` une fois par chargement de page (via `navigator.sendBeacon`,
-  ou `fetch` en repli). La navigation interne par hash (`#/p/...`) ne recharge
-  pas la page, donc le compteur mesure les visites du site, pas chaque vue.
+- `app/components/ClientEffects.js` (chargé dans `app/layout.js`) envoie un
+  `POST /api/views` avec `{ slug: "home" }` (via `navigator.sendBeacon`, ou
+  `fetch` en repli). Chaque page est désormais une vraie URL (`/p/M1`,
+  `/c/spectral`…) et un vrai chargement ; un drapeau `sessionStorage` limite
+  l'envoi à un par session de navigation, pour que le compteur continue de
+  mesurer les visites du site et non chaque page vue (depuis le 16 novembre 2026 ;
+  avant, le routage par hash donnait le même résultat sans ce drapeau).
 - `app/api/views/route.js` valide le slug puis appelle `incrementPageView`
   (`lib/pageViews.server.js`), qui fait un `INCR` Redis sur la clé `oqm:views:home`.
 - Sans variables d'environnement Redis, l'incrément est un no-op silencieux.

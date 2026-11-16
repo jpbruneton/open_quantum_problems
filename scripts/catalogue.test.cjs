@@ -17,9 +17,6 @@ function loadApp(relative) {
   const filename = path.resolve(root, relative);
   if (cache.has(filename)) return cache.get(filename).exports;
   let source = fs.readFileSync(filename, "utf8");
-  if (relative === "app/page.js") {
-    source += "\nexport const testViews = { Home, CategoryView, SharpView, ImprovedView, ClaimedSolvedView, FilteredProblemsView, ProblemView, NewProblemsView, ProposalView, NotFound, truncate };";
-  }
   const { code } = transformSync(source, {
     filename,
     jsc: {
@@ -43,7 +40,7 @@ function loadApp(relative) {
 
 const data = loadApp("app/data/problems.js");
 const { ALL_PROBLEMS, PROBLEMS, ARCHIVED_PROBLEMS, CATEGORIES, HORIZONS, STATUSES, EVIDENCE_KINDS, REVIEW, LITERATURE_UPDATE, LITERATURE_UPDATES, CORRECTION_LOG, getProblem, problemsByCat } = data;
-const views = loadApp("app/page.js").testViews;
+const views = loadApp("app/views.js");
 const render = (view, props) => renderToStaticMarkup(React.createElement(view, props));
 const originalSeries = { M: 11, B: 12, QF: 10, E: 15, N: 10, C: 10, A: 18, U: 5, O: 9, F: 11 };
 const additions = ["M12", "M13", "B13", "B14", "B15", "E16", "N11", "C11", "C12", "A19", "QF11", "O10"];
@@ -56,8 +53,8 @@ function validUrl(value, label) {
 }
 
 test("all 111 original IDs remain addressable; 12 additions and 10 archives are counted correctly", () => {
-  assert.equal(ALL_PROBLEMS.length, 192);
-  assert.equal(PROBLEMS.length, 182);
+  assert.equal(ALL_PROBLEMS.length, 228);
+  assert.equal(PROBLEMS.length, 218);
   assert.equal(ARCHIVED_PROBLEMS.length, 10);
   assert.equal(new Set(ALL_PROBLEMS.map((p) => p.id)).size, ALL_PROBLEMS.length);
   for (const [prefix, n] of Object.entries(originalSeries)) {
@@ -136,7 +133,7 @@ test("targeted literature updates preserve untouched review dates and expose pen
     assert.equal(getProblem(id).status, id === "C5" ? "improved" : "claimed-solved", `${id}: distinguish partial progress from a full pending claim`);
     assert.ok(getProblem(id).evidence.some((e) => e.kind === "preprint" && e.url.includes(source)), id);
   }
-  assert.deepEqual(PROBLEMS.filter((p) => p.status === "claimed-solved").map((p) => p.id).sort(), ["A11", "A20", "A30", "A31", "A34", "A4", "A7", "B1", "B14", "B16", "B17", "B18", "C12", "C4", "E10", "E16", "E18", "M1", "M12", "M2", "M5", "N1", "N19", "N2"]);
+  assert.deepEqual(PROBLEMS.filter((p) => p.status === "claimed-solved").map((p) => p.id).sort(), ["A11", "A20", "A23", "A30", "A31", "A34", "A4", "A46", "A47", "A7", "B1", "B14", "B16", "B17", "B18", "C12", "C4", "E10", "E16", "E18", "E23", "M1", "M12", "M2", "M5", "N1", "N13", "N19", "N2"]);
   assert.equal(getProblem("C10").status, "improved", "a solved subcase must not close the broader programme");
   assert.equal(PROBLEMS.filter((p) => p.status === "solved").length, 0, "pending claims must not count as established solutions");
   const earlierE10 = getProblem("E10").evidence.find((e) => e.url.includes("2609.29539v1"));
@@ -179,10 +176,10 @@ test("targeted literature updates preserve untouched review dates and expose pen
   assert.match(getProblem("B19").statement, /BCC periodic order/);
   // 9 November 2026: four new areas and 31 promoted entries.
   for (const slug of ["semiclassical-gravity", "holography", "quantum-gravity", "renormalization"]) assert.ok(problemsByCat(slug).length >= 4, slug);
-  assert.equal(LITERATURE_UPDATES[2].date, "2026-11-09");
-  assert.equal(LITERATURE_UPDATES[2].ids.length, 31);
+  assert.equal(LITERATURE_UPDATES[3].date, "2026-11-09");
+  assert.equal(LITERATURE_UPDATES[3].ids.length, 31);
   // 12 November 2026: arXiv review of 9–11 November; claims and partial progress only, no new entries.
-  assert.equal(LITERATURE_UPDATES[1].date, "2026-11-12");
+  assert.equal(LITERATURE_UPDATES[2].date, "2026-11-12");
   assert.equal(getProblem("O6").status, "improved", "O6: catalyst-free asymptotic pure-state rate determined");
   for (const id of ["A11", "M5"]) assert.equal(getProblem(id).status, "claimed-solved", `${id}: expert engagement is not peer review`);
   assert.ok(!getProblem("M5").lean, "M5: Lu's Lean formalization keeps finite trace totals as hypotheses");
@@ -190,12 +187,33 @@ test("targeted literature updates preserve untouched review dates and expose pen
   for (const id of ["H1", "G1", "QG3"]) assert.equal(getProblem(id).status, "open", `${id}: an unassessed or partial claim must not move the status`);
   assert.match(getProblem("H1").residual, /would not settle \(a\)/);
   // 14 November 2026: new entry A34 (Kimmel's n/2 query question), a pending claim whose lower bounds are formalized.
-  assert.equal(LITERATURE_UPDATE.date, "2026-11-14");
-  assert.deepEqual(LITERATURE_UPDATE.ids, ["A34"]);
+  assert.equal(LITERATURE_UPDATES[1].date, "2026-11-14");
+  assert.deepEqual(LITERATURE_UPDATES[1].ids, ["A34"]);
   assert.equal(getProblem("A34").status, "claimed-solved", "A34: a single unrefereed preprint");
   assert.ok(getProblem("A34").lean, "A34: the lower bounds that answer the question are formalized");
   assert.ok(getProblem("A34").evidence.some((e) => e.role === "claimed-solution" && e.url.includes("2611.09809v1")));
   assert.match(getProblem("A34").residual, /non-symmetric/);
+  // 16 November 2026: citation check of the 2024–2026 quant-ph corpus; two pending claims, seven entries improved.
+  assert.equal(LITERATURE_UPDATE.date, "2026-11-16");
+  for (const [id, source] of [["A23", "2611.06751v1"], ["N13", "2609.18865v1"]]) {
+    assert.equal(getProblem(id).status, "claimed-solved", `${id}: a single unrefereed preprint`);
+    assert.ok(!getProblem(id).lean, `${id}: no formalization of the claimed solution`);
+    assert.ok(getProblem(id).evidence.some((e) => e.role === "claimed-solution" && e.url.includes(source)), id);
+  }
+  for (const id of ["A26", "A28", "B3", "M6", "M7", "N5", "O2"]) assert.equal(getProblem(id).status, "improved", id);
+  assert.equal(getProblem("O3").status, "open", "O3: a Gaussian, factorized-state scheme is outside the stated scope");
+  // 16 November 2026, carte v2 batch: 36 new entries from nine uncovered themes of the quant-ph corpus.
+  const carteV2 = ["E23", "E24", "E25", "A35", "A36", "E26", "F16", "F17", "N20", "F18", "A37", "A38", "E27", "E28", "E29", "A39", "A40", "A41", "M17", "B20", "B21", "A42", "A43", "N21", "N22", "C14", "A44", "A45", "M18", "B22", "O11", "O12", "A46", "A47", "O13", "A48"];
+  for (const id of carteV2) assert.ok(LITERATURE_UPDATE.ids.includes(id), `${id}: in the 16 November update`);
+  assert.ok(fs.existsSync(path.join(root, "docs/reviews/2026-11-16-new-problems-carte-v2.md")), "missing carte v2 report");
+  for (const [id, source] of [["E23", "2610.00527v2"], ["A46", "2610.23560v1"], ["A47", "2609.31312v1"]]) {
+    assert.equal(getProblem(id).status, "claimed-solved", `${id}: unassessed preprint claim`);
+    assert.ok(!getProblem(id).lean, `${id}: no formalization`);
+    assert.ok(getProblem(id).evidence.some((e) => e.role === "claimed-solution" && e.url.includes(source)), id);
+  }
+  assert.equal(getProblem("A48").status, "improved", "A48: the multivariate QSP preprints use broader query models");
+  assert.equal(getProblem("O13").status, "improved", "O13: two proof steps rely on a supplement that is not on arXiv");
+  assert.ok([...getProblem("F16").evidence, ...getProblem("F16").refs].some((e) => e.url.includes("2609.24670")), "F16: cite the refutation of the 1 + ln π conjecture");
   const home = render(views.Home);
   assert.ok(home.includes(LITERATURE_UPDATE.label) && home.includes("Last update"));
 });
@@ -246,7 +264,7 @@ test("every active and archived detail view renders with valid links and Astra &
     assert.ok(html.includes("Powered by Astra &amp; Opus 5.5"), p.id);
     assert.ok(!html.includes("katex-error"), `${p.id}: math rendering error`);
     assert.ok(!html.includes('href="undefined"'), `${p.id}: broken href`);
-    for (const match of html.matchAll(/href="#p\/([^"<>]+)"/g)) assert.ok(getProblem(match[1]), `${p.id}: broken rendered link ${match[1]}`);
+    for (const match of html.matchAll(/href="\/p\/([^"<>]+)"/g)) assert.ok(getProblem(match[1]), `${p.id}: broken rendered link ${match[1]}`);
     if (p.archive) {
       assert.ok(html.includes("Catalogue disposition"), p.id);
       for (const status of Object.keys(STATUSES)) assert.ok(!html.includes(`st-${status}`), `${p.id}: archive presented as active`);
@@ -259,43 +277,43 @@ test("every active and archived detail view renders with valid links and Astra &
 
 test("home, all categories, filtered lists and missing-page views render", () => {
   const home = render(views.Home);
-  assert.ok(home.includes("182") && home.includes("Active entries"));
+  assert.ok(home.includes("218") && home.includes("Active entries"));
   assert.ok(!home.includes("#review") && home.includes("Powered by Astra &amp; Opus 5.5"));
-  assert.ok(home.includes('href="#improved"'));
-  assert.ok(home.includes('href="#claimed-solved"'));
-  assert.ok(home.includes('href="#lean-verified"'));
+  assert.ok(home.includes('href="/improved"'));
+  assert.ok(home.includes('href="/claimed-solved"'));
+  assert.ok(home.includes('href="/lean-verified"'));
   assert.ok(home.includes('See open sharp problems'));
-  assert.ok(home.includes('aria-label="See all 62 improved problems"'));
-  assert.ok(home.includes('aria-label="See all 24 claimed solved problems"'));
+  assert.ok(home.includes('aria-label="See all 81 improved problems"'));
+  assert.ok(home.includes('aria-label="See all 29 claimed solved problems"'));
   assert.ok(home.includes('href="https://quantumlectures.org/en"'));
   assert.ok(home.includes('href="https://learnthermo.org/"'));
   assert.ok(!home.includes("IDs M1–"), "category count must not fabricate contiguous IDs");
   for (const c of CATEGORIES) {
     const html = render(views.CategoryView, { slug: c.slug });
-    for (const p of problemsByCat(c.slug)) assert.ok(html.includes(`#p/${p.id}`), `${c.slug}: missing ${p.id}`);
+    for (const p of problemsByCat(c.slug)) assert.ok(html.includes(`/p/${p.id}`), `${c.slug}: missing ${p.id}`);
   }
   const sharp = render(views.SharpView);
   const leanVerified = render(views.FilteredProblemsView, { leanOnly: true });
   for (const p of PROBLEMS) {
-    assert.equal(sharp.includes(`href="#p/${p.id}"`), p.horizon === "sharp" && p.status !== "claimed-solved" && !p.lean, `${p.id}: open sharp list membership`);
-    assert.equal(leanVerified.includes(`href="#p/${p.id}"`), p.status === "claimed-solved" && Boolean(p.lean), `${p.id}: Lean verified list membership`);
+    assert.equal(sharp.includes(`href="/p/${p.id}"`), p.horizon === "sharp" && p.status !== "claimed-solved" && !p.lean, `${p.id}: open sharp list membership`);
+    assert.equal(leanVerified.includes(`href="/p/${p.id}"`), p.status === "claimed-solved" && Boolean(p.lean), `${p.id}: Lean verified list membership`);
   }
-  for (const p of ARCHIVED_PROBLEMS) assert.ok(!sharp.includes(`href="#p/${p.id}"`), `archived ${p.id} in sharp list`);
+  for (const p of ARCHIVED_PROBLEMS) assert.ok(!sharp.includes(`href="/p/${p.id}"`), `archived ${p.id} in sharp list`);
   const improved = render(views.ImprovedView);
   const claimedSolved = render(views.ClaimedSolvedView);
   assert.ok(claimedSolved.includes("independent assessment is pending"));
   assert.ok(claimedSolved.includes('aria-label="Filter claimed solved problems"'));
   for (const p of ALL_PROBLEMS) {
-    assert.equal(improved.includes(`href="#p/${p.id}"`), !p.archive && p.status === "improved", `${p.id}: improved list membership`);
-    assert.equal(claimedSolved.includes(`href="#p/${p.id}"`), !p.archive && p.status === "claimed-solved", `${p.id}: claimed-solved list membership`);
+    assert.equal(improved.includes(`href="/p/${p.id}"`), !p.archive && p.status === "improved", `${p.id}: improved list membership`);
+    assert.equal(claimedSolved.includes(`href="/p/${p.id}"`), !p.archive && p.status === "claimed-solved", `${p.id}: claimed-solved list membership`);
   }
   assert.ok(render(views.ProblemView, { id: "missing" }).includes("Not found"));
   // Home: two entry boxes and the compact legend.
-  assert.ok(home.includes("Known open problems") && home.includes('href="#new-problems"'));
+  assert.ok(home.includes("Known open problems") && home.includes('href="/new-problems"'));
   assert.ok(home.includes("Zero entries are Solved"));
   assert.ok(!home.includes("Evidence matters"));
   // New-problems page: proposals render, link only to existing entries, are not counted.
-  const { PROPOSALS, SECONDARY_PROPOSALS, PROPOSAL_COUNT, PROPOSALS_META_NEW_AREAS, proposalBatch } = loadApp("app/data/proposals.js");
+  const { PROPOSALS, SECONDARY_PROPOSALS, PROPOSAL_COUNT, PROPOSALS_META_NEW_AREAS, PROPOSALS_META_CARTE_V2, proposalBatch } = loadApp("app/data/proposals.js");
   const newProblems = render(views.NewProblemsView);
   assert.ok(newProblems.includes("New problems suggested by AI") && newProblems.includes("not counted"));
   assert.ok(!newProblems.includes("katex-error"), "proposals: math rendering error");
@@ -312,9 +330,12 @@ test("home, all categories, filtered lists and missing-page views render", () =>
     }
   }
   // 9 November 2026: well-known problems were promoted to the catalogue; six candidates remain.
-  assert.equal(PROPOSAL_COUNT, 44);
+  assert.equal(PROPOSAL_COUNT, 55);
   const secondBatch = PROPOSALS.flatMap((g) => g.items).filter((it) => proposalBatch(it) === PROPOSALS_META_NEW_AREAS).map((it) => it.key);
   assert.deepEqual(secondBatch.sort(), ["PG1", "PG2", "PH1", "PH2", "PH3", "PQG1"]);
+  const thirdBatch = PROPOSALS.flatMap((g) => g.items).filter((it) => proposalBatch(it) === PROPOSALS_META_CARTE_V2).map((it) => it.key);
+  assert.deepEqual(thirdBatch.sort(), ["PA10", "PA11", "PA8", "PA9", "PB5", "PM7", "PM8", "PN4", "PN5", "PO4", "PO5"]);
+  for (const it of PROPOSALS.flatMap((g) => g.items)) if (proposalBatch(it) === PROPOSALS_META_CARTE_V2) assert.ok(it.caveat, `${it.key}: inferred formulations carry a caveat`);
   const formerly = new Set(PROPOSALS.flatMap((g) => g.items).map((it) => it.formerly));
   for (const key of ["P47", "P57", "P75", "P84"]) assert.ok(!formerly.has(key), `${key} was promoted and must not remain a proposal`);
   for (const it of SECONDARY_PROPOSALS) {
@@ -329,7 +350,9 @@ test("home, all categories, filtered lists and missing-page views render", () =>
   for (const group of PROPOSALS) for (const it of group.items) {
     const m = it.key.match(idPattern);
     assert.ok(m && m[1] === "P" && m[2] === codeOf[group.cat], `${it.key}: identifier must be P + ${codeOf[group.cat]} + number`);
-    assert.match(it.formerly, /^P\d+$/, `${it.key}: formerly`);
+    // Batches before 16 November 2026 keep their old P-number; the carte v2 batch never had one.
+    if (proposalBatch(it) === PROPOSALS_META_CARTE_V2) assert.equal(it.formerly, undefined, `${it.key}: carte v2 items have no former key`);
+    else assert.match(it.formerly, /^P\d+$/, `${it.key}: formerly`);
   }
   for (const it of SECONDARY_PROPOSALS) {
     const m = it.key.match(idPattern);
@@ -337,13 +360,13 @@ test("home, all categories, filtered lists and missing-page views render", () =>
     assert.ok(m && m[1] === "S" && m[2] === area, `${it.key}: identifier must be S + ${area} + number`);
     assert.match(it.formerly, /^S\d+$/, `${it.key}: formerly`);
   }
-  const allFormerly = [...PROPOSALS.flatMap((g) => g.items), ...SECONDARY_PROPOSALS].map((it) => it.formerly);
+  const allFormerly = [...PROPOSALS.flatMap((g) => g.items), ...SECONDARY_PROPOSALS].map((it) => it.formerly).filter(Boolean);
   assert.equal(new Set(allFormerly).size, allFormerly.length, "formerly keys must be unique");
-  // Old links keep working: #np/P20 and #np/PU2 open the same page.
+  // Old links keep working: /np/P20 and /np/PU2 open the same page.
   const byNew = render(views.ProposalView, { pkey: "PU2" });
   assert.ok(byNew.includes("Explicit frustration-freeness cutoffs") && byNew.includes("Formerly P20"));
   assert.equal(render(views.ProposalView, { pkey: "P20" }), byNew);
-  for (const match of newProblems.matchAll(/href="#p\/([^"<>]+)"/g)) assert.ok(getProblem(match[1]), `proposals: broken link ${match[1]}`);
+  for (const match of newProblems.matchAll(/href="\/p\/([^"<>]+)"/g)) assert.ok(getProblem(match[1]), `proposals: broken link ${match[1]}`);
   assert.ok(newProblems.includes(`${PROBLEMS.length} active entries`), "proposals page keeps the catalogue count unchanged");
   assert.ok(render(views.CategoryView, { slug: "missing" }).includes("Not found"));
 });
@@ -377,7 +400,7 @@ test("Lean verified is reserved for claimed solved entries", () => {
   for (const p of ALL_PROBLEMS) {
     if (p.lean) assert.equal(p.status, "claimed-solved", `${p.id}: entry Lean badge requires a full claim`);
     if (p.status !== "claimed-solved") {
-      const html = renderToStaticMarkup(React.createElement(loadApp("app/page.js").testViews.ProblemView, { id: p.id }));
+      const html = renderToStaticMarkup(React.createElement(views.ProblemView, { id: p.id }));
       assert.ok(!html.includes(">Lean verified</span>"), `${p.id}: partial progress must not display Lean verified`);
     }
   }

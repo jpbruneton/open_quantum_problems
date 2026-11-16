@@ -13,7 +13,7 @@ The site has two parts:
 
 Open problems that are already posed in the literature, from long-standing conjectures to recent questions raised by the authors of new results.
 
-- **182 active entries** across fourteen areas: spectral theory, many-body physics, quantum field theory, undecidability, entanglement, nonlocality, channels and Shannon theory, complexity and algorithms, open systems, foundations, semiclassical gravity, holography, quantum gravity and renormalization. Ten further archive and background pages keep old links working.
+- **218 active entries** across fourteen areas: spectral theory, many-body physics, quantum field theory, undecidability, entanglement, nonlocality, channels and Shannon theory, complexity and algorithms, open systems, foundations, semiclassical gravity, holography, quantum gravity and renormalization. Ten further archive and background pages keep old links working.
 - **Entry pages** follow one structure:
   - statement;
   - Definition, with one well-known, pre-AI reference;
@@ -32,7 +32,7 @@ Open problems that are already posed in the literature, from long-standing conje
   - *improved*: partial progress is recorded;
   - *claimed solved*: a full resolution has been announced but not independently assessed.
 
-  At present 96 entries are open, 62 improved and 24 claimed solved. No entry is marked *solved*: the catalogue retains these resolutions as claims pending independent assessment of their proofs.
+  At present 108 entries are open, 81 improved and 29 claimed solved. No entry is marked *solved*: the catalogue retains these resolutions as claims pending independent assessment of their proofs.
 - **Lean verified** (gold badge): reserved for `claimed-solved` entries whose full claimed solution is formalized in Lean according to its authors. The Lean builds are not rerun by the maintainer, and a formal proof does not replace refereeing of the definitions it formalizes. Formalizations of partial progress or conditional results are described in the evidence without this badge.
 - **Cross-references.** Links under each title point to the same question or related subproblems in the [QIQCOP Zoo](https://qiqc-op.com/) and the [IQOQI Vienna list of open quantum problems](https://oqp.iqoqi.oeaw.ac.at/); scope notes distinguish related tasks where needed. Where Google DeepMind's [Formal Conjectures](https://github.com/google-deepmind/formal-conjectures) has a Lean statement of the problem, it is linked too.
 - **Sources of problems.** Besides the literature itself, the catalogue has been checked against:
@@ -46,10 +46,11 @@ Open problems that are already posed in the literature, from long-standing conje
 
 Questions that are not in the literature yet. They are not part of the catalogue above: they carry no status, are not counted, and await human selection and refereeing.
 
-- **[New problems suggested by AI](https://openquantumproblems.com/#new-problems).**
+- **[New problems suggested by AI](https://openquantumproblems.com/new-problems).**
   - **What they are:** 38 candidate questions, plus 24 secondary leads, that an AI model formulated from the catalogue and from the open-questions sections of the 2026 claimed resolutions. Each says which result opened it.
   - **What each page shows:** the motivation, the baseline literature, and the verdict of a separate AI literature review. The review verified the cited sources and searched for earlier answers. Each candidate is marked open and substantive, open but modest, or under review.
-  - **Sources:** the full proposal, with its verification marks, is in [`docs/reviews/2026-11-08-new-problems-proposal.md`](docs/reviews/2026-11-08-new-problems-proposal.md).
+  - **Later batches:** six candidates in gravity and holography (9 November 2026), and eleven reformulated or partly inferred questions from a semantic map of the 2024–2026 quant-ph corpus (16 November 2026), each with a caveat saying what is inferred. The same map gave 36 catalogue entries.
+  - **Sources:** the full proposal, with its verification marks, is in [`docs/reviews/2026-11-08-new-problems-proposal.md`](docs/reviews/2026-11-08-new-problems-proposal.md); the 16 November batch is in [`docs/reviews/2026-11-16-new-problems-carte-v2.md`](docs/reviews/2026-11-16-new-problems-carte-v2.md).
   - **Identifiers:** a tier letter, the area code and a number: P for a priority candidate (PE2), S for a secondary lead (SB1). A proposal promoted to the catalogue takes the next free entry number in its area. The former keys P1–P81 and S1–S24 still open the same pages; see [`docs/reviews/2026-11-09-proposal-identifiers.md`](docs/reviews/2026-11-09-proposal-identifiers.md).
 
 ## How it is maintained
@@ -113,7 +114,7 @@ To cite the catalogue:
 }
 ```
 
-To cite a single entry, link its page, for example `https://openquantumproblems.com/#p/N1`, and give the access date, since entries change between updates. The source code and full history are at https://github.com/jpbruneton/open_quantum_problems.
+To cite a single entry, link its page, for example `https://openquantumproblems.com/p/N1`, and give the access date, since entries change between updates. The source code and full history are at https://github.com/jpbruneton/open_quantum_problems.
 
 ## Related projects
 

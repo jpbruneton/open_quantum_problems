@@ -663,4 +663,394 @@ The entanglement cost is bounded above by the randomness cost of conditional dis
       { label: "May, 'Entanglement cost in non-local quantum computation' (2026 review, v4)", url: "https://arxiv.org/abs/2605.02840v4" },
       { label: "IQOQI Vienna Open Quantum Problems, problem 48: 'The entanglement cost of f-routing' (A. May)", url: "https://oqp.iqoqi.oeaw.ac.at/large-lower-bounds-for-the-entanglement-cost-of-f-routing" },
     ] },
+
+  // 16 November 2026: questions from the carte v2 map of the quant-ph corpus.
+  { id: "E23",
+    cat: "entanglement",
+    horizon: "sharp",
+    status: "claimed-solved",
+    reviewedAt: "2026-11-16",
+    title: "Polynomial-time decision of local-unitary equivalence of graph states",
+    statement: r`For a simple graph $G=(V,E)$ on $n$ labelled vertices, let $|G\rangle=\prod_{\{u,v\}\in E}CZ_{uv}\,|+\rangle^{\otimes n}$. Two graph states are LU-equivalent if $|H\rangle=(U_1\otimes\cdots\otimes U_n)|G\rangle$ for some single-qubit unitaries $U_i$. Is there a deterministic algorithm that decides LU-equivalence of two $n$-vertex graph states in time $\mathrm{poly}(n)$? Weaker form: is the problem in $\mathsf{NP}$? (Claudet, thesis 2025, Chapter 8; Claudet 2026, Discussion.)`,
+    definition: r`**LC versus LU.** Two graph states are LC-equivalent when the $U_i$ can be chosen in the single-qubit Clifford group. Van den Nest, Dehaene and De Moor showed that LC-equivalence is exactly equivalence under sequences of local complementations, “Graphical description of the action of local Clifford transformations on graph states”, PRA 69, 022316 (2004), [arXiv:quant-ph/0308151](https://arxiv.org/abs/quant-ph/0308151). Bouchet's algorithm for locally equivalent graphs then decides LC-equivalence in polynomial time. The LU–LC conjecture, that LU-equivalent graph states are always LC-equivalent, would have made this test sufficient. Ji, Chen, Wei and Ying refuted it with a 27-qubit counterexample, QIC 10, 97 (2010), [arXiv:0709.1266](https://arxiv.org/abs/0709.1266).
+
+Claudet and Perdrix characterised LU-equivalence by a generalised, “$r$-local”, complementation, [arXiv:2409.20183](https://arxiv.org/abs/2409.20183) (STACS 2025). In the final chapter of his thesis, Claudet asks whether a polynomial-time algorithm exists, and notes that even verifying an $r$-local complementation involves a non-polynomial number of equations, so that membership in NP is open ([arXiv:2511.22271](https://arxiv.org/abs/2511.22271), Chapter 8). His March 2026 paper states that the efficient-algorithm question “remains open for the time being” ([arXiv:2603.25219](https://arxiv.org/abs/2603.25219), Discussion).`,
+    progress: r`- Ji, Chen, Wei and Ying (2007; QIC 2010) gave the first LU-but-not-LC pair of graph states, on 27 qubits ([arXiv:0709.1266](https://arxiv.org/abs/0709.1266)). Tsimakuridze and Gühne (J. Phys. A 50, 195302, 2017) constructed such counterexamples systematically via weighted hypergraph states ([arXiv:1611.06938](https://arxiv.org/abs/1611.06938)).
+- Burchardt, de Jong and Vandré (October 2024) reduced LU verification for stabilizer states to modular linear equations. The number of equations can be exponential, and the general complexity was left unresolved ([arXiv:2410.03961](https://arxiv.org/abs/2410.03961v2)).
+- Claudet and Perdrix (STACS 2025) proved that two graph states are LU-equivalent if and only if their graphs are related by $r$-local complementations, and that these give a strict infinite hierarchy of equivalences between LC and LU ([arXiv:2409.20183](https://arxiv.org/abs/2409.20183v4)).
+- Claudet and Perdrix (ICALP 2025) decided LU-equivalence in quasi-polynomial time $n^{\log_2 n+O(1)}$, by reducing to a single generalised local complementation between standard forms. They also proved LU $=$ LC for graph states on up to 19 qubits ([arXiv:2502.06566](https://arxiv.org/abs/2502.06566v3)).
+- Claudet (26 March 2026) proved LU $=$ LC on up to 26 qubits, so the 27-qubit counterexample is minimal ([arXiv:2603.25219](https://arxiv.org/abs/2603.25219v1)).
+- Hahn, McCarty, Poulsen Nautrup and Claudet (March 2026) showed that counting the graph states LU-equivalent to a given one is #P-hard. This concerns counting, not decision ([arXiv:2603.08847](https://arxiv.org/abs/2603.08847v2)).`,
+    claim: r`**Yuxuan Zhang, [“Polynomial-time local-unitary equivalence of graph states”](https://arxiv.org/abs/2610.00527v2)** (arXiv:2610.00527, v1 30 September 2026, v2 4 October 2026).
+
+What it claims:
+- A deterministic algorithm decides LU-equivalence of two graph states on $n$ labelled vertices in $\widetilde O(n^{6.38})$ bit operations, and returns exact single-qubit unitaries when they are equivalent (Theorem 1.1). This places the problem in $\mathsf P$, hence in $\mathsf{NP}$, which the paper presents as answering the question of Claudet's thesis.
+- The method keeps Claudet and Perdrix's standard form, their reduction to one generalised complementation and their logarithmic bound on the level $r$. It replaces their enumeration of vertex subsets by incidence constraints generated from pairs and triples, compressed by modular row reduction, and solves the remaining graph transformation as an affine system over $\mathbb F_2$. The new steps cost $\widetilde O(n^5)$; the exponent $6.38$ comes from the inherited standardisation step.
+- Corollaries: the number of LC classes inside an LU class is a power of two and is computable in the same time; the least level $r$ for which two graph states are $\mathrm{LC}_r$-equivalent is computable; the test extends to pure qubit stabilizer states and to stabilizer codes encoding one logical qubit.
+
+Caveats:
+- A single-author preprint, not peer reviewed and not assessed here. Hence “Claimed solved”.
+- Correctness depends on the cited Claudet–Perdrix results and on the new compression and affine-system theorems. The reported computational checks are small: exhaustive comparisons with LC-orbit enumeration on up to six vertices, state-vector checks on four to eight qubits, and the published 27-vertex pair. The paper mentions a reference implementation but does not say whether it is released.
+- The author states that OpenAI models developed candidate arguments, ran checks and drafted the manuscript under his supervision (see provenance).`,
+    residual: "Independent verification of the claim. The paper states that its argument does not decide LU-equivalence of stabilizer codes with more than one logical qubit, since the relating unitary may then act jointly on the reference system. Lowering the exponent requires a faster standardisation step. Qudit and weighted graph states are outside its scope.",
+    evidence: [
+      { kind: "preprint",
+        role: "claimed-solution",
+        summary: "Deterministic Õ(n^6.38) algorithm deciding LU-equivalence of n-vertex qubit graph states, with exact local unitaries; places the problem in P. Builds on the Claudet–Perdrix reduction. Single-author preprint, not assessed.",
+        url: "https://arxiv.org/abs/2610.00527v2",
+        date: "2026-10-04",
+        version: "v2" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Quasi-polynomial n^{log₂ n + O(1)} algorithm for LU-equivalence of graph states; LU = LC up to 19 qubits. Published at ICALP 2025.",
+        url: "https://arxiv.org/abs/2502.06566v3",
+        date: "2025-09-22",
+        version: "v3" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "LU-equivalence of graph states characterised by r-local complementation; strict infinite hierarchy between LC and LU. Published at STACS 2025.",
+        url: "https://arxiv.org/abs/2409.20183v4",
+        date: "2026-07-21",
+        version: "v4" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "LU = LC for graph states on up to 26 qubits, so the 27-qubit counterexample is minimal; states the efficient-algorithm question as still open.",
+        url: "https://arxiv.org/abs/2603.25219v1",
+        date: "2026-03-26",
+        version: "v1" },
+    ],
+    provenance: [
+      { summary: "Zhang states that the work is part of an experimental series on agentic scientific research: the author set directions, designed the harness and guided revisions, while OpenAI models developed candidate arguments and derivations, searched the literature, wrote and ran computational checks, and drafted and revised the manuscript.",
+        url: "https://arxiv.org/abs/2610.00527v2",
+        version: "v2" },
+    ],
+    relations: [
+      { id: "E8", type: "related" },
+      { id: "E24", type: "related" },
+    ],
+    refs: [
+      { label: "Claudet, 'Local Equivalences of Graph States', PhD thesis, Université de Lorraine (2025), Chapter 8", url: "https://arxiv.org/abs/2511.22271" },
+      { label: "Claudet & Perdrix, 'Deciding Local Unitary Equivalence of Graph States in Quasi-Polynomial Time', ICALP 2025", url: "https://arxiv.org/abs/2502.06566" },
+      { label: "Claudet & Perdrix, 'Local equivalence of stabilizer states: a graphical characterisation', STACS 2025", url: "https://arxiv.org/abs/2409.20183" },
+      { label: "Claudet, 'The 27-qubit Counterexample to the LU-LC Conjecture is Minimal' (2026 preprint)", url: "https://arxiv.org/abs/2603.25219" },
+      { label: "Van den Nest, Dehaene & De Moor, 'Graphical description of the action of local Clifford transformations on graph states', PRA 69, 022316 (2004)",
+        url: "https://arxiv.org/abs/quant-ph/0308151" },
+      { label: "Ji, Chen, Wei & Ying, 'The LU-LC conjecture is false', QIC 10, 97 (2010)", url: "https://arxiv.org/abs/0709.1266" },
+      { label: "Burchardt, de Jong & Vandré, 'Algorithm to Verify Local Equivalence of Stabilizer States' (2024 preprint)", url: "https://arxiv.org/abs/2410.03961" },
+      { label: "Zhang, 'Polynomial-time local-unitary equivalence of graph states' (2026 preprint, v2)", url: "https://arxiv.org/abs/2610.00527v2" },
+    ] },
+
+  { id: "E24",
+    cat: "entanglement",
+    horizon: "sharp",
+    reviewedAt: "2026-11-16",
+    title: "Smallest graph states separating levels of local equivalence",
+    statement: r`(Claudet 2026, Discussion.) For $r\ge1$, let $c(r)$ be the least $n$ for which there are two $n$-vertex graphs whose graph states are $\mathrm{LC}_r$-equivalent but not $\mathrm{LC}_{r-1}$-equivalent, where $\mathrm{LC}_0$ is equality, $\mathrm{LC}_1$ is local Clifford equivalence and $\mathrm{LC}_r$ is equivalence under $r$-local complementations in the sense of Claudet and Perdrix. Known: $c(1)=3$, $c(2)=27$, and $2^{r+2}\le c(r)\le O(2^{r^2})$ for $r\ge2$. Determine $c(3)$, and decide whether $\log_2 c(r)$ grows linearly or quadratically in $r$.`,
+    definition: r`**The local-equivalence hierarchy.** Claudet and Perdrix characterised local-unitary equivalence of graph states by $r$-local complementation and showed that the resulting equivalences $\mathrm{LC}_1\subsetneq\mathrm{LC}_2\subsetneq\cdots$ form a strict infinite hierarchy, every LU-equivalence being an $\mathrm{LC}_r$-equivalence for some $r$ ([arXiv:2409.20183](https://arxiv.org/abs/2409.20183), STACS 2025). Physically, $\mathrm{LC}_r$ allows single-qubit unitaries from a finite level of the Clifford hierarchy; $\mathrm{LC}_2$ already allows $Z(\pi/4)$. The value $c(2)$ is the size of the smallest LU-but-not-LC pair, whose existence refuted the LU–LC conjecture (Ji, Chen, Wei and Ying, [arXiv:0709.1266](https://arxiv.org/abs/0709.1266)); for $c(1)=3$, the triangle and the path on three vertices give LC-equivalent but distinct graph states.
+
+Claudet poses the question after proving $c(2)=27$: no value of $c(r)$ for $r\ge3$ is known, and since the upper bound does not forbid super-exponential growth, “the question of the growth of $c$ is currently open” ([arXiv:2603.25219](https://arxiv.org/abs/2603.25219), Discussion).`,
+    progress: r`- Tsimakuridze and Gühne (J. Phys. A 50, 195302, 2017) built families of LU-but-not-LC graph states systematically from weighted hypergraph states ([arXiv:1611.06938](https://arxiv.org/abs/1611.06938)).
+- Claudet and Perdrix (STACS 2025) constructed, for every $r\ge2$, explicit graphs that are $\mathrm{LC}_r$- but not $\mathrm{LC}_{r-1}$-equivalent; their order gives $c(r)=O(2^{r^2})$ ([arXiv:2409.20183](https://arxiv.org/abs/2409.20183v4)).
+- Claudet and Perdrix (ICALP 2025) proved that two graphs of order at most $2^{r+2}-1$ that are $\mathrm{LC}_r$-equivalent are already $\mathrm{LC}_{r-1}$-equivalent, so $c(r)\ge2^{r+2}$; in particular LU $=$ LC up to 19 qubits ([arXiv:2502.06566](https://arxiv.org/abs/2502.06566v3)).
+- Claudet (26 March 2026) proved $c(2)=27$, using a connection between the relevant bipartite graphs and triorthogonal and Reed–Muller codes ([arXiv:2603.25219](https://arxiv.org/abs/2603.25219v1)).`,
+    residual: r`The value $c(3)$ is unknown; the lower bound gives $c(3)\ge32$. Claudet suggests looking at codes with transversal gates at higher levels of the Clifford hierarchy. Open targets: explicit bounds on $c(3)$, a lower bound $c(r)\ge2^{\omega(r)}$, or a construction of order $2^{O(r)}$. Claudet noted that $c(r)=\Theta(2^{r^2})$ would give an $n^{\sqrt{\log_2 n}+O(1)}$ algorithm for LU-equivalence. That algorithmic motivation would be superseded if Zhang's claimed polynomial-time algorithm ([arXiv:2610.00527](https://arxiv.org/abs/2610.00527v2), October 2026, not assessed) holds. The combinatorial question would remain. The same preprint claims that the least level $r$ relating two given graph states is computable in polynomial time, which would make computer searches for $c(3)$ cheaper.`,
+    evidence: [
+      { kind: "preprint",
+        role: "progress",
+        summary: "c(2) = 27: LU and LC equivalence coincide for graph states on up to 26 qubits. States that no c(r) is known for r ≥ 3 and that the growth of c is open.",
+        url: "https://arxiv.org/abs/2603.25219v1",
+        date: "2026-03-26",
+        version: "v1" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Graphs of order at most 2^{r+2} − 1 that are LC_r-equivalent are LC_{r−1}-equivalent, hence c(r) ≥ 2^{r+2}. Published at ICALP 2025.",
+        url: "https://arxiv.org/abs/2502.06566v3",
+        date: "2025-09-22",
+        version: "v3" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Explicit graphs that are LC_r- but not LC_{r−1}-equivalent for every r ≥ 2, giving a strict infinite hierarchy and c(r) = O(2^{r²}). Published at STACS 2025.",
+        url: "https://arxiv.org/abs/2409.20183v4",
+        date: "2026-07-21",
+        version: "v4" },
+    ],
+    provenance: [],
+    relations: [
+      { id: "E23", type: "related" },
+      { id: "E8", type: "related" },
+    ],
+    refs: [
+      { label: "Claudet, 'The 27-qubit Counterexample to the LU-LC Conjecture is Minimal' (2026 preprint), Discussion", url: "https://arxiv.org/abs/2603.25219" },
+      { label: "Claudet & Perdrix, 'Local equivalence of stabilizer states: a graphical characterisation', STACS 2025", url: "https://arxiv.org/abs/2409.20183" },
+      { label: "Claudet & Perdrix, 'Deciding Local Unitary Equivalence of Graph States in Quasi-Polynomial Time', ICALP 2025", url: "https://arxiv.org/abs/2502.06566" },
+      { label: "Claudet, 'Local Equivalences of Graph States', PhD thesis, Université de Lorraine (2025)", url: "https://arxiv.org/abs/2511.22271" },
+      { label: "Tsimakuridze & Gühne, 'Graph states and local unitary transformations beyond local Clifford operations', J. Phys. A 50, 195302 (2017)",
+        url: "https://arxiv.org/abs/1611.06938" },
+      { label: "Ji, Chen, Wei & Ying, 'The LU-LC conjecture is false', QIC 10, 97 (2010)", url: "https://arxiv.org/abs/0709.1266" },
+    ] },
+
+  { id: "E25",
+    cat: "entanglement",
+    horizon: "sharp",
+    status: "improved",
+    reviewedAt: "2026-11-16",
+    title: "Geelen's conjecture: MBQC on proper vertex-minor-closed classes is classically simulable",
+    statement: r`(Geelen, reported by McCarty 2021, Section 1.4.) Let $\mathcal F$ be a class of graphs closed under vertex-minors (local complementation and vertex deletion) that is not the class of all graphs. Is measurement-based quantum computation on the graph states $|G\rangle$, $G\in\mathcal F$, efficiently classically simulable? Operationally: given $G\in\mathcal F$ on $n$ vertices and an adaptive pattern of single-qubit measurements with bases specified by $\mathrm{poly}(n)$ bits, sample the outcome distribution to total-variation error $\varepsilon$ in time $\mathrm{poly}(n,1/\varepsilon)$. A positive answer means no such class is an efficiently universal MBQC resource unless $\mathsf{BQP}=\mathsf{BPP}$.`,
+    definition: r`**Vertex-minors.** A vertex-minor of $G$ is obtained by local complementations and vertex deletions. On graph states these correspond to local Clifford operations and single-qubit Pauli measurements. Excluding a fixed vertex-minor is a structural restriction, analogous to excluding a minor in Robertson–Seymour theory. Van den Nest, Dür, Vidal and Briegel showed that MBQC on graph states of bounded rank-width is classically simulable, “Classical simulation versus universality in measurement based quantum computation”, PRA 75, 012337 (2007), [arXiv:quant-ph/0608060](https://arxiv.org/abs/quant-ph/0608060). By the vertex-minor grid theorem of Geelen, Kwon, McCarty and Wollan ([arXiv:1909.08113](https://arxiv.org/abs/1909.08113)), every class of unbounded rank-width contains all circle graphs as vertex-minors.
+
+The conjecture is attributed to Geelen in R. McCarty's thesis, “Local structure for vertex-minors”, University of Waterloo (2021), Section 1.4 ([UWSpace](https://uwspace.uwaterloo.ca/handle/10012/17633)). It is stated as Conjecture 3 by Hahn, McCarty, Poulsen Nautrup and Claudet ([arXiv:2603.08847](https://arxiv.org/abs/2603.08847)), listed as open by Harrison, Iyer, Parekh, Thompson and Zhao ([arXiv:2510.05557](https://arxiv.org/abs/2510.05557), conclusion), and called central in the 2025 “Quantum Graph States” workshop summary ([arXiv:2508.04823](https://arxiv.org/abs/2508.04823)).`,
+    progress: r`- Van den Nest, Dür, Vidal and Briegel (2007): classes of bounded rank-width are simulable ([arXiv:quant-ph/0608060](https://arxiv.org/abs/quant-ph/0608060)).
+- Geelen, Kwon, McCarty and Wollan (J. Combin. Theory Ser. B): for every circle graph $H$, graphs of large enough rank-width contain $H$ as a vertex-minor. The remaining classes are therefore those that contain all circle graphs ([arXiv:1909.08113](https://arxiv.org/abs/1909.08113)).
+- Harrison, Iyer, Parekh, Thompson and Zhao (October 2025; v2 May 2026) proved that circle graph states are not universal for MBQC unless $\mathsf{BQP}=\mathsf{BPP}$. They map circle graph states to fermionic Gaussian states, compute overlaps with product states by Pfaffians in $O(n^3)$, and use the Bravyi–Gosset–Liu sampling framework ([arXiv:2510.05557](https://arxiv.org/abs/2510.05557v2)).
+- Hahn, McCarty, Poulsen Nautrup and Claudet (March 2026) reached the same conclusion independently. Bipartite circle graph states are planar code states, every circle graph is a vertex-minor of a bipartite circle graph with polynomial overhead, and MBQC on planar code states is simulable ([arXiv:2603.08847](https://arxiv.org/abs/2603.08847v2)).
+- Davies and Jena (2025) showed, assuming Geelen's weak structural conjecture, that graph states in a proper vertex-minor-closed class have CZ-distance $O(n\log n)$ ([arXiv:2504.00291](https://arxiv.org/abs/2504.00291v2)).
+- Goodenough and Sales (August 2026) showed, under the same structural conjecture, that sufficiently rank-connected stabilizer states excluding a fixed vertex-minor have code distance $O(\log n)$ and locally accessible information $\Omega(n/\log n)$. They suggest their techniques may help with the simulation conjecture ([arXiv:2608.21526](https://arxiv.org/abs/2608.21526v1)).`,
+    residual: r`Open for every proper class that contains all circle graphs. Geelen's weak structural conjecture asserts that, in such a class, sufficiently rank-connected graphs are local-Clifford equivalent to rank-$p$ perturbations of circle graphs, for a constant $p$. It is unproven. A natural intermediate target is efficient simulation for rank-$p$ perturbations of circle graph states with $p$ fixed, which would make the conjecture conditional on the structural one. Barabash, Geelen, McCarty, McFarland and Wollan mention forthcoming work proving a structure theorem for graphs with a forbidden vertex-minor ([arXiv:2611.06776](https://arxiv.org/abs/2611.06776), November 2026); it has not appeared. For surface-code states of genus $g$, known simulation costs are polynomial in $n$ but in general exponential in $g$ (Hahn et al., §1.2.1).`,
+    evidence: [
+      { kind: "published", role: "progress", summary: "MBQC on graph states of bounded rank-width is efficiently classically simulable (PRA 75, 012337, 2007).", url: "https://arxiv.org/abs/quant-ph/0608060v1", date: "2006-08-07", version: "v1" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Circle graph states are not universal MBQC resources unless BQP = BPP, via a mapping to fermionic Gaussian states and Pfaffian overlaps.",
+        url: "https://arxiv.org/abs/2510.05557v2",
+        date: "2026-05-17",
+        version: "v2" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Independent proof that MBQC on circle graph states is simulable, through planar code states; states Geelen's conjecture (Conjecture 3) and its known cases.",
+        url: "https://arxiv.org/abs/2603.08847v2",
+        date: "2026-04-28",
+        version: "v2" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Assuming Geelen's weak structural conjecture, graph states in a proper vertex-minor-closed class have CZ-distance O(n log n).",
+        url: "https://arxiv.org/abs/2504.00291v2",
+        date: "2025-07-27",
+        version: "v2" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Assuming the weak structural conjecture, rank-connected stabilizer states excluding a vertex-minor have distance O(log n) and locally accessible information Ω(n/log n).",
+        url: "https://arxiv.org/abs/2608.21526v1",
+        date: "2026-08-21",
+        version: "v1" },
+    ],
+    provenance: [
+      { summary: "Goodenough and Sales state that the figures were created with ChatGPT.", url: "https://arxiv.org/abs/2608.21526v1", version: "v1" },
+    ],
+    relations: [
+      { id: "N10", type: "related" },
+    ],
+    refs: [
+      { label: "McCarty, 'Local structure for vertex-minors', PhD thesis, University of Waterloo (2021), Section 1.4", url: "https://uwspace.uwaterloo.ca/handle/10012/17633" },
+      { label: "Hahn, McCarty, Poulsen Nautrup & Claudet, 'The Structure of Circle Graph States' (2026 preprint)", url: "https://arxiv.org/abs/2603.08847" },
+      { label: "Harrison, Iyer, Parekh, Thompson & Zhao, 'Fermionic Insights into Measurement-Based Quantum Computation: Circle Graph States Are Not Universal Resources' (2025 preprint)",
+        url: "https://arxiv.org/abs/2510.05557" },
+      { label: "Van den Nest, Dür, Vidal & Briegel, 'Classical simulation versus universality in measurement based quantum computation', PRA 75, 012337 (2007)",
+        url: "https://arxiv.org/abs/quant-ph/0608060" },
+      { label: "Geelen, Kwon, McCarty & Wollan, 'The grid theorem for vertex-minors', J. Combin. Theory Ser. B", url: "https://arxiv.org/abs/1909.08113" },
+      { label: "Davies & Jena, 'Preparing graph states forbidding a vertex-minor' (2025 preprint)", url: "https://arxiv.org/abs/2504.00291" },
+      { label: "Chitambar, Goodenough, Gühne, McCarty, Perdrix, Scarola & Sun, 'Quantum Graph States: Bridging Classical Theory and Quantum Innovation, Workshop Summary' (2025)",
+        url: "https://arxiv.org/abs/2508.04823" },
+    ] },
+
+  { id: "E26",
+    cat: "entanglement",
+    horizon: "sharp",
+    status: "improved",
+    reviewedAt: "2026-11-16",
+    title: "Krenn–Gu conjecture on GHZ graphs",
+    statement: r`(Krenn and Gu; Krenn, Gu and Soltész 2019.) Let $G$ be a loopless multigraph whose edges carry colours from $\{1,\dots,d\}$ (in the general model each half-edge carries its own colour, allowing bichromatic edges) and nonzero complex weights. Each perfect matching induces a vertex colouring, with weight equal to the product of its edge weights. The weight of a vertex colouring is the sum of the weights of the perfect matchings inducing it. $G$ is a GHZ graph if every monochromatic induced colouring has weight $1$ and every non-monochromatic one has weight $0$; its dimension is the number of monochromatic colourings that occur. Conjecture: every GHZ graph on more than four vertices has dimension at most $2$. Physically, path-identity photonic set-ups without additional resources could then not produce GHZ states of more than four photons with local dimension $3$ or more.`,
+    definition: r`**GHZ graphs.** Krenn, Gu and Zeilinger showed that a class of photonic experiments (path identity with probabilistic pair sources) corresponds to edge-weighted, edge-coloured graphs. The output state is a coherent superposition over perfect matchings. A GHZ graph produces a $d$-dimensional GHZ state, “Quantum Experiments and Graphs: Multiparty States as coherent superpositions of Perfect Matchings”, PRL 119, 240403 (2017), [arXiv:1705.06646](https://arxiv.org/abs/1705.06646). The complete graph $K_4$ gives a three-dimensional four-photon GHZ state. Krenn, Gu and Soltész stated the related graph-theoretic questions in “Questions on the structure of perfect matchings inspired by quantum physics”, Proc. 2nd Croatian Combinatorial Days (2019), [arXiv:1902.06023](https://arxiv.org/abs/1902.06023).
+
+Chandran and Gajjala report that the conjecture “has been extensively publicized, including through several cash rewards”, and that $K_4$ is the only known simple graph on at least four vertices with matching index at least $3$ ([arXiv:2610.22190](https://arxiv.org/abs/2610.22190), §1).`,
+    progress: r`- Bogdanov (2017, MathOverflow) settled the case without destructive interference, with positive weights: $K_4$ has matching index $3$ and every other simple graph at most $2$ (as cited by Chandran and Gajjala, 2026).
+- Cervera-Lierta, Krenn and Aspuru-Guzik (Quantum 6, 836, 2022) used SAT solvers to show that, without bichromatic edges (multi-edges allowed, per Table 1 of Chandran and Gajjala 2026), the dimension is at most $2$ on six vertices and at most $3$ on eight vertices ([arXiv:2109.13273](https://arxiv.org/abs/2109.13273)).
+- Chandran and Gajjala (Quantum 8, 1396, 2024) proved that no simple GHZ graph on $n>4$ vertices has dimension $d\ge n/\sqrt2$, even with bichromatic edges ([arXiv:2304.06407](https://arxiv.org/abs/2304.06407v3)).
+- Chandran, Gajjala and Illickan (MFCS 2024) proved the conjecture for graphs of vertex connectivity at most $2$ and for cubic graphs, and showed that a minimal counterexample must be $4$-connected ([arXiv:2407.00303](https://arxiv.org/abs/2407.00303v1)).
+- Chandran and Gajjala (15 October 2026) proved that every simple connected GHZ graph on at least four vertices has dimension at most $2^{\kappa(G)-1}+\binom{\kappa(G)}{2}$, where $\kappa$ is the vertex connectivity. They also gave a combinatorial proof that simple graphs have matching index at most $2$ on six vertices and at most $3$ on eight, and a bound in terms of maximum degree for multigraphs ([arXiv:2610.22190](https://arxiv.org/abs/2610.22190v1)).`,
+    residual: r`The conjecture is open in general, in particular for $4$-connected graphs, multigraphs and bichromatic edges. Chandran and Gajjala note that the optimal dependence on $\kappa(G)$ is open, including whether a polynomial bound in $\kappa(G)$ holds, and that a short purely combinatorial proof of the four-vertex result is still missing. Sub-targets: prove the conjecture for simple $4$-connected graphs of bounded maximum degree; obtain a bound polynomial in $\kappa(G)$.`,
+    evidence: [
+      { kind: "published", role: "progress", summary: "SAT-solver bounds without bichromatic edges: dimension at most 2 on six vertices and at most 3 on eight vertices.", url: "https://doi.org/10.22331/q-2022-10-13-836", date: "2022-10-13" },
+      { kind: "published", role: "progress", summary: "No simple GHZ graph on n > 4 vertices has dimension at least n/√2, bichromatic edges allowed.", url: "https://doi.org/10.22331/q-2024-07-03-1396", date: "2024-07-03" },
+      { kind: "published",
+        role: "progress",
+        summary: "Conjecture holds for vertex connectivity at most 2 and for cubic graphs; a minimal counterexample is 4-connected (MFCS 2024).",
+        url: "https://arxiv.org/abs/2407.00303v1",
+        date: "2024-06-29",
+        version: "v1" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Dimension at most 2^{κ−1} + C(κ,2) for simple connected GHZ graphs with vertex connectivity κ; combinatorial bounds for six and eight vertices.",
+        url: "https://arxiv.org/abs/2610.22190v1",
+        date: "2026-10-15",
+        version: "v1" },
+    ],
+    provenance: [],
+    relations: [],
+    refs: [
+      { label: "Krenn, Gu & Zeilinger, 'Quantum Experiments and Graphs: Multiparty States as coherent superpositions of Perfect Matchings', PRL 119, 240403 (2017)",
+        url: "https://arxiv.org/abs/1705.06646" },
+      { label: "Krenn, Gu & Soltész, 'Questions on the Structure of Perfect Matchings inspired by Quantum Physics', Proc. 2nd Croatian Combinatorial Days (2019)",
+        url: "https://arxiv.org/abs/1902.06023" },
+      { label: "Chandran & Gajjala, 'Graph-theoretic insights on the constructability of complex entangled states', Quantum 8, 1396 (2024)",
+        url: "https://arxiv.org/abs/2304.06407" },
+      { label: "Chandran, Gajjala & Illickan, 'Krenn-Gu conjecture for sparse graphs', MFCS 2024", url: "https://arxiv.org/abs/2407.00303" },
+      { label: "Chandran & Gajjala, 'Connectivity Bounds for GHZ Graphs' (2026 preprint)", url: "https://arxiv.org/abs/2610.22190" },
+      { label: "Cervera-Lierta, Krenn & Aspuru-Guzik, 'Design of quantum optical experiments with logic artificial intelligence', Quantum 6, 836 (2022)",
+        url: "https://arxiv.org/abs/2109.13273" },
+    ] },
+
+  { id: "E27",
+    cat: "entanglement",
+    horizon: "sharp",
+    status: "improved",
+    reviewedAt: "2026-11-16",
+    title: "Computational-basis optimality of nonlocal stabilizer entropy",
+    statement: r`Let $|\Psi\rangle$ be a pure state of $N=n_A+n_B$ qubits with Schmidt coefficients $\mu_0\ge\mu_1\ge\dots\ge\mu_{r-1}>0$ across the cut $A|B$. Let $\mathcal M_2(\psi)=-\log_2\big(2^{-N}\sum_{P}\langle\psi|P|\psi\rangle^4\big)$, the sum running over the $4^N$ Pauli strings, and let $\mathcal M_{\rm NL}(\Psi)=\min_{V_A,V_B}\mathcal M_2\big((V_A\otimes V_B)|\Psi\rangle\big)$ over local unitaries. Let $|\Psi_{\rm CB}\rangle=\sum_{x=0}^{r-1}\mu_x|x\rangle_A|x\rangle_B$, with $x$ written in binary on each side. Prove or disprove that $\mathcal M_{\rm NL}(\Psi)=\mathcal M_2(\Psi_{\rm CB})$ for every Schmidt spectrum and every bipartition. This is Conjecture 1 of Sierant (2026), who attributes it to Liu–Cui, Torre–Franchini–Giampaolo and Franchini–Giampaolo (2026) and calls its resolution for arbitrary Schmidt spectra "a central open problem".`,
+    definition: r`**Nonlocal magic** is the part of a state's non-stabilizerness that no local unitary can remove. It depends only on the local-unitary orbit, hence only on the Schmidt spectrum, but evaluating it requires an optimization over $U(2^{n_A})\times U(2^{n_B})$. The conjecture says that the optimum is always reached by writing the Schmidt decomposition in the computational basis, largest coefficients on the smallest binary labels.
+
+The stabilizer Rényi entropy was introduced by Leone, Oliviero and Hamma, “Stabilizer Rényi entropy”, PRL 128, 050402 (2022), [arXiv:2106.12587](https://arxiv.org/abs/2106.12587). The conjecture is stated as Conjecture 1, with the open problem in the Outlook, of Sierant, “Spectral geometry of nonlocal stabilizer entropy”, [arXiv:2609.13106](https://arxiv.org/abs/2609.13106v2).`,
+    progress: r`- Qian and Wang introduced nonlocal nonstabilizerness and settled the two-qubit case (PRA 111, 052443 (2025), [arXiv:2502.06393](https://arxiv.org/abs/2502.06393v4)); Sierant credits $N=2$ to this work.
+- Torre, Franchini and Giampaolo, and Liu and Cui, express nonlocal magic through the entanglement spectrum and conjecture that the computational-basis (Schmidt-aligned) representative is optimal ([arXiv:2607.07808](https://arxiv.org/abs/2607.07808v2), [arXiv:2607.10714](https://arxiv.org/abs/2607.10714v2), both v2 of 6 August 2026). Franchini and Giampaolo prove it when $\min(n_A,n_B)=1$ ([arXiv:2608.02745](https://arxiv.org/abs/2608.02745v2)).
+- For the log-stabilizer fidelity instead of $\mathcal M_2$, the analogous optimization is solved exactly: Sierant expresses it as the distance of the entanglement spectrum from the closest Bell-pair spectrum ([arXiv:2608.28563](https://arxiv.org/abs/2608.28563v2)); Viscardi, Leone and Hamma give a closed form depending only on the Schmidt spectrum ([arXiv:2609.04119](https://arxiv.org/abs/2609.04119v2)).
+- Liu and Cui (v2, 17 September 2026) bound $\mathcal M_{\rm NL}$ above and below by Rényi entanglement entropies and anti-flatness, and show that the ordered Schmidt reference state is a local minimum of the stabilizer entropy for integer $\alpha\ge2$ ([arXiv:2609.01993](https://arxiv.org/abs/2609.01993v2)).
+- Sierant (v2, 14 September 2026) proves the conjecture for dyadic-staircase spectra (Theorem 1) and for Schmidt rank at most six (Theorem 2). For every state, $\mathcal M_{\rm NL}=\mathcal M_2(\Psi_{\rm CB})-c_1$ with $0\le c_1\le4$ (Theorem 3), so the two quantities share any divergent leading term ([arXiv:2609.13106](https://arxiv.org/abs/2609.13106v2)).
+- For two qudits of prime dimension, Busoni, Gargalionis, Wallace and White conjecture closed forms based on the Schmidt-aligned state, with numerical support for qutrits and ququints (PRA 114, 042414 (2026), [arXiv:2603.09155](https://arxiv.org/abs/2603.09155v2)).`,
+    residual: r`The conjecture for general Schmidt spectra. Sierant's compression inequality holds up to Schmidt rank seven but fails at rank eight, and his overlap inequality is proved only up to rank six, so ranks seven and eight are the first targets. Intermediate goals: reduce the universal constant $4$ in $0\le c_1\le4$; decide whether computational-basis optimality extends to Rényi indices $\alpha>2$. A counterexample would be a state in the local-unitary orbit with lower $\mathcal M_2$ than the sorted computational-basis representative.`,
+    evidence: [
+      { kind: "published", role: "progress", summary: "Introduces nonlocal nonstabilizerness and settles the two-qubit case (PRA 111, 052443).", url: "https://arxiv.org/abs/2502.06393v4", date: "2025-05-28", version: "v4" },
+      { kind: "preprint", role: "progress", summary: "Proves computational-basis optimality of the nonlocal stabilizer 2-Rényi entropy when one side has a single qubit.", url: "https://arxiv.org/abs/2608.02745v2", date: "2026-08-06", version: "v2" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Bounds the nonlocal stabilizer Rényi entropy by entanglement entropies and anti-flatness; the ordered Schmidt reference state is a local minimum for integer α ≥ 2.",
+        url: "https://arxiv.org/abs/2609.01993v2",
+        date: "2026-09-17",
+        version: "v2" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Conjecture proved for dyadic-staircase Schmidt spectra and for Schmidt rank at most six; for every state the gap between the computational-basis value and the nonlocal SRE lies in [0, 4].",
+        url: "https://arxiv.org/abs/2609.13106v2",
+        date: "2026-09-14",
+        version: "v2" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Closed-form nonlocal magic for the log-stabilizer fidelity, depending only on the Schmidt spectrum; not the stabilizer 2-Rényi entropy.",
+        url: "https://arxiv.org/abs/2609.04119v2",
+        date: "2026-11-02",
+        version: "v2" },
+    ],
+    provenance: [
+      { summary: "Sierant's acknowledgements state that ChatGPT 5.5 and 5.6 were used as an aid in formalizing the theorems and their proofs, and Claude Fable 5 and 5.1 for manuscript preparation; the author states that all results were verified independently.",
+        url: "https://arxiv.org/abs/2609.13106v2",
+        version: "v2" },
+    ],
+    relations: [
+      { id: "E28", type: "related" },
+    ],
+    refs: [
+      { label: "Sierant, 'Spectral geometry of nonlocal stabilizer entropy' (2026 preprint), Conjecture 1 and Outlook", url: "https://arxiv.org/abs/2609.13106" },
+      { label: "Leone, Oliviero & Hamma, 'Stabilizer Rényi entropy', PRL 128, 050402 (2022)", url: "https://arxiv.org/abs/2106.12587" },
+      { label: "Qian & Wang, 'Quantum Non-Local Nonstabilizerness', PRA 111, 052443 (2025)", url: "https://arxiv.org/abs/2502.06393" },
+      { label: "Torre, Franchini & Giampaolo, 'Non-Local Magic from the Entanglement Spectrum' (2026 preprint)", url: "https://arxiv.org/abs/2607.07808" },
+      { label: "Liu & Cui, 'Nonlocal nonstabilizerness for slightly entangled quantum many-body states' (2026 preprint)", url: "https://arxiv.org/abs/2607.10714" },
+      { label: "Franchini & Giampaolo, 'Schmidt-Gauge Non-Local Magic: Representation, Optimality, and Mathematical Properties' (2026 preprint)",
+        url: "https://arxiv.org/abs/2608.02745" },
+      { label: "Viscardi, Leone & Hamma, 'Non-local Magic: closed-form solution and equivalence with magic of purification' (2026 preprint)",
+        url: "https://arxiv.org/abs/2609.04119" },
+    ] },
+
+  { id: "E28",
+    cat: "entanglement",
+    horizon: "sharp",
+    reviewedAt: "2026-11-16",
+    title: "Maximal stabilizer Rényi entropy without a Weyl–Heisenberg SIC",
+    statement: r`For pure states of $n$ qubits, $d=2^n$, let $M_\alpha(\psi)=\frac{1}{1-\alpha}\log\big(d^{-1}\sum_{P}|\langle\psi|P|\psi\rangle|^{2\alpha}\big)$, the sum running over the $d^2$ Pauli strings. For $\alpha\ge2$, $M_\alpha\le\frac{1}{1-\alpha}\log\frac{1+(d-1)(d+1)^{1-\alpha}}{d}$, with equality exactly for fiducials of a Weyl–Heisenberg (Pauli-covariant) SIC, which exist only for $n=1,3$. (Liu–Low–Yin 2025, Conjecture.) Prove or disprove that for $n\notin\{1,3\}$ and $\alpha\ge2$, $\max_\psi M_\alpha(\psi)=\frac{1}{1-\alpha}\log\frac{1+(d-1)d^{1-\alpha}}{d}$, uniquely attained by Weyl–Heisenberg MUB fiducial states when these exist. For $n=2$, $\alpha=2$ this reads $\max M_2=\log(16/7)$. Bipartite variant (Knipfer–Roman–Matcheva–Matchev 2026): for two qudits of prime dimension $p$, $\max M_2=\log[p^4/(2p^2-1)]$, the same formula with $d=p^2$.`,
+    definition: r`**Maximal magic.** Stabilizer entropies measure how far the Pauli spectrum of a state is from that of a stabilizer state ([arXiv:2106.12587](https://arxiv.org/abs/2106.12587)); for integer $\alpha\ge2$ they are monotones for pure states under stabilizer protocols (Leone and Bittel, PRA 110, L040403 (2024), [arXiv:2404.11652](https://arxiv.org/abs/2404.11652)). Cuffaro and Fuchs showed that Weyl–Heisenberg SIC fiducials, when they exist, uniquely saturate the general upper bound, so that maximal magic "inherits all the difficulties" of the SIC existence problem ([arXiv:2412.21083](https://arxiv.org/abs/2412.21083)). For multiqubit systems, Liu, Low and Yin recall that Pauli-covariant SICs exist only for $n=1$ and $n=3$, citing Godsil and Roy, Eur. J. Comb. 30, 246 (2009) ([arXiv:quant-ph/0511004](https://arxiv.org/abs/quant-ph/0511004)). The question is what replaces SIC fiducials in all other cases.
+
+The conjecture is stated after the two-qubit result in Liu, Low and Yin, “Maximal Magic for Two-qubit States”, QST 11, 015035 (2026), [arXiv:2502.17550](https://arxiv.org/abs/2502.17550v3).`,
+    progress: r`- Cuffaro and Fuchs (30 December 2024) characterize the states saturating the general bound for $\alpha\ge2$ in any dimension: exactly the Weyl–Heisenberg SIC fiducials ([arXiv:2412.21083](https://arxiv.org/abs/2412.21083v1)).
+- Liu, Low and Yin give strong numerical evidence that $\max M_2=\log(16/7)\approx0.827$ for two qubits, below the SIC bound $\log(5/2)$, and identify the 480 maximizers as Weyl–Heisenberg MUB fiducial states. Their numerics indicate that another state maximizes $M_\alpha$ for $\alpha<1.64$ ([arXiv:2502.17550](https://arxiv.org/abs/2502.17550v3)).
+- Roman, Knipfer, Suda Neto, Matchev, Matcheva and Gleyzer derive analytic families for the two-qubit magic–entanglement Pareto frontiers and recover $\log(16/7)$ and the 480 states. They do not prove that their families exhaust the upper boundary ([arXiv:2603.24902](https://arxiv.org/abs/2603.24902v1)).
+- Knipfer, Roman, Matcheva and Matchev locate the two-qutrit maxima numerically, evaluate them analytically ($\log(81/17)$ for qutrits) and conjecture $\log[p^4/(2p^2-1)]$ for two prime-dimensional qudits ([arXiv:2607.07197](https://arxiv.org/abs/2607.07197v1)).`,
+    residual: r`No rigorous proof is known even for two qubits. A first target is a proof that $\max_\psi M_2(\psi)=\log(16/7)$ for $n=2$, for instance by a certificate after reduction by local unitaries, or any rigorous upper bound strictly below $\log(5/2)$. For $n\ge4$ the conjecture is conditional on the existence of Weyl–Heisenberg MUB fiducial states, which is itself not settled here.`,
+    evidence: [
+      { kind: "preprint",
+        role: "progress",
+        summary: "Weyl–Heisenberg SIC fiducials, when they exist, are the unique states saturating the upper bound on stabilizer entropies of order α ≥ 2.",
+        url: "https://arxiv.org/abs/2412.21083v1",
+        date: "2024-12-30",
+        version: "v1" },
+      { kind: "numerical",
+        role: "progress",
+        summary: "Numerical evidence that the maximal two-qubit M₂ is log(16/7), attained by 480 Weyl–Heisenberg MUB fiducial states; conjecture for all n ≠ 1, 3 and α ≥ 2 (QST 11, 015035).",
+        url: "https://arxiv.org/abs/2502.17550v3",
+        date: "2026-01-13",
+        version: "v3" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Analytic two-qubit Pareto frontiers of magic and entanglement consistent with log(16/7); exhaustiveness of the upper-boundary families not proved.",
+        url: "https://arxiv.org/abs/2603.24902v1",
+        date: "2026-03-26",
+        version: "v1" },
+      { kind: "numerical",
+        role: "progress",
+        summary: "Two-qutrit maximal magic log(81/17) located numerically; conjecture log[p⁴/(2p²−1)] for two qudits of prime dimension p.",
+        url: "https://arxiv.org/abs/2607.07197v1",
+        date: "2026-07-08",
+        version: "v1" },
+    ],
+    provenance: [],
+    relations: [
+      { id: "N1", type: "related" },
+      { id: "E27", type: "related" },
+    ],
+    refs: [
+      { label: "Liu, Low & Yin, 'Maximal Magic for Two-qubit States', Quantum Sci. Technol. 11, 015035 (2026)", url: "https://arxiv.org/abs/2502.17550" },
+      { label: "Cuffaro & Fuchs, 'Quantum States with Maximal Magic' (2024 preprint)", url: "https://arxiv.org/abs/2412.21083" },
+      { label: "Leone, Oliviero & Hamma, 'Stabilizer Rényi entropy', PRL 128, 050402 (2022)", url: "https://arxiv.org/abs/2106.12587" },
+      { label: "Godsil & Roy, 'Equiangular lines, mutually unbiased bases, and spin models', Eur. J. Comb. 30, 246 (2009)", url: "https://arxiv.org/abs/quant-ph/0511004" },
+      { label: "Roman et al., 'The Pareto Frontiers of Magic and Entanglement: The Case of Two Qubits' (2026 preprint)", url: "https://arxiv.org/abs/2603.24902" },
+      { label: "Knipfer, Roman, Matcheva & Matchev, 'Analytical Landscape of Maximal Magic for Two-Qutrit States and Beyond' (2026 preprint)",
+        url: "https://arxiv.org/abs/2607.07197" },
+    ] },
+
+  { id: "E29",
+    cat: "entanglement",
+    horizon: "sharp",
+    status: "improved",
+    reviewedAt: "2026-11-16",
+    title: "Purity threshold for multiqubit magic",
+    statement: r`For $n$ qubits, $d=2^n$, let $p^\ast(n)$ be the largest $p$ such that every density operator with $\mathrm{Tr}\rho^2\le p$ is a convex mixture of stabilizer states; equivalently, the Hilbert–Schmidt inradius of the stabilizer polytope around $I/d$ is $r_n=\sqrt{p^\ast-1/d}$. (Liu–Haug–Ye–Liu–Roth 2025, Conjecture 1.) Prove that $p^\ast(n)=1/(d-\tfrac12)$ for every $n$, i.e. $r_n=1/\sqrt{d(2d-1)}$, or find $n$ and a non-stabilizer state of purity at most $1/(d-\tfrac12)$. Known: $1/(d-a_\ast)\le p^\ast(n)\le1/(d-\tfrac12)$ with $a_\ast\approx0.458327$, uniformly in $n$.`,
+    definition: r`**The stabilizer polytope** is the convex hull of the pure stabilizer states; states outside it carry magic. A ball of states around the maximally mixed state lies inside it, and its radius gives a basis-independent purity threshold below which no state has magic, analogous to the separable ball in entanglement theory. Its facet structure is studied by Heinrich and Gross, “Robustness of Magic and Symmetries of the Stabiliser Polytope”, Quantum 3, 132 (2019), [arXiv:1807.10296](https://arxiv.org/abs/1807.10296).
+
+The conjecture is Conjecture 1 of Liu, Haug, Ye, Liu and Roth, “Triangle Criterion”, PRX Quantum 7, 033016 (2026), [arXiv:2512.16777](https://arxiv.org/abs/2512.16777v2). Z. Liu and Z.-W. Liu restate it as determining the exact inradius ([arXiv:2609.03944](https://arxiv.org/abs/2609.03944v3), Conclusion).`,
+    progress: r`- Liu, Haug, Ye, Liu and Roth construct, via their Triangle Criterion, magic states with purity arbitrarily close to $1/(d-\tfrac12)$, so $p^\ast(n)\le1/(d-\tfrac12)$. They check the conjecture by enumerating the facets of the stabilizer polytope for one and two qubits, and report numerical evidence up to $n=4$ ([arXiv:2512.16777](https://arxiv.org/abs/2512.16777v2)).
+- Zurel and Davis characterize absolutely stabilizer states. They derive the inradius exactly for odd prime dimensions, where the purity threshold is $1/(d-1/d)$. For qubits their radius rests on a conjecture about the vertices of the $\Lambda$ polytope, verified for one and two qubits, which they state matches the conjecture above ([arXiv:2602.22336](https://arxiv.org/abs/2602.22336v2)).
+- Z. Liu and Z.-W. Liu (v3, 5 November 2026) prove that every $n$-qubit state with $\mathrm{Tr}\rho^2\le1/(d-a_\ast)$, $a_\ast=1/2.181847\approx0.458327$, is a mixture of stabilizer states, with a constant independent of $n$ (Theorem 1). They call the exact inradius "a natural open problem" ([arXiv:2609.03944](https://arxiv.org/abs/2609.03944v3)).`,
+    residual: r`The constant gap between $a_\ast\approx0.458327$ and $\tfrac12$ remains. Sub-targets: a proof for $n=3$, by facet certificates or a dual argument; raising $a_\ast$ uniformly in $n$; or a proof of the Zurel–Davis vertex conjecture, from which the qubit radius would follow.`,
+    evidence: [
+      { kind: "published",
+        role: "progress",
+        summary: "Magic states with purity arbitrarily close to 1/(d − 1/2); conjecture that this is the threshold, verified by facet enumeration for n ≤ 2 and numerically up to n = 4 (PRX Quantum 7, 033016).",
+        url: "https://arxiv.org/abs/2512.16777v2",
+        date: "2026-04-20",
+        version: "v2" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Exact inradius in odd prime dimensions; the multiqubit radius follows from a vertex conjecture on the Λ polytope verified for one and two qubits.",
+        url: "https://arxiv.org/abs/2602.22336v2",
+        date: "2026-09-30",
+        version: "v2" },
+      { kind: "preprint", role: "progress", summary: "Every n-qubit state of purity at most 1/(d − a*), a* ≈ 0.458327, is a mixture of stabilizer states, uniformly in n.", url: "https://arxiv.org/abs/2609.03944v3", date: "2026-11-05", version: "v3" },
+    ],
+    provenance: [],
+    relations: [
+      { id: "A39", type: "related" },
+    ],
+    refs: [
+      { label: "Liu, Haug, Ye, Liu & Roth, 'Triangle Criterion: a mixed-state magic criterion with applications in distillation and detection', PRX Quantum 7, 033016 (2026)",
+        url: "https://arxiv.org/abs/2512.16777" },
+      { label: "Liu & Liu, 'On the geometry, typicality, and detectability of quantum magic' (2026 preprint)", url: "https://arxiv.org/abs/2609.03944" },
+      { label: "Zurel & Davis, 'Basis-independent stabilizerness and maximally noisy magic states' (2026 preprint)", url: "https://arxiv.org/abs/2602.22336" },
+      { label: "Heinrich & Gross, 'Robustness of Magic and Symmetries of the Stabiliser Polytope', Quantum 3, 132 (2019)", url: "https://arxiv.org/abs/1807.10296" },
+    ] },
 ];

@@ -2,6 +2,7 @@ import "katex/dist/katex.min.css";
 import "./globals.css";
 import { IBM_Plex_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
+import ClientEffects from "./components/ClientEffects";
 
 const sans = IBM_Plex_Sans({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-sans", display: "swap" });
 
@@ -10,7 +11,10 @@ const SITE_DESCRIPTION =
 
 export const metadata = {
   metadataBase: new URL("https://openquantumproblems.com"),
-  title: "Open Problems in Quantum Mechanics for AI Agents",
+  title: {
+    default: "Open Problems in Quantum Mechanics for AI Agents",
+    template: "%s | Open Quantum Problems",
+  },
   description:
     "A literature-reviewed catalogue of open quantum problems for human researchers and AI agents, with precise questions, source-linked progress and explicit evidence status. Powered by Astra & Opus 5.5.",
   openGraph: {
@@ -36,6 +40,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={sans.variable}>
       <body>
         {children}
+        <ClientEffects />
         <Analytics />
       </body>
     </html>
