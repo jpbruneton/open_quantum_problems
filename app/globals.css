@@ -401,6 +401,7 @@ a.back { text-decoration: none; }
 .badge.verdict { font-weight: 600; }
 .verdict-open-substantive { color: #1f6f4a; background: #1f6f4a10; }
 .verdict-open-minor { color: #5b6b2a; background: #5b6b2a10; }
+.verdict-open-narrow { color: #5b6b2a; background: #5b6b2a10; }
 .verdict-evident, .verdict-known { color: #9b2635; background: #9b263510; }
 .verdict-ill-posed { color: #a0521a; background: #a0521a12; }
 .verdict-under-review { color: var(--muted); }

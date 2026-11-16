@@ -39,7 +39,7 @@ function loadApp(relative) {
 }
 
 const data = loadApp("app/data/problems.js");
-const { ALL_PROBLEMS, PROBLEMS, ARCHIVED_PROBLEMS, CATEGORIES, HORIZONS, STATUSES, EVIDENCE_KINDS, REVIEW, LITERATURE_UPDATE, LITERATURE_UPDATES, CORRECTION_LOG, getProblem, problemsByCat } = data;
+const { ALL_PROBLEMS, PROBLEMS, ARCHIVED_PROBLEMS, CATEGORIES, HORIZONS, STATUSES, EVIDENCE_KINDS, REVIEW, LITERATURE_UPDATE, LITERATURE_UPDATES, CORRECTION_LOG, CORRECTION_LOGS, getProblem, problemsByCat } = data;
 const views = loadApp("app/views.js");
 const render = (view, props) => renderToStaticMarkup(React.createElement(view, props));
 const originalSeries = { M: 11, B: 12, QF: 10, E: 15, N: 10, C: 10, A: 18, U: 5, O: 9, F: 11 };
@@ -100,8 +100,9 @@ test("every entry has valid metadata, references and internal relations", () => 
       validUrl(item.url, p.id);
       if (item.date) {
         assert.equal(new Date(item.date).toISOString().slice(0, 10), item.date, `${p.id}: evidence date`);
-        const sourceReviewDate = CORRECTION_LOG.ids?.includes(p.id) && CORRECTION_LOG.date > p.reviewedAt
-          ? CORRECTION_LOG.date : p.reviewedAt;
+        const correction = CORRECTION_LOGS.find((log) => log.ids.includes(p.id));
+        const sourceReviewDate = correction && correction.date > p.reviewedAt
+          ? correction.date : p.reviewedAt;
         assert.ok(item.date <= sourceReviewDate, `${p.id}: future evidence presented as already reviewed`);
       }
       if (item.version) assert.match(item.version, /^v[1-9]\d*$/, `${p.id}: version`);
@@ -219,10 +220,13 @@ test("targeted literature updates preserve untouched review dates and expose pen
 });
 
 test("correction log is published", () => {
-  const { CORRECTION_LOG } = data;
-  validUrl(CORRECTION_LOG.reportUrl, "correction log");
-  assert.ok(CORRECTION_LOG.reportUrl.endsWith(`${CORRECTION_LOG.date}-correction-log.md`));
-  assert.ok(fs.existsSync(path.join(root, "docs/reviews", `${CORRECTION_LOG.date}-correction-log.md`)), "missing correction log");
+  assert.equal(CORRECTION_LOG, CORRECTION_LOGS[0]);
+  for (const [i, log] of CORRECTION_LOGS.entries()) {
+    validUrl(log.reportUrl, "correction log");
+    assert.ok(log.reportUrl.endsWith(`${log.date}-correction-log.md`));
+    assert.ok(fs.existsSync(path.join(root, "docs/reviews", `${log.date}-correction-log.md`)), "missing correction log");
+    if (i) assert.ok(log.date < CORRECTION_LOGS[i - 1].date, "corrections must be newest first");
+  }
 });
 
 test("priority scientific corrections retain the supporting sources", () => {
@@ -406,6 +410,71 @@ test("Lean verified is reserved for claimed solved entries", () => {
   }
   assert.equal(getProblem("N16").status, "improved");
   assert.ok(getProblem("N16").evidence.some((e) => e.lean));
+});
+
+test("static page metadata keeps the shared social images and canonical URLs", () => {
+  for (const [relative, params, canonical] of [
+    ["app/p/[id]/page.js", { id: "O13" }, "/p/O13"],
+    ["app/np/[key]/page.js", { key: "P20" }, "/np/PU2"],
+    ["app/c/[slug]/page.js", { slug: "spectral" }, "/c/spectral"],
+  ]) {
+    const metadata = loadApp(relative).generateMetadata({ params });
+    assert.equal(metadata.alternates.canonical, canonical);
+    assert.equal(metadata.openGraph.images[0].url, "https://openquantumproblems.com/opengraph-image");
+    assert.equal(metadata.twitter.images[0], "https://openquantumproblems.com/twitter-image");
+    assert.equal(metadata.twitter.card, "summary_large_image");
+  }
+});
+
+test("legacy fragments redirect after mount while ordinary page anchors stay local", () => {
+  const filename = path.join(root, "app/components/ClientEffects.js");
+  const { code } = transformSync(fs.readFileSync(filename, "utf8"), {
+    filename,
+    jsc: { parser: { syntax: "ecmascript", jsx: true }, target: "es2020" },
+    module: { type: "commonjs" },
+  });
+  const module = { exports: {} };
+  const listeners = new Map();
+  const effects = [];
+  const redirected = [];
+  const eventTarget = (prefix) => ({
+    addEventListener: (name, handler) => listeners.set(`${prefix}:${name}`, handler),
+    removeEventListener: (name, handler) => {
+      assert.equal(listeners.get(`${prefix}:${name}`), handler);
+      listeners.delete(`${prefix}:${name}`);
+    },
+  });
+  const location = { hash: "", replace: (url) => redirected.push(url) };
+  vm.runInNewContext(code, {
+    module, exports: module.exports,
+    require: (id) => {
+      assert.equal(id, "react");
+      return { useEffect: (effect) => effects.push(effect) };
+    },
+    window: { ...eventTarget("window"), location },
+    document: eventTarget("document"),
+    sessionStorage: { getItem: () => "1" },
+  }, { filename });
+  module.exports.default();
+  const cleanup = effects[0]();
+  const onHashChange = listeners.get("window:hashchange");
+  assert.equal(typeof onHashChange, "function");
+  for (const [hash, expected] of [
+    ["#p/N1", "/p/N1"], ["#/c/spectral", "/c/spectral"],
+    ["#np/P20", "/np/P20"], ["#about", "/similar"],
+  ]) {
+    location.hash = hash;
+    onHashChange();
+    assert.equal(redirected.at(-1), expected);
+  }
+  const n = redirected.length;
+  for (const hash of ["#np-secondary", "#np-complexity", "#tr-gaps", ""]) {
+    location.hash = hash;
+    onHashChange();
+  }
+  assert.equal(redirected.length, n);
+  cleanup();
+  assert.equal(listeners.size, 0, "all event listeners must be removed on unmount");
 });
 
 test("draft trends page renders, is not linked from home, and its entry links resolve", () => {

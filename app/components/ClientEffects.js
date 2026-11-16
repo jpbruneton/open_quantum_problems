@@ -54,8 +54,12 @@ export default function ClientEffects() {
   useEffect(() => {
     if (redirectLegacyHash()) return;
     sendVisitBeacon();
+    window.addEventListener("hashchange", redirectLegacyHash);
     document.addEventListener("click", onRowClick);
-    return () => document.removeEventListener("click", onRowClick);
+    return () => {
+      window.removeEventListener("hashchange", redirectLegacyHash);
+      document.removeEventListener("click", onRowClick);
+    };
   }, []);
   return null;
 }

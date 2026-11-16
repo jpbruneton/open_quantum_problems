@@ -86,7 +86,7 @@ The source of truth is `app/data/cat-*.js`, aggregated by `app/data/problems.js`
 - `lean`: on a `claimed-solved` entry only, `{ url, note }` when the main theorem of its claimed solution is formalized in Lean according to the authors; on an evidence item, `lean: true` records formalization, but only a claimed solution of a `claimed-solved` entry can display the badge.
 - `relations`: `{ id, type }`, where `type` is `parent`, `benchmark`, `reduction` or `related`.
 - `archive`: `{ kind: "merged" | "background", targets, reason }`. Archived pages stay addressable but are not counted.
-- `reviewedAt` and `LITERATURE_UPDATES` (in `problems.js`) record the latest literature update for each entry. Documentary corrections are recorded separately in the dated correction logs; `CORRECTION_LOG` points to the latest published one and does not reset these review dates.
+- `reviewedAt` and `LITERATURE_UPDATES` (in `problems.js`) record the latest literature update for each entry. Documentary corrections are recorded separately in the dated correction logs; `CORRECTION_LOG` points to the latest published one, while `CORRECTION_LOGS` retains their history. Corrections do not reset literature-review dates.
 - Links to other catalogues live in `app/data/crossrefs.js`. The AI-suggested problems and their review verdicts (`assessment`) live in `app/data/proposals.js`.
 
 ### Development

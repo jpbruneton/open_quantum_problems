@@ -15,7 +15,7 @@ import {
   consolidatedInto,
 } from "./data/problems";
 import { TRENDS } from "./data/trends-data";
-import { PROPOSALS, SECONDARY_PROPOSALS, PROPOSALS_META, PROPOSAL_COUNT, proposalBatch } from "./data/proposals";
+import { PROPOSALS, SECONDARY_PROPOSALS, PROPOSALS_META, PROPOSALS_META_NEW_AREAS, PROPOSALS_META_CARTE_V2, PROPOSAL_COUNT, proposalBatch } from "./data/proposals";
 
 // Server components only: the catalogue is rendered to HTML and never shipped as JavaScript.
 // Rows with data-href are clickable through a delegated handler in components/ClientEffects.js.
@@ -529,6 +529,7 @@ function ProblemView({ id }) {
 const VERDICTS = {
   "open-substantive": { label: "Open, substantive", desc: "Genuinely open and non-trivial." },
   "open-minor": { label: "Open, modest", desc: "Open, but a modest technical extension of known results." },
+  "open-narrow": { label: "Open, narrow scope", desc: "Open question restricted to a narrow class of models." },
   evident: { label: "Routine or false", desc: "A routine consequence of known results, or a conjecture that turns out to be false." },
   known: { label: "Already known", desc: "Already answered in the literature." },
   "ill-posed": { label: "Ill-posed", desc: "Not well defined as written." },
@@ -622,8 +623,8 @@ function NewProblemsView() {
           <p>We prompted an AI model (Fable 5.1, high effort) to suggest new open problems, starting from the current catalogue and its own knowledge of the literature. A second batch (9 November 2026) covers gravity and holography. A third (16 November 2026) comes from a semantic map of the 2024–2026 quant-ph literature: its questions are reformulated or partly inferred from what the authors wrote, and each says so in a caveat. These suggestions await human selection and critical review. They are not catalogue entries: they carry no status and are not counted.</p>
           <p>Horizons use the same badges as the catalogue, and “extends” links each suggestion to the entries it grows out of. Click a row to open the full page of a suggestion: motivation, baseline literature and caveats.</p>
           <p>Identifiers combine a letter, the catalogue area code and a number: P for a priority candidate (PE2 is the second entanglement candidate), S for a secondary lead. A suggestion promoted to the catalogue takes the next free entry number in its area. The former identifiers P1–P81 and S1–S24 (until 9 November 2026) still open the same pages.</p>
-          <p>Each suggestion was then checked by a separate AI literature review (8 November 2026), which verified the cited sources and searched for prior answers. Its verdict is shown under the status: open and substantive, open but modest, or under review. These verdicts are not human-refereed.</p>
-          <p><a href={PROPOSALS_META.reportUrl} target="_blank" rel="noreferrer">Read the full proposal with verification marks and caveats →</a></p>
+          <p>Separate AI literature reviews checked the cited sources and searched for prior answers: the first batch on 8 November 2026, the gravity and holography batch on 9 November, and the quant-ph map batch on 16 November. Each suggestion shows its review verdict. These verdicts are not human-refereed.</p>
+          <p>Full proposals with verification marks and caveats: <a href={PROPOSALS_META.reportUrl} target="_blank" rel="noreferrer">8 November</a>{" · "}<a href={PROPOSALS_META_NEW_AREAS.reportUrl} target="_blank" rel="noreferrer">9 November</a>{" · "}<a href={PROPOSALS_META_CARTE_V2.reportUrl} target="_blank" rel="noreferrer">16 November</a>.</p>
           <nav className="proposal-nav" aria-label="Areas">
             {PROPOSALS.map((g) => <a key={g.cat} href={`#np-${g.cat}`}>{g.name} ({g.items.length})</a>)}
             <a href="#np-secondary">Secondary leads ({SECONDARY_PROPOSALS.length})</a>
@@ -792,7 +793,7 @@ function TrendsView() {
         <div className="container">
           {!TRENDS_PUBLISHED && <div className="draft-banner"><b>Draft.</b> This page is not linked from the site yet. Figures and wording may change.</div>}
           <h2>Quantum trends</h2>
-          <p className="intro">What quant-ph has been writing about, {monthLabel("2411")} to {monthLabel("2611")}, and where the catalogue stands.</p>
+          <p className="intro">What quant-ph has been writing about, {monthLabel("2411")} to {monthLabel("2611")}, compared with the catalogue snapshot built on {source.builtOn}.</p>
           <p>We grouped the titles and abstracts of every arXiv paper first submitted with the quant-ph category (primary or cross-list) between 10 November 2024 and 10 November 2026 into topics, then compared year 1 with year 2 (split on {meta.split}). Total volume grew from {fmtInt(meta.year1)} to {fmtInt(meta.year2)} papers (×{meta.volumeGrowth.toFixed(2)}), so growth figures below are <b>relative</b>: ×1 means a topic kept pace with quant-ph as a whole, ×2 means its share doubled.</p>
           <p className="disclaimer">The grouping compares <b>words, not meaning</b>: papers on the same question in different vocabulary can land in different topics, and a shared writing style can create a topic of its own. Counts measure arXiv activity, not importance. Topic names were written by hand from each group’s characteristic terms and example papers.</p>
 
@@ -807,7 +808,7 @@ function TrendsView() {
             <a href="#tr-rising">Rising</a>
             <a href="#tr-declining">Declining</a>
             <a href="#tr-areas">By area</a>
-            <a href="#tr-gaps">Gaps in the catalogue</a>
+            <a href="#tr-gaps">Gaps in the snapshot</a>
             <a href="#tr-method">Method</a>
           </nav>
 
@@ -826,7 +827,7 @@ function TrendsView() {
 
           <section id="tr-areas" className="proposal-group">
             <h3>By area</h3>
-            <p>The {meta.zones} broad areas found at a coarser grouping, by size. The last column counts the catalogue entries (active or archived) whose text falls in each area. Experimental and platform areas (optics, atoms, superconducting circuits) are large and nearly absent from the catalogue, as expected for a list of theoretical problems; the more telling gaps are theoretical, below.</p>
+            <p>The {meta.zones} broad areas found at a coarser grouping, by size. The last column counts the catalogue entries (active or archived) in the {source.builtOn} snapshot whose text falls in each area. Experimental and platform areas (optics, atoms, superconducting circuits) are large and nearly absent from that snapshot, as expected for a list of theoretical problems; the more telling gaps are theoretical, below.</p>
             <div className="table-wrap">
               <table className="trend-table">
                 <thead>
@@ -834,7 +835,7 @@ function TrendsView() {
                     <th>Area</th>
                     <th style={{ width: 120 }}>Papers</th>
                     <th style={{ width: 190 }}>Relative growth</th>
-                    <th style={{ width: 120 }}>Catalogue entries</th>
+                    <th style={{ width: 120 }}>Snapshot entries</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -853,15 +854,15 @@ function TrendsView() {
           </section>
 
           <section id="tr-gaps" className="proposal-group">
-            <h3>Active theory with no catalogue entry</h3>
-            <p>Mostly theoretical topics (judged from a sample of annotated papers) with no catalogue entry or proposal nearby. They are candidates for new entries, not a list of missing problems: each needs a reading of the literature to find a sharp open question.</p>
+            <h3>Theory gaps in the {source.builtOn} snapshot</h3>
+            <p>Mostly theoretical topics (judged from a sample of annotated papers) with no catalogue entry or proposal nearby in that snapshot. The table records historical coverage: later additions include <a href="/p/A35">quantum walks</a>, <a href="/p/A39">magic-state distillation</a>, <a href="/p/B20">monitored circuits</a>, <a href="/p/A48">quantum signal processing</a> and the <a href="/p/O12">Mpemba effect</a>. The map has not been recomputed with these additions.</p>
             <TrendTable topics={gaps} meta={meta} showEntries={false} />
           </section>
 
           <section id="tr-reading" className="proposal-group">
-            <h3>Open questions stated in abstracts</h3>
+            <h3>Literature review following the map</h3>
             <div className="review-note trend-pending">
-              <b>Reading in progress.</b> Abstracts that state an open problem, a conjecture or a question that “remains open” are being read topic by topic, starting with the rising topics and the gaps above. Questions that hold up will be listed here with their sources, and the strongest proposed as catalogue entries.
+              <b>16 November 2026 update.</b> A subsequent review using a separate semantic map added 36 catalogue entries and eleven proposals. <a href={PROPOSALS_META_CARTE_V2.reportUrl} target="_blank" rel="noreferrer">Read the questions, sources and verification report</a>. The historical tables above retain the earlier word-based map.
             </div>
           </section>
 
@@ -880,7 +881,7 @@ function TrendsView() {
               <li>Corpus: {fmtInt(meta.papers)} titles and abstracts from the arXiv API (quant-ph, primary or cross-list, first submitted 10 November 2024 to 10 November 2026).</li>
               <li>Representation: TF-IDF on words and word pairs (title counted twice, formulas removed), reduced to 256 dimensions. No language model or semantic embedding was used.</li>
               <li>Topics: Leiden community detection on the 15-nearest-neighbour graph, at two resolutions ({meta.topics} topics, {meta.zones} areas).</li>
-              <li>Catalogue placement: each of the {meta.catalogueItems} catalogue entries and proposals is projected into the same space and attached to the majority topic of its 10 nearest papers.</li>
+              <li>Catalogue placement: the {meta.catalogueItems} catalogue entries and proposals in the snapshot built on {source.builtOn} were projected into the same space and attached to the majority topic of their 10 nearest papers. This placement predates the 16 November additions.</li>
               <li>Topic and area names, and the selection of topics shown, were made by hand by an AI-assisted analysis and have not been reviewed by a domain expert.</li>
             </ul>
             <p>Data and code: {source.path} in the project’s research repository (commit {source.commit}, not yet public), built {source.builtOn}.</p>

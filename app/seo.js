@@ -45,7 +45,9 @@ export function pageMetadata({ title, description, path }) {
     title,
     description: desc,
     alternates: { canonical: path },
-    openGraph: { type: "article", url: `${SITE_URL}${path}`, siteName: SITE_NAME, title, description: desc },
-    twitter: { card: "summary_large_image", creator: "@_quantumphy_", title, description: desc },
+    openGraph: { type: "article", url: `${SITE_URL}${path}`, siteName: SITE_NAME, title, description: desc,
+      images: [{ url: `${SITE_URL}/opengraph-image`, width: 1200, height: 630, alt: SITE_NAME }] },
+    twitter: { card: "summary_large_image", creator: "@_quantumphy_", title, description: desc,
+      images: [`${SITE_URL}/twitter-image`] },
   };
 }
