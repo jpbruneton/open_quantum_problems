@@ -100,9 +100,9 @@ function Header({ crumbs }) {
         {crumbs && <a className="gh-link home-link" href="/">← Home</a>}
         <h1 className="title">Open Problems in Quantum Mechanics for AI Agents</h1>
         <p className="subtitle">
-          A literature-reviewed catalogue for human researchers and AI agents:
-          precise questions, research programmes, known results and the work
-          still to do. Corrections and contributions are welcome.
+          A literature-reviewed catalogue for human researchers and AI agents.
+          Each entry records a question, its status, evidence and references.
+          Corrections and contributions are welcome.
         </p>
         <div className="header-links">
         <a
@@ -1005,7 +1005,6 @@ function NewResearchView() {
       <section className="body">
         <div className="container detail new-science-page">
           <h2>New Research</h2>
-          <p className="intro">New Research turns promising connections across quantum theory into precise, independently checkable results. Each note combines a focused manuscript, reproducible certificates and the literature that marks its scientific frontier.</p>
           <div className="science-caution">
             <b>Published research notes.</b> The stated mathematical results are proved exactly and accompanied by reproducible checks. To the best of our knowledge, no direct antecedent for these specific results was found in the literature; each dossier records the scope of that separate prior-art search.
           </div>
@@ -1051,7 +1050,7 @@ function NewResearchView() {
           </div>
           <section className="research-archive">
             <h3>Supporting research archive</h3>
-            <p>The <a href="https://github.com/jpbruneton/open_quantum_problems/tree/main/newresults/2026-11-17-revue-150" target="_blank" rel="noreferrer">review of 150 discovery leads</a> records the triage, prior-art checks and reproducible calculations behind this research programme. It is a working archive, not a standalone research note.</p>
+            <p>The <a href="https://github.com/jpbruneton/open_quantum_problems/tree/main/newresults/2026-11-17-revue-150" target="_blank" rel="noreferrer">review of 150 discovery leads</a> contains the triage, prior-art checks and reproducible calculations. It is a working archive, not a standalone research note.</p>
           </section>
         </div>
       </section>
