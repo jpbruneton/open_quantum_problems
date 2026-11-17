@@ -4,7 +4,7 @@
 
 - [20 — Arrondi contraint](piste20.md) : réparation constructive, obstruction à une réparation linéaire universelle et perte en racine carrée pour la réparation terme par terme. Aucun meilleur taux de convergence démontré.
 - [51 — Steering et localisation](piste51.md) : contre-exemple à la formulation mixte générale ; borne géométrique 2f(t) dans le cas pur pour des ensembles restreints à une région réduite ; calcul exact d'un défaut de steering en racine carrée.
-- [51 — Clôture et modèle exact](piste51-cloture.md) : défaut (1-kappa)sqrt(pq), taux spatial avec borne inférieure atteinte et parent à gap. [LaTeX](steering-localization.tex), [PDF](steering-localization.pdf) et [contrôles](verification51.json). Approfondissement terminé, originalité substantielle non établie.
+- [51 — Clôture et modèle exact](piste51-cloture.md) : défaut (1-kappa)sqrt(pq), taux spatial avec borne inférieure atteinte et parent à gap. Le [dossier public canonique](../../research/entries/steering-localization/README.md) contient le manuscrit et son vérificateur. Approfondissement terminé, originalité substantielle non établie.
 
 Les sources et limites de chaque énoncé sont détaillées dans les notes. La validité mathématique et la priorité bibliographique sont deux questions distinctes.
 
@@ -18,7 +18,7 @@ L'approfondissement de la piste 51 est terminé. L'implication mixte sans hypoth
 
 ```text
 python -B verify.py
-python -B verify51.py
+python -B ../../research/entries/steering-localization/checks/verify51.py
 ```
 
 [Script](verify.py) et [sortie avec empreintes des preuves](verification.json). Exemples rationnels exacts pour les deux pertes en racine et l'obstruction produit ; 36 cas d'arrondi, 54 perturbations d'ensembles, 12 cas de localisation avec jusqu'à 40 issues. NumPy suffit, sans GPU, SDP ni réseau. Les simulations prennent moins d'une seconde sur cette machine lors de l'exécution initiale. Elles contrôlent les identités et bornes finies ; la partie sur les algèbres de cônes repose sur la preuve écrite.

@@ -2,7 +2,7 @@
 
 17 novembre 2026. Les énoncés et preuves ci-dessous sont établis dans cette note. Leur priorité bibliographique n'est pas établie. Les ingrédients sont classiques ; la formulation géométrique précise est un candidat à examiner, pas une découverte annoncée.
 
-**Approfondissement terminé :** voir la [clôture](piste51-cloture.md) et le [PDF](steering-localization.pdf). Le modèle à deux branches donne exactement s_B=(1-kappa)sqrt(pq), puis un taux spatial avec borne inférieure atteinte. Il ne résout pas la question générale sur les cônes ; la nouveauté substantielle reste non établie.
+**Approfondissement terminé :** voir la [clôture](piste51-cloture.md) et le [dossier public canonique](../../research/entries/steering-localization/README.md). Le modèle à deux branches donne exactement s_B=(1-kappa)sqrt(pq), puis un taux spatial avec borne inférieure atteinte. Il ne résout pas la question générale sur les cônes ; la nouveauté substantielle reste non établie.
 
 ## 1. Quantifier la bonne tâche
 

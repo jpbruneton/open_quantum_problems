@@ -6,7 +6,7 @@ Statut : existence démontrée par certificat exact ; antériorité non certifi�
 
 On ordonne les éléments de G = F₃² par `(0,0),(0,1),(0,2),(1,0),...,(2,2)` ; même ordre pour les caractères χ_c(g) = ζ^(c·g), où ζ² + ζ + 1 = 0 et Im ζ > 0. La transformée est F₃ ⊗ F₃.
 
-Le fichier [z3x3-simple-certificate.json](z3x3-simple-certificate.json) contient deux matrices entières R et M de taille 9 × 9. Elles définissent entièrement l'état et le témoin par
+Le fichier [z3x3-simple-certificate.json](../../research/entries/kd-z3x3/data/z3x3-simple-certificate.json) contient deux matrices entières R et M de taille 9 × 9. Elles définissent entièrement l'état et le témoin par
 
 \[
 Q_G(\rho)=R/7740000,\qquad Q_G(W)=M,
@@ -47,7 +47,7 @@ Chaque sous-groupe donne neuf projecteurs distincts : 6 × 9 = 54. Le vérificat
 
 ## Vérifications exactes
 
-Le script [verify_z3_certificate.py](verify_z3_certificate.py) utilise seulement des fractions rationnelles. Pour ρ = A + Bζ, il vérifie exactement l'hermiticité et la trace, puis la positivité par la matrice rationnelle
+Le script [verify_z3_certificate.py](../../research/entries/kd-z3x3/checks/verify_z3_certificate.py) utilise seulement des fractions rationnelles. Pour ρ = A + Bζ, il vérifie exactement l'hermiticité et la trace, puis la positivité par la matrice rationnelle
 
 \[
 X=A-B/2,\qquad

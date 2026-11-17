@@ -12,10 +12,12 @@ from verify_diagonal_certificate import verify as verify_diagonal
 
 
 def check():
-    root = Path(__file__).resolve().parent
-    path = root/'z3x3-simple-certificate.json'
+    entry = Path(__file__).resolve().parent.parent
+    data_dir = entry/'data'
+    manuscript = entry/'manuscript'/'kd-z3x3.tex'
+    path = data_dir/'z3x3-simple-certificate.json'
     data = json.loads(path.read_text(encoding='utf-8'))
-    tex = (root/'kd-z3x3.tex').read_text(encoding='utf-8')
+    tex = manuscript.read_text(encoding='utf-8')
     # The manuscript must contain exactly the arrays that were certified.
     for name, key in [('R', 'integer_Q_numerator'), ('M', 'integer_witness_Q')]:
         block = re.search(name+r'=\\begin\{pmatrix\}(.*?)\\end\{pmatrix\}', tex, re.S).group(1)
@@ -48,12 +50,12 @@ def check():
     assert q == [x+F(y,20000) for x,y in zip(center_q,m)]
     assert F(ld['strict_gap'])/F(ld['shifted_witness_operator_norm_upper_bound']) == F(111,20000)
     result = dict(certificate_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),
-                  manuscript_sha256=hashlib.sha256((root/'kd-z3x3.tex').read_bytes()).hexdigest(),
+                  manuscript_sha256=hashlib.sha256(manuscript.read_bytes()).hexdigest(),
                   printed_matrices_equal_certificate=True, witness_score_multiplicities=dict(scores),
                   construction_from_43_touching_vertices='exactly checked',
                   weighted_diagonal_dominance=dg, independent_realification=ld,
                   conclusion='All checked exact arithmetic assertions of the manuscript passed.')
-    (root/'paper-data-verification.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
+    (data_dir/'paper-data-verification.json').write_text(json.dumps(result,indent=2),encoding='utf-8')
     print(json.dumps({k:v for k,v in result.items() if k not in ('weighted_diagonal_dominance','independent_realification')},indent=2))
 
 

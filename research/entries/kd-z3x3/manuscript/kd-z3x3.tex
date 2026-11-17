@@ -62,22 +62,30 @@ for this fixed Fourier pair; historical priority remains unconfirmed.
 \end{abstract}
 
 \section{Introduction}
-The Kirkwood--Dirac (KD) distribution represents a quantum state relative
-to two ordered orthonormal bases. It has classical marginals, but its entries
-may be negative or nonreal; this failure of positivity is connected to
-nonclassical phenomena and quantum advantages across measurement theory,
-metrology, thermodynamics, and computation \cite{KDreview}. Understanding the
-states whose KD distribution is a genuine probability distribution therefore
-helps locate a precise boundary between classical and quantum descriptions.
+Two incompatible quantum measurements do not generally admit a joint
+probability distribution. The Kirkwood--Dirac (KD) representation nevertheless
+assigns a table of quasiprobabilities to a state and an ordered pair of
+orthonormal bases. Its row and column sums are ordinary measurement
+probabilities, but individual entries may be negative or complex. When every
+entry is real and nonnegative, the table is a genuine probability distribution
+and the state is called KD-positive for that pair of bases. This condition
+depends on the chosen bases; its failure is connected to nonclassical effects
+in measurement theory, metrology, thermodynamics, and computation
+\cite{KDreview}.
 
-For a fixed pair of bases, the KD-positive density operators form a convex
-set. Its pure points are often much easier to classify than its mixed points,
-which raises a basic geometric question: is every KD-positive state a convex
-combination of pure KD-positive states? The answer depends strongly on the
-basis pair \cite{geometry,almost}. Fourier-conjugate bases over finite abelian
-groups provide a structured setting in which the pure states are known
-exactly \cite{DLR}, while the first unresolved noncyclic case occurs for
-$G=\Z_3\times\Z_3$.
+The example studied here is a pair of qutrits. The nine computational basis
+vectors are labelled by $G=\Z_3\times\Z_3$, and the conjugate basis is obtained
+by applying the three-dimensional Fourier transform to each qutrit, namely
+$F_3\otimes F_3$. This is different from the Fourier transform $F_9$ of the
+cyclic group $\Z_9$. For the chosen pair, the pure KD-positive states are known
+exactly: each of the six subgroups of $G$ gives nine states, for a total of
+$54$ \cite{DLR}. They include both product and entangled states.
+
+Every mixture of those $54$ pure states is KD-positive. The basic geometric
+question is whether the converse holds: does every KD-positive mixed state lie
+in their convex hull? An affirmative answer would make the positive region a
+finite polytope described completely by the pure-state classification. The
+answer depends strongly on the basis pair \cite{geometry,almost}.
 
 This note gives an explicit negative answer in that case. We construct a
 strictly positive KD array whose inverse is a positive-definite density
@@ -378,7 +386,15 @@ $\E_G=\hull_G$ by \cite{DLR}.
 Exact verification data and independent standard-library checkers accompany
 this note. They reconstruct all 54 pure arrays, verify strict positivity and
 the witness value, and check the diagonal-dominance certificate using exact
-arithmetic. These files complement the proofs given above.
+arithmetic. The public bundle contains the
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/kd-z3x3/checks/verify_diagonal_certificate.py}{weighted diagonal-dominance checker},
+the
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/kd-z3x3/checks/verify_z3_certificate.py}{independent cyclotomic checker},
+and the
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/kd-z3x3/checks/verify_paper_data.py}{manuscript-data checker},
+together with the
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/kd-z3x3/data/z3x3-simple-certificate.json}{exact certificate}.
+These files complement the proofs given above.
 
 \begingroup\small
 \begin{thebibliography}{99}

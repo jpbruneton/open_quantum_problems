@@ -1,6 +1,6 @@
 {
   "certificate_sha256": "858513b172ba70e00674da72eebb2ae8eb55b23cea79cce13ee48b8d9cf0c464",
-  "manuscript_sha256": "e92db4c511eda36734af7f690adb71be956aa4273132d527d7b2b1d5923a480e",
+  "manuscript_sha256": "9f3e1467ef4964125b9e10f222e01fe03f5fccb7b797c1459df3fe01613f209b",
   "printed_matrices_equal_certificate": true,
   "witness_score_multiplicities": {
     "18": 43,
@@ -38,7 +38,7 @@
   "independent_realification": {
     "certificate": "z3x3-simple-certificate.json",
     "certificate_sha256": "858513b172ba70e00674da72eebb2ae8eb55b23cea79cce13ee48b8d9cf0c464",
-    "independent_checker_sha256": "e431c822d59fb4e8ebd27214c297d1e882cb8b02c2812ea4d66204cc85a250a6",
+    "independent_checker_sha256": "86823356be198e651f8bcfbb09b48794f278f4049036a360fc8e6880bc75fceb",
     "arithmetic": "fractions only; no floating-point or optimization dependencies",
     "pure_KD_states_rebuilt": 54,
     "KD_minimum": "2291/1935000",

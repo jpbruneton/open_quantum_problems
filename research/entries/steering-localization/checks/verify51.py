@@ -13,7 +13,10 @@ import json
 import time
 import numpy as np
 
-ROOT = Path(__file__).resolve().parent
+ENTRY = Path(__file__).resolve().parent.parent
+CHECKS = ENTRY/'checks'
+DATA = ENTRY/'data'
+MANUSCRIPT = ENTRY/'manuscript'
 RNG = np.random.default_rng(510017)
 X = np.array([[0., 1.], [1., 0.]])
 I = np.eye(2)
@@ -178,8 +181,11 @@ if __name__ == '__main__':
     report=dict(status='passed',seed=510017,branches=branch_checks(),
                 rational=rational_checks(),chain=chain_checks(),parents=parent_checks())
     report['elapsed_seconds']=time.perf_counter()-start
-    report['sha256']={n:hashlib.sha256((ROOT/n).read_bytes()).hexdigest()
-                      for n in ['verify51.py','steering-localization.tex','piste51-cloture.md']}
+    report['sha256']={
+        'checks/verify51.py': hashlib.sha256((CHECKS/'verify51.py').read_bytes()).hexdigest(),
+        'manuscript/steering-localization.tex': hashlib.sha256(
+            (MANUSCRIPT/'steering-localization.tex').read_bytes()).hexdigest(),
+    }
     report['limits']='Finite matrix checks, not a formal proof or a certification of novelty.'
-    (ROOT/'verification51.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
+    (DATA/'verification51.json').write_text(json.dumps(report,indent=2)+'\n',encoding='utf-8')
     print(json.dumps({k:report[k] for k in ['status','branches','chain','parents','elapsed_seconds']},indent=2))

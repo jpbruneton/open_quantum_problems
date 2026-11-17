@@ -2,7 +2,7 @@
 
 17 novembre 2026. **Travail demandé terminé ; originalité substantielle non établie.** Le statut bibliographique du rapprochement reste `non-conclue` : cela ne signifie plus qu'un calcul de cette session attend d'être exécuté. Le problème général sur les algèbres de cônes reste ouvert.
 
-[Note LaTeX](steering-localization.tex) · [PDF](steering-localization.pdf) · [Vérifications](verify51.py) · [Résultats et empreintes](verification51.json).
+[Note LaTeX](../../research/entries/steering-localization/manuscript/steering-localization.tex) · [PDF](../../research/entries/steering-localization/manuscript/steering-localization.pdf) · [Vérifications](../../research/entries/steering-localization/checks/verify51.py) · [Résultats et empreintes](../../research/entries/steering-localization/data/verification51.json).
 
 ## Résultat exact supplémentaire
 
@@ -78,6 +78,6 @@ La formule exacte sous notre définition n'a pas été identifiée dans ces pass
 
 ## Vérification et provenance
 
-`python -B verify51.py` effectue 240 cas d'ensembles, 400 mesures binaires concurrentes, 200 états concurrents pour le défaut d'espérance, 16 cas rationnels, 18 préparations sur la chaîne complète finie, 5 queues géométriques et 4 spectres de Hamiltoniens parents. Les préparations sont calculées directement par contraction du vecteur global, indépendamment de la formule de déphasage. Les tests n'établissent pas les quantificateurs universels : ceux-ci sont traités par les preuves.
+`python -B ../../research/entries/steering-localization/checks/verify51.py` effectue 240 cas d'ensembles, 400 mesures binaires concurrentes, 200 états concurrents pour le défaut d'espérance, 16 cas rationnels, 18 préparations sur la chaîne complète finie, 5 queues géométriques et 4 spectres de Hamiltoniens parents. Les préparations sont calculées directement par contraction du vecteur global, indépendamment de la formule de déphasage. Les tests n'établissent pas les quantificateurs universels : ceux-ci sont traités par les preuves.
 
-NumPy suffit, sans GPU ni solveur SDP. Les empreintes de la source LaTeX, de cette note et du script figurent dans `verification51.json`. Le travail a été dérivé et rédigé avec assistance IA ; il n'a pas été relu par un chercheur indépendant ni formalisé dans un assistant de preuve.
+NumPy suffit, sans GPU ni solveur SDP. Les empreintes de la source LaTeX et du script figurent dans le [rapport public](../../research/entries/steering-localization/data/verification51.json). Le travail a été dérivé et rédigé avec assistance IA ; il n'a pas été formalisé dans un assistant de preuve.

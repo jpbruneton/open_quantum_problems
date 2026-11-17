@@ -4,10 +4,11 @@ A literature-reviewed catalogue of open problems in quantum theory, for human re
 
 **Website: https://openquantumproblems.com/**
 
-The site has two parts:
+The site has three parts:
 
 1. **[Known open problems](#1-known-open-problems)**: the catalogue of open problems recognized in the literature, with their progress and claimed solutions.
 2. **[New problems suggested by AI](#2-new-problems-suggested-by-ai)**: candidate questions formulated by AI from the catalogue.
+3. **[New Research](https://openquantumproblems.com/new-research)**: focused research notes with public manuscripts, exact certificates, and reproducible checkers. Their canonical source bundles are indexed in [`research/`](research/README.md).
 
 ## 1. Known open problems
 

@@ -9,7 +9,7 @@ from verify_z3_certificate import verify
 
 class CertificateTests(unittest.TestCase):
     def setUp(self):
-        self.original = Path(__file__).resolve().parent / "z3x3-simple-certificate.json"
+        self.original = Path(__file__).resolve().parent.parent / "data" / "z3x3-simple-certificate.json"
         self.data = json.loads(self.original.read_text(encoding="utf-8"))
 
     def check_modified(self, value):

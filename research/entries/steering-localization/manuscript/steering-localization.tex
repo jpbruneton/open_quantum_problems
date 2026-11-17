@@ -54,20 +54,28 @@ converse to Haag duality.
 \end{abstract}
 
 \section{Introduction}
-The Hughston--Jozsa--Wootters theorem identifies every finite ensemble
-decomposition of a density operator with a measurement on a purifying system
-\cite{HJW}. This exact correspondence is a basic form of quantum steering:
-access to the full purifying system allows one party to remotely prepare any
-ensemble of the other party's marginal. When part of the purifier is
-inaccessible, the correspondence can fail even though the global state
-remains pure.
+A mixed quantum state can be prepared as an ensemble of pure states in many
+different ways. Suppose that the system of interest is part of a larger pure
+state and that an observer can measure the purifying system. The measurement
+outcome can then select which member of an ensemble is prepared remotely. This
+is the elementary mechanism of quantum steering. The
+Hughston--Jozsa--Wootters theorem states that access to the full purifier makes
+every finite ensemble decomposition of the reduced state available in this
+way \cite{HJW}.
 
-This note measures that failure as a minimax approximation problem. The
+The situation changes when the purifier is split into an accessible part and
+a hidden environment. A measurement on the accessible part may no longer
+distinguish alternatives whose records remain in the hidden part, even though
+the global state is still pure. The natural quantitative question is then how
+closely the accessible measurement can reproduce the worst target ensemble.
+
+This note formulates that question as a minimax approximation problem. The
 target ranges over all finite decompositions of a fixed qubit marginal, while
-the available measurement acts only on the accessible subsystem. The main
-result evaluates the minimax exactly for a two-branch state. The answer depends
-only on the Schmidt weights and the overlap of the inaccessible branches,
-which makes the obstruction directly computable in spatial models.
+the available measurement acts only on the accessible subsystem. For a
+two-branch state, the minimax is evaluated exactly in terms of the Schmidt
+weights and the overlap of the inaccessible branches. These parameters have a
+direct spatial meaning when progressively larger portions of an environment
+become accessible.
 
 The exact formula has two consequences. First, it relates the steering defect
 to a natural trace-distance defect for state-preserving conditional
@@ -288,10 +296,13 @@ therefore supplies a controlled example, while the general quantitative
 duality question remains open.
 
 \section{Verification and scope}
-Exact checkers accompanying this note verify the partial-trace preparations,
-the binary witnesses, rational test cases, spatial tails, and spectra of
-finite parent Hamiltonians. These computations complement the analytic
-proofs. The bibliographic comparison supports the positioning in
+The public
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/steering-localization/checks/verify51.py}{Python checker}
+verifies the partial-trace preparations, the binary witnesses, rational test
+cases, spatial tails, and spectra of finite parent Hamiltonians; its
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/steering-localization/data/verification51.json}{recorded output}
+is included in the same public entry. These computations complement the
+analytic proofs. The bibliographic comparison supports the positioning in
 Section~2; it does not turn the model calculation into a general theorem on
 steering or topological phases.
 

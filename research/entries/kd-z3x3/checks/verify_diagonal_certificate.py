@@ -47,7 +47,8 @@ def verify(path):
 
 
 if __name__ == '__main__':
-    root = Path(__file__).resolve().parent
-    result = verify(root/'z3x3-simple-certificate.json')
-    (root/'diagonal-verification.json').write_text(json.dumps(result, indent=2), encoding='utf-8')
+    entry = Path(__file__).resolve().parent.parent
+    data = entry/'data'
+    result = verify(data/'z3x3-simple-certificate.json')
+    (data/'diagonal-verification.json').write_text(json.dumps(result, indent=2), encoding='utf-8')
     print(json.dumps(result, indent=2))

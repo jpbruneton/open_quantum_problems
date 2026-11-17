@@ -15,7 +15,11 @@ npm-debug.log*
 /todos/
 /review/
 /reviews/
-/research/
+/research/*
+!/research/README.md
+!/research/ENTRY_TEMPLATE.md
+!/research/entries/
+!/research/entries/**
 /notes/
 /docs/todo/
 /docs/todos/

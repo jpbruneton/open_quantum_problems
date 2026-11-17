@@ -37,3 +37,14 @@ Before starting any literature update, catalogue change or site change:
 - Keep provenance and computational history concise. Include only information needed to assess, reproduce, or correctly qualify the mathematics; do not narrate the discovery process unless it is itself relevant.
 - Separate mathematical verification from bibliographic priority, and qualify originality claims precisely without repetitive disclaimers.
 - Provide a serious, sufficiently broad, and verified bibliography. Prefer primary sources; include the foundational literature, the closest antecedents, and the relevant current work rather than citing only a few convenient papers. Check every title, author list, venue, year, identifier, version, and link against the source itself. Each citation must support a specific statement in the text, and the Related work discussion must explain the relationship instead of merely listing references. Do not cite a work that has only been seen through a search snippet, secondary summary, or unverified metadata record.
+
+## Published research-note layout
+
+- Treat `newresults/` as a working archive. A note becomes a public research entry only under `research/entries/<slug>/`.
+- Every public entry must contain `README.md`, `manuscript/` for the `.tex` and compiled `.pdf`, `checks/` for the minimal runnable Python verification, and `data/` for exact certificates and generated verification records. Use a stable descriptive slug, not a date or an internal lead number.
+- `research/entries/<slug>/` is the canonical citable source. `public/research/` contains deployment mirrors of PDFs only; do not treat it as the source archive.
+- Keep the public bundle minimal and self-contained. Search scripts, exploratory notes, logs, caches, and superseded certificates remain in `newresults/`.
+- The entry README must state the result, map every public file to its role, give commands runnable from the repository root, list dependencies, and distinguish analytic proof, computational verification, and bibliographic priority.
+- Python checkers must resolve inputs relative to their entry directory and write generated records into `data/`; they must not depend on files left in `newresults/`.
+- The manuscript's verification section must link directly to the relevant public Python checker files and exact certificate on GitHub. The site button `Source, certificate and checks` must link to the canonical entry directory.
+- Start a new public entry from `research/ENTRY_TEMPLATE.md` and preserve this layout for later notes.
