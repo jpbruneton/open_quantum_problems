@@ -1,0 +1,38 @@
+{
+  "arithmetic": "exact fractions",
+  "checks": [
+    {
+      "gamma": "3/4",
+      "n": "1/10",
+      "pt_block_determinant": "-1039/2560000",
+      "singlet_NPT": true
+    },
+    {
+      "gamma": "4/5",
+      "n": "1/10",
+      "pt_block_determinant": "7559/1562500",
+      "singlet_NPT": false
+    },
+    {
+      "gamma": "1/2",
+      "n": "1/2",
+      "pt_block_determinant": "-7/256",
+      "singlet_NPT": true
+    },
+    {
+      "gamma": "9/10",
+      "n": "0",
+      "pt_block_determinant": "-1/400",
+      "singlet_NPT": true
+    },
+    {
+      "gamma": "1",
+      "n": "1/3",
+      "pt_block_determinant": "4/81",
+      "singlet_NPT": false
+    }
+  ],
+  "antecedent": "1708.08208v2, Example 3, equation (49)",
+  "scope": "Conjecture 8 of 2506.06089 only, not source-placement conjecture 6",
+  "novelty": "not claimed; matching an earlier EA threshold"
+}

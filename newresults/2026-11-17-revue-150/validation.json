@@ -1,0 +1,31 @@
+{
+  "reviewed": 150,
+  "pairs": 150,
+  "unique_papers": 156,
+  "decisions": {
+    "ecartee": 132,
+    "non-conclue": 9,
+    "connue": 9
+  },
+  "reading": {
+    "abstracts": 119,
+    "targeted-fulltext": 31
+  },
+  "input_sha256": "61e471b78925816802855e44f63ae256b53077059f34dacabc1cf44870a00982",
+  "reviews_sha256": "c61156f4197a518c7d4f78472517dc11dcfb71bcc175a1e5be28db6e2d15b5d8",
+  "notes": {
+    "../2026-11-17-kd-z3x3/diagnostics.md": "2e6d177d91a44db0ab60826d2bba7821e8e78fdb5a883daae5365f9f4b7523a1",
+    "notes/eigenvalue-shift-versus-robustness.md": "17e7d993f6207e8fd2a70045e8195784773d8db955bd77af6abff7a95be60402",
+    "notes/gad-singlet-prior-result.md": "aed66e4b06a8e2c1fae3d23bb495c63be21f00e5053f2aba617897d3a281b806",
+    "notes/measurement-rounding.md": "0dc5e210e63fbe255218d47dcb38bf6b856089e813e02789d51917ae33d727aa",
+    "notes/mixed-magic-obstruction.md": "b3106a9e284069c54c7ace65575b6bd6509d17ab383e8261783835cc9615b57f",
+    "notes/quadratic-cost-not-a-metric.md": "c6354a6338cf88c755eaa627d3d1e87fc9656b14569b53e852dffbfe7b77dda2",
+    "notes/replica-magic-certification.md": "46d4dd803c1f37ca96ec658ed48f0cb7eacd3644f2325ce412aba349c6ad50e3",
+    "notes/robustness-rounding-rate.md": "d01d3697d7b07450b3fdb02b903d2412dbd980fe441926cf76e48bb4d1ec0945",
+    "notes/symmetry-is-not-memory.md": "e655809881471b5bbb41bb69c58c4cae39bdf765b03612588d7e3d7154d9ad21",
+    "notes/topology-and-steering.md": "158b1f5f9adb66b41422ca3d7bcd531eaeb4d95a3aa0458a7ea0fb934ab80719",
+    "notes/unbounded-moment-certification.md": "e0336b67dc7f7c8d5a306b2665a8a4c6996337a7a7d03f430f5fd86f634522cc"
+  },
+  "commits": "Disabled by user; validation performs no Git operations.",
+  "scope": "Coverage and integrity only; does not certify mathematical truth or bibliographic priority."
+}

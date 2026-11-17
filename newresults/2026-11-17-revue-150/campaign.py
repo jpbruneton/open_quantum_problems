@@ -109,14 +109,33 @@ def render():
     print(dict(reviewed=len(reviews),decisions=dict(counts)))
 
 
-def validate():
+def validate(complete=False):
     data, reviews = read(ROOT/'input.json'), read(ROOT/'reviews.json')
     assert len(data['pairs']) == 150
+    assert len({p['id'] for p in data['pairs']}) == 150
+    assert set(data['papers']) == {pid for pair in data['pairs'] for pid in pair['papers']}
+    for p in data['papers'].values():
+        assert p['abstract_sha256'] == hashlib.sha256((p['title']+'\n\n'+p['abstract']).encode()).hexdigest()
     for rank,e in reviews.items():
-        assert rank == str(e['rank']) and e['decision'] in DECISIONS
-        assert e['rationale'] and len(e['references']) >= 2
+        assert rank == str(e['rank']) and 1 <= e['rank'] <= 150 and e['decision'] in DECISIONS
+        assert len(e['rationale']) >= 80 and len(e['references']) >= 2
+        assert e['reading'] in ('abstracts','targeted-fulltext')
+        assert all(any(pid in ref for ref in e['references']) for pid in data['pairs'][e['rank']-1]['papers'])
         if e.get('note'):
             assert (ROOT/e['note']).is_file()
+    if complete:
+        assert set(reviews) == {str(i) for i in range(1,151)}
+        assert not any(e['decision'] == 'en-cours' for e in reviews.values())
+        notes = sorted({e['note'] for e in reviews.values() if e.get('note')})
+        audit = dict(reviewed=len(reviews),pairs=len(data['pairs']),unique_papers=len(data['papers']),
+                     decisions=dict(collections.Counter(e['decision'] for e in reviews.values())),
+                     reading=dict(collections.Counter(e['reading'] for e in reviews.values())),
+                     input_sha256=hashlib.sha256((ROOT/'input.json').read_bytes()).hexdigest(),
+                     reviews_sha256=hashlib.sha256((ROOT/'reviews.json').read_bytes()).hexdigest(),
+                     notes={n:hashlib.sha256((ROOT/n).read_bytes()).hexdigest() for n in notes},
+                     commits='Disabled by user; validation performs no Git operations.',
+                     scope='Coverage and integrity only; does not certify mathematical truth or bibliographic priority.')
+        write(ROOT/'validation.json',audit)
     print(f'Ledger valid: {len(reviews)}/150 entries; no automatic scientific verdicts.')
 
 
@@ -127,5 +146,5 @@ if __name__ == '__main__':
     elif cmd == 'show': show(int(sys.argv[2]),int(sys.argv[3]))
     elif cmd == 'record': record(Path(sys.argv[2]))
     elif cmd == 'render': render()
-    elif cmd == 'validate': validate()
+    elif cmd == 'validate': validate('--complete' in sys.argv[2:])
     else: raise ValueError(cmd)

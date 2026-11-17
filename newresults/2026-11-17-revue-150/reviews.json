@@ -204,13 +204,1346 @@
     "rank": 20,
     "decision": "non-conclue",
     "reading": "targeted-fulltext",
-    "rationale": "La piste d'un meilleur taux pour les mesures extendibles est réelle, mais le théorème argmax des états ne garde pas automatiquement les marginales et la causalité requises. Une correction globale S^(-1/2) peut transformer cinq effets produits en une POVM possédant un effet intriqué : exemple rationnel et témoin PPT négatif vérifiés. Cela bloque la réparation naïve sans exclure un arrondi sous contraintes plus fin.",
-    "next_step": "Établir une version argmax sous contraintes préservant chaque normalisation conditionnelle ; rechercher ensuite un gain effectif sur le taux de 2412.18556.",
+    "rationale": "Approfondissement demandé après la campagne : réparation locale positive des marginales prouvée, avec erreur (1+a)eta+2b sqrt(eta) sous une hypothèse explicite d'approximation à deux copies. Un exemple classique impose le coût sqrt(eta) pour la réparation terme par terme, sans borner la meilleure approximation 1-LOCC. Pas de projection linéaire positive universelle fixant toute la tranche de marginale prescrite. Le théorème argmax bilatéral au point (1,k) ne fournit pas directement k^(-1). L'amélioration contrainte reste ouverte ; 2607.23689 identifie déjà ce problème de taux.",
+    "next_step": "Construire un arrondi directement sur les instruments normalisés ou une recombinaison des termes qui exploite leurs compensations avant réparation ; établir un vrai gain de taux.",
     "note": "notes/measurement-rounding.md",
     "references": [
       "https://arxiv.org/html/2412.18556v3",
+      "https://arxiv.org/html/2608.02590v1",
+      "https://arxiv.org/html/1810.12197",
+      "https://arxiv.org/html/2607.23689",
+      "https://arxiv.org/abs/2403.11851",
+      "https://arxiv.org/html/2602.14732v1"
+    ]
+  },
+  "21": {
+    "rank": 21,
+    "decision": "non-conclue",
+    "reading": "targeted-fulltext",
+    "rationale": "Sélectionner les monômes du bootstrap SUSY peut réduire son coût, mais le texte NPA applique déjà sa méthode au-delà des Bell, notamment à Heisenberg. Une nouvelle instance ne constitue pas encore un résultat scientifique. Il faudrait conserver les identités SUSY et montrer un gain de borne après certification, pas seulement une matrice plus petite. Aucun gain mesuré n'a été établi.",
+    "note": "notes/unbounded-moment-certification.md",
+    "next_step": "Reprendre le SDP SUSY exact avec une sélection respectant les supercharges et comparer les bornes certifiées à budget fixé.",
+    "references": [
+      "https://arxiv.org/html/2510.01356v2",
+      "https://arxiv.org/abs/2607.14755"
+    ]
+  },
+  "22": {
+    "rank": 22,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le code holographique est un système fini de quatre qubits avec spectres exacts ; le bootstrap SUSY contraint des moments de coordonnées matricielles non bornées. Le mot certification n'identifie ni un Hamiltonien ni un observable commun. Le second résumé précise déjà les dégénérescences du témoin tangent ; aucune loi universelle de magie ne peut en être déduite.",
+    "references": [
+      "https://arxiv.org/abs/2510.01356",
+      "https://arxiv.org/abs/2607.10663"
+    ]
+  },
+  "23": {
+    "rank": 23,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Appliquer un post-traitement rationnel à un SDP déjà décrit comme certifié serait un contrôle de reproductibilité, pas une connexion mathématique nouvelle. Le code fini dispose en outre de spectres exacts. Aucun déficit de certificat précis ni conclusion supplémentaire sur la proto-aire n'est identifié dans les résumés.",
+    "references": [
+      "https://arxiv.org/abs/2512.17713",
+      "https://arxiv.org/abs/2607.10663"
+    ]
+  },
+  "24": {
+    "rank": 24,
+    "decision": "non-conclue",
+    "reading": "targeted-fulltext",
+    "rationale": "Cible intéressante : certifier la borne SUSY et distinguer le kink numérique d'une structure physique. Mais les variables canoniques sont non bornées : un petit résidu polynomial ne contrôle pas son espérance sans coercivité ou certificat SOS exact. Le texte de certification traite déjà les problèmes non commutatifs creux et symétriques. Sans données duales précises ni borne améliorée vérifiée, il reste une application possible et non un nouveau résultat.",
+    "note": "notes/unbounded-moment-certification.md",
+    "references": [
+      "https://arxiv.org/html/2510.01356v2",
+      "https://arxiv.org/html/2512.17713v2"
+    ]
+  },
+  "25": {
+    "rank": 25,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le petit code holographique ne présente pas dans son résumé une explosion de la base de monômes comparable à NPA. Ses limites viennent des directions tangentes qui couvrent déjà l'espace projetif, non d'un mauvais choix de moments. Optimiser un sous-ensemble de contraintes ne supprime pas cette dégénérescence géométrique.",
+    "references": [
+      "https://arxiv.org/abs/2607.10663",
+      "https://arxiv.org/abs/2607.14755"
+    ]
+  },
+  "26": {
+    "rank": 26,
+    "decision": "connue",
+    "reading": "targeted-fulltext",
+    "rationale": "Connexion déjà explicite dans le texte SOS : le cas binaire donne une approximation multiplicative du coefficient de contraction en norme trace, avec taux quadratique. Le premier article établit précisément l'identité avec le codage d'un bit et la difficulté algorithmique. L'association ne peut être présentée comme une découverte de cette revue.",
+    "references": [
+      "https://arxiv.org/html/2507.16737v1",
+      "https://arxiv.org/html/2609.09629v2"
+    ]
+  },
+  "27": {
+    "rank": 27,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le théorème catégorique concerne la perte de secteurs sous canaux de profondeur finie dans une limite thermodynamique. Un coefficient de contraction Lipschitz dépend d'un coût choisi. Aucun contrôle de stabilité de la catégorie par cette distance n'est donné, ni échelle de coût qui distingue les secteurs. Le cadre algébrique commun ne suffit pas à produire un énoncé quantitatif nouveau.",
+    "references": [
+      "https://arxiv.org/abs/2501.02398",
+      "https://arxiv.org/abs/2506.04197"
+    ]
+  },
+  "28": {
+    "rank": 28,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le second document est un cours général couvrant RG et perturbation, ce qui explique ses nombreux motifs. Le formalisme d'interaction classique du premier est une construction spécifique de contraintes diagrammatiques. Aucun résultat du cours n'est identifié comme outil supplémentaire non déjà standard ; ce rapprochement est surtout un faux positif de couverture pédagogique.",
+    "references": [
+      "https://arxiv.org/abs/2602.01310",
+      "https://arxiv.org/abs/2605.01585"
+    ]
+  },
+  "29": {
+    "rank": 29,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le document pédagogique couvre naturellement l'inférence et la renormalisation à un niveau général. L'autre propose déjà la reconstruction de flots non perturbatifs à partir des observables. Aucun théorème spécifique du cours ne ferme une lacune de cette reconstruction. Pas de cible nouvelle distincte d'une illustration d'enseignement.",
+    "references": [
+      "https://arxiv.org/abs/2511.09859",
+      "https://arxiv.org/abs/2605.01585"
+    ]
+  },
+  "30": {
+    "rank": 30,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "L'inférence statistique suppose une famille de distributions de configurations ou d'observables, alors que la propagation classique imposée par multiplicateurs modifie le développement diagrammatique d'une théorie quantique. Ni modèle probabiliste commun ni problème d'identifiabilité nouveau n'est spécifié. Le partage des termes RG et point fixe est insuffisant.",
+    "references": [
+      "https://arxiv.org/abs/2511.09859",
+      "https://arxiv.org/abs/2602.01310"
+    ]
+  },
+  "31": {
+    "rank": 31,
+    "decision": "ecartee",
+    "reading": "targeted-fulltext",
+    "rationale": "La décomposition de Liouville sous faible symétrie ne fournit pas automatiquement une mémoire physique. Le canal complètement dépolarisant sur trois qubits est covariant sous toutes les permutations, maximise l'entropie du Choi sans autre contrainte, mais efface toute distinguabilité. Même p Id+(1-p)D contracte strictement les différences d'états. La structure de points fixes nécessaire aux sous-systèmes sans bruit est classique. La note explicite l'obstruction sans revendiquer un résultat nouveau.",
+    "note": "notes/symmetry-is-not-memory.md",
+    "references": [
+      "https://arxiv.org/html/2507.15506",
+      "https://arxiv.org/html/2508.03994",
+      "https://arxiv.org/abs/quant-ph/0507213"
+    ]
+  },
+  "32": {
+    "rank": 32,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le premier caractérise une anomalie de symétrie MPO d'états mixtes en dimension un ; le second estime des observables de modes lents et des fidélités près de points fixes critiques. Aucun canal RG conservant l'anomalie ni taux uniforme sur les MPO n'est spécifié. Le mot canal ne donne pas un transport de la classification.",
+    "references": [
+      "https://arxiv.org/abs/2504.16985",
+      "https://arxiv.org/abs/2505.15566"
+    ]
+  },
+  "33": {
+    "rank": 33,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Les inégalités d'entropie sont ici adaptées à un ensemble pyramidal d'états et à sa mesure optimale. La preuve de difficulté du décodage utilise une chaîne de mélange de Clifford et une notion d'entropie sur ce groupe. Aucun générateur ni mesure stationnaire commun ne permet de transférer une constante log-Sobolev. L'association lexicale ne donne pas une nouvelle borne de décodage.",
+    "references": [
+      "https://arxiv.org/abs/2506.06700",
+      "https://arxiv.org/abs/2509.20697"
+    ]
+  },
+  "34": {
+    "rank": 34,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "L'indice de Watatani et la borne d'entropie concernent une inclusion d'algèbres et son espérance conditionnelle. Une application positive de Kadison-Schwarz arbitraire sur M3 ne définit ni une inclusion ni un indice et peut ne pas être complètement positive. Remplacer l'espérance par cette classe n'est pas justifié ; aucun sous-cas nouveau n'est isolé.",
+    "references": [
+      "https://arxiv.org/abs/2509.24625",
+      "https://arxiv.org/abs/2512.18900"
+    ]
+  },
+  "35": {
+    "rank": 35,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le TDVP habillé de Clifford pourrait fournir un autre simulateur pour les collisions d'Ising, mais la réduction d'entropie ne garantit pas un calcul efficace des projecteurs de secteurs habillés ni de la largeur de résonance. Les deux travaux appliquent déjà des principes variationnels à Ising. Sans économie ou erreur démontrée sur ces observables, il s'agit d'une application technique possible.",
+    "references": [
+      "https://arxiv.org/abs/2411.13645",
+      "https://arxiv.org/abs/2502.01872"
+    ]
+  },
+  "36": {
+    "rank": 36,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le sous-espace gaussien de parois de domaine n'est pas le groupe de Clifford et son faible nombre de paramètres ne donne pas un habillage Clifford efficace. Le second article reproduit déjà le taux de nucléation de Rutkevich. Aucun nouveau taux ni régime de croissance n'est déduit du rapprochement.",
+    "references": [
+      "https://arxiv.org/abs/2502.01872",
+      "https://arxiv.org/abs/2508.13645"
+    ]
+  },
+  "37": {
+    "rank": 37,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "La récurrence binomiale de prix est une opération positive non unitaire ; le simulateur local TDVP traite des générateurs de portes unitaires. Le transfert ne préserve pas de lui-même la positivité et la borne inférieure variationnelle revendiquée pour le prix. Le format MPS commun ne fournit pas de nouvel énoncé sur l'erreur de valorisation.",
+    "references": [
+      "https://arxiv.org/abs/2505.17033",
+      "https://arxiv.org/abs/2508.10096"
+    ]
+  },
+  "38": {
+    "rank": 38,
+    "decision": "ecartee",
+    "reading": "targeted-fulltext",
+    "rationale": "Le texte PEPS attribue les énergies artificielles à une contraction approchée qui détruit la covariance de jauge. Les orbites TDVP MPS reposent sur un autre calcul de contractions ; l'article PEPS souligne justement cette différence avec MPS. Vérifier une récurrence physique plutôt que celle des coordonnées est raisonnable mais standard ; aucune instabilité nouvelle des orbites n'est établie.",
+    "references": [
+      "https://arxiv.org/abs/2504.12472",
+      "https://arxiv.org/html/2508.10822"
+    ]
+  },
+  "39": {
+    "rank": 39,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Minimiser la trace Ritz sur un sous-espace améliore des niveaux d'énergie réels de volume fini. La largeur d'une résonance de diffusion n'est pas un tel niveau ; il faut encore une analyse de volume ou de dynamique. Aucun lien neuf entre l'objectif multi-états et les amplitudes inélastiques n'est donné.",
+    "references": [
+      "https://arxiv.org/abs/2411.13645",
+      "https://arxiv.org/abs/2504.21459"
+    ]
+  },
+  "40": {
+    "rank": 40,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "L'objectif de trace Ritz ordonne les valeurs propres d'un Hamiltonien hermitien. Le générateur HEOM ouvert est généralement non hermitien et non normal ; un minimum de cette trace ne borne pas ses taux de relaxation complexes. Il faudrait une formulation dissipative différente, absente du rapprochement. La méthode TDVP commune n'autorise pas ce transfert.",
+    "references": [
+      "https://arxiv.org/abs/2504.21459",
+      "https://arxiv.org/abs/2505.00126"
+    ]
+  },
+  "41": {
+    "rank": 41,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le premier emploie déjà MPS et TDVP pour limiter l'intrication de ses embeddings. Le second propose une meilleure propagation de circuits, mais ne démontre pas que sa précision supplémentaire améliore la classification ; le premier insiste même sur l'utilité d'une approximation. Il faudrait une comparaison à budget égal et un nouvel énoncé d'expressivité, absents ici.",
+    "references": [
+      "https://arxiv.org/abs/2503.05535",
+      "https://arxiv.org/abs/2508.10096"
+    ]
+  },
+  "42": {
+    "rank": 42,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Les orbites périodiques du flot TDVP hamiltonien exploitent une structure conservative ; les équations HEOM dissipatives, avec variables auxiliaires et pilotage, ne possèdent pas automatiquement cette structure. Une récurrence du système entraîné peut simplement suivre le pilotage. Aucun invariant ou régime commun donnant une nouvelle prédiction n'est spécifié.",
+    "references": [
+      "https://arxiv.org/abs/2504.12472",
+      "https://arxiv.org/abs/2505.00126"
+    ]
+  },
+  "43": {
+    "rank": 43,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Ajouter une mémoire de bain à un réservoir d'apprentissage est une possibilité d'ingénierie. Le simulateur HEOM augmente cependant les variables auxiliaires et ne garantit ni l'absence de concentration des observables ni un gain statistique. Les résumés ne définissent aucun théorème de capacité ou expérience nouvelle assez précise pour approfondir.",
+    "references": [
+      "https://arxiv.org/abs/2503.05535",
+      "https://arxiv.org/abs/2505.00126"
+    ]
+  },
+  "44": {
+    "rank": 44,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Une faible erreur de corrélations ou d'énergie résiduelle pour le recuit de verres de spin ne borne pas les amplitudes de secteurs rares d'une collision en théorie des champs. L'ansatz Jastrow ne dispose pas ici de garanties pour les états entrants et les résonances d'Ising. Le TDVP commun ne transfère pas les performances annoncées.",
+    "references": [
+      "https://arxiv.org/abs/2411.13645",
+      "https://arxiv.org/abs/2503.08247"
+    ]
+  },
+  "45": {
+    "rank": 45,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le broadcasting virtuel est une application linéaire signée dont le coût vient de la quasi-probabilité. Les stratégies arrondies du problème de jeux doivent rester positives et normalisées. La réduction de symétrie d'un SDP ne lève donc pas le théorème de coût d'échantillonnage ; aucun nouveau compromis quantitatif n'est identifié.",
+    "references": [
+      "https://arxiv.org/abs/2503.16380",
+      "https://arxiv.org/abs/2507.12302"
+    ]
+  },
+  "46": {
+    "rank": 46,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "L'énergie Max d-Cut ne voit que les échanges, alors que les états symplectiques ont un paramètre invariant supplémentaire. En outre Tr(rho F)=d Tr(rho^TB Phi) est positif pour un état PPT : l'intrication PPT du second texte ne donne pas directement une énergie antiferromagnétique à échange négatif. Aucun nouveau graphe soluble n'est déduit.",
+    "references": [
+      "https://arxiv.org/abs/2503.20942",
+      "https://arxiv.org/abs/2602.09860"
+    ]
+  },
+  "47": {
+    "rank": 47,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Les jeux libres à dimensions et tailles fixées relèvent d'une séparabilité contrainte entre deux joueurs. Max d-Cut porte sur un nombre variable de sites et une algèbre de permutations dont l'article donne déjà une hiérarchie dédiée. Les garanties polynomiales en précision du premier problème ne sont pas uniformes en cette taille variable.",
+    "references": [
+      "https://arxiv.org/abs/2503.20942",
+      "https://arxiv.org/abs/2507.12302"
+    ]
+  },
+  "48": {
+    "rank": 48,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Les deux textes utilisent les représentations de permutations, mais pour optimiser respectivement une application virtuelle covariante et un Hamiltonien de graphe. Une solution exacte de certains graphes ne fournit pas une décomposition physique moins coûteuse du broadcaster canonique. Aucun opérateur commun non déjà diagonal par symétrie n'est identifié.",
+    "references": [
+      "https://arxiv.org/abs/2503.16380",
+      "https://arxiv.org/abs/2503.20942"
+    ]
+  },
+  "49": {
+    "rank": 49,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Twirler sous le groupe symplectique peut réduire des variables, mais ne conserve la valeur d'un jeu que si ses contraintes et son objectif ont cette symétrie. Les familles bipartites à deux paramètres ne paramètrent pas les extensions multipartites contraintes. Aucun jeu concret ni taux amélioré n'est obtenu de l'association.",
+    "references": [
+      "https://arxiv.org/abs/2507.12302",
+      "https://arxiv.org/abs/2602.09860"
+    ]
+  },
+  "50": {
+    "rank": 50,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "L'obstruction à une dualité canal-état naturelle sur certains facteurs ne contredit pas la construction catégorique, qui utilise directement des canaux et des représentations. Il faudrait exhiber un facteur de cône non anti-isomorphe à lui-même dans un modèle admissible ; aucun tel exemple n'est fourni. Une obstruction générale de type III n'identifie pas un nouveau secteur topologique.",
+    "references": [
+      "https://arxiv.org/abs/2501.02398",
+      "https://arxiv.org/abs/2608.13750"
+    ]
+  },
+  "51": {
+    "rank": 51,
+    "decision": "non-conclue",
+    "reading": "targeted-fulltext",
+    "rationale": "Approfondissement demandé après la campagne : un état produit tracial satisfait la dualité relative exacte mais garde un défaut binaire 1/2, réfutant une implication mixte générale fondée seulement sur f. Pour un état pur, preuve d'une borne 2f(t) indépendante du nombre d'issues après élargissement de la région de contrôle et restriction d'ensembles définis sur l'algèbre initiale. Ce n'est pas le steering complet de deux régions fixes. En dimension finie, un exemple GHZ donne exactement s=sqrt(q(1-q)) pour un défaut optimal d'espérance q, excluant une stabilité linéaire générale. Originalité non établie ; 2609.01267 traite déjà steering et dualité approchée dans des secteurs anyoniques.",
+    "next_step": "Choisir un modèle pur et un ensemble cible avec borne inférieure de coût de localisation ; comparer la borne 2f(t) et les antécédents. Une réciproque quantitative sous hypothèses supplémentaires reste à établir.",
+    "note": "notes/topology-and-steering.md",
+    "references": [
+      "https://arxiv.org/html/2501.02398v1",
+      "https://arxiv.org/html/2608.10783v1",
+      "https://arxiv.org/html/2609.01267v1",
+      "https://arxiv.org/html/2602.14732v1"
+    ]
+  },
+  "52": {
+    "rank": 52,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Les inégalités holographiques portent sur les vecteurs d'entropies issus de coupes minimales. Une impureté couplée à un bain n'appartient pas en général à ce cône. Une borne locale issue du résidu quasiparticulaire ne permet donc pas d'imposer les inégalités multipartites holographiques à ce modèle.",
+    "references": [
+      "https://arxiv.org/abs/2506.08498",
+      "https://arxiv.org/abs/2601.09989"
+    ]
+  },
+  "53": {
+    "rank": 53,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le bootstrap de chaînes quantiques vise des états physiques généraux, y compris thermiques ; ses contraintes d'entropie doivent leur être universelles. Les inégalités de coupes minimales ne sont pas universelles sur ces états. Les ajouter sans démontrer une représentation holographique pourrait exclure la vraie solution et détruire la rigueur des bornes.",
+    "references": [
+      "https://arxiv.org/abs/2412.07837",
+      "https://arxiv.org/abs/2601.09989"
+    ]
+  },
+  "54": {
+    "rank": 54,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le bootstrap considéré traite des observables locales de chaînes infinies et impose des identités d'équilibre. Le résidu d'une fonction de Green d'impureté est fréquentiel et dépend d'une projection système-bain. Il manque un problème de moments commun et une borne de troncature ; aucun certificat nouveau ne suit des seuls résumés.",
+    "references": [
+      "https://arxiv.org/abs/2412.07837",
+      "https://arxiv.org/abs/2506.08498"
+    ]
+  },
+  "55": {
+    "rank": 55,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Les moments ordinaires d'un état réduit Haar se calculent dans l'algèbre des permutations ; la transposition partielle et les idéaux supplémentaires de Brauer ne sont pas nécessaires. Une variante par négativité pourrait être intéressante, mais les moments de transposées partielles d'états induits et leur seuil PPT sont déjà étudiés par Aubrun. Aucun nouveau moment fini explicite n'est identifié.",
+    "references": [
+      "https://arxiv.org/abs/2501.13067",
+      "https://arxiv.org/abs/2606.30941",
+      "https://arxiv.org/abs/1011.0275"
+    ]
+  },
+  "56": {
+    "rank": 56,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Un contrôleur d'entropie peut accélérer le DMRG d'impuretés, mais ses pourcentages d'erreur d'énergie ne certifient pas la séparation de deux niveaux sous le gap ou le spin de bord fractionnaire. Aucun contrôle de queue de Schmidt ni gain nouveau sur le diagramme de phases n'est établi. L'usage de GPU ne répond pas non plus à une nouvelle question théorique.",
+    "references": [
+      "https://arxiv.org/abs/2412.00194",
+      "https://arxiv.org/abs/2604.03960"
+    ]
+  },
+  "57": {
+    "rank": 57,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le gap du graphe de codebook est un objet choisi pour la résolvabilité universelle. Le gap de Davies est pondéré par des poids de Gibbs et devient exponentiellement petit à cause d'une barrière entre diagrammes de Young. Un expander uniforme ne supprime pas ces poids ni cette barrière. La dualité de Schur-Weyl commune ne donne pas un codebook amélioré ou un mélange plus rapide.",
+    "references": [
+      "https://arxiv.org/abs/2510.02883",
+      "https://arxiv.org/abs/2610.01987"
+    ]
+  },
+  "58": {
+    "rank": 58,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le retrait de contrôles optimise une description en circuit d'une unité, alors que le compilateur SIH préserve exactement une partie du spectre d'une somme d'interactions sur un sous-espace auxiliaire. Optimiser le circuit d'une évolution ne préserve pas automatiquement une réduction de Hamiltoniens ni son gap de promesse. Aucune nouvelle borne de localité n'est déduite.",
+    "references": [
+      "https://arxiv.org/abs/2505.18256",
+      "https://arxiv.org/abs/2609.39592"
+    ]
+  },
+  "59": {
+    "rank": 59,
+    "decision": "connue",
+    "reading": "targeted-fulltext",
+    "rationale": "L'article du code torique énonce déjà que la dualité de Lindbladiens conserve le gap et la MLSI, et son appendice D écrit l'équivalence avec la décroissance exponentielle de l'entropie relative. Le résultat sur algèbres générales peut élargir un cadre, mais ne fournit pas ici un nouveau taux pour ce système fini. La connexion centrale est explicite dans le texte.",
+    "references": [
+      "https://arxiv.org/abs/2505.07549",
+      "https://arxiv.org/html/2508.00126"
+    ]
+  },
+  "60": {
+    "rank": 60,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le gain polylogarithmique concerne des matrices QUBO données par une décomposition de Pauli très structurée et sous contraintes algébriques. Une réduction générale du coefficient de contraction vers ce format n'est pas fournie ; elle pourrait augmenter exponentiellement le nombre de termes. La difficulté NP générale n'est donc ni contournée ni affinée par ces seules hypothèses.",
+    "references": [
+      "https://arxiv.org/abs/2507.16737",
+      "https://arxiv.org/abs/2510.08292"
+    ]
+  },
+  "61": {
+    "rank": 61,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Les caractérisations de k-positivité sont des optimisations séparables ou tensorielles ; une relaxation Goemans-Williamson à diagonale fixée n'est pas ce cône. Il manque à la fois une réduction préservant les certificats et la parcimonie de Pauli spéciale requise par le gain. Une implémentation SDP rapide générique ne découle pas du second résumé.",
+    "references": [
+      "https://arxiv.org/abs/2508.21348",
+      "https://arxiv.org/abs/2510.08292"
+    ]
+  },
+  "62": {
+    "rank": 62,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le premier contrôle une distance Wasserstein non commutative précise à partir de la décroissance MCMI et d'une tensorisation faible. Le second fournit un cadre abstrait de coût et de contraction. Pour améliorer le taux, il faudrait identifier le même coût et une constante plus forte ; aucune constante nouvelle n'est donnée par le rapprochement seul.",
+    "references": [
+      "https://arxiv.org/abs/2412.01732",
+      "https://arxiv.org/abs/2506.04197"
+    ]
+  },
+  "63": {
+    "rank": 63,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le second accélère des oracles stochastiques d'une densité classique continue exp(-f) ; le premier prépare des états quantiques de Hamiltoniens commutants sur réseau. Une représentation classique peut conserver une partie des poids mais pas nécessairement les observables quantiques et l'accès oracle supposé. Aucun modèle et oracle commun ne donnent un nouveau gain justifié.",
+    "references": [
+      "https://arxiv.org/abs/2412.01732",
+      "https://arxiv.org/abs/2504.03626"
+    ]
+  },
+  "64": {
+    "rank": 64,
+    "decision": "non-conclue",
+    "reading": "targeted-fulltext",
+    "rationale": "Une borne de résidu divisée par un défaut de contraction est une approche naturelle de certification du point fixe. Mais la section III.3 du protocole thermique écrit déjà la série résolvante et explique pourquoi la borne globale de mélange est trop faible : la perturbation initiale est hors diagonale et déphase rapidement, puis alimente les populations lentes. Une nouvelle preuve devrait contrôler ces blocs et leur dépendance au volume. Aucun meilleur taux n'a été obtenu.",
+    "next_step": "Certifier séparément les blocs populations/cohérences et le complément de Schur pour une instance petite du canal réellement proposé, avant toute extrapolation en taille.",
+    "references": [
+      "https://arxiv.org/abs/2505.15281",
+      "https://arxiv.org/html/2506.21318"
+    ]
+  },
+  "65": {
+    "rank": 65,
+    "decision": "ecartee",
+    "reading": "targeted-fulltext",
+    "rationale": "Les ensembles libres diffèrent : extensibilité sans PPT pour l'anti-collusion, extensions PPT pour la seconde hiérarchie. Le texte de cette dernière donne en outre une description par lambda_max(rho-sigma) distincte de sa définition 3 par robustesse multiplicative. Sur Bell ces valeurs sont 1/2 et 1 ; la première augmente sous retrait d'une ancilla locale alors que la seconde reste monotone. Les certificats exacts sont enregistrés. Ce mécanisme est apparenté au problème ancien des distances non contractives ; ce n'est pas un nouveau théorème d'anti-collusion.",
+    "note": "notes/eigenvalue-shift-versus-robustness.md",
+    "references": [
+      "https://arxiv.org/abs/2605.25516",
+      "https://arxiv.org/html/2607.16960v1",
+      "https://arxiv.org/abs/1803.10710",
+      "https://arxiv.org/abs/1206.0231"
+    ]
+  },
+  "66": {
+    "rank": 66,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "La factorisation positive est commune, mais le préconditionneur vise une équation linéaire SPD. Le Hessien de la tomographie factorisée est non convexe et possède des directions de jauge singulières. Une garantie de gradient conjugué ne s'y applique pas sans quotient ou régularisation. Aucun taux de reconstruction nouveau n'est identifié.",
+    "references": [
+      "https://arxiv.org/abs/2609.09457",
+      "https://arxiv.org/abs/2611.03859"
+    ]
+  },
+  "67": {
+    "rank": 67,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "La noncontextualité d'un processus et l'asymétrie par rapport à un groupe transversal définissent des ensembles libres différents. Un témoin SDP de la première ne borne pas directement la min-entropie conditionnelle du canal encodage-effacement. Aucun morphisme de ressources ni nouvelle borne Eastin-Knill n'est construit.",
+    "references": [
+      "https://arxiv.org/abs/2504.02944",
+      "https://arxiv.org/abs/2505.00427"
+    ]
+  },
+  "68": {
+    "rank": 68,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Un automorphisme de la sous-algèbre observable induit naturellement une application sur ses états restreints et donc sur les classes indiscernables. Cette reformulation ne fournit ni nouvel indice de flot ni nouvelle permutation d'anyons, déjà classifiés par le premier texte. La géométrie du quotient seule n'explique pas la contrainte de localité.",
+    "references": [
+      "https://arxiv.org/abs/2411.19280",
+      "https://arxiv.org/abs/2507.10027"
+    ]
+  },
+  "69": {
+    "rank": 69,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Une inclusion décroissante d'algèbres rend les classes d'indiscernabilité plus grossières par simple restriction. Cela ne détermine pas le centralisateur de l'état thermofield ni les projecteurs d'événements après produit croisé. La reformulation opérationnelle est immédiate mais aucun théorème supplémentaire sur la transition de Hawking-Page n'en découle.",
+    "references": [
+      "https://arxiv.org/abs/2507.10027",
+      "https://arxiv.org/abs/2508.11688"
+    ]
+  },
+  "70": {
+    "rank": 70,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Les conditions de bord d'une théorie abélienne de Chern-Simons et les centralisateurs d'une algèbre de grande N en SYM décrivent des constructions différentes. Le sous-groupe de Cartan commun ne fournit pas une identification de leurs états ou inclusions. Aucune correspondance de spin-structure ou de supersymétrie n'est établie.",
+    "references": [
+      "https://arxiv.org/abs/2502.08084",
+      "https://arxiv.org/abs/2508.11688"
+    ]
+  },
+  "71": {
+    "rank": 71,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "L'indice QCA concerne des automorphismes locaux réversibles d'une chaîne ; la diminution des potentialités porte sur des inclusions temporelles propres dans des algèbres de grande N. Un automorphisme ne produit pas à lui seul cette perte d'observables. Il manque une inclusion ou un canal concret reliant les deux invariants.",
+    "references": [
+      "https://arxiv.org/abs/2411.19280",
+      "https://arxiv.org/abs/2508.11688"
+    ]
+  },
+  "72": {
+    "rank": 72,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Représenter les espérances par des fonctions d'évaluation sur un espace d'états ne rend pas les observables non commutatives multiplicatives. Cette représentation ne transforme donc pas une CFT fermionique dépendant de la structure de spin en théorie classique, et ne donne pas de nouvelle classification de ses conditions de bord.",
+    "references": [
+      "https://arxiv.org/abs/2502.08084",
+      "https://arxiv.org/abs/2507.10027"
+    ]
+  },
+  "73": {
+    "rank": 73,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "La durée de vie d'un mode de bord à température finie dépend du générateur dynamique et des éléments de matrice. Le type d'une algèbre limite de code holographique est une propriété cinématique qui ne fixe pas ces taux. Aucun Hamiltonien de Kitaev-Hubbard ni algèbre thermique commune n'est construit.",
+    "references": [
+      "https://arxiv.org/abs/2501.11121",
+      "https://arxiv.org/abs/2504.00096"
+    ]
+  },
+  "74": {
+    "rank": 74,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le premier traite des modes presque conservés d'une chaîne et de leurs taux thermiques ; le second établit la dualité de Haag de cônes dans des modèles topologiques bidimensionnels. Cette dualité n'implique pas la conservation temporelle d'un opérateur de bord. Ni dimension spatiale ni état de référence ne coïncident.",
+    "references": [
+      "https://arxiv.org/abs/2501.11121",
+      "https://arxiv.org/abs/2509.23734"
+    ]
+  },
+  "75": {
+    "rank": 75,
+    "decision": "ecartee",
+    "reading": "targeted-fulltext",
+    "rationale": "Le texte sur les réseaux infinis expose déjà le lien avec les facteurs Araki-Woods-Powers et les spectres d'intrication ; remplacer des liens maximaux par des liens non maximaux est une perspective explicite, pas une question nouvelle. La dualité de Haag d'un modèle de cônes ne détermine pas à elle seule le type de l'algèbre de sous-région d'un code holographique. Aucun nouvel exemple admissible n'est construit.",
+    "references": [
+      "https://arxiv.org/html/2504.00096",
+      "https://arxiv.org/html/2509.23734",
+      "https://arxiv.org/abs/math-ph/0604071"
+    ]
+  },
+  "76": {
+    "rank": 76,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Une relaxation de Max-Cut fournit des vecteurs pour initialiser QAOA. Les stratégies quantiques multipartites XOR obéissent à des contraintes de produits d'observables qui ne se réduisent pas en général à ce Gram de vecteurs. Aucun circuit initial ou ratio garanti nouveau n'est construit par l'association.",
+    "references": [
+      "https://arxiv.org/abs/2504.06253",
+      "https://arxiv.org/abs/2505.06322"
+    ]
+  },
+  "77": {
+    "rank": 77,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le bilan de ressources du solveur quantique concerne une relaxation QUBO et sa précision de rounding. Des bornes d'optimalité de jeux XOR ne suppriment pas les coûts d'oracle, de préparation de Gibbs ou de sortie classique du solveur. Le problème de précision commun ne définit pas une nouvelle instance praticable.",
+    "references": [
+      "https://arxiv.org/abs/2502.15426",
+      "https://arxiv.org/abs/2505.06322"
+    ]
+  },
+  "78": {
+    "rank": 78,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le réglage QAOA1 est un problème de série de Fourier d'un circuit à deux paramètres. Une stratégie optimale d'un jeu XOR multipartite appartient à un ensemble bien plus large. Les certificats globaux sous poids commensurables ne se transfèrent pas à cet ensemble, et aucune nouvelle fréquence ou borne n'est extraite.",
+    "references": [
+      "https://arxiv.org/abs/2501.16419",
+      "https://arxiv.org/abs/2505.06322"
+    ]
+  },
+  "79": {
+    "rank": 79,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Les deux articles comparent déjà les coûts ou performances de relaxations SDP de QUBO. Réunir leurs jeux de données serait une réplication utile mais ne crée pas un résultat mathématique nouveau. Aucun mécanisme de structure exploitable qui modifierait leurs conclusions de complexité n'est identifié.",
+    "references": [
+      "https://arxiv.org/abs/2502.15426",
+      "https://arxiv.org/abs/2503.10801"
+    ]
+  },
+  "80": {
+    "rank": 80,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le succès du génétique sur des graphes complets n'est pas une garantie de Max-Cut général : leur optimum est déjà connu analytiquement. Les pourcentages empiriques et les coûts asymptotiques du solveur SDP ne sont pas directement comparables. Aucun nouveau ratio prouvé ne résulte de la juxtaposition.",
+    "references": [
+      "https://arxiv.org/abs/2501.01058",
+      "https://arxiv.org/abs/2502.15426"
+    ]
+  },
+  "81": {
+    "rank": 81,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "La dualité mixte de Schur-Weyl peut fournir des blocs pour des représentations fondamentale et duale, mais le cadre de jaugeage continu utilise déjà les doubles centralisateurs et les coefficients de fusion. Il faudrait construire un Hamiltonien dual concret dont le calcul échappe à ce cadre. Les unités matricielles supplémentaires n'impliquent pas un nouveau spectre.",
+    "references": [
+      "https://arxiv.org/abs/2501.13067",
+      "https://arxiv.org/abs/2611.08293"
+    ]
+  },
+  "82": {
+    "rank": 82,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le jaugeage de groupes de Lie compacts en dimension un ne justifie pas l'extrapolation du groupe symétrique S_q vers un nombre de répliques non entier sur un réseau hiérarchique. Les données q=2 à 6 ne déterminent pas ce prolongement. Aucune hypothèse analytique supplémentaire permettant un nouveau point critique n'est fournie.",
+    "references": [
+      "https://arxiv.org/abs/2605.25683",
+      "https://arxiv.org/abs/2611.08293"
+    ]
+  },
+  "83": {
+    "rank": 83,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Les unités de Brauer simplifient des calculs à nombres entiers de tenseurs. Elles ne rendent pas unique le prolongement en nombre de répliques : à des valeurs q=2,...,6, toute interpolation peut être modifiée par c produit(q-j) sans changer les données. Cette algèbre finie ne ferme donc pas l'incertitude du point critique répliqué.",
+    "references": [
+      "https://arxiv.org/abs/2501.13067",
+      "https://arxiv.org/abs/2605.25683"
+    ]
+  },
+  "84": {
+    "rank": 84,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le seuil Regev+BPQM dépend du canal de décodage et de sa dualité avec la reconstruction sur arbre. Le canal de maximum d'entropie sous contraintes linéaires n'est pas automatiquement ce canal et peut changer le seuil. Aucun choix de contraintes préservant cette dualité et améliorant le décodage n'est proposé.",
+    "references": [
+      "https://arxiv.org/abs/2508.03994",
+      "https://arxiv.org/abs/2611.10283"
+    ]
+  },
+  "85": {
+    "rank": 85,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Les primaires de bord pourraient définir des excitations dans un MERA d'Ashkin-Teller, mais c'est une application de la prescription déjà donnée dans le premier texte. Les conditions conformes de bord et leurs flots sont déjà identifiés dans le second. Aucun nouvel exposant ni mécanisme de stabilité sous perturbation n'est calculé.",
+    "references": [
+      "https://arxiv.org/abs/2501.03084",
+      "https://arxiv.org/abs/2601.16951"
+    ]
+  },
+  "86": {
+    "rank": 86,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "La dualité de Clifford d'une chaîne critique agit sur ses termes de Pauli et ses conditions de bord. Le modèle de permutations à nombre de répliques variable encode une moyenne statistique de réseaux aléatoires. Aucun circuit de Clifford n'est identifié pour transformer sa récurrence RG ou justifier le prolongement des répliques.",
+    "references": [
+      "https://arxiv.org/abs/2411.12683",
+      "https://arxiv.org/abs/2605.25683"
+    ]
+  },
+  "87": {
+    "rank": 87,
+    "decision": "connue",
+    "reading": "targeted-fulltext",
+    "rationale": "CAMPS identifie déjà explicitement la dualité XXZ–Ashkin-Teller, ses termes de bord et le changement d'entropie lié aux conditions conformes. Son texte renvoie aux dualités de Kohmoto–den Nijs–Kadanoff de 1981. La classification plus détaillée des bords peut compléter cette analyse, mais redécouvrir le lien dualité–entropie n'est pas une nouvelle conclusion.",
+    "references": [
+      "https://arxiv.org/html/2411.12683",
+      "https://arxiv.org/html/2601.16951",
+      "https://doi.org/10.1103/PhysRevB.24.5229"
+    ]
+  },
+  "88": {
+    "rank": 88,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "L'équivalence basse énergie sine-Gordon–Thirring est déjà signalée dans la dualité Bose-Hubbard. Ashkin-Teller relève d'un boson orbifold avec choix de secteurs et de bords ; identifier les rayons ne suffit pas à identifier ces secteurs. Aucun nouveau bord stable ou spectre n'est calculé pour la chaîne duale.",
+    "references": [
+      "https://arxiv.org/abs/2601.16951",
+      "https://arxiv.org/abs/2609.07830"
+    ]
+  },
+  "89": {
+    "rank": 89,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "La dualité exacte transporte les opérateurs, mais un composite fermionique éventuellement non local n'est pas automatiquement un primaire local de bord produisant un hologron stable. La correspondance entre corrélations et spectre CFT est déjà utilisée par le second texte. Il manque une excitation et un critère de stabilité nouveaux.",
+    "references": [
+      "https://arxiv.org/abs/2501.03084",
+      "https://arxiv.org/abs/2609.07830"
+    ]
+  },
+  "90": {
+    "rank": 90,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Les circuits de Clifford agissent sur des qubits et leurs chaînes de Pauli. Une fermionisation de bosons soft-core conserve des degrés de liberté locaux non bornés et une structure de jauge ; sa généralité ne donne pas un circuit de Clifford fini. Le cas hard-core rejoint déjà les transformations de Jordan-Wigner connues.",
+    "references": [
+      "https://arxiv.org/abs/2411.12683",
+      "https://arxiv.org/abs/2609.07830"
+    ]
+  },
+  "91": {
+    "rank": 91,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "L'indice irrationnel de Kramers-Wannier interdit certaines extensions locales de QCA sur l'algèbre complète. Le sampler torique autorise une dualité de profondeur polynomiale sur un système fini. Il n'y a pas contradiction : les hypothèses de portée et de profondeur diffèrent. Aucun nouvel obstacle de préparation ne suit de cet indice seul.",
+    "references": [
+      "https://arxiv.org/abs/2411.19280",
+      "https://arxiv.org/abs/2508.00126"
+    ]
+  },
+  "92": {
+    "rank": 92,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "La covariance du canal ne garantit pas un sous-système logique protégé, comme le montre la note de la piste 31. BPQM dépend de distinguabilités concrètes des messages et d'une récurrence de reconstruction. Une multiplicité de Liouville ne fournit pas un code de décodage parfait ni un meilleur seuil.",
+    "note": "notes/symmetry-is-not-memory.md",
+    "references": [
+      "https://arxiv.org/abs/2507.15506",
+      "https://arxiv.org/abs/2611.10283"
+    ]
+  },
+  "93": {
+    "rank": 93,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le point fixe DMFT est une auto-cohérence de fonction de Green sur réseau de Bethe. La preuve de gap LDPC contrôle des recouvrements de noyaux de projecteurs sur un graphe de Tanner. Une géométrie d'arbre commune ne remplace pas ces estimations par une résolution DMFT, qui ne garantit pas le gap many-body.",
+    "references": [
+      "https://arxiv.org/abs/2509.19704",
+      "https://arxiv.org/abs/2512.04174"
+    ]
+  },
+  "94": {
+    "rank": 94,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "L'indice et la perte d'information sont étudiés pour des inclusions finies d'algèbres C*. Les canaux singularisants reposent sur des états non normaux et des mesures diffuses dans un cadre infini. Aucun indice fini ni contrôle d'entropie compatible n'est établi par ces hypothèses ; cette singularité n'existe pas dans les exemples matriciels du premier texte.",
+    "references": [
+      "https://arxiv.org/abs/2509.24625",
+      "https://arxiv.org/abs/2611.12537"
+    ]
+  },
+  "95": {
+    "rank": 95,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "L'existence d'états singuliers sigma-additifs dépend ici de cardinaux mesurables, alors que la condensation considérée est décrite par une inclusion finie. Importer les canaux d'ultrafiltres changerait les hypothèses et le secteur d'états. Aucune conséquence nouvelle pour les pertes entropiques physiques du premier modèle n'est déduite.",
+    "references": [
+      "https://arxiv.org/abs/2509.24625",
+      "https://arxiv.org/abs/2604.25854"
+    ]
+  },
+  "96": {
+    "rank": 96,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "L'approximation de Chebyshev de l'évolution suppose un Hamiltonien MPO connu. Le théorème de testing borne l'information extractible d'un état inconnu à partir de copies ou d'oracles. Une représentation compacte de l'évolution ne donne pas l'accès aux moments de l'état supposé par une borne d'échantillonnage plus faible.",
+    "references": [
+      "https://arxiv.org/abs/2509.07228",
+      "https://arxiv.org/abs/2608.02600"
+    ]
+  },
+  "97": {
+    "rank": 97,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "La représentation extérieure de su(2^n) encode la somme des deux premières valeurs propres d'un Hamiltonien global. Les deux paramètres symplectiques caractérisent des états bipartites et des applications k-positives. Aucune famille de Hamiltoniens qubits à cette symétrie, avec borne de gap améliorée, n'est identifiée.",
+    "references": [
+      "https://arxiv.org/abs/2510.08427",
+      "https://arxiv.org/abs/2602.09860"
+    ]
+  },
+  "98": {
+    "rank": 98,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Les produits de troncatures Haar indépendantes sont des applications non unitaires dont l'entropie exige une normalisation aléatoire. Les MPU sont unitaires avec dépendances tensorielles et reproduisent certains moments/OTOC. Un design d'ordre fixé ne contrôle pas à lui seul cette normalisation et ses petites valeurs ; aucune universalité de la loi d'Erlang n'est prouvée.",
+    "references": [
+      "https://arxiv.org/abs/2501.11085",
+      "https://arxiv.org/abs/2508.00051"
+    ]
+  },
+  "99": {
+    "rank": 99,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Un produit de matrices tronquées décrit une trajectoire conditionnée, tandis qu'un circuit bruité CPTP moyenne ses branches de Kraus. L'entropie de la trajectoire normalisée et la XEB du mélange sont des statistiques différentes. Le crossover des moments singuliers ne peut être importé sans relier ces deux moyennes.",
+    "references": [
+      "https://arxiv.org/abs/2501.11085",
+      "https://arxiv.org/abs/2508.14975"
+    ]
+  },
+  "100": {
+    "rank": 100,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le comptage d'ordres de coupes minimales concerne une limite de grande dimension des liens et des moyennes tensorielles précises. Le RMPO effectif de bruit faible garde des corrélations et une profondeur finie. Aucun graphe ni régime asymptotique commun n'est construit pour calculer une correction à la XEB.",
+    "references": [
+      "https://arxiv.org/abs/2506.23894",
+      "https://arxiv.org/abs/2508.14975"
+    ]
+  },
+  "101": {
+    "rank": 101,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Les deux modèles comportent des mesures, mais les moments singuliers d'un produit de troncatures et le frame potential d'états post-mesurés avec poids de Born ne sont pas la même moyenne. La normalisation des branches et le modèle de particules de paroi doivent être identifiés avant de transférer une loi d'Erlang. Aucun tel dictionnaire nouveau n'est établi.",
+    "references": [
+      "https://arxiv.org/abs/2501.11085",
+      "https://arxiv.org/abs/2504.16995"
+    ]
+  },
+  "102": {
+    "rank": 102,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "La mesure géométrique sur la variété des MPS vise des états, tandis que l'ensemble MPU doit satisfaire l'unitarité de l'opérateur entier. Remplacer un tirage local par un échantillonnage MPS non biaisé ne respecte pas automatiquement cette contrainte. Aucun nouveau design unitaire ni contrôle de frame potential ne suit de l'invariance spatiale retrouvée.",
+    "references": [
+      "https://arxiv.org/abs/2505.00073",
+      "https://arxiv.org/abs/2508.00051"
+    ]
+  },
+  "103": {
+    "rank": 103,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le biais d'un algorithme qui échantillonne des MPS statiques n'est pas un bruit physique du circuit effectif RMPO. Repondérer l'ensemble pour le rendre géométriquement uniforme modifierait l'expérience statistique. Aucun effet universel de ce biais sur la XEB ou la fidélité n'est quantifié.",
+    "references": [
+      "https://arxiv.org/abs/2505.00073",
+      "https://arxiv.org/abs/2508.14975"
+    ]
+  },
+  "104": {
+    "rank": 104,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le comptage par partitions non croisées décrit certains moments asymptotiques de réseaux aléatoires. Un frame potential ou un OTOC de MPU possède une géométrie de contractions spécifique et des contraintes d'unitarité. Sans graphe et scaling communs, le vocabulaire de probabilité libre ne donne pas de nouveau moment ni de nouvelle borne de design.",
+    "references": [
+      "https://arxiv.org/abs/2506.23894",
+      "https://arxiv.org/abs/2508.00051"
+    ]
+  },
+  "105": {
+    "rank": 105,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "La borne minimale d'intrication suppose symétries SO(3), translation et absence de brisure. L'association d'un MPS à un processus caché ne préserve pas automatiquement ces hypothèses sous observation. Une divergence relative entre deux processus n'est pas son entropie de coupe. Il manque une application et une inégalité de récupération spécifiques.",
+    "references": [
+      "https://arxiv.org/abs/2412.20765",
+      "https://arxiv.org/abs/2502.12641"
+    ]
+  },
+  "106": {
+    "rank": 106,
+    "decision": "non-conclue",
+    "reading": "targeted-fulltext",
+    "rationale": "Une certification de la densité SRE par transfert répliqué positif est plausible : aH<=T(H)<=bH donnerait un intervalle rigoureux sur son rayon spectral. Mais le calcul par transfert et même son spectre sous-dominant sont déjà étudiés en 2207.13076 et 2602.15116. La méthode certifierait un MPS fixé, sans certifier sa proximité au vrai fondamental. Aucun intervalle nouveau améliorant une valeur publiée n'est obtenu ; la note précise le certificat et ses limites.",
+    "note": "notes/replica-magic-certification.md",
+    "references": [
+      "https://arxiv.org/html/2412.07837",
+      "https://arxiv.org/html/2508.03534",
+      "https://arxiv.org/abs/2207.13076",
+      "https://arxiv.org/abs/2602.15116v2"
+    ]
+  },
+  "107": {
+    "rank": 107,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "La SJA suppose l'ETH d'un Hamiltonien hermitien thermal : ses rotations de Jacobi sont unitaires. Le cristal temporel est un flot de Floquet non hermitien avec ordre temporel, où la normalisation et les vecteurs gauches/droits changent. Aucune version biorthogonale contrôlée ni nouvelle prédiction de transition n'est définie.",
+    "references": [
+      "https://arxiv.org/abs/2412.04382",
+      "https://arxiv.org/abs/2504.01073"
+    ]
+  },
+  "108": {
+    "rank": 108,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le gap spectral exigé par la borne de fuite sépare deux régions de spectre d'un Hamiltonien. Le gap de furtivité est une fenêtre nulle du spectre de puissance du désordre, pas un gap des états électroniques. Les ondes k et -k peuvent être dégénérées. On ne peut donc déduire une délocalisation éternelle de la borne Schrieffer-Wolff.",
+    "references": [
+      "https://arxiv.org/abs/2505.19904",
+      "https://arxiv.org/abs/2509.13502"
+    ]
+  },
+  "109": {
+    "rank": 109,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le théorème de steering formule ses relèvements et inverses positifs directement dans les algèbres, sans supposer une identification naturelle avec des états sur un produit tensoriel ordinaire. L'obstruction à la dualité canal-état ne supprime donc pas cette équivalence. Aucun facteur explicite ne donne une nouvelle séparation opérationnelle entre les deux cadres.",
+    "references": [
+      "https://arxiv.org/abs/2608.10783",
+      "https://arxiv.org/abs/2608.13750"
+    ]
+  },
+  "110": {
+    "rank": 110,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Un design contrôle des moments d'états engendrés par un circuit ; les corrélations spectrales de matrices non hermitiennes requièrent une loi d'ensemble et une limite microscopique différentes. Les interactions dual-unitaires ne donnent pas immédiatement une matrice gaussienne de classe AI-dagger ou AII-dagger. Aucune nouvelle loi de niveaux n'est déduite.",
+    "references": [
+      "https://arxiv.org/abs/2503.05698",
+      "https://arxiv.org/abs/2609.00162"
+    ]
+  },
+  "111": {
+    "rank": 111,
+    "decision": "ecartee",
+    "reading": "targeted-fulltext",
+    "rationale": "Le rapprochement est bloqué par un problème de définition. Le coût quadratique écrit en (1)-(4) de 2606.04969v2 vaut 2(dA+dB)I-2(SwapA+SwapB), donc sa racine optimisée vaut déjà 2 sur tout état séparable de deux qubits. Il ne peut satisfaire l'annulation revendiquée ni égaler une norme duale de rho-sigma. Preuve et matrices exactes sont consignées ; le mécanisme de distance à soi non nulle est antérieur. Une passerelle classique de Schrödinger ne le répare pas.",
+    "note": "notes/quadratic-cost-not-a-metric.md",
+    "references": [
+      "https://arxiv.org/abs/2603.16056",
+      "https://arxiv.org/html/2606.04969v2",
+      "https://quantum-journal.org/papers/q-2023-10-16-1143/"
+    ]
+  },
+  "112": {
+    "rank": 112,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le gap d'intégralité worst-case concerne des Hamiltoniens quantiques Pauli choisis par une construction de codes. Le décodage SOS optimise une distribution d'erreurs classique à syndrome fixé sur des familles géométriques. Il manque une réduction préservant famille de code, distribution et objectif. Les bonnes performances aux niveaux 2-3 ne sont donc pas contredites par le premier résultat.",
+    "references": [
+      "https://arxiv.org/abs/2511.02264",
+      "https://arxiv.org/abs/2601.21715"
+    ]
+  },
+  "113": {
+    "rank": 113,
+    "decision": "non-conclue",
+    "reading": "targeted-fulltext",
+    "rationale": "Une conversion conditionnelle est possible : si chaque état libre relaxé est à epsilon en norme trace de SEP en dimension totale D, la robustesse séparée est au plus (1+Rk)(1+D epsilon/2)-1. Mais le meilleur théorème argmax lu concerne des extensions bosoniques bilatérales ; la hiérarchie étudiée est PPT unilatérale et seulement invariante. Aucun taux amélioré ne peut être importé sans ces hypothèses. La note donne la preuve de conversion et la lacune restante.",
+    "note": "notes/robustness-rounding-rate.md",
+    "references": [
+      "https://arxiv.org/html/2607.16960",
       "https://arxiv.org/html/2608.02590",
-      "https://arxiv.org/abs/1810.12197"
+      "https://arxiv.org/abs/1803.10710"
+    ]
+  },
+  "114": {
+    "rank": 114,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Une extension gaussienne fermionique est contrainte par covariance et parité, alors que le cône PPT du second article concerne toutes les matrices densité bipartites. Une covariance admissible n'est pas un certificat de PPT pour une extension non gaussienne ni de robustesse totale. Les deux optimisations ne peuvent être identifiées sans preuve de complétude gaussienne.",
+    "references": [
+      "https://arxiv.org/abs/2508.18532",
+      "https://arxiv.org/abs/2607.16960"
+    ]
+  },
+  "115": {
+    "rank": 115,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le refroidissement inclut préparation et remise à zéro du bain ; sa dynamique réduite n'est pas un seul circuit unitaire parity-preserving. Une simulation des dilatations est envisageable, mais la troncature quartique peut accumuler l'erreur sur les longs temps de refroidissement. Aucune nouvelle garantie de coût ou de fidélité n'est extraite.",
+    "references": [
+      "https://arxiv.org/abs/2501.05268",
+      "https://arxiv.org/abs/2504.19317"
+    ]
+  },
+  "116": {
+    "rank": 116,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "La faible croissance d'intrication en MBL n'implique pas qu'une expansion autour des matchgates reste de faible ordre aux longs temps. Des termes séculaires peuvent contrôler précisément les oscillations recherchées. Il faudrait une borne de reste uniforme à leur échelle de temps ; les résumés ne la donnent pas.",
+    "references": [
+      "https://arxiv.org/abs/2502.08192",
+      "https://arxiv.org/abs/2504.19317"
+    ]
+  },
+  "117": {
+    "rank": 117,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Les plateaux et oscillations d'un quench isolé en spin-glass localisé ne donnent pas le gap de mélange d'un canal avec bain réinitialisé. Ils ne prouvent donc ni efficacité ni échec universel du refroidissement. Une chaîne et un couplage au bain communs seraient nécessaires pour poser un nouvel énoncé quantitatif.",
+    "references": [
+      "https://arxiv.org/abs/2501.05268",
+      "https://arxiv.org/abs/2502.08192"
+    ]
+  },
+  "118": {
+    "rank": 118,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "La borne d'extension SDP concerne une région faisable universelle reproduisant tous les objectifs de séparabilité. Le capteur optimise une réponse trigonométrique univariée bornée à budget de requêtes fixé, où Fejér-Riesz est exact. Cette structure spéciale n'est pas une représentation SDP universelle de SEP ; aucun conflit ni nouvelle borne n'apparaît.",
+    "references": [
+      "https://arxiv.org/abs/2609.09033",
+      "https://arxiv.org/abs/2611.10146"
+    ]
+  },
+  "119": {
+    "rank": 119,
+    "decision": "connue",
+    "reading": "abstracts",
+    "rationale": "La borne inférieure annonce déjà explicitement le cas non négatif présenté comme somme de carrés et sa dépendance en racine du gap. Le protocole électronique exploite précisément cette ressource de représentation pour réduire la normalisation. Ce rapprochement est une mise en correspondance d'un gain et de la borne déjà formulée, pas un nouveau dépassement d'oracle.",
+    "references": [
+      "https://arxiv.org/abs/2607.15358",
+      "https://arxiv.org/abs/2608.24493"
+    ]
+  },
+  "120": {
+    "rank": 120,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Une représentation presque sans frustration conserve généralement un écart entre son certificat inférieur et le vrai fondamental. On ne peut l'assimiler à un oracle SOS de minimum nul en oubliant cet écart, sa normalisation et son coût. La seconde borne traite déjà le cas SOS ; aucun nouveau compromis chiffré pour les molécules n'est établi.",
+    "references": [
+      "https://arxiv.org/abs/2602.05069",
+      "https://arxiv.org/abs/2608.24493"
+    ]
+  },
+  "121": {
+    "rank": 121,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Les charges qui commutent avec un Hamiltonien non hermitien ne sont pas automatiquement conservées par une application CPTP avec Kraus aléatoires. Il faudrait vérifier Phi-adjoint(Q)=Q et contrôler les domaines des opérateurs bosoniques non bornés. Le seuil spectral d'un mélange fini ne donne pas ce critère.",
+    "references": [
+      "https://arxiv.org/abs/2504.10255",
+      "https://arxiv.org/abs/2609.14556"
+    ]
+  },
+  "122": {
+    "rank": 122,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Le zéro ou pôle de dispersion est dans le plan de fréquence complexe ; le winding non-Bloch est défini par le propagateur projeté en impulsion complexe avec frontières ouvertes. Leurs contours et hypothèses de stabilité sont différents. Un saut d'un nombre d'enroulement ne relie pas encore la correction KK aux temps critiques DQPT.",
+    "references": [
+      "https://arxiv.org/abs/2605.00117",
+      "https://arxiv.org/abs/2610.39994"
+    ]
+  },
+  "123": {
+    "rank": 123,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "La continuation du nombre d'onde radial construit des modes de bord d'un opérateur spatial stationnaire. Le transformé de cohérence utilise la fréquence complexe d'une dynamique réduite. Sans équation commune reliant leurs surfaces spectrales, aucun zéro protégé de réponse ne prédit un mode de bord circulaire.",
+    "references": [
+      "https://arxiv.org/abs/2501.11186",
+      "https://arxiv.org/abs/2605.00117"
+    ]
+  },
+  "124": {
+    "rank": 124,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "La mémoire exacte induit une auto-énergie dépendant du temps ou de la fréquence dans le propagateur projeté. La construction circulaire du premier texte traite un problème stationnaire à deux bandes. Une continuation k complexe seule ne transporte ni le Chern ni les temps critiques entre ces deux problèmes.",
+    "references": [
+      "https://arxiv.org/abs/2501.11186",
+      "https://arxiv.org/abs/2610.39994"
+    ]
+  },
+  "125": {
+    "rank": 125,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Des statistiques de niveaux Wigner-Dyson ne déterminent pas les éléments de matrice de l'opérateur de contrôle. Un Hamiltonien ayant ces niveaux mais des contrôles diagonaux ne permet aucune transition. Les modes brickwall ne constituent donc pas à eux seuls une preuve de contrôlabilité ou de temps de pilotage logarithmique.",
+    "references": [
+      "https://arxiv.org/abs/2412.12301",
+      "https://arxiv.org/abs/2512.13384"
+    ]
+  },
+  "126": {
+    "rank": 126,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "La susceptibilité de fidélité dépend d'une perturbation paramétrique et de ses éléments de matrice, pas seulement d'un exposant de répulsion. Ajuster les niveaux brickwall par une loi bêta ne fixe pas cette perturbation ni les vecteurs propres. Aucun nouvel exposant géométrique universel n'est établi.",
+    "references": [
+      "https://arxiv.org/abs/2412.12301",
+      "https://arxiv.org/abs/2507.13067"
+    ]
+  },
+  "127": {
+    "rank": 127,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Les statistiques de Lanczos sous tirage d'opérateurs initiaux ne caractérisent pas l'algèbre de Lie engendrée par les contrôles accessibles. Un pic de complexité ne prouve ni l'atteignabilité de toute cible ni un coût de contrôle. Il faudrait fixer ces contrôles et établir leur rang dynamique.",
+    "references": [
+      "https://arxiv.org/abs/2411.18436",
+      "https://arxiv.org/abs/2512.13384"
+    ]
+  },
+  "128": {
+    "rank": 128,
+    "decision": "connue",
+    "reading": "targeted-fulltext",
+    "rationale": "La conjecture d'intégrabilité après ajout des tresses et les premières charges Q3,Q4 sont déjà formulées et calculées dans la section VI du second texte. Mesurer une statistique de Brody ou un pic de Krylov ne prouve pas l'existence d'une famille infinie de charges commutantes. Aucun progrès au-delà de cette question déjà posée n'est obtenu par le rapprochement.",
+    "references": [
+      "https://arxiv.org/abs/2412.04963",
+      "https://arxiv.org/html/2510.23716"
+    ]
+  },
+  "129": {
+    "rank": 129,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Toutes les valeurs singulières du propagateur unitaire du kicked top valent un, quel que soit son régime de chaos. Les OTOC de freeness gardent pourtant une dynamique non triviale. Le diagnostic SVD appliqué à un Hamiltonien non hermitien n'est donc pas un substitut direct aux corrélations unitaires de ce modèle.",
+    "references": [
+      "https://arxiv.org/abs/2411.09309",
+      "https://arxiv.org/abs/2411.12050"
+    ]
+  },
+  "130": {
+    "rank": 130,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "La mise à jour ETH par Jacobi conserve une information sur les rotations d'états propres et les facteurs de forme. Une tridiagonalisation des valeurs singulières omet en général phases et signes du spectre. Elle ne détermine pas la réponse d'un observable au quench sans données supplémentaires sur les vecteurs gauches et droits.",
+    "references": [
+      "https://arxiv.org/abs/2411.09309",
+      "https://arxiv.org/abs/2504.01073"
+    ]
+  },
+  "131": {
+    "rank": 131,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "La densité jointe complexe Calogero ne définit pas une mesure spectrale réelle positive pour le Lanczos hamiltonien employé sur les états thermofield. Hermitiser ou passer aux valeurs singulières change les corrélations considérées. Aucun nouveau profil de complexité n'est calculé dans une convention commune.",
+    "references": [
+      "https://arxiv.org/abs/2412.04963",
+      "https://arxiv.org/abs/2609.00164"
+    ]
+  },
+  "132": {
+    "rank": 132,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "L'état de diffusion Calogero représente une densité jointe d'ensemble, pas la dynamique d'un Hamiltonien perturbé sous ETH. Le flot Jacobi du premier texte est hermitien et dépend de facteurs de forme. L'identification mathématique des densités n'apporte pas ces données ni une nouvelle équation de flot.",
+    "references": [
+      "https://arxiv.org/abs/2504.01073",
+      "https://arxiv.org/abs/2609.00164"
+    ]
+  },
+  "133": {
+    "rank": 133,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Une loi des valeurs propres non hermitiennes ne fixe pas les recouvrements d'états propres ou la non-normalité, qui interviennent dans les moments de Krylov. Les coefficients de Lanczos sont en outre des fonctions corrélées de l'opérateur initial. La nouvelle densité jointe ne suffit pas à déduire une loi Wishart universelle de ces coefficients.",
+    "references": [
+      "https://arxiv.org/abs/2411.18436",
+      "https://arxiv.org/abs/2609.00164"
+    ]
+  },
+  "134": {
+    "rank": 134,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Les deux diagnostics peuvent varier lors d'un crossover chaotique, mais la métrique quantique nécessite les dérivées d'états propres tandis que la complexité dépend d'une mesure spectrale et d'un état initial. Un paramètre de Brody ne détermine pas ces deux jeux de poids. Aucune relation universelle quantitative n'est formulée ou vérifiée.",
+    "references": [
+      "https://arxiv.org/abs/2412.04963",
+      "https://arxiv.org/abs/2507.13067"
+    ]
+  },
+  "135": {
+    "rank": 135,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Les corrections des hauts moments du form factor SYK proviennent de fluctuations de bord et d'un nombre fini de paramètres. La concentration du leakage bosonique utilise une décomposition en matrices indépendantes gaussiennes, avec passage à Haar encore limité dans le résumé. Les corrections SYK ne justifient pas cette comparaison d'ensembles ni un nouvel exposant du nombre de modes.",
+    "references": [
+      "https://arxiv.org/abs/2412.18737",
+      "https://arxiv.org/abs/2607.11708"
+    ]
+  },
+  "136": {
+    "rank": 136,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "L'approche à la freeness de certains OTOC à temps long ne rend pas indépendantes les entrées d'un opérateur de leakage bosonique de degré croissant avec le nombre de particules. Une estimation à ordre fixé ne suffit pas à une borne en norme spectrale sur toutes les occupations. Aucun remplacement contrôlé du modèle gaussien par ce circuit n'est obtenu.",
+    "references": [
+      "https://arxiv.org/abs/2411.12050",
+      "https://arxiv.org/abs/2607.11708"
+    ]
+  },
+  "137": {
+    "rank": 137,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "L'atteinte de la freeness pour une liste d'OTOC n'est pas un contrôle uniforme de tous les gradients d'une famille paramétrée sur un jeu de données. Réciproquement, une liaison tensorielle bornée ne garantit pas à elle seule des gradients non nuls : ensemble, observable et paramétrage restent essentiels. Aucun nouveau temps de trainabilité n'est déduit.",
+    "references": [
+      "https://arxiv.org/abs/2411.12050",
+      "https://arxiv.org/abs/2601.01877"
+    ]
+  },
+  "138": {
+    "rank": 138,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "L'aléa du boson sampling porte sur une matrice de transition à une particule et ses immanants dans un secteur à nombre fixé. La concentration Haar des VQC concerne un ensemble d'unitaires many-body et un objectif d'apprentissage. Les dimensions pertinentes et les accès aux paramètres diffèrent ; aucune loi commune de gradients n'est établie.",
+    "references": [
+      "https://arxiv.org/abs/2601.01877",
+      "https://arxiv.org/abs/2607.11708"
+    ]
+  },
+  "139": {
+    "rank": 139,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Un ramp spectral persistant ne certifie pas un design d'unitaires, et les écarts de hauts moments SYK peuvent être gouvernés par des événements rares de bord. Le collapse de fonctions sur données finies demande des bornes sur des observables et dérivées spécifiques. Aucun seuil d'apprentissage ne peut être lu dans ces hauts moments seuls.",
+    "references": [
+      "https://arxiv.org/abs/2412.18737",
+      "https://arxiv.org/abs/2601.01877"
+    ]
+  },
+  "140": {
+    "rank": 140,
+    "decision": "ecartee",
+    "reading": "targeted-fulltext",
+    "rationale": "Le lien proposé repose sur un transport géométrique très général sans identifier une application d'états quantiques. Plus concrètement, la mesure d'intrication utilisée par le second texte, sous sa définition quadratique écrite, est positive sur tout état séparable : l'obstruction de la piste 111 invalide son usage comme régularisateur d'intrication nul sur les produits. Aucune dualité réseau-CFT nouvelle n'est démontrée.",
+    "note": "notes/quadratic-cost-not-a-metric.md",
+    "references": [
+      "https://arxiv.org/abs/2503.19867",
+      "https://arxiv.org/html/2606.04969v2"
+    ]
+  },
+  "141": {
+    "rank": 141,
+    "decision": "ecartee",
+    "reading": "targeted-fulltext",
+    "rationale": "La dualité de transport de la logique relationnelle traite des coûts et couplages pour prouver des assertions de programmes ; elle n'impose pas que chaque coût soit une métrique. Elle ne justifie donc pas l'identification du coût quadratique du second texte avec une norme de rho-sigma. La distance à soi non nulle calculée en piste 111 reste une obstruction, sans nouvelle logique d'intrication valide.",
+    "note": "notes/quadratic-cost-not-a-metric.md",
+    "references": [
+      "https://arxiv.org/abs/2501.15238",
+      "https://arxiv.org/html/2606.04969v2"
+    ]
+  },
+  "142": {
+    "rank": 142,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Un flot de Ricci sur des paramètres d'apprentissage n'est pas automatiquement un programme quantique avec sémantique CPTP, assertions positives et terminaison presque sûre. Aucun encodage de ces objets n'est fourni par les résumés. La complétude de Hoare ne certifie donc pas les taux de convergence d'un tel entraînement.",
+    "references": [
+      "https://arxiv.org/abs/2501.15238",
+      "https://arxiv.org/abs/2503.19867"
+    ]
+  },
+  "143": {
+    "rank": 143,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "La synthèse garantit la contractivité d'un polynôme d'opérateurs sous accès cohérent à une dilatation de Kraus ; ce n'est pas l'optimisation de la contraction en norme trace sur toutes les paires d'états. Les opérations CP non déterministes exigent aussi de suivre la probabilité de succès. Aucun algorithme polynomial pour le coefficient intrinsèque du canal n'en découle.",
+    "references": [
+      "https://arxiv.org/abs/2507.16737",
+      "https://arxiv.org/abs/2610.08714"
+    ]
+  },
+  "144": {
+    "rank": 144,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "La symétrie de clones autorise une réduction en représentations, mais un processus de clonage doit satisfaire des contraintes causales de traces partielles. Les critères de positivité ou de séparabilité dans le sous-espace de Dicke ne caractérisent pas ces combs. Aucun nouveau taux de super-réplication n'est établi.",
+    "references": [
+      "https://arxiv.org/abs/2509.08059",
+      "https://arxiv.org/abs/2602.15800"
+    ]
+  },
+  "145": {
+    "rank": 145,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "La décomposition stellaire distingue explicitement une contraction formelle d'une décomposition physique avec canal gaussien CP. Une application positive indécomposable ne peut remplacer ce canal physique. Ses Choi finis exigeraient en outre une troncature et un contrôle de queue dans l'espace de Fock. Aucun témoin nouveau certifié sur les états photoniques n'est construit.",
+    "references": [
+      "https://arxiv.org/abs/2504.10455",
+      "https://arxiv.org/abs/2605.14644"
+    ]
+  },
+  "146": {
+    "rank": 146,
+    "decision": "ecartee",
+    "reading": "targeted-fulltext",
+    "rationale": "Le théorème d'angle de sous-espaces traite des canaux matriciels finis et d'une discrimination exactement parfaite. Un core de Fock conditionné à un résultat de mesure ne donne pas une compression exacte commune de tous les canaux et de toutes leurs sorties. Une erreur arbitrairement petite peut supprimer la discrimination parfaite ; aucune borne d'énergie ne ferme ce passage.",
+    "references": [
+      "https://arxiv.org/abs/2504.10455",
+      "https://arxiv.org/html/2609.20781"
+    ]
+  },
+  "147": {
+    "rank": 147,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Une décomposition des états conditionnés issus d'une source gaussienne ne représente pas à elle seule un processus qui clone un canal pour toutes les entrées. Il manque une contrainte d'énergie, une distance de canaux et la causalité du processus sur les espaces bosoniques infinis. Aucun nouveau taux de clonage n'est déduit.",
+    "references": [
+      "https://arxiv.org/abs/2504.10455",
+      "https://arxiv.org/abs/2509.08059"
+    ]
+  },
+  "148": {
+    "rank": 148,
+    "decision": "ecartee",
+    "reading": "abstracts",
+    "rationale": "Un superprocessus de clonage physique est complètement positif et causal ; les applications positives indécomposables ne sont pas elles-mêmes des superprocessus admissibles. Les utiliser comme témoins duaux serait une technique d'optimisation à formaliser, pas une amélioration automatique des cloners déjà optimisés par SDP. Aucun exemple gagnant n'est obtenu.",
+    "references": [
+      "https://arxiv.org/abs/2509.08059",
+      "https://arxiv.org/abs/2605.14644"
+    ]
+  },
+  "149": {
+    "rank": 149,
+    "decision": "connue",
+    "reading": "targeted-fulltext",
+    "rationale": "Pour les sorties deux qubits, PPT détecte déjà exactement la séparabilité ; les nouvelles applications indécomposables de dimensions supérieures n'améliorent pas ce test. L'approfondissement retrouve surtout une antériorité : la conjecture numérique 8 sur deux GAD identiques découle du seuil EA de Filippov–Frizen–Kolobova (2018), qui coïncide avec le déterminant PPT explicite du singulet. La preuve de cette correspondance et ses vérifications rationnelles sont enregistrées. Cela ne résout pas la conjecture générale de placement de source.",
+    "note": "notes/gad-singlet-prior-result.md",
+    "references": [
+      "https://arxiv.org/html/2506.06089",
+      "https://arxiv.org/abs/2508.21348",
+      "https://arxiv.org/pdf/1708.08208v2"
+    ]
+  },
+  "150": {
+    "rank": 150,
+    "decision": "ecartee",
+    "reading": "targeted-fulltext",
+    "rationale": "La génération numérique d'applications indécomposables vise surtout la détection d'intrication PPT en dimension supérieure. Le problème de distribution étudié ici produit deux qubits, où ce déficit de PPT n'existe pas. Il faudrait d'abord changer la dimension du réseau et fixer un nouvel objectif. L'antériorité GAD trouvée dans la piste 149 ferme une sous-question existante sans nécessiter ces nouvelles applications.",
+    "note": "notes/gad-singlet-prior-result.md",
+    "references": [
+      "https://arxiv.org/html/2506.06089",
+      "https://arxiv.org/abs/2605.14644",
+      "https://arxiv.org/pdf/1708.08208v2"
     ]
   }
 }

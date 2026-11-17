@@ -1,0 +1,32 @@
+[
+  {
+    "rank": 20,
+    "decision": "non-conclue",
+    "reading": "targeted-fulltext",
+    "rationale": "Approfondissement demandé après la campagne : réparation locale positive des marginales prouvée, avec erreur (1+a)eta+2b sqrt(eta) sous une hypothèse explicite d'approximation à deux copies. Un exemple classique impose le coût sqrt(eta) pour la réparation terme par terme, sans borner la meilleure approximation 1-LOCC. Pas de projection linéaire positive universelle fixant toute la tranche de marginale prescrite. Le théorème argmax bilatéral au point (1,k) ne fournit pas directement k^(-1). L'amélioration contrainte reste ouverte ; 2607.23689 identifie déjà ce problème de taux.",
+    "next_step": "Construire un arrondi directement sur les instruments normalisés ou une recombinaison des termes qui exploite leurs compensations avant réparation ; établir un vrai gain de taux.",
+    "note": "notes/measurement-rounding.md",
+    "references": [
+      "https://arxiv.org/html/2412.18556v3",
+      "https://arxiv.org/html/2608.02590v1",
+      "https://arxiv.org/html/1810.12197",
+      "https://arxiv.org/html/2607.23689",
+      "https://arxiv.org/abs/2403.11851",
+      "https://arxiv.org/html/2602.14732v1"
+    ]
+  },
+  {
+    "rank": 51,
+    "decision": "non-conclue",
+    "reading": "targeted-fulltext",
+    "rationale": "Approfondissement demandé après la campagne : un état produit tracial satisfait la dualité relative exacte mais garde un défaut binaire 1/2, réfutant une implication mixte générale fondée seulement sur f. Pour un état pur, preuve d'une borne 2f(t) indépendante du nombre d'issues après élargissement de la région de contrôle et restriction d'ensembles définis sur l'algèbre initiale. Ce n'est pas le steering complet de deux régions fixes. En dimension finie, un exemple GHZ donne exactement s=sqrt(q(1-q)) pour un défaut optimal d'espérance q, excluant une stabilité linéaire générale. Originalité non établie ; 2609.01267 traite déjà steering et dualité approchée dans des secteurs anyoniques.",
+    "next_step": "Choisir un modèle pur et un ensemble cible avec borne inférieure de coût de localisation ; comparer la borne 2f(t) et les antécédents. Une réciproque quantitative sous hypothèses supplémentaires reste à établir.",
+    "note": "notes/topology-and-steering.md",
+    "references": [
+      "https://arxiv.org/html/2501.02398v1",
+      "https://arxiv.org/html/2608.10783v1",
+      "https://arxiv.org/html/2609.01267v1",
+      "https://arxiv.org/html/2602.14732v1"
+    ]
+  }
+]

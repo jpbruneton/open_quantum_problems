@@ -1,5 +1,7 @@
 # Pistes 18–20 : l'arrondi des états ne normalise pas automatiquement les mesures locales
 
+**Suite du 17 novembre :** [approfondissement de la piste 20](../../2026-11-17-pistes-20-51/piste20.md). Une réparation locale positive est maintenant explicitée et prouvée ; son coût en racine carrée est inévitable pour le coût moyen d'une réparation terme par terme. Cela ne prouve pas une borne inférieure sur le taux optimal. L'extension bilatérale argmax avec un seul côté étendu n'apporte pas directement le gain d'exposant envisagé. Le meilleur taux contraint reste ouvert.
+
 Statut : question de transfert non résolue ; obstruction exacte à une réparation naïve. Le principe général est déjà connu via les mesures pretty-good d'ensembles produits ; pas de revendication d'originalité pour ce principe.
 
 Les deux ingrédients sont [les mesures extendibles, 2412.18556v3](https://arxiv.org/html/2412.18556v3), annexe A, et [l'arrondi argmax des états, 2608.02590](https://arxiv.org/html/2608.02590). Le premier exige une décomposition dont chaque terme garde des marginales de canal précises. Un mélange de produits proche au sens de la norme trace ne fournit pas à lui seul ces contraintes. Le résultat pour un état bosonique ne s'applique pas non plus à une extension seulement invariante par permutations sans vérifier son support.
