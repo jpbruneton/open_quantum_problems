@@ -364,18 +364,12 @@ a.back { text-decoration: none; }
 .research-actions .research-pdf { background: #3f7652; color: #fff; }
 .research-actions .research-pdf:hover { background: #315f42; }
 .research-actions .research-files { color: #315f42; }
-.research-refs h4 { margin: 0 0 8px; }
+.research-refs { margin-top: 18px; }
 .detail .research-refs ul { list-style: none; margin: 0; padding: 0; }
-.detail .research-refs li { margin: 0; padding: 9px 0; border-top: 1px solid var(--border); }
-.research-refs li b { display: block; color: var(--text); font-weight: 600; }
-.research-refs li span { display: block; margin-top: 2px; color: var(--muted); font-size: 13px; }
-.research-refs li .research-ref-links { display: flex; gap: 8px; margin-top: 5px; }
-.research-ref-links a {
-  padding: 2px 7px; border: 1px solid #8fb29a; border-radius: 999px;
-  color: #315f42; font-family: var(--mono); font-size: 10px; font-weight: 700;
-  letter-spacing: .04em; text-transform: uppercase;
-}
-.research-ref-links a:hover { border-color: #3f7652; background: #e5f0e8; }
+.detail .research-refs li { margin: 0; padding: 3px 0; color: var(--muted); font-size: 12px; line-height: 1.45; }
+.research-refs li .research-ref-label { color: var(--muted); }
+.research-refs li a { color: #315f42; font-family: var(--mono); font-size: 11px; white-space: nowrap; }
+.research-refs li a:hover { color: #244b34; }
 .research-citation { margin-top: 24px; }
 .research-citation h4 { margin: 0 0 8px; }
 .citation-format { margin-top: 10px; }

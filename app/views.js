@@ -1020,16 +1020,12 @@ function NewResearchView() {
                   <a className="research-files" href={note.dossier} target="_blank" rel="noreferrer">Source, certificate and checks <span aria-hidden="true">↗</span></a>
                 </div>
                 <div className="research-refs">
-                  <h4>Relevant references</h4>
                   <ul>
                     {note.refs.map((ref) => (
                       <li key={ref.label}>
-                        <b>{ref.label}</b>
-                        <span className="research-ref-links">
-                          {ref.doi && <a href={ref.doi} target="_blank" rel="noreferrer">DOI</a>}
-                          {ref.arxiv && <a href={ref.arxiv} target="_blank" rel="noreferrer">arXiv</a>}
-                        </span>
-                        <span>{ref.note}</span>
+                        <span className="research-ref-label">{ref.label}</span>
+                        {ref.doi && <>{" · "}<a href={ref.doi} target="_blank" rel="noreferrer">doi:{ref.doi.replace("https://doi.org/", "")}</a></>}
+                        {ref.arxiv && <>{" · "}<a href={ref.arxiv} target="_blank" rel="noreferrer">arXiv:{ref.arxiv.replace("https://arxiv.org/abs/", "").replace(/v\d+$/, "")}</a></>}
                       </li>
                     ))}
                   </ul>
