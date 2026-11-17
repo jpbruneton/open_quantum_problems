@@ -1,253 +1,332 @@
 \documentclass[11pt,a4paper]{article}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
+\usepackage{lmodern}
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage[margin=27mm]{geometry}
 \usepackage[colorlinks=true,urlcolor=blue,citecolor=blue]{hyperref}
-\newtheorem{theorem}{Proposition}
-\newtheorem{corollary}[theorem]{Corollaire}
-\newcommand{\tr}{\operatorname{Tr}}
+\newtheorem{theorem}{Theorem}
+\newtheorem{corollary}[theorem]{Corollary}
+\DeclareMathOperator{\Tr}{Tr}
 \newcommand{\ket}[1]{\lvert#1\rangle}
 \newcommand{\bra}[1]{\langle#1\rvert}
 \newcommand{\norm}[1]{\left\lVert#1\right\rVert}
-\title{Piste 51 : coût exact de préparation d'ensembles\\avec accès partiel à un environnement}
-\author{Note de recherche OQM --- dérivations assistées par IA}
-\date{17 novembre 2026}
+\setlength{\emergencystretch}{2em}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em plus 0.1em minus 0.1em}
+\title{Exact ensemble-steering defect under partial environmental access}
+\author{Jean-Philippe Bruneton, Anthropic \& GPT Frontier Models}
+\date{17 November 2026}
+
 \begin{document}
 \maketitle
 \begin{abstract}
-Nous calculons un défaut de réalisation de toutes les décompositions d'une
-marginale de qubit dans un modèle pur à deux branches. Le résultat est
-$s_B=(1-\kappa)\sqrt{pq}$, où $\kappa$ est le recouvrement des branches
-inaccessibles. Une cible binaire et une mesure explicite atteignent le minimax.
-Dans une chaîne à rotations contrôlées sommables, cela donne des bornes
-supérieure et inférieure concordantes et un coût spatial exponentiel calculable.
-Il s'agit d'une application de modèles et d'outils connus : la priorité de cette
-formule n'est pas établie. Aucun problème ouvert sur une phase topologique
-ni aucune réciproque quantitative générale de dualité de Haag n'est résolu.
+We quantify how restricted access to one share of a tripartite pure state
+limits the preparation of ensemble decompositions of a qubit marginal. For a
+two-branch state with Schmidt weights $p$ and $q$ and inaccessible-branch
+overlap $\kappa$, the worst-case ensemble-preparation defect is exactly
+$(1-\kappa)\sqrt{pq}$. A binary target ensemble and a two-outcome measurement
+attain the minimax value. In a chain of summable controlled rotations, the
+same formula gives matching spatial bounds and an asymptotically sharp
+geometric decay rate. The state is also realized as the unique ground state
+of a gapped quasi-local parent Hamiltonian. These results solve the stated
+finite-dimensional model and do not establish a general quantitative
+converse to Haag duality.
 \end{abstract}
 
-\section{Tâche et conventions}
-Pour un état $\rho_{AB}$, fixons $\rho_A$. Un ensemble cible est une famille
-finie $\lambda_i\geq0$ de somme $\rho_A$, avec probabilités incluses.
-Nous étudions
-\begin{equation}\label{def}
-s_B(\rho)=\sup_{\{\lambda_i\}:\,\sum_i\lambda_i=\rho_A}
-\inf_{\{E_i\}\text{ POVM sur }B}
-\frac12\sum_i\norm{\lambda_i-\tr_B[(I\otimes E_i)\rho_{AB}]}_1.
-\end{equation}
-Les cibles et mesures ont les mêmes étiquettes. Les mesures peuvent dépendre
-de la cible. On ne mesure ni la robustesse de steering contre les modèles à
-états cachés, ni une tâche à plusieurs réglages simultanés. Le ``complete
-steering'' de Jevtic et al.\ \cite{ellipsoid} porte sur les décompositions
-\emph{à l'intérieur de l'ellipsoïde accessible}; ici le supremum inclut
-toutes les décompositions de $\rho_A$, y compris hors de cet ellipsoïde.
+\section{Introduction}
+The Hughston--Jozsa--Wootters theorem identifies every finite ensemble
+decomposition of a density operator with a measurement on a purifying system
+\cite{HJW}. This exact correspondence is a basic form of quantum steering:
+access to the full purifying system allows one party to remotely prepare any
+ensemble of the other party's marginal. When part of the purifier is
+inaccessible, the correspondence can fail even though the global state
+remains pure.
 
-\section{Un minimax exactement résolu}
-Considérons l'état pur
+This note measures that failure as a minimax approximation problem. The
+target ranges over all finite decompositions of a fixed qubit marginal, while
+the available measurement acts only on the accessible subsystem. The main
+result evaluates the minimax exactly for a two-branch state. The answer depends
+only on the Schmidt weights and the overlap of the inaccessible branches,
+which makes the obstruction directly computable in spatial models.
+
+The exact formula has two consequences. First, it relates the steering defect
+to a natural trace-distance defect for state-preserving conditional
+expectations. Second, it turns the tail of a summable controlled-rotation
+chain into explicit upper and lower bounds on the benefit of increasing
+environmental access. The resulting decay is quadratic in the small tail
+angles, although the unitary truncation error is linear.
+
+For a state $\rho_{AB}$ with marginal $\rho_A$, a target ensemble is a finite
+family of positive operators $\{\lambda_i\}$ satisfying
+$\sum_i\lambda_i=\rho_A$; the probabilities are included in the traces of the
+$\lambda_i$. We define
+\begin{equation}\label{defect}
+s_B(\rho)=\sup_{\{\lambda_i\}:\,\sum_i\lambda_i=\rho_A}
+\inf_{\{E_i\}\,\mathrm{POVM\ on}\ B}
+\frac12\sum_i\norm{\lambda_i-\Tr_B[(I\otimes E_i)\rho_{AB}]}_1.
+\end{equation}
+The target and measurement outcomes carry the same labels, and the
+positive-operator-valued measure (POVM) may depend on the target ensemble.
+This quantity is distinct from robustness against local-hidden-state models:
+it asks how well one measurement system can realize every decomposition of a
+fixed marginal.
+
+\section{Related work}
+Schr\"odinger's steering observation was given an operational hierarchy by
+Wiseman, Jones and Doherty \cite{Wiseman}; modern definitions, witnesses and
+applications are reviewed by Uola, Costa, Nguyen and G\"uhne \cite{Uola}.
+The present minimax starts from the ensemble-measurement correspondence of
+Hughston, Jozsa and Wootters \cite{HJW} and asks for its approximation after
+part of the purifying system is removed.
+
+For two-qubit states, steering ellipsoids describe the normalized states
+reachable by measurements on the other qubit \cite{Jevtic}. Equation
+\eqref{defect} instead ranges over complete decompositions of $\rho_A$ and
+keeps the subnormalized outputs, so targets outside the accessible ellipsoid
+contribute to the worst case. The exact binary witness below is the point at
+which this geometric restriction becomes quantitative.
+
+Branch states and products of decoherence factors are standard in quantum
+Darwinism \cite{BlumeKohout,Zurek}. Here they provide a transparent spatial
+model rather than a claim about redundant classical records. In the
+operator-algebraic setting, van Luijk et al. identify exact steering with the
+existence of a state-preserving conditional expectation \cite{vanLuijk}.
+Wallick and Wilming show that nonabelian anyonic sectors can violate both Haag
+duality and steering \cite{Wallick}, while Ogata develops approximate Haag
+duality for mixed-state topological order \cite{Ogata}. The calculation below
+is a finite-dimensional test case for these structural connections; its
+gapped quasi-local parent does not imply a general theorem for topological
+phases or cone algebras.
+
+\section{Exact minimax result}
+Consider the pure state
 \begin{equation}\label{state}
 \ket\Psi=\sqrt p\ket0_A\ket{b_0}_B\ket u_C
 +\sqrt q\ket1_A\ket{b_1}_B\ket v_C,
 \qquad p+q=1,\quad 0<q\leq p,
 \end{equation}
-où $b_0,b_1$ sont orthonormaux et $u,v$ unitaires. Le système $C$ est
-inaccessible. Absorbons une phase dans $b_1$ de sorte que
-$\langle v|u\rangle=\kappa\in[0,1]$. Sur le support logique de Bob,
+where $b_0,b_1$ are orthonormal and $u,v$ are unit vectors. The system $C$ is
+inaccessible. A phase choice gives $\langle v|u\rangle=\kappa\in[0,1]$.
+On the logical support of $B$,
 \[
 \rho_{AB}=p\ket{00}\bra{00}+q\ket{11}\bra{11}
 +\kappa\sqrt{pq}(\ket{00}\bra{11}+\ket{11}\bra{00}).
 \]
-La compression d'une POVM physique sur ce support est une POVM de qubit ;
-réciproquement toute POVM logique s'étend en attribuant le complément
-orthogonal à une issue. Il n'y a donc pas de restriction cachée des mesures.
+Compressing a physical POVM to this support gives a qubit POVM. Conversely,
+every logical POVM extends to the physical space by assigning the orthogonal
+complement to one outcome.
 
 \begin{theorem}\label{exact}
-Pour l'état \eqref{state},
+For the state in \eqref{state},
 \[
 \boxed{s_B(\rho)=(1-\kappa)\sqrt{pq}.}
 \]
-Le supremum est atteint par les deux opérateurs
-$\lambda_\pm=\ket{\phi_\pm}\bra{\phi_\pm}/2$,
-où $\ket{\phi_\pm}=\sqrt p\ket0\pm\sqrt q\ket1$.
+The supremum is attained by
+$\lambda_\pm=\ket{\phi_\pm}\bra{\phi_\pm}/2$, where
+$\ket{\phi_\pm}=\sqrt p\ket0\pm\sqrt q\ket1$.
 \end{theorem}
 \begin{proof}
-Écrivons $D=\operatorname{diag}(\sqrt p,\sqrt q)$ et
+Set $D=\operatorname{diag}(\sqrt p,\sqrt q)$ and write
 $\lambda_i=\begin{pmatrix}x_i&z_i\\\bar z_i&y_i\end{pmatrix}$.
-La POVM logique $E_i=(D^{-1}\lambda_iD^{-1})^T$ est positive et de somme $I$.
-Elle prépare
+The logical POVM $E_i=(D^{-1}\lambda_iD^{-1})^T$ is positive and sums to
+$I$. It prepares
 \[
-\mu_i=\begin{pmatrix}x_i&\kappa z_i\\\kappa\bar z_i&y_i\end{pmatrix}.
+\mu_i=\begin{pmatrix}x_i&\kappa z_i\\
+\kappa\bar z_i&y_i\end{pmatrix}.
 \]
-Ainsi son coût est $(1-\kappa)\sum_i|z_i|$. La positivité puis
-Cauchy--Schwarz donnent
-$\sum_i|z_i|\leq\sum_i\sqrt{x_i y_i}\leq\sqrt{pq}$.
-Cette construction fonctionne pour tout nombre fini d'issues.
+Its cost is $(1-\kappa)\sum_i|z_i|$. Positivity and the Cauchy--Schwarz
+inequality give
+$\sum_i|z_i|\leq\sum_i\sqrt{x_i y_i}\leq\sqrt{pq}$, establishing an
+upper bound for every finite target ensemble.
 
-Pour la borne inverse, prenons la cible binaire annoncée. Tout effet
-$0\leq E\leq I$ satisfait $|E_{01}|\leq1/2$, car $\norm{2E-I}\leq1$.
-La différence $\Delta=\lambda_+-\mu_+$ a donc
+For the matching lower bound, use the binary target stated in the theorem.
+Every effect $0\leq E\leq I$ satisfies $|E_{01}|\leq1/2$, because
+$\norm{2E-I}\leq1$. For $\Delta=\lambda_+-\mu_+$,
 \[
-\norm\Delta_1\geq\tr(X\Delta)
+\norm\Delta_1\geq\Tr(X\Delta)
 =\sqrt{pq}-2\kappa\sqrt{pq}\,\Re E_{10}
 \geq(1-\kappa)\sqrt{pq},
-\quad X=\begin{pmatrix}0&1\\1&0\end{pmatrix}.
+\qquad X=\begin{pmatrix}0&1\\1&0\end{pmatrix}.
 \]
-Les deux différences sont opposées puisque les sommes valent $\rho_A$.
-Le coût total est donc $\norm\Delta_1$. Les effets
-$E_\pm=(I\pm X)/2$ atteignent l'égalité.
+The two differences are opposite because both ensembles sum to $\rho_A$;
+their total cost is therefore $\norm\Delta_1$. The effects
+$E_\pm=(I\pm X)/2$ attain equality.
 \end{proof}
 
-\section{Comparaison au défaut d'espérance conditionnelle}
-Définissons $\delta_*=\inf_\tau\frac12\norm{\rho_{AC}-\rho_A\otimes\tau}_1$.
-C'est le défaut optimal de préservation de l'état des espérances
-$E_\tau(X\otimes Y)=X\tr(\tau Y)\otimes I$ dans le cadre matriciel.
-Ici
+\section{Conditional-expectation defect}
+Define $\delta_*=\inf_\tau\frac12\norm{\rho_{AC}-\rho_A\otimes\tau}_1$.
+This is the optimal state-preservation defect of the conditional expectations
+$E_\tau(X\otimes Y)=X\Tr(\tau Y)\otimes I$ in the matrix setting. Here
 \[
 \rho_{AC}=p\ket0\bra0\otimes\ket u\bra u
 +q\ket1\bra1\otimes\ket v\bra v.
 \]
-En notant $U=\ket u\bra u$, $V=\ket v\bra v$, on obtient
+Writing $U=\ket u\bra u$ and $V=\ket v\bra v$ gives
 \begin{align*}
 2\delta_\tau&=p\norm{U-\tau}_1+q\norm{V-\tau}_1\\
 &\geq q\norm{U-V}_1+(p-q)\norm{U-\tau}_1.
 \end{align*}
-L'égalité pour l'infimum est atteinte en $\tau=U$, d'où
+The infimum is attained at $\tau=U$, and hence
 \begin{equation}\label{delta}
 \boxed{\delta_*=q\sqrt{1-\kappa^2},\qquad
 s_B=\sqrt{pq}\left(1-\sqrt{1-(\delta_*/q)^2}\right).}
 \end{equation}
-Si la fidélité de l'espérance est exigée, approcher $U$ par des états
-fidèles conserve cet infimum. La seconde égalité suppose $q$ fixé et
+Faithful states approximating $U$ preserve the same infimum if faithfulness
+is required. The second equality assumes fixed $q$ and
 $0\leq\delta_*\leq q$.
 
-Pour $\kappa=0$ et $q\to0$, on retrouve
-$s_B=\sqrt{\delta_*(1-\delta_*)}$ : aucune borne linéaire uniforme
-en $\delta_*$ n'est possible. À $q>0$ fixé et $\kappa\to1$, au contraire,
+At $\kappa=0$ with $q\to0$, one has
+$s_B=\sqrt{\delta_*(1-\delta_*)}$, which rules out a uniform linear upper
+bound in $\delta_*$. For fixed $q>0$ and $\kappa\to1$,
 \[
 s_B\sim\frac{\sqrt{pq}}{2q^2}\delta_*^2.
 \]
-Ces deux limites ne commutent pas dans une estimation uniforme : la borne
-générale en racine carrée peut être très pessimiste en régime de faible fuite.
+The two limits identify different scaling regimes: a general square-root
+bound can be far from sharp when leakage is small and the Schmidt weights
+remain fixed.
 
-\section{Accès spatial croissant : taux avec borne inférieure}
-Plaçons un qubit $A$, un qubit drapeau $B_0$ et des qubits $E_j$, $j\geq1$.
-Partons de $(\sqrt p\ket{00}+\sqrt q\ket{11})_{AB_0}$ et de
-$\bigotimes_j\ket0_{E_j}$. Sur $A E_j$, appliquons
+\section{Spatially increasing access}
+Place a qubit $A$, a flag qubit $B_0$, and qubits $E_j$ for $j\geq1$ in the
+state obtained from
+$(\sqrt p\ket{00}+\sqrt q\ket{11})_{AB_0}\otimes_j\ket0_{E_j}$ by the
+controlled rotations
 \[
 U_j=\ket0\bra0_A\otimes I+\ket1\bra1_A\otimes R(\theta_j),
-\quad R(\theta)=\begin{pmatrix}\cos\theta&-\sin\theta\\
+\qquad
+R(\theta)=\begin{pmatrix}\cos\theta&-\sin\theta\\
 \sin\theta&\cos\theta\end{pmatrix}.
 \]
-Supposons $0\leq\theta_j<\pi/2$ et $\sum_j\theta_j<\infty$.
-Les $U_j$ commutent et $U=\prod_jU_j$ converge en norme dans l'algèbre
-quasi-locale, puisque $\norm{U_j-I}=2\sin(\theta_j/2)\leq\theta_j$.
-L'état obtenu est pur. Bob contrôle $B_R=B_0E_1\cdots E_R$ ; le reste
-forme $C_R$. Le drapeau rend les deux branches accessibles orthogonales,
-même si les branches de $E_1\cdots E_R$ ne le sont pas.
+Assume $0\leq\theta_j<\pi/2$ and $\sum_j\theta_j<\infty$. The commuting
+product $U=\prod_jU_j$ converges in norm in the quasi-local algebra because
+$\norm{U_j-I}=2\sin(\theta_j/2)\leq\theta_j$. Bob controls
+$B_R=B_0E_1\cdots E_R$, and the remaining qubits form $C_R$.
 
 \begin{corollary}\label{spatial}
-Avec $V_R=\sum_{j>R}\theta_j^2$,
+For $V_R=\sum_{j>R}\theta_j^2$,
 \begin{align}
-s_{B_R}&=\sqrt{pq}\left(1-\prod_{j>R}\cos\theta_j\right),\label{spatialexact}\\
-\sqrt{pq}(1-e^{-V_R/2})&\leq s_{B_R}\leq\frac{\sqrt{pq}}2 V_R.\label{bounds}
+s_{B_R}&=\sqrt{pq}\left(1-\prod_{j>R}\cos\theta_j\right),
+\label{spatialexact}\\
+\sqrt{pq}(1-e^{-V_R/2})&\leq s_{B_R}\leq\frac{\sqrt{pq}}2V_R.
+\label{bounds}
 \end{align}
-En particulier $s_{B_R}\sim\sqrt{pq}V_R/2$ si $V_R\to0$ avec
-$V_R>0$. Si la queue est nulle, le défaut est exactement nul.
+Consequently, $s_{B_R}\sim\sqrt{pq}V_R/2$ whenever $V_R\to0$ through
+positive values. A vanishing tail gives zero defect exactly.
 \end{corollary}
 \begin{proof}
-Le recouvrement des branches inaccessibles vaut le produit dans
-\eqref{spatialexact}. Appliquer la proposition \ref{exact}.
-Pour une suite finie, $1-\prod a_j\leq\sum(1-a_j)$ pour
-$0\leq a_j\leq1$. Utiliser $1-\cos\theta\leq\theta^2/2$ et
-$\cos\theta\leq e^{-\theta^2/2}$ sur $[0,\pi/2)$, puis passer à la
-limite des produits. Le quotient des deux bornes tend vers un.
+The inaccessible branches have overlap $\prod_{j>R}\cos\theta_j$, so
+Theorem~\ref{exact} gives \eqref{spatialexact}. For a finite sequence,
+$1-\prod_j a_j\leq\sum_j(1-a_j)$ when $0\leq a_j\leq1$. The inequalities
+$1-\cos\theta\leq\theta^2/2$ and
+$\cos\theta\leq e^{-\theta^2/2}$ on $[0,\pi/2)$ then give
+\eqref{bounds}; convergence permits passage to the infinite product. The
+ratio of the two bounds tends to one as $V_R\to0$.
 \end{proof}
 
-Pour $\theta_j=\theta_0r^j$, $0<r<1$, $0<\theta_0<\pi/2$,
+For $\theta_j=\theta_0r^j$ with $0<r<1$ and $0<\theta_0<\pi/2$,
 \begin{equation}\label{rate}
 s_{B_R}\sim\frac{\sqrt{pq}\theta_0^2}{2(1-r^2)}r^{2(R+1)}.
 \end{equation}
-La troncature d'unitaire, elle, vérifie
-$\norm{U-U_{\leq R}}\leq\theta_0r^{R+1}/(1-r)$.
-La norme d'opérateur contrôle une erreur au premier ordre ; la tâche
-d'ensembles présente ici une décroissance du second ordre.
-Pour garantir $s_{B_R}\leq\varepsilon$, il suffit de choisir
+The unitary truncation obeys
+$\norm{U-U_{\leq R}}\leq\theta_0r^{R+1}/(1-r)$, so the ensemble task
+decays to second order while the operator-norm truncation error is first
+order. The sufficient access radius for $s_{B_R}\leq\varepsilon$ is
 \[
 R\geq\max\left\{0,\left\lceil
 \frac{\log[\sqrt{pq}\theta_0^2/(2(1-r^2)\varepsilon)]}
 {2|\log r|}-1\right\rceil\right\}.
 \]
-La mesure optimale binaire agit sur le sous-espace engendré par les deux
-branches de $B_R$. Elle peut être réalisée en annulant sur Bob les rotations
-contrôlées par $B_0$, puis en mesurant $B_0$ dans la base $X$.
+The optimal binary measurement acts on the span of the two branches of
+$B_R$. It can be implemented by undoing the accessible controlled rotations
+and measuring $B_0$ in the eigenbasis of $X$.
 
-\section{Un parent à gap, et ses limites physiques}
-Dans la représentation produit des qubits d'environnement, posons
+\clearpage
+\section{A gapped quasi-local parent model}
+On the product representation of the environmental qubits, define
 \[
 H_0=(I-\ket{\psi_p}\bra{\psi_p})_{AB_0}
 +\sum_{j\geq1}\ket1\bra1_{E_j},
-\quad \ket{\psi_p}=\sqrt p\ket{00}+\sqrt q\ket{11}.
+\qquad \ket{\psi_p}=\sqrt p\ket{00}+\sqrt q\ket{11}.
 \]
-C'est l'opérateur positif de nombre d'excitations augmenté du projecteur
-sur l'orthogonal de $\psi_p$ ; son état fondamental est unique et son gap
-vaut un. Définir $H=UH_0U^*$ sur $U\mathcal D(H_0)$ conserve exactement
-ce spectre et donne l'état précédent comme état fondamental.
-Chaque différence $U\ket1\bra1_{E_j}U^*-\ket1\bra1_{E_j}$ est supportée
-sur $\{A,E_j\}$ et sa norme est au plus $2\theta_j$. Le terme sur $AB_0$
-devient quasi-local, avec erreur de troncature au plus
-$2\sum_{j>R}\theta_j$. La perturbation totale est donc bornée, en norme,
-par $2+2\sum_j\theta_j$ ; la description du parent est bien définie.
+This positive excitation-number operator has a unique ground state and gap
+one. The unitarily equivalent operator $H=UH_0U^*$ on $U\mathcal D(H_0)$
+has the same spectrum and the state above as its ground state. Each term
+$U\ket1\bra1_{E_j}U^*-\ket1\bra1_{E_j}$ is supported on $\{A,E_j\}$ and
+has norm at most $2\theta_j$. The transformed $AB_0$ term is quasi-local,
+with truncation error at most $2\sum_{j>R}\theta_j$. Thus the parent model is
+well defined for a summable angle sequence.
 
-Ce modèle à interactions sommables est inhomogène, sans portée finie
-et sans ordre topologique établi. Il est relié par un unitaire quasi-local
-à un état produit par blocs. Surtout, la partition $A,B_R,C_R$ avec un
-qubit Alice fixe n'est pas la géométrie de cônes de la proposition 51.2
-de la note initiale. Les résultats ci-dessus \emph{ne démontrent pas}
-l'optimalité de sa borne $2f(t)$, ni une réciproque de dualité de Haag.
+The interaction is inhomogeneous and long ranged, although summable. Its
+ground state is related to a block-product state by a quasi-local unitary,
+and no topological order is established. Moreover, the partition
+$A,B_R,C_R$ keeps Alice's system fixed and differs from the cone geometries
+used in operator-algebraic formulations of Haag duality. The exact minimax
+therefore supplies a controlled example, while the general quantitative
+duality question remains open.
 
-\section{Antériorité, contrôles et clôture}
-Les états à branches et les produits de facteurs de décohérence sont
-classiques dans les travaux de Blume-Kohout et Zurek\ \cite{darwinism}.
-La construction des POVM à marginale fixée relève de HJW\ \cite{hjw}.
-La géométrie des états accessibles et les contraintes d'ensembles sont
-étudiées par Jevtic et al.\ \cite{ellipsoid}. Les liens structurels entre
-steering, relèvement et espérances conditionnelles\ \cite{lifting}, ainsi
-que les liens avec les secteurs anyoniques\ \cite{anyons}, précèdent
-cette note. Ogata\ \cite{ogata} fournit la notion de dualité relative
-approchée utilisée dans la première partie de la piste.
+\section{Verification and scope}
+Exact checkers accompanying this note verify the partial-trace preparations,
+the binary witnesses, rational test cases, spatial tails, and spectra of
+finite parent Hamiltonians. These computations complement the analytic
+proofs. The bibliographic comparison supports the positioning in
+Section~2; it does not turn the model calculation into a general theorem on
+steering or topological phases.
 
-Une recherche ciblée le 17 novembre 2026, détaillée dans
-\texttt{piste51-cloture.md}, n'a pas identifié l'égalité minimax
-\eqref{spatialexact} sous cette définition exacte. Cela ne certifie aucune
-priorité : c'est une conséquence courte de structures connues.
-Le script \texttt{verify51.py} contrôle indépendamment les préparations par
-trace partielle, les témoins, des cas rationnels, les queues spatiales
-et le spectre de petits parents. Il ne remplace pas les preuves et ne
-certifie pas la nouveauté.
-
-\textbf{Verdict.} L'approfondissement demandé est terminé : l'obstruction
-mixte de la note initiale, la borne géométrique pure restreinte et le modèle
-exact ci-dessus donnent un dossier vérifiable. Il reste une note technique
-potentiellement utile, mais aucune découverte substantielle dont l'originalité
-soit établie. La question générale de dualité quantitative reste ouverte.
-
-\begin{thebibliography}{9}
-\bibitem{hjw} L. P. Hughston, R. Jozsa, W. K. Wootters,
-A complete classification of quantum ensembles having a given density matrix,
-Phys. Lett. A 183 (1993), 14--18.
+\clearpage
+\begingroup\small
+\begin{thebibliography}{99}
+\setlength{\itemsep}{2pt}
+\bibitem{HJW}
+L. P. Hughston, R. Jozsa and W. K. Wootters,
+\emph{A complete classification of quantum ensembles having a given density matrix},
+Phys. Lett. A \textbf{183}, 14--18 (1993);
 \href{https://doi.org/10.1016/0375-9601(93)90880-9}{doi:10.1016/0375-9601(93)90880-9}.
-\bibitem{ellipsoid} S. Jevtic, M. F. Pusey, D. Jennings, T. Rudolph,
-Quantum Steering Ellipsoids, Phys. Rev. Lett. 113, 020402 (2014).
+
+\bibitem{Wiseman}
+H. M. Wiseman, S. J. Jones and A. C. Doherty,
+\emph{Steering, Entanglement, Nonlocality, and the Einstein--Podolsky--Rosen Paradox},
+Phys. Rev. Lett. \textbf{98}, 140402 (2007);
+\href{https://doi.org/10.1103/PhysRevLett.98.140402}{doi:10.1103/PhysRevLett.98.140402};
+\href{https://arxiv.org/abs/quant-ph/0612147v3}{arXiv:quant-ph/0612147v3}.
+
+\bibitem{Uola}
+R. Uola, A. C. S. Costa, H. C. Nguyen and O. G\"uhne,
+\emph{Quantum steering}, Rev. Mod. Phys. \textbf{92}, 015001 (2020);
+\href{https://doi.org/10.1103/RevModPhys.92.015001}{doi:10.1103/RevModPhys.92.015001};
+\href{https://arxiv.org/abs/1903.06663v3}{arXiv:1903.06663v3}.
+
+\bibitem{Jevtic}
+S. Jevtic, M. F. Pusey, D. Jennings and T. Rudolph,
+\emph{Quantum Steering Ellipsoids}, Phys. Rev. Lett. \textbf{113}, 020402 (2014);
+\href{https://doi.org/10.1103/PhysRevLett.113.020402}{doi:10.1103/PhysRevLett.113.020402};
 \href{https://arxiv.org/abs/1303.4724}{arXiv:1303.4724}.
-\bibitem{darwinism} R. Blume-Kohout, W. H. Zurek,
-Quantum Darwinism: Entanglement, branches, and the emergent classicality
-of redundantly stored quantum information, Phys. Rev. A 73, 062310 (2006).
+
+\bibitem{BlumeKohout}
+R. Blume-Kohout and W. H. Zurek,
+\emph{Quantum Darwinism: Entanglement, branches, and the emergent classicality
+of redundantly stored quantum information},
+Phys. Rev. A \textbf{73}, 062310 (2006);
+\href{https://doi.org/10.1103/PhysRevA.73.062310}{doi:10.1103/PhysRevA.73.062310};
 \href{https://arxiv.org/abs/quant-ph/0505031}{arXiv:quant-ph/0505031}.
-\bibitem{lifting} L. van Luijk et al.,
+
+\bibitem{Zurek}
+W. H. Zurek, \emph{Quantum Darwinism}, Nat. Phys. \textbf{5}, 181--188 (2009);
+\href{https://doi.org/10.1038/nphys1202}{doi:10.1038/nphys1202};
+\href{https://arxiv.org/abs/0903.5082}{arXiv:0903.5082}.
+
+\bibitem{vanLuijk}
+L. van Luijk, A. Marrakchi, T. Osborne, A. Stottmeister and H. Wilming,
+\emph{Quantum steering is equivalent to state-preserving conditional expectations},
 \href{https://arxiv.org/abs/2608.10783}{arXiv:2608.10783} (2026).
-\bibitem{anyons} D. Wallick, H. Wilming,
+
+\bibitem{Wallick}
+D. Wallick and H. Wilming,
+\emph{A nonabelian anyon violates Haag duality},
 \href{https://arxiv.org/abs/2609.01267}{arXiv:2609.01267} (2026).
-\bibitem{ogata} Y. Ogata,
+
+\bibitem{Ogata}
+Y. Ogata, \emph{Mixed state topological order: operator algebraic approach},
 \href{https://arxiv.org/abs/2501.02398}{arXiv:2501.02398} (2025).
 \end{thebibliography}
+\endgroup
 \end{document}

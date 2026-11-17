@@ -23,3 +23,17 @@ Before starting any literature update, catalogue change or site change:
 - Write LaTeX backslashes with an editor tool, not through shell heredocs, which can alter escapes such as `\t` in `\times`.
 - Parallel work (subagents) must write its results to temporary files incrementally, question by question, so that nothing is lost if a run is stopped or a usage limit is hit. Never keep results only in the agent's final report.
 - Limit on parallel agents: at most 3 at a time when the session runs on Fable; at most 9 when it runs on Opus 5.5.
+
+## LaTeX research-note style
+
+- Write in idiomatic, native-level English unless the maintainer requests another language.
+- When the subject permits it, open with an Introduction that explains the setting, the mathematical question, why it matters, and the main result. Follow with Related work, Results, proofs or methods, limitations, and references as appropriate. Adapt this structure to the argument instead of creating empty or artificial sections.
+- Build a continuous argument. Organize the prose around claims, reasons, and consequences, not around the chronology of the search or an inventory of facts that happened to be found.
+- Prefer prose to itemized or numbered lists. Use enumeration only when the objects are genuinely discrete or the order is mathematically important.
+- Define every symbol before or at its first use. Spell out every acronym at first use, and avoid acronyms that save little space.
+- Give exact quantities whenever available and add a useful decimal approximation when it materially helps interpretation.
+- Begin paragraphs with a substantive claim or a clear logical connection. Avoid vague announcements such as "We now discuss" or "It is worth noting".
+- State the positive claim directly. Avoid rhetorical templates such as "it is not X, it is Y", unnecessary negations, and defensive asides.
+- Keep provenance and computational history concise. Include only information needed to assess, reproduce, or correctly qualify the mathematics; do not narrate the discovery process unless it is itself relevant.
+- Separate mathematical verification from bibliographic priority, and qualify originality claims precisely without repetitive disclaimers.
+- Provide a serious, sufficiently broad, and verified bibliography. Prefer primary sources; include the foundational literature, the closest antecedents, and the relevant current work rather than citing only a few convenient papers. Check every title, author list, venue, year, identifier, version, and link against the source itself. Each citation must support a specific statement in the text, and the Related work discussion must explain the relationship instead of merely listing references. Do not cite a work that has only been seen through a search snippet, secondary summary, or unverified metadata record.

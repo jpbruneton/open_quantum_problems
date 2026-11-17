@@ -264,7 +264,7 @@ a.back { text-decoration: none; }
 .submissions { overflow-x: auto; }
 
 /* Home: primary entry boxes ---------------------------------------- */
-.home-boxes { display: grid; grid-template-columns: minmax(0, 1.65fr) minmax(0, 1fr) minmax(0, 1fr); gap: 18px; margin: 0 0 24px; }
+.home-boxes { display: grid; grid-template-columns: minmax(0, 1.8fr) minmax(0, 1fr) minmax(0, 1fr); gap: 18px; margin: 0 0 24px; }
 .box {
   display: block; color: var(--text); text-decoration: none;
   background: var(--panel); border: 1px solid var(--border);
@@ -274,8 +274,15 @@ a.back { text-decoration: none; }
 .box h2 { margin: 0 0 6px; font-size: 26px; font-weight: 500; line-height: 1.15; }
 .box p { margin: 0 0 16px; color: var(--muted); font-size: 14.5px; }
 .box-current { background: #e6ebf1; border-color: #c9d2de; border-top: 3px solid var(--accent); }
-.box-current .stats { margin-bottom: 16px; background: #f4f6f9; border-color: #c9d2de; }
-.box-current .stat { border-right-color: #c9d2de; }
+.box-current .stats {
+  display: grid; grid-template-columns: repeat(5, minmax(0, 1fr));
+  width: 100%; margin-bottom: 0; background: #f4f6f9; border-color: #c9d2de;
+}
+.box-current .stat { min-width: 0; padding: 10px 9px 9px; border-right-color: #c9d2de; }
+.box-current .stat .n { font-size: 25px; }
+.box-current .stat .l { line-height: 1.25; }
+.sharp-cta-row { margin-top: 16px; padding-top: 16px; border-top: 1px solid #c9d2de; }
+.box-new, .box-science { display: flex; flex-direction: column; }
 .box-new {
   background: rgba(176, 58, 26, 0.06); border-color: rgba(176, 58, 26, 0.22); border-top: 3px solid var(--accent-2);
   transition: background .15s;
@@ -288,6 +295,7 @@ a.back { text-decoration: none; }
 }
 .box-science:hover { text-decoration: none; background: #dcebdd; }
 .box-science .box-kicker, .box-science h2, .box-science .box-cta { color: #315f42; }
+.box-new .box-cta, .box-science .box-cta { margin-top: auto; }
 .box-cta { font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase; font-weight: 500; }
 .review-note ul { margin: 8px 0 4px 18px; padding: 0; }
 .review-note li { margin: 4px 0; }
@@ -359,8 +367,28 @@ a.back { text-decoration: none; }
 .research-refs h4 { margin: 0 0 8px; }
 .detail .research-refs ul { list-style: none; margin: 0; padding: 0; }
 .detail .research-refs li { margin: 0; padding: 9px 0; border-top: 1px solid var(--border); }
-.research-refs li a { display: block; color: var(--text); font-weight: 600; }
+.research-refs li b { display: block; color: var(--text); font-weight: 600; }
 .research-refs li span { display: block; margin-top: 2px; color: var(--muted); font-size: 13px; }
+.research-refs li .research-ref-links { display: flex; gap: 8px; margin-top: 5px; }
+.research-ref-links a {
+  padding: 2px 7px; border: 1px solid #8fb29a; border-radius: 999px;
+  color: #315f42; font-family: var(--mono); font-size: 10px; font-weight: 700;
+  letter-spacing: .04em; text-transform: uppercase;
+}
+.research-ref-links a:hover { border-color: #3f7652; background: #e5f0e8; }
+.research-citation { margin-top: 24px; }
+.research-citation h4 { margin: 0 0 8px; }
+.citation-format { margin-top: 10px; }
+.citation-format > span {
+  display: block; margin-bottom: 4px;
+  font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--muted-2);
+}
+.citation-format pre {
+  margin: 0; padding: 12px 14px; overflow-x: auto;
+  border: 1px solid var(--border); background: var(--panel-2);
+  white-space: pre-wrap; overflow-wrap: anywhere; line-height: 1.5;
+}
+.citation-format code { font-family: var(--mono); font-size: 12px; color: var(--text); }
 .research-archive { margin-top: 34px; padding: 18px 20px; border: 1px solid var(--border); background: var(--panel); }
 .research-archive h3 { margin: 0 0 6px; font-size: 20px; }
 .research-archive p { margin: 0; color: var(--muted); }
@@ -402,6 +430,10 @@ a.back { text-decoration: none; }
 
   .box { padding: 18px 18px 20px; }
   .box h2 { font-size: 23px; }
+  .box-current .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .box-current .stat { border-bottom: 1px solid #c9d2de; }
+  .box-current .stat:nth-child(even) { border-right: none; }
+  .box-current .stat:last-child { grid-column: 1 / -1; border-bottom: none; }
 
   .research-note { padding: 22px 0 26px; }
   .research-note h3 { font-size: 22px; }
