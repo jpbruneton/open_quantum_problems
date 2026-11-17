@@ -1007,7 +1007,7 @@ function NewResearchView() {
           <h2>New Research</h2>
           <p className="intro">New Research turns promising connections across quantum theory into precise, independently checkable results. Each note combines a focused manuscript, reproducible certificates and the literature that marks its scientific frontier.</p>
           <div className="science-caution">
-            <b>Published research notes.</b> To the best of our knowledge, no direct antecedent for the specific results presented here was found in the literature. Each dossier records what is proved exactly, the scope of the prior-art search and what remains open to independent assessment.
+            <b>Published research notes.</b> The stated mathematical results are proved exactly and accompanied by reproducible checks. To the best of our knowledge, no direct antecedent for these specific results was found in the literature; each dossier records the scope of that separate prior-art search.
           </div>
           <div className="research-list">
             {NEW_RESEARCH_NOTES.map((note) => (
