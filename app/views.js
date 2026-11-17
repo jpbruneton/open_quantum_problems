@@ -1004,7 +1004,7 @@ function NewResearchView() {
         <div className="container detail new-science-page">
           <h2>New Research</h2>
           <div className="science-caution">
-            <b>Published research notes.</b> The stated mathematical results are proved exactly and accompanied by reproducible checks. To the best of our knowledge, no direct antecedent for these specific results was found in the literature; each dossier records the scope of that separate prior-art search.
+            <b>Research notes published here.</b> The stated mathematical results are proved exactly and accompanied by reproducible checks. To the best of our knowledge, no direct antecedent for these specific results was found in the literature.
           </div>
           <div className="research-list">
             {NEW_RESEARCH_NOTES.map((note) => (
