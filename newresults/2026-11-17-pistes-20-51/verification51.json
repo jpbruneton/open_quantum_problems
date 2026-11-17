@@ -153,10 +153,10 @@
       "gap": 0.9999999999999978
     }
   ],
-  "elapsed_seconds": 0.08176250010728836,
+  "elapsed_seconds": 0.09344069985672832,
   "sha256": {
     "verify51.py": "ed51cf8dd4c4fae77181fc72741f8788f2b50f9e5e070b2c831b3eda3a4a0841",
-    "steering-localization.tex": "f27cd4af745599884b02d50c7ed4819730cac52a2a6156692b954bc715735e17",
+    "steering-localization.tex": "fc5a4264fcaa3ddb09a9e7f413800aa699b7c351795d5685d8c1b4409992f277",
     "piste51-cloture.md": "f90545886da2ded042a471d0867f10595ce0031a6af3b4ad8e251e244a386fd6"
   },
   "limits": "Finite matrix checks, not a formal proof or a certification of novelty."
