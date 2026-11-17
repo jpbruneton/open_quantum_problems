@@ -160,7 +160,7 @@ function Home() {
       <Header />
       <section className="body">
         <div className="container">
-          <div className="two-boxes">
+          <div className="home-boxes">
             <div className="box box-current">
               <div className="box-kicker">This page</div>
               <h2>Known open problems</h2>
@@ -189,6 +189,12 @@ function Home() {
               <h2>New problems suggested by AI</h2>
               <p>{PROPOSAL_COUNT} candidate questions, mostly opened by the 2026 claimed resolutions, and {SECONDARY_PROPOSALS.length} secondary leads. Not counted; not yet catalogue entries.</p>
               <span className="box-cta">Browse the proposals <span aria-hidden="true">→</span></span>
+            </a>
+            <a className="box box-science" href="/new-research">
+              <div className="box-kicker">Research notes</div>
+              <h2>New Research</h2>
+              <p>Two research notes with downloadable manuscripts, exact certificates, reproducible checks and links to the relevant literature.</p>
+              <span className="box-cta">Read the research notes <span aria-hidden="true">→</span></span>
             </a>
           </div>
 
@@ -934,6 +940,83 @@ function SimilarProjectsView() {
   );
 }
 
+// ---------- new research ----------
+const NEW_RESEARCH_NOTES = [
+  {
+    title: "Kirkwood–Dirac positivity on Z₃ × Z₃",
+    meta: "Research note · exact certificate · 17 November 2026",
+    pdf: "/research/kd-z3x3.pdf",
+    dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/newresults/2026-11-17-kd-z3x3",
+    summary: "An explicit state for the position/Fourier bases of Z₃ × Z₃ has a strictly positive Kirkwood–Dirac matrix but lies outside the convex hull of the 54 pure KD-positive states.",
+    result: "The note gives a rational separating witness, an exact positivity proof and independent standard-library checkers. A targeted audit found no direct antecedent for this fixed Fourier pair; historical priority remains unconfirmed.",
+    refs: [
+      { label: "De Bièvre, Langrenez & Radchenko, Fourier positivity for finite abelian groups (2025)", url: "https://doi.org/10.1007/s00023-025-01614-7", note: "Classifies the pure KD-positive states used by the certificate and settles several cyclic cases." },
+      { label: "Langrenez, Arvidsson-Shukur & De Bièvre, Geometry of KD-positive states (2024)", url: "https://arxiv.org/abs/2306.00086", note: "Introduces the convex-geometric setting and earlier exotic mixed states." },
+      { label: "Thio et al., KD nonpositivity as a quantum-computing resource (2026)", url: "https://arxiv.org/abs/2506.08092v2", note: "Provides known qubit families of exotic states and related facet searches." },
+      { label: "Spriet, KD positivity on second-countable LCA groups (2025)", url: "https://arxiv.org/abs/2507.23628v3", note: "Places the finite-group classification question in its broader ordered-subgroup context." },
+    ],
+  },
+  {
+    title: "Exact steering defect and spatial localization",
+    meta: "Technical note · exact minimax model · 17 November 2026",
+    pdf: "/research/steering-localization.pdf",
+    dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/newresults/2026-11-17-pistes-20-51",
+    summary: "A two-branch model gives an exact steering defect and a computable spatial decay as an observer gains access to a growing part of the environment.",
+    result: "For inaccessible-branch overlap κ and Schmidt weights p, q, the defect is (1−κ)√pq. The note derives matching spatial bounds, an asymptotically sharp geometric rate and a gapped quasi-local parent model, while explaining why this does not solve the general cone-duality problem.",
+    refs: [
+      { label: "Hughston, Jozsa & Wootters, Classification of quantum ensembles (1993)", url: "https://doi.org/10.1016/0375-9601(93)90880-9", note: "Supplies the standard measurement construction for decompositions of a density matrix." },
+      { label: "Jevtic et al., Quantum steering ellipsoids (2014)", url: "https://arxiv.org/abs/1303.4724", note: "Develops the geometry of states accessible through steering." },
+      { label: "Blume-Kohout & Zurek, Quantum Darwinism (2006)", url: "https://arxiv.org/abs/quant-ph/0505031", note: "Provides the established branch-state and decoherence-factor framework." },
+      { label: "van Luijk et al., arXiv:2608.10783 (2026)", url: "https://arxiv.org/abs/2608.10783", note: "Establishes the structural relation between steering, lifting and state-preserving expectations." },
+      { label: "Wallick & Wilming, arXiv:2609.01267 (2026)", url: "https://arxiv.org/abs/2609.01267", note: "Treats prior steering and approximate-duality obstructions in non-abelian anyonic sectors." },
+    ],
+  },
+];
+
+function NewResearchView() {
+  return (
+    <>
+      <Header crumbs={[{ label: "New Research" }]} />
+      <section className="body">
+        <div className="container detail new-science-page">
+          <h2>New Research</h2>
+          <p className="intro">Research notes produced while exploring the catalogue. Each entry provides a manuscript, a concise statement of the result, reproducible source files and the literature needed to place it in context.</p>
+          <div className="science-caution">
+            <b>Open research notes.</b> These dossiers may be published before independent review. Each one states what was checked, what remains conditional and whether originality has been established; mathematical verification and bibliographic priority remain separate questions.
+          </div>
+          <div className="research-list">
+            {NEW_RESEARCH_NOTES.map((note) => (
+              <article className="research-note" key={note.dossier}>
+                <div className="science-meta">{note.meta}</div>
+                <h3>{note.title}</h3>
+                <p className="research-summary">{note.summary}</p>
+                <p className="research-result"><b>Main result.</b> {note.result}</p>
+                <div className="research-actions">
+                  <a className="research-pdf" href={note.pdf} target="_blank" rel="noreferrer">Read the PDF <span aria-hidden="true">↗</span></a>
+                  <a className="research-files" href={note.dossier} target="_blank" rel="noreferrer">Source, certificate and checks <span aria-hidden="true">↗</span></a>
+                </div>
+                <div className="research-refs">
+                  <h4>Relevant references</h4>
+                  <ul>
+                    {note.refs.map((ref) => (
+                      <li key={ref.url}><a href={ref.url} target="_blank" rel="noreferrer">{ref.label}</a><span>{ref.note}</span></li>
+                    ))}
+                  </ul>
+                </div>
+              </article>
+            ))}
+          </div>
+          <section className="research-archive">
+            <h3>Supporting research archive</h3>
+            <p>The <a href="https://github.com/jpbruneton/open_quantum_problems/tree/main/newresults/2026-11-17-revue-150" target="_blank" rel="noreferrer">review of 150 discovery leads</a> records the triage, prior-art checks and reproducible calculations behind this research programme. It is a working archive, not a standalone research note.</p>
+          </section>
+        </div>
+      </section>
+      <Footer />
+    </>
+  );
+}
+
 function Footer() {
   return (
     <footer className="site-footer">
@@ -964,4 +1047,4 @@ function truncate(s, n) {
   return cut + "…";
 }
 
-export { Home, CategoryView, SharpView, ImprovedView, ClaimedSolvedView, FilteredProblemsView, ProblemView, NewProblemsView, ProposalView, TrendsView, NotFound, SimilarProjectsView, truncate, ALL_PROPOSALS };
+export { Home, CategoryView, SharpView, ImprovedView, ClaimedSolvedView, FilteredProblemsView, ProblemView, NewProblemsView, ProposalView, TrendsView, NotFound, SimilarProjectsView, NewResearchView, truncate, ALL_PROPOSALS };

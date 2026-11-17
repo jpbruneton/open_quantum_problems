@@ -6,7 +6,7 @@ import { SITE_URL } from "./seo";
 export default function sitemap() {
   const lastModified = LITERATURE_UPDATE.date;
   const paths = [
-    "/", "/new-problems", "/sharp", "/improved", "/claimed-solved", "/lean-verified", "/similar",
+    "/", "/new-problems", "/new-research", "/sharp", "/improved", "/claimed-solved", "/lean-verified", "/similar",
     ...CATEGORIES.map((c) => `/c/${c.slug}`),
     ...ALL_PROBLEMS.map((p) => `/p/${p.id}`),
     ...PROPOSALS.flatMap((g) => g.items.map((it) => `/np/${it.key}`)),
