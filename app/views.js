@@ -960,7 +960,6 @@ const NEW_RESEARCH_NOTES = [
       { label: "Spriet, KD positivity on second-countable LCA groups (2026)", arxiv: "https://arxiv.org/abs/2507.23628v3", note: "Places the finite-group classification question in its broader ordered-subgroup context." },
     ],
     citation: {
-      plain: "Jean-Philippe Bruneton. “An exact KD-positive state outside the pure-state hull for the Fourier pair on Z₃ × Z₃.” Open Problems in Quantum Mechanics for AI Agents, 2026. https://openquantumproblems.com/research/kd-z3x3.pdf",
       bibtex: `@misc{bruneton2026kdz3x3,
   author = {Jean-Philippe Bruneton},
   title = {An exact KD-positive state outside the pure-state hull for the Fourier pair on Z3 x Z3},
@@ -987,7 +986,6 @@ const NEW_RESEARCH_NOTES = [
       { label: "Wallick & Wilming, A nonabelian anyon violates Haag duality (2026)", arxiv: "https://arxiv.org/abs/2609.01267", note: "Shows that a gapped anyonic sector can violate Haag duality and steering." },
     ],
     citation: {
-      plain: "Jean-Philippe Bruneton. “Exact ensemble-steering defect under partial environmental access.” Open Problems in Quantum Mechanics for AI Agents, 2026. https://openquantumproblems.com/research/steering-localization.pdf",
       bibtex: `@misc{bruneton2026steering,
   author = {Jean-Philippe Bruneton},
   title = {Exact ensemble-steering defect under partial environmental access},
@@ -1032,10 +1030,6 @@ function NewResearchView() {
                 </div>
                 <div className="research-citation">
                   <h4>To cite this work</h4>
-                  <div className="citation-format">
-                    <span>Plain text</span>
-                    <pre><code>{note.citation.plain}</code></pre>
-                  </div>
                   <div className="citation-format">
                     <span>BibTeX</span>
                     <pre><code>{note.citation.bibtex}</code></pre>
