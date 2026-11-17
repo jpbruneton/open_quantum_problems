@@ -4,11 +4,27 @@
 \usepackage{lmodern}
 \usepackage[margin=25mm]{geometry}
 \usepackage{amsmath,amssymb,amsthm}
+\usepackage{xcolor}
 \usepackage[hidelinks]{hyperref}
 \newtheorem{theorem}{Theorem}
 \newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{property}[theorem]{Property}
+\theoremstyle{plain}
 \newtheorem{remark}[theorem]{Remark}
+\newsavebox{\statementbox}
+\newenvironment{statementframe}{%
+  \par\addvspace{0.55\baselineskip}\noindent
+  \begingroup\setlength{\fboxrule}{0.3pt}\setlength{\fboxsep}{7pt}%
+  \begin{lrbox}{\statementbox}%
+  \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}%
+}{%
+  \end{minipage}\end{lrbox}%
+  {\color{black!45}\fbox{\color{black}\usebox{\statementbox}}}%
+  \endgroup\par\addvspace{0.45\baselineskip}%
+}
 \DeclareMathOperator{\Tr}{Tr}
 \DeclareMathOperator{\conv}{conv}
 \DeclareMathOperator{\dist}{dist}
@@ -100,6 +116,7 @@ their vectors, up to global phase, are
  \qquad H\leq G,\quad a\in G,\quad\gamma\in\widehat G.
 \end{equation}
 
+\begin{statementframe}
 \begin{theorem}\label{thm:example}
 For the position/Fourier pair of $G=\Z_3\times\Z_3$, there exist an explicitly
 specified density operator $\rho>0$ and a Hermitian operator $W$ such that
@@ -111,6 +128,7 @@ specified density operator $\rho>0$ and a Hermitian operator $W$ such that
 \end{align}
 In particular, $\hull_G\subsetneq\E_G$.
 \end{theorem}
+\end{statementframe}
 
 \section{Related work}
 The modern geometry of KD-positive mixed states was developed by Langrenez,
@@ -270,6 +288,7 @@ The following specialization of a channel-retraction argument provides
 quantitative consequences of the example. Its general norm-contraction
 mechanism is standard; the point to verify is the action on the KD hulls.
 
+\begin{statementframe}
 \begin{theorem}\label{thm:lift}
 Let $H\leq G$ and $K=G/H$, with $m=|H|$. Let $V:\ell^2(H)\to\ell^2(G)$
 be zero extension and let $J:\ell^2(K)\to\ell^2(G)$ be the isometry
@@ -281,6 +300,7 @@ operator $\omega$ on $\ell^2(T)$,
  \dist_1(E\omega E^*,\hull_G)=\dist_1(\omega,\hull_T).
 \end{equation}
 \end{theorem}
+\end{statementframe}
 
 \begin{proof}
 Equation \eqref{eq:KD} first gives the two formulas
@@ -326,21 +346,25 @@ by channel contraction on Hermitian operators. Taking infima finishes
 the proof.
 \end{proof}
 
+\begin{statementframe}
 \begin{corollary}
 Every finite abelian group with a $\Z_3^2$ subquotient admits a state in
 $\E_G$ at trace-norm distance at least $111/20000$ from $\hull_G$.
 In particular this holds for all noncyclic finite abelian $3$-groups.
 \end{corollary}
+\end{statementframe}
 \begin{proof}
 Compose the subgroup and quotient isometries in Theorem~\ref{thm:lift}.
 A noncyclic abelian $3$-group contains a subgroup $\Z_3^2$.
 \end{proof}
 
+\begin{statementframe}
 \begin{corollary}
 Among finite abelian groups of order $2^a3^b$, with $a,b\geq0$,
 one has $\E_G=\hull_G$ exactly for the trivial group and the cyclic groups
 whose order is a power of one prime.
 \end{corollary}
+\end{statementframe}
 \begin{proof}
 For a noncyclic group, a Sylow subgroup is noncyclic and contains
 $\Z_2^2$ or $\Z_3^2$. Use respectively the published example

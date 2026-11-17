@@ -3,10 +3,27 @@
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
 \usepackage{amsmath,amssymb,amsthm}
+\usepackage{xcolor}
 \usepackage[margin=27mm]{geometry}
 \usepackage[colorlinks=true,urlcolor=blue,citecolor=blue]{hyperref}
 \newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
 \newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{property}[theorem]{Property}
+\theoremstyle{plain}
+\newsavebox{\statementbox}
+\newenvironment{statementframe}{%
+  \par\addvspace{0.55\baselineskip}\noindent
+  \begingroup\setlength{\fboxrule}{0.3pt}\setlength{\fboxsep}{7pt}%
+  \begin{lrbox}{\statementbox}%
+  \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}%
+}{%
+  \end{minipage}\end{lrbox}%
+  {\color{black!45}\fbox{\color{black}\usebox{\statementbox}}}%
+  \endgroup\par\addvspace{0.45\baselineskip}%
+}
 \DeclareMathOperator{\Tr}{Tr}
 \newcommand{\ket}[1]{\lvert#1\rangle}
 \newcommand{\bra}[1]{\langle#1\rvert}
@@ -119,6 +136,7 @@ Compressing a physical POVM to this support gives a qubit POVM. Conversely,
 every logical POVM extends to the physical space by assigning the orthogonal
 complement to one outcome.
 
+\begin{statementframe}
 \begin{theorem}\label{exact}
 For the state in \eqref{state},
 \[
@@ -128,6 +146,7 @@ The supremum is attained by
 $\lambda_\pm=\ket{\phi_\pm}\bra{\phi_\pm}/2$, where
 $\ket{\phi_\pm}=\sqrt p\ket0\pm\sqrt q\ket1$.
 \end{theorem}
+\end{statementframe}
 \begin{proof}
 Set $D=\operatorname{diag}(\sqrt p,\sqrt q)$ and write
 $\lambda_i=\begin{pmatrix}x_i&z_i\\\bar z_i&y_i\end{pmatrix}$.
@@ -204,6 +223,7 @@ product $U=\prod_jU_j$ converges in norm in the quasi-local algebra because
 $\norm{U_j-I}=2\sin(\theta_j/2)\leq\theta_j$. Bob controls
 $B_R=B_0E_1\cdots E_R$, and the remaining qubits form $C_R$.
 
+\begin{statementframe}
 \begin{corollary}\label{spatial}
 For $V_R=\sum_{j>R}\theta_j^2$,
 \begin{align}
@@ -215,6 +235,7 @@ s_{B_R}&=\sqrt{pq}\left(1-\prod_{j>R}\cos\theta_j\right),
 Consequently, $s_{B_R}\sim\sqrt{pq}V_R/2$ whenever $V_R\to0$ through
 positive values. A vanishing tail gives zero defect exactly.
 \end{corollary}
+\end{statementframe}
 \begin{proof}
 The inaccessible branches have overlap $\prod_{j>R}\cos\theta_j$, so
 Theorem~\ref{exact} gives \eqref{spatialexact}. For a finite sequence,
