@@ -133,7 +133,7 @@ def validate(complete=False):
                      input_sha256=hashlib.sha256((ROOT/'input.json').read_bytes()).hexdigest(),
                      reviews_sha256=hashlib.sha256((ROOT/'reviews.json').read_bytes()).hexdigest(),
                      notes={n:hashlib.sha256((ROOT/n).read_bytes()).hexdigest() for n in notes},
-                     commits='Disabled by user; validation performs no Git operations.',
+                     commits='Publication authorized again by user; validation performs no Git operations.',
                      scope='Coverage and integrity only; does not certify mathematical truth or bibliographic priority.')
         write(ROOT/'validation.json',audit)
     print(f'Ledger valid: {len(reviews)}/150 entries; no automatic scientific verdicts.')

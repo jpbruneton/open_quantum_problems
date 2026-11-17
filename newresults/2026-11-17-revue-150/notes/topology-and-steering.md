@@ -1,5 +1,7 @@
 # Piste 51 : dualité de Haag approchée et steering
 
+**Clôture de l'approfondissement :** [modèle exact et verdict](../../2026-11-17-pistes-20-51/piste51-cloture.md), avec [PDF](../../2026-11-17-pistes-20-51/steering-localization.pdf). Le coût complet vaut (1-kappa)sqrt(pq) dans un modèle pur à deux branches ; son taux spatial possède une borne inférieure atteinte. Ce modèle ne résout pas la géométrie des cônes ni une phase topologique. Travail terminé, nouveauté substantielle non établie. Le diagnostic initial conservé ci-dessous est historique.
+
 **Suite du 17 novembre :** [approfondissement de la piste 51](../../2026-11-17-pistes-20-51/piste51.md). Le diagnostic initial ci-dessous est dépassé par trois résultats précis : un contre-exemple produit à la formulation mixte générale, une stabilité matricielle d'exposant 1/2 nécessaire, et une borne 2f(t) pour la localisation d'ensembles dans le cas pur. La dernière concerne des ensembles restreints après élargissement de la région de contrôle, pas deux régions fixes. Antécédent proche supplémentaire : [2609.01267](https://arxiv.org/abs/2609.01267). Originalité non établie.
 
 17 novembre 2026. Statut : question à préciser, aucun théorème nouveau.

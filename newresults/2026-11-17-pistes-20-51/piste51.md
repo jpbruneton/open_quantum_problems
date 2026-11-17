@@ -2,6 +2,8 @@
 
 17 novembre 2026. Les énoncés et preuves ci-dessous sont établis dans cette note. Leur priorité bibliographique n'est pas établie. Les ingrédients sont classiques ; la formulation géométrique précise est un candidat à examiner, pas une découverte annoncée.
 
+**Approfondissement terminé :** voir la [clôture](piste51-cloture.md) et le [PDF](steering-localization.pdf). Le modèle à deux branches donne exactement s_B=(1-kappa)sqrt(pq), puis un taux spatial avec borne inférieure atteinte. Il ne résout pas la question générale sur les cônes ; la nouveauté substantielle reste non établie.
+
 ## 1. Quantifier la bonne tâche
 
 Pour des algèbres de von Neumann commutantes A et B, un état normal omega et un ensemble fini (lambda_i) de fonctionnelles positives sur A avec somme omega_A, définissons
@@ -192,4 +194,4 @@ Les articles ont été consultés par sections ciblées ; aucune revue exhaustiv
 
 **Bilan :** la formulation générale mixte est réfutée ; une version géométrique pure est démontrée avec les restrictions explicites ci-dessus ; l'exposant 1/2 d'une autre stabilité, celle fondée sur le défaut d'espérance, est nécessaire dans un modèle fini. Aucun nouveau résultat sur une phase topologique particulière, aucun invariant nouveau, aucune équivalence quantitative générale de sous-facteurs n'est obtenu.
 
-La prochaine question substantielle est de construire, dans un modèle pur satisfaisant la dualité approchée, un ensemble dont le coût de localisation possède aussi une borne inférieure calculable, ou de prouver une réciproque quantitative sous des hypothèses adaptées. Cela demanderait un travail supplémentaire sur le modèle, pas un gros calcul d'embeddings.
+La question substantielle restante est une borne inférieure dans la géométrie précise des cônes, ou une réciproque quantitative sous des hypothèses adaptées. La [clôture](piste51-cloture.md) calcule un coût exact dans un modèle pur à accès partiel à l'environnement, avec des régions différentes. Elle ne prétend donc pas résoudre cette question générale.

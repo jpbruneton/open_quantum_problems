@@ -1,0 +1,253 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,urlcolor=blue,citecolor=blue]{hyperref}
+\newtheorem{theorem}{Proposition}
+\newtheorem{corollary}[theorem]{Corollaire}
+\newcommand{\tr}{\operatorname{Tr}}
+\newcommand{\ket}[1]{\lvert#1\rangle}
+\newcommand{\bra}[1]{\langle#1\rvert}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\title{Piste 51 : coût exact de préparation d'ensembles\\avec accès partiel à un environnement}
+\author{Note de recherche OQM --- dérivations assistées par IA}
+\date{17 novembre 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+Nous calculons un défaut de réalisation de toutes les décompositions d'une
+marginale de qubit dans un modèle pur à deux branches. Le résultat est
+$s_B=(1-\kappa)\sqrt{pq}$, où $\kappa$ est le recouvrement des branches
+inaccessibles. Une cible binaire et une mesure explicite atteignent le minimax.
+Dans une chaîne à rotations contrôlées sommables, cela donne des bornes
+supérieure et inférieure concordantes et un coût spatial exponentiel calculable.
+Il s'agit d'une application de modèles et d'outils connus : la priorité de cette
+formule n'est pas établie. Aucun problème ouvert sur une phase topologique
+ni aucune réciproque quantitative générale de dualité de Haag n'est résolu.
+\end{abstract}
+
+\section{Tâche et conventions}
+Pour un état $\rho_{AB}$, fixons $\rho_A$. Un ensemble cible est une famille
+finie $\lambda_i\geq0$ de somme $\rho_A$, avec probabilités incluses.
+Nous étudions
+\begin{equation}\label{def}
+s_B(\rho)=\sup_{\{\lambda_i\}:\,\sum_i\lambda_i=\rho_A}
+\inf_{\{E_i\}\text{ POVM sur }B}
+\frac12\sum_i\norm{\lambda_i-\tr_B[(I\otimes E_i)\rho_{AB}]}_1.
+\end{equation}
+Les cibles et mesures ont les mêmes étiquettes. Les mesures peuvent dépendre
+de la cible. On ne mesure ni la robustesse de steering contre les modèles à
+états cachés, ni une tâche à plusieurs réglages simultanés. Le ``complete
+steering'' de Jevtic et al.\ \cite{ellipsoid} porte sur les décompositions
+\emph{à l'intérieur de l'ellipsoïde accessible}; ici le supremum inclut
+toutes les décompositions de $\rho_A$, y compris hors de cet ellipsoïde.
+
+\section{Un minimax exactement résolu}
+Considérons l'état pur
+\begin{equation}\label{state}
+\ket\Psi=\sqrt p\ket0_A\ket{b_0}_B\ket u_C
++\sqrt q\ket1_A\ket{b_1}_B\ket v_C,
+\qquad p+q=1,\quad 0<q\leq p,
+\end{equation}
+où $b_0,b_1$ sont orthonormaux et $u,v$ unitaires. Le système $C$ est
+inaccessible. Absorbons une phase dans $b_1$ de sorte que
+$\langle v|u\rangle=\kappa\in[0,1]$. Sur le support logique de Bob,
+\[
+\rho_{AB}=p\ket{00}\bra{00}+q\ket{11}\bra{11}
++\kappa\sqrt{pq}(\ket{00}\bra{11}+\ket{11}\bra{00}).
+\]
+La compression d'une POVM physique sur ce support est une POVM de qubit ;
+réciproquement toute POVM logique s'étend en attribuant le complément
+orthogonal à une issue. Il n'y a donc pas de restriction cachée des mesures.
+
+\begin{theorem}\label{exact}
+Pour l'état \eqref{state},
+\[
+\boxed{s_B(\rho)=(1-\kappa)\sqrt{pq}.}
+\]
+Le supremum est atteint par les deux opérateurs
+$\lambda_\pm=\ket{\phi_\pm}\bra{\phi_\pm}/2$,
+où $\ket{\phi_\pm}=\sqrt p\ket0\pm\sqrt q\ket1$.
+\end{theorem}
+\begin{proof}
+Écrivons $D=\operatorname{diag}(\sqrt p,\sqrt q)$ et
+$\lambda_i=\begin{pmatrix}x_i&z_i\\\bar z_i&y_i\end{pmatrix}$.
+La POVM logique $E_i=(D^{-1}\lambda_iD^{-1})^T$ est positive et de somme $I$.
+Elle prépare
+\[
+\mu_i=\begin{pmatrix}x_i&\kappa z_i\\\kappa\bar z_i&y_i\end{pmatrix}.
+\]
+Ainsi son coût est $(1-\kappa)\sum_i|z_i|$. La positivité puis
+Cauchy--Schwarz donnent
+$\sum_i|z_i|\leq\sum_i\sqrt{x_i y_i}\leq\sqrt{pq}$.
+Cette construction fonctionne pour tout nombre fini d'issues.
+
+Pour la borne inverse, prenons la cible binaire annoncée. Tout effet
+$0\leq E\leq I$ satisfait $|E_{01}|\leq1/2$, car $\norm{2E-I}\leq1$.
+La différence $\Delta=\lambda_+-\mu_+$ a donc
+\[
+\norm\Delta_1\geq\tr(X\Delta)
+=\sqrt{pq}-2\kappa\sqrt{pq}\,\Re E_{10}
+\geq(1-\kappa)\sqrt{pq},
+\quad X=\begin{pmatrix}0&1\\1&0\end{pmatrix}.
+\]
+Les deux différences sont opposées puisque les sommes valent $\rho_A$.
+Le coût total est donc $\norm\Delta_1$. Les effets
+$E_\pm=(I\pm X)/2$ atteignent l'égalité.
+\end{proof}
+
+\section{Comparaison au défaut d'espérance conditionnelle}
+Définissons $\delta_*=\inf_\tau\frac12\norm{\rho_{AC}-\rho_A\otimes\tau}_1$.
+C'est le défaut optimal de préservation de l'état des espérances
+$E_\tau(X\otimes Y)=X\tr(\tau Y)\otimes I$ dans le cadre matriciel.
+Ici
+\[
+\rho_{AC}=p\ket0\bra0\otimes\ket u\bra u
++q\ket1\bra1\otimes\ket v\bra v.
+\]
+En notant $U=\ket u\bra u$, $V=\ket v\bra v$, on obtient
+\begin{align*}
+2\delta_\tau&=p\norm{U-\tau}_1+q\norm{V-\tau}_1\\
+&\geq q\norm{U-V}_1+(p-q)\norm{U-\tau}_1.
+\end{align*}
+L'égalité pour l'infimum est atteinte en $\tau=U$, d'où
+\begin{equation}\label{delta}
+\boxed{\delta_*=q\sqrt{1-\kappa^2},\qquad
+s_B=\sqrt{pq}\left(1-\sqrt{1-(\delta_*/q)^2}\right).}
+\end{equation}
+Si la fidélité de l'espérance est exigée, approcher $U$ par des états
+fidèles conserve cet infimum. La seconde égalité suppose $q$ fixé et
+$0\leq\delta_*\leq q$.
+
+Pour $\kappa=0$ et $q\to0$, on retrouve
+$s_B=\sqrt{\delta_*(1-\delta_*)}$ : aucune borne linéaire uniforme
+en $\delta_*$ n'est possible. À $q>0$ fixé et $\kappa\to1$, au contraire,
+\[
+s_B\sim\frac{\sqrt{pq}}{2q^2}\delta_*^2.
+\]
+Ces deux limites ne commutent pas dans une estimation uniforme : la borne
+générale en racine carrée peut être très pessimiste en régime de faible fuite.
+
+\section{Accès spatial croissant : taux avec borne inférieure}
+Plaçons un qubit $A$, un qubit drapeau $B_0$ et des qubits $E_j$, $j\geq1$.
+Partons de $(\sqrt p\ket{00}+\sqrt q\ket{11})_{AB_0}$ et de
+$\bigotimes_j\ket0_{E_j}$. Sur $A E_j$, appliquons
+\[
+U_j=\ket0\bra0_A\otimes I+\ket1\bra1_A\otimes R(\theta_j),
+\quad R(\theta)=\begin{pmatrix}\cos\theta&-\sin\theta\\
+\sin\theta&\cos\theta\end{pmatrix}.
+\]
+Supposons $0\leq\theta_j<\pi/2$ et $\sum_j\theta_j<\infty$.
+Les $U_j$ commutent et $U=\prod_jU_j$ converge en norme dans l'algèbre
+quasi-locale, puisque $\norm{U_j-I}=2\sin(\theta_j/2)\leq\theta_j$.
+L'état obtenu est pur. Bob contrôle $B_R=B_0E_1\cdots E_R$ ; le reste
+forme $C_R$. Le drapeau rend les deux branches accessibles orthogonales,
+même si les branches de $E_1\cdots E_R$ ne le sont pas.
+
+\begin{corollary}\label{spatial}
+Avec $V_R=\sum_{j>R}\theta_j^2$,
+\begin{align}
+s_{B_R}&=\sqrt{pq}\left(1-\prod_{j>R}\cos\theta_j\right),\label{spatialexact}\\
+\sqrt{pq}(1-e^{-V_R/2})&\leq s_{B_R}\leq\frac{\sqrt{pq}}2 V_R.\label{bounds}
+\end{align}
+En particulier $s_{B_R}\sim\sqrt{pq}V_R/2$ si $V_R\to0$ avec
+$V_R>0$. Si la queue est nulle, le défaut est exactement nul.
+\end{corollary}
+\begin{proof}
+Le recouvrement des branches inaccessibles vaut le produit dans
+\eqref{spatialexact}. Appliquer la proposition \ref{exact}.
+Pour une suite finie, $1-\prod a_j\leq\sum(1-a_j)$ pour
+$0\leq a_j\leq1$. Utiliser $1-\cos\theta\leq\theta^2/2$ et
+$\cos\theta\leq e^{-\theta^2/2}$ sur $[0,\pi/2)$, puis passer à la
+limite des produits. Le quotient des deux bornes tend vers un.
+\end{proof}
+
+Pour $\theta_j=\theta_0r^j$, $0<r<1$, $0<\theta_0<\pi/2$,
+\begin{equation}\label{rate}
+s_{B_R}\sim\frac{\sqrt{pq}\theta_0^2}{2(1-r^2)}r^{2(R+1)}.
+\end{equation}
+La troncature d'unitaire, elle, vérifie
+$\norm{U-U_{\leq R}}\leq\theta_0r^{R+1}/(1-r)$.
+La norme d'opérateur contrôle une erreur au premier ordre ; la tâche
+d'ensembles présente ici une décroissance du second ordre.
+Pour garantir $s_{B_R}\leq\varepsilon$, il suffit de choisir
+\[
+R\geq\max\left\{0,\left\lceil
+\frac{\log[\sqrt{pq}\theta_0^2/(2(1-r^2)\varepsilon)]}
+{2|\log r|}-1\right\rceil\right\}.
+\]
+La mesure optimale binaire agit sur le sous-espace engendré par les deux
+branches de $B_R$. Elle peut être réalisée en annulant sur Bob les rotations
+contrôlées par $B_0$, puis en mesurant $B_0$ dans la base $X$.
+
+\section{Un parent à gap, et ses limites physiques}
+Dans la représentation produit des qubits d'environnement, posons
+\[
+H_0=(I-\ket{\psi_p}\bra{\psi_p})_{AB_0}
++\sum_{j\geq1}\ket1\bra1_{E_j},
+\quad \ket{\psi_p}=\sqrt p\ket{00}+\sqrt q\ket{11}.
+\]
+C'est l'opérateur positif de nombre d'excitations augmenté du projecteur
+sur l'orthogonal de $\psi_p$ ; son état fondamental est unique et son gap
+vaut un. Définir $H=UH_0U^*$ sur $U\mathcal D(H_0)$ conserve exactement
+ce spectre et donne l'état précédent comme état fondamental.
+Chaque différence $U\ket1\bra1_{E_j}U^*-\ket1\bra1_{E_j}$ est supportée
+sur $\{A,E_j\}$ et sa norme est au plus $2\theta_j$. Le terme sur $AB_0$
+devient quasi-local, avec erreur de troncature au plus
+$2\sum_{j>R}\theta_j$. La perturbation totale est donc bornée, en norme,
+par $2+2\sum_j\theta_j$ ; la description du parent est bien définie.
+
+Ce modèle à interactions sommables est inhomogène, sans portée finie
+et sans ordre topologique établi. Il est relié par un unitaire quasi-local
+à un état produit par blocs. Surtout, la partition $A,B_R,C_R$ avec un
+qubit Alice fixe n'est pas la géométrie de cônes de la proposition 51.2
+de la note initiale. Les résultats ci-dessus \emph{ne démontrent pas}
+l'optimalité de sa borne $2f(t)$, ni une réciproque de dualité de Haag.
+
+\section{Antériorité, contrôles et clôture}
+Les états à branches et les produits de facteurs de décohérence sont
+classiques dans les travaux de Blume-Kohout et Zurek\ \cite{darwinism}.
+La construction des POVM à marginale fixée relève de HJW\ \cite{hjw}.
+La géométrie des états accessibles et les contraintes d'ensembles sont
+étudiées par Jevtic et al.\ \cite{ellipsoid}. Les liens structurels entre
+steering, relèvement et espérances conditionnelles\ \cite{lifting}, ainsi
+que les liens avec les secteurs anyoniques\ \cite{anyons}, précèdent
+cette note. Ogata\ \cite{ogata} fournit la notion de dualité relative
+approchée utilisée dans la première partie de la piste.
+
+Une recherche ciblée le 17 novembre 2026, détaillée dans
+\texttt{piste51-cloture.md}, n'a pas identifié l'égalité minimax
+\eqref{spatialexact} sous cette définition exacte. Cela ne certifie aucune
+priorité : c'est une conséquence courte de structures connues.
+Le script \texttt{verify51.py} contrôle indépendamment les préparations par
+trace partielle, les témoins, des cas rationnels, les queues spatiales
+et le spectre de petits parents. Il ne remplace pas les preuves et ne
+certifie pas la nouveauté.
+
+\textbf{Verdict.} L'approfondissement demandé est terminé : l'obstruction
+mixte de la note initiale, la borne géométrique pure restreinte et le modèle
+exact ci-dessus donnent un dossier vérifiable. Il reste une note technique
+potentiellement utile, mais aucune découverte substantielle dont l'originalité
+soit établie. La question générale de dualité quantitative reste ouverte.
+
+\begin{thebibliography}{9}
+\bibitem{hjw} L. P. Hughston, R. Jozsa, W. K. Wootters,
+A complete classification of quantum ensembles having a given density matrix,
+Phys. Lett. A 183 (1993), 14--18.
+\href{https://doi.org/10.1016/0375-9601(93)90880-9}{doi:10.1016/0375-9601(93)90880-9}.
+\bibitem{ellipsoid} S. Jevtic, M. F. Pusey, D. Jennings, T. Rudolph,
+Quantum Steering Ellipsoids, Phys. Rev. Lett. 113, 020402 (2014).
+\href{https://arxiv.org/abs/1303.4724}{arXiv:1303.4724}.
+\bibitem{darwinism} R. Blume-Kohout, W. H. Zurek,
+Quantum Darwinism: Entanglement, branches, and the emergent classicality
+of redundantly stored quantum information, Phys. Rev. A 73, 062310 (2006).
+\href{https://arxiv.org/abs/quant-ph/0505031}{arXiv:quant-ph/0505031}.
+\bibitem{lifting} L. van Luijk et al.,
+\href{https://arxiv.org/abs/2608.10783}{arXiv:2608.10783} (2026).
+\bibitem{anyons} D. Wallick, H. Wilming,
+\href{https://arxiv.org/abs/2609.01267}{arXiv:2609.01267} (2026).
+\bibitem{ogata} Y. Ogata,
+\href{https://arxiv.org/abs/2501.02398}{arXiv:2501.02398} (2025).
+\end{thebibliography}
+\end{document}

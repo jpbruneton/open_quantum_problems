@@ -525,14 +525,16 @@
     "rank": 51,
     "decision": "non-conclue",
     "reading": "targeted-fulltext",
-    "rationale": "Approfondissement demandé après la campagne : un état produit tracial satisfait la dualité relative exacte mais garde un défaut binaire 1/2, réfutant une implication mixte générale fondée seulement sur f. Pour un état pur, preuve d'une borne 2f(t) indépendante du nombre d'issues après élargissement de la région de contrôle et restriction d'ensembles définis sur l'algèbre initiale. Ce n'est pas le steering complet de deux régions fixes. En dimension finie, un exemple GHZ donne exactement s=sqrt(q(1-q)) pour un défaut optimal d'espérance q, excluant une stabilité linéaire générale. Originalité non établie ; 2609.01267 traite déjà steering et dualité approchée dans des secteurs anyoniques.",
-    "next_step": "Choisir un modèle pur et un ensemble cible avec borne inférieure de coût de localisation ; comparer la borne 2f(t) et les antécédents. Une réciproque quantitative sous hypothèses supplémentaires reste à établir.",
-    "note": "notes/topology-and-steering.md",
+    "rationale": "Approfondissement terminé. L'implication mixte générale est réfutée, et la version pure fournit une borne 2f(t) pour des ensembles restreints après élargissement de région. Un modèle supplémentaire à deux branches donne exactement s_B=(1-kappa)sqrt(pq), delta_*=q sqrt(1-kappa^2) et, pour un environnement à rotations sommables, un taux spatial avec bornes concordantes. Un parent unitairement conjugué possède le gap 1. La géométrie de ce modèle est distincte de celle des cônes : aucune optimalité de 2f(t), réciproque générale ou phase topologique nouvelle n'est établie. Les états à branches et la géométrie du steering sont connus ; priorité de la formule précise non établie. Le statut non-conclue concerne l'originalité scientifique, pas une exécution encore en attente.",
+    "next_step": "Dossier technique clos avec preuves, LaTeX, PDF et tests. Une évaluation bibliographique indépendante pourrait juger l'intérêt de la formulation minimax ; le problème général des cônes reste ouvert et ne fait pas l'objet d'une conclusion positive.",
+    "note": "../2026-11-17-pistes-20-51/piste51-cloture.md",
     "references": [
       "https://arxiv.org/html/2501.02398v1",
       "https://arxiv.org/html/2608.10783v1",
       "https://arxiv.org/html/2609.01267v1",
-      "https://arxiv.org/html/2602.14732v1"
+      "https://arxiv.org/html/2602.14732v1",
+      "https://arxiv.org/html/1303.4724v2",
+      "https://arxiv.org/html/quant-ph/0505031v2"
     ]
   },
   "52": {

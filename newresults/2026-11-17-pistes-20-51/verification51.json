@@ -1,0 +1,163 @@
+{
+  "status": "passed",
+  "seed": 510017,
+  "branches": {
+    "ensemble_cases": 240,
+    "random_binary_witness_cases": 400,
+    "maximal_entry_error": 1.1102230246251565e-16,
+    "expectation_competitors": 200
+  },
+  "rational": [
+    {
+      "q": "1/2",
+      "kappa": "0",
+      "s": "1/2",
+      "delta": "1/2"
+    },
+    {
+      "q": "1/2",
+      "kappa": "3/5",
+      "s": "1/5",
+      "delta": "2/5"
+    },
+    {
+      "q": "1/2",
+      "kappa": "4/5",
+      "s": "1/10",
+      "delta": "3/10"
+    },
+    {
+      "q": "1/2",
+      "kappa": "99/101",
+      "s": "1/101",
+      "delta": "10/101"
+    },
+    {
+      "q": "1/5",
+      "kappa": "0",
+      "s": "2/5",
+      "delta": "1/5"
+    },
+    {
+      "q": "1/5",
+      "kappa": "3/5",
+      "s": "4/25",
+      "delta": "4/25"
+    },
+    {
+      "q": "1/5",
+      "kappa": "4/5",
+      "s": "2/25",
+      "delta": "3/25"
+    },
+    {
+      "q": "1/5",
+      "kappa": "99/101",
+      "s": "4/505",
+      "delta": "4/101"
+    },
+    {
+      "q": "1/101",
+      "kappa": "0",
+      "s": "10/101",
+      "delta": "1/101"
+    },
+    {
+      "q": "1/101",
+      "kappa": "3/5",
+      "s": "4/101",
+      "delta": "4/505"
+    },
+    {
+      "q": "1/101",
+      "kappa": "4/5",
+      "s": "2/101",
+      "delta": "3/505"
+    },
+    {
+      "q": "1/101",
+      "kappa": "99/101",
+      "s": "20/10201",
+      "delta": "20/10201"
+    },
+    {
+      "q": "1/1000001",
+      "kappa": "0",
+      "s": "1000/1000001",
+      "delta": "1/1000001"
+    },
+    {
+      "q": "1/1000001",
+      "kappa": "3/5",
+      "s": "400/1000001",
+      "delta": "4/5000005"
+    },
+    {
+      "q": "1/1000001",
+      "kappa": "4/5",
+      "s": "200/1000001",
+      "delta": "3/5000005"
+    },
+    {
+      "q": "1/1000001",
+      "kappa": "99/101",
+      "s": "2000/101000101",
+      "delta": "20/101000101"
+    }
+  ],
+  "chain": {
+    "full_tensor_cases": 18,
+    "geometric_tail": [
+      {
+        "R": 0,
+        "steering_defect_p_half": 0.0380645025019383,
+        "ratio_to_asymptotic": 0.9752062624463529
+      },
+      {
+        "R": 2,
+        "steering_defect_p_half": 0.0035635020257684677,
+        "ratio_to_asymptotic": 0.9977059806471011
+      },
+      {
+        "R": 5,
+        "steering_defect_p_half": 9.886053649474254e-05,
+        "ratio_to_asymptotic": 0.9999364311661927
+      },
+      {
+        "R": 10,
+        "steering_defect_p_half": 2.5042483507964694e-07,
+        "ratio_to_asymptotic": 0.9999998389782596
+      },
+      {
+        "R": 20,
+        "steering_defect_p_half": 1.6066869130946667e-12,
+        "ratio_to_asymptotic": 0.999999999998967
+      }
+    ]
+  },
+  "parents": [
+    {
+      "environment_qubits": 1,
+      "gap": 0.9999999999999993
+    },
+    {
+      "environment_qubits": 2,
+      "gap": 0.9999999999999988
+    },
+    {
+      "environment_qubits": 3,
+      "gap": 0.9999999999999984
+    },
+    {
+      "environment_qubits": 4,
+      "gap": 0.9999999999999978
+    }
+  ],
+  "elapsed_seconds": 0.08176250010728836,
+  "sha256": {
+    "verify51.py": "ed51cf8dd4c4fae77181fc72741f8788f2b50f9e5e070b2c831b3eda3a4a0841",
+    "steering-localization.tex": "f27cd4af745599884b02d50c7ed4819730cac52a2a6156692b954bc715735e17",
+    "piste51-cloture.md": "f90545886da2ded042a471d0867f10595ce0031a6af3b4ad8e251e244a386fd6"
+  },
+  "limits": "Finite matrix checks, not a formal proof or a certification of novelty."
+}
