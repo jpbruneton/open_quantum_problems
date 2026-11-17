@@ -1,9 +1,0 @@
-{
-  "arithmetic": "exact fractions",
-  "bell_shift": "1/2",
-  "bell_robustness": "1",
-  "local_mixed_ancilla_shift": "1/4",
-  "local_reset_ancilla_shift": "1/2",
-  "proof": "Analytic optima in notes/eigenvalue-shift-versus-robustness.md",
-  "novelty": "not claimed; clarification of two inequivalent formulas"
-}

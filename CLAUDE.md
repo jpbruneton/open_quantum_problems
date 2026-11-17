@@ -27,6 +27,8 @@ Before starting any literature update, catalogue change or site change:
 ## LaTeX research-note style
 
 - Write in idiomatic, native-level English unless the maintainer requests another language.
+- Begin both the abstract and the Introduction with a short, self-contained context overview in plain language. Before introducing the paper's notation or technical formulation, tell the reader what objects are being studied, what the underlying phenomenon or obstruction is, and what concrete question the note answers. A reader from the broader field should be able to explain the problem after these opening sentences. Then state the main result, first in conceptual terms and then, when useful, in its exact technical form.
+- Use the simplest representative example when it materially clarifies the setting. The example must illuminate the general question rather than delay it, and the text must say explicitly which feature of the example the result measures or generalizes.
 - When the subject permits it, open with an Introduction that explains the setting, the mathematical question, why it matters, and the main result. Follow with Related work, Results, proofs or methods, limitations, and references as appropriate. Adapt this structure to the argument instead of creating empty or artificial sections.
 - Build a continuous argument. Organize the prose around claims, reasons, and consequences, not around the chronology of the search or an inventory of facts that happened to be found.
 - Prefer prose to itemized or numbered lists. Use enumeration only when the objects are genuinely discrete or the order is mathematically important.

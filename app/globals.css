@@ -365,6 +365,7 @@ a.back { text-decoration: none; }
 .research-actions .research-pdf:hover { background: #315f42; }
 .research-actions .research-files { color: #315f42; }
 .research-refs { margin-top: 18px; }
+.research-refs-label { margin: 0 0 5px; color: #111; font-size: 11px; font-weight: 700; }
 .detail .research-refs ul { list-style: none; margin: 0; padding: 0; }
 .detail .research-refs li { margin: 0; padding: 3px 0; color: var(--muted); font-size: 12px; line-height: 1.45; }
 .research-refs li .research-ref-label { color: var(--muted); }

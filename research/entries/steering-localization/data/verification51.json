@@ -153,10 +153,10 @@
       "gap": 0.9999999999999978
     }
   ],
-  "elapsed_seconds": 0.0923780002631247,
+  "elapsed_seconds": 0.10502199968323112,
   "sha256": {
     "checks/verify51.py": "8dfd2ce2391ebaf76559402d6b0ef6974f45aea2fb0a40704ada57b658b4f85a",
-    "manuscript/steering-localization.tex": "aa68718dae62ace47610d4f5dfeaeb712580975954752563a224c007762313b6"
+    "manuscript/steering-localization.tex": "84389713095c2209f5381f21917289fe1edea377748a0c05477b0080d58abe7a"
   },
   "limits": "Finite matrix checks, not a formal proof or a certification of novelty."
 }

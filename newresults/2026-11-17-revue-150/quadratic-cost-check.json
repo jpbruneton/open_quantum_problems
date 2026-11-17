@@ -1,8 +1,0 @@
-{
-  "arithmetic": "exact integer and Fraction matrices",
-  "cost_lower_bound": 4,
-  "separable_state_E_squared": 4,
-  "bell_state_E_squared": 6,
-  "contradiction": "Proposition 2(i) for equations (1)-(4) as written",
-  "novelty": "self-distance obstruction known; specific correction priority not established"
-}

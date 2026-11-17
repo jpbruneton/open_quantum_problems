@@ -39,7 +39,7 @@ La formule dépend de l'entrée : ce n'est pas un canal linéaire universel.
 
 **Preuve.** r tau-beta est positif et de trace r-1. La somme du numérateur a pour marginale r tau et pour trace r. La différence est la somme d'un terme positif de trace (r-1)/r et de -(r-1)omega/r. Enfin r-1=b lambda_max(beta-tau), au plus b||beta-tau||_2. Cela prouve tout, y compris le cas r=1 où la correction est nulle.
 
-Cette construction conserve les produits entre A et BY. Elle évite donc l'obstruction à la conjugaison globale déjà documentée dans [la première note](../2026-11-17-revue-150/notes/measurement-rounding.md). Elle n'est pas revendiquée optimale en dimension ou en constante.
+Cette construction conserve les produits entre A et BY. Elle évite donc l'obstruction à la conjugaison globale déjà documentée dans la note privée `oqmresearch/docs/research/bilans/2026-11-17-revue-150/notes/measurement-rounding.md`. Elle n'est pas revendiquée optimale en dimension ou en constante.
 
 ## 3. Un théorème conditionnel de conversion
 

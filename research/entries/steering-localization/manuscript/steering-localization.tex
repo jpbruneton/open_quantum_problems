@@ -40,42 +40,55 @@
 \begin{document}
 \maketitle
 \begin{abstract}
-We quantify how restricted access to one share of a tripartite pure state
-limits the preparation of ensemble decompositions of a qubit marginal. For a
-two-branch state with Schmidt weights $p$ and $q$ and inaccessible-branch
-overlap $\kappa$, the worst-case ensemble-preparation defect is exactly
-$(1-\kappa)\sqrt{pq}$. A binary target ensemble and a two-outcome measurement
-attain the minimax value. In a chain of summable controlled rotations, the
-same formula gives matching spatial bounds and an asymptotically sharp
-geometric decay rate. The state is also realized as the unique ground state
-of a gapped quasi-local parent Hamiltonian. These results solve the stated
-finite-dimensional model and do not establish a general quantitative
-converse to Haag duality.
+Quantum steering allows an observer to prepare different ensembles for a
+distant system by choosing a measurement on a system that purifies it. This
+control is complete when the observer holds the whole purifier, but it can
+fail when part of the purifying information has escaped into an inaccessible
+environment. We determine exactly how large this failure is for a qubit state
+with two branches. If the branches have weights $p$ and $q$ and their hidden
+environmental records have overlap $\kappa$, the worst-case
+ensemble-preparation error is $(1-\kappa)\sqrt{pq}$. Thus the lost steering
+power is precisely the branch coherence recorded outside the observer's
+reach. A binary target ensemble and a two-outcome measurement attain this
+minimax value. For a chain of summable controlled rotations, the same formula
+gives matching spatial bounds and an asymptotically sharp geometric decay
+rate. The state is also the unique ground state of a gapped quasi-local parent
+Hamiltonian. These results solve the stated finite-dimensional model and do
+not establish a general quantitative converse to Haag duality.
 \end{abstract}
 
 \section{Introduction}
-A mixed quantum state can be prepared as an ensemble of pure states in many
-different ways. Suppose that the system of interest is part of a larger pure
-state and that an observer can measure the purifying system. The measurement
-outcome can then select which member of an ensemble is prepared remotely. This
-is the elementary mechanism of quantum steering. The
-Hughston--Jozsa--Wootters theorem states that access to the full purifier makes
-every finite ensemble decomposition of the reduced state available in this
-way \cite{HJW}.
+Quantum steering is the ability to control remotely how a mixed state is
+prepared. For example, suppose that Alice and Bob share the Bell state
+$(\ket{00}+\ket{11})/\sqrt{2}$. If Bob measures his qubit in the computational
+basis, Alice receives either $\ket0$ or $\ket1$. If he measures in the
+diagonal basis, she instead receives either
+$\ket+=(\ket0+\ket1)/\sqrt{2}$ or
+$\ket-=(\ket0-\ket1)/\sqrt{2}$. Alice's average state is $I/2$ in both cases;
+Bob's choice changes its ensemble decomposition, not the average state itself.
 
-The situation changes when the purifier is split into an accessible part and
-a hidden environment. A measurement on the accessible part may no longer
-distinguish alternatives whose records remain in the hidden part, even though
-the global state is still pure. The natural quantitative question is then how
-closely the accessible measurement can reproduce the worst target ensemble.
+This freedom extends beyond the Bell pair. A mixed state admits many ensemble
+decompositions, and the Hughston--Jozsa--Wootters theorem states that an
+observer holding its entire purifying system can prepare every finite one by
+a suitable measurement \cite{HJW}. Perfect steering therefore relies on
+access to all the information that purifies the state.
 
-This note formulates that question as a minimax approximation problem. The
-target ranges over all finite decompositions of a fixed qubit marginal, while
-the available measurement acts only on the accessible subsystem. For a
-two-branch state, the minimax is evaluated exactly in terms of the Schmidt
-weights and the overlap of the inaccessible branches. These parameters have a
-direct spatial meaning when progressively larger portions of an environment
-become accessible.
+The question studied here is what remains possible when that access is only
+partial. We split the purifier into a subsystem $B$ that Bob can measure and a
+hidden environment $C$. If $C$ retains a record of the alternative branches,
+some ensembles of Alice's state can no longer be prepared from $B$. We measure
+the resulting loss by the largest, over all target ensembles, of the smallest
+trace-distance error achievable by a measurement on $B$.
+
+For a qubit state with two branches, this worst-case error has a simple exact
+meaning. Let $p$ and $q$ be the branch weights and let $\kappa$ be the overlap
+between their records in $C$. The steering defect is
+$(1-\kappa)\sqrt{pq}$: it vanishes when the hidden environment carries no
+branch information and grows with the coherence that has become inaccessible.
+The minimax formulation below makes this statement precise and identifies a
+binary target ensemble and a two-outcome measurement that attain the value.
+The same parameters acquire a spatial meaning when progressively larger
+portions of an environment become accessible.
 
 The exact formula has two consequences. First, it relates the steering defect
 to a natural trace-distance defect for state-preserving conditional
