@@ -1,0 +1,120 @@
+{
+  "status": "passed",
+  "seed": 20261118,
+  "two_states": [
+    {
+      "overlap": 0.9800665778412416,
+      "value": 0.5993346653975307
+    },
+    {
+      "overlap": 0.7648421872844885,
+      "value": 0.8221088436188455
+    },
+    {
+      "overlap": 0.3623577544766736,
+      "value": 0.9660195429836131
+    },
+    {
+      "overlap": 6.123233995736766e-17,
+      "value": 1.0
+    }
+  ],
+  "bell_states": {
+    "three": {
+      "k": 3,
+      "theta": 0.9553166181245092,
+      "regime": "plateau",
+      "separable": 0.6666666666666666,
+      "one_way": 0.6666666666666666
+    },
+    "four": {
+      "k": 4,
+      "theta": 1.0471975511965979,
+      "regime": "plateau",
+      "separable": 0.5,
+      "one_way": 0.5
+    }
+  },
+  "equal_overlap_triple": [
+    {
+      "overlap": 0.0,
+      "local": 0.6666666666666666,
+      "joint": 1.0
+    },
+    {
+      "overlap": 0.1,
+      "local": 0.6666666666666666,
+      "joint": 0.995213548685034
+    },
+    {
+      "overlap": 0.25,
+      "local": 0.6666666666666666,
+      "joint": 0.9714045207910316
+    },
+    {
+      "overlap": 0.4,
+      "local": 0.6599319657044238,
+      "joint": 0.9285468820183674
+    },
+    {
+      "overlap": 0.6,
+      "local": 0.6281444258093688,
+      "joint": 0.8391480675398604
+    },
+    {
+      "overlap": 0.8,
+      "local": 0.559956422826346,
+      "joint": 0.6982712244856878
+    },
+    {
+      "overlap": 0.95,
+      "local": 0.4530036623807668,
+      "joint": 0.5136838467969759
+    }
+  ],
+  "tetrahedral_family": [
+    {
+      "theta": 0.2,
+      "separable": 0.34735458557716264,
+      "one_way": 0.3419960806534167,
+      "three_state_value": 0.34199608065341636
+    },
+    {
+      "theta": 0.39269908169872414,
+      "separable": 0.42677669529663687,
+      "one_way": 0.41824780441080056,
+      "three_state_value": 0.4182478044108005
+    },
+    {
+      "theta": 0.6,
+      "separable": 0.48300977149180657,
+      "one_way": 0.4753236266977344,
+      "three_state_value": 0.47532362669773437
+    },
+    {
+      "theta": 0.7853981633974483,
+      "separable": 0.5,
+      "one_way": 0.49845199749997665,
+      "three_state_value": 0.4984519974999766
+    }
+  ],
+  "five_state_simplex": {
+    "one_bit_success": 0.4,
+    "largest_deviation_per_state": 3.885780586188048e-16,
+    "theta": 1.1502619915109313,
+    "published_local_value": 0.3936
+  },
+  "random_families": {
+    "families": 60,
+    "cap": 46,
+    "plateau": 14,
+    "largest_gap_up_to_three_states": 2.220446049250313e-16,
+    "families_with_gap_above_1e_6": 3,
+    "largest_gap": 0.00034600981790505747
+  },
+  "elapsed_seconds": 15.4,
+  "sha256": {
+    "checks/verify_discrimination.py": "09e22498df6ea92688b4a3bc8a8b12f4827954131da77d125db5a5ef70648661"
+  },
+  "limits": "Floating-point checks of explicit measurements and bound certificates on finite families; not a formal proof or a certification of novelty."
+}

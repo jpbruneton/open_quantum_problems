@@ -994,6 +994,31 @@ const NEW_RESEARCH_NOTES = [
 }`,
     },
   },
+  {
+    title: "Local discrimination of maximally entangled two-qubit states",
+    meta: "Research note · exact optimum · 18 November 2026",
+    pdf: "/research/local-discrimination-entangled-qubits.pdf",
+    dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/local-discrimination-entangled-qubits",
+    summary: "How well can two distant parties identify one of k maximally entangled two-qubit states? The optimum over separable measurements is (1 + sin 2Θ)/k, where Θ is the angular radius of the smallest cone containing the states, viewed as lines in R⁴; it saturates at 2/k for Θ ≥ π/4.",
+    result: "The note proves this formula, which is also the optimum over positive-partial-transpose measurements, and gives a separate exact formula for protocols with a single classical message. One message is optimal for every family of at most three states, which fixes the LOCC optimum there, and is strictly weaker for four states on a tetrahedron. For the five equiangular states of Wei, Cobucci and Tavakoli, one bit reaches exactly 2/5, above the 0.3936 at which their numerical one-way search had stopped.",
+    refs: [
+      { label: "Wei, Cobucci & Tavakoli, Nonprojective Bell-state measurements (2024)", doi: "https://doi.org/10.1103/PhysRevA.110.042206", arxiv: "https://arxiv.org/abs/2405.03872", note: "Constructs the five equiangular maximally entangled states and reports the numerical local values that the note settles." },
+      { label: "Virmani et al., Optimal local discrimination of two multipartite pure states (2001)", doi: "https://doi.org/10.1016/S0375-9601(01)00484-4", arxiv: "https://arxiv.org/abs/quant-ph/0102073", note: "Covers the case of two states, which the formula recovers." },
+      { label: "Bandyopadhyay et al., Limitations on separable measurements by convex optimization (2015)", doi: "https://doi.org/10.1109/TIT.2015.2417755", arxiv: "https://arxiv.org/abs/1408.6981", note: "Gives the separable optimum for three or four orthogonal Bell states, the orthogonal cases of the formula." },
+      { label: "Chitambar, Duan & Hsieh, When do LOCC suffice for two-qubit state discrimination? (2014)", doi: "https://doi.org/10.1109/TIT.2013.2295356", arxiv: "https://arxiv.org/abs/1308.1737", note: "Shows that almost all triples of pure two-qubit states cannot be discriminated optimally by LOCC." },
+      { label: "Nathanson, Three maximally entangled states can require two-way LOCC (2013)", doi: "https://doi.org/10.1103/PhysRevA.88.062316", arxiv: "https://arxiv.org/abs/1310.4220", note: "Exhibits a gap between one-way and two-way LOCC for orthogonal states in higher dimensions." },
+      { label: "Bandyopadhyay, Ghosh & Kar, LOCC distinguishability of unilaterally transformable quantum states (2011)", doi: "https://doi.org/10.1088/1367-2630/13/12/123013", arxiv: "https://arxiv.org/abs/1102.0841", note: "Relates one-way local discrimination to the discrimination of the generating unitaries." },
+      { label: "Bae & Hwang, Minimum-error discrimination of qubit states (2013)", doi: "https://doi.org/10.1103/PhysRevA.87.012334", arxiv: "https://arxiv.org/abs/1204.2313", note: "Supplies the Bloch-sphere geometry used for the receiver's measurement." },
+    ],
+    citation: {
+      bibtex: `@misc{bruneton2026localdiscrimination,
+  author = {Jean-Philippe Bruneton},
+  title = {Local discrimination of maximally entangled two-qubit states: the separable optimum and when one message attains it},
+  year = {2026},
+  url = {https://openquantumproblems.com/research/local-discrimination-entangled-qubits.pdf}
+}`,
+    },
+  },
 ];
 
 function NewResearchView() {

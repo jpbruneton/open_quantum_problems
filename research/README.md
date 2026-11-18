@@ -15,5 +15,6 @@ The dated `newresults/` tree is the working archive for searches, intermediate c
 
 - [An exact KD-positive state outside the pure-state hull for the Fourier pair on Z3 x Z3](entries/kd-z3x3/README.md)
 - [Exact ensemble-steering defect under partial environmental access](entries/steering-localization/README.md)
+- [Local discrimination of maximally entangled two-qubit states](entries/local-discrimination-entangled-qubits/README.md)
 
 Use [ENTRY_TEMPLATE.md](ENTRY_TEMPLATE.md) for every later public note.
