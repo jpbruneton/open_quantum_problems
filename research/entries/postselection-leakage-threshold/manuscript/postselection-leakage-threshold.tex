@@ -1,0 +1,430 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{plain}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\rank}{rank}
+\newcommand{\ket}[1]{\lvert#1\rangle}
+\newcommand{\bra}[1]{\langle#1\rvert}
+\newcommand{\braket}[2]{\langle#1\vert#2\rangle}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\one}{\mathbf{1}}
+\newcommand{\etac}{\eta_{\mathrm{crit}}}
+\setlength{\emergencystretch}{2em}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em plus 0.1em minus 0.1em}
+\title{How much leakage makes the Margenau--Hill state\\
+of a post-selected system positive}
+\author{Fable \& Astra\\[0.35em]
+\normalsize Research led by Jean-Philippe Bruneton\\[-0.1em]
+\small Universit\'e Paris Cit\'e, France}
+\date{19 November 2026}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+A quantum system observed between a preparation and a later post-selection
+is described by two objects: the state $\rho$ inferred from the past and the
+effect $E$ of the future outcome. A natural candidate for its state at the
+intermediate time is the Margenau--Hill combination $(E\rho+\rho E)/2$,
+normalized by the outcome probability, but this operator can have negative
+eigenvalues. Kam and Wong showed that this happens whenever the post-selection
+forbids a subspace that is not invariant under $\rho$. Real post-selections
+are imperfect: a forbidden subspace leaks with some small probability $\eta$.
+We determine exactly how much leakage restores positivity. For the effect
+$E=P+\eta(\one-P)$, where $P$ is an orthogonal projector, write
+$\rho$ in blocks $A$, $C$, $D$ relative to $P$ and let
+$\kappa=\norm{A^{+1/2}CD^{+1/2}}$ be the largest normalized coherence between
+the two blocks, with Moore--Penrose inverses. Then $\kappa\le1$, and the
+Margenau--Hill operator is positive semidefinite if and only if
+\[
+\eta\ \ge\ \etac=\frac{1-\sqrt{1-\kappa^2}}{1+\sqrt{1-\kappa^2}}
+=\frac{\kappa^2}{4}+\frac{\kappa^4}{8}+O(\kappa^6),
+\]
+in any finite dimension. Below the threshold we give an explicit vector on
+which the operator is negative. The threshold is below one exactly when
+$\rank\rho=\rank A+\rank D$, so for a pure state with weight in both blocks no
+leakage short of $\eta=1$ suffices. For a qubit with Bloch vector
+$(4/5,0,0)$ and $P=\ket0\bra0$, the threshold is exactly $1/4$.
+\end{abstract}
+
+\section{Introduction}
+A system that is prepared, left to evolve, and then post-selected on a later
+measurement outcome carries information from both ends of the time interval.
+Aharonov, Bergmann and Lebowitz gave the time-symmetric description of such
+pre- and post-selected ensembles \cite{ABL1964}, and quantum state smoothing
+\cite{Guevara2015} asks for the best estimate of the state at an intermediate
+time given both a past and a future measurement record. In the simplest
+description the past is summarized by a density matrix $\rho$, the filtered
+state, and the future by an effect $0\le E\le\one$, the retrofiltered effect.
+Combining the two into a single operator that behaves like a state is not
+straightforward, because $\rho$ and $E$ need not commute.
+
+Kam and Wong \cite{KamWong2026} study the family of orderings
+$\Phi_s(E,\rho)=\tfrac12\bigl(\rho^sE\rho^{1-s}+\rho^{1-s}E\rho^s\bigr)$,
+$s\in[0,1]$. All members have trace $\Tr(E\rho)$, the probability of the
+post-selected outcome. The symmetric member $\rho^{1/2}E\rho^{1/2}$ is always
+positive. The end point
+\[
+\Phi_0(E,\rho)=\tfrac12(E\rho+\rho E)
+\]
+is the Margenau--Hill ordering \cite{MargenauHill1961}, and it can fail to be
+positive. Their Theorem~2 states that if $\Phi_0(E,\rho)\ge0$ then $\ker E$ is
+invariant under $\rho$; equivalently, a forbidden subspace $\ker E$ that is
+not $\rho$-invariant gives $\Phi_0$ a negative eigenvalue.
+
+A post-selection that forbids a subspace exactly is an idealization. In
+practice the forbidden subspace leaks: states in it pass the post-selection
+with some small probability $\eta$. The simplest model is the effect
+\[
+E_\eta=P+\eta(\one-P),\qquad 0\le\eta\le1,
+\]
+where $P$ is an orthogonal projector; for $\eta=0$ the forbidden subspace is
+$\ran(\one-P)$, and for $\eta=1$ there is no post-selection at all and
+$\Phi_0=\rho$. This note answers the question: what is the smallest leakage
+$\eta$ for which the Margenau--Hill operator $\Phi_0(E_\eta,\rho)$ is positive?
+Since dividing by $\Tr(E_\eta\rho)>0$ does not affect positivity, the same
+threshold governs the normalized Margenau--Hill state.
+
+The answer depends on $\rho$ through a single number. Writing $\rho$ in blocks
+$A=P\rho P$, $C=P\rho(\one-P)$, $D=(\one-P)\rho(\one-P)$, the quantity
+$\kappa=\norm{A^{+1/2}CD^{+1/2}}$ measures the largest coherence between the
+kept and the leaking subspaces, relative to their populations. We show that
+$\kappa\le1$ and that $\Phi_0(E_\eta,\rho)\ge0$ exactly when
+$4\eta/(1+\eta)^2\ge\kappa^2$, that is, when $\eta$ exceeds
+$\etac=(1-\sqrt{1-\kappa^2})/(1+\sqrt{1-\kappa^2})$. Weak coherence needs
+leakage of order $\kappa^2/4$; maximal coherence $\kappa=1$, which occurs for
+every pure state with weight in both subspaces, cannot be compensated by any
+leakage below one.
+
+A single qubit already displays the whole phenomenon. Take
+$\rho=\tfrac12(\one+\tfrac45X)$ and $P=\ket0\bra0$. The Margenau--Hill
+operator is
+$\Phi_0=\tfrac12\left(\begin{smallmatrix}1&\frac{2}{5}(1+\eta)\\[0.2em]
+\frac25(1+\eta)&\eta\end{smallmatrix}\right)$, with determinant
+$-(4\eta-1)(\eta-4)/100$. It is negative for $\eta<1/4$ and positive for
+$1/4\le\eta\le1$, and indeed $\kappa=4/5$ gives $\etac=1/4$. The general
+result replaces the off-diagonal entry by the matrix $A^{+1/2}CD^{+1/2}$ and its
+modulus by the operator norm.
+
+\section{Related work}\label{sec:related}
+The time-symmetric treatment of pre- and post-selected systems goes back to
+Aharonov, Bergmann and Lebowitz \cite{ABL1964}. Margenau and Hill
+\cite{MargenauHill1961} studied correlations between measurements with the
+symmetrized operator ordering that gives $\Phi_0$ its name. Guevara and Wiseman
+\cite{Guevara2015} formulated quantum state smoothing, the estimation of a
+quantum state from past and future records, which is the setting in which
+operators built from a filtered state $\rho$ and a retrofiltered effect $E$
+arise.
+
+The question answered here is a quantitative refinement of the work of Kam and
+Wong \cite{KamWong2026}. Their Theorem~1 shows, for full-rank $\rho$ and an
+effect with nontrivial kernel, that an open interval of orderings $\Phi_s$
+around $s=1/2$ remains positive if and only if $\ker E$ is $\rho$-invariant, and
+their Theorem~2 shows that the Margenau--Hill member $\Phi_0$ cannot be positive
+when $\ker E$ is not $\rho$-invariant. Both statements are qualitative and
+concern effects with a kernel. A leaking effect $E_\eta$ with $\eta>0$ has
+trivial kernel, so their theorems do not apply to it, and the present note
+measures how far the obstruction persists. At $\eta=0$ our criterion reduces
+to $C=0$, which is precisely the invariance of $\ker E_0=\ran(\one-P)$ under
+$\rho$; for this family of effects it thus recovers their Theorem~2 together
+with its converse (Remark~\ref{rem:eta0}).
+
+The proofs use the Schur-complement characterization of positive semidefinite
+block matrices with a possibly singular diagonal block. It is classical; we
+include the short proof in Lemma~\ref{lem:schur} so that the note is
+self-contained.
+
+\section{Setting}\label{sec:setting}
+Let $\mathcal H$ be a finite-dimensional Hilbert space, $\rho\ge0$ a density
+matrix on $\mathcal H$, and $P$ an orthogonal projector with $0\ne P\ne\one$.
+Relative to the decomposition $\mathcal H=\ran P\oplus\ran(\one-P)$ write
+\[
+\rho=\begin{pmatrix}A&C\\ C^\dagger&D\end{pmatrix},\qquad
+E_\eta=\begin{pmatrix}\one&0\\0&\eta\one\end{pmatrix}.
+\]
+A direct multiplication gives
+\begin{equation}\label{eq:image}
+\Phi(\eta):=\Phi_0(E_\eta,\rho)=\tfrac12(E_\eta\rho+\rho E_\eta)
+=\begin{pmatrix}A&\beta C\\ \beta C^\dagger&\eta D\end{pmatrix},
+\qquad\beta=\frac{1+\eta}{2}.
+\end{equation}
+For a positive semidefinite matrix $M$ we write $M^+$ for its Moore--Penrose
+inverse, $M^{+1/2}=(M^{1/2})^+$, and $\Pi_M=MM^+$ for the orthogonal projector
+onto $\ran M$. Define
+\[
+K=A^{+1/2}\,C\,D^{+1/2},\qquad \kappa=\norm{K},
+\]
+the operator norm. When $A$ and $D$ are invertible, $K=A^{-1/2}CD^{-1/2}$ and
+$\kappa$ is the largest singular value of the coherence block after each
+diagonal block has been normalized to the identity.
+
+\begin{lemma}[Schur complement]\label{lem:schur}
+Let $M=\left(\begin{smallmatrix}A&B\\B^\dagger&F\end{smallmatrix}\right)$ be
+Hermitian with $A\ge0$. Then $M\ge0$ if and only if $\ran B\subseteq\ran A$
+and $F-B^\dagger A^+B\ge0$. In that case
+\begin{equation}\label{eq:congruence}
+M=L^\dagger\begin{pmatrix}A&0\\0&F-B^\dagger A^+B\end{pmatrix}L,\qquad
+L=\begin{pmatrix}\one&A^+B\\0&\one\end{pmatrix},
+\end{equation}
+and for every vector $v$ the vector $u=-A^+Bv$ satisfies
+$\langle(u,v),M(u,v)\rangle=\langle v,(F-B^\dagger A^+B)v\rangle$.
+\end{lemma}
+
+\begin{proof}
+Suppose $M\ge0$ and let $x\in\ker A$. For a real $t$ and any $v$,
+$\langle(tx,v),M(tx,v)\rangle=2t\,\mathrm{Re}\langle x,Bv\rangle+\langle v,Fv\rangle\ge0$,
+which forces $\langle x,Bv\rangle=0$. Hence $\ker A\subseteq\ker B^\dagger$, that
+is, $\ran B\subseteq\ran A$. Whenever this inclusion holds, $AA^+B=B$, and
+expanding $L^\dagger\,\mathrm{diag}(A,F-B^\dagger A^+B)\,L$ gives back $M$, which
+is \eqref{eq:congruence}. Since $L$ is invertible, $M\ge0$ is then equivalent
+to $F-B^\dagger A^+B\ge0$. The last identity follows by expanding
+$\langle u,Au\rangle+2\,\mathrm{Re}\langle u,Bv\rangle+\langle v,Fv\rangle$ with
+$u=-A^+Bv$ and $A^+AA^+=A^+$.
+\end{proof}
+
+\begin{lemma}[Factorization of the coherence]\label{lem:factor}
+If $\rho\ge0$ then $\ran C\subseteq\ran A$ and $\ran C^\dagger\subseteq\ran D$.
+Consequently $C=A^{1/2}KD^{1/2}$, $C^\dagger A^+C=D^{1/2}K^\dagger KD^{1/2}$, and
+$K^\dagger K=\Pi_DK^\dagger K\Pi_D$.
+\end{lemma}
+
+\begin{proof}
+The first inclusion is Lemma~\ref{lem:schur} applied to $\rho$; the second is
+the same lemma applied to $\rho$ with the two blocks interchanged. The
+inclusions give $\Pi_AC=C=C\Pi_D$. Since $A^{1/2}A^{+1/2}=\Pi_A$ and
+$D^{+1/2}D^{1/2}=\Pi_D$, we get $A^{1/2}KD^{1/2}=\Pi_AC\Pi_D=C$. Then
+$C^\dagger A^+C=D^{1/2}K^\dagger A^{1/2}A^+A^{1/2}KD^{1/2}=D^{1/2}K^\dagger\Pi_AKD^{1/2}$,
+and $\Pi_AK=K$ because $\ran A^{+1/2}=\ran A$. Finally $K\Pi_D=K$ because
+$D^{+1/2}\Pi_D=D^{+1/2}$, which gives the last identity.
+\end{proof}
+
+\section{The threshold}\label{sec:main}
+\begin{theorem}\label{thm:main}
+Let $\rho\ge0$, $P$ and $\kappa$ be as above. Then $\kappa\le1$, and for
+$0\le\eta\le1$ the Margenau--Hill operator $\Phi(\eta)$ of \eqref{eq:image} is
+positive semidefinite if and only if
+\begin{equation}\label{eq:criterion}
+\frac{4\eta}{(1+\eta)^2}\ \ge\ \kappa^2,
+\end{equation}
+that is, if and only if $\eta\ge\etac$ with
+\[
+\etac=\frac{1-\sqrt{1-\kappa^2}}{1+\sqrt{1-\kappa^2}}.
+\]
+\end{theorem}
+
+\begin{proof}
+If $D=0$ then $C=0$ by Lemma~\ref{lem:factor}, so $\kappa=0$, $\etac=0$, and
+$\Phi(\eta)=\mathrm{diag}(A,0)\ge0$ for every $\eta$; the statement holds.
+Assume $D\ne0$. Apply Lemma~\ref{lem:schur} to $\Phi(\eta)$ with $B=\beta C$ and
+$F=\eta D$. The range condition $\ran(\beta C)\subseteq\ran A$ holds by
+Lemma~\ref{lem:factor}, so $\Phi(\eta)\ge0$ if and only if
+\[
+S_\eta:=\eta D-\beta^2C^\dagger A^+C
+=D^{1/2}\bigl(\eta\,\Pi_D-\beta^2K^\dagger K\bigr)D^{1/2}\ \ge\ 0,
+\]
+where the factorization uses Lemma~\ref{lem:factor} and $D^{1/2}\Pi_DD^{1/2}=D$.
+The operator $\eta\Pi_D-\beta^2K^\dagger K$ is supported on $\ran D$, on which
+$D^{1/2}$ is invertible, so $S_\eta\ge0$ if and only if
+$\eta\Pi_D\ge\beta^2K^\dagger K$. As $K^\dagger K$ is supported on $\ran D$ and
+its largest eigenvalue is $\kappa^2$, this holds if and only if
+$\eta\ge\beta^2\kappa^2$, which is \eqref{eq:criterion}.
+
+For $\eta=1$ we have $\Phi(1)=\rho\ge0$, and \eqref{eq:criterion} gives
+$\kappa\le1$. The function $f(\eta)=4\eta/(1+\eta)^2$ is continuous and strictly
+increasing on $[0,1]$, since $f'(\eta)=4(1-\eta)/(1+\eta)^3>0$ there, with
+$f(0)=0$ and $f(1)=1$. The set of $\eta\in[0,1]$ satisfying
+\eqref{eq:criterion} is therefore an interval $[\eta_*,1]$, where $\eta_*$ is
+the unique solution of $f(\eta)=\kappa^2$ in $[0,1]$. Writing
+$\sigma=\sqrt{1-\kappa^2}$, the equation $\kappa^2(1+\eta)^2=4\eta$ has the two
+roots $(1-\sigma)/(1+\sigma)$ and $(1+\sigma)/(1-\sigma)$, whose product is
+$1$; the first lies in $[0,1]$, so $\eta_*=\etac$. (For $\kappa=0$ the
+criterion holds for every $\eta$ and $\etac=0$.)
+\end{proof}
+
+Three features of the threshold are immediate. It depends on $\rho$ and $P$
+only through $\kappa$, and not on the dimension. It increases from $0$ at
+$\kappa=0$ to $1$ at $\kappa=1$, with expansion
+\[
+\etac=\frac{\kappa^2}{4}+\frac{\kappa^4}{8}+\frac{5\kappa^6}{64}+O(\kappa^8),
+\]
+so weak coherence is compensated by leakage of order $\kappa^2/4$. And the
+positive set is the whole interval $[\etac,1]$: more leakage never destroys
+positivity once it has been reached.
+
+\begin{remark}\label{rem:eta0}
+At $\eta=0$ the criterion reads $\kappa=0$, which by Lemma~\ref{lem:factor} is
+equivalent to $C=0$, that is, to the invariance of $\ker E_0=\ran(\one-P)$ under
+$\rho$. For this family of effects the theorem therefore contains Theorem~2 of
+\cite{KamWong2026} and its converse: $\Phi_0(E_0,\rho)\ge0$ if and only if
+$\ker E_0$ is $\rho$-invariant. The note does not require $\rho$ to have full
+rank.
+\end{remark}
+
+\section{The negative direction below threshold}\label{sec:negative}
+The proof of Theorem~\ref{thm:main} also produces an explicit vector on which
+$\Phi(\eta)$ is negative when $\eta<\etac$. Assume $\kappa>0$, and let $y$ be a
+unit right singular vector of $K$ for its largest singular value, so that
+$\norm{Ky}=\kappa$. Since $y\in\ran K^\dagger\subseteq\ran D$, the vector
+$v=D^{+1/2}y$ satisfies $\langle v,Dv\rangle=\norm{\Pi_Dy}^2=1$. Put
+\[
+u=-\beta A^+Cv,\qquad w=(u,v)\in\ran P\oplus\ran(\one-P).
+\]
+
+\begin{proposition}\label{prop:witness}
+For every $\eta\in[0,1]$,
+\[
+\langle w,\Phi(\eta)w\rangle=\eta-\frac{(1+\eta)^2}{4}\,\kappa^2
+=\frac{(1+\eta)^2}{4}\bigl(f(\eta)-\kappa^2\bigr),
+\]
+which is negative exactly when $\eta<\etac$.
+\end{proposition}
+
+\begin{proof}
+By the last statement of Lemma~\ref{lem:schur} with $B=\beta C$ and $F=\eta D$,
+$\langle w,\Phi(\eta)w\rangle=\langle v,S_\eta v\rangle$. With the
+factorization of $S_\eta$,
+$\langle v,S_\eta v\rangle=\langle y,\Pi_DD^{1/2}D^{+1/2}(\eta\Pi_D-\beta^2K^\dagger K)D^{+1/2}D^{1/2}\Pi_Dy\rangle
+=\eta\norm{y}^2-\beta^2\norm{Ky}^2=\eta-\beta^2\kappa^2$, because
+$D^{1/2}D^{+1/2}=\Pi_D$ and $\Pi_Dy=y$. The sign statement is
+Theorem~\ref{thm:main}.
+\end{proof}
+
+The witness has a transparent structure. Its component $v$ in the leaking
+subspace is the direction of maximal normalized coherence, and its component
+$u$ in the kept subspace is the best linear response to $v$, which is how the
+Schur complement isolates the off-diagonal contribution. The depth of the
+negativity, $\eta-\beta^2\kappa^2$, is largest at $\eta=0$, where it equals
+$-\kappa^2/4$ for this normalization of $w$.
+
+\section{When the threshold is below one}\label{sec:rank}
+\begin{proposition}\label{prop:rank}
+$\kappa<1$ if and only if $\rank\rho=\rank A+\rank D$. In particular $\kappa<1$
+whenever $\rho$ has full rank, and $\kappa=1$ for every pure state
+$\rho=\ket\psi\bra\psi$ with $P\ket\psi\ne0$ and $(\one-P)\ket\psi\ne0$.
+\end{proposition}
+
+\begin{proof}
+If $D=0$ then $\kappa=0$ and $\rank\rho=\rank A$, since $C=0$. Otherwise,
+applying \eqref{eq:congruence} to $\rho$ itself shows that $\rho$ is congruent
+to $\mathrm{diag}(A,S_1)$ with $S_1=D^{1/2}(\Pi_D-K^\dagger K)D^{1/2}$, so
+$\rank\rho=\rank A+\rank S_1$. Since $0\le K^\dagger K\le\Pi_D$ and $D^{1/2}$ is
+invertible on $\ran D$, $\rank S_1=\rank D$ exactly when $\Pi_D-K^\dagger K$ is
+invertible on $\ran D$, that is, when $\kappa<1$. For full-rank $\rho$ the
+blocks $A$ and $D$ are invertible and the ranks add. For the pure state, $A$
+and $D$ have rank one while $\rho$ has rank one, so $\kappa=1$.
+\end{proof}
+
+The second case has a direct physical reading: if the system is in a pure
+state with amplitude in both the kept and the leaking subspace, the
+Margenau--Hill operator of any genuinely selective leaky post-selection,
+$\eta<1$, has a negative eigenvalue. A leakage below one can restore
+positivity only when the ranks of the two diagonal blocks add up to the rank
+of $\rho$, which is the case for every full-rank state.
+
+\section{Qubit example}\label{sec:qubit}
+\begin{example}\label{ex:qubit}
+Let $\rho=\tfrac12(\one+xX+yY+zZ)$ with $x^2+y^2+z^2\le1$ and $\lvert z\rvert<1$,
+and $P=\ket0\bra0$. Then $A=(1+z)/2$, $D=(1-z)/2$ and $C=(x-iy)/2$, so
+\[
+\kappa^2=\frac{x^2+y^2}{1-z^2},\qquad
+\det\Phi(\eta)=\frac{\eta(1-z^2)-\beta^2(x^2+y^2)}{4}.
+\]
+The condition $\kappa<1$ says that the Bloch vector lies strictly inside the
+sphere, in agreement with Proposition~\ref{prop:rank}. For $(x,y,z)=(4/5,0,0)$
+one finds $\kappa=4/5$, $\sqrt{1-\kappa^2}=3/5$ and $\etac=(2/5)/(8/5)=1/4$; the
+determinant equals $-(4\eta-1)(\eta-4)/100$, which vanishes at $\eta=1/4$ and at
+the reciprocal root $\eta=4$. For $(x,y,z)=(3/5,0,0)$ one finds $\etac=1/9$.
+In this example the explicit witness of Proposition~\ref{prop:witness} is
+$v=(1-z)^{-1/2}\sqrt2$ and $u=-\beta(x-iy)\,v/(1+z)$, up to a phase.
+\end{example}
+
+\section{Verification}\label{sec:verification}
+The results above are proved analytically. The public
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/postselection-leakage-threshold/checks/verify_leakage_threshold.py}{Python checker}
+tests them independently and writes its
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/postselection-leakage-threshold/data/verification.json}{recorded output}
+into the same entry. In exact symbolic arithmetic it confirms that $\etac$ is
+the smaller root of $\kappa^2(1+\eta)^2=4\eta$, that the two roots are
+reciprocal, the series expansion of $\etac$, and the determinant and
+thresholds of Example~\ref{ex:qubit}. In floating-point arithmetic it draws
+random density matrices of dimension $2$ to $6$ (full rank, rank deficient and
+pure) with random projectors of every rank, $900$ instances in all, together
+with $200$ instances in which both diagonal blocks are singular. For each it
+computes $\kappa$ with Moore--Penrose inverses and checks that $\kappa\le1$,
+that the smallest eigenvalue of $\Phi(\eta)$ is nonnegative on $[\etac,1]$,
+that the witness of Proposition~\ref{prop:witness} takes the predicted value
+and that $\Phi(\eta)$ is negative below $\etac$, that a bisection on the sign of
+the smallest eigenvalue reproduces $\etac$, and that $\kappa<1$ exactly when
+$\rank\rho=\rank A+\rank D$. The bisection agrees with the formula to
+$3\times10^{-10}$ when $\kappa<1$; when $\kappa=1$ the smallest eigenvalue
+vanishes to second order at $\eta=1$ and the agreement is $10^{-4}$, while the
+witness confirms negativity for every tested $\eta<1$. The checker uses a fixed
+seed and runs in a few seconds.
+
+\section{Scope and limitations}\label{sec:scope}
+Theorem~\ref{thm:main} and Propositions~\ref{prop:witness}
+and~\ref{prop:rank} are proved analytically in any finite dimension, for
+arbitrary density matrices including singular ones. The computations confirm
+these statements numerically and verify the exact examples; they are not a
+substitute for the proofs.
+
+The result concerns the Margenau--Hill ordering $s=0$ and the isotropic
+leakage model $E_\eta=P+\eta(\one-P)$. Two natural extensions are left open:
+the positivity of the intermediate orderings $\Phi_s$ with $0<s<1/2$ under
+leakage, which governs the interval of admissible orderings studied in
+\cite{KamWong2026}, and anisotropic leakage, in which $\eta(\one-P)$ is
+replaced by a general effect $F$ supported on $\ran(\one-P)$. In the latter
+case the lower-right block of $\Phi_0$ becomes $(FD+DF)/2$ and the off-diagonal
+block $C(\one+F)/2$, and the reduction to a single scalar $\kappa$ no longer
+applies.
+
+On bibliographic priority, the threshold formula was not found in the
+documented search, which consisted of reading the work of Kam and Wong
+\cite{KamWong2026} and the foundational references cited here. The result is
+an elementary consequence of the Schur-complement criterion, and a related
+statement may exist elsewhere; this note does not certify priority.
+
+\begin{thebibliography}{9}
+\setlength{\itemsep}{2pt}
+\bibitem{ABL1964}
+Y. Aharonov, P. G. Bergmann and J. L. Lebowitz,
+\emph{Time symmetry in the quantum process of measurement},
+Phys. Rev. \textbf{134}, B1410 (1964);
+\href{https://doi.org/10.1103/PhysRev.134.B1410}{doi:10.1103/PhysRev.134.B1410}.
+
+\bibitem{MargenauHill1961}
+H. Margenau and R. N. Hill,
+\emph{Correlation between measurements in quantum theory},
+Prog. Theor. Phys. \textbf{26}, 722 (1961);
+\href{https://doi.org/10.1143/PTP.26.722}{doi:10.1143/PTP.26.722}.
+
+\bibitem{Guevara2015}
+I. Guevara and H. Wiseman,
+\emph{Quantum state smoothing},
+Phys. Rev. Lett. \textbf{115}, 180407 (2015);
+\href{https://doi.org/10.1103/PhysRevLett.115.180407}{doi:10.1103/PhysRevLett.115.180407};
+\href{https://arxiv.org/abs/1503.02799}{arXiv:1503.02799}.
+
+\bibitem{KamWong2026}
+C.-F. Kam and K.-W. Wong,
+\emph{Forbidden subspaces in quantum state smoothing},
+arXiv preprint (2026);
+\href{https://arxiv.org/abs/2609.17307}{arXiv:2609.17307}.
+\end{thebibliography}
+\end{document}

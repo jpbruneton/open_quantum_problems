@@ -195,7 +195,7 @@ function Home() {
             <a className="box box-science" href="/new-research">
               <div className="box-kicker">Research notes</div>
               <h2>New Research</h2>
-              <p>Two research notes with downloadable manuscripts, exact certificates, reproducible checks and links to the relevant literature.</p>
+              <p>Seventeen research notes, several settling published conjectures, with downloadable manuscripts, exact certificates, reproducible checks and links to the relevant literature.</p>
               <span className="box-cta">Read the research notes <span aria-hidden="true">→</span></span>
             </a>
           </div>
@@ -1031,6 +1031,326 @@ const NEW_RESEARCH_NOTES = [
 }`,
     },
   },
+  {
+    title: "Real three-qubit states need at most three CZ gates",
+    meta: "Research note · conjecture refuted · 19 November 2026",
+    pdf: "/research/real-three-qubit-states-three-cz.pdf",
+    dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/real-three-qubit-states-three-cz",
+    summary: "Real three-qubit states can be prepared with a real circuit of single-qubit R_y rotations and controlled-Z gates. The note shows that three CZ gates always suffice, refuting a conjecture that four are sometimes necessary.",
+    result: "Every real three-qubit state is prepared from |000⟩ with R_y rotations and the three gates CZ₀₁, CZ₁₂, CZ₀₁, so a line of three qubits suffices, and three is optimal. The states reachable with two CZ gates are exactly those for which one correlation ⟨Y_iY_k⟩ vanishes, which gives the exact CZ count of every real state; almost every state needs exactly three. This refutes the conjecture of Perdomo, Castaneda and Vogeler that four CZ gates are optimal, and shows that the sign of Cayley's hyperdeterminant does not govern the count: the state ½(|000⟩ − |011⟩ − |101⟩ − |110⟩), with hyperdeterminant −1/4, needs exactly three.",
+    refs: [
+      { label: "Perdomo, Castaneda, Vogeler, Preparation of 3-qubit states (2022)", arxiv: "2201.03724", note: "Proves that four CZ gates suffice for real three-qubit states, that three suffice when the hyperdeterminant is nonnegative, and conjectures that four is optimal; this note refutes the conjecture." },
+      { label: "Žnidarič, Giraud, Georgeot, How many CNOT gates does it take to generate a three-qubit state? (2008)", doi: "10.1103/PhysRevA.77.032320", arxiv: "0711.4021", note: "Shows that three CNOT gates suffice with complex local gates; this note obtains the same count with real rotations only." },
+      { label: "Perdomo, Schmidt representation of 3-qubits with real amplitudes (2020)", doi: "10.1088/1751-8121/ac2e27", arxiv: "2012.14031", note: "Gives a canonical form of real three-qubit states under local orthogonal gates, without addressing CZ counts." },
+      { label: "Lee, Kim, Three-Qubit State Preparation: Classification and Explicit Circuits (2026)", doi: "10.1103/5bw6-339b", arxiv: "2603.00845", note: "Classifies three-qubit states and gives explicit circuits with general rotations; it does not treat CZ counts for real circuits." },
+      { label: "Gomez, New Methods and Frameworks for Quantum State Preparation in Modern Quantum Systems (2026)", arxiv: "2608.16937", note: "Records the parameter-counting lower bound of two for real three-qubit circuits and notes that no tight bound is known; this note shows the worst case is three." },
+    ],
+    citation: {
+      bibtex: `@misc{bruneton2026realthreecz,
+  author = {Jean-Philippe Bruneton},
+  title = {Every real three-qubit state can be prepared with rotations and three {CZ} gates},
+  year = {2026},
+  url = {https://openquantumproblems.com/research/real-three-qubit-states-three-cz.pdf}
+}`,
+    },
+  },
+  {
+    title: "Photon-added squeezed vacua: one photon per mode is majorized by k photons per mode",
+    meta: "Research note · conjecture proved · 19 November 2026",
+    pdf: "/research/photon-added-squeezed-majorization.pdf",
+    dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/photon-added-squeezed-majorization",
+    summary: "Adding k photons to each mode of a two-mode squeezed vacuum gives a state more entangled, in the strong sense of majorization, than adding a single photon to each mode, for every k ≥ 2. This settles a conjecture of Van Herstraeten, Cerf, Guha and Gagatsos, who had checked k ≤ 8.",
+    result: "For every k ≥ 2 and every squeezing parameter λ ∈ (0,1), σ^{1,1} ≻ σ^{k,k}, in the strong form conjectured by the authors: all coefficients of their Toeplitz matrix are nonnegative (in fact at least 1). The proof is the closed form N_kk(x)/N_11(x) = A_k(x)/((1−x²)(1−x)^{2k−3}) with A_k(x) = Σ_j C(k,j)² x^j. The same criterion proves σ^{0,m} ≻ σ^{k,l} whenever k+l ≥ m, including the numerically observed σ^{0,l} ≻ σ^{k,l}, and an exact computation at λ = 1/16 shows that σ^{3,3} and σ^{4,4} are incomparable.",
+    refs: [
+      { label: "Van Herstraeten, Cerf, Guha, Gagatsos, Majorization theoretical approach to entanglement enhancement via local filtration (2024)", doi: "10.1103/PhysRevA.110.042430", arxiv: "2312.02066", note: "States the conjecture σ^{1,1} ≻ σ^{k,k}, proves it for 2 ≤ k ≤ 8 and introduces the Toeplitz construction used here." },
+      { label: "Nielsen, Conditions for a class of entanglement transformations (1999)", doi: "10.1103/PhysRevLett.83.436", arxiv: "quant-ph/9811053", note: "Majorization criterion for conversion of pure bipartite states by local operations and classical communication." },
+      { label: "Marshall, Olkin, Arnold, Inequalities: Theory of Majorization and Its Applications (2011)", doi: "10.1007/978-0-387-68276-1", note: "Standard reference on majorization, stochastic matrices and Schur-concave functions." },
+      { label: "García-Patrón, Navarrete-Benlloch, Lloyd, Shapiro, Cerf, Majorization theory approach to the Gaussian channel minimum entropy conjecture (2012)", doi: "10.1103/PhysRevLett.108.110505", arxiv: "1111.1986", note: "Majorization ladder of Fock states through a quantum-limited amplifier, the special case k = 0 of the extension proved here." },
+    ],
+    citation: {
+      bibtex: `@misc{bruneton2026photonaddedmajorization,
+  author = {Jean-Philippe Bruneton},
+  title = {Photon addition to a two-mode squeezed vacuum: a single photon per mode is majorized by any larger addition},
+  year = {2026},
+  url = {https://openquantumproblems.com/research/photon-added-squeezed-majorization.pdf}
+}`,
+    },
+  },
+  {
+    title: "Spectra of particle-reduced fermionic density operators",
+    meta: "Research note · conjecture settled (true for p = 1, false for p ≥ 2, corrected by p!) · 19 November 2026",
+    pdf: "/research/fermionic-particle-reductions.pdf",
+    dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/fermionic-particle-reductions",
+    summary: "Amosov and Filippov conjectured that removing p particles from a pure fermionic state with their map Φ gives an operator with the same spectrum as the p-particle reduced density operator. The note settles the conjecture for every pure state on the Fock space, with no assumption on particle number or parity.",
+    result: "For every pure state ρ on the Fock space of n fermionic modes and every p, Spec Φᵖ(ρ) = p! Spec ρₚ, zero eigenvalues included. The conjecture therefore holds for p = 1 and fails for every p ≥ 2 unless both operators vanish; the minimal counterexample is the two-mode state |11⟩, where ρ₂ has spectrum {1,0,0,0} and Φ²(ρ) has spectrum {2,0,0,0}. The two operators are complementary outputs of the completely positive map with Kraus operators a_{s_p}⋯a_{s_1}. At fixed particle number N, Proposition 4 of the source is corrected to Φ^{N−p}(ρ) = (N−p)! ρₚ.",
+    refs: [
+      { label: "Amosov & Filippov, Spectral properties of reduced fermionic density operators and parity superselection rule (2017)", doi: "10.1007/s11128-016-1467-9", arxiv: "1512.01828", note: "Defines ρₚ and Φ on the Fock space and states the conjecture settled here; its fixed-N Proposition 4 needs the factor (N−p)!." },
+      { label: "Carlson & Keller, Eigenvalues of density matrices (1961)", doi: "10.1103/PhysRev.121.659", note: "The fixed-particle-number duality between p- and (N−p)-particle reductions that the note extends to the whole Fock space." },
+      { label: "Gigena, Di Tullio & Rossignoli, Many-body entanglement in fermion systems (2021)", doi: "10.1103/PhysRevA.103.052424", arxiv: "2012.13785", note: "Writes M-body density operators at fixed N with the prefactor 1/(N−M)!, which is the factorial correction proved here; does not treat variable particle number." },
+    ],
+    citation: {
+      bibtex: `@misc{bruneton2026fermionicreductions,
+  author = {Jean-Philippe Bruneton},
+  title = {Spectra of particle-reduced fermionic density operators: the Amosov--Filippov conjecture holds up to a factor $p!$},
+  year = {2026},
+  url = {https://openquantumproblems.com/research/fermionic-particle-reductions.pdf}
+}`,
+    },
+  },
+  {
+    title: "Structured negativity versus negativity",
+    meta: "Research note · conjecture refuted · 19 November 2026",
+    pdf: "/research/structured-negativity.pdf",
+    dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/structured-negativity",
+    summary: "Kumari and Adhikari conjectured that their structured negativity, a physically implementable entanglement quantifier, coincides with the negativity whenever the partial transpose has d(d−1)/2 negative eigenvalues. The note shows the conjecture holds for two qubits and fails in every higher dimension, and replaces it with an exact criterion.",
+    result: "The structured negativity equals d times the absolute value of the most negative eigenvalue of the partial transpose, so N = N_S exactly when the sum of the negative eigenvalues equals d(d−1)/2 times the most negative one. The pure two-qutrit state (2|00⟩+2|11⟩+|22⟩)/3 has three negative eigenvalues but N = 8/9 and N_S = 4/3. States built from the symmetric subspace of 2(d−1) qubits have (d−1)² equal negative eigenvalues, saturate N ≤ 2(1−1/d)N_S in every dimension, and give N > N_S for every d ≥ 3.",
+    refs: [
+      { label: "Kumari, Adhikari, Structured negativity (2022)", doi: "10.1016/j.aop.2022.169113", arxiv: "2209.03909", note: "Defines the structured negativity, proves N ≤ 2(1−1/d)N_S and states the conjecture refuted here." },
+      { label: "Horodecki, Ekert, Direct detection of quantum entanglement (2002)", doi: "10.1103/PhysRevLett.89.127902", arxiv: "quant-ph/0111064", note: "Introduces the structural physical approximation on which the structured negativity is built." },
+      { label: "Vidal, Werner, A computable measure of entanglement (2002)", doi: "10.1103/PhysRevA.65.032314", arxiv: "quant-ph/0102117", note: "Establishes the negativity as an entanglement monotone." },
+      { label: "Rana, Negative eigenvalues of partial transposition (2013)", doi: "10.1103/PhysRevA.87.054301", arxiv: "1304.6775", note: "Bounds the number of negative eigenvalues of the partial transpose by (m−1)(n−1); used for the two-qubit case." },
+      { label: "Johnston, Non-positive-partial-transpose subspaces (2013)", doi: "10.1103/PhysRevA.87.064302", arxiv: "1305.0257", note: "Shows the bound (m−1)(n−1) is attained, without controlling the eigenvalues; the note's family attains it with all negative eigenvalues equal." },
+      { label: "Jiang, Qiu, Yu, Spectral bounds for the partial transpose (2026)", arxiv: "2609.06617", note: "Introduces Ky Fan k-negativities; in their language the structured negativity is d times the first one." },
+    ],
+    citation: {
+      bibtex: `@misc{bruneton2026structurednegativity,
+  author = {Jean-Philippe Bruneton},
+  title = {Structured negativity and negativity: an exact criterion for their equality},
+  year = {2026},
+  url = {https://openquantumproblems.com/research/structured-negativity.pdf}
+}`,
+    },
+  },
+  {
+    title: "Exact PPT distillation from the Zhu–Wang qutrit support",
+    meta: "Research note · exact optimum · 19 November 2026",
+    pdf: "/research/exact-ppt-distillation-qutrit.pdf",
+    dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/exact-ppt-distillation-qutrit",
+    summary: "For the two-qutrit support used by Zhu and Wang to show that the min-Rains bound is not tight for exact PPT distillation, the note computes the one-copy optimum exactly and determines how much exact entanglement one to four copies can yield.",
+    result: "The one-copy semidefinite program has value W₀(P) = √177/(7+√177) = (177 − 7√177)/128 ≈ 0.65524, attained by an explicit effect; a phase symmetry of the support reduces the problem to six parameters. With the Zhu–Wang witness, the largest exact maximally entangled output from n copies of any state on this support has dimension 1, 2, 3 and 5 for n = 1, 2, 3, 4, so four joint copies beat two separate two-copy runs. The asymptotic rate lies in [log₂(1 + 7/√177), log₂(391/250)) ≈ [0.6099, 0.6452).",
+    refs: [
+      { label: "Zhu and Wang, The min-Rains relative entropy is not tight for exact PPT entanglement distillation (2026)", arxiv: "2608.12135", note: "Defines the qutrit support and the witness upper bound used here; it does not compute the one-copy optimum." },
+      { label: "Wang and Duan, Improved semidefinite programming upper bound on distillable entanglement (2016)", doi: "10.1103/PhysRevA.94.050301", arxiv: "1601.07940", note: "Semidefinite programs for exact PPT distillation underlying the one-copy quantity W₀." },
+      { label: "Wang and Duan, Nonadditivity of Rains' bound for distillable entanglement (2017)", doi: "10.1103/PhysRevA.95.062322", arxiv: "1605.00348", note: "Introduces the bound later called the min-Rains relative entropy." },
+      { label: "Fang, Wang, Tomamichel and Duan, Non-asymptotic entanglement distillation (2019)", doi: "10.1109/TIT.2019.2914688", arxiv: "1706.06221", note: "One-shot and finite-copy theory of distillation under PPT operations." },
+      { label: "Rains, A semidefinite program for distillable entanglement (2000)", arxiv: "quant-ph/0008047", note: "PPT-operation relaxation and semidefinite bound on distillable entanglement." },
+      { label: "Horodecki, Horodecki and Horodecki, Mixed-state entanglement and distillation (1998)", doi: "10.1103/PhysRevLett.80.5239", arxiv: "quant-ph/9801069", note: "PPT states are undistillable, the basis of partial-transpose bounds." },
+      { label: "Bennett, DiVincenzo, Smolin and Wootters, Mixed-state entanglement and quantum error correction (1996)", doi: "10.1103/PhysRevA.54.3824", arxiv: "quant-ph/9604024", note: "Introduces entanglement distillation of mixed states." },
+    ],
+    citation: {
+      bibtex: `@misc{bruneton2026pptqutrit,
+  author = {Jean-Philippe Bruneton},
+  title = {Exact {PPT} entanglement distillation from the {Zhu--Wang} qutrit support: the one-copy optimum and the first four output dimensions},
+  year = {2026},
+  url = {https://openquantumproblems.com/research/exact-ppt-distillation-qutrit.pdf}
+}`,
+    },
+  },
+  {
+    title: "The root-fidelity matrix bounds the Holevo quantity of three qubit states",
+    meta: "Research note · conjecture proved for qubits, open for d ≥ 3 · 19 November 2026",
+    pdf: "/research/fidelity-matrix-holevo-bound.pdf",
+    dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/fidelity-matrix-holevo-bound",
+    summary: "Fannes, de Melo, Roga and Życzkowski conjectured that the Holevo quantity of three quantum states is bounded by the entropy of the 3×3 matrix built from the probabilities and the square roots of the pairwise fidelities. The note proves this for any three qubit states, pure or mixed, with arbitrary probabilities.",
+    result: "For any K qubit states with probabilities pᵢ and fidelities Fᵢⱼ, χ ≤ h((1 + √(1 − 4e₂))/2) with e₂ = Σ_{i<j} pᵢpⱼ(1 − Fᵢⱼ), with equality exactly when all states are pure or all are equal. For K = 3, e₂ is the second invariant of the root-fidelity matrix C, and an integral formula for 3×3 entropies gives h((1 + √(1 − 4e₂))/2) ≤ S(C), which proves the conjecture for qubits. In any dimension the conjecture holds whenever the three states are the image of a pure triple with the same fidelities under a positive trace-preserving map; for qubits this map exists but is not completely positive. The case d ≥ 3 remains open; numerical searches in d = 3, 4, 5 found no counterexample.",
+    refs: [
+      { label: "Fannes, de Melo, Roga & Życzkowski, Matrices of fidelities for ensembles of quantum states and the Holevo quantity (2012)", doi: "10.26421/QIC12.5-6-8", arxiv: "1104.2271", note: "States the conjecture, proves positivity of the root-fidelity matrix and the pure-state case; the note proves the qubit case." },
+      { label: "Roga, Fannes & Życzkowski, Universal bounds for the Holevo quantity, coherent information and the Jensen-Shannon divergence (2010)", doi: "10.1103/PhysRevLett.105.040505", note: "Proves the two-state fidelity bound, which the qubit theorem of the note recovers for K = 2." },
+      { label: "Roga, Entropy of quantum channel in the theory of quantum information (2011)", arxiv: "1108.5065", note: "Thesis proving the case of two pure and one mixed qubit state with equal probabilities, contained in the note's result." },
+      { label: "Zhang, Wu & Fei, Universal upper bound for the Holevo information induced by a quantum operation (2012)", doi: "10.1016/j.physleta.2012.10.014", arxiv: "1110.5979", note: "Proves the conjecture under a cocycle condition on the polar decompositions; recovered by the note's sufficient criterion." },
+      { label: "Müller-Hermes & Reeb, Monotonicity of the quantum relative entropy under positive maps (2017)", doi: "10.1007/s00023-017-0550-9", arxiv: "1512.06117", note: "Supplies the monotonicity under positive, not completely positive, maps used in the sufficient criterion." },
+    ],
+    citation: {
+      bibtex: `@misc{bruneton2026fidelityholevo,
+  author = {Jean-Philippe Bruneton},
+  title = {The root-fidelity matrix bounds the Holevo quantity of any three qubit states},
+  year = {2026},
+  url = {https://openquantumproblems.com/research/fidelity-matrix-holevo-bound.pdf}
+}`,
+    },
+  },
+  {
+    title: "The variance of a sum of independent quantum errors",
+    meta: "Research note · conjecture settled under centring, refuted without · 19 November 2026",
+    pdf: "/research/variance-sum-quantum-errors.pdf",
+    dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/variance-sum-quantum-errors",
+    summary: "Lacalle and Pozo Coronado conjectured that the variances of two independent quantum errors combine as V₁₂ = V₁ + V₂ − V₁V₂/2. The note shows that the answer depends on whether the errors are centred on the error-free state.",
+    result: "The rule is equivalent to multiplicativity of the mean overlap m = 1 − V/2, and it holds for any number of independent centred errors, isotropic or not, in both the gate and the transport definitions of the sum; an exact identity gives the correction −2⟨w₂, u₁⟩ in general. Without centring it fails: two independent errors on the circle with density (1 + sin θ)/(2π) give V₁₂ = 5/2 instead of 2, contradicting the source's Theorem 3, and two over-rotations R_x(2π/3) of one qubit give 3 instead of 3/2. The companion fidelity formula follows in the transport model when the second error has an isotropic second moment.",
+    refs: [
+      { label: "Lacalle, Pozo Coronado, Variance of the sum of independent quantum computing errors (2019)", doi: "10.26421/QIC19.15-16-3", arxiv: "2412.15800", note: "Source of the conjecture; proves the isotropic case, whose proof the note shortens, and states the circle theorem refuted here." },
+      { label: "Lacalle, Pozo Coronado, Martín-Cuevas, Fidelity of the sum of independent quantum computing errors (2026)", doi: "10.1007/s11128-025-05037-5", note: "Restates the variance conjecture as open and poses the twin fidelity conjecture proved here in the transport model under an isotropic second moment." },
+      { label: "Kueng, Long, Doherty, Flammia, Comparing experiments to the fault-tolerance threshold (2016)", doi: "10.1103/PhysRevLett.117.170502", arxiv: "1510.05653", note: "Shows that coherent errors behave very differently from stochastic ones of equal average size, the phenomenon behind the biased-rotation counterexample." },
+    ],
+    citation: {
+      bibtex: `@misc{bruneton2026variancesum,
+  author = {Jean-Philippe Bruneton},
+  title = {The variance of a sum of independent quantum errors: a proof for centred errors and counterexamples without centring},
+  year = {2026},
+  url = {https://openquantumproblems.com/research/variance-sum-quantum-errors.pdf}
+}`,
+    },
+  },
+  {
+    title: "Momentum Rényi and Tsallis entropies behind hard walls: the threshold 1/(2(m+1))",
+    meta: "Research note · conjecture proved · 19 November 2026",
+    pdf: "/research/momentum-renyi-threshold.pdf",
+    dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/momentum-renyi-threshold",
+    summary: "Olendski conjectured that the momentum Rényi and Tsallis entropies of every one-dimensional non-Dirichlet system exist exactly for α above 1/2. The note proves a general existence criterion based on the first derivative of the wave function that jumps at a hard wall, and deduces the conjecture for hard-wall Schrödinger eigenfunctions.",
+    result: "If the zero-extended wave function first jumps in its derivative of order m, then ∫γ(p)^α dp is finite exactly for α > α_TH = 1/(2(m+1)), and the Rényi entropy diverges like ln(1/(α − α_TH))/(1 − α_TH) at the threshold, with an explicit rate. For eigenfunctions of a Schrödinger operator with integrable potential between hard walls only m = 0 or 1 can occur, so α_TH = 1/4 when both walls are Dirichlet and α_TH = 1/2 otherwise, for every level and for real or complex Robin lengths. The threshold value itself is excluded. The same dichotomy holds on a half-line.",
+    refs: [
+      { label: "Olendski, Rényi and Tsallis entropies of the Dirichlet and Neumann one-dimensional quantum wells (2020)", doi: "10.1002/qua.26220", arxiv: "2003.04351", note: "Finds thresholds 1/4 and 1/2 from explicit formulas and states the conjecture proved here." },
+      { label: "Olendski, Rényi and Tsallis entropies: three analytic examples (2019)", doi: "10.1088/1361-6404/aaf45c", arxiv: "1811.09089", note: "Treats the attractive Robin wall, whose closed form the note recovers as a half-line case." },
+      { label: "Olendski, Quantum information measures of the Dirichlet and Neumann hyperspherical dots (2021)", doi: "10.1140/epjp/s13360-021-01366-3", arxiv: "2103.13094", note: "Finds d/(d+3) and d/(d+1) for balls, which match the heuristic d/(d+1+2m) but are not covered by the proof." },
+      { label: "Olendski, One-dimensional pseudoharmonic oscillator: classical remarks and quantum-information theory (2023)", arxiv: "2304.06428", note: "Finds a threshold for a wall-singular potential that matches the fractional extension 1/(2(ν+1)), which the note leaves unproved." },
+      { label: "Erdélyi, Asymptotic representations of Fourier integrals and the method of stationary phase (1955)", doi: "10.1137/0103002", note: "Classical theory of endpoint asymptotics of Fourier integrals underlying the leading-term lemma." },
+    ],
+    citation: {
+      bibtex: `@misc{bruneton2026momentumrenyi,
+  author = {Jean-Philippe Bruneton},
+  title = {Momentum R\'enyi and Tsallis entropies behind hard walls: the existence threshold $1/(2(m+1))$},
+  year = {2026},
+  url = {https://openquantumproblems.com/research/momentum-renyi-threshold.pdf}
+}`,
+    },
+  },
+  {
+    title: "Depth-optimal syndrome extraction: a parity obstruction",
+    meta: "Research note · open question resolved · 19 November 2026",
+    pdf: "/research/syndrome-schedule-parity.pdf",
+    dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/syndrome-schedule-parity",
+    summary: "Syndrome-extraction circuits for lifted-product codes need at least as many gate layers as the largest qubit degree Δ, and a known construction uses Δ + 1 when both code factors have odd degree. The note proves that the extra layer is unavoidable for a broad class of these codes.",
+    result: "For the lifted product of two 1×1 protographs with entries of odd weights a and b over a finite group G of odd order, no proper schedule of controlled-NOT gates has depth Δ = a + b, so the three-band schedule of depth Δ + 1 of Nguyen, Rimbach-Russ and Bosco is optimal. The proof sums the ordering conditions over all pairs of checks: the total is |G|·a·b, odd, while each condition requires an even contribution. The class contains the [[90, 8, 10]] bivariate bicycle code, whose seven-layer circuit is therefore optimal; over the even-order group Z_6, a [[12, 4]] code does admit a depth-Δ schedule.",
+    refs: [
+      { label: "Nguyen, Rimbach-Russ, Bosco, Disassembling qLDPC codes for depth-optimal parity-check circuits (2026)", arxiv: "2608.19917", note: "Defines the circuit model and properness condition and gives the depth Δ + 1 construction whose optimality is proved here." },
+      { label: "Bravyi et al., High-threshold and low-overhead fault-tolerant quantum memory (2024)", doi: "10.1038/s41586-024-07107-7", arxiv: "2308.07915", note: "Introduces bivariate bicycle codes with a seven-layer syndrome circuit, optimal for the [[90, 8, 10]] code by this note." },
+      { label: "Panteleev, Kalachev, Degenerate quantum LDPC codes with good finite length performance (2021)", doi: "10.22331/q-2021-11-22-585", arxiv: "1904.02703", note: "Introduces lifted-product codes." },
+      { label: "Lin, Pryadko, Quantum two-block group algebra codes (2023)", arxiv: "2306.16400", note: "Studies the codes obtained from 1×1 protographs, the class treated here." },
+      { label: "Tillich, Zémor, Quantum LDPC codes with positive rate and minimum distance proportional to the square root of the blocklength (2014)", doi: "10.1109/TIT.2013.2292061", arxiv: "0903.0566", note: "Introduces hypergraph-product codes, the trivial-group case of lifted products." },
+      { label: "Tremblay, Delfosse, Beverland, Constant-overhead quantum error correction with thin planar connectivity (2022)", doi: "10.1103/PhysRevLett.129.050504", arxiv: "2109.14609", note: "Gives the coloration circuit that measures X then Z checks, avoiding the ordering conditions at the cost of depth." },
+    ],
+    citation: {
+      bibtex: `@misc{bruneton2026syndromeparity,
+  author = {Jean-Philippe Bruneton},
+  title = {A parity obstruction to depth-optimal syndrome extraction for lifted-product codes},
+  year = {2026},
+  url = {https://openquantumproblems.com/research/syndrome-schedule-parity.pdf}
+}`,
+    },
+  },
+  {
+    title: "Covers of bivariate bicycle codes",
+    meta: "Research note · partial results on a conjecture · 19 November 2026",
+    pdf: "/research/bivariate-bicycle-coverings.pdf",
+    dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/bivariate-bicycle-coverings",
+    summary: "Enlarging the torus of a bivariate bicycle code by a factor h gives an h-fold cover, and Symons, Rajput and Browne conjectured that its distance satisfies d ≤ d_h ≤ h·d. The note proves new parts of this conjecture for covers whose degree is a power of two, where the known arguments fail.",
+    result: "Using the exact sequence 0 → Q → Q̃ → Q → 0 of a double cover over F₂, the note proves k ≤ k_h ≤ h·k for power-of-two covers, with the kernel of the transfer of dimension exactly k − k₂/2 for a double cover. It proves d_h ≥ min(d, s), where s is the least weight of a nonzero stabiliser, so the conjectured lower bound holds whenever s ≥ d: for 805 of the 836 inequivalent small base codes and for the [[72,12,6]] code. It also proves d₂ ≤ 2d when k₂ = 2k, and an example [[42,4,6]] → [[84,4,10]] shows that the transfer alone cannot give the upper bound in general; exact scans of about 200,000 covers find no counterexample.",
+    refs: [
+      { label: "Symons, Rajput, Browne, Sequences of bivariate bicycle codes from covering graphs (2025)", arxiv: "2511.13560", note: "Source of the conjecture; proves the odd-degree bounds that this note complements for degrees that are powers of two." },
+      { label: "Bravyi et al., High-threshold and low-overhead fault-tolerant quantum memory (2024)", doi: "10.1038/s41586-024-07107-7", arxiv: "2308.07915", note: "Introduces bivariate bicycle codes and the rank equality used in the proofs; its [[72,12,6]], [[90,8,10]] and [[108,8,10]] codes are tested here." },
+      { label: "Hirasaki, Lee, Lifting lifted product codes (2026)", arxiv: "2607.28621", note: "Extends the odd-index bounds to lifted product codes and leaves even index open; the exact sequence here handles index two." },
+      { label: "Sabo, Can, Marquis, Spectral theory of semisimple bivariate bicycle codes (2026)", arxiv: "2608.27565", note: "Gives an independent algebraic treatment of the dimension of cover codes; it does not use the exact sequence employed here." },
+    ],
+    citation: {
+      bibtex: `@misc{bruneton2026bbcovers,
+  author = {Jean-Philippe Bruneton},
+  title = {Covers of bivariate bicycle codes: partial results on the distance conjecture for power-of-two covers},
+  year = {2026},
+  url = {https://openquantumproblems.com/research/bivariate-bicycle-coverings.pdf}
+}`,
+    },
+  },
+  {
+    title: "A Mpemba mode invisible to every strict reduction",
+    meta: "Research note · explicit construction · 19 November 2026",
+    pdf: "/research/locally-invisible-mpemba-mode.pdf",
+    dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/locally-invisible-mpemba-mode",
+    summary: "In the Mpemba effect a state farther from equilibrium relaxes sooner, because late-time relaxation is set by the slowest mode of the dynamics. The note gives a local, primitive qubit-chain dynamics whose slowest mode cannot be seen in the reduced state of any strict subset of sites.",
+    result: "For n ≥ 2 qubits and 0 < ε < 1, the Lindbladian Σⱼ D[XⱼXⱼ₊₁] + ε D[X₁] + Σⱼ D[Zⱼ] has spectrum {−2(m + εb)} with multiplicity C(2n−1, m), a unique stationary state, and the global parity Z₁⋯Zₙ as its unique slowest mode at rate 2ε. The state (𝟙 + αZ₁⋯Zₙ)/2ⁿ looks maximally mixed on every strict subsystem at all times, yet it is overtaken by (𝟙 + βXₙ)/2ⁿ, β > α, at time log(β/α)/(2 − 2ε). Any observable sensitive to the slow amplitude, including a single-observable Mpemba witness, must act on all n sites.",
+    refs: [
+      { label: "Lu & Raz, Nonequilibrium thermodynamics of the Markovian Mpemba effect and its inverse (2017)", doi: "10.1073/pnas.1701264114", arxiv: "1609.05271", note: "Formulates the Mpemba effect for Markovian dynamics, the setting used here." },
+      { label: "Carollo, Lasanta & Lesanovsky, Exponentially accelerated approach to stationarity in Markovian open quantum systems through the Mpemba effect (2021)", doi: "10.1103/PhysRevLett.127.060401", arxiv: "2103.05020", note: "Removes the slowest-mode component by a unitary rotation; in this example removal is local while detection is global." },
+      { label: "Choquehuanca, Obando, Sarandy & de Paula, Witnessing the quantum Mpemba effect with a single observable (2026)", arxiv: "2607.12163", note: "Single-observable Mpemba witness illustrated on one qubit; the note shows such a witness can be forced to have full support in a local many-body chain." },
+      { label: "Lindblad, On the generators of quantum dynamical semigroups (1976)", doi: "10.1007/BF01608499", note: "Standard form of the Markovian generator used in the construction." },
+    ],
+    citation: {
+      bibtex: `@misc{bruneton2026mpembamode,
+  author = {Jean-Philippe Bruneton},
+  title = {A Mpemba mode invisible to every strict reduction},
+  year = {2026},
+  url = {https://openquantumproblems.com/research/locally-invisible-mpemba-mode.pdf}
+}`,
+    },
+  },
+  {
+    title: "Covariance data cannot bound the Schmidt number, even at fixed energy",
+    meta: "Research note · no-go example · 19 November 2026",
+    pdf: "/research/schmidt-number-separable-covariance.pdf",
+    dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/schmidt-number-separable-covariance",
+    summary: "A pure state of arbitrarily large Schmidt rank can have exactly the same quadrature means, covariance matrix and mean photon number as a separable state, with an energy bound independent of the rank. Low-order moment criteria therefore cannot certify Schmidt numbers uniformly over all states.",
+    result: "For r ≥ 2 and spacing m, the pure state Σ_{j<r} √p_j |mj, mj⟩ (Schmidt rank r) and the separable mixture Σ_{j<r} p_j |mj, mj⟩⟨mj, mj| share every quadrature moment of degree below 2m and their mean photon number 2m Σ_j j p_j; with m = 2 this covers means, covariance matrices and third moments. With weights p_j ∝ z^j the mean photon number stays below 2m z/(1−z) for every r, and the moment ⟨a^m b^m⟩ of degree 2m tells the states apart. At mean photon number E the r-th reduced eigenvalue of any pure state is at most E/(r(r−1)), so the obstruction relies on small Schmidt coefficients.",
+    refs: [
+      { label: "Mishra, Morelli, Baksová, Rembold, Friis, Certification of high-dimensional entanglement in continuous-variable systems (2026)", arxiv: "2610.03113", note: "Derives Schmidt-number witnesses from first and second moments; the note shows that no such criterion can work uniformly at bounded energy." },
+      { label: "Terhal, Horodecki, Schmidt number for density matrices (2000)", doi: "10.1103/PhysRevA.61.040301", arxiv: "quant-ph/9911117", note: "Defines the Schmidt number of mixed states." },
+      { label: "Duan, Giedke, Cirac, Zoller, Inseparability criterion for continuous variable systems (2000)", doi: "10.1103/PhysRevLett.84.2722", arxiv: "quant-ph/9908056", note: "Second-moment entanglement criterion for two modes." },
+      { label: "Simon, Peres-Horodecki separability criterion for continuous variable systems (2000)", doi: "10.1103/PhysRevLett.84.2726", arxiv: "quant-ph/9909044", note: "Covariance-matrix form of the partial-transpose criterion, necessary and sufficient for two-mode Gaussian states." },
+      { label: "Shchukin, Vogel, Inseparability criteria for continuous bipartite quantum states (2005)", doi: "10.1103/PhysRevLett.95.230502", arxiv: "quant-ph/0508132", note: "Hierarchy of moment conditions of all orders; the example is detected only by moments of degree at least 2m." },
+      { label: "Yi, Li, Zhu, Certifying entanglement dimensionality by k-reduction moments (2026)", doi: "10.1103/cc1n-gmj1", arxiv: "2501.15360", note: "Finite-dimensional certification from nonlinear reduction moments, to which this obstruction does not apply." },
+    ],
+    citation: {
+      bibtex: `@misc{bruneton2026schmidtcovariance,
+  author = {Jean-Philippe Bruneton},
+  title = {Separable states with the low-order moments of states of arbitrary Schmidt rank at bounded energy},
+  year = {2026},
+  url = {https://openquantumproblems.com/research/schmidt-number-separable-covariance.pdf}
+}`,
+    },
+  },
+  {
+    title: "How many incoherent Kraus operators?",
+    meta: "Research note · new lower bound and qutrit construction · 19 November 2026",
+    pdf: "/research/incoherent-kraus-operators.pdf",
+    dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/incoherent-kraus-operators",
+    summary: "Incoherent operations in the resource theory of coherence must be written with Kraus operators that each keep diagonal states diagonal. The note asks how many such operators are needed beyond the qubit, where the answer four was already known.",
+    result: "A generic incoherent completely positive map on a d-dimensional system needs at least ⌈d²(d²−d+1)/(2d−1)⌉ incoherent Kraus operators: 4, 13 and 30 for d = 2, 3, 4, growing like d³/2 against the Choi rank d². For the qutrit, an exact integer rank certificate shows that thirteen operators cover an open set of incoherent maps, so 13 is attained, and also an open set of incoherent channels. The qubit value four, known from Qiao et al. (2020), is re-derived with a short fixed-point argument; the generic lower bound for trace-preserving operations remains a conjecture.",
+    refs: [
+      { label: "Streltsov, Rana, Boes and Eisert, Structure of the resource theory of quantum coherence (2017)", doi: "10.1103/PhysRevLett.119.140402", arxiv: "1705.04189", note: "Proves that five incoherent Kraus operators suffice for a qubit and asks whether four suffice." },
+      { label: "Qiao et al., The reduction of the number of incoherent Kraus operations for qutrit systems (2020)", doi: "10.1209/0295-5075/129/60006", arxiv: "2005.01083", note: "Shows four suffice for a qubit and gives the qutrit upper bound 32; the note re-derives the qubit case by another route." },
+      { label: "Baumgratz, Cramer and Plenio, Quantifying coherence (2014)", doi: "10.1103/PhysRevLett.113.140401", arxiv: "1311.0275", note: "Defines incoherent operations through incoherent Kraus decompositions." },
+      { label: "Streltsov, Adesso and Plenio, Quantum coherence as a resource (2017)", doi: "10.1103/RevModPhys.89.041003", arxiv: "1609.02439", note: "Review of the classes of free operations in coherence theory." },
+      { label: "Choi, Completely positive linear maps on complex matrices (1975)", doi: "10.1016/0024-3795(75)90075-0", note: "The Choi matrix on which the clique formulation is built." },
+      { label: "Bochnak, Coste and Roy, Real Algebraic Geometry (1998)", doi: "10.1007/978-3-662-03718-8", note: "Dimension theory of semialgebraic sets used in the generic lower bound." },
+    ],
+    citation: {
+      bibtex: `@misc{bruneton2026incoherentkraus,
+  author = {Jean-Philippe Bruneton},
+  title = {How many incoherent {Kraus} operators? {A} generic lower bound in every dimension and thirteen for the qutrit},
+  year = {2026},
+  url = {https://openquantumproblems.com/research/incoherent-kraus-operators.pdf}
+}`,
+    },
+  },
+  {
+    title: "Leakage threshold for the Margenau–Hill state of a post-selected system",
+    meta: "Research note · exact threshold · 19 November 2026",
+    pdf: "/research/postselection-leakage-threshold.pdf",
+    dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/postselection-leakage-threshold",
+    summary: "Between a preparation and a post-selection, the Margenau–Hill combination of the past state and the future effect can fail to be positive. The note computes exactly how much leakage through an imperfect post-selection restores positivity.",
+    result: "For a density matrix ρ and the leaky effect E = P + η(1 − P), write ρ in blocks A, C, D relative to the projector P and let κ = ‖A^{+1/2} C D^{+1/2}‖. Then κ ≤ 1 and (Eρ + ρE)/2 is positive semidefinite if and only if η ≥ η_crit = (1 − √(1 − κ²))/(1 + √(1 − κ²)) ≈ κ²/4, in any finite dimension, with an explicit negative vector below the threshold. The threshold is below one exactly when rank ρ = rank A + rank D, so pure states with weight in both subspaces need η = 1; for a qubit with Bloch vector (4/5, 0, 0), η_crit = 1/4.",
+    refs: [
+      { label: "Kam, Wong, Forbidden subspaces in quantum state smoothing (2026)", arxiv: "2609.17307", note: "Shows that the Margenau–Hill operator is not positive when the subspace forbidden by the effect is not invariant under the state; this note quantifies how much leakage removes the obstruction and recovers the converse at zero leakage." },
+      { label: "Guevara, Wiseman, Quantum state smoothing (2015)", doi: "10.1103/PhysRevLett.115.180407", arxiv: "1503.02799", note: "Introduces quantum state smoothing, the setting in which a filtered state and a retrofiltered effect are combined." },
+      { label: "Margenau, Hill, Correlation between measurements in quantum theory (1961)", doi: "10.1143/PTP.26.722", note: "Source of the symmetrized operator ordering whose positivity is studied here." },
+      { label: "Aharonov, Bergmann, Lebowitz, Time symmetry in the quantum process of measurement (1964)", doi: "10.1103/PhysRev.134.B1410", note: "Foundational time-symmetric description of pre- and post-selected systems." },
+    ],
+    citation: {
+      bibtex: `@misc{bruneton2026leakage,
+  author = {Jean-Philippe Bruneton},
+  title = {How much leakage makes the {Margenau--Hill} state of a post-selected system positive},
+  year = {2026},
+  url = {https://openquantumproblems.com/research/postselection-leakage-threshold.pdf}
+}`,
+    },
+  },
 ];
 
 function NewResearchView() {
@@ -1041,7 +1361,7 @@ function NewResearchView() {
         <div className="container detail new-science-page">
           <h2>New Research</h2>
           <div className="science-caution">
-            <b>Research notes published here.</b> The stated mathematical results are proved exactly and accompanied by reproducible checks. To the best of our knowledge, no direct antecedent for these specific results was found in the literature.
+            <b>Research notes published here.</b> The stated mathematical results are proved exactly and accompanied by reproducible checks. Each note states the extent of its literature search; unless a note says otherwise, no direct antecedent for its specific results was found. Several notes settle conjectures posed in published papers.
           </div>
           <div className="research-list">
             {NEW_RESEARCH_NOTES.map((note) => (

@@ -1,0 +1,343 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{plain}
+\DeclareMathOperator{\Tr}{Tr}
+\newcommand{\ket}[1]{\lvert#1\rangle}
+\newcommand{\bra}[1]{\langle#1\rvert}
+\newcommand{\ketbra}[2]{\lvert#1\rangle\langle#2\rvert}
+\setlength{\emergencystretch}{2em}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em plus 0.1em minus 0.1em}
+\title{Separable states with the low-order moments of\\
+states of arbitrary Schmidt rank at bounded energy}
+\author{Fable \& Astra\\[0.35em]
+\normalsize Research led by Jean-Philippe Bruneton\\[-0.1em]
+\small Universit\'e Paris Cit\'e, France}
+\date{19 November 2026}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+In continuous-variable experiments the entanglement of two light modes is
+usually assessed from the first and second moments of the field quadratures,
+the mean vector and the covariance matrix, and recent work derives lower
+bounds on the Schmidt number, the number of entangled degrees of freedom, from
+these moments alone. We ask how much such data can say about the Schmidt
+number when the mean photon number is bounded, and show that they cannot bound
+it uniformly. For every $r\ge2$ we give a pure state of Schmidt rank $r$ and a
+separable state with exactly the same first and second moments, and indeed the
+same third moments, whose common mean photon number is at most a prescribed
+bound independent of $r$. The two states are supported on the Fock vectors
+$\ket{2j,2j}$, $0\le j<r$, the first as a coherent superposition and the second
+as the corresponding classical mixture. Replacing the spacing $2$ by an
+integer $m$ makes all quadrature moments of degree below $2m$ coincide, and a
+moment of degree $2m$ distinguishes the states, so the construction is sharp.
+At bounded energy the obstruction forces the $r$-th largest Schmidt coefficient
+to be small, which points to a better-posed question.
+\end{abstract}
+
+\section{Introduction}
+Entanglement between two modes of light is most often certified from
+quadrature statistics. For Gaussian states the first and second moments
+determine the state, and criteria built on the covariance matrix detect
+entanglement and quantify it~\cite{Duan2000,Simon2000}. A finer question
+concerns the Schmidt number~\cite{Terhal2000}, the smallest $k$ such that a
+state is a mixture of pure states of Schmidt rank at most $k$, which counts how many degrees of freedom are genuinely entangled. Mishra,
+Morelli, Baksov\'a, Rembold and Friis~\cite{Mishra2026} recently derived lower
+bounds on the Schmidt number of continuous-variable states from their first and
+second moments. It is natural to ask how far these moments can go: can a
+criterion based on the covariance matrix, perhaps complemented by a bound on
+the mean photon number, certify an arbitrarily large Schmidt number in a way
+that applies uniformly to all states?
+
+The simplest example shows that it cannot. Take the two-mode states
+\[
+\ket{\psi_r}=\sum_{j=0}^{r-1}\sqrt{p_j}\,\ket{2j,2j},
+\qquad
+\sigma_r=\sum_{j=0}^{r-1}p_j\,\ketbra{2j,2j}{2j,2j},
+\]
+with weights $p_j>0$ summing to $1$. The first has Schmidt rank $r$, the
+second is a mixture of product states and is separable. A quadrature monomial
+of degree two changes the photon numbers by at most two in total, while
+passing from $\ket{2j,2j}$ to $\ket{2j',2j'}$ with $j\ne j'$ requires changing
+each photon number by at least two, four quanta in all. The off-diagonal
+coherences of $\ket{\psi_r}$, which carry its entanglement, are therefore
+invisible to every first and second moment, and also to third moments. With
+geometric weights $p_j\propto z^j$ the mean photon number stays below
+$4z/(1-z)$ for every $r$.
+
+The main result (Theorem~\ref{thm:main} and Corollary~\ref{cor:uniform}) states
+the general form of this observation: for every degree $d$, every energy bound
+$E>0$ and every $r\ge2$, there is a pure state of Schmidt rank $r$ and a
+separable state whose quadrature moments of degree at most $d$ all coincide and
+whose common mean photon number is at most $E$. The construction uses the
+spacing $m$ with $2m>d$ in place of $2$, and Proposition~\ref{prop:sharp}
+shows that this condition cannot be relaxed for these states. The obstruction
+concerns uniform identification of the Schmidt number from low-order moments.
+It does not prevent a particular covariance matrix from certifying a Schmidt
+number larger than one, as happens for the Gaussian and photon-added states
+studied in~\cite{Mishra2026}. Proposition~\ref{prop:markov} shows that at
+bounded energy the obstruction necessarily involves a small Schmidt
+coefficient, and Section~\ref{sec:scope} formulates the more stable question
+that this suggests.
+
+\section{Related work}\label{sec:related}
+Duan, Giedke, Cirac and Zoller~\cite{Duan2000} and Simon~\cite{Simon2000}
+gave separability criteria for two modes in terms of second moments; for
+Gaussian states of two modes these criteria are necessary and sufficient, and
+for general states they are sufficient conditions for entanglement. Shchukin
+and Vogel~\cite{Shchukin2005} extended this approach to a hierarchy of
+conditions on moments of all orders, which together characterize the states
+with a non-positive partial transpose. Our example sits at the interface of
+these works: $\ket{\psi_r}$ has a non-positive partial transpose, but its
+moments of degree below $2m$ coincide with those of a separable state, so only
+conditions involving moments of degree at least $2m$ can detect it.
+
+The Schmidt number of a mixed state was introduced by Terhal and
+Horodecki~\cite{Terhal2000} as the smallest $k$ such that the state is a
+mixture of pure states of Schmidt rank at most $k$. Mishra
+et~al.~\cite{Mishra2026} bound the fidelity of a continuous-variable state
+with a pure Gaussian target, typically a two-mode squeezed vacuum, using only
+the covariance matrices of the two states and the mean excitation number, and
+turn this bound into Schmidt-number witnesses; they compare it with bounds
+from the entanglement of formation and with linear Gaussian witnesses, on
+two-mode squeezed thermal states and on photon-added displaced squeezed states.
+Every criterion of this type takes the same value on $\ket{\psi_r}$ and on the
+separable $\sigma_r$, and therefore certifies no entanglement for
+$\ket{\psi_r}$; the result below makes this limitation uniform in $r$ at a
+fixed energy. In finite dimension, Yi, Li and Zhu~\cite{Yi2026} certify
+entanglement dimensionality from moments of a different kind, the moments of
+the operator obtained by applying the $k$-reduction map to the state, which are
+estimated by randomized measurements. Those moments are nonlinear functionals
+of the state and are not determined by low-order quadrature moments, so our
+obstruction does not apply to them.
+
+\section{Results}\label{sec:results}
+Let $\hat a,\hat b$ be the annihilation operators of the two modes and
+$\hat x_A=(\hat a+\hat a^\dagger)/\sqrt2$,
+$\hat p_A=(\hat a-\hat a^\dagger)/(i\sqrt2)$, and similarly $\hat x_B,\hat p_B$.
+A quadrature moment of degree $\ell$ of a state $\rho$ is
+$\Tr(\rho\,\hat W)$ for an ordered product $\hat W$ of $\ell$ operators taken
+among $\hat x_A,\hat p_A,\hat x_B,\hat p_B$. Symmetrized moments, the mean
+vector and the covariance matrix are linear combinations of these. All states
+considered here have finite support in the Fock basis, so every moment is
+finite. For integers $r\ge2$ and $m\ge1$ and weights $p_0,\dots,p_{r-1}>0$ with
+$\sum_jp_j=1$, set
+\[
+\ket{\psi}=\sum_{j=0}^{r-1}\sqrt{p_j}\,\ket{mj,mj},
+\qquad
+\sigma=\sum_{j=0}^{r-1}p_j\,\ketbra{mj,mj}{mj,mj}.
+\]
+
+\begin{theorem}\label{thm:main}
+The state $\ket\psi$ has Schmidt rank $r$, and $\sigma$ is separable. Every
+quadrature moment of degree $\ell<2m$ takes the same value on $\ketbra\psi\psi$
+and on $\sigma$. The mean total photon number of both states equals
+$2m\sum_jj\,p_j$.
+\end{theorem}
+
+\begin{proof}
+The vectors $\ket{mj}$ are orthonormal on each side, so the given expansion of
+$\ket\psi$ is a Schmidt decomposition with $r$ nonzero coefficients, and
+$\sigma$ is a convex combination of product states. Since
+$\hat x_A,\hat p_A$ are linear combinations of $\hat a,\hat a^\dagger$, and
+similarly on $B$, an ordered product $\hat W$ of $\ell$ quadratures is a linear
+combination of ordered products of $\ell$ operators among
+$\hat a,\hat a^\dagger,\hat b,\hat b^\dagger$. Such a product maps $\ket{n_A,n_B}$
+to a multiple of $\ket{n_A+s_A,n_B+s_B}$ with $\lvert s_A\rvert+\lvert s_B\rvert\le\ell$.
+For $j\ne j'$ the matrix element $\bra{mj,mj}\hat W\ket{mj',mj'}$ can be nonzero
+only if $s_A=s_B=m(j-j')$, which requires $2m\lvert j-j'\rvert\le\ell$ and is
+impossible when $\ell<2m$. Therefore
+\[
+\bra\psi\hat W\ket\psi=\sum_{j,j'}\sqrt{p_jp_{j'}}\,\bra{mj,mj}\hat W\ket{mj',mj'}
+=\sum_jp_j\bra{mj,mj}\hat W\ket{mj,mj}=\Tr(\sigma\hat W).
+\]
+The total photon number $\hat a^\dagger\hat a+\hat b^\dagger\hat b$ is diagonal
+in the Fock basis, so the same computation applies to it and gives
+$\sum_jp_j\cdot2mj$ for both states.
+\end{proof}
+
+For $m=2$ the theorem says that the mean vectors, the covariance matrices and
+all third moments of $\ket{\psi}$ and $\sigma$ coincide; the mean vectors
+vanish. The energy is the mean photon number up to the vacuum contribution, and
+any Hamiltonian quadratic in the quadratures also has the same expectation in
+both states.
+
+\begin{corollary}\label{cor:uniform}
+Let $d\ge1$ be an integer and $E>0$. For every $r\ge2$ there are a pure state
+of Schmidt rank $r$ and a separable state whose quadrature moments of degree at
+most $d$ all coincide and whose common mean photon number is at most $E$.
+\end{corollary}
+
+\begin{proof}
+Choose $m=\lfloor d/2\rfloor+1$, so that $2m>d$, and $z\in(0,1)$ with
+$2mz/(1-z)\le E$. Take $p_j=z^j/\sum_{i<r}z^i$ in Theorem~\ref{thm:main}. The
+mean $\mu_r=\sum_{j<r}j\,p_j$ of this truncated geometric law increases with
+$r$, because passing from $r$ to $r+1$ adds the value $r$, which exceeds every
+value already present, so $\mu_r\le\lim_{s\to\infty}\mu_s=z/(1-z)$. The mean
+photon number $2m\mu_r$ is therefore at most $2mz/(1-z)\le E$.
+\end{proof}
+
+In particular, for second moments ($d=2$, $m=2$) the bound is $4z/(1-z)$, and
+any positive energy budget admits pairs of this type with arbitrarily large
+Schmidt rank. Any test whose input consists of quadrature moments of degree at
+most $d$ and of an upper bound on the mean photon number assigns the same
+verdict to the two states, and since one of them is separable, it cannot
+certify any entanglement of the other.
+
+\begin{proposition}[Sharpness]\label{prop:sharp}
+For the states of Theorem~\ref{thm:main}, the moment
+$\langle\hat a^m\hat b^m\rangle$, a polynomial of degree $2m$ in the
+quadratures, equals
+$\sum_{j=0}^{r-2}\sqrt{p_jp_{j+1}}\,\frac{(m(j+1))!}{(mj)!}>0$ for $\ket\psi$
+and $0$ for $\sigma$. In particular, for spacing $m=1$ the second moment
+$\langle\hat a\hat b\rangle$ already distinguishes the two states.
+\end{proposition}
+
+\begin{proof}
+Since $\hat a^m\ket{n}=\sqrt{n!/(n-m)!}\,\ket{n-m}$, the operator
+$\hat a^m\hat b^m$ maps $\ket{m(j+1),m(j+1)}$ to
+$\frac{(m(j+1))!}{(mj)!}\ket{mj,mj}$ and maps $\ket{0,0}$ to zero. Its diagonal
+elements on the vectors $\ket{mj,mj}$ vanish, which gives $0$ for $\sigma$, and
+the off-diagonal elements between consecutive vectors give the stated sum for
+$\ket\psi$. The operator is a polynomial of degree $2m$ in the quadratures
+because $\hat a=(\hat x_A+i\hat p_A)/\sqrt2$ and $\hat b=(\hat x_B+i\hat p_B)/\sqrt2$.
+\end{proof}
+
+At bounded energy, the uniform obstruction always rests on a small Schmidt
+coefficient.
+
+\begin{proposition}\label{prop:markov}
+Let $\ket\phi$ be a pure two-mode state with mean total photon number at most
+$E$, and let $\lambda_1\ge\lambda_2\ge\cdots$ be the eigenvalues of its reduced
+states, the squared Schmidt coefficients. Then $\lambda_r\le E/(r(r-1))$ for
+every $r\ge2$.
+\end{proposition}
+
+\begin{proof}
+The mean photon number of mode $A$ is $\Tr(\rho_A\hat a^\dagger\hat a)$, where
+$\rho_A=\sum_i\lambda_i\ketbra{e_i}{e_i}$ with orthonormal eigenvectors $e_i$.
+Write $\hat n=\hat a^\dagger\hat a$ and $c_i=\bra{e_i}\hat n\ket{e_i}\ge0$. By Ky
+Fan's minimum principle, the sum of the diagonal values of $\hat n$ on any $s$
+orthonormal vectors is at least the sum of its $s$ smallest eigenvalues, so
+$C_s=\sum_{i\le s}c_i\ge\sum_{i\le s}(i-1)$ for every $s$. For every $S$, Abel
+summation with the nonnegative differences $\lambda_s-\lambda_{s+1}$ gives
+\[
+\sum_{i\le S}\lambda_ic_i=\sum_{s<S}(\lambda_s-\lambda_{s+1})C_s+\lambda_SC_S
+\ge\sum_{i\le S}\lambda_i(i-1),
+\]
+and letting $S$ grow yields $\Tr(\rho_A\hat n)=\sum_i\lambda_ic_i\ge\sum_i\lambda_i(i-1)$. The same bound holds for mode $B$, whose
+reduced state has the same nonzero eigenvalues. Hence
+$E\ge2\sum_{i\le r}\lambda_i(i-1)\ge2\lambda_r\sum_{i\le r}(i-1)=\lambda_r\,r(r-1)$.
+\end{proof}
+
+For the states of Corollary~\ref{cor:uniform} the smallest nonzero
+eigenvalue of the reduced state is in fact $p_{r-1}\propto z^{r-1}$,
+exponentially small in $r$.
+
+\section{Verification}\label{sec:verification}
+The results are proved above. The public
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/schmidt-number-separable-covariance/checks/verify_moments.py}{Python checker}
+confirms them on examples, and its
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/schmidt-number-separable-covariance/data/verification.json}{recorded output}
+is part of the same entry. It builds the quadrature operators as Fock matrices
+truncated at a level that the words considered cannot reach, so that no
+truncation error occurs, and evaluates every ordered word of length at most
+$d$ in $\hat x_A,\hat p_A,\hat x_B,\hat p_B$ on $\ket\psi$ and on $\sigma$: for
+spacing $m=2$, degree $d=3$ and $2\le r\le6$, and for $m\in\{3,4\}$,
+$d=2m-1$ and $2\le r\le5$, each with geometric and with random weights. The
+largest difference is below $3\times10^{-13}$, at the level of rounding. It
+also checks the value of $\langle\hat a^m\hat b^m\rangle$ in
+Proposition~\ref{prop:sharp} for $m\le4$, the difference of second moments for
+spacing $1$, the Schmidt rank of $\ket\psi$, the equality of mean photon
+numbers, and the bound $2mz/(1-z)$ for $r\le60$, and it tests
+Proposition~\ref{prop:markov} on $300$ random pure states with finite Fock
+support. The bound of Proposition~\ref{prop:markov} is attained by the
+maximally entangled state $r^{-1/2}\sum_{i<r}\ket{i,i}$. The run is deterministic and
+takes under half a minute.
+
+\section{Scope and limitations}\label{sec:scope}
+Theorem~\ref{thm:main}, Corollary~\ref{cor:uniform} and
+Propositions~\ref{prop:sharp} and~\ref{prop:markov} are proved analytically;
+the checker is a floating-point confirmation on finitely many cases. The
+result rules out only criteria that use quadrature moments of bounded degree,
+together with an energy bound, uniformly over all states. It says nothing
+against the certification of a Schmidt number for a particular state or family
+of states, such as the Gaussian states for which~\cite{Mishra2026} obtains
+large certified values, and it does not concern nonlinear data such as purity
+or the reduction moments of~\cite{Yi2026}. The separable partner $\sigma_r$ is
+mixed; we have not examined whether a pure product state, or a pure state of
+smaller Schmidt rank, can share the low-order moments of $\ket{\psi_r}$.
+
+Proposition~\ref{prop:markov} shows that at bounded energy the obstruction
+needs a reduced-state eigenvalue $\lambda_r$ of at most $E/(r(r-1))$. A better-posed question
+is therefore the following: given an energy bound and a lower bound on the
+$r$-th Schmidt coefficient, or on the weight of a state beyond Schmidt rank
+$r-1$, which order of quadrature moments suffices to certify Schmidt number at
+least $r$? We leave it open.
+
+The construction is elementary, and we make no claim of priority for it. Our
+search was limited to the works cited here, in which we did not find it
+stated; observations of the same kind may well appear elsewhere in the
+literature on moment-based entanglement criteria.
+
+\begingroup\small
+\begin{thebibliography}{9}
+\setlength{\itemsep}{2pt}
+\bibitem{Duan2000}
+L.-M. Duan, G. Giedke, J. I. Cirac and P. Zoller,
+\emph{Inseparability Criterion for Continuous Variable Systems},
+Phys. Rev. Lett. \textbf{84}, 2722 (2000);
+\href{https://doi.org/10.1103/PhysRevLett.84.2722}{doi:10.1103/PhysRevLett.84.2722};
+\href{https://arxiv.org/abs/quant-ph/9908056}{arXiv:quant-ph/9908056}.
+
+\bibitem{Simon2000}
+R. Simon,
+\emph{Peres-Horodecki Separability Criterion for Continuous Variable Systems},
+Phys. Rev. Lett. \textbf{84}, 2726 (2000);
+\href{https://doi.org/10.1103/PhysRevLett.84.2726}{doi:10.1103/PhysRevLett.84.2726};
+\href{https://arxiv.org/abs/quant-ph/9909044}{arXiv:quant-ph/9909044}.
+
+\bibitem{Terhal2000}
+B. M. Terhal and P. Horodecki,
+\emph{Schmidt number for density matrices},
+Phys. Rev. A \textbf{61}, 040301 (2000);
+\href{https://doi.org/10.1103/PhysRevA.61.040301}{doi:10.1103/PhysRevA.61.040301};
+\href{https://arxiv.org/abs/quant-ph/9911117}{arXiv:quant-ph/9911117}.
+
+\bibitem{Shchukin2005}
+E. Shchukin and W. Vogel,
+\emph{Inseparability Criteria for Continuous Bipartite Quantum States},
+Phys. Rev. Lett. \textbf{95}, 230502 (2005);
+\href{https://doi.org/10.1103/PhysRevLett.95.230502}{doi:10.1103/PhysRevLett.95.230502};
+\href{https://arxiv.org/abs/quant-ph/0508132}{arXiv:quant-ph/0508132}.
+
+\bibitem{Mishra2026}
+I. Mishra, S. Morelli, K. Baksov\'a, P. Rembold and N. Friis,
+\emph{Certification of high-dimensional entanglement in continuous-variable systems},
+preprint (2026);
+\href{https://arxiv.org/abs/2610.03113}{arXiv:2610.03113}.
+
+\bibitem{Yi2026}
+C. Yi, X. Li and H. Zhu,
+\emph{Certifying Entanglement Dimensionality by $k$-Reduction Moments},
+PRX Quantum \textbf{7}, 010356 (2026);
+\href{https://doi.org/10.1103/cc1n-gmj1}{doi:10.1103/cc1n-gmj1};
+\href{https://arxiv.org/abs/2501.15360}{arXiv:2501.15360}.
+\end{thebibliography}
+\endgroup
+\end{document}

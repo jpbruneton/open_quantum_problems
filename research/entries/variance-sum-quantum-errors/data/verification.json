@@ -1,0 +1,109 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "check": "S^1 counterexample inside the paper's basis (h_1, h_1): exact 5/2 (or 3/2) versus predicted 2",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "one-qubit coherent counterexample: V1 = V2 = 1, V12 = 3, formula gives 3/2",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "gate model: centring of the second error alone does not suffice (m12 = 0, m1*m2 = 1/2)",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "S^7 example of the paper: V(g1)=53/28, V(g2)=7/4, V12=445/224, and g1 is not centred (E[x_1] != 0)",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "gate model: exact corrected identity holds to rounding",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "gate model: formula (1) holds when the first error is centred (anisotropic, non identically distributed)",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "gate model: formula (1) holds when the backward second error is centred",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "gate model: formula (1) fails for generic non-centred errors",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "transport model: formula (1) holds for any first error and any section when the second error is centred",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "transport model: without centring the result fails and depends on the section",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Monte Carlo agrees with 445/224 within 4 standard errors and excludes V12 = 2",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "fidelity formula holds when the second error has an isotropic second moment (first error arbitrary)",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "fidelity formula fails for a generic second error",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "exact_values": {
+    "circle_h1_variance": "2",
+    "circle_h1_mean_sin": "1/2",
+    "circle_sum_rotation": "5/2",
+    "circle_sum_paper_sign": "3/2",
+    "qubit_coherent_V1": "1",
+    "qubit_coherent_V12": "3",
+    "gate_model_m12": "0",
+    "gate_model_m1m2": "1/2",
+    "S7_V_g1": "53/28",
+    "S7_V_g2": "7/4",
+    "S7_E_x1_under_g1": "32768/(55125*pi**2)",
+    "S7_V12": "445/224"
+  },
+  "floating_point": {
+    "gate_identity_max_error": 5.773159728050814e-15,
+    "gate_generic_max_violation": 0.6724570914675008,
+    "gate_first_centred_max_violation": 5.773159728050814e-15,
+    "transport_centred_max_violation": 3.552713678800501e-15,
+    "transport_noncentred_max_violation": 0.5460540841097752,
+    "transport_section_dependence": 1.0921081682195501,
+    "monte_carlo_S7": {
+      "samples": 2999349,
+      "V12": 1.9865212113853659,
+      "two_std_err": 0.0004084140999005476
+    },
+    "fidelity_isotropic_second_moment_max_error": 5.551115123125783e-16,
+    "fidelity_generic_max_violation": 0.2481934860541567
+  },
+  "seeds": [
+    20241220,
+    7,
+    38
+  ],
+  "elapsed_seconds": 5.2,
+  "sha256": {
+    "checks/check_variance_formula.py": "e7ad5e0abc675d5490726658fd8bbe790646aab858a49b8b3b5bc96c2c82d0e0"
+  },
+  "limits": "Exact symbolic counterexamples and floating-point checks on finite ensembles; the general statements are proved in the manuscript, not by this script."
+}

@@ -1,0 +1,76 @@
+{
+  "status": "passed",
+  "seed": 220903909,
+  "checks": [
+    {
+      "check": "[1] N_S = d * max(0, -lambda_min(rho^Gamma)) (random states, d = 2,3,4)",
+      "passed": true,
+      "detail": "max deviation 2.1e-14"
+    },
+    {
+      "check": "[2] N/N_S = 2 r/(d(d-1)), r = sum|neg|/max|neg| (1149 NPT states)",
+      "passed": true,
+      "detail": "max deviation 4.2e-13"
+    },
+    {
+      "check": "[3] d = 2: N = N_S on random two-qubit states",
+      "passed": true,
+      "detail": "max deviation 3.8e-15"
+    },
+    {
+      "check": "[4a] Werner states (d = 2..5): q = 1 and N/N_S = 2/(d(d-1))",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "[4b] isotropic states (d = 2..5): q = d(d-1)/2, flat, N = N_S",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "[5a] exact: (2|00>+2|11>+|22>)/3 has q = 3 = d(d-1)/2, N = 8/9, N_S = 4/3",
+      "passed": true,
+      "detail": "q = 3, N = 8/9, N_S = 4/3, negative eigenvalues [(-4/9, 1), (-2/9, 2)]"
+    },
+    {
+      "check": "[5b] random pure states of Schmidt rank d (d = 3,4,5): q = d(d-1)/2 and N < N_S",
+      "passed": true,
+      "detail": "largest N/N_S = 0.8058; formula deviation 4.3e-14"
+    },
+    {
+      "check": "[5c] maximally entangled states: N = N_S = 1",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "[6] 300 random mixed states of 3x3 with exactly q = 3: N/N_S < 1 in every case",
+      "passed": true,
+      "detail": "N/N_S in [0.3575, 0.7634]"
+    },
+    {
+      "check": "[7] exact 3x3 state: rho >= 0, Spec rho^Gamma = {5/21 (x5), -1/21 (x4)}, N = 4/21 > N_S = 1/7",
+      "passed": true,
+      "detail": "Spec rho = {3/7: 1, 4/21: 3, 0: 5}, q = 4, N = 4/21, N_S = 1/7, N/N_S = 4/3"
+    },
+    {
+      "check": "[8] exact 3x3 state with q = 4 and N = N_S = 3/32",
+      "passed": true,
+      "detail": "Spec rho^Gamma = {21/64: 2, 9/64: 2, -1/64: 2, 5/32: 1, -1/32: 2}, Spec rho = {27/64: 1, 17/64: 1, 0: 3, 1/8: 2, 1/32: 2}"
+    },
+    {
+      "check": "[8b] exact 3x3 state with q = 4 and N < N_S",
+      "passed": true,
+      "detail": "negative eigenvalues ['-11/126', '-41/630', '5/42 - sqrt(1747)/315'], N = 0.231102, N_S = 0.261905"
+    },
+    {
+      "check": "[9a] Spec Q^Gamma = {q_J with multiplicity 2J+1}, min = 1/C(2d-2,d-1) (d = 2..6)",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "[9b] rho_t >= 0 and rho_t^Gamma has (d-1)^2 equal negative eigenvalues, N/N_S = 2(d-1)/d (d = 2..6)",
+      "passed": true,
+      "detail": "d=2: kappa=1/2, t=2, N=1, N_S=1; d=3: kappa=1/6, t=6/5, N=4/21, N_S=1/7; d=4: kappa=1/20, t=20/19, N=3/62, N_S=1/31; d=5: kappa=1/70, t=70/69, N=8/605, N_S=1/121; d=6: kappa=1/252, t=252/251, N=5/1368, N_S=1/456"
+    }
+  ]
+}

@@ -1,0 +1,123 @@
+{
+  "status": "passed",
+  "checks": {
+    "lemma1_generating_function": {
+      "passed": true,
+      "range": "0<=k,l<=12",
+      "order": 160
+    },
+    "theorem1_product_form": {
+      "passed": true,
+      "range": "2<=k<=40",
+      "order": 160
+    },
+    "theorem1_explicit_formula": {
+      "passed": true,
+      "range": "2<=k<=40",
+      "order": 39
+    },
+    "theorem1_coefficients_at_least_one": {
+      "passed": true,
+      "min_coefficient": 1
+    },
+    "paper_closed_forms_k2_k3_k4": {
+      "passed": true,
+      "first_coefficients_k2": [
+        1,
+        5,
+        7,
+        11,
+        13,
+        17,
+        19,
+        23
+      ]
+    },
+    "direct_exact_majorization_11_vs_kk": {
+      "passed": true,
+      "k": [
+        2,
+        3,
+        5,
+        8,
+        9,
+        10,
+        12
+      ],
+      "lam": [
+        "1/100",
+        "1/16",
+        "1/4",
+        "1/2",
+        "3/4"
+      ],
+      "partial_sums": 200
+    },
+    "theorem2_base_0m": {
+      "passed": true,
+      "range": "0<=k,l,m<=8, k+l>=m"
+    },
+    "theorem2_base_11": {
+      "passed": true,
+      "range": "0<=k,l<=10, k+l>=3"
+    },
+    "quotient_N33_over_N22_has_negative_coefficient": {
+      "passed": true,
+      "first_negative_index": 4,
+      "value": -87
+    },
+    "proposition3_largest_eigenvalues": {
+      "passed": true,
+      "sigma33": "34171875/85786624",
+      "sigma44": "192216796875/471590764544",
+      "sigma33_float": 0.39833570091300013,
+      "sigma44_float": 0.4075923689066772
+    },
+    "proposition3_incomparable_pair": {
+      "passed": true,
+      "min_gap_44_minus_33": -0.12821991681904965
+    },
+    "float_scan_diagonal_pairs": {
+      "passed": true,
+      "grid_points": 160,
+      "l_max": 6,
+      "k_max": 12,
+      "pairs_l_to_k_failing_on_grid": [
+        [
+          3,
+          4
+        ],
+        [
+          4,
+          5
+        ],
+        [
+          5,
+          6
+        ],
+        [
+          5,
+          7
+        ],
+        [
+          6,
+          7
+        ],
+        [
+          6,
+          8
+        ],
+        [
+          6,
+          9
+        ]
+      ],
+      "note": "sigma^(1,1) and sigma^(2,2) majorize every sigma^(k,k) on the grid; evidence only"
+    }
+  },
+  "sha256": {
+    "checks/verify_majorization.py": "91b0c0737b444c13e0c9819ce1cb3aa6c90bad05d8d3066a9c87e6b90a453552"
+  },
+  "limits": "Exact integer and rational checks of finitely many coefficients and partial sums, plus a floating-point grid scan; the proofs are in the manuscript. Not a formal proof or a certification of novelty.",
+  "elapsed_seconds": 2.0
+}

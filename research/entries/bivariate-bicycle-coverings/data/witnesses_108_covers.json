@@ -1,0 +1,130 @@
+{
+ "description": "Two double covers (l, m) = (12, 9) of the [[108,8,10]] bivariate bicycle code, written in the transposed orientation (6, 9), for which no base logical of weight 10 has a nontrivial transfer. For each, an explicit Z-type logical operator (support as qubit indices; left block 0..107, right block 108..215, index of x^i y^j is 9 i + j) certifies an upper bound on the distance.",
+ "base": {
+  "A": [
+   [
+    0,
+    3
+   ],
+   [
+    1,
+    0
+   ],
+   [
+    2,
+    0
+   ]
+  ],
+  "B": [
+   [
+    3,
+    0
+   ],
+   [
+    0,
+    1
+   ],
+   [
+    0,
+    2
+   ]
+  ],
+  "l": 6,
+  "m": 9,
+  "n": 108,
+  "k": 8,
+  "d": 10
+ },
+ "covers": [
+  {
+   "A": [
+    [
+     0,
+     3
+    ],
+    [
+     1,
+     0
+    ],
+    [
+     8,
+     0
+    ]
+   ],
+   "B": [
+    [
+     3,
+     0
+    ],
+    [
+     0,
+     1
+    ],
+    [
+     0,
+     2
+    ]
+   ],
+   "l": 12,
+   "m": 9,
+   "support": [
+    8,
+    13,
+    32,
+    38,
+    71,
+    82,
+    114,
+    158,
+    183,
+    197
+   ]
+  },
+  {
+   "A": [
+    [
+     0,
+     3
+    ],
+    [
+     7,
+     0
+    ],
+    [
+     8,
+     0
+    ]
+   ],
+   "B": [
+    [
+     3,
+     0
+    ],
+    [
+     6,
+     1
+    ],
+    [
+     6,
+     2
+    ]
+   ],
+   "l": 12,
+   "m": 9,
+   "support": [
+    12,
+    21,
+    29,
+    49,
+    51,
+    81,
+    88,
+    98,
+    121,
+    151,
+    180,
+    209
+   ]
+  }
+ ]
+}

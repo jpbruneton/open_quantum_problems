@@ -1,0 +1,1318 @@
+{
+  "entry": "locally-invisible-mpemba-mode",
+  "status": "passed",
+  "checks": {
+    "Pauli strings are eigenvectors with the exact rates": [
+      {
+        "passed": true,
+        "n": 2,
+        "eps": "1/6",
+        "max_residual": 8.881784197001252e-16
+      },
+      {
+        "passed": true,
+        "n": 2,
+        "eps": "1/2",
+        "max_residual": 0.0
+      },
+      {
+        "passed": true,
+        "n": 2,
+        "eps": "9/10",
+        "max_residual": 0.0
+      },
+      {
+        "passed": true,
+        "n": 3,
+        "eps": "1/6",
+        "max_residual": 1.7763568394002505e-15
+      },
+      {
+        "passed": true,
+        "n": 3,
+        "eps": "1/2",
+        "max_residual": 0.0
+      },
+      {
+        "passed": true,
+        "n": 3,
+        "eps": "9/10",
+        "max_residual": 0.0
+      },
+      {
+        "passed": true,
+        "n": 4,
+        "eps": "1/6",
+        "max_residual": 1.7763568394002505e-15
+      },
+      {
+        "passed": true,
+        "n": 4,
+        "eps": "1/2",
+        "max_residual": 0.0
+      },
+      {
+        "passed": true,
+        "n": 4,
+        "eps": "9/10",
+        "max_residual": 0.0
+      },
+      {
+        "passed": true,
+        "n": 5,
+        "eps": "1/6",
+        "max_residual": 3.552713678800501e-15
+      },
+      {
+        "passed": true,
+        "n": 5,
+        "eps": "1/2",
+        "max_residual": 0.0
+      },
+      {
+        "passed": true,
+        "n": 5,
+        "eps": "9/10",
+        "max_residual": 0.0
+      }
+    ],
+    "numerical Liouvillian spectrum equals exact rate multiset": [
+      {
+        "passed": true,
+        "n": 2,
+        "eps": "1/6",
+        "dimension": 16,
+        "max_deviation": 6.217248937900877e-15
+      },
+      {
+        "passed": true,
+        "n": 2,
+        "eps": "1/2",
+        "dimension": 16,
+        "max_deviation": 3.552713678800501e-15
+      },
+      {
+        "passed": true,
+        "n": 2,
+        "eps": "9/10",
+        "dimension": 16,
+        "max_deviation": 7.105427357601002e-15
+      },
+      {
+        "passed": true,
+        "n": 3,
+        "eps": "1/6",
+        "dimension": 64,
+        "max_deviation": 2.842170943040401e-14
+      },
+      {
+        "passed": true,
+        "n": 3,
+        "eps": "1/2",
+        "dimension": 64,
+        "max_deviation": 4.263256414560601e-14
+      },
+      {
+        "passed": true,
+        "n": 3,
+        "eps": "9/10",
+        "dimension": 64,
+        "max_deviation": 5.3290705182007514e-14
+      },
+      {
+        "passed": true,
+        "n": 4,
+        "eps": "1/6",
+        "dimension": 256,
+        "max_deviation": 5.1514348342607263e-14
+      },
+      {
+        "passed": true,
+        "n": 4,
+        "eps": "1/2",
+        "dimension": 256,
+        "max_deviation": 6.394884621840902e-14
+      },
+      {
+        "passed": true,
+        "n": 4,
+        "eps": "9/10",
+        "dimension": 256,
+        "max_deviation": 1.0658141036401503e-13
+      },
+      {
+        "passed": true,
+        "n": 5,
+        "eps": "1/6",
+        "dimension": 1024,
+        "max_deviation": 2.504663143554353e-13
+      },
+      {
+        "passed": true,
+        "n": 5,
+        "eps": "1/2",
+        "dimension": 1024,
+        "max_deviation": 2.0605739337042905e-13
+      },
+      {
+        "passed": true,
+        "n": 5,
+        "eps": "9/10",
+        "dimension": 1024,
+        "max_deviation": 2.8421709430404007e-13
+      }
+    ],
+    "unique stationary mode I, unique slowest mode Z...Z at rate 2 eps, rest >= 2": [
+      {
+        "passed": true,
+        "n": 2,
+        "eps": "1/6",
+        "gap": "1/3",
+        "next_rate": "2",
+        "rate_X_n": "2"
+      },
+      {
+        "passed": true,
+        "n": 2,
+        "eps": "1/2",
+        "gap": "1",
+        "next_rate": "2",
+        "rate_X_n": "2"
+      },
+      {
+        "passed": true,
+        "n": 2,
+        "eps": "9/10",
+        "gap": "9/5",
+        "next_rate": "2",
+        "rate_X_n": "2"
+      },
+      {
+        "passed": true,
+        "n": 3,
+        "eps": "1/6",
+        "gap": "1/3",
+        "next_rate": "2",
+        "rate_X_n": "2"
+      },
+      {
+        "passed": true,
+        "n": 3,
+        "eps": "1/2",
+        "gap": "1",
+        "next_rate": "2",
+        "rate_X_n": "2"
+      },
+      {
+        "passed": true,
+        "n": 3,
+        "eps": "9/10",
+        "gap": "9/5",
+        "next_rate": "2",
+        "rate_X_n": "2"
+      },
+      {
+        "passed": true,
+        "n": 4,
+        "eps": "1/6",
+        "gap": "1/3",
+        "next_rate": "2",
+        "rate_X_n": "2"
+      },
+      {
+        "passed": true,
+        "n": 4,
+        "eps": "1/2",
+        "gap": "1",
+        "next_rate": "2",
+        "rate_X_n": "2"
+      },
+      {
+        "passed": true,
+        "n": 4,
+        "eps": "9/10",
+        "gap": "9/5",
+        "next_rate": "2",
+        "rate_X_n": "2"
+      },
+      {
+        "passed": true,
+        "n": 5,
+        "eps": "1/6",
+        "gap": "1/3",
+        "next_rate": "2",
+        "rate_X_n": "2"
+      },
+      {
+        "passed": true,
+        "n": 5,
+        "eps": "1/2",
+        "gap": "1",
+        "next_rate": "2",
+        "rate_X_n": "2"
+      },
+      {
+        "passed": true,
+        "n": 5,
+        "eps": "9/10",
+        "gap": "9/5",
+        "next_rate": "2",
+        "rate_X_n": "2"
+      }
+    ],
+    "closed form: eigenvalues -2(m + eps b) with multiplicity C(2n-1, m)": [
+      {
+        "passed": true,
+        "n": 2,
+        "eps": "1/6"
+      },
+      {
+        "passed": true,
+        "n": 2,
+        "eps": "1/2"
+      },
+      {
+        "passed": true,
+        "n": 2,
+        "eps": "9/10"
+      },
+      {
+        "passed": true,
+        "n": 3,
+        "eps": "1/6"
+      },
+      {
+        "passed": true,
+        "n": 3,
+        "eps": "1/2"
+      },
+      {
+        "passed": true,
+        "n": 3,
+        "eps": "9/10"
+      },
+      {
+        "passed": true,
+        "n": 4,
+        "eps": "1/6"
+      },
+      {
+        "passed": true,
+        "n": 4,
+        "eps": "1/2"
+      },
+      {
+        "passed": true,
+        "n": 4,
+        "eps": "9/10"
+      },
+      {
+        "passed": true,
+        "n": 5,
+        "eps": "1/6"
+      },
+      {
+        "passed": true,
+        "n": 5,
+        "eps": "1/2"
+      },
+      {
+        "passed": true,
+        "n": 5,
+        "eps": "9/10"
+      }
+    ],
+    "initial states are positive": [
+      {
+        "passed": true,
+        "n": 2,
+        "min_eigenvalue": 0.04999999999999999
+      },
+      {
+        "passed": true,
+        "n": 2,
+        "min_eigenvalue": 0.04999999999999999
+      },
+      {
+        "passed": true,
+        "n": 2,
+        "min_eigenvalue": 0.04999999999999999
+      },
+      {
+        "passed": true,
+        "n": 3,
+        "min_eigenvalue": 0.024999999999999994
+      },
+      {
+        "passed": true,
+        "n": 3,
+        "min_eigenvalue": 0.024999999999999994
+      },
+      {
+        "passed": true,
+        "n": 3,
+        "min_eigenvalue": 0.024999999999999994
+      },
+      {
+        "passed": true,
+        "n": 4,
+        "min_eigenvalue": 0.012499999999999997
+      },
+      {
+        "passed": true,
+        "n": 4,
+        "min_eigenvalue": 0.012499999999999997
+      },
+      {
+        "passed": true,
+        "n": 4,
+        "min_eigenvalue": 0.012499999999999997
+      }
+    ],
+    "trace distances follow alpha e^{-2 eps t}/2 and beta e^{-2t}/2": [
+      {
+        "passed": true,
+        "n": 2,
+        "eps": "1/6",
+        "max_deviation": 8.326672684688674e-17
+      },
+      {
+        "passed": true,
+        "n": 2,
+        "eps": "1/2",
+        "max_deviation": 1.1102230246251565e-16
+      },
+      {
+        "passed": true,
+        "n": 2,
+        "eps": "9/10",
+        "max_deviation": 1.0104764247564901e-16
+      },
+      {
+        "passed": true,
+        "n": 3,
+        "eps": "1/6",
+        "max_deviation": 3.5388358909926865e-16
+      },
+      {
+        "passed": true,
+        "n": 3,
+        "eps": "1/2",
+        "max_deviation": 1.3530843112619095e-16
+      },
+      {
+        "passed": true,
+        "n": 3,
+        "eps": "9/10",
+        "max_deviation": 9.194034422677078e-17
+      },
+      {
+        "passed": true,
+        "n": 4,
+        "eps": "1/6",
+        "max_deviation": 1.249000902703301e-16
+      },
+      {
+        "passed": true,
+        "n": 4,
+        "eps": "1/2",
+        "max_deviation": 5.204170427930421e-17
+      },
+      {
+        "passed": true,
+        "n": 4,
+        "eps": "9/10",
+        "max_deviation": 1.249000902703301e-16
+      }
+    ],
+    "Mpemba crossing at log(beta/alpha)/(2-2eps)": [
+      {
+        "passed": true,
+        "n": 2,
+        "eps": "1/6",
+        "alpha": 0.3,
+        "beta": 0.8,
+        "t_numeric": 0.5884975518070356,
+        "t_formula": 0.5884975518070358
+      },
+      {
+        "passed": true,
+        "n": 2,
+        "eps": "1/2",
+        "alpha": 0.3,
+        "beta": 0.8,
+        "t_numeric": 0.9808292530117275,
+        "t_formula": 0.9808292530117263
+      },
+      {
+        "passed": true,
+        "n": 2,
+        "eps": "9/10",
+        "alpha": 0.3,
+        "beta": 0.8,
+        "t_numeric": 4.904146265062928,
+        "t_formula": 4.904146265058633
+      },
+      {
+        "passed": true,
+        "n": 3,
+        "eps": "1/6",
+        "alpha": 0.3,
+        "beta": 0.8,
+        "t_numeric": 0.588497551807036,
+        "t_formula": 0.5884975518070358
+      },
+      {
+        "passed": true,
+        "n": 3,
+        "eps": "1/2",
+        "alpha": 0.3,
+        "beta": 0.8,
+        "t_numeric": 0.9808292530117269,
+        "t_formula": 0.9808292530117263
+      },
+      {
+        "passed": true,
+        "n": 3,
+        "eps": "9/10",
+        "alpha": 0.3,
+        "beta": 0.8,
+        "t_numeric": 4.9041462650520415,
+        "t_formula": 4.904146265058633
+      },
+      {
+        "passed": true,
+        "n": 4,
+        "eps": "1/6",
+        "alpha": 0.3,
+        "beta": 0.8,
+        "t_numeric": 0.5884975518070356,
+        "t_formula": 0.5884975518070358
+      },
+      {
+        "passed": true,
+        "n": 4,
+        "eps": "1/2",
+        "alpha": 0.3,
+        "beta": 0.8,
+        "t_numeric": 0.9808292530117274,
+        "t_formula": 0.9808292530117263
+      },
+      {
+        "passed": true,
+        "n": 4,
+        "eps": "9/10",
+        "alpha": 0.3,
+        "beta": 0.8,
+        "t_numeric": 4.904146265055077,
+        "t_formula": 4.904146265058633
+      }
+    ],
+    "rho_P(t*) and rho_Q(t*) are isospectral": [
+      {
+        "passed": true,
+        "n": 2,
+        "max_deviation": 1.1102230246251565e-16
+      },
+      {
+        "passed": true,
+        "n": 2,
+        "max_deviation": 1.1102230246251565e-16
+      },
+      {
+        "passed": true,
+        "n": 2,
+        "max_deviation": 5.551115123125783e-17
+      },
+      {
+        "passed": true,
+        "n": 3,
+        "max_deviation": 2.7755575615628914e-17
+      },
+      {
+        "passed": true,
+        "n": 3,
+        "max_deviation": 2.7755575615628914e-17
+      },
+      {
+        "passed": true,
+        "n": 3,
+        "max_deviation": 2.7755575615628914e-17
+      },
+      {
+        "passed": true,
+        "n": 4,
+        "max_deviation": 2.7755575615628914e-17
+      },
+      {
+        "passed": true,
+        "n": 4,
+        "max_deviation": 2.7755575615628914e-17
+      },
+      {
+        "passed": true,
+        "n": 4,
+        "max_deviation": 2.0816681711721685e-17
+      }
+    ],
+    "every strict reduction of rho_P(t) is maximally mixed": [
+      {
+        "passed": true,
+        "n": 2,
+        "max_deviation": 1.1102230246251565e-16,
+        "rho_Q_site_n_bloch_x": 0.8
+      },
+      {
+        "passed": true,
+        "n": 2,
+        "max_deviation": 1.1102230246251565e-16,
+        "rho_Q_site_n_bloch_x": 0.8
+      },
+      {
+        "passed": true,
+        "n": 2,
+        "max_deviation": 2.220446049250313e-16,
+        "rho_Q_site_n_bloch_x": 0.8
+      },
+      {
+        "passed": true,
+        "n": 3,
+        "max_deviation": 1.1102230246251565e-16,
+        "rho_Q_site_n_bloch_x": 0.8
+      },
+      {
+        "passed": true,
+        "n": 3,
+        "max_deviation": 3.3306690738754696e-16,
+        "rho_Q_site_n_bloch_x": 0.8
+      },
+      {
+        "passed": true,
+        "n": 3,
+        "max_deviation": 8.881784197001252e-16,
+        "rho_Q_site_n_bloch_x": 0.8
+      },
+      {
+        "passed": true,
+        "n": 4,
+        "max_deviation": 4.440892098500626e-16,
+        "rho_Q_site_n_bloch_x": 0.8
+      },
+      {
+        "passed": true,
+        "n": 4,
+        "max_deviation": 2.220446049250313e-16,
+        "rho_Q_site_n_bloch_x": 0.8
+      },
+      {
+        "passed": true,
+        "n": 4,
+        "max_deviation": 1.1102230246251565e-15,
+        "rho_Q_site_n_bloch_x": 0.8
+      }
+    ]
+  },
+  "exact_spectra_eigenvalue_multiplicity": {
+    "n=2,eps=1/6": [
+      [
+        "0",
+        1
+      ],
+      [
+        "-1/3",
+        1
+      ],
+      [
+        "-2",
+        3
+      ],
+      [
+        "-7/3",
+        3
+      ],
+      [
+        "-4",
+        3
+      ],
+      [
+        "-13/3",
+        3
+      ],
+      [
+        "-6",
+        1
+      ],
+      [
+        "-19/3",
+        1
+      ]
+    ],
+    "n=2,eps=1/2": [
+      [
+        "0",
+        1
+      ],
+      [
+        "-1",
+        1
+      ],
+      [
+        "-2",
+        3
+      ],
+      [
+        "-3",
+        3
+      ],
+      [
+        "-4",
+        3
+      ],
+      [
+        "-5",
+        3
+      ],
+      [
+        "-6",
+        1
+      ],
+      [
+        "-7",
+        1
+      ]
+    ],
+    "n=2,eps=9/10": [
+      [
+        "0",
+        1
+      ],
+      [
+        "-9/5",
+        1
+      ],
+      [
+        "-2",
+        3
+      ],
+      [
+        "-19/5",
+        3
+      ],
+      [
+        "-4",
+        3
+      ],
+      [
+        "-29/5",
+        3
+      ],
+      [
+        "-6",
+        1
+      ],
+      [
+        "-39/5",
+        1
+      ]
+    ],
+    "n=3,eps=1/6": [
+      [
+        "0",
+        1
+      ],
+      [
+        "-1/3",
+        1
+      ],
+      [
+        "-2",
+        5
+      ],
+      [
+        "-7/3",
+        5
+      ],
+      [
+        "-4",
+        10
+      ],
+      [
+        "-13/3",
+        10
+      ],
+      [
+        "-6",
+        10
+      ],
+      [
+        "-19/3",
+        10
+      ],
+      [
+        "-8",
+        5
+      ],
+      [
+        "-25/3",
+        5
+      ],
+      [
+        "-10",
+        1
+      ],
+      [
+        "-31/3",
+        1
+      ]
+    ],
+    "n=3,eps=1/2": [
+      [
+        "0",
+        1
+      ],
+      [
+        "-1",
+        1
+      ],
+      [
+        "-2",
+        5
+      ],
+      [
+        "-3",
+        5
+      ],
+      [
+        "-4",
+        10
+      ],
+      [
+        "-5",
+        10
+      ],
+      [
+        "-6",
+        10
+      ],
+      [
+        "-7",
+        10
+      ],
+      [
+        "-8",
+        5
+      ],
+      [
+        "-9",
+        5
+      ],
+      [
+        "-10",
+        1
+      ],
+      [
+        "-11",
+        1
+      ]
+    ],
+    "n=3,eps=9/10": [
+      [
+        "0",
+        1
+      ],
+      [
+        "-9/5",
+        1
+      ],
+      [
+        "-2",
+        5
+      ],
+      [
+        "-19/5",
+        5
+      ],
+      [
+        "-4",
+        10
+      ],
+      [
+        "-29/5",
+        10
+      ],
+      [
+        "-6",
+        10
+      ],
+      [
+        "-39/5",
+        10
+      ],
+      [
+        "-8",
+        5
+      ],
+      [
+        "-49/5",
+        5
+      ],
+      [
+        "-10",
+        1
+      ],
+      [
+        "-59/5",
+        1
+      ]
+    ],
+    "n=4,eps=1/6": [
+      [
+        "0",
+        1
+      ],
+      [
+        "-1/3",
+        1
+      ],
+      [
+        "-2",
+        7
+      ],
+      [
+        "-7/3",
+        7
+      ],
+      [
+        "-4",
+        21
+      ],
+      [
+        "-13/3",
+        21
+      ],
+      [
+        "-6",
+        35
+      ],
+      [
+        "-19/3",
+        35
+      ],
+      [
+        "-8",
+        35
+      ],
+      [
+        "-25/3",
+        35
+      ],
+      [
+        "-10",
+        21
+      ],
+      [
+        "-31/3",
+        21
+      ],
+      [
+        "-12",
+        7
+      ],
+      [
+        "-37/3",
+        7
+      ],
+      [
+        "-14",
+        1
+      ],
+      [
+        "-43/3",
+        1
+      ]
+    ],
+    "n=4,eps=1/2": [
+      [
+        "0",
+        1
+      ],
+      [
+        "-1",
+        1
+      ],
+      [
+        "-2",
+        7
+      ],
+      [
+        "-3",
+        7
+      ],
+      [
+        "-4",
+        21
+      ],
+      [
+        "-5",
+        21
+      ],
+      [
+        "-6",
+        35
+      ],
+      [
+        "-7",
+        35
+      ],
+      [
+        "-8",
+        35
+      ],
+      [
+        "-9",
+        35
+      ],
+      [
+        "-10",
+        21
+      ],
+      [
+        "-11",
+        21
+      ],
+      [
+        "-12",
+        7
+      ],
+      [
+        "-13",
+        7
+      ],
+      [
+        "-14",
+        1
+      ],
+      [
+        "-15",
+        1
+      ]
+    ],
+    "n=4,eps=9/10": [
+      [
+        "0",
+        1
+      ],
+      [
+        "-9/5",
+        1
+      ],
+      [
+        "-2",
+        7
+      ],
+      [
+        "-19/5",
+        7
+      ],
+      [
+        "-4",
+        21
+      ],
+      [
+        "-29/5",
+        21
+      ],
+      [
+        "-6",
+        35
+      ],
+      [
+        "-39/5",
+        35
+      ],
+      [
+        "-8",
+        35
+      ],
+      [
+        "-49/5",
+        35
+      ],
+      [
+        "-10",
+        21
+      ],
+      [
+        "-59/5",
+        21
+      ],
+      [
+        "-12",
+        7
+      ],
+      [
+        "-69/5",
+        7
+      ],
+      [
+        "-14",
+        1
+      ],
+      [
+        "-79/5",
+        1
+      ]
+    ],
+    "n=5,eps=1/6": [
+      [
+        "0",
+        1
+      ],
+      [
+        "-1/3",
+        1
+      ],
+      [
+        "-2",
+        9
+      ],
+      [
+        "-7/3",
+        9
+      ],
+      [
+        "-4",
+        36
+      ],
+      [
+        "-13/3",
+        36
+      ],
+      [
+        "-6",
+        84
+      ],
+      [
+        "-19/3",
+        84
+      ],
+      [
+        "-8",
+        126
+      ],
+      [
+        "-25/3",
+        126
+      ],
+      [
+        "-10",
+        126
+      ],
+      [
+        "-31/3",
+        126
+      ],
+      [
+        "-12",
+        84
+      ],
+      [
+        "-37/3",
+        84
+      ],
+      [
+        "-14",
+        36
+      ],
+      [
+        "-43/3",
+        36
+      ],
+      [
+        "-16",
+        9
+      ],
+      [
+        "-49/3",
+        9
+      ],
+      [
+        "-18",
+        1
+      ],
+      [
+        "-55/3",
+        1
+      ]
+    ],
+    "n=5,eps=1/2": [
+      [
+        "0",
+        1
+      ],
+      [
+        "-1",
+        1
+      ],
+      [
+        "-2",
+        9
+      ],
+      [
+        "-3",
+        9
+      ],
+      [
+        "-4",
+        36
+      ],
+      [
+        "-5",
+        36
+      ],
+      [
+        "-6",
+        84
+      ],
+      [
+        "-7",
+        84
+      ],
+      [
+        "-8",
+        126
+      ],
+      [
+        "-9",
+        126
+      ],
+      [
+        "-10",
+        126
+      ],
+      [
+        "-11",
+        126
+      ],
+      [
+        "-12",
+        84
+      ],
+      [
+        "-13",
+        84
+      ],
+      [
+        "-14",
+        36
+      ],
+      [
+        "-15",
+        36
+      ],
+      [
+        "-16",
+        9
+      ],
+      [
+        "-17",
+        9
+      ],
+      [
+        "-18",
+        1
+      ],
+      [
+        "-19",
+        1
+      ]
+    ],
+    "n=5,eps=9/10": [
+      [
+        "0",
+        1
+      ],
+      [
+        "-9/5",
+        1
+      ],
+      [
+        "-2",
+        9
+      ],
+      [
+        "-19/5",
+        9
+      ],
+      [
+        "-4",
+        36
+      ],
+      [
+        "-29/5",
+        36
+      ],
+      [
+        "-6",
+        84
+      ],
+      [
+        "-39/5",
+        84
+      ],
+      [
+        "-8",
+        126
+      ],
+      [
+        "-49/5",
+        126
+      ],
+      [
+        "-10",
+        126
+      ],
+      [
+        "-59/5",
+        126
+      ],
+      [
+        "-12",
+        84
+      ],
+      [
+        "-69/5",
+        84
+      ],
+      [
+        "-14",
+        36
+      ],
+      [
+        "-79/5",
+        36
+      ],
+      [
+        "-16",
+        9
+      ],
+      [
+        "-89/5",
+        9
+      ],
+      [
+        "-18",
+        1
+      ],
+      [
+        "-99/5",
+        1
+      ]
+    ]
+  },
+  "elapsed_seconds": 9.9,
+  "sha256": {
+    "checks/verify_mpemba_mode.py": "a777aba3af028dd7b6a9e3c35d6cb94a706645fb66e5ccccc2844f4cdd66a84f"
+  },
+  "limits": "Floating-point diagonalization and time evolution for n <= 5 (spectrum) and n <= 4 (dynamics); the proofs for all n are analytic and in the manuscript. Not a certification of novelty."
+}

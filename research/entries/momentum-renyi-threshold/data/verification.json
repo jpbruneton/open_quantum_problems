@@ -1,0 +1,135 @@
+{
+  "entry": "momentum-renyi-threshold",
+  "checker": "checks/check_momentum_threshold.py",
+  "all_pass": true,
+  "runtime_seconds": 18.2,
+  "checks": [
+    {
+      "check": "0. m = 1 iff both walls are Dirichlet, m = 0 otherwise",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "1. closed-form phi(p) agrees with quadrature",
+      "pass": true,
+      "detail": "max error = 9.2e-17"
+    },
+    {
+      "check": "2. error of the leading term is O(1/|p|) (P * error stays bounded)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "3a. at alpha_TH every dyadic block tends to a non-zero constant (divergence)",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "3b. block ratios 2^(1 - 2 alpha (m+1)): < 1 above alpha_TH, > 1 below",
+      "pass": true,
+      "detail": ""
+    },
+    {
+      "check": "4. m = 2 example: |p|^3 sqrt(2pi)|phi| -> |2 - 2 e^{-ip}|, alpha_TH = 1/6",
+      "pass": true,
+      "detail": "P*error = 23.87, 23.95, 23.99"
+    },
+    {
+      "check": "5. Robin wall psi = sqrt(2 kappa) exp(-kappa x): closed form of int gamma^alpha and pole at alpha = 1/2",
+      "pass": true,
+      "detail": "(alpha-1/2)*integral -> 0.735611, predicted 0.735613"
+    },
+    {
+      "check": "6. Neumann ground state: (alpha - 1/2) int gamma^alpha -> (2pi)^(-1/2) * 4/pi",
+      "pass": true,
+      "detail": "values at alpha-1/2 = 1e-2, 1e-3, 1e-4: 0.513101, 0.508478, 0.508002; limit 0.507949"
+    }
+  ],
+  "wells": [
+    {
+      "state": "Neumann-Neumann, 1st excited",
+      "k": "3.141592653589793",
+      "m": 0,
+      "alpha_TH": 0.5,
+      "block_at_P_6400": 0.49800276803682875,
+      "predicted_constant": 0.49792122946885414
+    },
+    {
+      "state": "Neumann-Neumann, 3rd excited",
+      "k": "9.42477796076938",
+      "m": 0,
+      "alpha_TH": 0.5,
+      "block_at_P_6400": 0.49800328742286076,
+      "predicted_constant": 0.49792122946885414
+    },
+    {
+      "state": "Dirichlet-Dirichlet, ground",
+      "k": "3.141592653589793",
+      "m": 1,
+      "alpha_TH": 0.25,
+      "block_at_P_6400": 0.995545704014308,
+      "predicted_constant": 0.9954414113035949
+    },
+    {
+      "state": "Dirichlet-Dirichlet, n=4",
+      "k": "12.566370614359172",
+      "m": 1,
+      "alpha_TH": 0.25,
+      "block_at_P_6400": 1.9907178486868,
+      "predicted_constant": 1.99088282260719
+    },
+    {
+      "state": "Dirichlet-Neumann, n=2",
+      "k": "4.71238898038469",
+      "m": 0,
+      "alpha_TH": 0.5,
+      "block_at_P_6400": 0.39106650144893274,
+      "predicted_constant": 0.391066419137417
+    },
+    {
+      "state": "Robin(0.5)-Robin(0.5), 1st positive-energy state",
+      "k": "1.7206671780387595",
+      "m": 0,
+      "alpha_TH": 0.5,
+      "block_at_P_6400": 0.25874740161426185,
+      "predicted_constant": 0.2587846193183189
+    },
+    {
+      "state": "Robin(-0.3)-Robin(2.0)",
+      "k": "5.8505634404384805",
+      "m": 0,
+      "alpha_TH": 0.5,
+      "block_at_P_6400": 0.4826422984310559,
+      "predicted_constant": 0.4827097481756111
+    },
+    {
+      "state": "Dirichlet-Robin(0.7)",
+      "k": "8.0300429678902",
+      "m": 0,
+      "alpha_TH": 0.5,
+      "block_at_P_6400": 0.3809527623211896,
+      "predicted_constant": 0.38095224609613776
+    },
+    {
+      "state": "complex Robin(0.4+0.3i)-Neumann",
+      "k": "(3.6061993255157714-0.2489387997477574j)",
+      "m": 0,
+      "alpha_TH": 0.5,
+      "block_at_P_6400": 0.4485316472955332,
+      "predicted_constant": 0.4484761901552197
+    }
+  ],
+  "neumann_ground_rate": {
+    "alpha_minus_half": [
+      0.01,
+      0.001,
+      0.0001
+    ],
+    "values": [
+      0.5131009749140935,
+      0.5084782205716869,
+      0.508002140920771
+    ],
+    "limit": 0.5079490874739278
+  }
+}

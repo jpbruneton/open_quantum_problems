@@ -1,0 +1,393 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{plain}
+\DeclareMathOperator{\Tr}{Tr}
+\newcommand{\ket}[1]{\lvert#1\rangle}
+\newcommand{\bra}[1]{\langle#1\rvert}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\one}{\mathbf{1}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cD}{\mathcal{D}}
+\setlength{\emergencystretch}{2em}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em plus 0.1em minus 0.1em}
+\title{A Mpemba mode invisible to every strict reduction}
+\author{Fable \& Astra\\[0.35em]
+\normalsize Research led by Jean-Philippe Bruneton\\[-0.1em]
+\small Universit\'e Paris Cit\'e, France}
+\date{19 November 2026}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+In the Mpemba effect a system that starts farther from equilibrium reaches
+it sooner than one that starts closer. In Markovian open quantum systems the
+effect is governed by the slowest relaxation mode of the generator: a state
+with a small component along that mode can overtake a state that starts
+closer to equilibrium but carries a larger slow component. Recent work
+proposes to witness the effect through the expectation value of a single
+observable. We ask how large the support of such an observable must be in a
+many-body system, and show that it can be forced to be the whole system. We
+give an explicit Lindbladian on a chain of $n\ge2$ qubits, with jump
+operators acting on one site or on two neighbouring sites, whose stationary
+state is unique and whose slowest mode is the global parity
+$Z_1\cdots Z_n$, at rate $2\epsilon$ with $0<\epsilon<1$. The full spectrum
+is $\{-2(m+\epsilon b)\}$ with multiplicity $\binom{2n-1}{m}$, for
+$0\le m\le 2n-1$ and $b\in\{0,1\}$. The state $(\one+\alpha Z_1\cdots
+Z_n)/2^n$ has maximally mixed reductions on every strict subset of sites at
+all times, yet it relaxes at the slowest rate, and it is overtaken by the
+state $(\one+\beta X_n)/2^n$ with $\beta>\alpha$ at time
+$\log(\beta/\alpha)/(2-2\epsilon)$, in trace distance, in relative entropy
+and in every unitarily invariant distance to equilibrium that grows with the
+deviation from the maximally mixed state. Any observable sensitive
+to the slow amplitude acts on all $n$ sites.
+\end{abstract}
+
+\section{Introduction}
+A cup of hot water left outside can freeze before a cup of warm water. This
+counterintuitive ordering, the Mpemba effect, has a clean formulation for
+Markovian dynamics \cite{LuRaz2017}. Relaxation towards a unique stationary
+state is a superposition of decaying modes, and at late times only the
+slowest one matters. Two initial states are then ranked by the size of their
+component along the slowest mode, not by their initial distance to
+equilibrium. A state farther from equilibrium but with a smaller slow
+component eventually becomes the closer one, and the two distance curves
+cross. In open quantum systems, Carollo, Lasanta and Lesanovsky
+\cite{Carollo2021} used this mechanism to accelerate relaxation
+exponentially, by applying a unitary rotation that removes the component of
+the initial state along the slowest mode.
+
+Detecting the effect requires access to the slow component. Choquehuanca,
+Obando, Sarandy and de Paula \cite{Choquehuanca2026} proposed to witness the
+Mpemba crossing with the expectation value of a single Hermitian observable,
+whose expansion on the eigenmodes of the generator is tuned to the slow and
+fast modes, and illustrated it on a single qubit. In a many-body system the
+natural follow-up question concerns the support of such an observable. If
+the slowest mode were visible in the state of one site or of a few
+neighbouring sites, a local probe would suffice. This note asks whether a
+local and primitive dynamics on a chain can have a slow mode that is global
+in the strongest sense, that is, invisible in the reduced state of every
+strict subset of sites.
+
+The answer is yes, and the construction is elementary. The dynamics on $n$
+qubits combines nearest-neighbour bit flips $X_jX_{j+1}$, single-site
+dephasing $Z_j$, and a weak bit flip $X_1$ at rate $\epsilon$ on the first
+site. Without the boundary term the global parity $P=Z_1\cdots Z_n$ commutes
+with every jump operator and would be conserved; the weak boundary term
+breaks this symmetry and turns $P$ into the unique slowest mode, at rate
+$2\epsilon$. Since $P$ is a product of traceless factors on all sites, every
+partial trace over a nonempty set of sites annihilates it. The state
+$\rho_P=(\one+\alpha P)/2^n$ is therefore indistinguishable from equilibrium
+on every strict subsystem at all times, while it is the slowest-relaxing
+state of the chain. The state $\rho_Q=(\one+\beta X_n)/2^n$, with
+$\beta>\alpha$, starts farther from equilibrium, visibly so on the last
+site, relaxes at rate $2$, and overtakes $\rho_P$ at
+$t^*=\log(\beta/\alpha)/(2-2\epsilon)$.
+
+The main results are the exact spectrum of the generator
+(Proposition~\ref{prop:spectrum}), the uniqueness of the stationary state
+and of the slowest mode (Corollary~\ref{cor:slow}), the invisibility of the
+slow mode in strict reductions (Proposition~\ref{prop:invisible}), and the
+Mpemba crossing with its time (Theorem~\ref{thm:crossing}). The example
+separates two notions that are easily conflated. The slow amplitude can be
+estimated by measuring every qubit locally in the $Z$ basis and multiplying
+the outcomes, so local measurements suffice once their records are
+correlated; what fails is every observable, and every reduced state, whose
+support is a strict subset of the chain.
+
+\section{Related work}\label{sec:related}
+Lu and Raz \cite{LuRaz2017} formulated the Mpemba effect and its inverse
+for Markovian dynamics and derived a sufficient condition for it within
+nonequilibrium thermodynamics. We work in the same Markovian setting, where
+late-time relaxation is controlled by the slowest eigenmode of the generator.
+Carollo, Lasanta and Lesanovsky \cite{Carollo2021} brought the effect to
+Markovian open quantum systems, where the generator has the
+Gorini--Kossakowski--Sudarshan--Lindblad form \cite{Lindblad1976}, and
+showed that a unitary rotation making the initial state orthogonal to the
+slowest mode yields an exponential speed-up, with applications to Dicke
+models and all-to-all interacting spins. Such a rotation is cheap in the
+present example: a Hadamard gate on site $1$ maps $P$ to the faster string
+$X_1Z_2\cdots Z_n$. What is global here is the detection of the slow
+component, not its removal.
+
+Choquehuanca, Obando, Sarandy and de Paula \cite{Choquehuanca2026} witness
+the quantum Mpemba effect through a single observable whose eigenmode
+coefficients are tuned to the slow and fast modes, and they demonstrate the
+construction on a qubit under generalized amplitude damping; many-body
+extensions are left to future work. Their construction uses a nonzero
+coefficient on the slowest mode. The construction below shows that in a
+local many-body dynamics this coefficient can force the observable to act on
+every site (Remark~\ref{rem:witness}), and it gives a fully explicit
+many-body test case in which the slow and fast modes and the crossing time
+are known in closed form.
+
+\section{The dynamics and its spectrum}\label{sec:spectrum}
+For a Hermitian unitary $U$ on $(\mathbb C^2)^{\otimes n}$ let
+$\cD_U(\rho)=U\rho U^\dagger-\rho$, the dissipator of a single jump operator
+$U$ at unit rate, since $U^\dagger U=\one$. For $n\ge2$ and $0<\epsilon<1$
+consider
+\begin{equation}\label{eq:L}
+\cL=\sum_{j=1}^{n-1}\cD_{X_jX_{j+1}}+\epsilon\,\cD_{X_1}
++\sum_{j=1}^n\cD_{Z_j},
+\end{equation}
+where $X_j,Y_j,Z_j$ are the Pauli matrices on site $j$. Every jump operator
+acts on one site or on two neighbouring sites, so $\cL$ is local. A Pauli
+string is a product $\sigma=\sigma_1\otimes\cdots\otimes\sigma_n$ with
+$\sigma_j\in\{I,X,Y,Z\}$. For such a string define its dephasing weight
+$k(\sigma)=\#\{j:\sigma_j\in\{X,Y\}\}$, its flip pattern
+$f_j(\sigma)=1$ if $\sigma_j\in\{Y,Z\}$ and $0$ otherwise, and its number of
+domain walls $e(\sigma)=\#\{j\le n-1: f_j(\sigma)\ne f_{j+1}(\sigma)\}$.
+
+\begin{proposition}\label{prop:spectrum}
+Every Pauli string is an eigenvector of $\cL$:
+\[
+\cL(\sigma)=-r(\sigma)\,\sigma,\qquad
+r(\sigma)=2k(\sigma)+2e(\sigma)+2\epsilon f_1(\sigma).
+\]
+Consequently $\cL$ is diagonalizable with real spectrum consisting of the
+numbers $-2(m+\epsilon b)$, $0\le m\le 2n-1$, $b\in\{0,1\}$, the eigenvalue
+$-2(m+\epsilon b)$ having multiplicity $\binom{2n-1}{m}$.
+\end{proposition}
+
+\begin{proof}
+Two Pauli strings either commute or anticommute. If $U$ is a Pauli string,
+$U\sigma U^\dagger=\sigma$ when they commute and $-\sigma$ when they
+anticommute, so $\cD_U(\sigma)$ equals $0$ or $-2\sigma$. The jump $Z_j$
+anticommutes with $\sigma$ exactly when $\sigma_j\in\{X,Y\}$, which
+contributes $2k(\sigma)$. The jump $X_1$ anticommutes with $\sigma$ exactly
+when $f_1(\sigma)=1$, which contributes $2\epsilon f_1(\sigma)$. The jump
+$X_jX_{j+1}$ anticommutes with $\sigma$ exactly when exactly one of
+$\sigma_j,\sigma_{j+1}$ anticommutes with $X$, that is, when
+$f_j(\sigma)\ne f_{j+1}(\sigma)$, which contributes $2e(\sigma)$. The $4^n$
+Pauli strings form a basis of the operator space, so $\cL$ is diagonal in
+that basis.
+
+For the multiplicities, a Pauli string is determined by its flip pattern
+$f\in\{0,1\}^n$ together with the choice, on each site, between the two
+letters with that flip value, one of which is dephased ($X$ or $Y$) and one
+not ($I$ or $Z$). The dephasing weight is therefore independent of the flip
+pattern, and $k$ takes the value $k$ on $\binom nk$ choices. A flip pattern
+is determined by $f_1$ and the positions of its domain walls among the $n-1$
+bonds, so for each value $b$ of $f_1$ there are $\binom{n-1}{e}$ patterns
+with $e$ walls. The number of strings with $r=2(m+\epsilon b)$ is thus
+$\sum_{k+e=m}\binom nk\binom{n-1}{e}=\binom{2n-1}{m}$ by Vandermonde's
+identity. Since $\epsilon\notin\mathbb Z$, distinct pairs $(m,b)$ give
+distinct eigenvalues.
+\end{proof}
+
+\begin{corollary}\label{cor:slow}
+The identity spans the kernel of $\cL$, so $\one/2^n$ is the unique
+stationary state, and every other eigenvalue has strictly negative real
+part; the dynamics is primitive. The spectral gap is $2\epsilon$, the
+eigenvalue $-2\epsilon$ is simple with eigenvector $P=Z_1Z_2\cdots Z_n$, and
+every other nonzero eigenvalue is at most $-2$. In particular the slowest
+non-stationary mode is unique and global.
+\end{corollary}
+
+\begin{proof}
+By Proposition~\ref{prop:spectrum} the eigenvalues $0$ and $-2\epsilon$
+correspond to $(m,b)=(0,0)$ and $(0,1)$, each with multiplicity
+$\binom{2n-1}{0}=1$; all others have $m\ge1$ and are at most $-2<-2\epsilon$.
+A string with $m=0$ has $k=0$ and $e=0$, so it uses only $I$ and $Z$ with a
+constant flip pattern: it is $\one$ when $f_1=0$ and $P$ when $f_1=1$.
+\end{proof}
+
+The role of the boundary term is now clear. For $\epsilon=0$ the parity $P$
+commutes with every jump operator and the stationary space is spanned by
+$\one$ and $P$. The term $\epsilon\cD_{X_1}$ breaks this conservation law
+weakly and leaves $P$ as a long-lived mode; the condition $\epsilon<1$ makes
+it slower than every other mode, the next rate being $2$, attained for
+instance by $X_n$, which has $k=1$, $e=0$ and $f_1=0$.
+
+\section{Invisibility in strict reductions}\label{sec:invisible}
+For a subset $A\subsetneq\{1,\dots,n\}$ write $\Tr_{\bar A}$ for the partial
+trace over the complementary sites $\bar A\ne\emptyset$, and expand an
+operator as $\rho=2^{-n}\sum_\sigma c_\sigma(\rho)\,\sigma$ with
+$c_\sigma(\rho)=\Tr(\sigma\rho)$. By Corollary~\ref{cor:slow}, the amplitude
+of the slowest mode in $\rho$ is $c_P(\rho)=\Tr(P\rho)$, and under the
+dynamics $c_P(e^{t\cL}\rho)=e^{-2\epsilon t}c_P(\rho)$.
+
+\begin{proposition}\label{prop:invisible}
+For every strict subset $A$ of sites, $\Tr_{\bar A}P=0$. Consequently:
+\begin{enumerate}
+\item for every state $\rho$ and every real $\delta$ such that
+$\rho+\delta P/2^n\ge0$, the states $\rho$ and $\rho+\delta P/2^n$ have the
+same reductions to every strict subset of sites but slow amplitudes
+differing by $\delta$;
+\item for $\rho_P=(\one+\alpha P)/2^n$ with $|\alpha|\le1$, the evolved
+state $e^{t\cL}\rho_P=(\one+\alpha e^{-2\epsilon t}P)/2^n$ has maximally
+mixed reductions $\one_A/2^{|A|}$ to every strict subset $A$, at all times
+$t\ge0$;
+\item an observable $M$ satisfies $\Tr(MP)\ne0$, that is, its expectation
+value depends on the slow amplitude, only if $M$ acts nontrivially on every
+site.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+The partial trace of a product operator factorizes, and $\Tr Z_j=0$ for
+every traced site, so $\Tr_{\bar A}P=0$ whenever $\bar A\ne\emptyset$. Items
+(1) and (2) follow by linearity, using Corollary~\ref{cor:slow} for the time
+dependence. For (3), if $M$ acts as the identity on some site $j$, then
+$M=M'\otimes\one_j$ and $\Tr(MP)=\Tr(M'\,\Tr_j P)=0$.
+\end{proof}
+
+\section{The Mpemba crossing}\label{sec:crossing}
+Let $0<\alpha<\beta<1$ and
+\[
+\rho_P=\frac{\one+\alpha P}{2^n},\qquad
+\rho_Q=\frac{\one+\beta X_n}{2^n}.
+\]
+Both are states: $P$ and $X_n$ are Hermitian with eigenvalues $\pm1$, so the
+eigenvalues of $\rho_P$ and $\rho_Q$ are $(1\pm\alpha)/2^n$ and
+$(1\pm\beta)/2^n$, each with multiplicity $2^{n-1}$. Write
+$\rho_P(t)=e^{t\cL}\rho_P$, $\rho_Q(t)=e^{t\cL}\rho_Q$, and let
+$T(\rho)=\frac12\norm{\rho-\one/2^n}_1$ denote the trace distance to
+equilibrium.
+
+\begin{theorem}\label{thm:crossing}
+For all $t\ge0$,
+\[
+T(\rho_P(t))=\tfrac12\alpha e^{-2\epsilon t},\qquad
+T(\rho_Q(t))=\tfrac12\beta e^{-2t}.
+\]
+The state $\rho_Q$ starts farther from equilibrium and is strictly closer
+to it for all $t>t^*$, where
+\[
+t^*=\frac{\log(\beta/\alpha)}{2-2\epsilon}.
+\]
+The same crossing, at the same time $t^*$ and with the same reversal of the
+order afterwards, holds for every distance to $\one/2^n$ of the form
+$h(\rho)$ with $h$ unitarily invariant and strictly increasing along
+$a\mapsto(\one+aU)/2^n$, $a\in[0,1)$, for a Pauli string $U\ne\one$; this
+includes the Hilbert--Schmidt distance and the relative entropy
+$S(\rho\,\|\,\one/2^n)$. Throughout, every strict reduction of
+$\rho_P(t)$ is maximally mixed, whereas the reduction of $\rho_Q(t)$ to
+site $n$ is $(\one+\beta e^{-2t}X)/2$.
+\end{theorem}
+
+\begin{proof}
+By Proposition~\ref{prop:spectrum}, $\cL(P)=-2\epsilon P$ and
+$\cL(X_n)=-2X_n$ (for $X_n$: $k=1$, $e=0$, $f_1=0$ since $n\ge2$), and
+$\cL(\one)=0$. Hence $\rho_P(t)=(\one+a_P(t)P)/2^n$ and
+$\rho_Q(t)=(\one+a_Q(t)X_n)/2^n$ with $a_P(t)=\alpha e^{-2\epsilon t}$ and
+$a_Q(t)=\beta e^{-2t}$. For a Hermitian unitary $U\ne\one$ that is a Pauli
+string, $\norm{aU}_1=|a|\,2^n$, which gives the trace distances. The
+difference $\log a_Q(t)-\log a_P(t)=\log(\beta/\alpha)-(2-2\epsilon)t$ is
+strictly decreasing, positive at $t=0$, and vanishes at $t^*$, so
+$a_Q(t)<a_P(t)$ exactly for $t>t^*$. Any two Pauli strings different from
+$\one$ are unitarily conjugate, so $\rho_P(t)$ and $\rho_Q(t)$ are unitarily
+conjugate states of the family $(\one+aU)/2^n$ evaluated at $a_P(t)$ and
+$a_Q(t)$; a unitarily invariant $h$ that is strictly increasing in $a$
+therefore orders them exactly as $a_P$ and $a_Q$ do. For the Hilbert--Schmidt
+distance, $\norm{aU/2^n}_2=a\,2^{-n/2}$. For the relative entropy,
+$S\big((\one+aU)/2^n\,\big\|\,\one/2^n\big)
+=\frac12\big[(1+a)\log(1+a)+(1-a)\log(1-a)\big]$, whose derivative
+$\frac12\log\frac{1+a}{1-a}$ is positive for $0<a<1$. The statements on
+reductions are Proposition~\ref{prop:invisible} for $\rho_P$ and a direct
+partial trace for $\rho_Q$.
+\end{proof}
+
+For example, with $\epsilon=1/6$, $\alpha=0.3$ and $\beta=0.8$, the
+crossing time is $t^*=\tfrac35\log\tfrac83\approx0.5885$.
+
+The theorem makes the separation quantitative. A monitor that sees only
+strict subsystems declares $\rho_P(t)$ at equilibrium for all $t$, and sees
+$\rho_Q(t)$ out of equilibrium on the last site; it orders the two states
+opposite to their late-time global order and misses the existence of the
+slow tail altogether. The slow tail of $\rho_P$ is real nonetheless: its
+trace distance to equilibrium decays only as $e^{-2\epsilon t}$, and for
+$\epsilon\to0$ its relaxation time $1/(2\epsilon)$ diverges.
+
+\begin{remark}[single-observable witnesses]\label{rem:witness}
+In the framework of \cite{Choquehuanca2026}, an observable $M$ witnesses the
+crossing through its coefficients on the slow and fast eigenmodes, and the
+construction uses a nonzero coefficient on the slow mode. For the generator
+\eqref{eq:L} the slow mode is $P$, so the witness needs $\Tr(MP)\ne0$, and by
+Proposition~\ref{prop:invisible}(3) it acts nontrivially on all $n$ sites.
+This is a statement about supports, not about the difficulty of the
+measurement: $\Tr(P\rho)$ is the mean of the product of the outcomes of
+single-site $Z$ measurements on one copy of $\rho$, so local measurements
+with correlated classical post-processing estimate it.
+\end{remark}
+
+\section{Verification}\label{sec:verification}
+The
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/locally-invisible-mpemba-mode/checks/verify_mpemba_mode.py}{Python checker}
+assembles $\cL$ as a $4^n\times4^n$ matrix for $n=2,3,4,5$ and
+$\epsilon\in\{1/6,1/2,9/10\}$, diagonalizes it numerically, and compares
+the result, with multiplicities, to the rate formula and to the closed form
+of Proposition~\ref{prop:spectrum}, which it evaluates in rational
+arithmetic. It checks Corollary~\ref{cor:slow} exactly from the rates. For
+$n\le4$ it evolves $\rho_P$ and $\rho_Q$ with the matrix exponential of
+$\cL$, checks the trace distances of Theorem~\ref{thm:crossing}, locates the
+crossing by root finding and compares it with $t^*$, checks that
+$\rho_P(t^*)$ and $\rho_Q(t^*)$ are isospectral, and checks that every
+strict reduction of $\rho_P(t)$ is maximally mixed. Its
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/locally-invisible-mpemba-mode/data/verification.json}{recorded output}
+lists the exact spectra. All deviations are below $10^{-9}$, and the checker
+runs in about ten seconds.
+
+\section{Scope and limitations}\label{sec:scope}
+The proofs are analytic and cover every $n\ge2$ and every $0<\epsilon<1$.
+The numerical checks confirm the conventions and the closed forms for
+$n\le5$; they are not a formal verification.
+
+The obstruction concerns observables and reduced states supported on strict
+subsets of sites, measured on a single copy. It does not say that the slow
+amplitude is hard to measure: products of local outcomes give it directly,
+as noted in Remark~\ref{rem:witness}. The construction is a single explicit
+family; it does not characterize which local Lindbladians have a slowest
+mode invisible to strict reductions, nor does it address thermal (non-unital)
+dynamics, where the stationary state is not maximally mixed.
+
+On bibliographic priority, the note relies on the works cited above and no
+systematic search for antecedents was documented. The individual
+ingredients, Pauli-diagonal dissipators and global parity as a weakly broken
+conservation law, are standard, and we make no claim of priority for the
+construction.
+
+\begin{thebibliography}{9}
+\bibitem{LuRaz2017}
+Z.~Lu and O.~Raz,
+\emph{Nonequilibrium thermodynamics of the Markovian Mpemba effect and its
+inverse},
+Proc. Natl. Acad. Sci. U.S.A. \textbf{114}, 5083--5088 (2017),
+\href{https://doi.org/10.1073/pnas.1701264114}{doi:10.1073/pnas.1701264114},
+\href{https://arxiv.org/abs/1609.05271}{arXiv:1609.05271}.
+
+\bibitem{Carollo2021}
+F.~Carollo, A.~Lasanta and I.~Lesanovsky,
+\emph{Exponentially accelerated approach to stationarity in Markovian open
+quantum systems through the Mpemba effect},
+Phys. Rev. Lett. \textbf{127}, 060401 (2021),
+\href{https://doi.org/10.1103/PhysRevLett.127.060401}{doi:10.1103/PhysRevLett.127.060401},
+\href{https://arxiv.org/abs/2103.05020}{arXiv:2103.05020}.
+
+\bibitem{Choquehuanca2026}
+J.~M.~Z. Choquehuanca, P.~A.~C. Obando, M.~S. Sarandy and F.~M. de~Paula,
+\emph{Witnessing the quantum Mpemba effect with a single observable},
+preprint (2026),
+\href{https://arxiv.org/abs/2607.12163}{arXiv:2607.12163}.
+
+\bibitem{Lindblad1976}
+G.~Lindblad,
+\emph{On the generators of quantum dynamical semigroups},
+Commun. Math. Phys. \textbf{48}, 119--130 (1976),
+\href{https://doi.org/10.1007/BF01608499}{doi:10.1007/BF01608499}.
+\end{thebibliography}
+\end{document}

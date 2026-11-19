@@ -1,0 +1,486 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{plain}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\Spec}{Spec}
+\newcommand{\ket}[1]{\lvert#1\rangle}
+\newcommand{\bra}[1]{\langle#1\rvert}
+\newcommand{\braket}[2]{\langle#1\vert#2\rangle}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\one}{\mathbf{1}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\Nop}{\hat N}
+\setlength{\emergencystretch}{2em}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em plus 0.1em minus 0.1em}
+\title{Spectra of particle-reduced fermionic density operators:\\
+the Amosov--Filippov conjecture holds up to a factor $p!$}
+\author{Fable \& Astra\\[0.35em]
+\normalsize Research led by Jean-Philippe Bruneton\\[-0.1em]
+\small Universit\'e Paris Cit\'e, France}
+\date{19 November 2026}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+The $p$-particle reduced density matrix of a many-fermion state keeps exactly
+the information needed to evaluate $p$-body observables, and for a pure state
+with a fixed number $N$ of particles the classical theorem of Carlson and
+Keller says that keeping $p$ particles and keeping $N-p$ particles produce the
+same nonzero spectrum. Amosov and Filippov asked what replaces this duality on
+the whole fermionic Fock space, where the particle number need not be fixed.
+They introduced the map $\Phi(\varrho)=\sum_j a_j\varrho a_j^\dagger$, which
+removes one particle, and conjectured that, for every pure state, the operator
+$\Phi^p(\varrho)$ obtained by removing $p$ particles has the same spectrum as
+the $p$-particle reduced density operator $\varrho_p$. We settle the
+conjecture. For every pure state $\varrho$ on the Fock space of $n$ modes and
+every $p$, the full spectra satisfy
+$\Spec\Phi^p(\varrho)=p!\,\Spec\varrho_p$, zero eigenvalues included. The
+conjecture is therefore true as stated for $p=1$ and false for every $p\ge2$
+unless both operators vanish; the minimal counterexample is the two-mode state
+$\ket{11}$. The proof identifies $\varrho_p$ and $\Phi^p(\varrho)/p!$ as the
+two complementary outputs of the completely positive map with Kraus operators
+$a_{s_p}\cdots a_{s_1}$. The same factor corrects the fixed-particle-number
+identity of the source, which becomes $\Phi^{N-p}(\varrho)=(N-p)!\,\varrho_p$.
+\end{abstract}
+
+\section{Introduction}
+A state of $n$ fermionic modes is a density operator on the Fock space $H_n$,
+of dimension $2^n$. Many physical quantities depend on such a state only
+through a few particles at a time: the kinetic energy is a one-body
+observable, a pair interaction is a two-body observable. The object that
+carries exactly this information is the $p$-particle reduced density matrix,
+the central object of reduced-density-matrix methods in quantum chemistry.
+For a pure state of exactly $N$ fermions, Carlson and Keller showed that the
+$p$-particle and $(N-p)$-particle reduced density matrices have the same
+nonzero eigenvalues \cite{CarlsonKeller1961}. This is the fermionic analogue
+of the familiar fact that the two halves of a bipartite pure state have the
+same spectrum: removing $N-p$ particles and keeping $p$ of them are
+spectrally equivalent operations.
+
+States of fermions need not have a fixed particle number. Superconducting and
+other quasi-free states mix particle-number sectors, and the parity
+superselection rule only forbids superpositions of even and odd numbers.
+Amosov and Filippov \cite{AmosovFilippov2017} looked for the analogue of the
+Carlson--Keller duality on the whole Fock space. They introduced the linear
+map $\Phi(\varrho)=\sum_{j=1}^n a_j\varrho a_j^\dagger$, which removes one
+particle from any operator, proved that $\Phi^{N-p}(\varrho)$ equals the
+$p$-particle reduced density operator $\varrho_p$ when the particle number is
+fixed, and conjectured that for every pure state on $H_n$, with no assumption
+on particle number or parity, $\Phi^p(\varrho)$ and $\varrho_p$ have the same
+spectrum. They checked the case $p=1$, $n=2$ by hand and reported numerical
+agreement for general pure states of three and four modes.
+
+The question answered here is whether this conjecture holds, and what the
+correct statement is if it does not. The answer is a single identity. For
+every pure state and every $p$,
+\begin{equation}\label{eq:main}
+\Spec\Phi^p(\varrho)=p!\;\Spec\varrho_p ,
+\end{equation}
+for the full spectra of the two operators on $H_n$, counted with
+multiplicity. The conjecture is thus true for $p=1$ and false for every
+$p\ge2$ except in the trivial case where both operators vanish. The factor
+$p!$ counts the orderings in which $\Phi^p$ removes the same set of $p$
+particles, and it is already visible in the traces: $\Tr\varrho_p$ is the
+expected number of $p$-element subsets of occupied modes, whereas
+$\Tr\Phi^p(\varrho)$ is the expected number of ordered $p$-tuples. The
+simplest example shows everything. For two modes and the state $\ket{11}$ in
+which both are occupied, $\varrho_2=\ket{11}\bra{11}$ has spectrum
+$\{1,0,0,0\}$, while removing both particles one after the other in either
+order gives $\Phi^2(\varrho)=2\ket{00}\bra{00}$, with spectrum $\{2,0,0,0\}$.
+This state has a fixed particle number $N=2$, so the corollary that the
+source derives for fixed particle number also requires the factor.
+
+Behind \eqref{eq:main} lies a structural fact. The $p$-particle reduced
+density operator and $\Phi^p(\varrho)/p!$ are the two complementary outputs,
+in the sense of a Stinespring dilation, of one completely positive map whose
+Kraus operators are the ordered products of $p$ annihilation operators. Two
+complementary outputs of a completely positive map acting on a pure input
+always share their nonzero spectrum, exactly as the two marginals of a
+bipartite pure state do. The particle-number-free extension sought by Amosov
+and Filippov therefore exists, with $\Phi^p(\varrho)/p!$ in the role of the
+$(N-p)$-particle reduced density operator when $N$ is no longer defined.
+
+Section~\ref{sec:related} relates the result to the literature.
+Section~\ref{sec:setting} recalls the definitions of the source.
+Section~\ref{sec:results} proves the main theorem and its consequences for
+the conjecture and for the fixed-particle-number proposition of the source.
+Section~\ref{sec:verification} describes the numerical checks and
+Section~\ref{sec:scope} the scope of the result.
+
+\section{Related work}\label{sec:related}
+The spectral duality between the $p$-particle and $(N-p)$-particle reduced
+density matrices of a pure $N$-fermion state is due to Carlson and Keller
+\cite{CarlsonKeller1961}; it is the fixed-$N$ special case of
+Theorem~\ref{thm:main} combined with Corollary~\ref{cor:fixedN} below.
+
+Amosov and Filippov \cite{AmosovFilippov2017} define the reduced density
+operator $\varrho_p$ on the full Fock space, introduce the particle-removing
+map $\Phi$, and study spectral properties of reductions under the parity
+superselection rule. Their Proposition~4 states
+$\Phi^{N-p}(\varrho)=\varrho_p$ for states with fixed particle number $N$,
+and the corollary that follows it deduces equality of the spectra of
+$\varrho_p$ and $\Phi^p(\varrho)$ for pure fixed-$N$ states. The conjecture
+treated here closes their Section~5. We prove that Proposition~4 holds
+exactly for $N-p\le1$ and requires the factor $(N-p)!$ otherwise. Their proof
+correctly shows that $\Phi$ maps an $m$-particle operator to its reduction by
+one particle; iterating this relation counts each ordered removal separately,
+which produces the factorial.
+
+Gigena, Di Tullio and Rossignoli \cite{Gigena2021} study many-body
+entanglement in fermion systems through $M$-body density operators. For an
+$N$-fermion state they write
+$\hat\rho^{(M)}=\frac{1}{(N-M)!}\sum_{j_1,\dots,j_{N-M}}c_{j_1}\cdots
+c_{j_{N-M}}\,\rho\,c^\dagger_{j_{N-M}}\cdots c^\dagger_{j_1}$, normalized
+so that $\Tr\rho^{(M)}=\binom NM$, and they note that $\rho^{(M)}$ and
+$\rho^{(N-M)}$ share their nonzero eigenvalues. Their prefactor
+$1/(N-M)!$ is exactly the correction of Proposition~4 established in
+Corollary~\ref{cor:fixedN}; they refer to Amosov and Filippov for the
+extension to states without fixed particle number, which they do not treat,
+and they do not comment on the discrepancy with Proposition~4. The present
+note supplies that extension.
+
+\section{Setting and the conjecture}\label{sec:setting}
+The Fock space $H_n$ of $n$ fermionic modes has the occupation basis
+$\ket{j_1\dots j_n}$, $j_s\in\{0,1\}$. Following \cite{AmosovFilippov2017},
+the creation operators act by
+\[
+a_t^\dagger\ket{j_1\dots j_n}=(-1)^{j_1+\cdots+j_{t-1}}
+\ket{j_1\dots j_{t-1}\,1\,j_{t+1}\dots j_n}\quad\text{if } j_t=0,
+\]
+and $a_t^\dagger\ket{j_1\dots j_n}=0$ if $j_t=1$; the annihilation operator
+$a_t$ is the adjoint of $a_t^\dagger$. These operators satisfy the canonical
+anticommutation relations. The particle-number operator is
+$\Nop=\sum_s a_s^\dagger a_s$. For a density operator $\varrho$ on $H_n$ we
+write $\langle X\rangle=\Tr(\varrho X)$.
+
+For a subset $S=\{s_1<\dots<s_p\}$ of $\{1,\dots,n\}$ we set
+$A_S=a_{s_p}\cdots a_{s_1}$, so that
+$A_S^\dagger=a_{s_1}^\dagger\cdots a_{s_p}^\dagger$, and
+$\ket{S}=A_S^\dagger\ket{0}$, where $\ket0$ is the vacuum. With the sign
+convention above, $\ket S$ is the occupation vector whose occupied modes are
+those of $S$, with sign $+1$, because each $a_{s_q}^\dagger$ acts on a vector
+whose modes of index below $s_q$ are empty. The vectors $\ket S$ with $|S|=p$
+form an orthonormal basis of the $p$-particle sector.
+
+\begin{definition}[\cite{AmosovFilippov2017}]\label{def:rdm}
+The $p$-particle reduced density operator of $\varrho$ is the operator on
+$H_n$
+\[
+\varrho_p=\sum_{\substack{s_1<\dots<s_p\\ t_1<\dots<t_p}}
+\langle a_{s_1}^\dagger\cdots a_{s_p}^\dagger a_{t_p}\cdots a_{t_1}\rangle\;
+a_{t_1}^\dagger\cdots a_{t_p}^\dagger a_{s_p}\cdots a_{s_1}
+\prod_{s\notin\{s_1,\dots,s_p,t_1,\dots,t_p\}}a_sa_s^\dagger .
+\]
+In the notation above,
+$\varrho_p=\sum_{|S|=|T|=p}\langle A_S^\dagger A_T\rangle\,E_{T,S}$ with
+$E_{T,S}=A_T^\dagger A_S\prod_{s\notin S\cup T}a_sa_s^\dagger$. No
+normalization is applied, so $\Tr\varrho_p$ need not equal $1$.
+\end{definition}
+
+The particle-removing map is $\Phi(X)=\sum_{j=1}^n a_jXa_j^\dagger$, and
+$\Phi^p$ denotes its $p$-fold composition.
+
+\begin{conjecture}[Amosov--Filippov \cite{AmosovFilippov2017}]
+For every pure state $\varrho=\ket\psi\bra\psi$ on $H_n$, with no assumption
+on particle number or parity, the operators $\varrho_p$ and $\Phi^p(\varrho)$
+have the same spectrum.
+\end{conjecture}
+
+\section{Results}\label{sec:results}
+\subsection{Two lemmas}
+The first lemma shows that the product of projectors in
+Definition~\ref{def:rdm} turns each term into a matrix unit of the
+$p$-particle sector.
+
+\begin{lemma}\label{lem:units}
+For $|S|=|T|=p$, $E_{T,S}=\ket T\bra S$. Consequently $\varrho_p$ is
+supported on the $p$-particle sector, where
+$\bra T\varrho_p\ket S=\Tr(\varrho A_S^\dagger A_T)$, and it vanishes on all
+other sectors.
+\end{lemma}
+
+\begin{proof}
+Let $\ket J$ be an occupation vector with set of occupied modes $J$. The
+product $\prod_{s\notin S\cup T}a_sa_s^\dagger$ is the projector onto vectors
+whose modes outside $S\cup T$ are empty, so it fixes $\ket J$ if
+$J\subseteq S\cup T$ and annihilates it otherwise. Next, $A_S\ket J$ vanishes
+unless $S\subseteq J$, in which case it equals $\pm\ket{J\setminus S}$.
+Finally, $A_T^\dagger\ket{J\setminus S}$ vanishes as soon as $T$ meets
+$J\setminus S$; since $J\setminus S\subseteq T$, only $J=S$ survives. For
+$J=S$ we have $A_S\ket S=A_SA_S^\dagger\ket0=\ket0$, because each factor
+$a_sa_s^\dagger$ that appears acts on a vector in which mode $s$ is empty, and
+$A_T^\dagger\ket0=\ket T$. Hence $E_{T,S}\ket J=\delta_{J,S}\ket T$.
+\end{proof}
+
+\begin{lemma}\label{lem:phip}
+For every operator $X$ on $H_n$ and $1\le p\le n$,
+$\Phi^p(X)=p!\sum_{|T|=p}A_TXA_T^\dagger$.
+\end{lemma}
+
+\begin{proof}
+By definition
+$\Phi^p(X)=\sum_{(j_1,\dots,j_p)}a_{j_p}\cdots a_{j_1}X
+a_{j_1}^\dagger\cdots a_{j_p}^\dagger$, the sum running over all $p$-tuples
+of mode indices. A tuple with a repeated index contributes zero, because the
+$a_j$ anticommute and $a_j^2=0$. For a tuple of distinct indices with
+underlying set $T$, $a_{j_p}\cdots a_{j_1}=\pm A_T$, and the sign cancels
+against that of the adjoint. Each set $T$ arises from $p!$ tuples.
+\end{proof}
+
+\subsection{The main theorem}
+
+\begin{theorem}\label{thm:main}
+Let $\ket\psi\in H_n$ be a unit vector, $\varrho=\ket\psi\bra\psi$ and
+$1\le p\le n$. Let $V:\C^{\binom np}\to H_n$ be the linear map defined on the
+standard basis $(e_T)_{|T|=p}$ by $Ve_T=A_T\ket\psi$. Then
+\[
+\Phi^p(\varrho)=p!\,VV^\dagger,\qquad
+\bra T\varrho_p\ket S=(V^\dagger V)_{S,T}\quad(|S|=|T|=p),
+\]
+and the full spectra of the two operators on $H_n$, counted with
+multiplicity and zero eigenvalues included, satisfy
+$\Spec\Phi^p(\varrho)=p!\,\Spec\varrho_p$. Moreover, if
+$c=\sum_Tc_T\ket T$ is an eigenvector of $\varrho_p$ with eigenvalue
+$\lambda>0$, then $\sum_T\overline{c_T}\,A_T\ket\psi$ is a nonzero
+eigenvector of $\Phi^p(\varrho)$ with eigenvalue $p!\,\lambda$.
+\end{theorem}
+
+\begin{proof}
+Lemma~\ref{lem:phip} gives
+$\Phi^p(\varrho)=p!\sum_TA_T\ket\psi\bra\psi A_T^\dagger=p!\,VV^\dagger$.
+Lemma~\ref{lem:units} gives
+$\bra T\varrho_p\ket S=\bra\psi A_S^\dagger A_T\ket\psi
+=\braket{A_S\psi}{A_T\psi}=(V^\dagger V)_{S,T}$. In the basis $(\ket T)$ of
+the $p$-particle sector, the matrix of $\varrho_p$ is therefore the transpose
+of the Hermitian matrix $V^\dagger V$, that is, its complex conjugate. A
+Hermitian matrix and its complex conjugate have the same spectrum, and
+$VV^\dagger$ and $V^\dagger V$ have the same nonzero eigenvalues with the same
+multiplicities. The nonzero eigenvalues of $\Phi^p(\varrho)$ are thus those
+of $\varrho_p$ multiplied by $p!$. Both operators act on the same space of
+dimension $2^n$ and have the same rank, so the multiplicities of the
+eigenvalue $0$ agree as well. For the last statement, $\varrho_pc=\lambda c$
+reads $\overline{V^\dagger V}\,c=\lambda c$, that is,
+$V^\dagger V\bar c=\lambda\bar c$. Then
+$VV^\dagger(V\bar c)=\lambda V\bar c$ and
+$\norm{V\bar c}^2=\lambda\norm c^2>0$.
+\end{proof}
+
+The theorem has a transparent structure. The map
+$\mathcal N_p(X)=\sum_{|T|=p}A_TXA_T^\dagger$ is completely positive with
+Kraus operators $A_T$, and Lemma~\ref{lem:units} identifies $\varrho_p$ with
+the output of the complementary map: in the basis $(\ket T)_{|T|=p}$ of the
+$p$-particle sector, $\bra T\varrho_p\ket S=\Tr(A_T\varrho A_S^\dagger)$,
+which is the matrix element of the complementary output indexed by the pair
+of Kraus operators $(A_T,A_S)$. For a pure input, the output of a
+completely positive map and the output of its complement share their nonzero
+spectrum. The conjecture is therefore an instance of this general principle,
+and the factor $p!$ counts the orderings in which $\Phi^p$ removes the same
+set of $p$ particles.
+
+\subsection{Consequences for the conjecture}
+
+\begin{corollary}[$p=1$]\label{cor:p1}
+For every pure state on $H_n$, $\Spec\Phi(\varrho)=\Spec\varrho_1$. The
+conjecture holds for $p=1$ with no assumption on parity or particle number.
+\end{corollary}
+
+\begin{corollary}[$p\ge2$]\label{cor:p2}
+Let $p\ge2$ and $\varrho=\ket\psi\bra\psi$. The spectra of $\Phi^p(\varrho)$
+and $\varrho_p$ coincide if and only if both operators vanish, that is, if
+and only if $\ket\psi$ has no component in the sectors with $p$ or more
+particles. In particular the conjecture fails for every $p\ge2$, already for
+the two-mode state $\ket{11}$ with $p=2$, for which $\Spec\varrho_2=\{1,0,0,0\}$
+and $\Spec\Phi^2(\varrho)=\{2,0,0,0\}$.
+\end{corollary}
+
+\begin{proof}
+A multiset $\sigma$ of nonnegative reals equals $p!\,\sigma$ with $p!>1$ only
+if every element of $\sigma$ is zero. By Theorem~\ref{thm:main}, both
+operators vanish exactly when $V=0$, that is, when $A_T\ket\psi=0$ for every
+$|T|=p$. Writing $\ket\psi=\sum_J\psi_J\ket J$, the vector $A_T\ket\psi$ is
+$\sum_{J\supseteq T}\pm\psi_J\ket{J\setminus T}$, and the vectors
+$\ket{J\setminus T}$ are distinct for distinct $J\supseteq T$. Hence $V=0$ if
+and only if $\psi_J=0$ whenever $|J|\ge p$. For $\ket{11}$ we have
+$\varrho_2=\ket{11}\bra{11}$ by Lemma~\ref{lem:units}, and
+$\Phi^2(\varrho)=2A_{\{1,2\}}\ket{11}\bra{11}A_{\{1,2\}}^\dagger
+=2\ket{00}\bra{00}$ by Lemma~\ref{lem:phip}.
+\end{proof}
+
+The obstruction is already visible on the traces. Since
+$\Tr\varrho_p=\sum_{|S|=p}\langle A_S^\dagger A_S\rangle$ and
+$\sum_{|S|=p}A_S^\dagger A_S=\binom{\Nop}{p}$, while
+$\Tr\Phi^p(\varrho)=\sum_{(j_1,\dots,j_p)}\langle a_{j_1}^\dagger\cdots
+a_{j_p}^\dagger a_{j_p}\cdots a_{j_1}\rangle$ counts ordered tuples of
+distinct occupied modes,
+\[
+\Tr\Phi^p(\varrho)=\big\langle\Nop(\Nop-1)\cdots(\Nop-p+1)\big\rangle
+=p!\,\Big\langle\binom{\Nop}{p}\Big\rangle=p!\,\Tr\varrho_p
+\]
+for every state, pure or mixed.
+
+The verdict depends on what one calls the $p$-particle reduced density
+matrix. The abstract of \cite{AmosovFilippov2017} speaks of the
+conventional $p$-particle reduced density matrix, and the source also writes
+it as the kernel indexed by ordered tuples. That reading is equispectral with
+$\Phi^p(\varrho)$ on the nonzero part.
+
+\begin{corollary}[tuple-indexed kernel]\label{cor:kernel}
+Let $D^{(p)}$ be the $n^p\times n^p$ matrix indexed by ordered $p$-tuples,
+$D^{(p)}_{s,t}=\langle a_{s_1}^\dagger\cdots a_{s_p}^\dagger
+a_{t_p}\cdots a_{t_1}\rangle$. For every pure state, $D^{(p)}$ and
+$\Phi^p(\varrho)$ have the same nonzero eigenvalues with the same
+multiplicities.
+\end{corollary}
+
+\begin{proof}
+Let $W$ map the basis vector $e_{(t_1,\dots,t_p)}$ of $\C^{n^p}$ to
+$a_{t_p}\cdots a_{t_1}\ket\psi$. Then $D^{(p)}=W^\dagger W$, and the first
+line of the proof of Lemma~\ref{lem:phip} reads $\Phi^p(\varrho)=WW^\dagger$.
+\end{proof}
+
+The multiplicities of the eigenvalue $0$ differ, since $n^p\ne2^n$ in
+general. The conjecture is therefore exact on nonzero eigenvalues if the
+reduced density matrix is the tuple-indexed kernel, and false by the factor
+$p!$ for the operator $\varrho_p$ of Definition~\ref{def:rdm}, which is the
+operator for which the conjecture is stated in the body of
+\cite{AmosovFilippov2017}. In both readings the mathematical content is the
+identity \eqref{eq:main}.
+
+\subsection{Fixed particle number}
+\begin{corollary}[correction of Proposition~4 of \cite{AmosovFilippov2017}]
+\label{cor:fixedN}
+If $\varrho$, pure or mixed, is supported on the $N$-particle sector and
+$0\le p\le N$, then $\Phi^{N-p}(\varrho)=(N-p)!\,\varrho_p$, where
+$\varrho_0=\Tr(\varrho)\ket0\bra0$.
+\end{corollary}
+
+\begin{proof}
+By linearity it suffices to treat $\varrho=\ket\psi\bra\psi$ with $\ket\psi$
+in the $N$-particle sector. Put $m=N-p$. By Lemma~\ref{lem:phip} it suffices
+to prove $\sum_{|T|=m}A_T\varrho A_T^\dagger=\varrho_p$; for $m=0$ this reads
+$\varrho=\varrho_N$, which is Lemma~\ref{lem:units}, and for $p=0$ both sides
+equal $\ket0\bra0$. Both sides are supported on the $p$-particle sector. For
+$|J|=|K|=p$, Lemma~\ref{lem:units} and the completeness of the basis
+$\{\ket T:|T|=m\}$ of the $m$-particle sector, which contains $A_J\ket\psi$
+and $A_K\ket\psi$, give
+\[
+\bra J\varrho_p\ket K=\braket{A_K\psi}{A_J\psi}
+=\sum_{|T|=m}\braket{A_K\psi}{T}\braket{T}{A_J\psi}.
+\]
+Now $\braket{T}{A_J\psi}=\bra0A_TA_J\ket\psi$ and
+$\braket{J}{A_T\psi}=\bra0A_JA_T\ket\psi$, and
+$A_JA_T=(-1)^{pm}A_TA_J$ because annihilation operators anticommute. Hence
+$\braket{T}{A_J\psi}=(-1)^{pm}\braket{J}{A_T\psi}$, likewise for $K$, and the
+two signs cancel:
+$\bra J\varrho_p\ket K=\sum_T\braket{J}{A_T\psi}\braket{A_T\psi}{K}
+=\bra J\big(\sum_TA_T\varrho A_T^\dagger\big)\ket K$.
+\end{proof}
+
+Proposition~4 of \cite{AmosovFilippov2017} asserts
+$\Phi^{N-p}(\varrho)=\varrho_p$; it is exact for $N-p\le1$ and off by the
+factor $(N-p)!$ beyond. The corollary following it, equality of the spectra
+of $\varrho_p$ and $\Phi^p(\varrho)$ for pure fixed-$N$ states, is therefore
+also exact only for $p\le1$, as the example $\ket{11}$ shows. Combined with
+Theorem~\ref{thm:main}, Corollary~\ref{cor:fixedN} recovers the
+Carlson--Keller duality in the normalization of the source: for a pure
+$N$-particle state,
+$\Spec\varrho_{N-p}=\frac1{p!}\Spec\Phi^p(\varrho)=\Spec\varrho_p$.
+Theorem~\ref{thm:main} is thus the extension of this duality to the whole
+Fock space, with $\Phi^p(\varrho)/p!$ playing the role of the
+$(N-p)$-particle reduced density operator.
+
+\subsection{Mixed states}
+The spectral identity does not survive mixing, even for $p=1$ and fixed
+particle number. For two modes and
+$\varrho=\frac12(\ket{10}\bra{10}+\ket{01}\bra{01})$, the operator
+$\varrho_1$ has spectrum $\{\frac12,\frac12,0,0\}$ while
+$\Phi(\varrho)=\ket{00}\bra{00}$ has spectrum $\{1,0,0,0\}$. For mixed states
+only the trace identity $\Tr\Phi^p(\varrho)=p!\Tr\varrho_p$ and the
+complementarity relation survive in general. The source states the
+conjecture for pure states only.
+
+\section{Verification}\label{sec:verification}
+The
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/fermionic-particle-reductions/checks/verify_particle_reductions.py}{Python checker}
+builds the ladder operators with the sign convention of
+\cite{AmosovFilippov2017}, implements $\varrho_p$ literally from
+Definition~\ref{def:rdm}, projector product included, and $\Phi^p$ by
+composition, and writes its
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/fermionic-particle-reductions/data/verification.json}{recorded output}.
+It checks Lemma~\ref{lem:units} for $n\le4$; Lemma~\ref{lem:phip} on random
+mixed operators for $n\le5$; the identity $\Spec\Phi^p(\varrho)=p!\Spec\varrho_p$
+on all $2^n$ eigenvalues for 106 random pure states, real and complex,
+covering generic Fock-space states, even- and odd-parity states and
+fixed-$N$ states with $N=2,3$ on four to six modes, with largest deviation of
+order $10^{-15}$; the eigenvector map of Theorem~\ref{thm:main};
+Corollary~\ref{cor:kernel}; Corollary~\ref{cor:fixedN} for pure and mixed
+states; the trace identities; the two exact counterexamples above; and the
+two-mode example of the source. For $p\ge2$ the largest observed gap between
+the spectra of $\Phi^p(\varrho)$ and $\varrho_p$ is about $5.29$, while for
+$p=1$ it is below $10^{-15}$. The checker needs only NumPy and runs in a few
+seconds.
+
+\section{Scope and limitations}\label{sec:scope}
+The analytic proof is complete and elementary. It covers every pure state on
+the Fock space of $n$ modes, for all $n$ and $p$, and uses only the canonical
+anticommutation relations and the equality of the nonzero spectra of
+$VV^\dagger$ and $V^\dagger V$. The numerical computations serve to confirm
+the sign and normalization conventions of the source; they are restricted to
+$n\le6$ and are not a formal verification.
+
+On bibliographic priority, the factorial correction at fixed particle number
+appears implicitly in the normalization of Gigena, Di Tullio and Rossignoli
+\cite{Gigena2021}. The extension to variable particle number, the
+identification of $\varrho_p$ and $\Phi^p(\varrho)/p!$ as complementary
+outputs, and the observation that Proposition~4 and its corollary in
+\cite{AmosovFilippov2017} fail for $N-p\ge2$ and $p\ge2$ were not found in
+our search, which covered the 42 works citing \cite{AmosovFilippov2017}
+listed by Semantic Scholar in November 2026, with the citation contexts of
+the eight closest ones read at source, and keyword web searches. The result
+is elementary enough that it may appear elsewhere in another form; the search
+did not cover Google Scholar or quantum-chemistry monographs.
+
+Two questions raised in \cite{AmosovFilippov2017} remain outside the scope of
+this note: the generalized Pauli constraints for states obeying the parity
+superselection rule, and the spectrum of $\Phi^p(\varrho)$ for mixed states,
+where only the complementarity relation is available.
+
+\begin{thebibliography}{9}
+\bibitem{AmosovFilippov2017}
+G.~G. Amosov and S.~N. Filippov,
+\emph{Spectral properties of reduced fermionic density operators and parity
+superselection rule},
+Quantum Inf. Process. \textbf{16}, 2 (2017),
+\href{https://doi.org/10.1007/s11128-016-1467-9}{doi:10.1007/s11128-016-1467-9},
+\href{https://arxiv.org/abs/1512.01828}{arXiv:1512.01828}.
+
+\bibitem{CarlsonKeller1961}
+B.~C. Carlson and J.~M. Keller,
+\emph{Eigenvalues of density matrices},
+Phys. Rev. \textbf{121}, 659--661 (1961),
+\href{https://doi.org/10.1103/PhysRev.121.659}{doi:10.1103/PhysRev.121.659}.
+
+\bibitem{Gigena2021}
+N.~Gigena, M.~Di~Tullio and R.~Rossignoli,
+\emph{Many-body entanglement in fermion systems},
+Phys. Rev. A \textbf{103}, 052424 (2021),
+\href{https://doi.org/10.1103/PhysRevA.103.052424}{doi:10.1103/PhysRevA.103.052424},
+\href{https://arxiv.org/abs/2012.13785}{arXiv:2012.13785}.
+\end{thebibliography}
+\end{document}

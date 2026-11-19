@@ -1,0 +1,378 @@
+{
+  "status": "passed",
+  "checks": {
+    "all_quadrature_moments_of_degree_below_2m_coincide": {
+      "passed": true,
+      "cases": 26
+    },
+    "degree_2m_moment_a^m_b^m_distinguishes": {
+      "passed": true,
+      "cases": [
+        {
+          "m": 1,
+          "r": 2,
+          "degree": 2,
+          "psi": 0.4714045207910317,
+          "sigma": 0.0,
+          "closed_form": 0.4714045207910317
+        },
+        {
+          "m": 1,
+          "r": 4,
+          "degree": 2,
+          "psi": 1.0370899457402696,
+          "sigma": 0.0,
+          "closed_form": 1.0370899457402696
+        },
+        {
+          "m": 2,
+          "r": 2,
+          "degree": 4,
+          "psi": 0.9428090415820635,
+          "sigma": 0.0,
+          "closed_form": 0.9428090415820634
+        },
+        {
+          "m": 2,
+          "r": 4,
+          "degree": 4,
+          "psi": 5.845416057808791,
+          "sigma": 0.0,
+          "closed_form": 5.845416057808793
+        },
+        {
+          "m": 3,
+          "r": 2,
+          "degree": 6,
+          "psi": 2.8284271247461903,
+          "sigma": 0.0,
+          "closed_form": 2.82842712474619
+        },
+        {
+          "m": 3,
+          "r": 4,
+          "degree": 6,
+          "psi": 72.40773439350247,
+          "sigma": 0.0,
+          "closed_form": 72.40773439350247
+        },
+        {
+          "m": 4,
+          "r": 2,
+          "degree": 8,
+          "psi": 11.313708498984761,
+          "sigma": 0.0,
+          "closed_form": 11.31370849898476
+        },
+        {
+          "m": 4,
+          "r": 4,
+          "degree": 8,
+          "psi": 1445.8919461702524,
+          "sigma": 0.0,
+          "closed_form": 1445.8919461702524
+        }
+      ]
+    },
+    "spacing_1_second_moments_differ": {
+      "passed": true,
+      "max_abs_difference": 0.8081220356417684
+    },
+    "psi_r_has_schmidt_rank_r": {
+      "passed": true
+    },
+    "mean_photon_number_equal_and_uniformly_bounded": {
+      "passed": true,
+      "cases": [
+        {
+          "m": 2,
+          "z": 0.05,
+          "bound": 0.2105263157894737,
+          "mean_r2": 0.19047619047619047,
+          "mean_r60": 0.21052631578947373
+        },
+        {
+          "m": 2,
+          "z": 0.2,
+          "bound": 1.0,
+          "mean_r2": 0.6666666666666667,
+          "mean_r60": 1.0
+        },
+        {
+          "m": 2,
+          "z": 0.5,
+          "bound": 4.0,
+          "mean_r2": 1.3333333333333333,
+          "mean_r60": 3.9999999999999996
+        },
+        {
+          "m": 3,
+          "z": 0.05,
+          "bound": 0.31578947368421056,
+          "mean_r2": 0.2857142857142857,
+          "mean_r60": 0.3157894736842106
+        },
+        {
+          "m": 3,
+          "z": 0.2,
+          "bound": 1.5000000000000002,
+          "mean_r2": 1.0,
+          "mean_r60": 1.5
+        },
+        {
+          "m": 3,
+          "z": 0.5,
+          "bound": 6.0,
+          "mean_r2": 2.0,
+          "mean_r60": 5.999999999999999
+        }
+      ]
+    },
+    "reduced_eigenvalue_bound_lambda_r_le_E_over_r_r_minus_1": {
+      "passed": true,
+      "trials": 300,
+      "largest_ratio": 0.7385526318824327
+    }
+  },
+  "moment_cases": [
+    {
+      "m": 2,
+      "degree": 3,
+      "r": 2,
+      "weights": "geometric z=1/2",
+      "words": 84,
+      "max_abs_difference": 5.551115123125783e-17,
+      "max_abs_moment": 1.1666666666666665
+    },
+    {
+      "m": 2,
+      "degree": 3,
+      "r": 2,
+      "weights": "random",
+      "words": 84,
+      "max_abs_difference": 0.0,
+      "max_abs_moment": 2.3495743783856216
+    },
+    {
+      "m": 2,
+      "degree": 3,
+      "r": 3,
+      "weights": "geometric z=1/2",
+      "words": 84,
+      "max_abs_difference": 2.220446049250313e-16,
+      "max_abs_moment": 1.6428571428571426
+    },
+    {
+      "m": 2,
+      "degree": 3,
+      "r": 3,
+      "weights": "random",
+      "words": 84,
+      "max_abs_difference": 1.1102230246251565e-16,
+      "max_abs_moment": 2.560510306932361
+    },
+    {
+      "m": 2,
+      "degree": 3,
+      "r": 4,
+      "weights": "geometric z=1/2",
+      "words": 84,
+      "max_abs_difference": 2.220446049250313e-16,
+      "max_abs_moment": 1.9666666666666661
+    },
+    {
+      "m": 2,
+      "degree": 3,
+      "r": 4,
+      "weights": "random",
+      "words": 84,
+      "max_abs_difference": 4.440892098500626e-16,
+      "max_abs_moment": 3.7037525559835176
+    },
+    {
+      "m": 2,
+      "degree": 3,
+      "r": 5,
+      "weights": "geometric z=1/2",
+      "words": 84,
+      "max_abs_difference": 4.440892098500626e-16,
+      "max_abs_moment": 2.1774193548387095
+    },
+    {
+      "m": 2,
+      "degree": 3,
+      "r": 5,
+      "weights": "random",
+      "words": 84,
+      "max_abs_difference": 4.440892098500626e-16,
+      "max_abs_moment": 3.537374890922686
+    },
+    {
+      "m": 2,
+      "degree": 3,
+      "r": 6,
+      "weights": "geometric z=1/2",
+      "words": 84,
+      "max_abs_difference": 4.440892098500626e-16,
+      "max_abs_moment": 2.3095238095238093
+    },
+    {
+      "m": 2,
+      "degree": 3,
+      "r": 6,
+      "weights": "random",
+      "words": 84,
+      "max_abs_difference": 8.881784197001252e-16,
+      "max_abs_moment": 5.681390495610973
+    },
+    {
+      "m": 3,
+      "degree": 5,
+      "r": 2,
+      "weights": "geometric z=1/2",
+      "words": 1364,
+      "max_abs_difference": 8.881784197001252e-16,
+      "max_abs_moment": 6.749999999999998
+    },
+    {
+      "m": 3,
+      "degree": 5,
+      "r": 2,
+      "weights": "random",
+      "words": 1364,
+      "max_abs_difference": 1.7763568394002505e-15,
+      "max_abs_moment": 12.708123244042028
+    },
+    {
+      "m": 3,
+      "degree": 5,
+      "r": 3,
+      "weights": "geometric z=1/2",
+      "words": 1364,
+      "max_abs_difference": 1.7763568394002505e-15,
+      "max_abs_moment": 14.892857142857135
+    },
+    {
+      "m": 3,
+      "degree": 5,
+      "r": 3,
+      "weights": "random",
+      "words": 1364,
+      "max_abs_difference": 8.881784197001252e-16,
+      "max_abs_moment": 4.511400687551341
+    },
+    {
+      "m": 3,
+      "degree": 5,
+      "r": 4,
+      "weights": "geometric z=1/2",
+      "words": 1364,
+      "max_abs_difference": 7.105427357601002e-15,
+      "max_abs_moment": 22.94999999999999
+    },
+    {
+      "m": 3,
+      "degree": 5,
+      "r": 4,
+      "weights": "random",
+      "words": 1364,
+      "max_abs_difference": 7.105427357601002e-15,
+      "max_abs_moment": 60.380774510349845
+    },
+    {
+      "m": 3,
+      "degree": 5,
+      "r": 5,
+      "weights": "geometric z=1/2",
+      "words": 1364,
+      "max_abs_difference": 3.552713678800501e-15,
+      "max_abs_moment": 29.78225806451612
+    },
+    {
+      "m": 3,
+      "degree": 5,
+      "r": 5,
+      "weights": "random",
+      "words": 1364,
+      "max_abs_difference": 1.4210854715202004e-14,
+      "max_abs_moment": 69.0778502514085
+    },
+    {
+      "m": 4,
+      "degree": 7,
+      "r": 2,
+      "weights": "geometric z=1/2",
+      "words": 21844,
+      "max_abs_difference": 1.4210854715202004e-14,
+      "max_abs_moment": 81.87499999999993
+    },
+    {
+      "m": 4,
+      "degree": 7,
+      "r": 2,
+      "weights": "random",
+      "words": 21844,
+      "max_abs_difference": 2.842170943040401e-14,
+      "max_abs_moment": 135.75647784502712
+    },
+    {
+      "m": 4,
+      "degree": 7,
+      "r": 3,
+      "weights": "geometric z=1/2",
+      "words": 21844,
+      "max_abs_difference": 5.684341886080802e-14,
+      "max_abs_moment": 293.30357142857133
+    },
+    {
+      "m": 4,
+      "degree": 7,
+      "r": 3,
+      "weights": "random",
+      "words": 21844,
+      "max_abs_difference": 2.842170943040401e-14,
+      "max_abs_moment": 212.07024363226975
+    },
+    {
+      "m": 4,
+      "degree": 7,
+      "r": 4,
+      "weights": "geometric z=1/2",
+      "words": 21844,
+      "max_abs_difference": 1.1368683772161603e-13,
+      "max_abs_moment": 601.8749999999997
+    },
+    {
+      "m": 4,
+      "degree": 7,
+      "r": 4,
+      "weights": "random",
+      "words": 21844,
+      "max_abs_difference": 2.2737367544323206e-13,
+      "max_abs_moment": 1357.9642425391555
+    },
+    {
+      "m": 4,
+      "degree": 7,
+      "r": 5,
+      "weights": "geometric z=1/2",
+      "words": 21844,
+      "max_abs_difference": 2.2737367544323206e-13,
+      "max_abs_moment": 946.3911290322578
+    },
+    {
+      "m": 4,
+      "degree": 7,
+      "r": 5,
+      "weights": "random",
+      "words": 21844,
+      "max_abs_difference": 4.547473508864641e-13,
+      "max_abs_moment": 2944.711010086992
+    }
+  ],
+  "elapsed_seconds": 16.3,
+  "sha256": {
+    "checks/verify_moments.py": "3575c5d649be5daef82a7eaf9924ee5ac92b5fc412eb215a33e0a16f300a30be"
+  },
+  "limits": "Floating-point evaluation of all quadrature words up to the stated degree on finitely many examples; the proof for all r, m and d < 2m is in the manuscript."
+}

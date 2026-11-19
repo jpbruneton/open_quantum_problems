@@ -1,0 +1,58 @@
+{
+  "entry": "postselection-leakage-threshold",
+  "checker": "checks/verify_leakage_threshold.py",
+  "seed": 20261119,
+  "python": "3.13.18",
+  "numpy": "2.5.3",
+  "sympy": "1.14.0",
+  "result": "PASS",
+  "checks": {
+    "exact": {
+      "eta_crit_is_root": true,
+      "roots_reciprocal": true,
+      "series": "5*kappa**6/64 + kappa**4/8 + kappa**2/4",
+      "qubit_r_4/5_det_Phi": "-(eta - 4)*(4*eta - 1)/100",
+      "qubit_r_4/5_roots": [
+        "1/4",
+        "4"
+      ],
+      "qubit_r_3/5_eta_crit": "1/9"
+    },
+    "block_example": {
+      "kappa": 0.7999999999999999,
+      "eta_crit": 0.24999999999999994,
+      "bisection": 0.2499999999959663,
+      "rank_additive": true,
+      "min_eig_on_[eta_crit,1]": 1.0408340855860843e-17,
+      "witness_error": 5.204170427930421e-17
+    },
+    "random": {
+      "full_rank": {
+        "instances": 300,
+        "failures": 0,
+        "max_|bisection-formula|": 2.818264510651147e-10,
+        "max_witness_error": 5.592748486549226e-15,
+        "min_eig_on_[eta_crit,1]": -1.27509742727544e-16
+      },
+      "rank_deficient": {
+        "instances": 300,
+        "failures": 0,
+        "max_|bisection-formula|": 2.6439216305518265e-05,
+        "max_witness_error": 1.1406500743937897e-12,
+        "min_eig_on_[eta_crit,1]": -5.197889880035332e-16
+      },
+      "pure": {
+        "instances": 300,
+        "failures": 0,
+        "max_|bisection-formula|": 9.804904850196916e-05,
+        "max_witness_error": 2.535855707819397e-14,
+        "min_eig_on_[eta_crit,1]": -4.1767237170811826e-16
+      }
+    },
+    "singular_blocks": {
+      "instances": 200,
+      "failures": 0
+    },
+    "pure_states_max_|kappa-1|": 9.559020242022598e-14
+  }
+}
