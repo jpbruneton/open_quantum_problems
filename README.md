@@ -10,6 +10,8 @@ The site has three parts:
 2. **[New problems suggested by AI](#2-new-problems-suggested-by-ai)**: candidate questions formulated by AI from the catalogue.
 3. **[New Research](https://openquantumproblems.com/new-research)**: focused research notes with public manuscripts, exact certificates, and reproducible checkers. Their canonical source bundles are indexed in [`research/`](research/README.md).
 
+All new research starts in the private `oqmresearch` repository, which holds exploratory notes, calculations, and literature audits. The public research entries are maintained here under `research/entries/`.
+
 ## 1. Known open problems
 
 Open problems that are already posed in the literature, from long-standing conjectures to recent questions raised by the authors of new results.

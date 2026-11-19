@@ -18,7 +18,7 @@ Run from the repository root:
 python research/entries/<slug>/checks/<checker>.py
 ```
 
-List all runtime dependencies and give any additional test command here. Checkers must read from `data/`, write generated records to `data/`, and remain independent of `newresults/`.
+List all runtime dependencies and give any additional test command here. Checkers must read from `data/`, write generated records to `data/`, and remain independent of the private research workspace.
 
 ## Scope
 

@@ -42,11 +42,12 @@ Before starting any literature update, catalogue change or site change:
 
 ## Published research-note layout
 
-- Treat `newresults/` as a working archive. A note becomes a public research entry only under `research/entries/<slug>/`.
+- Start and continue all new research in the private `oqmresearch` repository. Keep working notes, calculations, and literature audits there. Use `docs/research/bilans/` for dated explorations and the corresponding `docs/research/` subdirectory for work on a specific problem.
+- The former `OQM/newresults/` archive now lives in `oqmresearch/docs/research/bilans/2026-11-17-newresults/`; do not recreate it here. A note becomes a public research entry in OQM only under `research/entries/<slug>/`.
 - Every public entry must contain `README.md`, `manuscript/` for the `.tex` and compiled `.pdf`, `checks/` for the minimal runnable Python verification, and `data/` for exact certificates and generated verification records. Use a stable descriptive slug, not a date or an internal lead number.
 - `research/entries/<slug>/` is the canonical citable source. `public/research/` contains deployment mirrors of PDFs only; do not treat it as the source archive.
-- Keep the public bundle minimal and self-contained. Search scripts, exploratory notes, logs, caches, and superseded certificates remain in `newresults/`.
+- Keep the public bundle minimal and self-contained. Keep search scripts, exploratory notes, logs, caches, and superseded certificates in `oqmresearch`.
 - The entry README must state the result, map every public file to its role, give commands runnable from the repository root, list dependencies, and distinguish analytic proof, computational verification, and bibliographic priority.
-- Python checkers must resolve inputs relative to their entry directory and write generated records into `data/`; they must not depend on files left in `newresults/`.
+- Python checkers must resolve inputs relative to their entry directory and write generated records into `data/`. They must run without access to the private workspace or historical archive.
 - The manuscript's verification section must link directly to the relevant public Python checker files and exact certificate on GitHub. The site button `Source, certificate and checks` must link to the canonical entry directory.
 - Start a new public entry from `research/ENTRY_TEMPLATE.md` and preserve this layout for later notes.

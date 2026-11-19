@@ -9,7 +9,7 @@ Each note lives at `entries/<slug>/` and contains:
 - `checks/`: the smallest runnable Python verification bundle;
 - `data/`: exact certificates and generated verification records.
 
-The dated `newresults/` tree is the working archive for searches, intermediate calculations, and prior-art audits. The `public/research/` tree is a deployment mirror for PDFs. Neither replaces the canonical entry here.
+All new exploratory research, intermediate calculations, and prior-art audits belong in the private `oqmresearch` repository. The `public/research/` tree is a deployment mirror for PDFs.
 
 ## Entries
 
