@@ -35,7 +35,7 @@
 \author{Fable \& Astra\\[0.35em]
 \normalsize Research led by Jean-Philippe Bruneton\\[-0.1em]
 \small Universit\'e Paris Cit\'e, France}
-\date{17 November 2026}
+\date{17 November 2026; revised 19 November 2026}
 
 \begin{document}
 \maketitle
@@ -50,11 +50,14 @@ environmental records have overlap $\kappa$, the worst-case
 ensemble-preparation error is $(1-\kappa)\sqrt{pq}$. Thus the lost steering
 power is precisely the branch coherence recorded outside the observer's
 reach. A binary target ensemble and a two-outcome measurement attain this
-minimax value. For a chain of summable controlled rotations, the same formula
-gives matching spatial bounds and an asymptotically sharp geometric decay
-rate. The state is also the unique ground state of a gapped quasi-local parent
-Hamiltonian. These results solve the stated finite-dimensional model and do
-not establish a general quantitative converse to Haag duality.
+minimax value; when the hidden records are orthogonal, the value reduces to
+half the known $\ell_1$ coherence of assistance of a qubit. For a chain of
+summable controlled rotations, the same formula gives matching spatial bounds
+and an asymptotically sharp geometric decay rate. The state is also the unique
+ground state of a gapped quasi-local parent Hamiltonian. The proofs are short
+and use standard tools; the contribution is the exact value of this
+operational defect in an explicit model, and no general quantitative theory
+of partial steering is claimed.
 \end{abstract}
 
 \section{Introduction}
@@ -68,10 +71,14 @@ $\ket-=(\ket0-\ket1)/\sqrt{2}$. Alice's average state is $I/2$ in both cases;
 Bob's choice changes its ensemble decomposition, not the average state itself.
 
 This freedom extends beyond the Bell pair. A mixed state admits many ensemble
-decompositions, and the Hughston--Jozsa--Wootters theorem states that an
-observer holding its entire purifying system can prepare every finite one by
-a suitable measurement \cite{HJW}. Perfect steering therefore relies on
-access to all the information that purifies the state.
+decompositions, and the Schr\"odinger--HJW theorem (after Schr\"odinger,
+and Hughston, Jozsa and Wootters) shows that an observer holding its entire
+purifying system can prepare every finite decomposition into pure states by
+measuring the purifier in a suitable basis, after enlarging it if
+necessary \cite{Kirkpatrick}. Decompositions into mixed states are
+coarse-grainings of pure ones and are prepared by merging outcomes. Perfect
+steering therefore relies on access to all the information that purifies the
+state.
 
 The question studied here is what remains possible when that access is only
 partial. We split the purifier into a subsystem $B$ that Bob can measure and a
@@ -113,31 +120,51 @@ it asks how well one measurement system can realize every decomposition of a
 fixed marginal.
 
 \section{Related work}
-Schr\"odinger's steering observation was given an operational hierarchy by
-Wiseman, Jones and Doherty \cite{Wiseman}; modern definitions, witnesses and
-applications are reviewed by Uola, Costa, Nguyen and G\"uhne \cite{Uola}.
-The present minimax starts from the ensemble-measurement correspondence of
-Hughston, Jozsa and Wootters \cite{HJW} and asks for its approximation after
-part of the purifying system is removed.
+Schr\"odinger's steering observation was given an operational definition and
+placed in a strict hierarchy between entanglement and Bell nonlocality by
+Wiseman, Jones and Doherty \cite{Wiseman}. Their question is whether the
+conditional states admit a local-hidden-state model. The minimax
+\eqref{defect} asks a different, preparation-oriented question: how closely
+one fixed measurement system can realize every decomposition of a fixed
+marginal. Its starting point is the Schr\"odinger--HJW theorem, whose history
+and exact statement are reviewed by Kirkpatrick \cite{Kirkpatrick}; the
+defect measures how this theorem fails once part of the purifier is removed.
 
-For two-qubit states, steering ellipsoids describe the normalized states
-reachable by measurements on the other qubit \cite{Jevtic}. Equation
-\eqref{defect} instead ranges over complete decompositions of $\rho_A$ and
-keeps the subnormalized outputs, so targets outside the accessible ellipsoid
-contribute to the worst case. The exact binary witness below is the point at
-which this geometric restriction becomes quantitative.
+For two-qubit states, the steering ellipsoid is the set of Bloch vectors to
+which measurements on one qubit can steer the other \cite{Jevtic}. Jevtic,
+Pusey, Jennings and Rudolph call steering complete when every convex
+decomposition of the marginal Bloch vector into points of this ellipsoid is
+realizable, and they show that this holds for every non-degenerate ellipsoid,
+hence for every entangled two-qubit state \cite[Appendix~C]{Jevtic}. The
+state $\rho_{AB}$ studied below is entangled for $\kappa>0$ and is therefore
+completely steerable in their sense. Equation \eqref{defect} also counts
+decompositions whose members lie outside the ellipsoid, and its exact value
+quantifies how far these targets are from every realizable ensemble.
 
-Branch states and products of decoherence factors are standard in quantum
-Darwinism \cite{BlumeKohout,Zurek}. Here they provide a transparent spatial
-model rather than a claim about redundant classical records. In the
-operator-algebraic setting, van Luijk et al. identify exact steering with the
-existence of a state-preserving conditional expectation \cite{vanLuijk}.
-Wallick and Wilming show that nonabelian anyonic sectors can violate both Haag
-duality and steering \cite{Wallick}, while Ogata develops approximate Haag
-duality for mixed-state topological order \cite{Ogata}. The calculation below
-is a finite-dimensional test case for these structural connections; its
-gapped quasi-local parent does not imply a general theorem for topological
-phases or cone algebras.
+The coherence of assistance supplies the extremal ensemble. Zhao, Ma, Quan,
+Fan and Pereira define the $\ell_1$ coherence of assistance $C_a^{\ell_1}$ as
+the largest average $\ell_1$ coherence over pure-state decompositions, prove
+$C_a^{\ell_1}(\rho)\leq\sum_{i\neq j}\sqrt{\rho_{ii}\rho_{jj}}$ by the
+Cauchy--Schwarz inequality, and show that equality holds for qubits, with the
+binary ensemble $\sqrt p\ket0\pm\sqrt q\ket1$ optimal
+\cite[Theorem~1, Corollary~1, Lemma~1]{Zhao}. When the hidden records are
+orthogonal ($\kappa=0$), every state Bob prepares is diagonal, and
+Theorem~\ref{exact} reduces to $s_B=\sqrt{pq}=C_a^{\ell_1}(\rho_A)/2$. The
+new ingredient for $\kappa>0$ is the matching lower bound over all
+measurements on $B$.
+
+Branch states whose decoherence factors are products of overlaps over
+subenvironments are standard in quantum Darwinism, where they serve to
+quantify the redundancy of records in environment fragments
+\cite[Secs.~III--IV]{BlumeKohout} and \cite{Zurek}. The spatial model of
+Section~\ref{sec:spatial} uses the same structure for a different task: it
+measures the steering power gained as larger portions of the environment
+become accessible.
+
+We did not find the minimax value of Theorem~\ref{exact}, the comparison
+with $\delta_*$ in Section~\ref{sec:ce}, or the spatial rate of
+Corollary~\ref{spatial} in the literature consulted. Their proofs combine
+the standard tools recalled above.
 
 \section{Exact minimax result}
 Consider the pure state
@@ -179,8 +206,9 @@ $I$. It prepares
 \]
 Its cost is $(1-\kappa)\sum_i|z_i|$. Positivity and the Cauchy--Schwarz
 inequality give
-$\sum_i|z_i|\leq\sum_i\sqrt{x_i y_i}\leq\sqrt{pq}$, establishing an
-upper bound for every finite target ensemble.
+$\sum_i|z_i|\leq\sum_i\sqrt{x_i y_i}\leq\sqrt{pq}$, as in the qubit case of
+\cite[Theorem~1]{Zhao}, establishing an upper bound for every finite target
+ensemble.
 
 For the matching lower bound, use the binary target stated in the theorem.
 Every effect $0\leq E\leq I$ satisfies $|E_{01}|\leq1/2$, because
@@ -196,10 +224,15 @@ their total cost is therefore $\norm\Delta_1$. The effects
 $E_\pm=(I\pm X)/2$ attain equality.
 \end{proof}
 
-\section{Conditional-expectation defect}
-Define $\delta_*=\inf_\tau\frac12\norm{\rho_{AC}-\rho_A\otimes\tau}_1$.
-This is the optimal state-preservation defect of the conditional expectations
-$E_\tau(X\otimes Y)=X\Tr(\tau Y)\otimes I$ in the matrix setting. Here
+\section{Conditional-expectation defect}\label{sec:ce}
+When Bob holds the whole purifier of $\rho_{AC}$, perfect steering of $A$
+from $B$ would follow if $\rho_{AC}$ were a product $\rho_A\otimes\tau$, that
+is, if the conditional expectation
+$E_\tau(X\otimes Y)=X\Tr(\tau Y)\otimes I$ of the matrix algebra of $AC$
+onto that of $A$ preserved $\rho_{AC}$. Every conditional expectation of a
+full matrix algebra $M_A\otimes M_C$ onto $M_A\otimes I$ has this form for
+some state $\tau$. Define the optimal state-preservation defect
+$\delta_*=\inf_\tau\frac12\norm{\rho_{AC}-\rho_A\otimes\tau}_1$. Here
 \[
 \rho_{AC}=p\ket0\bra0\otimes\ket u\bra u
 +q\ket1\bra1\otimes\ket v\bra v.
@@ -228,7 +261,7 @@ The two limits identify different scaling regimes: a general square-root
 bound can be far from sharp when leakage is small and the Schmidt weights
 remain fixed.
 
-\section{Spatially increasing access}
+\section{Spatially increasing access}\label{sec:spatial}
 Place a qubit $A$, a flag qubit $B_0$, and qubits $E_j$ for $j\geq1$ in the
 state obtained from
 $(\sqrt p\ket{00}+\sqrt q\ket{11})_{AB_0}\otimes_j\ket0_{E_j}$ by the
@@ -302,11 +335,13 @@ well defined for a summable angle sequence.
 
 The interaction is inhomogeneous and long ranged, although summable. Its
 ground state is related to a block-product state by a quasi-local unitary,
-and no topological order is established. Moreover, the partition
-$A,B_R,C_R$ keeps Alice's system fixed and differs from the cone geometries
-used in operator-algebraic formulations of Haag duality. The exact minimax
-therefore supplies a controlled example, while the general quantitative
-duality question remains open.
+and no topological order is established. The partition $A,B_R,C_R$ keeps
+Alice's system fixed while Bob's region grows, so the decay rate describes
+the gain from enlarging the controlled region, not the dependence of
+steering on the distance between two fixed observers. The model therefore
+supplies an exactly solvable example, while a general quantitative theory of
+steering under partial access, for instance in lattice systems with
+topological order, remains open.
 
 \section{Verification and scope}
 The public
@@ -314,20 +349,21 @@ The public
 verifies the partial-trace preparations, the binary witnesses, rational test
 cases, spatial tails, and spectra of finite parent Hamiltonians; its
 \href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/steering-localization/data/verification51.json}{recorded output}
-is included in the same public entry. These computations complement the
-analytic proofs. The bibliographic comparison supports the positioning in
-Section~2; it does not turn the model calculation into a general theorem on
-steering or topological phases.
+is included in the same public entry. These computations test finite
+instances and complement the analytic proofs, which alone establish the
+universal statements. Bibliographic priority is a separate question: the
+search reported in Section~2 found the ingredients of the proofs but not the
+exact minimax value, which remains open to independent assessment.
 
 \clearpage
 \begingroup\small
 \begin{thebibliography}{99}
 \setlength{\itemsep}{2pt}
-\bibitem{HJW}
-L. P. Hughston, R. Jozsa and W. K. Wootters,
-\emph{A complete classification of quantum ensembles having a given density matrix},
-Phys. Lett. A \textbf{183}, 14--18 (1993);
-\href{https://doi.org/10.1016/0375-9601(93)90880-9}{doi:10.1016/0375-9601(93)90880-9}.
+\bibitem{Kirkpatrick}
+K. A. Kirkpatrick, \emph{The Schr\"odinger--HJW theorem},
+Found. Phys. Lett. \textbf{19}, 95--102 (2006);
+\href{https://doi.org/10.1007/s10702-006-1852-1}{doi:10.1007/s10702-006-1852-1};
+\href{https://arxiv.org/abs/quant-ph/0305068v3}{arXiv:quant-ph/0305068v3}.
 
 \bibitem{Wiseman}
 H. M. Wiseman, S. J. Jones and A. C. Doherty,
@@ -336,17 +372,18 @@ Phys. Rev. Lett. \textbf{98}, 140402 (2007);
 \href{https://doi.org/10.1103/PhysRevLett.98.140402}{doi:10.1103/PhysRevLett.98.140402};
 \href{https://arxiv.org/abs/quant-ph/0612147v3}{arXiv:quant-ph/0612147v3}.
 
-\bibitem{Uola}
-R. Uola, A. C. S. Costa, H. C. Nguyen and O. G\"uhne,
-\emph{Quantum steering}, Rev. Mod. Phys. \textbf{92}, 015001 (2020);
-\href{https://doi.org/10.1103/RevModPhys.92.015001}{doi:10.1103/RevModPhys.92.015001};
-\href{https://arxiv.org/abs/1903.06663v3}{arXiv:1903.06663v3}.
-
 \bibitem{Jevtic}
 S. Jevtic, M. F. Pusey, D. Jennings and T. Rudolph,
 \emph{Quantum Steering Ellipsoids}, Phys. Rev. Lett. \textbf{113}, 020402 (2014);
 \href{https://doi.org/10.1103/PhysRevLett.113.020402}{doi:10.1103/PhysRevLett.113.020402};
-\href{https://arxiv.org/abs/1303.4724}{arXiv:1303.4724}.
+\href{https://arxiv.org/abs/1303.4724v2}{arXiv:1303.4724v2}.
+
+\bibitem{Zhao}
+M.-J. Zhao, T. Ma, Q. Quan, H. Fan and R. Pereira,
+\emph{$l_1$-norm coherence of assistance},
+Phys. Rev. A \textbf{100}, 012315 (2019);
+\href{https://doi.org/10.1103/PhysRevA.100.012315}{doi:10.1103/PhysRevA.100.012315};
+\href{https://arxiv.org/abs/2002.03823}{arXiv:2002.03823}.
 
 \bibitem{BlumeKohout}
 R. Blume-Kohout and W. H. Zurek,
@@ -360,20 +397,6 @@ Phys. Rev. A \textbf{73}, 062310 (2006);
 W. H. Zurek, \emph{Quantum Darwinism}, Nat. Phys. \textbf{5}, 181--188 (2009);
 \href{https://doi.org/10.1038/nphys1202}{doi:10.1038/nphys1202};
 \href{https://arxiv.org/abs/0903.5082}{arXiv:0903.5082}.
-
-\bibitem{vanLuijk}
-L. van Luijk, A. Marrakchi, T. Osborne, A. Stottmeister and H. Wilming,
-\emph{Quantum steering is equivalent to state-preserving conditional expectations},
-\href{https://arxiv.org/abs/2608.10783}{arXiv:2608.10783} (2026).
-
-\bibitem{Wallick}
-D. Wallick and H. Wilming,
-\emph{A nonabelian anyon violates Haag duality},
-\href{https://arxiv.org/abs/2609.01267}{arXiv:2609.01267} (2026).
-
-\bibitem{Ogata}
-Y. Ogata, \emph{Mixed state topological order: operator algebraic approach},
-\href{https://arxiv.org/abs/2501.02398}{arXiv:2501.02398} (2025).
 \end{thebibliography}
 \endgroup
 \end{document}

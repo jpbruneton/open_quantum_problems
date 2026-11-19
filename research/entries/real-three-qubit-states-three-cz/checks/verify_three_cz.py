@@ -389,6 +389,20 @@ def main():
     ok &= worst < 1e-12
     rec['hyperdeterminant_local_orthogonal_invariance_max_dev'] = worst
 
+    # --- 6c. 4*Delta = 4 det rho_q - E_qa^2 - E_qb^2 (rebit monogamy) -------
+    worst = 0.0
+    for _ in range(500):
+        T = rng.normal(size=(2, 2, 2))
+        T /= np.linalg.norm(T)
+        for q in range(3):
+            M = np.moveaxis(T, q, 0).reshape(2, 4)
+            a, b = [p for p in range(3) if p != q]
+            rhs = 4 * np.linalg.det(M @ M.T) - yy(T, q, a) ** 2 - yy(T, q, b) ** 2
+            worst = max(worst, abs(4 * hyperdet(T) - rhs))
+    print(f"[6c] 4*Delta = 4 det rho_q - E_qa^2 - E_qb^2: max deviation {worst:.1e}")
+    ok &= worst < 1e-12
+    rec['rebit_three_tangle_identity_max_dev'] = worst
+
     # --- 7. exact (symbolic) checks ------------------------------------------
     exact_ok, exact_rec = exact_checks()
     print(f"[7] exact symbolic checks: {exact_rec}")

@@ -127,6 +127,7 @@
       6
     ],
     "hyperdeterminant_local_orthogonal_invariance_max_dev": 1.3877787807814457e-16,
+    "rebit_three_tangle_identity_max_dev": 5.551115123125783e-16,
     "exact": {
       "circuit_output_equals_N": true,
       "N_hyperdeterminant": "-1/4",

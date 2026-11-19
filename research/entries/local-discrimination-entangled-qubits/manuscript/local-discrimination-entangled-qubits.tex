@@ -56,8 +56,8 @@ at most three states, where the result is therefore the exact optimum of local
 operations and classical communication. It fails for four states at the
 vertices of a tetrahedron, for instance with values $0.4182$ against $0.4268$. For
 the five equiangular states of Wei, Cobucci and Tavakoli, one bit reaches
-exactly $2/5$, above the value $0.3936$ at which their numerical search over
-one-way protocols had stopped.
+exactly $2/5$, above the value of about $0.395$ that their numerical search
+had found without communication and had not improved with one-way protocols.
 \end{abstract}
 
 \section{Introduction}
@@ -67,7 +67,7 @@ exchange classical messages. The restriction is severe for entangled states.
 The four Bell states are orthogonal, so a joint measurement identifies them
 with certainty, yet no protocol of local operations and classical
 communication (LOCC) can do so \cite{Ghosh2001}, and the best one guesses the
-right Bell state with probability $1/2$ \cite{Bandyopadhyay2015}. The reason
+right Bell state with probability $1/2$ \cite{Nathanson2005,Bandyopadhyay2015}. The reason
 is visible in the reduced states: each
 party holds the completely mixed qubit state whichever Bell state was
 prepared.
@@ -81,7 +81,7 @@ and sends its outcome to the other (one-way LOCC), the parties run an
 arbitrary LOCC protocol, and the measurement is only required to be
 separable, meaning that every measurement operator is a sum of positive
 product operators. Separable measurements contain all LOCC measurements and
-are far easier to analyse \cite{Bennett1999,Chitambar2014}.
+admit a much simpler mathematical characterization \cite{Chitambar2014}.
 
 Both extreme settings have exact answers. A maximally entangled two-qubit
 state is fixed, up to a sign, by a unit vector $q\in\R^4$, and the overlap of
@@ -115,10 +115,10 @@ Section~\ref{sec:examples} works out three families, including the five-state
 measurement of Wei, Cobucci and Tavakoli \cite{Wei2024}.
 
 \section{Related work}\label{sec:related}
-Minimum-error discrimination goes back to Helstrom, Holevo, and Yuen, Kennedy
-and Lax \cite{Helstrom1976,Holevo1973,Yuen1975}, whose optimality conditions
-are the duality used in Section~\ref{sec:oneway}. For qubit states this
-duality has a geometric solution on the Bloch sphere
+The optimality conditions of minimum-error discrimination form a
+semidefinite duality, stated for instance as Theorem~1 of Deconinck and
+Terhal \cite{Deconinck2010}; it is the tool of Section~\ref{sec:oneway}. For
+qubit states this duality has a geometric solution on the Bloch sphere
 \cite{Deconinck2010,Bae2013}, which for equally likely pure states is the
 smallest ball enclosing the Bloch vectors; Lemma~\ref{lem:qubit} restates
 this case with a short proof.
@@ -132,9 +132,18 @@ locally as well as globally \cite{Virmani2001}; this is the case $k=2$ of our
 theorems. For orthogonal maximally entangled states, perfect local
 distinguishability was studied by Ghosh et al.\
 \cite{Ghosh2001,Ghosh2004} and bounds on the LOCC error by Nathanson
-\cite{Nathanson2005}. Bandyopadhyay, Ghosh and Kar related one-way LOCC
-discrimination of such states to the discrimination of the unitaries that
-generate them \cite{Bandyopadhyay2011}, and Nathanson exhibited triples in
+\cite{Nathanson2005}. Nathanson's Lemma~8 already bounds the LOCC success
+probability for $k$ equally likely states $(\one\otimes U_j)\ket\psi$ of
+$\mathbb C^D\otimes\mathbb C^D$ by $D/k$, without assuming orthogonality, and
+Bandyopadhyay and Nathanson proved the underlying inequality
+$\bra\psi T\ket\psi\le\lambda_1\Tr T$, with $\lambda_1$ the largest Schmidt
+coefficient of $\ket\psi$, for every operator $0\le T\le\one$ with positive
+partial transpose \cite[Lemma~2]{BandyopadhyayNathanson2013}. For two qubits
+this is the trace bound $2/k$ that our separable formula reaches when
+$\Theta\ge\pi/4$, and in dimension $D$ it is the upper half of
+Proposition~\ref{prop:frame}. Bandyopadhyay, Ghosh and Kar related perfect
+one-way LOCC discrimination of such states to the perfect discrimination of
+the unitaries that generate them \cite{Bandyopadhyay2011}, and Nathanson exhibited triples in
 higher dimensions that one-way LOCC cannot distinguish perfectly although
 two-way LOCC can \cite{Nathanson2013}. The gap between one-way and separable
 measurements found here for four non-orthogonal two-qubit states is of the
@@ -142,8 +151,9 @@ same nature; whether two-way LOCC closes it is open.
 
 Separable and positive-partial-transpose (PPT) measurements are the standard
 relaxations of LOCC \cite{Chitambar2014}. Semidefinite programming gives exact
-values for specific sets, for instance the PPT bound $7/8$ for the four states
-of Yu, Duan and Ying \cite{Yu2012,Cosentino2013} and the separable optimum for
+values for specific sets, for instance the PPT value $7/8$ for the four states
+of Yu, Duan and Ying \cite{Yu2012,Cosentino2013}, whose separable value is
+$3/4$ \cite{Bandyopadhyay2015}, and the separable optimum for
 three or four Bell states assisted by a partially entangled pair
 \cite{Bandyopadhyay2015}; without assistance the latter reduces to $2/3$ and
 $1/2$, which are the orthogonal cases of Theorem~\ref{thm:sep}. Chitambar,
@@ -155,12 +165,14 @@ of maximally entangled states.
 The closest antecedent of the application in Section~\ref{sec:simplex} is the
 work of Wei, Cobucci and Tavakoli \cite{Wei2024}, who construct five
 equiangular maximally entangled two-qubit states and report numerical local
-discrimination values. We did not find the formulas of
+discrimination values; Proposition~\ref{prop:frame} shows that one message
+reaches the known upper bound for their set. We did not find the formulas of
 Theorems~\ref{thm:oneway}--\ref{thm:compare} in the works above or in
 searches on local discrimination of non-orthogonal maximally entangled states
 and on the equivalent problem of discriminating qubit unitaries with an
-unentangled probe \cite{Acin2001,DAriano2001}. This search supports the
-positioning of the note and does not certify priority.
+unentangled probe, for which the classical results concern two unitaries
+\cite{Acin2001,DAriano2001}. This search supports the positioning of the note
+and does not certify priority.
 
 \section{Setting}\label{sec:setting}
 \subsection{States, rotations and vectors in $\R^4$}
@@ -302,8 +314,9 @@ leaves $\mu$ unchanged.
 Alice's outcome $\pm$ along $v$ prepares on Bob's side the state that the
 unitary $U(q_j)$ produces from the pure probe of Bloch vector $\mp v$. The
 value $\Pow$ is therefore also the optimal probability of identifying one of
-the $k$ unitaries $U(q_j)$ with a single use and an unentangled probe, in the
-correspondence between the two problems noted in \cite{Bandyopadhyay2011}.
+the $k$ unitaries $U(q_j)$ with a single use and an unentangled probe, the
+minimum-error counterpart of the correspondence studied for perfect
+discrimination in \cite{Bandyopadhyay2011}.
 
 \section{Separable measurements}\label{sec:sep}
 \begin{lemma}[A bound by an operator-norm radius]\label{lem:radius}
@@ -343,7 +356,8 @@ with covering angle $\Theta$,
 \end{theorem}
 \begin{proof}
 \emph{Upper bounds.} Taking $\Lambda=0$ in Lemma~\ref{lem:radius} gives
-$\Psep\le2/k$. Let $\Theta\le\pi/4$, let $\kappa$ be a centre,
+$\Psep\le2/k$, the known trace bound
+\cite{Nathanson2005,BandyopadhyayNathanson2013}. Let $\Theta\le\pi/4$, let $\kappa$ be a centre,
 $O=R(\kappa)$ and $c=\cos2\Theta\ge0$. With $W_j=O^\T R_j$,
 \[
 (R_j-cO)^\T(R_j-cO)=(1+c^2)\one-c\,(W_j+W_j^\T)\le(1-c^2)\one ,
@@ -570,10 +584,10 @@ Separable, $(1+\sin2\theta)/4$&$0.3474$&$0.4268$&$0.4830$&$0.5000$\\
 Wei, Cobucci and Tavakoli construct five maximally entangled two-qubit states
 with $\lvert\braket{e_i}{e_j}\rvert^2=1/16$, the elements of a five-outcome
 non-projective Bell-state measurement \cite{Wei2024}. For the discrimination
-of these states with one copy they report, in the published version, a
-numerical value $0.3936$ for local measurements with post-processing, no
-increase found with one-way LOCC, and $\Pppt=2/5$; the joint optimum is
-$4/5$. The following statement settles the values with communication.
+of these states with one copy, Section~VIII of their preprint reports a
+numerical value of about $0.3946$ for local measurements without
+communication, no increase found with one-way LOCC, and $\Pppt=2/5$; the
+joint optimum is $4/5$. The following statement settles the values with communication.
 
 \begin{proposition}\label{prop:frame}
 Let $\ket{e_1},\dots,\ket{e_k}$ be maximally entangled states of
@@ -590,7 +604,9 @@ measurement whose success probability, conditional on $a$ and $j$, is
 $(D/k)\Tr\tau_{j,a}^2=D/k$. Conversely a product vector has overlap at most
 $1/\sqrt D$ with a maximally entangled state, so a separable operator $M$
 satisfies $\bra{e_j}M\ket{e_j}\le\Tr(M)/D$, and summing over the measurement
-gives $\Psep\le D/k$.
+gives $\Psep\le D/k$. This upper bound is known
+\cite{Nathanson2005,BandyopadhyayNathanson2013}; the content of the
+proposition is that one message attains it for tight frames.
 \end{proof}
 
 The five states attain the Welch bound for equiangular vectors in dimension
@@ -650,14 +666,6 @@ Phys. Rev. Lett. \textbf{87}, 277902 (2001);
 \href{https://doi.org/10.1103/PhysRevLett.87.277902}{doi:10.1103/PhysRevLett.87.277902};
 \href{https://arxiv.org/abs/quant-ph/0106148}{arXiv:quant-ph/0106148}.
 
-\bibitem{Bennett1999}
-C. H. Bennett, D. P. DiVincenzo, C. A. Fuchs, T. Mor, E. Rains, P. W. Shor,
-J. A. Smolin and W. K. Wootters,
-\emph{Quantum nonlocality without entanglement},
-Phys. Rev. A \textbf{59}, 1070--1091 (1999);
-\href{https://doi.org/10.1103/PhysRevA.59.1070}{doi:10.1103/PhysRevA.59.1070};
-\href{https://arxiv.org/abs/quant-ph/9804053}{arXiv:quant-ph/9804053}.
-
 \bibitem{Chitambar2014}
 E. Chitambar, D. Leung, L. Man\v{c}inska, M. Ozols and A. Winter,
 \emph{Everything You Always Wanted to Know About LOCC (But Were Afraid to Ask)},
@@ -670,22 +678,7 @@ A. Wei, G. Cobucci and A. Tavakoli,
 \emph{Nonprojective Bell-state measurements},
 Phys. Rev. A \textbf{110}, 042206 (2024);
 \href{https://doi.org/10.1103/PhysRevA.110.042206}{doi:10.1103/PhysRevA.110.042206};
-\href{https://arxiv.org/abs/2405.03872}{arXiv:2405.03872}.
-
-\bibitem{Helstrom1976}
-C. W. Helstrom, \emph{Quantum Detection and Estimation Theory},
-Academic Press, New York (1976).
-
-\bibitem{Holevo1973}
-A. S. Holevo, \emph{Statistical decision theory for quantum systems},
-J. Multivariate Anal. \textbf{3}, 337--394 (1973);
-\href{https://doi.org/10.1016/0047-259X(73)90028-6}{doi:10.1016/0047-259X(73)90028-6}.
-
-\bibitem{Yuen1975}
-H. P. Yuen, R. S. Kennedy and M. Lax,
-\emph{Optimum testing of multiple hypotheses in quantum detection theory},
-IEEE Trans. Inf. Theory \textbf{21}, 125--134 (1975);
-\href{https://doi.org/10.1109/TIT.1975.1055351}{doi:10.1109/TIT.1975.1055351}.
+\href{https://arxiv.org/abs/2405.03872v1}{arXiv:2405.03872v1}.
 
 \bibitem{Deconinck2010}
 M. E. Deconinck and B. M. Terhal, \emph{Qubit state discrimination},
@@ -742,6 +735,13 @@ and classical communication for local discrimination},
 Phys. Rev. A \textbf{88}, 062316 (2013);
 \href{https://doi.org/10.1103/PhysRevA.88.062316}{doi:10.1103/PhysRevA.88.062316};
 \href{https://arxiv.org/abs/1310.4220}{arXiv:1310.4220}.
+
+\bibitem{BandyopadhyayNathanson2013}
+S. Bandyopadhyay and M. Nathanson,
+\emph{Tight bounds on the distinguishability of quantum states under separable measurements},
+Phys. Rev. A \textbf{88}, 052313 (2013);
+\href{https://doi.org/10.1103/PhysRevA.88.052313}{doi:10.1103/PhysRevA.88.052313};
+\href{https://arxiv.org/abs/1306.2712}{arXiv:1306.2712}.
 
 \bibitem{Yu2012}
 N. Yu, R. Duan and M. Ying,

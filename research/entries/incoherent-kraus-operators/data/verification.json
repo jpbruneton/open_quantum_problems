@@ -185,7 +185,7 @@
       63
     ]
   },
-  "elapsed_seconds": 3.6,
+  "elapsed_seconds": 3.3,
   "sha256": {
     "checks/verify_incoherent_kraus.py": "5dd19ad53a987ecfa3599f37ad4fc05c0aae6e390299a274842cb005fb4056c7",
     "data/qutrit_certificate.json": "748d18a0ff9274dbac917133374c0e37fd58674e2313e1a1f3523d850c819166"

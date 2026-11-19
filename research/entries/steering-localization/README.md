@@ -1,6 +1,6 @@
 # Exact ensemble-steering defect under partial environmental access
 
-For a two-branch tripartite pure state, the note evaluates exactly the worst-case ensemble-preparation defect when measurement access is restricted to one part of the purifier. It also derives spatial bounds for increasing access and gives a gapped quasi-local parent model.
+For a two-branch tripartite pure state √p|0⟩|b₀⟩|u⟩ + √q|1⟩|b₁⟩|v⟩, the note evaluates exactly the worst-case ensemble-preparation defect when measurements are restricted to the part B of the purifier and the environment C is hidden: s_B = (1−κ)√(pq), with κ = |⟨u|v⟩|. A binary target ensemble and a two-outcome measurement attain this value. The note also computes the optimal state-preservation defect of conditional expectations, δ_* = q√(1−κ²), derives matching spatial bounds when Bob gains access to a growing segment of a controlled-rotation chain, and gives a gapped quasi-local parent Hamiltonian.
 
 ## Public files
 
@@ -21,4 +21,8 @@ The checker requires NumPy. It uses no optimizer, GPU, or network access.
 
 ## Scope
 
-The manuscript supplies the analytic proofs. The checker tests the finite matrix identities and representative exact or numerical cases; it is not a proof assistant formalization. Bibliographic priority is a separate question from these mathematical checks.
+**Analytic proof.** The manuscript proves every universal statement (Theorem 1, the formula for δ_*, Corollary 2 and the parent-Hamiltonian properties).
+
+**Computational verification.** The checker tests the finite matrix identities and representative exact or numerical cases; it is not a proof assistant formalization.
+
+**Bibliographic priority.** The ingredients are known: the Schrödinger–HJW theorem for full purifier access (Kirkpatrick, Found. Phys. Lett. 19, 95 (2006)); the Cauchy–Schwarz bound and the binary ensemble √p|0⟩ ± √q|1⟩ from the ℓ1 coherence of assistance (Zhao et al., Phys. Rev. A 100, 012315 (2019)), to which the result reduces when κ = 0; and branch states with products of decoherence factors from quantum Darwinism (Blume-Kohout and Zurek, Phys. Rev. A 73, 062310 (2006)). The exact minimax value for κ > 0, the comparison with δ_* and the spatial rate were not found in the literature consulted on 19 November 2026; this is not a proof of originality. The proofs are short, and the note does not claim a general quantitative theory of steering under partial access.

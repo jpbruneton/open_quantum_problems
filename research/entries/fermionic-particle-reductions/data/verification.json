@@ -69,7 +69,7 @@
       "detail": "[-0.0, 0.0, 0.25, 0.75]"
     }
   ],
-  "elapsed_seconds": 1.0,
+  "elapsed_seconds": 1.1,
   "sha256": {
     "checks/verify_particle_reductions.py": "3e1c2c309556cc900a153870e99b7682e9096c4bbae06aa914286c4617d33d38"
   },

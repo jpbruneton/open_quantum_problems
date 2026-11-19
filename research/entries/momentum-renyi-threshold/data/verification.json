@@ -2,7 +2,7 @@
   "entry": "momentum-renyi-threshold",
   "checker": "checks/check_momentum_threshold.py",
   "all_pass": true,
-  "runtime_seconds": 18.2,
+  "runtime_seconds": 20.8,
   "checks": [
     {
       "check": "0. m = 1 iff both walls are Dirichlet, m = 0 otherwise",

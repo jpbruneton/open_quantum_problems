@@ -110,13 +110,13 @@
     "geometric_tail": [
       {
         "R": 0,
-        "steering_defect_p_half": 0.0380645025019383,
-        "ratio_to_asymptotic": 0.9752062624463529
+        "steering_defect_p_half": 0.038064502501938303,
+        "ratio_to_asymptotic": 0.9752062624463531
       },
       {
         "R": 2,
-        "steering_defect_p_half": 0.0035635020257684677,
-        "ratio_to_asymptotic": 0.9977059806471011
+        "steering_defect_p_half": 0.0035635020257684673,
+        "ratio_to_asymptotic": 0.997705980647101
       },
       {
         "R": 5,
@@ -125,38 +125,38 @@
       },
       {
         "R": 10,
-        "steering_defect_p_half": 2.5042483507964694e-07,
-        "ratio_to_asymptotic": 0.9999998389782596
+        "steering_defect_p_half": 2.50424835079647e-07,
+        "ratio_to_asymptotic": 0.9999998389782598
       },
       {
         "R": 20,
-        "steering_defect_p_half": 1.6066869130946667e-12,
-        "ratio_to_asymptotic": 0.999999999998967
+        "steering_defect_p_half": 1.6066869130946665e-12,
+        "ratio_to_asymptotic": 0.9999999999989669
       }
     ]
   },
   "parents": [
     {
       "environment_qubits": 1,
-      "gap": 0.9999999999999993
+      "gap": 0.9999999999999998
     },
     {
       "environment_qubits": 2,
-      "gap": 0.9999999999999988
+      "gap": 0.9999999999999998
     },
     {
       "environment_qubits": 3,
-      "gap": 0.9999999999999984
+      "gap": 0.9999999999999992
     },
     {
       "environment_qubits": 4,
-      "gap": 0.9999999999999978
+      "gap": 0.9999999999999972
     }
   ],
-  "elapsed_seconds": 0.10502199968323112,
+  "elapsed_seconds": 0.05794809599956352,
   "sha256": {
     "checks/verify51.py": "8dfd2ce2391ebaf76559402d6b0ef6974f45aea2fb0a40704ada57b658b4f85a",
-    "manuscript/steering-localization.tex": "84389713095c2209f5381f21917289fe1edea377748a0c05477b0080d58abe7a"
+    "manuscript/steering-localization.tex": "f995f37f00a2e246507605b0a211203d8b48a1c121e63f1b78b877be652ba223"
   },
   "limits": "Finite matrix checks, not a formal proof or a certification of novelty."
 }

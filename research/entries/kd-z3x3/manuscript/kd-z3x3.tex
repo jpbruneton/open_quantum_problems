@@ -57,8 +57,10 @@ using rational arithmetic alone, and the trace-norm distance to the hull is
 at least $111/20000$. We also verify that the natural subgroup and quotient
 isometries preserve exactly the trace-norm distance to the corresponding
 pure-state hulls. This yields consequences for finite abelian groups with
-a $\Z_3^2$ subquotient. A targeted literature audit found no direct antecedent
-for this fixed Fourier pair; historical priority remains unconfirmed.
+a $\Z_3^2$ subquotient and completes the classification for groups of order
+$2^a3^b$. Previously published separations for Fourier pairs concern the
+groups $\Z_6$ and $\Z_2^n$ and rely on numerical positivity checks; we found
+no earlier treatment of $\Z_3\times\Z_3$.
 \end{abstract}
 
 \section{Introduction}
@@ -69,9 +71,9 @@ orthonormal bases. Its row and column sums are ordinary measurement
 probabilities, but individual entries may be negative or complex. When every
 entry is real and nonnegative, the table is a genuine probability distribution
 and the state is called KD-positive for that pair of bases. This condition
-depends on the chosen bases; its failure is connected to nonclassical effects
-in measurement theory, metrology, thermodynamics, and computation
-\cite{KDreview}.
+depends on the chosen bases, and its failure is a resource: for multiqubit
+systems, for instance, KD nonpositivity is necessary for a quantum
+computational advantage \cite{Thio}.
 
 The example studied here is a pair of qutrits. The nine computational basis
 vectors are labelled by $G=\Z_3\times\Z_3$, and the conjugate basis is obtained
@@ -85,9 +87,12 @@ Every mixture of those $54$ pure states is KD-positive. The basic geometric
 question is whether the converse holds: does every KD-positive mixed state lie
 in their convex hull? An affirmative answer would make the positive region a
 finite polytope described completely by the pure-state classification. The
-answer depends strongly on the basis pair \cite{geometry,almost}.
+answer depends strongly on the basis pair. It is affirmative for almost every
+pair of bases \cite{almost} and for the cyclic Fourier pairs of prime-power
+order \cite{DLR}, and negative for some spin-one bases \cite{convexroof} and
+for the Fourier pairs of $\Z_6$ and $\Z_2\times\Z_2$ \cite{DLR}.
 
-This note gives an explicit negative answer in that case. We construct a
+This note gives an explicit negative answer for the pair $F_3\otimes F_3$. We construct a
 strictly positive KD array whose inverse is a positive-definite density
 operator, and an integer witness that separates it from all $54$ pure
 KD-positive projectors. The witness value is exactly
@@ -139,32 +144,40 @@ In particular, $\hull_G\subsetneq\E_G$.
 \end{statementframe}
 
 \section{Related work}
-The modern geometry of KD-positive mixed states was developed by Langrenez,
-Arvidsson-Shukur and De Bi\`evre \cite{geometry}; their examples show that
-mixed KD-positive states can lie outside the pure-positive hull for suitable
-basis pairs. Convex-roof witnesses provide a general way to detect this
-separation \cite{convexroof}, while generic pairs of bases have an almost
-surely minimal KD-positive set \cite{almost}. The present result addresses a
-different regime: the fixed, highly structured Fourier pair
-$F_3\otimes F_3$.
+For a generic pair of bases the question has a simple answer: with
+probability one the only pure KD-positive states are the basis vectors, and
+every KD-positive state is a mixture of them \cite[Theorem~1]{almost}.
+Mixed KD-positive states outside the pure-state hull therefore require
+special basis pairs. Langrenez, De Bi\`evre and Arvidsson-Shukur exhibit
+such a state for a pair of spin-one bases, and show that the convex roof of
+the total KD nonpositivity equals one exactly on the pure-state hull, so that
+it witnesses the separation faithfully
+\cite[Section~4 and Appendix~B]{convexroof}.
 
-De Bi\`evre, Langrenez and Radchenko classified pure KD-positive states for
-Fourier transforms over finite abelian groups and characterized when their
-convex hull exhausts the full KD-positive set \cite{DLR}. Their results cover
-cyclic prime-power groups and supply counterexamples for other groups, but do
-not exhibit the state and separating witness proved here for
-$\Z_3\times\Z_3$. Cai, Yang and Zheng study the cyclic discrete Fourier
-transform through a graph representation \cite{Cai}; the cyclic pair $F_9$
-is distinct from $F_3\otimes F_3$.
+The Fourier pairs of finite abelian groups are the natural structured case.
+De Bi\`evre, Langrenez and Radchenko classified their pure KD-positive
+states \cite[Theorem~3.1]{DLR}, reduced the equality $\E_G=\hull_G$ to a
+decomposition property of positive periodic functions
+\cite[Theorem~5.2]{DLR}, and proved the equality for every cyclic group of
+prime-power order \cite[Theorem~6.1]{DLR}; this includes $\Z_9$, whose
+transform $F_9$ differs from $F_3\otimes F_3$. They exhibited separated states
+for $\Z_6$ and $\Z_2\times\Z_2$ by perturbing a state on a facet of the hull
+along its outward normal, with positivity checked numerically
+\cite[Section~7]{DLR}, and left the general abelian case open. Thio et al.\
+found exotic states for the multiqubit groups $\Z_2^n$ by a related
+facet search \cite{Thio}. Spriet extended the pure-state
+classification to second-countable locally compact abelian groups and
+conjectured that the equality holds when the compact open subgroups are
+totally ordered by inclusion, a condition that ``might also be necessary''
+\cite[discussion after Eq.~(12)]{Spriet}. For finite groups this condition
+singles out the cyclic groups of prime-power order.
 
-Related developments include the extension to second-countable locally
-compact abelian groups \cite{Spriet}, convex-geometric constructions used in
-classical simulation \cite{Thio}, and the classification of KD-positivity-
-preserving unitaries \cite{Burkat}. Thio's odd-dimensional construction uses
-a reflection transition matrix rather than the Fourier pair considered here
-\cite[Theorem 2.2.3]{ThioThesis}. These works delimit the contribution of this
-note: an exact fixed-pair certificate and its consequences under finite-group
-embeddings.
+The present note uses the construction of \cite[Section~7]{DLR} for the
+first non-cyclic group of odd order, $\Z_3\times\Z_3$, and replaces the
+numerical checks by an exact rational certificate with an explicit distance
+bound. The subgroup and quotient transfer then confirms the necessity part of
+Spriet's conjecture for all finite abelian groups with a $\Z_3^2$
+subquotient and for all groups of order $2^a3^b$.
 
 \section{Exact result for the fixed Fourier pair}
 Identify $G$ with $\F_3^2$ and put $\zeta=e^{2\pi i/3}$. Rows and columns
@@ -287,8 +300,9 @@ Theorem~\ref{thm:example}.
 \begin{remark}
 The arrays also admit a geometric construction. If $\rho_0$ is the uniform
 average of the $43$ pure projectors with score $18$ in \eqref{eq:scores},
-then $Q_G(\rho)=Q_G(\rho_0)+M/20000$. This description explains the search;
-the explicit positivity proof above is independent of its numerical stage.
+then $Q_G(\rho)=Q_G(\rho_0)+M/20000$. This is the facet-perturbation
+construction of \cite[Section~7.2]{DLR}; the witness was found numerically,
+and the positivity proof above is independent of that search.
 \end{remark}
 
 \section{Consequences for other finite abelian groups}
@@ -376,10 +390,11 @@ whose order is a power of one prime.
 \begin{proof}
 For a noncyclic group, a Sylow subgroup is noncyclic and contains
 $\Z_2^2$ or $\Z_3^2$. Use respectively the published example
-in \cite{DLR} or Theorem~\ref{thm:example}, and then Theorem~\ref{thm:lift}.
-A cyclic group with $a,b>0$ contains $\Z_6$, another published
-counterexample \cite{DLR}. The remaining cyclic prime-power cases have
-$\E_G=\hull_G$ by \cite{DLR}.
+in \cite[Section~7.2]{DLR} or Theorem~\ref{thm:example}, and then
+Theorem~\ref{thm:lift}. A cyclic group with $a,b>0$ contains $\Z_6$, another
+published counterexample \cite[Section~7.1]{DLR}. The positivity of the two
+published examples was verified numerically in \cite{DLR}. The remaining
+cyclic prime-power cases have $\E_G=\hull_G$ by \cite[Theorem~6.1]{DLR}.
 \end{proof}
 
 \section{Verification materials}
@@ -399,32 +414,19 @@ These files complement the proofs given above.
 \begingroup\small
 \begin{thebibliography}{99}
 \setlength{\itemsep}{2pt}
-\bibitem{KDreview}
-D. R. M. Arvidsson-Shukur, W. F. Braasch Jr., S. De Bi\`evre, J. Dressel,
-A. N. Jordan, C. Langrenez, M. Lostaglio, J. S. Lundeen and N. Yunger Halpern,
-\emph{Properties and Applications of the Kirkwood--Dirac Distribution},
-New J. Phys. \textbf{26}, 121201 (2024);
-\href{https://doi.org/10.1088/1367-2630/ada05d}{doi:10.1088/1367-2630/ada05d};
-\href{https://arxiv.org/abs/2403.18899v2}{arXiv:2403.18899v2}.
-
 \bibitem{DLR}
 S. De Bi\`evre, C. Langrenez and D. Radchenko,
 \emph{The Kirkwood--Dirac representation associated to the Fourier transform
 for finite abelian groups: positivity},
-\href{https://arxiv.org/abs/2501.12252v2}{arXiv:2501.12252v2};
-\href{https://doi.org/10.1007/s00023-025-01614-7}{doi:10.1007/s00023-025-01614-7}.
-
-\bibitem{geometry}
-C. Langrenez, D. R. M. Arvidsson-Shukur and S. De Bi\`evre,
-\emph{Characterizing the geometry of the Kirkwood--Dirac-positive states},
-J. Math. Phys. \textbf{65}, 072201 (2024);
-\href{https://doi.org/10.1063/5.0164672}{doi:10.1063/5.0164672};
-\href{https://arxiv.org/abs/2306.00086}{arXiv:2306.00086}.
+Ann. Henri Poincar\'e \textbf{27}, 3093--3112 (2026);
+\href{https://doi.org/10.1007/s00023-025-01614-7}{doi:10.1007/s00023-025-01614-7};
+\href{https://arxiv.org/abs/2501.12252v2}{arXiv:2501.12252v2}.
 
 \bibitem{almost}
 C. Langrenez, W. Salmon, S. De Bi\`evre, J. J. Thio, C. K. Long and
 D. R. M. Arvidsson-Shukur,
-\emph{Almost no experiments have classical Kirkwood--Dirac representations},
+\emph{Almost sure minimality of the set of experiments with classical
+Kirkwood--Dirac representations},
 Phys. Rev. A \textbf{113}, 062215 (2026);
 \href{https://doi.org/10.1103/v7z4-qsz8}{doi:10.1103/v7z4-qsz8};
 \href{https://arxiv.org/abs/2405.17557v2}{arXiv:2405.17557v2}.
@@ -439,35 +441,17 @@ J. Phys. A: Math. Theor. \textbf{58}, 215301 (2025);
 \bibitem{Spriet}
 M. Spriet,
 \emph{Characterizing the Kirkwood--Dirac positivity on second countable LCA groups},
+J. Fourier Anal. Appl. \textbf{32}, 99 (2026);
+\href{https://doi.org/10.1007/s00041-026-10309-4}{doi:10.1007/s00041-026-10309-4};
 \href{https://arxiv.org/abs/2507.23628v3}{arXiv:2507.23628v3}.
 
 \bibitem{Thio}
 J. J. Thio, S. Yang, N. Yunger Halpern, S. De Bi\`evre, C. H. W. Barnes
 and D. R. M. Arvidsson-Shukur,
-\emph{Kirkwood--Dirac Nonpositivity Is a Necessary Resource for Quantum Computing},
+\emph{Kirkwood--Dirac nonpositivity is a necessary resource for quantum computing},
 Phys. Rev. Lett. \textbf{137}, 080601 (2026);
 \href{https://doi.org/10.1103/x819-898d}{doi:10.1103/x819-898d};
 \href{https://arxiv.org/abs/2506.08092v2}{arXiv:2506.08092v2}.
-
-\bibitem{Burkat}
-J. Burkat and S. Strelchuk,
-\emph{Classification of Kirkwood--Dirac positivity-preserving unitaries},
-Phys. Rev. A \textbf{114}, 042446 (2026);
-\href{https://doi.org/10.1103/rsy9-12fx}{doi:10.1103/rsy9-12fx};
-\href{https://arxiv.org/abs/2502.11784v4}{arXiv:2502.11784v4}.
-
-\bibitem{Cai}
-L.-Y. Cai, Y.-H. Yang and Z.-J. Zheng,
-\emph{Kirkwood--Dirac classical states based on discrete Fourier transform:
-Representation with directed graph},
-\href{https://arxiv.org/abs/2603.13863v1}{arXiv:2603.13863v1}.
-
-\bibitem{ThioThesis}
-J. Thio,
-\emph{The Structure of the Kirkwood--Dirac Distribution and its Applications
-in Quantum Foundations, Computation, and Information},
-PhD thesis, University of Cambridge (2026), Theorem 2.2.3;
-\href{https://doi.org/10.17863/CAM.135674}{doi:10.17863/CAM.135674}.
 \end{thebibliography}
 \endgroup
 \end{document}

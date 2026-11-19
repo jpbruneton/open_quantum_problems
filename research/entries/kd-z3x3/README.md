@@ -28,4 +28,8 @@ These checks use only the Python standard library.
 
 ## Scope
 
-The manuscript contains the analytic argument. The scripts independently check the finite exact certificate and its agreement with the printed data. The accompanying literature audit is maintained in the working archive; mathematical verification does not by itself establish historical priority.
+**Analytic proof.** The manuscript proves the separation (positivity by weighted diagonal dominance, the witness bound over the 54 pure states, the trace-norm gap) and the subgroup/quotient transfer theorem. The classification of the pure KD-positive states is taken from De Bièvre, Langrenez and Radchenko (Ann. Henri Poincaré 27, 2026, Theorem 3.1). The corollary for groups of order 2^a 3^b also uses their published examples for Z6 and Z2 × Z2, whose positivity they checked numerically.
+
+**Computational verification.** The scripts independently check the finite exact certificate and its agreement with the printed data, in rational or cyclotomic arithmetic only.
+
+**Bibliographic priority.** The construction (perturbing a state on a facet of the pure-state hull along its normal) is the one of De Bièvre–Langrenez–Radchenko, Section 7.2. Published separations for Fourier pairs concern Z6 and Z2^n (De Bièvre–Langrenez–Radchenko; Thio et al., PRL 137, 080601, 2026). A search of the citing literature and of the web on 19 November 2026 found no earlier treatment of Z3 × Z3. The new elements are the exact certificate for this group, the quantitative transfer to groups with a Z3² subquotient, and the resulting classification for orders 2^a 3^b, which is consistent with the necessity part of Spriet's conjecture (J. Fourier Anal. Appl. 32, 99, 2026).

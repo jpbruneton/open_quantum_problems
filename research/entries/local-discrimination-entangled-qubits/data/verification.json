@@ -29,7 +29,7 @@
     },
     "four": {
       "k": 4,
-      "theta": 1.0471975511965979,
+      "theta": 1.0471975511965976,
       "regime": "plateau",
       "separable": 0.5,
       "one_way": 0.5
@@ -76,7 +76,7 @@
     {
       "theta": 0.2,
       "separable": 0.34735458557716264,
-      "one_way": 0.3419960806534167,
+      "one_way": 0.3419960806534168,
       "three_state_value": 0.34199608065341636
     },
     {
@@ -108,11 +108,11 @@
     "families": 60,
     "cap": 46,
     "plateau": 14,
-    "largest_gap_up_to_three_states": 2.220446049250313e-16,
+    "largest_gap_up_to_three_states": 4.440892098500626e-16,
     "families_with_gap_above_1e_6": 3,
-    "largest_gap": 0.00034600981790505747
+    "largest_gap": 0.000346009817905113
   },
-  "elapsed_seconds": 15.4,
+  "elapsed_seconds": 7.7,
   "sha256": {
     "checks/verify_discrimination.py": "09e22498df6ea92688b4a3bc8a8b12f4827954131da77d125db5a5ef70648661"
   },
