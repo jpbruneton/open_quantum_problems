@@ -195,7 +195,7 @@ function Home() {
             <a className="box box-science" href="/new-research">
               <div className="box-kicker">Research notes</div>
               <h2>New Research</h2>
-              <p>Seventeen research notes, several settling published conjectures, with downloadable manuscripts, exact certificates, reproducible checks and links to the relevant literature.</p>
+              <p>Sixteen research notes, several settling published conjectures, with downloadable manuscripts, exact certificates, reproducible checks and links to the relevant literature.</p>
               <span className="box-cta">Read the research notes <span aria-hidden="true">→</span></span>
             </a>
           </div>
@@ -1056,10 +1056,10 @@ const NEW_RESEARCH_NOTES = [
   },
   {
     title: "Photon-added squeezed vacua: one photon per mode is majorized by k photons per mode",
-    meta: "Research note · conjecture proved · 19 November 2026",
+    meta: "Research note · independent proof and extensions · 19 November 2026",
     pdf: "/research/photon-added-squeezed-majorization.pdf",
     dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/photon-added-squeezed-majorization",
-    summary: "Adding k photons to each mode of a two-mode squeezed vacuum gives a state more entangled, in the strong sense of majorization, than adding a single photon to each mode, for every k ≥ 2. This settles a conjecture of Van Herstraeten, Cerf, Guha and Gagatsos, who had checked k ≤ 8.",
+    summary: "Adding k photons to each mode of a two-mode squeezed vacuum gives a state more entangled, in the strong sense of majorization, than adding a single photon to each mode, for every k ≥ 2. Van Herstraeten, Cerf, Guha and Gagatsos had conjectured this after checking k ≤ 8. A proof of the strong form for all k, formalized in Lean, was posted on 1 October 2026 in the public repository the-omega-institute/trureturing (pull request #11708). This note gives an independent closed-form proof and extends it to unequal photon additions.",
     result: "For every k ≥ 2 and every squeezing parameter λ ∈ (0,1), σ^{1,1} ≻ σ^{k,k}, in the strong form conjectured by the authors: all coefficients of their Toeplitz matrix are nonnegative (in fact at least 1). The proof is the closed form N_kk(x)/N_11(x) = A_k(x)/((1−x²)(1−x)^{2k−3}) with A_k(x) = Σ_j C(k,j)² x^j. The same criterion proves σ^{0,m} ≻ σ^{k,l} whenever k+l ≥ m, including the numerically observed σ^{0,l} ≻ σ^{k,l}, and an exact computation at λ = 1/16 shows that σ^{3,3} and σ^{4,4} are incomparable.",
     refs: [
       { label: "Van Herstraeten, Cerf, Guha, Gagatsos, Majorization theoretical approach to entanglement enhancement via local filtration (2024)", doi: "https://doi.org/10.1103/PhysRevA.110.042430", arxiv: "https://arxiv.org/abs/2312.02066", note: "States the conjecture σ^{1,1} ≻ σ^{k,k}, proves it for 2 ≤ k ≤ 8 and introduces the Toeplitz construction used here." },
@@ -1102,7 +1102,7 @@ const NEW_RESEARCH_NOTES = [
     meta: "Research note · conjecture refuted · 19 November 2026",
     pdf: "/research/structured-negativity.pdf",
     dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/structured-negativity",
-    summary: "Kumari and Adhikari conjectured that their structured negativity, a physically implementable entanglement quantifier, coincides with the negativity whenever the partial transpose has d(d−1)/2 negative eigenvalues. The note shows the conjecture holds for two qubits and fails in every higher dimension, and replaces it with an exact criterion.",
+    summary: "Kumari and Adhikari conjectured that their structured negativity, a physically implementable entanglement quantifier, coincides with the negativity whenever the partial transpose has d(d−1)/2 negative eigenvalues. The conjecture holds for two qubits and fails for two qutrits; a pure two-qutrit counterexample equivalent to the one below was posted on 30 September 2026 in the public repository the-omega-institute/trureturing (issue #11475). This note adds an exact criterion for equality and counterexamples in every dimension d ≥ 3.",
     result: "The structured negativity equals d times the absolute value of the most negative eigenvalue of the partial transpose, so N = N_S exactly when the sum of the negative eigenvalues equals d(d−1)/2 times the most negative one. The pure two-qutrit state (2|00⟩+2|11⟩+|22⟩)/3 has three negative eigenvalues but N = 8/9 and N_S = 4/3. States built from the symmetric subspace of 2(d−1) qubits have (d−1)² equal negative eigenvalues, saturate N ≤ 2(1−1/d)N_S in every dimension, and give N > N_S for every d ≥ 3.",
     refs: [
       { label: "Kumari, Adhikari, Structured negativity (2022)", doi: "https://doi.org/10.1016/j.aop.2022.169113", arxiv: "https://arxiv.org/abs/2209.03909", note: "Defines the structured negativity, proves N ≤ 2(1−1/d)N_S and states the conjecture refuted here." },
@@ -1210,30 +1210,6 @@ const NEW_RESEARCH_NOTES = [
   title = {Momentum R\'enyi and Tsallis entropies behind hard walls: the existence threshold $1/(2(m+1))$},
   year = {2026},
   url = {https://openquantumproblems.com/research/momentum-renyi-threshold.pdf}
-}`,
-    },
-  },
-  {
-    title: "Depth-optimal syndrome extraction: a parity obstruction",
-    meta: "Research note · open question resolved · 19 November 2026",
-    pdf: "/research/syndrome-schedule-parity.pdf",
-    dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/syndrome-schedule-parity",
-    summary: "Syndrome-extraction circuits for lifted-product codes need at least as many gate layers as the largest qubit degree Δ, and a known construction uses Δ + 1 when both code factors have odd degree. The note proves that the extra layer is unavoidable for a broad class of these codes.",
-    result: "For the lifted product of two 1×1 protographs with entries of odd weights a and b over a finite group G of odd order, no proper schedule of controlled-NOT gates has depth Δ = a + b, so the three-band schedule of depth Δ + 1 of Nguyen, Rimbach-Russ and Bosco is optimal. The proof sums the ordering conditions over all pairs of checks: the total is |G|·a·b, odd, while each condition requires an even contribution. The class contains the [[90, 8, 10]] bivariate bicycle code, whose seven-layer circuit is therefore optimal; over the even-order group Z_6, a [[12, 4]] code does admit a depth-Δ schedule.",
-    refs: [
-      { label: "Nguyen, Rimbach-Russ, Bosco, Disassembling qLDPC codes for depth-optimal parity-check circuits (2026)", arxiv: "https://arxiv.org/abs/2608.19917", note: "Defines the circuit model and properness condition and gives the depth Δ + 1 construction whose optimality is proved here." },
-      { label: "Bravyi et al., High-threshold and low-overhead fault-tolerant quantum memory (2024)", doi: "https://doi.org/10.1038/s41586-024-07107-7", arxiv: "https://arxiv.org/abs/2308.07915", note: "Introduces bivariate bicycle codes with a seven-layer syndrome circuit, optimal for the [[90, 8, 10]] code by this note." },
-      { label: "Panteleev, Kalachev, Degenerate quantum LDPC codes with good finite length performance (2021)", doi: "https://doi.org/10.22331/q-2021-11-22-585", arxiv: "https://arxiv.org/abs/1904.02703", note: "Introduces lifted-product codes." },
-      { label: "Lin, Pryadko, Quantum two-block group algebra codes (2023)", arxiv: "https://arxiv.org/abs/2306.16400", note: "Studies the codes obtained from 1×1 protographs, the class treated here." },
-      { label: "Tillich, Zémor, Quantum LDPC codes with positive rate and minimum distance proportional to the square root of the blocklength (2014)", doi: "https://doi.org/10.1109/TIT.2013.2292061", arxiv: "https://arxiv.org/abs/0903.0566", note: "Introduces hypergraph-product codes, the trivial-group case of lifted products." },
-      { label: "Tremblay, Delfosse, Beverland, Constant-overhead quantum error correction with thin planar connectivity (2022)", doi: "https://doi.org/10.1103/PhysRevLett.129.050504", arxiv: "https://arxiv.org/abs/2109.14609", note: "Gives the coloration circuit that measures X then Z checks, avoiding the ordering conditions at the cost of depth." },
-    ],
-    citation: {
-      bibtex: `@misc{bruneton2026syndromeparity,
-  author = {Jean-Philippe Bruneton},
-  title = {A parity obstruction to depth-optimal syndrome extraction for lifted-product codes},
-  year = {2026},
-  url = {https://openquantumproblems.com/research/syndrome-schedule-parity.pdf}
 }`,
     },
   },

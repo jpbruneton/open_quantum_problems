@@ -24,7 +24,6 @@ All new exploratory research, intermediate calculations, and prior-art audits be
 - [The root-fidelity matrix bounds the Holevo quantity of three qubit states](entries/fidelity-matrix-holevo-bound/README.md)
 - [The variance of a sum of independent quantum errors](entries/variance-sum-quantum-errors/README.md)
 - [Momentum Rényi and Tsallis entropies behind hard walls: the threshold 1/(2(m+1))](entries/momentum-renyi-threshold/README.md)
-- [Depth-optimal syndrome extraction: a parity obstruction](entries/syndrome-schedule-parity/README.md)
 - [Covers of bivariate bicycle codes](entries/bivariate-bicycle-coverings/README.md)
 - [A Mpemba mode invisible to every strict reduction](entries/locally-invisible-mpemba-mode/README.md)
 - [Covariance data cannot bound the Schmidt number, even at fixed energy](entries/schmidt-number-separable-covariance/README.md)

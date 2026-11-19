@@ -41,8 +41,9 @@ states in the same way. Van Herstraeten, Cerf, Guha and Gagatsos proved that the
 state with one photon added to each mode is majorized by the state with $k$
 photons added to each mode for $2\le k\le 8$, and conjectured this for every
 $k$, in the stronger form that a certain Toeplitz matrix built from the two
-spectra is column stochastic. We prove the conjecture, in this strong form, for
-every $k\ge 2$ and every squeezing parameter. The proof rests on the closed
+spectra is column stochastic. A proof of this strong form, formalized in Lean,
+was posted in a public repository in October 2026. We give an independent
+proof for every $k\ge 2$ and every squeezing parameter. The proof rests on the closed
 form $N_{kk}(x)/N_{11}(x)=A_k(x)/\bigl((1-x^2)(1-x)^{2k-3}\bigr)$ for the ratio
 of the generating functions of the two spectra, where $A_k$ is a polynomial
 with positive coefficients. The same criterion proves a relation the authors
@@ -358,13 +359,21 @@ or a direct comparison of partial sums. Comparisons between unbalanced
 additions with the same total, such as $\sig31$ against $\sig22$, were not
 examined.
 
-On priority, we found no earlier proof or refutation of the conjecture in a
-search carried out on 19 November 2026: citations of the published article,
-arXiv searches combining majorization with photon addition, two-mode
-squeezing and local filtration, and the later preprints of the first author.
-This search does not establish priority. The ingredients are classical, and
-the Toeplitz construction is that of the authors of the conjecture; the
-contribution of this note is the closed form of the quotient.
+On priority, the strong form of the conjecture (nonnegativity of all
+Toeplitz coefficients for every $k\ge2$) was proved earlier, with a
+formalization in Lean, in the public repository
+\texttt{the-omega-institute/trureturing}, pull request \#11708, merged on
+1 October 2026
+(\url{https://github.com/the-omega-institute/trureturing/pull/11708}); that
+proof also proceeds through generating functions and has not appeared as an
+article. The present proof was obtained independently. The closed form of the
+quotient, the extension to unequal additions $\sigma^{0,m}\succ\sigma^{k,l}$,
+and the incomparability of $\sig33$ and $\sig44$ were not found in that
+repository nor in the literature searched on 19 November 2026 (citations of
+the published article, arXiv searches combining majorization with photon
+addition, two-mode squeezing and local filtration). The ingredients are
+classical, and the Toeplitz construction is that of the authors of the
+conjecture.
 
 \begingroup\small
 \begin{thebibliography}{9}

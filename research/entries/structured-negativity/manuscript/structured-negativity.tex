@@ -49,7 +49,8 @@ absolute value, so that the two quantities agree exactly when the sum of the
 negative eigenvalues equals $d(d-1)/2$ times the most negative one. The
 conjecture therefore holds for two qubits and fails for every $d\ge3$: the
 pure two-qutrit state $(2\ket{00}+2\ket{11}+\ket{22})/3$ has three negative
-eigenvalues but negativity $8/9$ and structured negativity $4/3$. A family of
+eigenvalues but negativity $8/9$ and structured negativity $4/3$ (an
+equivalent example was posted in a public repository in September 2026). A family of
 states whose partial transpose has $(d-1)^2$ equal negative eigenvalues, built
 from the symmetric subspace of $2(d-1)$ qubits, saturates the inequality
 $N\le 2(1-1/d)\NS$ of the same authors in every dimension, and so disproves
@@ -470,12 +471,17 @@ examples given. Other statements of \cite{KumariAdhikari2022}, in particular
 the monotonicity of $\NS$ under local operations and classical communication,
 are outside the scope of this note.
 
-On bibliographic priority, a search of the works citing
-\cite{KumariAdhikari2022} and of the literature on the negative spectrum of
-the partial transpose (Section~\ref{sec:related}) found neither the
-criterion of Theorem~\ref{thm:criterion}, nor the counterexamples, nor the
-family $\rho_t$. The pure-state counterexample is likely familiar to anyone
-who has computed both quantities. The search did not cover the literature on
+On bibliographic priority, a pure two-qutrit counterexample equivalent to
+ours, $(\ket{00}+2\ket{11}+2\ket{22})/3$ with $N=8/9$ and $\NS=4/3$, together
+with a full-rank mixed variant, was posted on 30 September 2026 in the public
+repository \texttt{the-omega-institute/trureturing}, issue \#11475
+(\url{https://github.com/the-omega-institute/trureturing/issues/11475}),
+which marks the conjecture as refuted; it has not appeared as an article.
+A search of the works citing \cite{KumariAdhikari2022} and of the literature
+on the negative spectrum of the partial transpose
+(Section~\ref{sec:related}) found neither the criterion of
+Theorem~\ref{thm:criterion}, nor the counterexamples in dimension $d\ge4$,
+nor the family $\rho_t$. The search did not cover the literature on
 rotationally invariant states, where $Q^\G$ and its spectrum probably appear
 in another form. This is a statement about the documented search only, not a
 claim of priority.
