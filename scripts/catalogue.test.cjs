@@ -322,7 +322,7 @@ test("home, all categories, filtered lists and missing-page views render", () =>
   assert.ok(home.includes("Zero entries are Solved"));
   assert.ok(!home.includes("Evidence matters"));
   // New-problems page: proposals render, link only to existing entries, are not counted.
-  const { PROPOSALS, SECONDARY_PROPOSALS, PROPOSAL_COUNT, PROPOSALS_META_NEW_AREAS, PROPOSALS_META_CARTE_V2, proposalBatch } = loadApp("app/data/proposals.js");
+  const { PROPOSALS, SECONDARY_PROPOSALS, WITHDRAWN_PROPOSALS, PRIORITY_RECORDS, PROPOSAL_COUNT, PROPOSALS_META_NEW_AREAS, PROPOSALS_META_CARTE_V2, proposalBatch } = loadApp("app/data/proposals.js");
   const newProblems = render(views.NewProblemsView);
   assert.ok(newProblems.includes("New problems suggested by AI") && newProblems.includes("not counted"));
   assert.ok(!newProblems.includes("katex-error"), "proposals: math rendering error");
@@ -342,12 +342,29 @@ test("home, all categories, filtered lists and missing-page views render", () =>
       assert.ok(newProblems.includes(it.title.replace(/&/g, "&amp;")) || newProblems.includes(it.key), `${it.key}: not rendered`);
     }
   }
-  // 9 November 2026: well-known problems were promoted to the catalogue; six candidates remain.
-  assert.equal(PROPOSAL_COUNT, 55);
+  assert.equal(PROPOSAL_COUNT, 49);
+  assert.equal(SECONDARY_PROPOSALS.length, 21);
+  assert.deepEqual(WITHDRAWN_PROPOSALS.map(it => it.key).sort(), ["PA9", "PB2", "PG2", "PH3", "PM5", "PM7", "SF2", "SO1", "SQF1"]);
+  const report = fs.readFileSync(path.join(root, "docs/reviews/2026-11-19-proposal-selection.md"), "utf8");
+  const decisions = [...report.matchAll(/<a name="([a-z0-9]+)"><\/a>\*\*([A-Z0-9]+)\*\* \| (Keep|Withdraw)/g)];
+  const withdrawn = new Set(WITHDRAWN_PROPOSALS.map(it => it.key));
+  const reviewed = [...PRIORITY_RECORDS, ...SECONDARY_PROPOSALS, ...WITHDRAWN_PROPOSALS.filter(it => !it.statement)];
+  assert.deepEqual(decisions.map(m => m[2]).sort(), reviewed.map(it => it.key).sort());
+  for (const [, anchor, id, decision] of decisions) {
+    assert.equal(anchor, id.toLowerCase());
+    assert.equal(decision, withdrawn.has(id) ? "Withdraw" : "Keep");
+  }
+  for (const it of WITHDRAWN_PROPOSALS) {
+    assert.ok(!keys.has(it.key) && !SECONDARY_PROPOSALS.some(s => s.key === it.key));
+    if (!it.statement) continue;
+    const page = render(views.ProposalView, { pkey: it.key });
+    assert.ok(page.includes("Reason for withdrawal") && !page.includes("Open, substantive") && !page.includes("katex-error"));
+    if (it.formerly) assert.equal(render(views.ProposalView, { pkey: it.formerly }), page);
+  }
   const secondBatch = PROPOSALS.flatMap((g) => g.items).filter((it) => proposalBatch(it) === PROPOSALS_META_NEW_AREAS).map((it) => it.key);
-  assert.deepEqual(secondBatch.sort(), ["PG1", "PG2", "PH1", "PH2", "PH3", "PQG1"]);
+  assert.deepEqual(secondBatch.sort(), ["PG1", "PH1", "PH2", "PQG1"]);
   const thirdBatch = PROPOSALS.flatMap((g) => g.items).filter((it) => proposalBatch(it) === PROPOSALS_META_CARTE_V2).map((it) => it.key);
-  assert.deepEqual(thirdBatch.sort(), ["PA10", "PA11", "PA8", "PA9", "PB5", "PM7", "PM8", "PN4", "PN5", "PO4", "PO5"]);
+  assert.deepEqual(thirdBatch.sort(), ["PA10", "PA11", "PA8", "PB5", "PM8", "PN4", "PN5", "PO4", "PO5"]);
   for (const it of PROPOSALS.flatMap((g) => g.items)) if (proposalBatch(it) === PROPOSALS_META_CARTE_V2) assert.ok(it.caveat, `${it.key}: inferred formulations carry a caveat`);
   const formerly = new Set(PROPOSALS.flatMap((g) => g.items).map((it) => it.formerly));
   for (const key of ["P47", "P57", "P75", "P84"]) assert.ok(!formerly.has(key), `${key} was promoted and must not remain a proposal`);
@@ -488,8 +505,9 @@ test("legacy fragments redirect after mount while ordinary page anchors stay loc
 
 test("draft trends page renders, is not linked from home, and its entry links resolve", () => {
   const { TRENDS } = loadApp("app/data/trends-data.js");
-  const { PROPOSALS: groups, SECONDARY_PROPOSALS: secondary } = loadApp("app/data/proposals.js");
-  const proposalKeys = new Set([...groups.flatMap((g) => g.items.map((it) => it.key)), ...secondary.map((it) => it.key)]);
+  // This historical map links to /np/ pages, including proposals since withdrawn.
+  const { PRIORITY_RECORDS } = loadApp("app/data/proposals.js");
+  const proposalKeys = new Set(PRIORITY_RECORDS.map(it => it.key));
   const html = render(views.TrendsView);
   assert.ok(html.includes("Quantum trends") && html.includes("Draft."));
   assert.ok(html.includes("words, not meaning"), "method caveat must stay on the page");

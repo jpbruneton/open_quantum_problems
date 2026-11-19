@@ -15,7 +15,7 @@ import {
   consolidatedInto,
 } from "./data/problems";
 import { TRENDS } from "./data/trends-data";
-import { PROPOSALS, SECONDARY_PROPOSALS, PROPOSALS_META, PROPOSALS_META_NEW_AREAS, PROPOSALS_META_CARTE_V2, PROPOSALS_FORMULATION_REVIEW, PROPOSAL_COUNT, proposalBatch } from "./data/proposals";
+import { PROPOSALS, SECONDARY_PROPOSALS, PROPOSALS_META, PROPOSALS_META_NEW_AREAS, PROPOSALS_META_CARTE_V2, PROPOSALS_FORMULATION_REVIEW, PROPOSAL_COUNT, PRIORITY_RECORDS, WITHDRAWN_PROPOSALS, SELECTION_REPORT, proposalBatch } from "./data/proposals";
 
 // Server components only: the catalogue is rendered to HTML and never shipped as JavaScript.
 // Rows with data-href are clickable through a delegated handler in components/ClientEffects.js.
@@ -550,14 +550,14 @@ function VerdictBadge({ a }) {
   return <span className={`badge verdict verdict-${a.verdict}`} title={v.desc}>{v.label}</span>;
 }
 
-const ALL_PROPOSALS = PROPOSALS.flatMap((g) => g.items.map((it) => ({ ...it, cat: g.cat, catName: g.name })));
+const ALL_PROPOSALS = PRIORITY_RECORDS.filter(it => !it.withdrawal);
 
 function ProposalView({ pkey }) {
-  const idx = ALL_PROPOSALS.findIndex((it) => it.key === pkey || it.formerly === pkey);
-  if (idx < 0) return <NotFound />;
-  const it = ALL_PROPOSALS[idx];
+  const it = PRIORITY_RECORDS.find(item => item.key === pkey || item.formerly === pkey);
+  if (!it) return <NotFound />;
+  const idx = ALL_PROPOSALS.indexOf(it);
   const prev = ALL_PROPOSALS[idx - 1];
-  const next = ALL_PROPOSALS[idx + 1];
+  const next = idx >= 0 ? ALL_PROPOSALS[idx + 1] : undefined;
   const baseline = it.baseline ? it.baseline.split(/;\s+/).map((s) => s.trim().replace(/\.$/, "").replace(/(?<!\[)arXiv:((?:\d{4}\.\d{4,5}|[a-z-]+\/\d{7})(?:v\d+)?)/g, "[arXiv:$1](https://arxiv.org/abs/$1)")).filter(Boolean) : [];
   return (
     <>
@@ -568,7 +568,7 @@ function ProposalView({ pkey }) {
           <div className="badge-row" style={{ margin: "6px 0 2px" }}>
             <span className="badge" style={{ color: "var(--muted)" }} title={it.formerly ? `Formerly ${it.formerly}` : undefined}>{it.key}</span>
             <HorizonBadge h={it.horizon} />
-            <span className="badge st-proposed" title="Candidate question, not a catalogue entry"><span className="dot" style={{ background: "var(--muted-2)" }} />Proposed</span>
+            <span className="badge st-proposed">{it.withdrawal ? "Withdrawn from selection" : "Proposed"}</span>
           </div>
           <h2>{it.title}</h2>
           {it.formerly && <p className="review-meta">Formerly {it.formerly}</p>}
@@ -582,9 +582,11 @@ function ProposalView({ pkey }) {
             ) : <p className="review-meta">No specific catalogue entry.</p>}
           </div>
 
+          {it.withdrawal && (<><h4>Reason for withdrawal · 19 November 2026</h4><div className="context"><Paras text={it.withdrawal} /></div><h4>Original question</h4></>)}
           <div className="statement"><Paras text={it.statement} /></div>
 
-          <h4>Why it is open now</h4>
+          {!it.withdrawal && <>
+          <h4>Research context</h4>
           <div className="context"><Paras text={it.why} /></div>
 
           {it.assessment && (
@@ -597,6 +599,7 @@ function ProposalView({ pkey }) {
             </>
           )}
 
+          </>}
           {baseline.length > 0 && (
             <>
               <h4>Baseline literature</h4>
@@ -604,10 +607,11 @@ function ProposalView({ pkey }) {
             </>
           )}
 
-          {it.caveat && (<><h4>Caveats</h4><div className="context"><Paras text={it.caveat} /></div></>)}
+          {!it.withdrawal && it.caveat && (<><h4>Caveats</h4><div className="context"><Paras text={it.caveat} /></div></>)}
           {it.ai && (<><h4>Reported AI use</h4><div className="context"><Paras text={it.ai} /></div></>)}
 
-          <p className="disclaimer">Suggested by AI on {proposalBatch(it).label} ({it.catName}). Not a catalogue entry: no status, not counted, awaiting human selection and critical review. <a href={proposalBatch(it).reportUrl} target="_blank" rel="noreferrer">Full proposal with verification marks →</a></p>
+          <p className="review-meta"><a href={SELECTION_REPORT + "#" + it.key.toLowerCase()}>Selection decision and sources · 19 November 2026</a></p>
+          <p className="disclaimer">Suggested by AI on {proposalBatch(it).label} ({it.catName}). Outside the catalogue and its counts. <a href={proposalBatch(it).reportUrl} target="_blank" rel="noreferrer">Full proposal with verification marks →</a></p>
 
           <nav className="proposal-pager" aria-label="Other proposals">
             {prev ? <a href={`/np/${prev.key}`}>← {prev.key} · {prev.title}</a> : <span />}
@@ -628,12 +632,9 @@ function NewProblemsView() {
         <div className="container">
           <h2>New problems suggested by AI</h2>
           <p className="intro">Proposed 8–16 November 2026 · {PROPOSAL_COUNT} priority candidates and {SECONDARY_PROPOSALS.length} secondary leads</p>
-          <p>We prompted an AI model (Fable 5.1, high effort) to suggest new open problems, starting from the current catalogue and its own knowledge of the literature. A second batch (9 November 2026) covers gravity and holography. A third (16 November 2026) comes from a semantic map of the 2024–2026 quant-ph literature: its questions are reformulated or partly inferred from what the authors wrote, and each says so in a caveat. These suggestions await human selection and critical review. They are not catalogue entries: they carry no status and are not counted.</p>
-          <p>Horizons use the same badges as the catalogue, and “extends” links each suggestion to the entries it grows out of. Click a row to open the full page of a suggestion: motivation, baseline literature and caveats.</p>
-          <p>Identifiers combine a letter, the catalogue area code and a number: P for a priority candidate (PE2 is the second entanglement candidate), S for a secondary lead. A suggestion promoted to the catalogue takes the next free entry number in its area. The former identifiers P1–P81 and S1–S24 (until 9 November 2026) still open the same pages.</p>
-          <p>Separate AI literature reviews checked the cited sources and searched for prior answers: the first batch on 8 November 2026, the gravity and holography batch on 9 November, and the quant-ph map batch on 16 November. Each suggestion shows its review verdict. These verdicts are not human-refereed.</p>
-          <p>Full proposals with verification marks and caveats: <a href={PROPOSALS_META.reportUrl} target="_blank" rel="noreferrer">8 November</a>{" · "}<a href={PROPOSALS_META_NEW_AREAS.reportUrl} target="_blank" rel="noreferrer">9 November</a>{" · "}<a href={PROPOSALS_META_CARTE_V2.reportUrl} target="_blank" rel="noreferrer">16 November</a>.</p>
-          <p>Formulations revised on <a href={PROPOSALS_FORMULATION_REVIEW.reportUrl} target="_blank" rel="noreferrer">{PROPOSALS_FORMULATION_REVIEW.label}</a> to spell out models, assumptions, resolution criteria and intermediate targets. This editorial revision does not change the literature-review dates above.</p>
+          <p>These questions were selected or formulated with AI assistance. The <a href={SELECTION_REPORT}>19 November selection report</a> gives a decision, rationale and source for each of the 79 original listings. {WITHDRAWN_PROPOSALS.length} were withdrawn. Proposals are outside the catalogue and are not counted among its active entries.</p>
+          <p>Open a priority question to read its statement, literature and assessment. “Extends” links to the catalogue problem that motivated it. Priority identifiers begin with P and secondary leads with S. Earlier priority identifiers still open their original records.</p>
+          <p>The <a href={PROPOSALS_META.reportUrl}>8 November review</a> started from the catalogue, the <a href={PROPOSALS_META_NEW_AREAS.reportUrl}>9 November review</a> covered gravity and holography, and the <a href={PROPOSALS_META_CARTE_V2.reportUrl}>16 November review</a> drew on a map of recent quantum research. The <a href={PROPOSALS_FORMULATION_REVIEW.reportUrl}>17 November revision</a> specified models and resolution criteria. Scientific assessments and selection decisions are AI-assisted and await independent review.</p>
           <nav className="proposal-nav" aria-label="Areas">
             {PROPOSALS.map((g) => <a key={g.cat} href={`#np-${g.cat}`}>{g.name} ({g.items.length})</a>)}
             <a href="#np-secondary">Secondary leads ({SECONDARY_PROPOSALS.length})</a>
@@ -680,13 +681,24 @@ function NewProblemsView() {
           <p>Sharp but with thinner baselines, lower confidence that they are open, or overlapping an existing entry.</p>
           <ul className="archive-list">
             {SECONDARY_PROPOSALS.map((it) => (
-              <li key={it.key}>
+              <li key={it.key} id={it.key}>
                 <b title={it.formerly ? `Formerly ${it.formerly}` : undefined}>{it.key} · {it.title}</b>
                 {it.extends.length > 0 && <span className="proposal-extends"> extends {it.extends.map((id, i) => <span key={id}>{i > 0 ? ", " : ""}<a href={`/p/${id}`}>{id}</a></span>)}</span>}
                 <div className="context"><Paras text={it.note} /></div>
+                <a href={SELECTION_REPORT + "#" + it.key.toLowerCase()}>Selection decision and sources</a>
               </li>
             ))}
           </ul>
+          <details className="proposal-group">
+            <summary>Withdrawn proposals ({WITHDRAWN_PROPOSALS.length})</summary>
+            <ul className="archive-list">{WITHDRAWN_PROPOSALS.map(it => (
+              <li key={it.key} id={it.key}>
+                <b>{it.statement ? <a href={`/np/${it.key}`}>{it.key} · {it.title}</a> : it.key + " · " + it.title}</b>
+                <div className="context"><Paras text={it.withdrawal} /></div>
+                <a href={SELECTION_REPORT + "#" + it.key.toLowerCase()}>Selection decision and sources</a>
+              </li>
+            ))}</ul>
+          </details>
           <p className="disclaimer">These proposals were produced by an AI-assisted review and checked against the cited sources, not refereed. A candidate becomes a catalogue entry only after a human curator assigns an ID, statement and baseline through the usual review process.</p>
         </div>
       </section>
