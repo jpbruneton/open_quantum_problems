@@ -40,9 +40,9 @@ the Amosov--Filippov conjecture holds up to a factor $p!$}
 \begin{abstract}
 The $p$-particle reduced density matrix of a many-fermion state keeps exactly
 the information needed to evaluate $p$-body observables, and for a pure state
-with a fixed number $N$ of particles the classical theorem of Carlson and
-Keller says that keeping $p$ particles and keeping $N-p$ particles produce the
-same nonzero spectrum. Amosov and Filippov asked what replaces this duality on
+with a fixed number $N$ of particles a classical duality, usually attributed
+to Carlson and Keller, says that keeping $p$ particles and keeping $N-p$
+particles produce the same nonzero spectrum. Amosov and Filippov asked what replaces this duality on
 the whole fermionic Fock space, where the particle number need not be fixed.
 They introduced the map $\Phi(\varrho)=\sum_j a_j\varrho a_j^\dagger$, which
 removes one particle, and conjectured that, for every pure state, the operator
@@ -66,9 +66,11 @@ through a few particles at a time: the kinetic energy is a one-body
 observable, a pair interaction is a two-body observable. The object that
 carries exactly this information is the $p$-particle reduced density matrix,
 the central object of reduced-density-matrix methods in quantum chemistry.
-For a pure state of exactly $N$ fermions, Carlson and Keller showed that the
-$p$-particle and $(N-p)$-particle reduced density matrices have the same
-nonzero eigenvalues \cite{CarlsonKeller1961}. This is the fermionic analogue
+For a pure state of exactly $N$ fermions, the $p$-particle and
+$(N-p)$-particle reduced density matrices have the same nonzero eigenvalues, a
+classical result that Amosov and Filippov attribute to Carlson and
+Keller~\cite{AmosovFilippov2017} and that Gigena, Di Tullio and Rossignoli
+derive from a singular value decomposition~\cite[Sec.~II\,B]{Gigena2021}. This is the fermionic analogue
 of the familiar fact that the two halves of a bipartite pure state have the
 same spectrum: removing $N-p$ particles and keeping $p$ of them are
 spectrally equivalent operations.
@@ -83,8 +85,9 @@ particle from any operator, proved that $\Phi^{N-p}(\varrho)$ equals the
 $p$-particle reduced density operator $\varrho_p$ when the particle number is
 fixed, and conjectured that for every pure state on $H_n$, with no assumption
 on particle number or parity, $\Phi^p(\varrho)$ and $\varrho_p$ have the same
-spectrum. They checked the case $p=1$, $n=2$ by hand and reported numerical
-agreement for general pure states of three and four modes.
+spectrum. They checked the case $p=1$, $n=2$ by hand and reported that other
+examples, general pure states of three and four modes, are also
+equispectral.
 
 The question answered here is whether this conjecture holds, and what the
 correct statement is if it does not. The answer is a single identity. For
@@ -125,9 +128,11 @@ Section~\ref{sec:scope} the scope of the result.
 
 \section{Related work}\label{sec:related}
 The spectral duality between the $p$-particle and $(N-p)$-particle reduced
-density matrices of a pure $N$-fermion state is due to Carlson and Keller
-\cite{CarlsonKeller1961}; it is the fixed-$N$ special case of
-Theorem~\ref{thm:main} combined with Corollary~\ref{cor:fixedN} below.
+density matrices of a pure $N$-fermion state is classical; Amosov and
+Filippov attribute it to Carlson and Keller and use it to derive the
+corollary of their Proposition~4~\cite{AmosovFilippov2017}. It is the
+fixed-$N$ special case of Theorem~\ref{thm:main} combined with
+Corollary~\ref{cor:fixedN} below.
 
 Amosov and Filippov \cite{AmosovFilippov2017} define the reduced density
 operator $\varrho_p$ on the full Fock space, introduce the particle-removing
@@ -146,9 +151,11 @@ Gigena, Di Tullio and Rossignoli \cite{Gigena2021} study many-body
 entanglement in fermion systems through $M$-body density operators. For an
 $N$-fermion state they write
 $\hat\rho^{(M)}=\frac{1}{(N-M)!}\sum_{j_1,\dots,j_{N-M}}c_{j_1}\cdots
-c_{j_{N-M}}\,\rho\,c^\dagger_{j_{N-M}}\cdots c^\dagger_{j_1}$, normalized
-so that $\Tr\rho^{(M)}=\binom NM$, and they note that $\rho^{(M)}$ and
-$\rho^{(N-M)}$ share their nonzero eigenvalues. Their prefactor
+c_{j_{N-M}}\,\rho\,c^\dagger_{j_{N-M}}\cdots c^\dagger_{j_1}$
+\cite[Eq.~(79)]{Gigena2021}, normalized so that $\Tr\rho^{(M)}=\binom NM$
+\cite[Eq.~(16)]{Gigena2021}, and they show that, for a pure state,
+$\rho^{(M)}$ and $\rho^{(N-M)}$ have the same spectrum apart from the number
+of zero eigenvalues \cite[Sec.~II\,B]{Gigena2021}. Their prefactor
 $1/(N-M)!$ is exactly the correction of Proposition~4 established in
 Corollary~\ref{cor:fixedN}; they refer to Amosov and Filippov for the
 extension to states without fixed particle number, which they do not treat,
@@ -445,8 +452,10 @@ the sign and normalization conventions of the source; they are restricted to
 $n\le6$ and are not a formal verification.
 
 On bibliographic priority, the factorial correction at fixed particle number
-appears implicitly in the normalization of Gigena, Di Tullio and Rossignoli
-\cite{Gigena2021}. The extension to variable particle number, the
+is not new: it appears explicitly, without comment on Proposition~4 of the
+source, in the definition of the $M$-body density operator of Gigena, Di
+Tullio and Rossignoli \cite[Eq.~(79)]{Gigena2021}, and the fixed-$N$ duality
+is classical. The extension to variable particle number, the
 identification of $\varrho_p$ and $\Phi^p(\varrho)/p!$ as complementary
 outputs, and the observation that Proposition~4 and its corollary in
 \cite{AmosovFilippov2017} fail for $N-p\ge2$ and $p\ge2$ were not found in
@@ -456,10 +465,11 @@ the eight closest ones read at source, and keyword web searches. The result
 is elementary enough that it may appear elsewhere in another form; the search
 did not cover Google Scholar or quantum-chemistry monographs.
 
-Two questions raised in \cite{AmosovFilippov2017} remain outside the scope of
-this note: the generalized Pauli constraints for states obeying the parity
-superselection rule, and the spectrum of $\Phi^p(\varrho)$ for mixed states,
-where only the complementarity relation is available.
+The generalized Pauli constraints for states obeying the parity
+superselection rule, raised in \cite{AmosovFilippov2017}, remain outside the
+scope of this note, as does the spectrum of $\Phi^p(\varrho)$ for mixed
+states, where only the trace identity and the complementarity relation are
+available.
 
 \begin{thebibliography}{9}
 \bibitem{AmosovFilippov2017}
@@ -469,12 +479,6 @@ superselection rule},
 Quantum Inf. Process. \textbf{16}, 2 (2017),
 \href{https://doi.org/10.1007/s11128-016-1467-9}{doi:10.1007/s11128-016-1467-9},
 \href{https://arxiv.org/abs/1512.01828}{arXiv:1512.01828}.
-
-\bibitem{CarlsonKeller1961}
-B.~C. Carlson and J.~M. Keller,
-\emph{Eigenvalues of density matrices},
-Phys. Rev. \textbf{121}, 659--661 (1961),
-\href{https://doi.org/10.1103/PhysRev.121.659}{doi:10.1103/PhysRev.121.659}.
 
 \bibitem{Gigena2021}
 N.~Gigena, M.~Di~Tullio and R.~Rossignoli,

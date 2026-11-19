@@ -46,7 +46,11 @@ eigenfunctions of a Schr\"odinger operator with integrable potential between
 hard walls only $m=0$ and $m=1$ occur, so $\aTH=1/4$ when both walls are
 Dirichlet and $\aTH=1/2$ otherwise. This proves Olendski's conjecture for
 every level, for real or complex Robin lengths, and for any integrable
-potential inside the well; the same holds on a half-line.
+potential inside the well; the same holds on a half-line. The underlying
+mechanism, that endpoint jumps govern the decay of a Fourier integral, is
+classical; the contribution is its conversion into a two-sided existence
+criterion, which requires controlling the interference between two walls, and
+the divergence rate.
 \end{abstract}
 
 \section{Introduction}
@@ -59,19 +63,25 @@ momentum distribution feel this tail. For a normalised $\psi\in L^2(\R)$ let
 \phi(p)=\frac{1}{\sqrt{2\pi}}\int_\R\psi(x)e^{-ipx}\,dx,\qquad
 \gamma(p)=|\phi(p)|^2,\qquad I_\alpha=\int_\R\gamma(p)^\alpha\,dp .
 \]
-The momentum R\'enyi and Tsallis \cite{Tsallis1988} entropies are
+The momentum R\'enyi and Tsallis entropies, in the normalisation of
+\cite{Olendski2020}, are
 \[
 R_\gamma(\alpha)=\frac{1}{1-\alpha}\ln I_\alpha,\qquad
 T_\gamma(\alpha)=\frac{1}{\alpha-1}\bigl(1-I_\alpha\bigr),
 \]
 and for $\alpha\neq1$ they exist exactly when $I_\alpha<\infty$. When
 $\alpha<1$ the power $\gamma^\alpha$ enhances the tail, so the entropies exist
-only above a threshold $\aTH$ fixed by its decay rate.
+only above a threshold $\aTH$ fixed by its decay rate. Orders just above
+$1/2$ are physically relevant: in the R\'enyi entropic uncertainty relation of
+Bialynicki-Birula \cite{BB2006}, the momentum order $\alpha$ and the position
+order $\beta$ satisfy $1/\alpha+1/\beta=2$, so $\alpha$ ranges over
+$(1/2,\infty)$ and tends to $1/2$ as $\beta\to\infty$.
 
 Olendski computed these entropies for the one-dimensional well of width $a$
 \cite{Olendski2020}. From the explicit momentum wave functions he found
 $\aTH=1/4$ for the Dirichlet condition $\psi=0$ at the walls and $\aTH=1/2$
-for the Neumann condition $\psi'=0$. Noting that the same value $1/2$ appears
+for the Neumann condition $\psi'=0$, by a comparison test on the explicit
+formulas. Noting that the same value $1/2$ appears
 for the attractive Robin wall and for mixed Dirichlet--Neumann walls, he
 conjectured that ``the threshold $\aTH$ of one half is characteristic of any
 1D non-Dirichlet system'' \cite{Olendski2020}. The class of systems is not
@@ -99,24 +109,29 @@ proves Olendski's conjecture in that setting.
 \section{Related work}\label{sec:related}
 Olendski's paper \cite{Olendski2020} determines the thresholds $1/4$ and $1/2$
 for the Dirichlet and Neumann wells by a comparison test on explicit formulas,
-and states the conjecture. Its introduction writes that the momentum entropies
-exist ``at $\alpha\geq1/2$ only'', while its section on the Neumann well uses a
-strict inequality; Theorem~\ref{thm:threshold} shows that the strict
-inequality is correct. The attractive Robin wall had been treated earlier in
-\cite{Olendski2019}. The author later extended the observation case by case to
-other geometries: for two-dimensional circular dots he obtained $2/5$
-(Dirichlet) and $2/3$ (Neumann) \cite{Olendski2021a}; for $d$-dimensional
-balls, $d/(d+3)$ and $d/(d+1)$ \cite{Olendski2021b}, which reduce to $1/4$ and
-$1/2$ for $d=1$; and for the pseudo-harmonic oscillator on the half-line, with
-a potential containing a term $\mathfrak a/x^2$, a level-independent threshold
-$1/(3+\sqrt{1+4\mathfrak a})$ \cite{Olendski2023}. All these thresholds are
-obtained from explicit wave functions. Section~\ref{sec:scope} explains how the
-ball and pseudo-harmonic values fit the formula $1/(2(m+1))$ heuristically.
+and states the conjecture. It writes the Dirichlet range as the closed
+interval $[1/4,\infty)$, and its introduction states that the momentum
+entropies exist ``at $\alpha\geq1/2$ only'', while its section on the Neumann
+well uses a strict inequality; Theorem~\ref{thm:threshold} shows that the
+strict inequality is correct for both thresholds. The attractive Robin wall on
+the half-line had been treated earlier in closed form \cite{Olendski2019}.
+Before that, Aptekarev, Dehesa, S\'anchez-Moreno and Tulyakov
+\cite{ADST2012} computed the momentum entropic moments of every level of the
+Dirichlet well in closed form for integer orders, where convergence is
+automatic, and left non-integer orders open.
+
+Olendski later extended the observation case by case to other geometries. For
+a Dirichlet annulus he found the value $2/5$,
+independent of the inner radius and of the level \cite{Olendski2022}, in line
+with a threshold fixed by the behaviour at the boundary; that paper does not
+analyse how this threshold depends on the Aharonov--Bohm flux it introduces.
+All these thresholds are obtained from explicit wave functions.
+Section~\ref{sec:scope} explains how wall-singular potentials and higher
+dimensions would fit the formula $1/(2(m+1))$ heuristically.
 
 The mechanism behind Lemma~\ref{lem:A} is classical: the large-frequency
 asymptotics of a Fourier integral over an interval is governed by the jumps of
-derivatives at the endpoints, as follows from repeated integration by parts;
-see Erd\'elyi \cite{Erdelyi1955} for the general theory of such expansions.
+derivatives at the endpoints, as follows from repeated integration by parts.
 What the present note adds is the full translation into an existence
 criterion for the momentum entropies, including the divergence direction,
 which requires controlling the interference between the contributions of two
@@ -274,7 +289,8 @@ Lemma~\ref{lem:B}. The expansion of $R_\gamma$ follows by taking logarithms.
 \end{proof}
 
 The divergence of the R\'enyi entropy at the threshold is therefore
-logarithmic, as Olendski's figures show \cite{Olendski2020}, with the
+logarithmic, as Olendski observes in the text of \cite{Olendski2020}
+(Section~3 and Conclusions), with the
 universal coefficient $1/(1-\aTH)$: $2$ for a non-Dirichlet wall and $4/3$ for
 the Dirichlet well. For the Neumann ground state of the well of width $a$,
 $\psi=a^{-1/2}$, $J_1=-J_2=a^{-1/2}$, $M=4/(\pi\sqrt a)$, and
@@ -386,27 +402,32 @@ $(H_0)$.
 \emph{Not covered.} A one-dimensional system without hard walls has no
 threshold of this type, and ``non-Dirichlet'' has no meaning there. Potentials
 that are singular at the wall, such as $\mathfrak a/x^2$, produce
-$\psi\sim x^\nu$ with non-integer $\nu$. Olendski's value
-$1/(3+\sqrt{1+4\mathfrak a})$ for the pseudo-harmonic oscillator
-\cite{Olendski2023} coincides with $1/(2(\nu+1))$ for
-$\nu=\frac12(1+\sqrt{1+4\mathfrak a})$, the natural extension of
-Theorem~\ref{thm:threshold}, but this fractional case is not proved here. In
-dimension $d$, the thresholds $d/(d+1)$ and $d/(d+3)$ found for balls
-\cite{Olendski2021b} are those given by the heuristic
-$\gamma\sim|p|^{-(d+1+2m)}$ integrated against $|p|^{d-1}d|p|$, namely
-$\aTH=d/(d+1+2m)$; no general proof is attempted for arbitrary domains.
+$\psi\sim x^\nu$ with non-integer $\nu$, where
+$\nu=\frac12(1+\sqrt{1+4\mathfrak a})$; the natural extension of
+Theorem~\ref{thm:threshold} predicts the threshold $1/(2(\nu+1))
+=1/(3+\sqrt{1+4\mathfrak a})$, but this fractional case is not proved here.
+In the same spirit, for the singular ``volcano'' potential of
+\cite{Olendski2022} the threshold is controlled by the azimuthal quantum number
+and the Aharonov--Bohm flux. In
+dimension $d$, the heuristic $\gamma\sim|p|^{-(d+1+2m)}$ integrated against
+$|p|^{d-1}d|p|$ gives $\aTH=d/(d+1+2m)$, that is $d/(d+1)$ for Neumann and
+$d/(d+3)$ for Dirichlet conditions; no general proof is attempted for
+arbitrary domains.
 
-\emph{Bibliographic priority.} The source \cite{Olendski2020} was read in
-full. The twelve works citing it listed by OpenAlex (2020 to 2026) were
-examined by title only; the author's later preprints were examined through
-their abstracts, and the relevant passage of \cite{Olendski2023} in its
-source. Two web searches on the existence of momentum R\'enyi entropies, boundary
-conditions and Fourier decay returned no general statement. The asymptotic
-expansion of Lemma~\ref{lem:A} is classical, and Olendski already asserts the
-threshold $1/2$ for the Robin well on the basis of a comparison test. The
-general statement in terms of $m$, the proof of divergence with two walls and
-the divergence rate were not found in this documented search, which does not
-establish priority.
+\emph{Bibliographic priority.} The particular thresholds are due to
+Olendski: $1/4$ and $1/2$ for the Dirichlet, Neumann, mixed and Robin wells
+\cite{Olendski2020}, $1/2$ for the attractive Robin wall on the half-line
+\cite{Olendski2019}, and the value for annuli \cite{Olendski2022}. The asymptotic
+expansion of Lemma~\ref{lem:A} is classical. The general criterion in terms of
+$m$, with the divergence direction for two walls, the divergence rate, and the
+dichotomy of Corollary~\ref{cor:well} for every integrable potential and every
+real or complex Robin length, were not found in the works read for this note:
+\cite{Olendski2020,Olendski2019,Olendski2022,ADST2012,BB2006}, all read in
+full. The twelve works
+citing \cite{Olendski2020} listed by OpenAlex and Semantic Scholar (2020 to
+2026) were examined by title or abstract, and targeted web searches on momentum
+R\'enyi entropies, boundary conditions and Fourier decay returned no general
+statement. This search does not establish priority.
 
 \clearpage
 \begingroup\small
@@ -427,40 +448,28 @@ Eur. J. Phys. \textbf{40}, 025402 (2019);
 \href{https://doi.org/10.1088/1361-6404/aaf45c}{doi:10.1088/1361-6404/aaf45c};
 \href{https://arxiv.org/abs/1811.09089}{arXiv:1811.09089}.
 
-\bibitem{Olendski2021a}
+\bibitem{Olendski2022}
 O. Olendski,
-\emph{Comparative analysis of information measures of the Dirichlet and
-Neumann two-dimensional quantum dots},
-Int. J. Quantum Chem. \textbf{121}, e26455 (2021);
-\href{https://doi.org/10.1002/qua.26455}{doi:10.1002/qua.26455};
-\href{https://arxiv.org/abs/1806.07509}{arXiv:1806.07509}.
+\emph{Quantum-information theory of a Dirichlet ring with Aharonov--Bohm field},
+Eur. Phys. J. Plus \textbf{137}, 451 (2022);
+\href{https://doi.org/10.1140/epjp/s13360-022-02627-5}{doi:10.1140/epjp/s13360-022-02627-5};
+\href{https://arxiv.org/abs/2202.04692}{arXiv:2202.04692}.
 
-\bibitem{Olendski2021b}
-O. Olendski,
-\emph{Quantum information measures of the Dirichlet and Neumann hyperspherical
-dots},
-Eur. Phys. J. Plus \textbf{136}, 390 (2021);
-\href{https://doi.org/10.1140/epjp/s13360-021-01366-3}{doi:10.1140/epjp/s13360-021-01366-3};
-\href{https://arxiv.org/abs/2103.13094}{arXiv:2103.13094}.
+\bibitem{ADST2012}
+A. I. Aptekarev, J. S. Dehesa, P. S\'anchez-Moreno and D. N. Tulyakov,
+\emph{R\'enyi entropy of the infinite well potential in momentum space and
+Dirichlet-like trigonometric functionals},
+J. Math. Chem. \textbf{50}, 1079--1090 (2012);
+\href{https://doi.org/10.1007/s10910-011-9950-0}{doi:10.1007/s10910-011-9950-0};
+\href{https://arxiv.org/abs/1305.4743}{arXiv:1305.4743}.
 
-\bibitem{Olendski2023}
-O. Olendski,
-\emph{One-dimensional pseudoharmonic oscillator: classical remarks and
-quantum-information theory}, preprint (2023);
-\href{https://arxiv.org/abs/2304.06428}{arXiv:2304.06428}.
-
-\bibitem{Erdelyi1955}
-A. Erd\'elyi,
-\emph{Asymptotic Representations of Fourier Integrals and the Method of
-Stationary Phase},
-J. Soc. Indust. Appl. Math. \textbf{3}, 17--27 (1955);
-\href{https://doi.org/10.1137/0103002}{doi:10.1137/0103002}.
-
-\bibitem{Tsallis1988}
-C. Tsallis,
-\emph{Possible generalization of Boltzmann-Gibbs statistics},
-J. Stat. Phys. \textbf{52}, 479--487 (1988);
-\href{https://doi.org/10.1007/BF01016429}{doi:10.1007/BF01016429}.
+\bibitem{BB2006}
+I. Bialynicki-Birula,
+\emph{Formulation of the uncertainty relations in terms of the R\'enyi
+entropies},
+Phys. Rev. A \textbf{74}, 052101 (2006);
+\href{https://doi.org/10.1103/PhysRevA.74.052101}{doi:10.1103/PhysRevA.74.052101};
+\href{https://arxiv.org/abs/quant-ph/0608116}{arXiv:quant-ph/0608116}.
 \end{thebibliography}
 \endgroup
 \end{document}

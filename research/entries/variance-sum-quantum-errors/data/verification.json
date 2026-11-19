@@ -101,7 +101,7 @@
     7,
     38
   ],
-  "elapsed_seconds": 5.2,
+  "elapsed_seconds": 4.9,
   "sha256": {
     "checks/check_variance_formula.py": "e7ad5e0abc675d5490726658fd8bbe790646aab858a49b8b3b5bc96c2c82d0e0"
   },

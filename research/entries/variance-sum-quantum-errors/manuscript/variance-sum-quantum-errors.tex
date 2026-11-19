@@ -50,7 +50,10 @@ along the error-free state. The formula is equivalent to the multiplicativity
 of the mean overlap $m=1-V/2$, and composing independent errors multiplies
 mean operators. Hence the formula holds for any number of independent centred
 errors, isotropic or not, in both natural definitions of the sum, and an
-exact identity gives the correction term in general. Without centring the
+exact identity gives the correction term in general. The multiplicativity
+itself is elementary and classical; the contribution of the note is to
+identify centring as the hypothesis on which the conjecture turns and to
+supply exact counterexamples. Without centring the
 formula fails: two independent errors on the circle with density
 $(1+\sin\theta)/(2\pi)$, which belongs to the family used in the source's own
 proof, give $V_{12}=5/2$ instead of $2$, so the theorem on the circle is false
@@ -137,9 +140,28 @@ conjecture in the literature examined (Section~\ref{sec:scope}).
 The distinction between centred and biased errors parallels the familiar
 contrast between stochastic and coherent noise in fault tolerance: errors of
 equal average size can have very different worst-case effects, and coherent
-errors produce the largest gap~\cite{Kueng2016}. The counterexample of
-Proposition~\ref{prop:counter}(b) is an instance of this phenomenon in the
-variance language of~\cite{LacallePozo2019}.
+errors appear to produce the largest gap between average-case and worst-case
+error~\cite{Kueng2016}. Under composition, moreover, the infidelity of
+purely stochastic errors grows linearly in the number of gates, whereas that
+of purely unitary errors can grow quadratically, and the average gate
+fidelity of a composite channel is bounded between these two
+regimes~\cite{CarignanDugas2019}. Proposition~\ref{prop:counter}(b) is an
+instance of this coherent accumulation in the variance language
+of~\cite{LacallePozo2019}.
+
+The mechanism behind our positive results is classical in substance. On the
+circle, independence of two angles gives
+$\E e^{i(\theta_1+\theta_2)}=\E e^{i\theta_1}\,\E e^{i\theta_2}$, the
+multiplicativity of the first trigonometric moment of a sum of independent
+angles, whose real part is the identity used in
+Proposition~\ref{prop:counter}(a). In general, the mean operators of
+independent random isometries multiply,
+$\E[R_2R_1]=\E[R_2]\,\E[R_1]$, which is the defining-representation case of
+the fact that convolution of measures on a compact group multiplies their
+Fourier transforms. We claim no novelty for these facts; what the note adds
+is their application to the conjecture of~\cite{LacallePozo2019}, the
+identification of centring as the relevant hypothesis, and the exact
+correction term~\eqref{eq:identity}.
 
 \section{Setting}\label{sec:setting}
 A pure state of $n$ qubits, $\Psi=(x_0+ix_1,\dots,x_{d-1}+ix_d)$ in the
@@ -365,8 +387,14 @@ implies $1-(a-b)=(d+1)b$, so that $2b=f_0^2\bigl(1-(a-b)\bigr)$ and
 $a+b-f_0^2=(a-b)(1-f_0^2)$. Substituting gives the formula.
 \end{proof}
 
-The checker shows that the fidelity formula fails for a generic second error;
-the gate model is not treated here.
+The checker shows that the fidelity formula fails for a generic second error
+in the transport model. The gate model is not treated here. A public draft
+posted on GitHub on 28 October 2026 and withdrawn the same day
+(\href{https://github.com/the-omega-institute/trureturing/issues/23079}{the-omega-institute/trureturing, issue~\#23079})
+proposes a one-qubit family of centred errors for which the fidelity formula
+fails in the gate model because of a non-isotropic second moment; we have not
+verified that computation, and it is mentioned only to indicate that the
+gate-model question has been raised.
 
 \section{Verification}\label{sec:verification}
 The statements above are proved analytically. The public
@@ -423,12 +451,14 @@ the starting point.
 \emph{Bibliographic priority.} The source was read in its arXiv \TeX{} file,
 and the 2026 companion paper in its published version. The works citing the
 source were listed through the Semantic Scholar interface and complemented by
-web searches; none of them proves, refutes or corrects the conjecture, and its
-authors still describe it as conjectural in January 2026. Priority is claimed
-only within the limits of this documented search. The proofs are short and
-rest on linearity of expectation, and equivalent statements may exist in the
-literature on random walks on spheres and compact groups, which was not
-surveyed.
+web searches and an OpenAlex query; none of them proves, refutes or corrects
+the conjecture, and its authors still describe it as conjectural in January
+2026. Priority is claimed only for the application to this conjecture, the
+role of centring, the identity~\eqref{eq:identity} and the counterexamples,
+within the limits of this documented search. The underlying multiplicativity
+of trigonometric moments and of mean operators is classical
+(Section~\ref{sec:related}), and the isotropic case of the source is a
+special case of that multiplicativity.
 
 \begingroup\small
 \begin{thebibliography}{9}
@@ -443,7 +473,7 @@ Quantum Inf. Comput. \textbf{19}, 1294--1312 (2019);
 \bibitem{LacallePozoMartin2026}
 J. Lacalle, L. M. Pozo Coronado and R. Mart\'in-Cuevas,
 \emph{Fidelity of the sum of independent quantum computing errors},
-Quantum Inf. Process. \textbf{25}, 38 (2026);
+Quantum Inf. Process. \textbf{25}(2), 38 (2026);
 \href{https://doi.org/10.1007/s11128-025-05037-5}{doi:10.1007/s11128-025-05037-5}.
 
 \bibitem{Kueng2016}
@@ -452,6 +482,13 @@ R. Kueng, D. M. Long, A. C. Doherty and S. T. Flammia,
 Phys. Rev. Lett. \textbf{117}, 170502 (2016);
 \href{https://doi.org/10.1103/PhysRevLett.117.170502}{doi:10.1103/PhysRevLett.117.170502};
 \href{https://arxiv.org/abs/1510.05653}{arXiv:1510.05653}.
+
+\bibitem{CarignanDugas2019}
+A. Carignan-Dugas, J. J. Wallman and J. Emerson,
+\emph{Bounding the average gate fidelity of composite channels using the unitarity},
+New J. Phys. \textbf{21}, 053016 (2019);
+\href{https://doi.org/10.1088/1367-2630/ab1800}{doi:10.1088/1367-2630/ab1800};
+\href{https://arxiv.org/abs/1610.05296}{arXiv:1610.05296}.
 \end{thebibliography}
 \endgroup
 \end{document}

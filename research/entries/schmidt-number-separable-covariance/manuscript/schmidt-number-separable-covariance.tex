@@ -34,10 +34,9 @@ states of arbitrary Schmidt rank at bounded energy}
 \begin{abstract}
 In continuous-variable experiments the entanglement of two light modes is
 usually assessed from the first and second moments of the field quadratures,
-the mean vector and the covariance matrix, and recent work derives lower
-bounds on the Schmidt number, the number of entangled degrees of freedom, from
-these moments alone. We ask how much such data can say about the Schmidt
-number when the mean photon number is bounded, and show that they cannot bound
+the mean vector and the covariance matrix. We ask how much such data can say
+about the Schmidt number, the number of entangled degrees of freedom, when the
+mean photon number is bounded, and show that they cannot bound
 it uniformly. For every $r\ge2$ we give a pure state of Schmidt rank $r$ and a
 separable state with exactly the same first and second moments, and indeed the
 same third moments, whose common mean photon number is at most a prescribed
@@ -56,10 +55,9 @@ quadrature statistics. For Gaussian states the first and second moments
 determine the state, and criteria built on the covariance matrix detect
 entanglement and quantify it~\cite{Duan2000,Simon2000}. A finer question
 concerns the Schmidt number~\cite{Terhal2000}, the smallest $k$ such that a
-state is a mixture of pure states of Schmidt rank at most $k$, which counts how many degrees of freedom are genuinely entangled. Mishra,
-Morelli, Baksov\'a, Rembold and Friis~\cite{Mishra2026} recently derived lower
-bounds on the Schmidt number of continuous-variable states from their first and
-second moments. It is natural to ask how far these moments can go: can a
+state is a mixture of pure states of Schmidt rank at most $k$, which counts how many degrees of freedom are genuinely entangled. Lower bounds on
+the Schmidt number of continuous-variable states can be sought from their first
+and second moments. It is natural to ask how far these moments can go: can a
 criterion based on the covariance matrix, perhaps complemented by a bound on
 the mean photon number, certify an arbitrarily large Schmidt number in a way
 that applies uniformly to all states?
@@ -89,8 +87,7 @@ spacing $m$ with $2m>d$ in place of $2$, and Proposition~\ref{prop:sharp}
 shows that this condition cannot be relaxed for these states. The obstruction
 concerns uniform identification of the Schmidt number from low-order moments.
 It does not prevent a particular covariance matrix from certifying a Schmidt
-number larger than one, as happens for the Gaussian and photon-added states
-studied in~\cite{Mishra2026}. Proposition~\ref{prop:markov} shows that at
+number larger than one for a particular family of states. Proposition~\ref{prop:markov} shows that at
 bounded energy the obstruction necessarily involves a small Schmidt
 coefficient, and Section~\ref{sec:scope} formulates the more stable question
 that this suggests.
@@ -109,22 +106,14 @@ conditions involving moments of degree at least $2m$ can detect it.
 
 The Schmidt number of a mixed state was introduced by Terhal and
 Horodecki~\cite{Terhal2000} as the smallest $k$ such that the state is a
-mixture of pure states of Schmidt rank at most $k$. Mishra
-et~al.~\cite{Mishra2026} bound the fidelity of a continuous-variable state
-with a pure Gaussian target, typically a two-mode squeezed vacuum, using only
-the covariance matrices of the two states and the mean excitation number, and
-turn this bound into Schmidt-number witnesses; they compare it with bounds
-from the entanglement of formation and with linear Gaussian witnesses, on
-two-mode squeezed thermal states and on photon-added displaced squeezed states.
-Every criterion of this type takes the same value on $\ket{\psi_r}$ and on the
-separable $\sigma_r$, and therefore certifies no entanglement for
-$\ket{\psi_r}$; the result below makes this limitation uniform in $r$ at a
-fixed energy. In finite dimension, Yi, Li and Zhu~\cite{Yi2026} certify
-entanglement dimensionality from moments of a different kind, the moments of
-the operator obtained by applying the $k$-reduction map to the state, which are
-estimated by randomized measurements. Those moments are nonlinear functionals
-of the state and are not determined by low-order quadrature moments, so our
-obstruction does not apply to them.
+mixture of pure states of Schmidt rank at most $k$. Any Schmidt-number
+criterion that depends on a state only through its first and second moments,
+possibly together with its mean photon number, takes the same value on
+$\ket{\psi_r}$ and on the separable $\sigma_r$, and therefore certifies no
+entanglement for $\ket{\psi_r}$; the result below makes this limitation
+uniform in $r$ at a fixed energy. Criteria built on nonlinear functionals of
+the state, which are not determined by low-order quadrature moments, are not
+affected by this obstruction.
 
 \section{Results}\label{sec:results}
 Let $\hat a,\hat b$ be the annihilation operators of the two modes and
@@ -277,9 +266,8 @@ the checker is a floating-point confirmation on finitely many cases. The
 result rules out only criteria that use quadrature moments of bounded degree,
 together with an energy bound, uniformly over all states. It says nothing
 against the certification of a Schmidt number for a particular state or family
-of states, such as the Gaussian states for which~\cite{Mishra2026} obtains
-large certified values, and it does not concern nonlinear data such as purity
-or the reduction moments of~\cite{Yi2026}. The separable partner $\sigma_r$ is
+of states, such as Gaussian states, and it does not concern nonlinear data
+such as purity. The separable partner $\sigma_r$ is
 mixed; we have not examined whether a pure product state, or a pure state of
 smaller Schmidt rank, can share the low-order moments of $\ket{\psi_r}$.
 
@@ -326,18 +314,6 @@ Phys. Rev. Lett. \textbf{95}, 230502 (2005);
 \href{https://doi.org/10.1103/PhysRevLett.95.230502}{doi:10.1103/PhysRevLett.95.230502};
 \href{https://arxiv.org/abs/quant-ph/0508132}{arXiv:quant-ph/0508132}.
 
-\bibitem{Mishra2026}
-I. Mishra, S. Morelli, K. Baksov\'a, P. Rembold and N. Friis,
-\emph{Certification of high-dimensional entanglement in continuous-variable systems},
-preprint (2026);
-\href{https://arxiv.org/abs/2610.03113}{arXiv:2610.03113}.
-
-\bibitem{Yi2026}
-C. Yi, X. Li and H. Zhu,
-\emph{Certifying Entanglement Dimensionality by $k$-Reduction Moments},
-PRX Quantum \textbf{7}, 010356 (2026);
-\href{https://doi.org/10.1103/cc1n-gmj1}{doi:10.1103/cc1n-gmj1};
-\href{https://arxiv.org/abs/2501.15360}{arXiv:2501.15360}.
 \end{thebibliography}
 \endgroup
 \end{document}

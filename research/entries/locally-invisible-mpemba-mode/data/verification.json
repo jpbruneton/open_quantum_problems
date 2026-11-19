@@ -1310,7 +1310,7 @@
       ]
     ]
   },
-  "elapsed_seconds": 9.9,
+  "elapsed_seconds": 11.0,
   "sha256": {
     "checks/verify_mpemba_mode.py": "a777aba3af028dd7b6a9e3c35d6cb94a706645fb66e5ccccc2844f4cdd66a84f"
   },

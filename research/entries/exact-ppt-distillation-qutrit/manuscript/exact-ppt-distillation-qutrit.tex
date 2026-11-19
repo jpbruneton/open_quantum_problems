@@ -36,8 +36,8 @@ the one-copy optimum and the first four output dimensions}
 \begin{abstract}
 Entanglement distillation converts many copies of a noisy entangled state into
 fewer, perfectly entangled ones. When the conversion must be exact and the
-allowed operations are those that preserve positivity of the partial transpose
-(PPT), the best output from a fixed number of copies is the solution of a
+allowed operations are the positive-partial-transpose (PPT) operations, whose
+partial transpose is again completely positive, the best output from a fixed number of copies is the solution of a
 semidefinite program that depends only on the support of the state. Zhu and
 Wang recently exhibited a rank-three support $P$ on two qutrits for which the
 asymptotic rate of exact PPT distillation lies strictly below the min-Rains
@@ -61,12 +61,11 @@ Distillation is the basic test of whether the entanglement in a mixed state
 is usable: Alice and Bob receive $n$ copies of a bipartite state $\rho$ and
 try to produce a maximally entangled state
 $\Phi_M=\frac1M\sum_{i,j=0}^{M-1}\ket{ii}\bra{jj}$ of the largest possible
-Schmidt rank $M$ \cite{Bennett1996}. In the exact (zero-error) version of the
+Schmidt rank $M$ \cite{Rains2001}. In the exact (zero-error) version of the
 task, the output must equal $\Phi_M$ with certainty. Operations of local
 quantum processing with classical communication are hard to characterize, and
-a standard relaxation allows every operation that maps states with positive
-partial transpose to states with positive partial transpose (PPT operations)
-\cite{Rains2001}. PPT states cannot be distilled at all
+a standard relaxation allows every operation whose partial transpose is also
+completely positive (PPT operations) \cite{Rains1999,Rains2001}. PPT states cannot be distilled at all
 \cite{Horodecki1998}, so the relaxation keeps the essential obstruction while
 turning the optimization into a semidefinite program.
 
@@ -81,8 +80,9 @@ $M\,W_0(P)\le1$, so the best integer output is
 $\lfloor W_0(P)^{-1}\rfloor$ \cite{WangDuan2016,ZhuWang2026}. The asymptotic
 rate $E^\infty_{0,\mathrm{PPT}}(\rho)$ is the limit of
 $-\frac1n\log_2W_0(P^{\otimes n})$. It is bounded above by the min-Rains
-relative entropy $R_{\min}$ \cite{WangDuan2017}, and Zhu and Wang have shown
-that this bound is not tight \cite{ZhuWang2026}. Their argument uses the fact
+relative entropy $R_{\min}$ \cite{WangDuan2017}. Whether this bound is
+tight was asked by Wang and Duan \cite{WangDuan2017}; Zhu and Wang have
+shown that it is not \cite{ZhuWang2026}. Their argument uses the fact
 that every feasible $E$ acts as the identity on the support, and a
 range-supported witness $T$ that gives $W_0(P^{\otimes n})\ge
 \norm{T^\Gamma}_1^{-n}$ for every $n$. For their explicit qutrit support the
@@ -107,23 +107,29 @@ $n\le4$, which gives $M_1,\dots,M_4=1,2,3,5$ exactly for every state with
 support $P$.
 
 \section{Related work}\label{sec:related}
-Bennett, DiVincenzo, Smolin and Wootters introduced entanglement distillation
-of mixed states and its connection to quantum error correction
-\cite{Bennett1996}. The Horodecki family showed that states with positive
+The Horodecki family showed that states with positive
 partial transpose are undistillable, which makes the partial transpose the
-natural tool for upper bounds \cite{Horodecki1998}. Rains formulated the
-semidefinite relaxation by PPT operations and the corresponding upper bound on
-distillable entanglement \cite{Rains2001}.
+natural tool for upper bounds \cite{Horodecki1998}. Rains extended the
+relative-entropy bound on distillable entanglement to PPT operations
+\cite{Rains1999} and then cast the fidelity of PPT distillation as a
+semidefinite program, which yields the semidefinite upper bound now called the
+Rains bound \cite{Rains2001}.
 
 Wang and Duan gave the semidefinite programs for exact PPT distillation that
-underlie the formulation \eqref{eq:W0} \cite{WangDuan2016}, and introduced the
-bound later called the min-Rains relative entropy, showing that the Rains bound
-is not additive \cite{WangDuan2017}. Fang, Wang, Tomamichel and Duan developed
-the non-asymptotic theory of distillation under PPT operations, including the
-one-shot exact setting \cite{Fang2019}. Our reformulation of the feasibility
-condition $M W_0(P)\le1$ and of the integer output
-$\lfloor W_0(P)^{-1}\rfloor$ follows the presentation of Zhu and Wang, who
-attribute it to \cite{WangDuan2016}.
+underlie the formulation \eqref{eq:W0} \cite{WangDuan2016}. In a second paper
+they introduced the bound later called the min-Rains relative entropy, showed
+numerically that the Rains bound is not additive, and asked in their
+conclusion whether the min-Rains relative entropy equals the exact PPT
+distillable entanglement \cite{WangDuan2017}. For pure states the exact
+question has a complete answer: Matthews and Winter showed that the exact PPT
+distillable entanglement of a pure state is the min-entropy of its Schmidt
+coefficients \cite[Prop.~4]{MatthewsWinter2008}. Fang, Wang, Tomamichel and
+Duan developed the one-shot and second-order theory of PPT distillation at
+nonzero error; at zero error their one-shot quantity reduces to the program of
+Wang and Duan \cite{Fang2019,WangDuan2016}. Our
+reformulation of the feasibility condition $M W_0(P)\le1$ and of the integer
+output $\lfloor W_0(P)^{-1}\rfloor$ follows the presentation of Zhu and Wang,
+who attribute it to \cite{WangDuan2016}.
 
 The present note depends directly on Zhu and Wang \cite{ZhuWang2026}. They
 proved that every feasible effect satisfies $EP=PE=P$, constructed the
@@ -131,12 +137,17 @@ range-supported witness and the bound
 $W_0(P^{\otimes n})\ge\norm{T^\Gamma}_1^{-n}$ (their Theorem~2.2), and gave the
 explicit qutrit support $P$ used here together with the rational certificate
 $\norm{T^\Gamma}_1<391/250$ and the lower bound
-$R_{\min}\ge-\log_2(6393/10000)\approx0.6454$ (their equation~(3.9)). They do
-not compute $W_0(P)$, give no achievability bound on the rate, and do not use a
-symmetrization argument. The exact value of $W_0(P)$, the explicit optimal
-effect, the resulting lower bound on the rate and the values of $M_1,\dots,M_4$
-were not found in this source or in the other works cited here; this is a
-statement about a documented search, not a certification of priority.
+$R_{\min}\ge-\log_2(6393/10000)\approx0.6454$ (their equation~(3.9)). Their
+Appendix~B evaluates the one-copy program exactly for antisymmetric supports
+$P_-$ in dimension $d$, where $W_0(P_-)$ coincides with the min-Rains quantity
+and equals $d/(d+2)$; these are the only exact evaluations of $W_0$ we found.
+For the qutrit support they do not compute $W_0(P)$, give no achievability
+bound on the rate, and do not use a symmetrization argument. The contribution
+of the present note is therefore the exact value of $W_0(P)$ on a support where
+$W_0$ differs from the min-Rains quantity, the explicit optimal effect, the
+resulting lower bound on the rate and the values of $M_1,\dots,M_4$. We found
+none of these in the works cited here; this records a documented search and
+does not certify priority.
 
 \section{Setting}\label{sec:setting}
 Let $\{\ket0,\ket1,\ket2\}$ be the computational basis of $\C^3$ and write
@@ -413,13 +424,6 @@ the cited sources and does not establish priority.
 \begingroup\small
 \begin{thebibliography}{99}
 \setlength{\itemsep}{2pt}
-\bibitem{Bennett1996}
-C.~H. Bennett, D.~P. DiVincenzo, J.~A. Smolin and W.~K. Wootters,
-\emph{Mixed-state entanglement and quantum error correction},
-Phys. Rev. A \textbf{54}, 3824 (1996);
-\href{https://doi.org/10.1103/PhysRevA.54.3824}{doi:10.1103/PhysRevA.54.3824};
-\href{https://arxiv.org/abs/quant-ph/9604024}{arXiv:quant-ph/9604024}.
-
 \bibitem{Horodecki1998}
 M. Horodecki, P. Horodecki and R. Horodecki,
 \emph{Mixed-state entanglement and distillation: is there a ``bound''
@@ -428,16 +432,26 @@ Phys. Rev. Lett. \textbf{80}, 5239 (1998);
 \href{https://doi.org/10.1103/PhysRevLett.80.5239}{doi:10.1103/PhysRevLett.80.5239};
 \href{https://arxiv.org/abs/quant-ph/9801069}{arXiv:quant-ph/9801069}.
 
+\bibitem{Rains1999}
+E.~M. Rains,
+\emph{Bound on distillable entanglement},
+Phys. Rev. A \textbf{60}, 179--184 (1999);
+\href{https://doi.org/10.1103/PhysRevA.60.179}{doi:10.1103/PhysRevA.60.179};
+revised version \emph{An improved bound on distillable entanglement},
+\href{https://arxiv.org/abs/quant-ph/9809082}{arXiv:quant-ph/9809082} (2000).
+
 \bibitem{Rains2001}
 E.~M. Rains,
 \emph{A semidefinite program for distillable entanglement},
-\href{https://arxiv.org/abs/quant-ph/0008047}{arXiv:quant-ph/0008047} (2000).
+IEEE Trans. Inf. Theory \textbf{47}, 2921--2933 (2001);
+\href{https://doi.org/10.1109/18.959270}{doi:10.1109/18.959270};
+\href{https://arxiv.org/abs/quant-ph/0008047}{arXiv:quant-ph/0008047}.
 
 \bibitem{WangDuan2016}
 X. Wang and R. Duan,
 \emph{Improved semidefinite programming upper bound on distillable
 entanglement},
-Phys. Rev. A \textbf{94}, 050301 (2016);
+Phys. Rev. A \textbf{94}, 050301(R) (2016);
 \href{https://doi.org/10.1103/PhysRevA.94.050301}{doi:10.1103/PhysRevA.94.050301};
 \href{https://arxiv.org/abs/1601.07940}{arXiv:1601.07940}.
 
@@ -451,9 +465,17 @@ Phys. Rev. A \textbf{95}, 062322 (2017);
 \bibitem{Fang2019}
 K. Fang, X. Wang, M. Tomamichel and R. Duan,
 \emph{Non-asymptotic entanglement distillation},
-IEEE Trans. Inf. Theory \textbf{65}, no.~10 (2019);
+IEEE Trans. Inf. Theory \textbf{65}, 6454--6465 (2019);
 \href{https://doi.org/10.1109/TIT.2019.2914688}{doi:10.1109/TIT.2019.2914688};
 \href{https://arxiv.org/abs/1706.06221}{arXiv:1706.06221}.
+
+\bibitem{MatthewsWinter2008}
+W. Matthews and A. Winter,
+\emph{Pure-state transformations and catalysis under operations that
+completely preserve positivity of partial transpose},
+Phys. Rev. A \textbf{78}, 012317 (2008);
+\href{https://doi.org/10.1103/PhysRevA.78.012317}{doi:10.1103/PhysRevA.78.012317};
+\href{https://arxiv.org/abs/0801.4322}{arXiv:0801.4322}.
 
 \bibitem{ZhuWang2026}
 C. Zhu and X. Wang,

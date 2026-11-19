@@ -48,7 +48,8 @@ rotations and the three gates $\CZ_{01}$, $\CZ_{12}$, $\CZ_{01}$, so a linear
 nearest-neighbour architecture suffices, and three is optimal. The proof rests
 on a characterization of the states reachable with two CZ gates: they are
 exactly the real states for which one of the three correlations
-$\langle Y_iY_k\rangle$ vanishes. This yields the exact CZ count of every real
+$\langle Y_iY_k\rangle$ vanishes, that is, for which some pair of qubits has
+zero rebit concurrence. This yields the exact CZ count of every real
 three-qubit state. For example, the W state needs exactly three CZ gates, and
 the state $\tfrac12(\ket{000}-\ket{011}-\ket{101}-\ket{110})$, whose
 hyperdeterminant equals $-1/4$, is prepared with three CZ gates by an explicit
@@ -78,7 +79,7 @@ setting. For a real state $\ket\phi=\sum_{n=0}^{7}w_n\ket n$ they consider
 \Delta(\phi)=(w_0w_7-w_1w_6-w_2w_5+w_3w_4)^2-4\,(w_1w_2-w_0w_3)(w_5w_6-w_4w_7),
 \end{equation}
 which is Cayley's hyperdeterminant of the $2\times2\times2$ tensor of
-amplitudes. They prove that every real three-qubit state is prepared with
+amplitudes \cite{Wootters2014}. They prove that every real three-qubit state is prepared with
 $R_y$ rotations and at most four CZ gates, that three CZ gates suffice when
 $\Delta(\phi)\ge0$, and they conjecture that four is optimal, that is, that
 some real three-qubit states cannot be prepared with real local gates and
@@ -90,7 +91,9 @@ on a line of three qubits, and three is the optimal worst-case count. The
 mechanism rests on two observations. First, the states reachable with two CZ
 gates are exactly those for which one correlation
 $E_{ik}=\langle Y_iY_k\rangle$ between two qubits vanishes, where $Y$ is the
-Pauli matrix. Second, conjugating $Y_0Y_2$ by $\CZ_{01}$ gives $Y_0Z_1Y_2$, and
+Pauli matrix; $\lvert E_{ik}\rvert$ is the rebit concurrence of the reduced
+state of qubits $i$ and $k$ \cite{CavesFuchsRungta2001}, so the condition says
+that this pair is unentangled. Second, conjugating $Y_0Y_2$ by $\CZ_{01}$ gives $Y_0Z_1Y_2$, and
 a single rotation of the middle qubit always cancels the expectation value of
 this operator, because it turns $Z_1$ within the plane spanned by $Z_1$ and
 $X_1$. The three correlations $E_{01},E_{02},E_{12}$ thus determine the exact
@@ -105,7 +108,15 @@ can be transformed into any other with at most four. Since CNOT and CZ differ by
 Hadamard gates on the target, the same counts hold for CZ gates. Their
 construction uses complex local gates, and the present note shows that the
 same count of three is achieved when local gates are restricted to real
-rotations.
+rotations. Their class of states reachable with two CNOT gates, of the form
+$\cos\phi\ket{\alpha\beta\gamma}+\sin\phi\ket{\alpha^\perp\beta'\gamma'}$, is
+the complex counterpart of the set characterized in Theorem~\ref{thm:two},
+where real local gates reduce membership to a single quadratic condition. They
+also observe that on a line of three qubits, where only nearest neighbours
+interact, their construction needs one additional CNOT for the GHZ-type states
+of their class~3; they state no lower bound for this architecture. For real
+states, Theorem~\ref{thm:three} shows that three CZ gates on a line always
+suffice.
 
 Perdomo, Castaneda and Vogeler \cite{Perdomo2022} introduced the real setting
 studied here, proved the bound of four CZ gates and the sufficient condition
@@ -113,21 +124,51 @@ $\Delta\ge0$ for three, and stated the conjecture that four is optimal. They
 give no lower-bound argument and no example of a state claimed to need four
 gates. Our Theorem~\ref{thm:three} refutes the conjecture, and
 Section~\ref{sec:delta} explains why their criterion is sufficient but not
-necessary. An earlier paper of Perdomo \cite{Perdomo2020} gives a canonical
-form of real three-qubit states under local orthogonal gates; it does not
-address CZ counts.
+necessary. An earlier paper of Perdomo \cite{Perdomo2020} reduces every real
+three-qubit state by local rotations to a canonical form with four parameters;
+apart from a remark in its introduction, it does not address CZ counts.
 
-Two recent works discuss real-amplitude targets without settling the question.
-Lee and Kim \cite{Lee2026} classify three-qubit states and give explicit
-preparation circuits with general single-qubit rotations; they cite
+The quantities that govern the count come from the entanglement theory of
+rebits, the real-amplitude analogue of qubits. Caves, Fuchs and Rungta
+\cite{CavesFuchsRungta2001} showed that the entanglement of formation of a real
+two-qubit density matrix $\rho$ is a function of the rebit concurrence
+$\lvert\Tr(\rho\,Y\otimes Y)\rvert$, which vanishes exactly when $\rho$ is
+separable; $E_{ik}$ is its signed version for the reduced state of qubits $i$
+and $k$. Wootters \cite{Wootters2014} defined the rebit three-tangle
+$\sigma_{ABC}$, showed that for a pure state it equals four times Cayley's
+hyperdeterminant without absolute value, so that it can be negative, and
+related it to the squared signed concurrences; the absolute value of the same
+quantity is the three-tangle of Coffman, Kundu and Wootters
+\cite{CoffmanKunduWootters2000}, $\tau_{ABC}=4\lvert\Delta\rvert$.
+Section~\ref{sec:delta} uses this relation to compare the criterion
+$\Delta\ge0$ with Theorem~\ref{thm:two}. Wootters had earlier exhibited a
+three-rebit state in which every pair is maximally entangled
+\cite{Wootters2012}; it is the example $N$ of Section~\ref{sec:examples}.
+
+Real circuits have been studied mainly for unitaries. Wei and Di
+\cite{WeiDi2012} showed that every two-qubit gate in $SO(4)$ is a real circuit
+with two CNOT gates and six $R_y$ rotations, the unitary analogue of
+Lemma~\ref{lem:twoqubits}, and synthesized every gate in $SO(8)$ with sixteen
+CNOT gates and single-qubit gates that include $R_z$ rotations. These results
+concern gates; the CZ count of real three-qubit state preparation is not
+addressed there.
+
+A recent classification discusses real-amplitude targets without settling the
+question. Lee and Kim \cite{Lee2026} classify three-qubit states and give
+explicit preparation circuits with general single-qubit rotations; they cite
 \cite{Perdomo2022} for its CZ-based formulation and its discussion of real
-targets but do not treat CZ counts for real circuits. Gomez \cite{Gomez2026}
-records the parameter-counting lower bound
-$\lceil(2^n-n-1)/2\rceil$ on the number of CNOT gates in circuits with real
-rotations, which equals $2$ for $n=3$, and notes that no tight lower bound is
-known for real targets. Theorem~\ref{thm:two} below shows that the bound $2$
-is not attained for generic states, so the true worst-case value for $n=3$ is
-three.
+targets but do not treat CZ counts for real circuits. Counting parameters gives
+a lower bound: a real $n$-qubit state depends on $2^n-1$ real parameters, the
+first layer of rotations supplies $n$ angles, and each CZ gate is followed by
+at most two new angles on the qubits it acts on, so at least
+$\lceil(2^n-n-1)/2\rceil$ CZ gates are needed, which equals $2$ for $n=3$.
+Theorem~\ref{thm:two} below shows that this bound is not attained for generic
+states, so the true worst-case value for $n=3$ is three. Real three-qubit state
+preparation also appears as a subroutine: Kristjuhan and Berry
+\cite{KristjuhanBerry2026} prepare a state with real-valued amplitudes and
+implement a three-qubit block of their phase-estimation circuit as a
+three-qubit state preparation (Sec.~IV), without stating its two-qubit gate
+count; Theorem~\ref{thm:three} bounds that cost by three CZ gates.
 
 \section{Setting and preliminaries}\label{sec:setting}
 Qubits are labelled $0,1,2$, and a subscript indicates the qubit on which an
@@ -148,7 +189,8 @@ state $\psi$ and a pair $\{i,k\}$ of qubits we set
 E_{ik}(\psi)=\bra\psi Y_iY_k\ket\psi .
 \]
 The operator $Y_iY_k$ is real and symmetric, so $E_{ik}(\psi)$ is a real
-quadratic form in the amplitudes of $\psi$.
+quadratic form in the amplitudes of $\psi$. Its absolute value is the rebit
+concurrence of the reduced state $\rho_{ik}$ \cite{CavesFuchsRungta2001}.
 
 \begin{lemma}[Invariance]\label{lem:inv}
 For every real density matrix $\rho$ of one qubit, $\Tr(\rho Y)=0$. The
@@ -328,6 +370,8 @@ The state
 \[
 N=\tfrac12\bigl(\ket{000}-\ket{011}-\ket{101}-\ket{110}\bigr)
 \]
+is the three-rebit state of Wootters in which every pair of qubits is
+maximally entangled \cite[Eq.~(13)]{Wootters2012}. It
 has $\Delta(N)=-1/4<0$, so it lies in the region where the method of
 \cite{Perdomo2022} uses four CZ gates. Its correlations are
 $E_{01}=E_{02}=E_{12}=1$, so by Corollary~\ref{cor:count} it needs exactly three.
@@ -350,6 +394,19 @@ about $22\%$, have $\Delta<0$. The criterion $\Delta\ge0$ of
 \cite{Perdomo2022} is therefore sufficient but not necessary for three CZ
 gates. The CZ count depends only on the vanishing of the three correlations
 $E_{ik}$ and on product structure, and the sign of $\Delta$ does not enter it.
+
+Wootters's monogamy relation for rebits makes the comparison explicit. For a
+pure real state, his Eqs.~(14), (17) and (24) \cite{Wootters2014}, with the
+one-qubit term $\sigma_{A|BC}=4\det\rho_A$, give
+\[
+4\Delta(\psi)=4\det\rho_0-E_{01}(\psi)^2-E_{02}(\psi)^2,
+\]
+where $\rho_0$ is the reduced state of qubit~$0$; the checker confirms this
+identity on random states. The criterion $\Delta\ge0$ thus asks that the
+pairwise rebit concurrences of qubit~$0$ be small compared with its
+entanglement with the other two qubits, whereas Theorem~\ref{thm:two} asks
+that one of them vanish. On $N$ every concurrence equals $1$ and
+$\det\rho_0=1/4$, so $4\Delta(N)=-1$.
 
 The three-CZ circuit of \cite{Perdomo2022} places one gate on each of the three
 pairs of qubits. The circuit of Theorem~\ref{thm:three} uses the pair
@@ -375,8 +432,10 @@ treats nine named or degenerate states (product, GHZ, W, $N$, three states
 that are products across a bipartition, $\ket{{+}{+}{+}}$ and a uniform
 superposition with one sign flipped), checks the converse of
 Theorem~\ref{thm:two} on all nine ordered sequences of two CZ gates with
-$200$ random circuits each, and confirms numerically that $\Delta$ is
-invariant under orthogonal local gates. It computes the generic rank of the
+$200$ random circuits each, confirms numerically that $\Delta$ is
+invariant under orthogonal local gates, and checks the identity
+$4\Delta=4\det\rho_q-E_{qa}^2-E_{qb}^2$ for each qubit $q$ on $500$ random
+states. It computes the generic rank of the
 Jacobian of the map from circuit angles to states: $6$ for two-CZ chains, and,
 up to relabelling the qubits, $4$ for the sequence $(01,01,01)$, $6$ for
 $(01,01,02)$, and $7$ for $(01,02,01)$, $(01,02,02)$ and $(01,02,12)$. Finally,
@@ -402,16 +461,22 @@ problem is not studied here. The case of four or more qubits is open: the
 parameter-counting bound $\lceil(2^n-n-1)/2\rceil$ equals $6$ for $n=4$, and
 this note gives no indication of whether it is attained.
 
-On bibliographic priority, the result was not found in the documented search,
-which consisted of targeted web searches and the reading of the works cited
-here; the list of works citing \cite{Perdomo2022} could not be retrieved in
-full. This does not certify priority.
+On bibliographic priority, the identification of $E_{ik}$ with the signed
+rebit concurrence and of $4\Delta$ with the rebit three-tangle is due to
+\cite{CavesFuchsRungta2001,Wootters2014}, and the two-CZ characterization, the
+three-CZ construction and the exact count are, to our knowledge, new. The
+search covered the five works citing \cite{Perdomo2022} listed by Semantic
+Scholar, OpenAlex and INSPIRE as of 19 November 2026, of which only a textbook
+was not read, together with targeted searches on real circuit synthesis and on
+rebit entanglement; none of them treats the CZ count of real circuits. This
+does not certify priority. The discussion of \cite{Perdomo2022} refers to its
+arXiv version.
 
-\begin{thebibliography}{9}
+\begin{thebibliography}{99}
 \setlength{\itemsep}{2pt}
 \bibitem{Znidaric2008}
 M. \v{Z}nidari\v{c}, O. Giraud and B. Georgeot,
-\emph{How many CNOT gates does it take to generate a three-qubit state?},
+\emph{Optimal number of controlled-NOT gates to generate a three-qubit state},
 Phys. Rev. A \textbf{77}, 032320 (2008);
 \href{https://doi.org/10.1103/PhysRevA.77.032320}{doi:10.1103/PhysRevA.77.032320};
 \href{https://arxiv.org/abs/0711.4021}{arXiv:0711.4021}.
@@ -419,27 +484,63 @@ Phys. Rev. A \textbf{77}, 032320 (2008);
 \bibitem{Perdomo2022}
 O. Perdomo, N. Castaneda and R. Vogeler,
 \emph{Preparation of 3-qubit states},
-arXiv preprint (2022);
-\href{https://arxiv.org/abs/2201.03724}{arXiv:2201.03724}.
+\href{https://arxiv.org/abs/2201.03724}{arXiv:2201.03724} (2022); published as
+\emph{Preparation of three-qubit states},
+Int. J. Quantum Inf. \textbf{23}(01), 2450046 (2025);
+\href{https://doi.org/10.1142/S0219749924500461}{doi:10.1142/S0219749924500461}.
 
 \bibitem{Perdomo2020}
 O. Perdomo,
-\emph{Schmidt representation of 3-qubits with real amplitudes},
-J. Phys. A: Math. Theor.;
+\emph{Canonical representation of three-qubit states with real amplitudes},
+J. Phys. A: Math. Theor. \textbf{54}(46), 465301 (2021);
 \href{https://doi.org/10.1088/1751-8121/ac2e27}{doi:10.1088/1751-8121/ac2e27};
-\href{https://arxiv.org/abs/2012.14031}{arXiv:2012.14031} (2020).
+\href{https://arxiv.org/abs/2012.14031}{arXiv:2012.14031}.
+
+\bibitem{CavesFuchsRungta2001}
+C. M. Caves, C. A. Fuchs and P. Rungta,
+\emph{Entanglement of formation of an arbitrary state of two rebits},
+Found. Phys. Lett. \textbf{14}(3), 199--212 (2001);
+\href{https://doi.org/10.1023/A:1012215309321}{doi:10.1023/A:1012215309321};
+\href{https://arxiv.org/abs/quant-ph/0009063}{arXiv:quant-ph/0009063}.
+
+\bibitem{CoffmanKunduWootters2000}
+V. Coffman, J. Kundu and W. K. Wootters,
+\emph{Distributed entanglement},
+Phys. Rev. A \textbf{61}, 052306 (2000);
+\href{https://doi.org/10.1103/PhysRevA.61.052306}{doi:10.1103/PhysRevA.61.052306};
+\href{https://arxiv.org/abs/quant-ph/9907047}{arXiv:quant-ph/9907047}.
+
+\bibitem{Wootters2012}
+W. K. Wootters,
+\emph{Entanglement sharing in real-vector-space quantum theory},
+Found. Phys. \textbf{42}(1), 19--28 (2012);
+\href{https://doi.org/10.1007/s10701-010-9488-1}{doi:10.1007/s10701-010-9488-1};
+\href{https://arxiv.org/abs/1007.1479}{arXiv:1007.1479}.
+
+\bibitem{Wootters2014}
+W. K. Wootters,
+\emph{The rebit three-tangle and its relation to two-qubit entanglement},
+J. Phys. A: Math. Theor. \textbf{47}(42), 424037 (2014);
+\href{https://doi.org/10.1088/1751-8113/47/42/424037}{doi:10.1088/1751-8113/47/42/424037};
+\href{https://arxiv.org/abs/1402.2219}{arXiv:1402.2219}.
+
+\bibitem{WeiDi2012}
+H.-R. Wei and Y.-M. Di,
+\emph{Decomposition of orthogonal matrix and synthesis of two-qubit and
+three-qubit orthogonal gates},
+\href{https://arxiv.org/abs/1203.0722}{arXiv:1203.0722} (2012).
+
+\bibitem{KristjuhanBerry2026}
+K. Kristjuhan and D. W. Berry,
+\emph{Quantum phase estimation with optimal confidence interval using three
+control qubits},
+\href{https://arxiv.org/abs/2601.16474v1}{arXiv:2601.16474v1} (2026).
 
 \bibitem{Lee2026}
 Y. Lee and T. Kim,
-\emph{Three-Qubit State Preparation: Classification and Explicit Circuits},
+\emph{Three-qubit-state preparation: Classification and explicit circuits},
 Phys. Rev. A \textbf{113}, 062444 (2026);
 \href{https://doi.org/10.1103/5bw6-339b}{doi:10.1103/5bw6-339b};
 \href{https://arxiv.org/abs/2603.00845}{arXiv:2603.00845}.
-
-\bibitem{Gomez2026}
-A. Gomez,
-\emph{New Methods and Frameworks for Quantum State Preparation in Modern
-Quantum Systems}, thesis (2026);
-\href{https://arxiv.org/abs/2608.16937}{arXiv:2608.16937}.
 \end{thebibliography}
 \end{document}

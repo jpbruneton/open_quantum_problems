@@ -370,7 +370,7 @@
       "max_abs_moment": 2944.711010086992
     }
   ],
-  "elapsed_seconds": 16.3,
+  "elapsed_seconds": 16.9,
   "sha256": {
     "checks/verify_moments.py": "3575c5d649be5daef82a7eaf9924ee5ac92b5fc412eb215a33e0a16f300a30be"
   },

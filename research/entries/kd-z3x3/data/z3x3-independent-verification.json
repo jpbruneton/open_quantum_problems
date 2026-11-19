@@ -1,6 +1,6 @@
 {
   "certificate": "z3x3-simple-certificate.json",
-  "certificate_sha256": "858513b172ba70e00674da72eebb2ae8eb55b23cea79cce13ee48b8d9cf0c464",
+  "certificate_sha256": "697f8317ec7c2448df4211e6f17ae7956a39c07c3f501c6eca7808fba25b77ba",
   "independent_checker_sha256": "86823356be198e651f8bcfbb09b48794f278f4049036a360fc8e6880bc75fceb",
   "arithmetic": "fractions only; no floating-point or optimization dependencies",
   "pure_KD_states_rebuilt": 54,
@@ -16,5 +16,5 @@
   "trace_norm_distance_to_pure_KD_hull_lower_bound": "111/20000",
   "conclusion": "rho is KD positive and outside convex hull of all pure KD-positive states for Z3 x Z3",
   "novelty": "not certified",
-  "seconds": 0.031
+  "seconds": 0.0252
 }

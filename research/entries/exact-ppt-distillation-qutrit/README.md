@@ -27,6 +27,6 @@ The checker requires NumPy, SciPy and SymPy. It uses a fixed seed and no network
 
 **Computational verification.** The block data, feasibility, spectrum of the optimal partial transpose and integer bounds are checked exactly. The lower bound on `W₀(P)` is additionally tested in floating point; these tests support but do not replace the proof. The dual witness of Remark 3 is evaluated numerically only.
 
-**Bibliographic priority.** The exact one-copy value, the optimal effect and the values of `M₁, …, M₄` were not found in the source paper or in the other cited works. This is a documented, targeted search, not a certification of priority.
+**Bibliographic priority.** Zhu and Wang (arXiv:2608.12135v1, the only version as of 19 November 2026) bound `W₀(P)` from below by `250/391 ≈ 0.6394` and give no achievability bound on the rate; their Appendix B evaluates `W₀` exactly only for antisymmetric supports, where it equals the min-Rains quantity `d/(d+2)`. The new content of the note is the exact value of `W₀(P)` on a support where `W₀` differs from the min-Rains quantity, the optimal effect, the resulting rate lower bound and `M₁, …, M₄`. None of these was found in the cited works or in the issues and pull requests of `the-omega-institute/trureturing` (searched 19 November 2026). This is a documented, targeted search, not a certification of priority. The bibliography cites only works read in full for the statements they support.
 
 **Open.** Multiplicativity of `W₀` on this support, the value `M₅ ∈ {8, 9}`, and the exact asymptotic rate.
