@@ -1,0 +1,445 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{plain}
+\DeclareMathOperator{\Tr}{Tr}
+\newcommand{\ket}[1]{\lvert#1\rangle}
+\newcommand{\bra}[1]{\langle#1\rvert}
+\newcommand{\braket}[2]{\langle#1\vert#2\rangle}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\T}{\mathsf{T}}
+\newcommand{\CZ}{\mathrm{CZ}}
+\setlength{\emergencystretch}{2em}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em plus 0.1em minus 0.1em}
+\title{Every real three-qubit state can be prepared\\
+with rotations and three CZ gates}
+\author{Fable \& Astra\\[0.35em]
+\normalsize Research led by Jean-Philippe Bruneton\\[-0.1em]
+\small Universit\'e Paris Cit\'e, France}
+\date{19 November 2026}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+A three-qubit state is real when its eight amplitudes in the computational
+basis are real numbers. Such states can be prepared from $\ket{000}$ by a
+circuit that is itself real: single-qubit rotations $R_y(\theta)$ and
+controlled-$Z$ (CZ) gates between pairs of qubits. The two-qubit gates are
+the expensive resource, and the question is how many CZ gates the worst real
+state requires. Perdomo, Castaneda and Vogeler proved that four always
+suffice, that three suffice when Cayley's hyperdeterminant of the amplitudes
+is nonnegative, and conjectured that four is optimal. We show that the
+conjecture is false. Every real three-qubit state is prepared by $R_y$
+rotations and the three gates $\CZ_{01}$, $\CZ_{12}$, $\CZ_{01}$, so a linear
+nearest-neighbour architecture suffices, and three is optimal. The proof rests
+on a characterization of the states reachable with two CZ gates: they are
+exactly the real states for which one of the three correlations
+$\langle Y_iY_k\rangle$ vanishes. This yields the exact CZ count of every real
+three-qubit state. For example, the W state needs exactly three CZ gates, and
+the state $\tfrac12(\ket{000}-\ket{011}-\ket{101}-\ket{110})$, whose
+hyperdeterminant equals $-1/4$, is prepared with three CZ gates by an explicit
+circuit with angles that are multiples of $\pi/2$.
+\end{abstract}
+
+\section{Introduction}
+Preparing a prescribed quantum state from a product state is the first step of
+many quantum algorithms, and on current hardware the cost of a preparation
+circuit is dominated by its two-qubit gates. For three qubits with arbitrary
+complex single-qubit gates the answer is classical: three CNOT gates suffice
+to prepare any pure state \cite{Znidaric2008}. Many targets of practical
+interest are real, that is, all their amplitudes in the computational basis
+are real numbers, and it is natural to prepare them with a circuit that stays
+in the real numbers throughout: rotations
+\[
+R_y(\theta)=e^{-i\theta Y/2}=\begin{pmatrix}\cos\frac\theta2&-\sin\frac\theta2\\[0.2em]
+\sin\frac\theta2&\cos\frac\theta2\end{pmatrix}
+\]
+on single qubits, and the controlled-$Z$ gate $\CZ=\mathrm{diag}(1,1,1,-1)$ on
+any pair of qubits. Real local gates carry half as many parameters as complex
+ones, so nothing guarantees a priori that three two-qubit gates still suffice.
+
+Perdomo, Castaneda and Vogeler \cite{Perdomo2022} studied exactly this
+setting. For a real state $\ket\phi=\sum_{n=0}^{7}w_n\ket n$ they consider
+\begin{equation}\label{eq:delta}
+\Delta(\phi)=(w_0w_7-w_1w_6-w_2w_5+w_3w_4)^2-4\,(w_1w_2-w_0w_3)(w_5w_6-w_4w_7),
+\end{equation}
+which is Cayley's hyperdeterminant of the $2\times2\times2$ tensor of
+amplitudes. They prove that every real three-qubit state is prepared with
+$R_y$ rotations and at most four CZ gates, that three CZ gates suffice when
+$\Delta(\phi)\ge0$, and they conjecture that four is optimal, that is, that
+some real three-qubit states cannot be prepared with real local gates and
+fewer than four CZ gates.
+
+This note shows that the conjecture is false. Three CZ gates suffice for every
+real three-qubit state, in the fixed arrangement $\CZ_{01},\CZ_{12},\CZ_{01}$
+on a line of three qubits, and three is the optimal worst-case count. The
+mechanism rests on two observations. First, the states reachable with two CZ
+gates are exactly those for which one correlation
+$E_{ik}=\langle Y_iY_k\rangle$ between two qubits vanishes, where $Y$ is the
+Pauli matrix. Second, conjugating $Y_0Y_2$ by $\CZ_{01}$ gives $Y_0Z_1Y_2$, and
+a single rotation of the middle qubit always cancels the expectation value of
+this operator, because it turns $Z_1$ within the plane spanned by $Z_1$ and
+$X_1$. The three correlations $E_{01},E_{02},E_{12}$ thus determine the exact
+CZ count of every real three-qubit state, and the sign of the hyperdeterminant
+plays no role in it.
+
+\section{Related work}\label{sec:related}
+\v{Z}nidari\v{c}, Giraud and Georgeot \cite{Znidaric2008} showed that any three-qubit
+pure state can be prepared from a product state with at most three CNOT gates
+when single-qubit gates are arbitrary unitaries, and that any three-qubit state
+can be transformed into any other with at most four. Since CNOT and CZ differ by
+Hadamard gates on the target, the same counts hold for CZ gates. Their
+construction uses complex local gates, and the present note shows that the
+same count of three is achieved when local gates are restricted to real
+rotations.
+
+Perdomo, Castaneda and Vogeler \cite{Perdomo2022} introduced the real setting
+studied here, proved the bound of four CZ gates and the sufficient condition
+$\Delta\ge0$ for three, and stated the conjecture that four is optimal. They
+give no lower-bound argument and no example of a state claimed to need four
+gates. Our Theorem~\ref{thm:three} refutes the conjecture, and
+Section~\ref{sec:delta} explains why their criterion is sufficient but not
+necessary. An earlier paper of Perdomo \cite{Perdomo2020} gives a canonical
+form of real three-qubit states under local orthogonal gates; it does not
+address CZ counts.
+
+Two recent works discuss real-amplitude targets without settling the question.
+Lee and Kim \cite{Lee2026} classify three-qubit states and give explicit
+preparation circuits with general single-qubit rotations; they cite
+\cite{Perdomo2022} for its CZ-based formulation and its discussion of real
+targets but do not treat CZ counts for real circuits. Gomez \cite{Gomez2026}
+records the parameter-counting lower bound
+$\lceil(2^n-n-1)/2\rceil$ on the number of CNOT gates in circuits with real
+rotations, which equals $2$ for $n=3$, and notes that no tight lower bound is
+known for real targets. Theorem~\ref{thm:two} below shows that the bound $2$
+is not attained for generic states, so the true worst-case value for $n=3$ is
+three.
+
+\section{Setting and preliminaries}\label{sec:setting}
+Qubits are labelled $0,1,2$, and a subscript indicates the qubit on which an
+operator acts. For an angle $a$ let
+\[
+D(a)=\begin{pmatrix}\cos a&-\sin a\\ \sin a&\cos a\end{pmatrix}=R_y(2a),
+\qquad c(a)=D(a)\ket0=(\cos a,\sin a)^\T .
+\]
+The allowed local gates are the real orthogonal $2\times2$ matrices, namely
+the rotations $D(a)$ and the reflections $D(a)Z$. Reflections add nothing:
+$Z$ commutes with every CZ gate, satisfies $ZD(a)=D(-a)Z$ and fixes $\ket0$, so
+every reflection can be pushed to the beginning of the circuit, where it acts
+trivially. Circuits with orthogonal local gates and circuits with rotations
+therefore prepare the same states, and the global sign $-1$ is itself the
+rotation $D(\pi)$. All states below are real and normalized, and for such a
+state $\psi$ and a pair $\{i,k\}$ of qubits we set
+\[
+E_{ik}(\psi)=\bra\psi Y_iY_k\ket\psi .
+\]
+The operator $Y_iY_k$ is real and symmetric, so $E_{ik}(\psi)$ is a real
+quadratic form in the amplitudes of $\psi$.
+
+\begin{lemma}[Invariance]\label{lem:inv}
+For every real density matrix $\rho$ of one qubit, $\Tr(\rho Y)=0$. The
+quantities $E_{ik}$ are invariant under any rotation $D(a)$ applied to any
+qubit.
+\end{lemma}
+
+\begin{proof}
+The matrix $Y$ is purely imaginary and antisymmetric, so its trace against a
+real symmetric matrix vanishes. The invariance follows because
+$D(a)=e^{-iaY}$ commutes with $Y$ and with the identity.
+\end{proof}
+
+\begin{lemma}[Slices]\label{lem:slices}
+Let $j$ be the qubit distinct from $i$ and $k$, and write
+$\psi=\ket0_j\otimes T_0+\ket1_j\otimes T_1$, where $T_0$ and $T_1$ are the
+real $2\times2$ matrices of amplitudes with rows indexed by qubit $i$ and
+columns by qubit $k$. Then $E_{ik}(\psi)=-2(\det T_0+\det T_1)$.
+\end{lemma}
+
+\begin{proof}
+With $\varepsilon=iY=\left(\begin{smallmatrix}0&1\\-1&0\end{smallmatrix}\right)$
+we have $Y\otimes Y=-\varepsilon\otimes\varepsilon$, and for a real matrix $T$
+viewed as a vector of two qubits,
+$\sum_{a,b,a',b'}T_{ab}\,\varepsilon_{aa'}\varepsilon_{bb'}\,T_{a'b'}
+=2(T_{00}T_{11}-T_{01}T_{10})=2\det T$. Since $Y_iY_k$ acts trivially on
+qubit $j$, the two slices contribute additively.
+\end{proof}
+
+\begin{lemma}[Two qubits]\label{lem:twoqubits}
+Every real normalized state $\chi$ of two qubits is prepared from $\ket{00}$
+with rotations and at most one CZ gate.
+\end{lemma}
+
+\begin{proof}
+Let $M$ be the $2\times2$ matrix of amplitudes of $\chi$. The real singular
+value decomposition gives $M=U\,\mathrm{diag}(s_0,s_1)\,V^\T$ with rotations $U$
+and $V$, $s_0\ge0$, $s_1\in\R$ and $s_0^2+s_1^2=1$; the sign of $s_1$ absorbs
+a possible determinant $-1$ of the orthogonal factors. Hence
+$\chi=(U\otimes V)(s_0\ket{00}+s_1\ket{11})$. Choose $\mu$ with
+$\cos\mu=s_0$ and $\sin\mu=-s_1$. Since $c(\pi/4)=\ket+$,
+\[
+\CZ\,\bigl(c(\mu)\otimes\ket+\bigr)=\cos\mu\,\ket0\ket+ +\sin\mu\,\ket1\ket-,
+\]
+and $D(-\pi/4)\ket+=\ket0$, $D(-\pi/4)\ket-=-\ket1$. Therefore
+\[
+s_0\ket{00}+s_1\ket{11}=\bigl(I\otimes D(-\pi/4)\bigr)\,\CZ\,\bigl(D(\mu)\otimes D(\pi/4)\bigr)\ket{00}. \qedhere
+\]
+\end{proof}
+
+\section{States reachable with two CZ gates}\label{sec:two}
+\begin{theorem}\label{thm:two}
+Let $\psi$ be a real normalized three-qubit state and $\{i,j,k\}=\{0,1,2\}$.
+If $E_{ik}(\psi)=0$, then $\psi$ is prepared from $\ket{000}$ with rotations and
+the two gates $\CZ_{ij}$ followed by $\CZ_{jk}$. Conversely, every state
+prepared with rotations and at most two CZ gates satisfies $E_{ik}=0$ for at
+least one pair $\{i,k\}$.
+\end{theorem}
+
+\begin{proof}
+\emph{Sufficiency.} Suppose $E_{ik}(\psi)=0$ and let $T_0,T_1$ be the slices of
+Lemma~\ref{lem:slices}, so that $\det T_0+\det T_1=0$. The function
+$q(u)=\det(u_0T_0+u_1T_1)$ on $u\in\R^2$ is a quadratic form whose symmetric
+matrix $Q$ has trace $\det T_0+\det T_1=0$. Its eigenvalues are therefore
+$\lambda$ and $-\lambda$, with orthonormal eigenvectors $e_+$ and $e_-$. The
+vectors $u=(e_++e_-)/\sqrt2$ and $v=(e_+-e_-)/\sqrt2$ are orthonormal and
+satisfy $q(u)=q(v)=(\lambda-\lambda)/2=0$. Replacing $v$ by $-v$ if necessary,
+the matrix $G$ with rows $u$ and $v$ is a rotation. The state $G_j\psi$ has
+slices $S_0=u_0T_0+u_1T_1$ and $S_1=v_0T_0+v_1T_1$, both singular, so
+$S_s=a_s\,c(\gamma_s)^\T$ with $a_s\in\R^2$ (qubit $i$) and an angle
+$\gamma_s$ (qubit $k$), taking $a_s=0$ if $S_s=0$. Hence
+\[
+G_j\psi=a_0\otimes\ket0_j\otimes c(\gamma_0)+a_1\otimes\ket1_j\otimes c(\gamma_1).
+\]
+Put $\varrho=(\gamma_0+\gamma_1)/2$, $\gamma=(\gamma_0-\gamma_1)/2$ and
+$\chi=a_0\otimes\ket0_j+a_1\otimes\ket1_j$, a real normalized state of qubits
+$i$ and $j$. Since $Z\,c(\gamma)=c(-\gamma)$,
+\[
+\CZ_{jk}\bigl(\chi\otimes c(\gamma)\bigr)
+=a_0\otimes\ket0\otimes c(\gamma)+a_1\otimes\ket1\otimes c(-\gamma),
+\]
+and $D_k(\varrho)$ maps $c(\gamma)$ to $c(\gamma_0)$ and $c(-\gamma)$ to
+$c(\gamma_1)$. Consequently
+$\psi=G_j^{-1}D_k(\varrho)\,\CZ_{jk}\bigl(\chi\otimes D(\gamma)\ket0\bigr)$, and
+$\chi$ is prepared with one gate $\CZ_{ij}$ by Lemma~\ref{lem:twoqubits}.
+
+\emph{Necessity.} A circuit without CZ gates produces a real product state, for
+which $E_{ik}=\langle Y_i\rangle\langle Y_k\rangle=0$ by
+Lemma~\ref{lem:inv}. If all CZ gates (one or two) act on the same pair
+$\{i,j\}$, qubit $k$ remains in a real pure state uncorrelated with the
+others, and $E_{ik}=\Tr(\rho_iY)\,\langle Y_k\rangle=0$, where $\rho_i$ is the
+real reduced state of qubit $i$. Otherwise the two gates act on two distinct
+pairs, which share exactly one qubit; call it $j$ and name the other two so
+that the circuit applies $\CZ_{ij}$ and then $\CZ_{jk}$. Immediately before
+the second gate the state is $\varphi=\chi_{ij}\otimes c_k$ with $\chi$ and
+$c$ real, and the rotations after it do not change $E_{ik}$
+(Lemma~\ref{lem:inv}). The relation $\CZ_{jk}Y_k\CZ_{jk}=Z_jY_k$ and
+Lemma~\ref{lem:inv} give, for the final state $\psi$,
+\[
+E_{ik}(\psi)=\bra\varphi\CZ_{jk}\,Y_iY_k\,\CZ_{jk}\ket\varphi
+=\bra\chi Y_iZ_j\ket\chi\,\bra cY\ket c=0. \qedhere
+\]
+\end{proof}
+
+The set of real states reachable with at most two CZ gates is therefore the
+union of the three quadric hypersurfaces $E_{01}=0$, $E_{02}=0$, $E_{12}=0$ of
+the unit sphere $S^7\subset\R^8$. None of the three quadratic forms vanishes
+identically (they all equal $2/3$ on the W state, see
+Section~\ref{sec:examples}), so this set has measure zero.
+
+\section{Three CZ gates suffice}\label{sec:three}
+\begin{theorem}\label{thm:three}
+Every real normalized three-qubit state $\psi$ is prepared from $\ket{000}$ with
+rotations and the three gates $\CZ_{01}$, $\CZ_{12}$, $\CZ_{01}$, applied in
+this order. In particular a linear connectivity $0-1-2$ suffices.
+\end{theorem}
+
+\begin{proof}
+Let $e_Z=\bra\psi Y_0Z_1Y_2\ket\psi$ and $e_X=\bra\psi Y_0X_1Y_2\ket\psi$. A
+direct computation gives $D(\alpha)^\T Z\,D(\alpha)=\cos2\alpha\,Z-\sin2\alpha\,X$,
+so
+\[
+\bra{D_1(\alpha)\psi}\,Y_0Z_1Y_2\,\ket{D_1(\alpha)\psi}=e_Z\cos2\alpha-e_X\sin2\alpha .
+\]
+This expression vanishes for some $\alpha$: take $2\alpha$ to be the argument of
+the vector $(e_X,e_Z)$, and any $\alpha$ if $e_Z=e_X=0$. Fix such an $\alpha$ and
+let $\varphi=\CZ_{01}D_1(\alpha)\psi$, a real normalized state. Since
+$\CZ_{01}Y_0\CZ_{01}=Y_0Z_1$ and $\CZ_{01}$ commutes with $Y_2$,
+\[
+E_{02}(\varphi)=\bra{D_1(\alpha)\psi}\CZ_{01}\,Y_0Y_2\,\CZ_{01}\ket{D_1(\alpha)\psi}
+=\bra{D_1(\alpha)\psi}Y_0Z_1Y_2\ket{D_1(\alpha)\psi}=0 .
+\]
+Theorem~\ref{thm:two} with $i=0$, $j=1$, $k=2$ prepares $\varphi$ with
+rotations and the gates $\CZ_{01}$ then $\CZ_{12}$. Finally
+$\psi=D_1(-\alpha)\,\CZ_{01}\,\varphi$.
+\end{proof}
+
+The proof is constructive and uses only expectation values, one
+diagonalization of a symmetric $2\times2$ matrix and three $2\times2$ singular
+value decompositions. After merging adjacent rotations, the circuit contains
+eight rotations: two on qubit $0$, four on qubit $1$ (the first being the
+fixed rotation $D(\pi/4)$) and two on qubit $2$. It therefore carries seven
+free angles, as many as the dimension of the sphere $S^7$ of real normalized
+states.
+
+\begin{corollary}[Exact CZ count]\label{cor:count}
+The minimal number of CZ gates needed to prepare a real three-qubit state
+$\psi$ from $\ket{000}$ with real local gates is
+\begin{itemize}
+\item $0$ if $\psi$ is a product state;
+\item $1$ if $\psi$ is a product across some bipartition $\{i,j\}|\{k\}$ but not
+a full product state;
+\item $2$ if $\psi$ is not a product across any bipartition and at least one of
+$E_{01}(\psi)$, $E_{02}(\psi)$, $E_{12}(\psi)$ vanishes;
+\item $3$ in all other cases, which include almost every real state.
+\end{itemize}
+In particular, three is the optimal worst-case number.
+\end{corollary}
+
+\begin{proof}
+A circuit with at most one CZ gate, acting on $\{i,j\}$, produces a state of
+the form $\chi_{ij}\otimes c_k$, and Lemma~\ref{lem:twoqubits} prepares every
+state of this form with at most one CZ gate. The last two cases follow from
+Theorems~\ref{thm:two} and~\ref{thm:three}, and the measure statement from the
+remark after Theorem~\ref{thm:two}.
+\end{proof}
+
+\section{Examples}\label{sec:examples}
+The GHZ state $(\ket{000}+\ket{111})/\sqrt2$ has $E_{01}=E_{02}=E_{12}=0$ and is
+not a product across any bipartition, so it needs exactly two CZ gates. The W
+state $(\ket{001}+\ket{010}+\ket{100})/\sqrt3$ has
+$E_{01}=E_{02}=E_{12}=2/3$ and needs exactly three; its hyperdeterminant
+vanishes, so it is already covered by the criterion $\Delta\ge0$ of
+\cite{Perdomo2022}.
+
+The state
+\[
+N=\tfrac12\bigl(\ket{000}-\ket{011}-\ket{101}-\ket{110}\bigr)
+\]
+has $\Delta(N)=-1/4<0$, so it lies in the region where the method of
+\cite{Perdomo2022} uses four CZ gates. Its correlations are
+$E_{01}=E_{02}=E_{12}=1$, so by Corollary~\ref{cor:count} it needs exactly three.
+The construction of Theorem~\ref{thm:three} gives the following circuit, listed
+in order of application:
+\[
+R_y(\tfrac\pi2)_0,\ R_y(\tfrac\pi2)_1,\ \CZ_{01},\ R_y(-\tfrac\pi2)_1,\
+R_y(-\tfrac{3\pi}2)_0,\ R_y(\tfrac\pi2)_2,\ \CZ_{12},\ R_y(\pi)_2,\
+R_y(\tfrac\pi2)_1,\ \CZ_{01}.
+\]
+Its output is exactly $N$, as the checker verifies in exact arithmetic.
+
+\section{Relation to the hyperdeterminant criterion}\label{sec:delta}
+The hyperdeterminant is multiplied by $(\det g_0\det g_1\det g_2)^2$ when the
+local gates $g_0\otimes g_1\otimes g_2$ act on the amplitude tensor, so it is
+invariant under real orthogonal local gates. The states with $\Delta<0$ form a
+nonempty open subset of $S^7$ (it contains $N$), hence a set of positive
+measure; in a sample of $20\,000$ states drawn uniformly from $S^7$, $4\,330$,
+about $22\%$, have $\Delta<0$. The criterion $\Delta\ge0$ of
+\cite{Perdomo2022} is therefore sufficient but not necessary for three CZ
+gates. The CZ count depends only on the vanishing of the three correlations
+$E_{ik}$ and on product structure, and the sign of $\Delta$ does not enter it.
+
+The three-CZ circuit of \cite{Perdomo2022} places one gate on each of the three
+pairs of qubits. The circuit of Theorem~\ref{thm:three} uses the pair
+$\{0,1\}$ twice and never the pair $\{0,2\}$, and the proof relies on the
+identity $\CZ_{01}Y_0Y_2\CZ_{01}=Y_0Z_1Y_2$ attached to this arrangement.
+Whether the triangular arrangement alone reaches every real state is not
+settled here; the generic rank computation of Section~\ref{sec:verification}
+shows only that it reaches a full-dimensional set.
+
+\section{Verification}\label{sec:verification}
+The theorems are proved above, and the public
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/real-three-qubit-states-three-cz/checks/verify_three_cz.py}{Python checker}
+tests the construction independently; its
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/real-three-qubit-states-three-cz/data/verification.json}{recorded output}
+is part of the same entry. The checker implements the synthesis of
+Theorems~\ref{thm:two} and~\ref{thm:three} and simulates the resulting circuits.
+It confirms the identities $\CZ_{01}Y_0Y_2\CZ_{01}=Y_0Z_1Y_2$ and
+$\CZ(Y\otimes Y)\CZ=X\otimes X$ exactly. It synthesizes a three-CZ circuit for
+$20\,000$ states drawn uniformly from $S^7$, and for $5\,000$ further states
+all with $\Delta<0$; in both samples the largest infidelity
+$1-\lvert\braket{\text{target}}{\text{output}}\rvert$ is below $10^{-15}$. It
+treats nine named or degenerate states (product, GHZ, W, $N$, three states
+that are products across a bipartition, $\ket{{+}{+}{+}}$ and a uniform
+superposition with one sign flipped), checks the converse of
+Theorem~\ref{thm:two} on all nine ordered sequences of two CZ gates with
+$200$ random circuits each, and confirms numerically that $\Delta$ is
+invariant under orthogonal local gates. It computes the generic rank of the
+Jacobian of the map from circuit angles to states: $6$ for two-CZ chains, and,
+up to relabelling the qubits, $4$ for the sequence $(01,01,01)$, $6$ for
+$(01,01,02)$, and $7$ for $(01,02,01)$, $(01,02,02)$ and $(01,02,12)$. Finally,
+in exact symbolic arithmetic, it verifies that the circuit of
+Section~\ref{sec:examples} outputs $N$, that $\Delta(N)=-1/4$,
+$E_{ik}(N)=1$ and $E_{ik}(W)=2/3$ for all pairs. The checker uses fixed seeds
+and runs in about ten seconds.
+
+\section{Scope and limitations}\label{sec:scope}
+The analytic content is complete: Theorems~\ref{thm:two} and~\ref{thm:three}
+and Corollary~\ref{cor:count} are proved above, and they show that the
+conjecture of \cite{Perdomo2022} is false and that the optimal worst-case
+number of CZ gates for real three-qubit states with real local gates is three.
+The computations confirm the construction to machine precision on random and
+named states and verify the example circuit exactly; the validity of the
+result rests on the proofs, not on the samples. The fraction of states with
+$\Delta<0$ is a numerical estimate.
+
+The result concerns preparation from $\ket{000}$. It says nothing about the
+number of CZ gates needed to map one arbitrary real state to another by a real
+circuit; composing two preparations gives six, and the optimal value of that
+problem is not studied here. The case of four or more qubits is open: the
+parameter-counting bound $\lceil(2^n-n-1)/2\rceil$ equals $6$ for $n=4$, and
+this note gives no indication of whether it is attained.
+
+On bibliographic priority, the result was not found in the documented search,
+which consisted of targeted web searches and the reading of the works cited
+here; the list of works citing \cite{Perdomo2022} could not be retrieved in
+full. This does not certify priority.
+
+\begin{thebibliography}{9}
+\setlength{\itemsep}{2pt}
+\bibitem{Znidaric2008}
+M. \v{Z}nidari\v{c}, O. Giraud and B. Georgeot,
+\emph{How many CNOT gates does it take to generate a three-qubit state?},
+Phys. Rev. A \textbf{77}, 032320 (2008);
+\href{https://doi.org/10.1103/PhysRevA.77.032320}{doi:10.1103/PhysRevA.77.032320};
+\href{https://arxiv.org/abs/0711.4021}{arXiv:0711.4021}.
+
+\bibitem{Perdomo2022}
+O. Perdomo, N. Castaneda and R. Vogeler,
+\emph{Preparation of 3-qubit states},
+arXiv preprint (2022);
+\href{https://arxiv.org/abs/2201.03724}{arXiv:2201.03724}.
+
+\bibitem{Perdomo2020}
+O. Perdomo,
+\emph{Schmidt representation of 3-qubits with real amplitudes},
+J. Phys. A: Math. Theor.;
+\href{https://doi.org/10.1088/1751-8121/ac2e27}{doi:10.1088/1751-8121/ac2e27};
+\href{https://arxiv.org/abs/2012.14031}{arXiv:2012.14031} (2020).
+
+\bibitem{Lee2026}
+Y. Lee and T. Kim,
+\emph{Three-Qubit State Preparation: Classification and Explicit Circuits},
+Phys. Rev. A \textbf{113}, 062444 (2026);
+\href{https://doi.org/10.1103/5bw6-339b}{doi:10.1103/5bw6-339b};
+\href{https://arxiv.org/abs/2603.00845}{arXiv:2603.00845}.
+
+\bibitem{Gomez2026}
+A. Gomez,
+\emph{New Methods and Frameworks for Quantum State Preparation in Modern
+Quantum Systems}, thesis (2026);
+\href{https://arxiv.org/abs/2608.16937}{arXiv:2608.16937}.
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,517 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{plain}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\artanh}{artanh}
+\newcommand{\ket}[1]{\lvert#1\rangle}
+\newcommand{\bra}[1]{\langle#1\rvert}
+\newcommand{\braket}[2]{\langle#1\vert#2\rangle}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\one}{\mathbf{1}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\T}{\mathsf{T}}
+\newcommand{\CF}{C_{\sqrt F}}
+\setlength{\emergencystretch}{2em}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em plus 0.1em minus 0.1em}
+\title{The root-fidelity matrix bounds the Holevo quantity\\
+of any three qubit states}
+\author{Fable \& Astra\\[0.35em]
+\normalsize Research led by Jean-Philippe Bruneton\\[-0.1em]
+\small Universit\'e Paris Cit\'e, France}
+\date{19 November 2026}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+A sender who encodes a classical label into one of several quantum states can
+transmit at most the Holevo quantity $\chi$ of the ensemble, and this quantity
+is small when the states are hard to tell apart. Fannes, de Melo, Roga and
+\.Zyczkowski proposed to bound $\chi$ for three states by a quantity built only
+from the prior probabilities $p_i$ and the pairwise fidelities $F_{ij}$: the
+von Neumann entropy of the $3\times3$ matrix with entries
+$\sqrt{p_ip_j}\sqrt{F_{ij}}$. They proved the conjecture for pure states, and
+it has since been established for special families of mixed states. We prove it
+for any three qubit states, pure or mixed, with arbitrary probabilities. The
+proof goes through a stronger statement valid for any number $K$ of qubit
+states: $\chi$ is at most the entropy of a qubit whose determinant equals
+$e_2=\sum_{i<j}p_ip_j(1-F_{ij})$, with equality exactly when all states are
+pure or all are equal. We also give a sufficient condition in every dimension:
+the conjecture holds whenever the three states are the image, under a positive
+trace-preserving map, of three pure states with the same fidelities. This
+condition covers pure states, the commuting-type families known so far, and
+qubits, where the relevant map is positive but not completely positive. The
+conjecture remains open in dimension three and above; a numerical search for
+counterexamples in dimensions $3$, $4$ and $5$ found none.
+\end{abstract}
+
+\section{Introduction}
+A sender draws a label $i$ with probability $p_i$ and prepares the quantum
+state $\rho_i$. However the receiver measures, the mutual information between
+the label and the outcome is bounded by the Holevo quantity
+\begin{equation}\label{eq:chi}
+\chi(\mathcal E)=S\Bigl(\sum_ip_i\rho_i\Bigr)-\sum_ip_iS(\rho_i),
+\qquad S(\sigma)=-\Tr\sigma\log\sigma ,
+\end{equation}
+of the ensemble $\mathcal E=\{(p_i,\rho_i)\}$. The Holevo quantity measures how
+distinguishable the states are as a family: identical states carry no
+information, orthogonal pure states carry the Shannon entropy of the labels.
+Fannes, de Melo, Roga and \.Zyczkowski \cite{FdMRZ2012} asked how far $\chi$ can
+be controlled by pairwise data alone, namely by the probabilities and the
+Uhlmann fidelities
+\begin{equation}\label{eq:fid}
+F_{ij}=\Bigl(\Tr\bigl|\sqrt{\rho_i}\sqrt{\rho_j}\bigr|\Bigr)^2
+\end{equation}
+\cite{Uhlmann1976,Jozsa1994}. For two states the answer is a theorem of Roga,
+Fannes and \.Zyczkowski \cite{RFZ2010}: $\chi$ is at most the entropy of the
+$2\times2$ matrix with entries $\sqrt{p_ip_j}\sqrt{F_{ij}}$. For three states,
+the natural analogue is the real symmetric matrix
+\begin{equation}\label{eq:C}
+\CF(\mathcal E_3)=\Bigl[\sqrt{p_ip_j}\,\sqrt{F_{ij}}\Bigr]_{i,j=1}^3 ,
+\end{equation}
+which has diagonal $(p_1,p_2,p_3)$ and trace one. The authors of
+\cite{FdMRZ2012} show that this matrix is positive semidefinite for every
+triple of states, so that its entropy is defined (positivity fails in general
+for four states), and they conjecture the following bound.
+
+\begin{conjecture}[{\cite[Conjecture~1]{FdMRZ2012}}]\label{conj}
+For every ensemble of three states $\{(p_i,\rho_i)\}_{i=1}^3$ on $\C^d$,
+$\chi(\mathcal E_3)\le S\bigl(\CF(\mathcal E_3)\bigr)$.
+\end{conjecture}
+
+The difficulty is that $\CF$ is in general the Gram matrix of no family of
+purifications of the $\rho_i$. Each fidelity is attained by a pair of
+purifications, but the three optimal pairs need not be compatible, and
+\cite{FdMRZ2012} observe numerically that $S(\CF)$ can lie strictly below the
+smallest entropy of a correlation matrix obtained from joint purifications.
+The conjecture is therefore stronger than the bound obtained from strong
+subadditivity in \cite{RFZ2010}.
+
+This note proves the conjecture for any three qubit states. The simplest
+non-trivial example already shows what is measured: for three pure qubit
+states, $\chi$ equals the entropy of the average state, whose determinant is
+$e_2=\sum_{i<j}p_ip_j(1-F_{ij})$. Theorem~\ref{thm:qubit} shows that this
+determinant controls $\chi$ for mixed qubit states as well: for any number $K$
+of qubit states,
+\[
+\chi\le h\Bigl(\tfrac{1+\sqrt{1-4e_2}}{2}\Bigr),\qquad
+h(x)=-x\log x-(1-x)\log(1-x),
+\]
+with equality exactly when all states are pure or all are equal. For $K=3$,
+$e_2$ is the second elementary symmetric function of the eigenvalues of $\CF$,
+and an integral formula for the entropy of a $3\times3$ state
+(Lemma~\ref{lem:int}) shows that the right-hand side is at most $S(\CF)$
+(Corollary~\ref{cor:conj}). In arbitrary dimension,
+Proposition~\ref{prop:crit} reduces the conjecture to the existence of a
+positive trace-preserving map sending a pure triple with the same fidelities
+onto the given triple. For qubits this map exists but is not completely
+positive, which explains why arguments based on purifications and strong
+subadditivity fall short.
+
+\section{Related work}\label{sec:related}
+The two-state bound is due to Roga, Fannes and \.Zyczkowski \cite{RFZ2010}, who
+also derived bounds on $\chi$ from the entropy of Gram matrices of joint
+purifications via strong subadditivity. Conjecture~\ref{conj} is stated in
+\cite{FdMRZ2012}, together with three results: the positivity of $\CF$ for three
+states (obtained with D.~Vanpeteghem), the proof for three pure states, and the
+weaker bound $\chi\le S(\CF\circ T_b)$ in which the off-diagonal entries are
+multiplied by $b\le1/2$ in general and $b\le1/\sqrt3$ for qubits. Their
+numerical support consists of $10\,000$ random ensembles drawn from the
+Hilbert--Schmidt measure for $d=2,3,5,7$. Roga's thesis \cite{Roga2011}
+states that the conjecture had been proved for pure states only, and adds the
+case of three qubit states of which two are pure and one is mixed, with equal
+probabilities $\tfrac13$. Corollary~\ref{cor:conj} contains this case and
+extends it to arbitrary probabilities and arbitrary mixing.
+
+Zhang, Wu and Fei \cite{ZWF2012} proved the conjecture under a cocycle
+condition: if $U$, $V$, $W$ are the unitary parts of the polar decompositions
+of $\sqrt{\rho_1}\sqrt{\rho_2}$, $\sqrt{\rho_1}\sqrt{\rho_3}$ and
+$\sqrt{\rho_2}\sqrt{\rho_3}$, and $V=UW$, then $\chi\le S(\CF)$. The condition
+says that the three pairwise optimal purifications are mutually compatible; it
+holds in particular for commuting states. Proposition~\ref{prop:crit} recovers
+this case with the partial trace as the positive map.
+
+Among the later works citing \cite{FdMRZ2012}, Shirokov \cite{Shirokov2025}
+derives upper bounds on the Holevo quantity from an entropic inequality
+without returning to Conjecture~\ref{conj}, and Vuong and Osaka
+\cite{VuongOsaka2026} cite \cite{FdMRZ2012} for the positivity of the
+root-fidelity matrix in a study of three-point trace inequalities, without
+discussing the Holevo quantity. In the documented search described in
+Section~\ref{sec:scope}, no proof of the general qubit case and no
+counterexample were found.
+
+The single external tool used below is the monotonicity of the relative
+entropy under positive, not necessarily completely positive, trace-preserving
+maps, proved by M\"uller-Hermes and Reeb \cite{MHR2017}. The fidelity formula
+for qubits and the integral representation of the logarithm are classical.
+
+\section{Two lemmas on entropies}
+Entropies use the natural logarithm; none of the statements depends on the
+base. For a positive semidefinite $3\times3$ matrix $\sigma$ of unit trace
+with eigenvalues $\lambda_1,\lambda_2,\lambda_3$, write
+$e_2(\sigma)=\lambda_1\lambda_2+\lambda_1\lambda_3+\lambda_2\lambda_3$, the sum
+of the principal $2\times2$ minors, and $e_3(\sigma)=\det\sigma$. For
+$\sigma=\CF$ one has
+\begin{equation}\label{eq:e2e3}
+e_2=\sum_{i<j}p_ip_j(1-F_{ij}),\qquad
+e_3=p_1p_2p_3\Bigl(1-F_{12}-F_{13}-F_{23}+2\sqrt{F_{12}F_{13}F_{23}}\Bigr).
+\end{equation}
+
+\begin{lemma}\label{lem:int}
+For every such $\sigma$,
+\[
+S(\sigma)=\int_0^\infty\Bigl(\frac{t^2+2e_2t+3e_3}{t^3+t^2+e_2t+e_3}-\frac1{1+t}\Bigr)dt .
+\]
+Consequently, if $\sigma$ and $\sigma'$ have the same $e_2$ and
+$e_3(\sigma)\le e_3(\sigma')$, then $S(\sigma)\le S(\sigma')$.
+\end{lemma}
+
+\begin{proof}
+For $\lambda>0$, $\log\lambda=\int_0^\infty\bigl(\frac1{1+t}-\frac1{\lambda+t}\bigr)dt$,
+so that $-\lambda\log\lambda=\int_0^\infty\bigl(\frac{\lambda}{\lambda+t}-\frac{\lambda}{1+t}\bigr)dt$;
+the integrand equals $\lambda(1-\lambda)/((\lambda+t)(1+t))$ and is integrable,
+and the identity also holds for $\lambda=0$. Summing over the three eigenvalues,
+whose sum is one,
+$S(\sigma)=\int_0^\infty\bigl(\sum_k\frac{\lambda_k}{\lambda_k+t}-\frac1{1+t}\bigr)dt$.
+With $P(t)=\prod_k(t+\lambda_k)=t^3+t^2+e_2t+e_3$ one has
+$\sum_k\frac{\lambda_k}{\lambda_k+t}=3-tP'(t)/P(t)=(t^2+2e_2t+3e_3)/P(t)$, which
+is the formula. For fixed $t>0$ and $e_2$, the derivative of
+$x\mapsto(t^2+2e_2t+3x)/(t^3+t^2+e_2t+x)$ is
+$(3t^3+2t^2+e_2t)/(t^3+t^2+e_2t+x)^2>0$, so the integrand increases pointwise
+with $e_3$.
+\end{proof}
+
+Lemma~\ref{lem:int} recovers the pure case of \cite{FdMRZ2012}. For pure
+states $\rho_i=\ket{\varphi_i}\bra{\varphi_i}$, the Gram matrix
+$G=[\sqrt{p_ip_j}\braket{\varphi_i}{\varphi_j}]$ has the same nonzero spectrum
+as $\sum_ip_i\rho_i$, so $\chi=S(G)$, and $\CF=|G|$ entrywise. The two
+matrices have the same $e_2$, and
+$\det|G|-\det G=2\bigl(|G_{12}G_{23}G_{31}|-\operatorname{Re}G_{12}G_{23}G_{31}\bigr)\ge0$,
+hence $\chi=S(G)\le S(\CF)$.
+
+\begin{lemma}\label{lem:qubit}
+Let $f(D)=h\bigl(\tfrac{1+\sqrt{1-4D}}{2}\bigr)$ be the entropy of a qubit
+state of determinant $D\in[0,\tfrac14]$, and $\phi(s)=f(s^2/4)$ for
+$s\in[0,1]$. Then $f$ is increasing, strictly concave and $f(0)=0$; hence it
+is subadditive, $f(x+y)\le f(x)+f(y)$ for $x,y\ge0$ with $x+y\le\tfrac14$, with
+equality only if $x=0$ or $y=0$. The function $\phi$ is strictly convex.
+\end{lemma}
+
+\begin{proof}
+Let $g(r)=h\bigl(\tfrac{1+r}{2}\bigr)$, so $g'(r)=-\artanh r$. With
+$r=\sqrt{1-4D}$ one finds $f'(D)=2\artanh(r)/r=2\sum_{k\ge0}r^{2k}/(2k+1)$,
+which is positive and strictly increasing in $r$, hence strictly decreasing in
+$D$; so $f$ is increasing and strictly concave. Concavity and $f(0)=0$ give
+$f(x)\ge\frac{x}{x+y}f(x+y)$ and $f(y)\ge\frac{y}{x+y}f(x+y)$, with equality in
+either only when the corresponding variable vanishes; summing gives
+subadditivity and its equality case. With $r=\sqrt{1-s^2}$ one has
+$\phi'(s)=\psi(r):=\sqrt{1-r^2}\,\artanh(r)/r$ and, for $0<r<1$,
+\[
+\frac{d}{dr}\log\psi(r)=-\frac{1}{r(1-r^2)}+\frac{1}{(1-r^2)\artanh r}<0,
+\]
+because $\artanh r>r$. Thus $\psi$ is strictly decreasing in $r$, while $r$ is
+strictly decreasing in $s$, so $\phi'$ is strictly increasing and $\phi$ is
+strictly convex.
+\end{proof}
+
+\section{Qubit ensembles}
+\begin{theorem}\label{thm:qubit}
+Let $\{(p_i,\rho_i)\}_{i=1}^K$ be an ensemble of $K\ge2$ qubit states, pure or
+mixed, with arbitrary probabilities, and let
+$e_2=\sum_{i<j}p_ip_j(1-F_{ij})$. Then $e_2\le\tfrac14$ and
+\[
+\chi\le f(e_2)=h\Bigl(\frac{1+\sqrt{1-4e_2}}{2}\Bigr).
+\]
+Equality holds if and only if all the states are pure or all the states are
+equal.
+\end{theorem}
+
+\begin{proof}
+Write $\rho_i=\tfrac12(\one+\vec a_i\cdot\vec\sigma)$ with Bloch vector
+$\vec a_i$ of length $r_i\le1$, set $s_i=\sqrt{1-r_i^2}=2\sqrt{\det\rho_i}$, and
+attach to $\rho_i$ the unit vector $\hat a_i=(\vec a_i,s_i)\in\R^4$. For a
+positive $2\times2$ matrix $M$, $(\Tr\sqrt M)^2=\Tr M+2\sqrt{\det M}$; applied
+to $M=\sqrt{\rho_i}\rho_j\sqrt{\rho_i}$, whose square-root trace is
+$\Tr|\sqrt{\rho_i}\sqrt{\rho_j}|$, this gives
+$F_{ij}=\Tr\rho_i\rho_j+2\sqrt{\det\rho_i\det\rho_j}
+=\tfrac12(1+\vec a_i\cdot\vec a_j+s_is_j)$, that is,
+\begin{equation}\label{eq:qubitfid}
+F_{ij}=\frac{1+\langle\hat a_i,\hat a_j\rangle}{2}.
+\end{equation}
+Let $m=\bigl|\sum_ip_i\vec a_i\bigr|$, $\bar s=\sum_ip_is_i$ and
+$R=\bigl\|\sum_ip_i\hat a_i\bigr\|=\sqrt{m^2+\bar s^2}\le1$. Since
+$e_2=\tfrac12\sum_{i,j}p_ip_j(1-F_{ij})$, equation~\eqref{eq:qubitfid} gives
+$R^2=\sum_{i,j}p_ip_j(2F_{ij}-1)=1-4e_2$, so
+$e_2=\tfrac14(1-m^2-\bar s^2)\in[0,\tfrac14]$.
+
+The entropy of $\rho_i$ is $\phi(s_i)$ and that of the average state, of Bloch
+vector length $m$, is $f\bigl(\tfrac{1-m^2}{4}\bigr)$. By convexity of $\phi$
+(Lemma~\ref{lem:qubit}), $\sum_ip_i\phi(s_i)\ge\phi(\bar s)=f(\bar s^2/4)$. By
+subadditivity of $f$ applied to $x=e_2$ and $y=\bar s^2/4$, whose sum is
+$(1-m^2)/4$,
+$f\bigl(\tfrac{1-m^2}{4}\bigr)\le f(e_2)+f(\bar s^2/4)$. Therefore
+\[
+\chi=f\Bigl(\frac{1-m^2}{4}\Bigr)-\sum_ip_i\phi(s_i)
+\le f(e_2)+f\Bigl(\frac{\bar s^2}{4}\Bigr)-f\Bigl(\frac{\bar s^2}{4}\Bigr)=f(e_2).
+\]
+Equality forces equality in the subadditivity step, hence $\bar s=0$ or
+$e_2=0$. If $\bar s=0$, all states are pure, and then
+$\chi=f\bigl(\tfrac{1-m^2}{4}\bigr)=f(e_2)$. If $e_2=0$, then $R=1$, all
+$\hat a_i$ coincide, the states are equal and $\chi=0=f(0)$. Conversely, in
+both cases equality holds.
+\end{proof}
+
+\begin{corollary}\label{cor:conj}
+Conjecture~\ref{conj} holds for every ensemble of three qubit states:
+$\chi\le f(e_2)\le S(\CF)$. The second inequality is strict whenever
+$\det\CF>0$.
+\end{corollary}
+
+\begin{proof}
+The matrix $\CF$ is positive semidefinite \cite{FdMRZ2012} with unit trace,
+second invariant $e_2$ and determinant $e_3\ge0$. The spectrum
+$(\lambda,1-\lambda,0)$ with $\lambda(1-\lambda)=e_2$, which exists since
+$e_2\le\tfrac14$, has invariants $(e_2,0)$ and entropy $f(e_2)$.
+Lemma~\ref{lem:int} gives $f(e_2)\le S(\CF)$, strictly if $e_3>0$ because the
+integrand is then strictly larger for every $t>0$, and
+Theorem~\ref{thm:qubit} gives $\chi\le f(e_2)$.
+\end{proof}
+
+Theorem~\ref{thm:qubit} isolates the mechanism. For qubits, $\chi$ is
+controlled by the single invariant $e_2$, equivalently by the average fidelity
+$\sum_{i,j}p_ip_jF_{ij}=1-2e_2$, and the determinant of $\CF$ only loosens the
+bound. For $K=2$, $e_2=p_1p_2(1-F_{12})=\det\CF$ and Theorem~\ref{thm:qubit}
+reduces to the qubit case of the two-state bound of \cite{RFZ2010}. For
+$K\ge4$ the bound $\chi\le f(e_2)$ remains valid although the root-fidelity
+matrix may fail to be positive.
+
+\section{A sufficient criterion in any dimension}
+\begin{proposition}\label{prop:crit}
+Let $\{(p_i,\rho_i)\}_{i=1}^3$ be an ensemble on $\C^d$. Suppose there exist
+unit vectors $\phi_1,\phi_2,\phi_3\in\C^n$ and a positive trace-preserving
+linear map $\Lambda:M_n(\C)\to M_d(\C)$ such that
+$\Lambda(\ket{\phi_i}\bra{\phi_i})=\rho_i$ and
+$|\braket{\phi_i}{\phi_j}|^2=F_{ij}$ for all $i,j$. Then
+$\chi\le S(\CF)$.
+\end{proposition}
+
+\begin{proof}
+Write $\bar\rho=\sum_ip_i\rho_i$ and
+$\bar\phi=\sum_ip_i\ket{\phi_i}\bra{\phi_i}$, so that $\bar\rho=\Lambda(\bar\phi)$.
+With the relative entropy $D(\rho\|\sigma)=\Tr\rho(\log\rho-\log\sigma)$, one
+has $\chi=\sum_ip_iD(\rho_i\|\bar\rho)$. Monotonicity of the relative entropy
+under positive trace-preserving maps \cite{MHR2017} gives
+$\chi\le\sum_ip_iD(\phi_i\|\bar\phi)=S(\bar\phi)=S(G_\phi)$, where
+$G_\phi=[\sqrt{p_ip_j}\braket{\phi_i}{\phi_j}]$. Since $|G_\phi|=\CF$
+entrywise, the pure case following Lemma~\ref{lem:int} gives
+$S(G_\phi)\le S(\CF)$.
+\end{proof}
+
+The three families for which the conjecture was known satisfy this criterion.
+For pure states, $\Lambda$ is the identity. Under the cocycle condition of
+Zhang, Wu and Fei \cite{ZWF2012}, in particular for commuting states, the
+$\phi_i$ can be taken to be mutually compatible optimal purifications and
+$\Lambda$ the partial trace, which is completely positive.
+
+For three qubit states the criterion holds with a map that is positive but
+generally not completely positive. The vectors $\hat a_i\in\R^4$ of the proof of
+Theorem~\ref{thm:qubit} span a subspace of dimension at most three, so there
+are unit vectors $\hat b_i\in\R^3$ with the same Gram matrix. They are Bloch
+vectors of pure qubit states $\phi_i$ with
+$|\braket{\phi_i}{\phi_j}|^2=\tfrac12(1+\langle\hat b_i,\hat b_j\rangle)=F_{ij}$
+by~\eqref{eq:qubitfid}. Let $O$ be a partial isometry sending each $\hat b_i$
+to $\hat a_i$, which exists because the Gram matrices agree, let
+$\Pi:\R^4\to\R^3$ forget the fourth coordinate, and let $\Lambda$ be the unital
+qubit map with Bloch matrix $M=\Pi O$, that is,
+$\Lambda\bigl(\tfrac12(\one+\vec x\cdot\vec\sigma)\bigr)=\tfrac12(\one+M\vec x\cdot\vec\sigma)$.
+Then $M\hat b_i=\vec a_i$ and $\norm{M}\le1$, so $\Lambda$ maps the Bloch ball into
+itself: it is positive and trace preserving. For pure qubit states $S(G_\phi)$
+is the entropy of the average state, whose Bloch vector has squared length
+$\|\sum_ip_i\hat b_i\|^2=R^2=1-4e_2$, so $S(G_\phi)=f(e_2)$ and
+Proposition~\ref{prop:crit} gives back the chain of Corollary~\ref{cor:conj}.
+
+When the $\hat a_i$ are linearly independent and at least one state is mixed,
+$\Lambda$ is not completely positive. In that case $O$ is an isometry from
+$\R^3$ into $\R^4$, and $M^\T M=O^\T(\one-e_4e_4^\T)O=\one-vv^\T$ with
+$v=O^\T e_4$; since $\langle v,\hat b_i\rangle=s_i$, $v\ne0$. The singular
+values of $M$ are therefore $(1,1,\sigma_3)$ with
+$\sigma_3=\sqrt{1-\norm v^2}<1$. Write $M=O_1DO_2$ with $O_1,O_2\in SO(3)$ and
+$D=\mathrm{diag}(\lambda_1,\lambda_2,\lambda_3)$, $|\lambda_k|$ the singular
+values. Rotations of the Bloch ball are unitary conjugations, so $\Lambda$ is
+completely positive if and only if the map with Bloch matrix $D$ is. That map
+is $X\mapsto\sum_{k=0}^3q_k\sigma_kX\sigma_k$ with $\sigma_0=\one$ and
+$4q_0=1+\lambda_1+\lambda_2+\lambda_3$,
+$4q_1=1+\lambda_1-\lambda_2-\lambda_3$,
+$4q_2=1-\lambda_1+\lambda_2-\lambda_3$,
+$4q_3=1-\lambda_1-\lambda_2+\lambda_3$; its Choi matrix has eigenvalues
+$2q_k$, so it is completely positive exactly when all $q_k\ge0$. The sign
+patterns of $(\lambda_1,\lambda_2)$ in these four expressions run over all four
+choices, so one of them equals $1-|\lambda_1|-|\lambda_2|\pm\lambda_3=-1\pm\lambda_3<0$.
+This explains why bounds derived from joint purifications and strong
+subadditivity, which only use completely positive maps, do not reach the
+conjecture in the qubit case.
+
+\section{Dimension three and higher}
+For $d\ge3$ the conjecture remains open. The proof of
+Theorem~\ref{thm:qubit} rests on two features specific to qubits: the
+fidelity~\eqref{eq:qubitfid} is an affine function of an inner product, and the
+entropy of a qubit state depends only on its determinant. Neither survives in
+dimension three, where $\chi$ can exceed $\log2$ and the bound by $e_2$ alone
+fails: three orthogonal pure states with equal probabilities give
+$e_2=\tfrac13>\tfrac14$ and $\chi=\log3$. Proposition~\ref{prop:crit} suggests a
+route: show that every triple of states is the image, under a positive
+trace-preserving map, of a pure triple with the same fidelities, the phases of
+the pure triple being free. This is established above for pure states, for
+triples satisfying the cocycle condition and for qubits; it has been neither
+proved nor refuted in general, and no numerical test of this existence
+statement is reported here.
+
+During the preparation of this note we searched numerically for a
+counterexample, maximising $\Delta=\chi-S(\CF)$ by gradient ascent in double
+precision. With free states of prescribed rank and free probabilities in
+dimensions $3$ and $4$, maximising $\chi/S(\CF)$, the runs converge to
+configurations of equality $\Delta=0$, several with $\chi$ between $0.32$ and
+$0.66$; the best double-precision values of $\Delta$, of order $10^{-14}$,
+become negative when re-evaluated with $40$ significant digits. On the unitary
+orbits of fixed spectra with fixed probabilities, the largest ratio
+$\chi/S(\CF)$ found was $0.99991$ for $d=2$, $0.99977$ for $d=3$, $0.99384$ for
+$d=4$ and $0.99850$ for $d=5$, with largest $\Delta=-2.8\times10^{-5}$.
+Full-rank perturbations of low-rank equality points, of size $10^{-1}$ to
+$10^{-3}$ in dimensions $3$, $4$ and $5$, made $\Delta$ strictly negative, and
+reoptimisation brought it back towards $0$ from below. These runs used a
+separate script and are not part of the public bundle; the public checker
+contains a reduced, fixed-seed version (Section~\ref{sec:verification}). The
+search is local and does not constitute evidence beyond the configurations it
+visits.
+
+\section{Verification}\label{sec:verification}
+The results above are proved analytically. The public
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/fidelity-matrix-holevo-bound/checks/check_fidelity_holevo.py}{Python checker}
+tests their ingredients in floating-point arithmetic and writes its
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/fidelity-matrix-holevo-bound/data/verification.json}{verification record}
+to the same entry. It checks the integral formula of Lemma~\ref{lem:int} on
+$20$ spectra (largest error below $10^{-15}$) and the inequality
+$S(|G|)\ge S(G)$ on $5000$ pure triples; the concavity of $f$ and convexity of
+$\phi$ on grids of $20\,001$ points; formula~\eqref{eq:qubitfid} and
+$e_2=(1-R^2)/4$ against matrix computations of the fidelity; the two
+inequalities $\chi\le f(e_2)\le S(\CF)$ on $10\,000$ random three-qubit
+ensembles, including nearly pure, exactly pure and nearly maximally mixed
+states, where the smallest slack is of order $-10^{-15}$, at rounding level on
+equality cases; the inequality $\chi\le f(e_2)$ for $K=2,4,5,6$ on $20\,000$
+ensembles and under $20$ Nelder--Mead minimisations of the slack; and the
+construction of Section~5 on $500$ triples, where $\norm M\le1$, the fidelities
+are preserved and $\Lambda$ fails to be completely positive in every case. For
+$d=3,4,5$ it evaluates $\Delta$ on $4500$ random ensembles and runs $24$ short
+fixed-seed maximisations of $\Delta$, over free ensembles and over unitary
+orbits; all values found are negative. The checker requires NumPy and SciPy
+and runs in under a minute.
+
+\section{Scope and limitations}\label{sec:scope}
+\emph{Analytic proof.} Lemmas~\ref{lem:int} and~\ref{lem:qubit},
+Theorem~\ref{thm:qubit} with its equality case, Corollary~\ref{cor:conj}
+(Conjecture~\ref{conj} for any three qubit states) and
+Proposition~\ref{prop:crit}, the last relying on the published theorem of
+M\"uller-Hermes and Reeb \cite{MHR2017}, and on the positivity of $\CF$ proved
+in \cite{FdMRZ2012}.
+
+\emph{Numerical evidence only.} The absence of counterexamples in dimensions
+$3$, $4$ and $5$. The search is adversarial but local and does not explore
+dimensions above $5$.
+
+\emph{Open.} Conjecture~\ref{conj} for $d\ge3$, and the existence, for every
+triple of states, of a pure triple with the same fidelities mapped onto it by a
+positive trace-preserving map.
+
+\emph{Bibliographic priority.} The source \cite{FdMRZ2012} and Roga's thesis
+\cite{Roga2011} were read in their TeX sources and \cite{ZWF2012} in full. The
+works citing \cite{FdMRZ2012} were listed through the Semantic Scholar
+interface ($24$ citations between 2011 and 2026) and complemented by three web
+searches; \cite{Shirokov2025} and \cite{VuongOsaka2026} were read in full, the
+other citing works only by title. Theorem~\ref{thm:qubit} and
+Corollary~\ref{cor:conj} were not found in this documented search, which does
+not establish priority. The qubit fidelity formula, the integral representation
+of the logarithm and the convexity of $\phi$, which is the same function that
+expresses the entanglement of formation in terms of the concurrence, are
+classical.
+
+\clearpage
+\begingroup\small
+\begin{thebibliography}{99}
+\setlength{\itemsep}{2pt}
+\bibitem{FdMRZ2012}
+M. Fannes, F. de Melo, W. Roga and K. \.Zyczkowski,
+\emph{Matrices of fidelities for ensembles of quantum states and the Holevo
+quantity},
+Quantum Inf. Comput. \textbf{12}, 472--489 (2012);
+\href{https://doi.org/10.26421/QIC12.5-6-8}{doi:10.26421/QIC12.5-6-8};
+\href{https://arxiv.org/abs/1104.2271}{arXiv:1104.2271}.
+
+\bibitem{RFZ2010}
+W. Roga, M. Fannes and K. \.Zyczkowski,
+\emph{Universal Bounds for the Holevo Quantity, Coherent Information, and the
+Jensen-Shannon Divergence},
+Phys. Rev. Lett. \textbf{105}, 040505 (2010);
+\href{https://doi.org/10.1103/PhysRevLett.105.040505}{doi:10.1103/PhysRevLett.105.040505}.
+
+\bibitem{Roga2011}
+W. Roga,
+\emph{Entropy of quantum channel in the theory of quantum information},
+PhD thesis (2011);
+\href{https://arxiv.org/abs/1108.5065}{arXiv:1108.5065}.
+
+\bibitem{ZWF2012}
+L. Zhang, J. Wu and S.-M. Fei,
+\emph{Universal upper bound for the Holevo information induced by a quantum
+operation},
+Phys. Lett. A \textbf{376}, 3588--3592 (2012);
+\href{https://doi.org/10.1016/j.physleta.2012.10.014}{doi:10.1016/j.physleta.2012.10.014};
+\href{https://arxiv.org/abs/1110.5979}{arXiv:1110.5979}.
+
+\bibitem{MHR2017}
+A. M\"uller-Hermes and D. Reeb,
+\emph{Monotonicity of the Quantum Relative Entropy Under Positive Maps},
+Ann. Henri Poincar\'e \textbf{18}, 1777--1788 (2017);
+\href{https://doi.org/10.1007/s00023-017-0550-9}{doi:10.1007/s00023-017-0550-9};
+\href{https://arxiv.org/abs/1512.06117}{arXiv:1512.06117}.
+
+\bibitem{Uhlmann1976}
+A. Uhlmann,
+\emph{The ``transition probability'' in the state space of a $*$-algebra},
+Rep. Math. Phys. \textbf{9}, 273--279 (1976);
+\href{https://doi.org/10.1016/0034-4877(76)90060-4}{doi:10.1016/0034-4877(76)90060-4}.
+
+\bibitem{Jozsa1994}
+R. Jozsa,
+\emph{Fidelity for Mixed Quantum States},
+J. Mod. Opt. \textbf{41}, 2315--2323 (1994);
+\href{https://doi.org/10.1080/09500349414552171}{doi:10.1080/09500349414552171}.
+
+\bibitem{Shirokov2025}
+M. E. Shirokov,
+\emph{Upper bounds on the Holevo quantity arising from the fundamental entropic
+inequality}, preprint (2025);
+\href{https://arxiv.org/abs/2506.05335}{arXiv:2506.05335}.
+
+\bibitem{VuongOsaka2026}
+T. D. Vuong and H. Osaka,
+\emph{Three-Point Trace Positivity: Schatten Norm Compression and Interpolating
+Metrics}, preprint (2026);
+\href{https://arxiv.org/abs/2610.11021}{arXiv:2610.11021}.
+\end{thebibliography}
+\endgroup
+\end{document}

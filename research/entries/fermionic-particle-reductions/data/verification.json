@@ -1,0 +1,77 @@
+{
+  "entry": "fermionic-particle-reductions",
+  "status": "passed",
+  "seed": 151201828,
+  "checks": [
+    {
+      "check": "[A] a_T^dag a_S prod a_s a_s^dag = |T><S| (n = 2,3,4, all p, S, T)",
+      "passed": true,
+      "detail": "max deviation 0.0e+00"
+    },
+    {
+      "check": "[B] Phi^p(rho) = p! sum_T A_T rho A_T^dag (random mixed rho, n = 2..5)",
+      "passed": true,
+      "detail": "max deviation 2.2e-16"
+    },
+    {
+      "check": "[C] Spec Phi^p(rho) = p! Spec rho_p, full 2^n spectra (106 pure-state cases)",
+      "passed": true,
+      "detail": "max deviation 2.7e-15"
+    },
+    {
+      "check": "[C'] p = 1: Spec Phi(rho) = Spec rho_1 (conjecture holds as stated)",
+      "passed": true,
+      "detail": "max deviation 5.6e-16"
+    },
+    {
+      "check": "[C''] p >= 2: Spec Phi^p(rho) != Spec rho_p (conjecture fails as stated)",
+      "passed": true,
+      "detail": "largest eigenvalue gap observed 5.2902"
+    },
+    {
+      "check": "[D] eigenvector map c -> sum_T conj(c_T) A_T psi",
+      "passed": true,
+      "detail": "max residual 2.7e-15"
+    },
+    {
+      "check": "[E] nonzero spectrum of tuple-indexed p-RDM = nonzero spectrum of Phi^p(rho)",
+      "passed": true,
+      "detail": "max deviation 3.1e-15"
+    },
+    {
+      "check": "[H] tr Phi^p = <N(N-1)..(N-p+1)> = p! tr rho_p",
+      "passed": true,
+      "detail": "max deviation 1.8e-15"
+    },
+    {
+      "check": "[F] fixed N (pure and mixed): Phi^(N-p)(rho) = (N-p)! rho_p",
+      "passed": true,
+      "detail": "max deviation 1.8e-15"
+    },
+    {
+      "check": "[F'] Proposition 4 of the source without the factorial fails when N-p >= 2",
+      "passed": true,
+      "detail": "max |Phi^(N-p)(rho) - rho_p| = 5.0000"
+    },
+    {
+      "check": "[G1] n = 2, |11>, p = 2: Spec rho_2 = {1,0,0,0}, Spec Phi^2(rho) = {2,0,0,0}",
+      "passed": true,
+      "detail": "rho_2: [0.0, 0.0, 0.0, 1.0]  Phi^2: [0.0, 0.0, 0.0, 2.0]"
+    },
+    {
+      "check": "[G2] n = 2, mixed (|01><01|+|10><10|)/2, p = 1: spectra {1/2,1/2,0,0} vs {1,0,0,0}",
+      "passed": true,
+      "detail": "rho_1: [0.0, 0.0, 0.5, 0.5]  Phi: [0.0, 0.0, 0.0, 1.0]"
+    },
+    {
+      "check": "[G3] two-mode example of the source: both spectra = {1-|c00|^2, |c11|^2, 0, 0}",
+      "passed": true,
+      "detail": "[-0.0, 0.0, 0.25, 0.75]"
+    }
+  ],
+  "elapsed_seconds": 1.0,
+  "sha256": {
+    "checks/verify_particle_reductions.py": "3e1c2c309556cc900a153870e99b7682e9096c4bbae06aa914286c4617d33d38"
+  },
+  "limits": "Floating-point checks of the identities of the manuscript on random pure and mixed states with n <= 6 modes; not a formal proof or a certification of novelty."
+}

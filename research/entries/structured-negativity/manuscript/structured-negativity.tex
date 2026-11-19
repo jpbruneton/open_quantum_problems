@@ -1,0 +1,560 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{plain}
+\DeclareMathOperator{\Tr}{Tr}
+\newcommand{\ket}[1]{\lvert#1\rangle}
+\newcommand{\bra}[1]{\langle#1\rvert}
+\newcommand{\ketbra}[2]{\lvert#1\rangle\langle#2\rvert}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\NS}{N_{S}}
+\newcommand{\G}{\Gamma}
+\setlength{\emergencystretch}{2em}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em plus 0.1em minus 0.1em}
+\title{Structured negativity and negativity:\\
+an exact criterion for their equality}
+\author{Fable \& Astra\\[0.35em]
+\normalsize Research led by Jean-Philippe Bruneton\\[-0.1em]
+\small Universit\'e Paris Cit\'e, France}
+\date{19 November 2026}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+The partial transpose of an entangled state of two particles can have negative
+eigenvalues, and the negativity, the total weight of these eigenvalues, is the
+most widely used computable measure of entanglement. Because the partial
+transpose is not a physical operation, Kumari and Adhikari introduced the
+structured negativity, a quantity built from a physically implementable
+approximation of the partial transpose, and conjectured that for two
+$d$-level systems it coincides with the negativity whenever the partial
+transpose has exactly $d(d-1)/2$ negative eigenvalues. We show that the
+structured negativity equals $d$ times the largest negative eigenvalue in
+absolute value, so that the two quantities agree exactly when the sum of the
+negative eigenvalues equals $d(d-1)/2$ times the most negative one. The
+conjecture therefore holds for two qubits and fails for every $d\ge3$: the
+pure two-qutrit state $(2\ket{00}+2\ket{11}+\ket{22})/3$ has three negative
+eigenvalues but negativity $8/9$ and structured negativity $4/3$. A family of
+states whose partial transpose has $(d-1)^2$ equal negative eigenvalues, built
+from the symmetric subspace of $2(d-1)$ qubits, saturates the inequality
+$N\le 2(1-1/d)\NS$ of the same authors in every dimension, and so disproves
+their further claim that the structured negativity always dominates the
+negativity.
+\end{abstract}
+
+\section{Introduction}
+Entanglement between two quantum systems can be detected by a simple matrix
+operation. Transposing the second factor of a density matrix maps every
+separable state to another state, so a negative eigenvalue of the partial
+transpose certifies entanglement \cite{Peres1996,Horodecki1996}. The
+negativity, the sum of the absolute values of these negative eigenvalues,
+turns this test into an entanglement monotone that is computable from the
+spectrum alone \cite{VidalWerner2002}. The partial transpose is, however, a
+positive but not completely positive map, so it cannot be applied to a
+quantum system in the laboratory. The structural physical approximation of
+Horodecki and Ekert repairs this by mixing the map with just enough white
+noise to make it completely positive \cite{HorodeckiEkert2002}; the spectrum
+of the resulting physical state still carries the information about the
+negative eigenvalues, shifted and rescaled.
+
+Kumari and Adhikari built an entanglement quantifier on this idea
+\cite{KumariAdhikari2022}. For a state $\rho$ of two $d$-level systems, their
+structured negativity $\NS(\rho)$ is read off from the smallest eigenvalue of
+the structural physical approximation of $\rho^{T_B}$. They compared it with
+the negativity $N(\rho)$, normalised so that both quantities equal one on the
+maximally entangled state, and, from four families of examples, conjectured
+that the two coincide whenever the number $q$ of negative eigenvalues of
+$\rho^{T_B}$ equals $d(d-1)/2$, that the inequality $N<\NS$ is strict for
+other values of $q$, and that $\NS\ge N$ always.
+
+The simplest example already shows what goes wrong. For a pure two-qutrit
+state with Schmidt coefficients $\sqrt{s_1},\sqrt{s_2},\sqrt{s_3}$, the
+partial transpose has three negative eigenvalues $-\sqrt{s_is_j}$, $i<j$. The
+negativity sums them, while the structured negativity, as we show, sees only
+the most negative one. The two can agree only if the three products
+$s_is_j$ coincide, that is, only for the maximally entangled state. The
+number of negative eigenvalues is thus the wrong invariant: what matters is
+their \emph{effective} number, the ratio of their sum to the largest one.
+
+Our main result makes this precise. The structured negativity equals $d$
+times the absolute value of the smallest eigenvalue of $\rho^{T_B}$
+(Proposition~\ref{prop:ns}), and $N=\NS$ holds if and only if the sum of the
+negative eigenvalues of $\rho^{T_B}$ equals $d(d-1)/2$ times the most negative
+one (Theorem~\ref{thm:criterion}). Consequently the conjecture is true and
+trivial for two qubits and false for every $d\ge3$, with exact pure-state
+counterexamples (Corollary~\ref{cor:pure}). In the opposite direction, we
+construct in every dimension states whose partial transpose has the maximal
+number $(d-1)^2$ of negative eigenvalues, all equal
+(Theorem~\ref{thm:saturation}). They saturate the inequality
+$N\le2(1-1/d)\NS$ proved in \cite{KumariAdhikari2022} and give $N>\NS$ for
+every $d\ge3$. An explicit two-qutrit state with four negative eigenvalues and
+$N=\NS$ shows that equality also occurs away from $q=d(d-1)/2$.
+
+\section{Related work}\label{sec:related}
+The partial transpose criterion is due to Peres \cite{Peres1996}, and its
+sufficiency for two qubits and for a qubit and a qutrit to the Horodeckis
+\cite{Horodecki1996}. Vidal and Werner showed that the negativity is an
+entanglement monotone \cite{VidalWerner2002}. The structural physical
+approximation was introduced by Horodecki and Ekert as a way to implement
+positive maps, and in particular the partial transpose, by physical
+operations followed by spectrum estimation \cite{HorodeckiEkert2002}.
+
+The structured negativity and the conjecture discussed here are in Kumari
+and Adhikari \cite{KumariAdhikari2022}, whose Result-1 states
+$\NS\ge\frac{d(d-1)}{2q}N$ and, with the bound $q\le(d-1)^2$, $N\le
+2(1-\frac1d)\NS$. The conjecture is repeated without resolution in Chapter~6 of
+Kumari's thesis \cite{Kumari2023}. A later paper by Aggarwal, Kumari and
+Adhikari applies the structural physical approximation to the realignment
+criterion \cite{Aggarwal2023}; it does not return to the conjecture.
+
+Our construction concerns the number and the size of the negative eigenvalues
+of the partial transpose. Rana proved that the partial transpose of an
+$m\otimes n$ state has at most $(m-1)(n-1)$ negative eigenvalues and that its
+spectrum lies in $[-\frac12,1]$, extending the two-qubit result of Sanpera,
+Tarrach and Vidal, and gave low-dimensional examples
+\cite{Rana2013}. Johnston showed that the bound $(m-1)(n-1)$ is attained in
+all dimensions \cite{Johnston2013}; his construction does not control the
+individual negative eigenvalues. The states of Theorem~\ref{thm:saturation}
+attain the bound for $m=n=d$ with all negative eigenvalues equal, which is
+what the saturation of Result-1 requires. Jiang, Qiu and Yu recently
+introduced the Ky Fan $k$-negativities, the sums of the $k$ most negative
+eigenvalues of the partial transpose, and derived spectral bounds for them
+\cite{JiangQiuYu2026}; in their notation Proposition~\ref{prop:ns} reads
+$\NS=d\,\mathcal{N}_1$. They do not discuss the structured negativity.
+
+\section{Definitions}\label{sec:defs}
+Let $\rho$ be a state on $\C^d\otimes\C^d$ with $d\ge2$, and write
+$\rho^\G=\rho^{T_B}$ for its partial transpose on the second factor in the
+computational basis. Following \cite{KumariAdhikari2022}, the negativity is
+normalised as
+\begin{equation}\label{eq:N}
+N(\rho)=\frac{\norm{\rho^\G}_1-1}{d-1}
+=\frac{2}{d-1}\sum_{\lambda_i<0}\lvert\lambda_i(\rho^\G)\rvert ,
+\end{equation}
+where the second form uses $\Tr\rho^\G=1$. The structural physical
+approximation of the partial transpose sends $\rho$ to the state
+\begin{equation}\label{eq:spa}
+\tilde\rho=\frac{d}{d^3+1}\,I\otimes I+\frac{1}{d^3+1}\,\rho^\G ,
+\end{equation}
+and the structured negativity is
+\begin{equation}\label{eq:NS}
+\NS(\rho)=K\max\Bigl\{\frac{d}{d^3+1}-\lambda_{\min}(\tilde\rho),\,0\Bigr\},
+\qquad K=d(d^3+1).
+\end{equation}
+Both quantities equal one on the maximally entangled state
+$\ket{\Phi}=d^{-1/2}\sum_i\ket{ii}$.
+
+When $\rho^\G$ is not positive semidefinite, list its strictly negative
+eigenvalues with multiplicity as $-\nu_1\le-\nu_2\le\cdots\le-\nu_q<0$, so
+that $q$ is their number and $\nu_1=\lvert\lambda_{\min}(\rho^\G)\rvert$. We
+call
+\begin{equation}\label{eq:r}
+r(\rho)=\frac{\nu_1+\nu_2+\cdots+\nu_q}{\nu_1}\in[1,q]
+\end{equation}
+the effective number of negative eigenvalues. It equals $q$ if and only if
+all negative eigenvalues are equal.
+
+\begin{conjecture}[Kumari and Adhikari \cite{KumariAdhikari2022}]
+\label{conj:KA}
+For a state of $\C^d\otimes\C^d$, $N(\rho)=\NS(\rho)$ when $q=d(d-1)/2$.
+The authors also state that the inequality $N<\NS$ is strict when
+$q\ne d(d-1)/2$ (Section~IV.A) and that $\NS\ge N$ always (Conclusion).
+\end{conjecture}
+
+\section{The exact criterion}\label{sec:criterion}
+\begin{proposition}\label{prop:ns}
+For every state $\rho$ of $\C^d\otimes\C^d$,
+$\NS(\rho)=d\,\max\{0,-\lambda_{\min}(\rho^\G)\}$.
+\end{proposition}
+\begin{proof}
+By \eqref{eq:spa}, $\lambda_{\min}(\tilde\rho)=(d+\lambda_{\min}(\rho^\G))/(d^3+1)$,
+so $\frac{d}{d^3+1}-\lambda_{\min}(\tilde\rho)=-\lambda_{\min}(\rho^\G)/(d^3+1)$.
+Multiplying by $K=d(d^3+1)$ gives the claim.
+\end{proof}
+
+The structural physical approximation is thus an affine rescaling of the
+spectrum, and the structured negativity retains only its lowest point.
+
+\begin{theorem}\label{thm:criterion}
+For every state $\rho$ of $\C^d\otimes\C^d$ whose partial transpose is not
+positive semidefinite,
+\begin{equation}\label{eq:ratio}
+\frac{N(\rho)}{\NS(\rho)}=\frac{2\,r(\rho)}{d(d-1)} .
+\end{equation}
+In particular $N(\rho)=\NS(\rho)$ if and only if
+$\nu_1+\cdots+\nu_q=\frac{d(d-1)}{2}\,\nu_1$. Three regimes follow. If
+$q<\frac{d(d-1)}{2}$, then $N<\NS$. If $q=\frac{d(d-1)}{2}$, then $N\le\NS$,
+with equality if and only if all negative eigenvalues of $\rho^\G$ are equal.
+If $q>\frac{d(d-1)}{2}$, then $N\le\frac{2q}{d(d-1)}\NS$, and each of $N<\NS$,
+$N=\NS$ and $N>\NS$ can occur (Section~\ref{sec:beyond}).
+\end{theorem}
+\begin{proof}
+Proposition~\ref{prop:ns} gives $\NS=d\nu_1$ and \eqref{eq:N} gives
+$N=\frac{2}{d-1}\sum_i\nu_i$; their quotient is \eqref{eq:ratio}. The
+regimes follow from $1\le r\le q$, with $r=q$ exactly when the $\nu_i$ are
+all equal. For $d=3$ and $q=4$ the three cases are realised by the explicit
+states of Section~\ref{sec:beyond}: $\rho_\star$ has $N>\NS$, $\rho_=$ has
+$N=\NS$, and $\rho_<$ has $N<\NS$.
+\end{proof}
+
+Result-1 of \cite{KumariAdhikari2022}, $\NS\ge\frac{d(d-1)}{2q}N$, is
+exactly the inequality $r\le q$. The conjecture asserts that
+$q=\frac{d(d-1)}{2}$ forces $r=q$, which confuses the number of negative
+eigenvalues with their effective number.
+
+\begin{corollary}[two qubits]\label{cor:qubits}
+For $d=2$, $N(\rho)=\NS(\rho)=2\max\{0,-\lambda_{\min}(\rho^\G)\}$ for every
+state.
+\end{corollary}
+\begin{proof}
+The partial transpose of a two-qubit state has at most one negative eigenvalue
+\cite{Rana2013}, so $q\le1$ and $r=1=d(d-1)/2$ whenever $q\ge1$.
+\end{proof}
+
+For $d=2$ the conjecture therefore holds and says nothing beyond $q\le1$,
+which is what the two-qubit examples of \cite{KumariAdhikari2022} (Werner
+states and maximally entangled mixed states) display.
+
+\begin{corollary}[pure states]\label{cor:pure}
+Let $\ket\psi=\sum_{i=1}^d\sqrt{s_i}\,\ket{ii}$ with $s_i>0$ and
+$\sum_is_i=1$. Then $q=\frac{d(d-1)}{2}$ and
+\begin{equation}\label{eq:pure}
+N=\frac{2}{d-1}\sum_{i<j}\sqrt{s_is_j},\qquad
+\NS=d\,\max_{i<j}\sqrt{s_is_j}.
+\end{equation}
+For $d\ge3$, $N=\NS$ if and only if $\ket\psi$ is maximally entangled. The
+conjecture is therefore false for every $d\ge3$.
+\end{corollary}
+\begin{proof}
+The partial transpose
+$\ketbra\psi\psi^\G=\sum_{i,j}\sqrt{s_is_j}\,\ketbra{ij}{ji}$ has eigenvalue
+$s_i$ on $\ket{ii}$ and eigenvalues $\pm\sqrt{s_is_j}$ on
+$(\ket{ij}\pm\ket{ji})/\sqrt2$ for $i<j$. This gives $q=d(d-1)/2$ and
+\eqref{eq:pure}. By Theorem~\ref{thm:criterion}, equality holds if and only if
+all products $s_is_j$, $i<j$, are equal. For $d\ge3$, comparing $s_is_k$ with
+$s_js_k$ for a third index $k$ gives $s_i=s_j$ for all $i,j$.
+\end{proof}
+
+The simplest exact counterexample is
+\begin{equation}\label{eq:psi}
+\ket\psi=\tfrac13\bigl(2\ket{00}+2\ket{11}+\ket{22}\bigr)\in\C^3\otimes\C^3,
+\end{equation}
+whose partial transpose has negative eigenvalues $-\frac49,-\frac29,-\frac29$.
+Here $q=3=\frac{d(d-1)}2$, $r=2$, $N=\frac89\approx0.889$ and
+$\NS=\frac43\approx1.333$.
+
+The conjecture is correct on families whose negative spectrum is flat with
+$q=d(d-1)/2$. The isotropic states $x\ketbra\Phi\Phi+(1-x)I/d^2$ have a partial
+transpose that is a combination of the identity and the swap operator, whose
+only negative eigenvalue lives on the antisymmetric subspace of dimension
+$d(d-1)/2$; the two-qutrit family $\rho_\alpha$ of \cite{KumariAdhikari2022}
+has a partial transpose made of three identical $2\times2$ blocks. At the
+other extreme, the Werner states have $q=1$ and $N/\NS=\frac{2}{d(d-1)}$.
+These are the families from which the conjecture was inferred.
+
+\section{Beyond \texorpdfstring{$d(d-1)/2$}{d(d-1)/2} negative eigenvalues}\label{sec:beyond}
+\subsection{A flat negative spectrum of maximal size}
+Set $n=d-1$ and identify $\C^d$ with the symmetric subspace
+$\mathrm{Sym}^n(\C^2)$ of $n$ qubits through the Dicke basis
+$\ket{k}=\binom nk^{-1/2}\sum_{\lvert x\rvert=k}\ket{x}$, $k=0,\dots,n$, where
+$x$ runs over binary words of length $n$ with $k$ ones. Then
+$\C^d\otimes\C^d\subset(\C^2)^{\otimes2n}$ contains $\mathrm{Sym}^{2n}(\C^2)$, of
+dimension $2n+1=2d-1$, with orthonormal basis
+\begin{equation}\label{eq:Dm}
+\ket{D_m}=\sum_{k+l=m}\sqrt{\binom nk\binom nl\Big/\binom{2n}{m}}\;\ket{k}\ket{l},
+\qquad m=0,\dots,2n .
+\end{equation}
+Let $Q$ be the orthogonal projector of $\C^d\otimes\C^d$ onto this subspace and
+$P=I-Q$, of rank $d^2-(2d-1)=(d-1)^2$. Partial transposes are taken in the
+Dicke basis.
+
+\begin{lemma}\label{lem:QG}
+The eigenvalues of $Q^\G$ are
+\begin{equation}\label{eq:qJ}
+q_J=\frac{(2n+1)\,(n!)^2}{(n-J)!\,(n+J+1)!},\qquad J=0,1,\dots,n,
+\end{equation}
+with multiplicity $2J+1$. They decrease strictly with $J$, and the smallest is
+$q_n=\binom{2n}{n}^{-1}=\binom{2d-2}{d-1}^{-1}>0$.
+\end{lemma}
+\begin{proof}
+For a unit vector $\psi\in\C^2$ write $\ket{\psi_n}=\psi^{\otimes n}\in
+\mathrm{Sym}^n(\C^2)$, and let $d\psi$ be the uniform probability measure on
+the unit sphere of $\C^2$. The operator
+$(2n+1)\int(\ketbra\psi\psi)^{\otimes2n}d\psi$ is supported on
+$\mathrm{Sym}^{2n}(\C^2)$, commutes with $U^{\otimes2n}$ for every
+$U\in SU(2)$ and has trace $2n+1$. Since $\mathrm{Sym}^{2n}(\C^2)$ is an
+irreducible representation, Schur's lemma identifies it with $Q$:
+$Q=(2n+1)\int\ketbra{\psi_n}{\psi_n}\otimes\ketbra{\psi_n}{\psi_n}\,d\psi$. The
+Dicke components of $\ket{\psi_n}$ are $\sqrt{\binom nk}\,\psi_0^{n-k}\psi_1^k$,
+so complex conjugation in the Dicke basis sends $\ket{\psi_n}$ to
+$\ket{\bar\psi_n}$, and
+\[
+Q^\G=(2n+1)\int\ketbra{\psi_n}{\psi_n}\otimes\ketbra{\bar\psi_n}{\bar\psi_n}\,d\psi .
+\]
+Identify $\C^d\otimes\C^d$ with the operators on $\C^d$ through
+$\ket k\otimes\ket l\leftrightarrow\ketbra kl$, an isometry for the
+Hilbert--Schmidt inner product. The vector $\ket\phi\otimes\ket{\bar\phi}$
+corresponds to $\ketbra\phi\phi$, and its inner product with the vector of an
+operator $A$ is $\bra\phi A\ket\phi$. Hence $Q^\G$ becomes the map
+$\mathfrak B(A)=(2n+1)\int\bra{\psi_n}A\ket{\psi_n}\,\ketbra{\psi_n}{\psi_n}\,d\psi$.
+It is self-adjoint and commutes with the adjoint action $A\mapsto U_nAU_n^\dagger$
+of $SU(2)$, where $U_n$ is the restriction of $U^{\otimes n}$ to
+$\mathrm{Sym}^n(\C^2)$. Under this action the operator space decomposes into
+irreducible components of spin $J=0,\dots,n$, each of multiplicity one and
+dimension $2J+1$ (the Clebsch--Gordan decomposition of two spins $n/2$). By
+Schur's lemma $\mathfrak B$ acts on the spin-$J$ component as a scalar $q_J$,
+and for every nonzero $A$ in that component
+\[
+q_J=\frac{(2n+1)\int\lvert\bra{\psi_n}A\ket{\psi_n}\rvert^2\,d\psi}{\Tr(A^\dagger A)} .
+\]
+Take $A=S_+^J$ with $S_+=\sum_{i=1}^n\sigma_+^{(i)}$ and
+$\sigma_+=\ketbra01$. It is nonzero on $\mathrm{Sym}^n(\C^2)$ for $J\le n$,
+has weight $J$ under the adjoint action ($[S_z,S_+^J]=JS_+^J$) and is
+annihilated by the raising operator ($[S_+,S_+^J]=0$), so it is a highest
+weight vector of spin $J$. Expanding $S_+^J$ as a sum over $J$-tuples of
+sites, tuples with a repetition vanish because $\sigma_+^2=0$, and each of the
+$n!/(n-J)!$ tuples of distinct sites contributes
+$\bra\psi\sigma_+\ket\psi^J$; hence
+$\bra{\psi_n}S_+^J\ket{\psi_n}=\frac{n!}{(n-J)!}(\bar\psi_0\psi_1)^J$. Since
+$\lvert\psi_0\rvert^2$ is uniformly distributed on $[0,1]$,
+$\int\lvert\psi_0\rvert^{2J}\lvert\psi_1\rvert^{2J}d\psi=\int_0^1x^J(1-x)^Jdx
+=\frac{(J!)^2}{(2J+1)!}$. For the norm,
+$S_+\ket k=\sqrt{k(n-k+1)}\,\ket{k-1}$ gives
+$\norm{S_+^J\ket k}^2=\frac{k!}{(k-J)!}\frac{(n-k+J)!}{(n-k)!}
+=(J!)^2\binom kJ\binom{n+J-k}{J}$, and the identity
+$\sum_k\binom kJ\binom{M-k}{J}=\binom{M+1}{2J+1}$ with $M=n+J$ gives
+$\Tr(S_-^JS_+^J)=(J!)^2\binom{n+J+1}{2J+1}$. Therefore
+\[
+q_J=(2n+1)\Bigl(\frac{n!}{(n-J)!}\Bigr)^2\frac{(J!)^2}{(2J+1)!}\cdot
+\frac{(2J+1)!\,(n-J)!}{(J!)^2\,(n+J+1)!}
+=\frac{(2n+1)(n!)^2}{(n-J)!\,(n+J+1)!}.
+\]
+Finally $q_J/q_{J+1}=\frac{n+J+2}{n-J}>1$ and
+$q_n=\frac{(2n+1)(n!)^2}{(2n+1)!}=\binom{2n}{n}^{-1}$.
+\end{proof}
+
+\begin{theorem}\label{thm:saturation}
+Let $d\ge2$, $\kappa_d=\binom{2d-2}{d-1}^{-1}$ and $1<t\le\frac{1}{1-\kappa_d}$.
+The operator
+\begin{equation}\label{eq:rhot}
+\rho_t=\frac{I-t\,P^\G}{d^2-t(d-1)^2}
+\end{equation}
+is a state of $\C^d\otimes\C^d$, and its partial transpose
+$\rho_t^\G=(I-tP)/(d^2-t(d-1)^2)$ has exactly $(d-1)^2$ negative eigenvalues,
+all equal to $-\mu_t$ with $\mu_t=\frac{t-1}{d^2-t(d-1)^2}$. Consequently
+\[
+N(\rho_t)=2(d-1)\,\mu_t,\qquad \NS(\rho_t)=d\,\mu_t,\qquad
+\frac{N(\rho_t)}{\NS(\rho_t)}=2\Bigl(1-\frac1d\Bigr).
+\]
+The inequality $N\le2(1-\frac1d)\NS$ of \cite{KumariAdhikari2022} is
+saturated in every dimension, and for every $d\ge3$ there are states with
+$N>\NS$.
+\end{theorem}
+\begin{proof}
+Since $P^\G=I-Q^\G$, we have $I-tP^\G=tQ^\G-(t-1)I$, whose eigenvalues
+$tq_J-(t-1)$ are at least $t\kappa_d-(t-1)\ge0$ by Lemma~\ref{lem:QG} and the
+assumption $t(1-\kappa_d)\le1$. This operator is positive semidefinite and
+nonzero, because $q_0=\frac{2n+1}{n+1}>1$; its trace $d^2-t(d-1)^2$ is
+therefore positive and $\rho_t$ is a state. The partial transpose is an
+involution, so $\rho_t^\G$ is proportional to $I-tP$, which equals $1$ on the
+range of $Q$ and $1-t<0$ on the range of $P$, of dimension $(d-1)^2$. The values
+of $N$ and $\NS$ follow from \eqref{eq:N} and Proposition~\ref{prop:ns}.
+\end{proof}
+
+At the endpoint $t=1/(1-\kappa_d)$ one finds
+$\mu=\bigl((2d-1)\binom{2d-2}{d-1}-d^2\bigr)^{-1}$. For $d=2$ this state is
+the Bell state $\ket{\Phi^+}$, with $N=\NS=1$. For $d=3$ ($t=\frac65$,
+$\mu=\frac1{21}$) it reads, in the product basis $\ket{ij}$ of two qutrits,
+\begin{multline}\label{eq:rhostar}
+\rho_\star=\frac1{21}\Bigl[5\bigl(\ketbra{00}{00}+\ketbra{22}{22}\bigr)
++3\ketbra{11}{11}
++3\bigl(\ketbra{00}{11}+\ketbra{11}{22}+\mathrm{h.c.}\bigr)\\
++\bigl(\ketbra{00}{22}+\mathrm{h.c.}\bigr)
++2\ketbra uu+2\ketbra vv\Bigr],
+\end{multline}
+with $\ket u=\ket{10}+\ket{21}$ and $\ket v=\ket{01}+\ket{12}$. This rank-four
+state has spectrum $\{\frac37,\frac4{21},\frac4{21},\frac4{21},0,0,0,0,0\}$ and
+its partial transpose has spectrum $\{\frac5{21}\,(\times5),\,-\frac1{21}\,(\times4)\}$.
+Hence $q=4$ and
+\[
+N(\rho_\star)=\frac4{21}\approx0.190\;>\;\NS(\rho_\star)=\frac17\approx0.143,
+\]
+contradicting the statement of \cite{KumariAdhikari2022} that the structured
+negativity always dominates the negativity.
+
+\subsection{Equality with \texorpdfstring{$q\ne d(d-1)/2$}{q != d(d-1)/2}}
+The two-qutrit state
+\begin{multline}\label{eq:rhoeq}
+\rho_{=}=\frac1{64}\Bigl[21\bigl(\ketbra{00}{00}+\ketbra{22}{22}\bigr)
++2\ketbra{11}{11}
++5\bigl(\ketbra{00}{11}+\ketbra{11}{22}+\mathrm{h.c.}\bigr)
++4\bigl(\ketbra{00}{22}+\mathrm{h.c.}\bigr)\\
++4\ketbra uu+4\ketbra vv+2\ketbra{02}{02}+2\ketbra{20}{20}\Bigr]
+\end{multline}
+is positive semidefinite, with spectrum
+$\{\frac{27}{64},\frac{17}{64},\frac18,\frac18,\frac1{32},\frac1{32},0,0,0\}$, and
+its partial transpose has negative eigenvalues
+$-\frac1{32},-\frac1{32},-\frac1{64},-\frac1{64}$. Thus $q=4\ne3$, $r=3$ and
+$N=\NS=\frac3{32}$, so the claim that the inequality is strict whenever
+$q\ne\frac{d(d-1)}{2}$ fails as well. The convex combination
+$\rho_<=\frac1{10}\ketbra\psi\psi+\frac9{10}\rho_\star$ of the states
+\eqref{eq:psi} and \eqref{eq:rhostar} also has $q=4$, with negative
+eigenvalues $-\frac{11}{126}$, $-\frac{41}{630}$ (twice) and
+$\frac5{42}-\frac{\sqrt{1747}}{315}\approx-0.0136$; there $r\approx2.65<3$
+and $N\approx0.2311<\NS=\frac{11}{42}\approx0.2619$. Both $\rho_\star$ and $\rho_=$ are
+invariant under $U\otimes\bar U$ for diagonal unitaries $U$. Their partial
+transposes therefore split according to the value of $i+j$ into blocks of
+sizes $1,2,3,2,1$, which were chosen of the form $-\varepsilon I+\ketbra ww$.
+
+In summary, the conjecture ``$q=\frac{d(d-1)}2\Rightarrow N=\NS$'' holds for
+$d=2$ and fails for every $d\ge3$; the correct statement is
+Theorem~\ref{thm:criterion}, and its converse fails too. The inequality
+$N\le\NS$ holds whenever $r\le\frac{d(d-1)}2$, in particular whenever
+$q\le\frac{d(d-1)}2$, and is violated by $\rho_t$ for every $d\ge3$, where
+$N/\NS$ reaches its largest possible value $2(1-\frac1d)$.
+
+\section{Verification}\label{sec:verification}
+The statements above are proved analytically; the counterexamples
+\eqref{eq:psi}, \eqref{eq:rhostar} and \eqref{eq:rhoeq} have rational entries
+and are checked in exact arithmetic. The public
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/structured-negativity/checks/check_structured_negativity.py}{Python checker}
+and its
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/structured-negativity/data/verification.json}{recorded output}
+form part of this entry. The checker computes $\NS$ literally from
+definition \eqref{eq:NS}, through the state $\tilde\rho$, and tests
+Proposition~\ref{prop:ns} and Theorem~\ref{thm:criterion} on 1149 random
+states of ranks $1$ to $d^2$ with nonpositive partial transpose for
+$d=2,3,4$, with largest deviation below $10^{-12}$; the equality $N=\NS$ for
+two qubits; the Werner and isotropic families for $d=2,\dots,5$; the pure
+counterexample \eqref{eq:psi} in exact arithmetic; 600 random pure states of
+full Schmidt rank for $d=3,4,5$, all with $q=d(d-1)/2$ and $N<\NS$; 300 random
+two-qutrit mixed states with exactly $q=3$, all with $N<\NS$; the exact
+spectra of $\rho_\star$ and $\rho_=$ with SymPy; and, for $d=2,\dots,6$, the
+spectrum of $Q^\G$ with multiplicities (projector built exactly, eigenvalues
+compared in double precision with \eqref{eq:qJ}), the exact identity
+$\rho_t^\G\propto I-tP$, the positivity of $\rho_t$ at $t=1/(1-\kappa_d)$ and
+the ratio $N/\NS=2(d-1)/d$. The random samples only test conventions, such as
+the normalisation of $N$ and the definition of $\NS$ through $\tilde\rho$;
+they add no information beyond Theorem~\ref{thm:criterion}.
+
+\section{Scope and limitations}\label{sec:scope}
+Proposition~\ref{prop:ns}, Theorem~\ref{thm:criterion}, its corollaries,
+Lemma~\ref{lem:QG} and Theorem~\ref{thm:saturation} are proved completely.
+Theorem~\ref{thm:criterion} is an immediate rewriting of the definitions, and
+the spectrum of the partial transpose of a pure state is classical. The
+content of the note is the identification of the effective number $r(\rho)$
+as the relevant invariant, the resulting refutation of the conjecture for
+every $d\ge3$, and the family $\rho_t$.
+
+The note leaves open the full set of values of $r(\rho)$ attainable at fixed
+$q$. Theorem~\ref{thm:saturation} shows that $r=q$ is attained for
+$q=(d-1)^2$ and the isotropic states attain it for $q=d(d-1)/2$; whether a
+flat negative spectrum exists for intermediate values of $q$ has not been
+examined. Nor do we describe the set of states with $r=d(d-1)/2$ beyond the
+examples given. Other statements of \cite{KumariAdhikari2022}, in particular
+the monotonicity of $\NS$ under local operations and classical communication,
+are outside the scope of this note.
+
+On bibliographic priority, a search of the works citing
+\cite{KumariAdhikari2022} and of the literature on the negative spectrum of
+the partial transpose (Section~\ref{sec:related}) found neither the
+criterion of Theorem~\ref{thm:criterion}, nor the counterexamples, nor the
+family $\rho_t$. The pure-state counterexample is likely familiar to anyone
+who has computed both quantities. The search did not cover the literature on
+rotationally invariant states, where $Q^\G$ and its spectrum probably appear
+in another form. This is a statement about the documented search only, not a
+claim of priority.
+
+\clearpage
+\begingroup\small
+\begin{thebibliography}{99}
+\setlength{\itemsep}{2pt}
+\bibitem{KumariAdhikari2022}
+A. Kumari and S. Adhikari,
+\emph{Structured negativity: A physically realizable measure of entanglement
+based on structural physical approximation},
+Ann. Phys. \textbf{446}, 169113 (2022);
+\href{https://doi.org/10.1016/j.aop.2022.169113}{doi:10.1016/j.aop.2022.169113};
+\href{https://arxiv.org/abs/2209.03909}{arXiv:2209.03909}.
+
+\bibitem{Peres1996}
+A. Peres,
+\emph{Separability criterion for density matrices},
+Phys. Rev. Lett. \textbf{77}, 1413 (1996);
+\href{https://doi.org/10.1103/PhysRevLett.77.1413}{doi:10.1103/PhysRevLett.77.1413};
+\href{https://arxiv.org/abs/quant-ph/9604005}{arXiv:quant-ph/9604005}.
+
+\bibitem{Horodecki1996}
+M. Horodecki, P. Horodecki and R. Horodecki,
+\emph{Separability of mixed states: necessary and sufficient conditions},
+Phys. Lett. A \textbf{223}, 1 (1996);
+\href{https://doi.org/10.1016/S0375-9601(96)00706-2}{doi:10.1016/S0375-9601(96)00706-2};
+\href{https://arxiv.org/abs/quant-ph/9605038}{arXiv:quant-ph/9605038}.
+
+\bibitem{VidalWerner2002}
+G. Vidal and R. F. Werner,
+\emph{A computable measure of entanglement},
+Phys. Rev. A \textbf{65}, 032314 (2002);
+\href{https://doi.org/10.1103/PhysRevA.65.032314}{doi:10.1103/PhysRevA.65.032314};
+\href{https://arxiv.org/abs/quant-ph/0102117}{arXiv:quant-ph/0102117}.
+
+\bibitem{HorodeckiEkert2002}
+P. Horodecki and A. Ekert,
+\emph{Direct detection of quantum entanglement},
+Phys. Rev. Lett. \textbf{89}, 127902 (2002);
+\href{https://doi.org/10.1103/PhysRevLett.89.127902}{doi:10.1103/PhysRevLett.89.127902};
+\href{https://arxiv.org/abs/quant-ph/0111064}{arXiv:quant-ph/0111064}.
+
+\bibitem{Kumari2023}
+A. Kumari,
+\emph{Detection and classification of bipartite and multipartite entangled
+states}, doctoral thesis (2023);
+\href{https://arxiv.org/abs/2305.16643}{arXiv:2305.16643}.
+
+\bibitem{Aggarwal2023}
+S. Aggarwal, A. Kumari and S. Adhikari,
+\emph{Physical realization of realignment criteria using structural physical
+approximation},
+Phys. Rev. A \textbf{108}, 012422 (2023);
+\href{https://doi.org/10.1103/PhysRevA.108.012422}{doi:10.1103/PhysRevA.108.012422};
+\href{https://arxiv.org/abs/2301.09884}{arXiv:2301.09884}.
+
+\bibitem{Rana2013}
+S. Rana,
+\emph{Negative eigenvalues of partial transposition of arbitrary bipartite
+states},
+Phys. Rev. A \textbf{87}, 054301 (2013);
+\href{https://doi.org/10.1103/PhysRevA.87.054301}{doi:10.1103/PhysRevA.87.054301};
+\href{https://arxiv.org/abs/1304.6775}{arXiv:1304.6775}.
+
+\bibitem{Johnston2013}
+N. Johnston,
+\emph{Non-positive-partial-transpose subspaces can be as large as any
+entangled subspace},
+Phys. Rev. A \textbf{87}, 064302 (2013);
+\href{https://doi.org/10.1103/PhysRevA.87.064302}{doi:10.1103/PhysRevA.87.064302};
+\href{https://arxiv.org/abs/1305.0257}{arXiv:1305.0257}.
+
+\bibitem{JiangQiuYu2026}
+W.-J. Jiang, J.-T. Qiu and X.-D. Yu,
+\emph{Spectral bounds for the partial transpose},
+preprint (2026);
+\href{https://arxiv.org/abs/2609.06617}{arXiv:2609.06617}.
+\end{thebibliography}
+\endgroup
+\end{document}

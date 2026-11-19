@@ -1,0 +1,457 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{plain}
+\newcommand{\ket}[1]{\lvert#1\rangle}
+\newcommand{\bra}[1]{\langle#1\rvert}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\one}{\mathbf{1}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\E}{\mathbb{E}}
+\newcommand{\T}{\mathsf{T}}
+\newcommand{\ip}[2]{\langle#1,#2\rangle}
+\setlength{\emergencystretch}{2em}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em plus 0.1em minus 0.1em}
+\title{The variance of a sum of independent quantum errors:\\
+a proof for centred errors and counterexamples without centring}
+\author{Fable \& Astra\\[0.35em]
+\normalsize Research led by Jean-Philippe Bruneton\\[-0.1em]
+\small Universit\'e Paris Cit\'e, France}
+\date{19 November 2026}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+When a quantum computation suffers several independent errors, one would like
+to predict the size of the total error from the sizes of its parts. Lacalle
+and Pozo Coronado model an error as a random pure state scattered around the
+error-free state on the unit sphere of the state space, measure its size by
+the mean squared distance $V$ to the error-free state, and prove that two
+independent isotropic errors combine as
+$V_{12}=V_1+V_2-\tfrac12V_1V_2$. They conjecture the same formula for
+arbitrary independent errors and state it as a theorem on the circle. We show
+that the answer depends on one hypothesis that the conjecture leaves implicit:
+whether the errors are centred, in the sense that their Euclidean mean points
+along the error-free state. The formula is equivalent to the multiplicativity
+of the mean overlap $m=1-V/2$, and composing independent errors multiplies
+mean operators. Hence the formula holds for any number of independent centred
+errors, isotropic or not, in both natural definitions of the sum, and an
+exact identity gives the correction term in general. Without centring the
+formula fails: two independent errors on the circle with density
+$(1+\sin\theta)/(2\pi)$, which belongs to the family used in the source's own
+proof, give $V_{12}=5/2$ instead of $2$, so the theorem on the circle is false
+as stated; two deterministic over-rotations $R_x(2\pi/3)$ of one qubit give
+$V_{12}=3$ instead of $3/2$. The same mechanism proves the companion fidelity
+formula of Lacalle, Pozo Coronado and Mart\'in-Cuevas when the second error
+has an isotropic second moment.
+\end{abstract}
+
+\section{Introduction}
+Errors in a quantum computer accumulate. A gate that misses its target by a
+small amount leaves the register in a pure state close to, but not equal to,
+the intended one, and a long computation composes many such imperfections.
+A simple model treats each error as a random point on the unit sphere of
+state space, concentrated around the error-free state, and asks how the
+spread of the final state depends on the spread of the individual errors.
+Because the sphere is compact, spreads cannot simply add: a total error never
+exceeds the diameter of the sphere. Lacalle and Pozo
+Coronado~\cite{LacallePozo2019} measured the spread by the mean squared
+distance to the error-free state, which they call the variance, and found that
+for two independent errors whose densities depend only on the distance to
+their centre (isotropic errors) the variances combine by the rule
+\begin{equation}\label{eq:formula}
+V(X_1+X_2)=V(X_1)+V(X_2)-\frac{V(X_1)\,V(X_2)}{2}.
+\end{equation}
+They conjectured that the rule holds for any two independent errors, proved it
+for arbitrary independent random variables on the circle, and illustrated the
+general case by an exact computation on the seven-dimensional sphere of two
+qubits.
+
+This note settles the conjecture by identifying the hypothesis on which it
+turns. The variance of an error depends only on the Euclidean mean of the
+random state, and composing independent errors multiplies mean operators.
+Rule~\eqref{eq:formula} is the statement that the mean overlap with the
+error-free state is multiplicative, and this holds whenever the error-free
+state is an eigenvector of the mean operators, that is, whenever the errors
+are \emph{centred}: their Euclidean mean lies along the error-free state.
+Isotropy guarantees centring but is far stronger than needed. The source paper
+itself assumes that the error-free state ``represents the mean'' of each
+error, and under that convention the conjecture is true for anisotropic errors
+with different distributions, any number of errors and every number of
+qubits, with a three-line proof (Theorems~\ref{thm:gate}
+and~\ref{thm:transport}, Corollary~\ref{cor:k}). Without centring the rule is
+false, and the theorem on the circle fails already for a pair of densities
+from the family used in its proof (Proposition~\ref{prop:counter}). The
+physically important case is that of biased coherent errors, such as a
+systematic over-rotation, for which the variance grows faster than the rule
+predicts.
+
+The simplest illustration is a single qubit subject twice to the same
+deterministic over-rotation $R_x(2\pi/3)=\exp(-i\tfrac\pi3\sigma_x)$. Each
+rotation has overlap $\tfrac12$ with $\ket0$, hence variance $1$, and
+rule~\eqref{eq:formula} predicts $\tfrac32$ for the pair. The composite
+rotation $R_x(4\pi/3)$ has overlap $-\tfrac12$, hence variance $3$. The
+discrepancy comes from the transverse component of the mean, which is
+nonzero for a biased rotation and absent for a centred error; the general
+identity~\eqref{eq:identity} below measures exactly this component.
+
+\section{Related work}\label{sec:related}
+The model and the conjecture are those of Lacalle and Pozo
+Coronado~\cite{LacallePozo2019}, published in 2019 and posted to arXiv in
+December 2024. They prove rule~\eqref{eq:formula} for independent isotropic
+errors on every sphere $S^d$ (their Theorem~2), through an explicit expansion
+of the densities in powers of $\cos\theta_0$, double-factorial integrals and a
+combinatorial identity on ordered trees. Their Theorem~3 asserts the rule for
+any two independent random variables on $S^1$. Its proof expands densities in
+the functions $g_k(\theta)\propto1+\cos^k\theta$ and
+$h_k(\theta)\propto1+\sin^k\theta$, treats the pairs $(g_k,g_l)$, $(g_k,h_l)$
+and $(h_k,g_l)$, and omits the pair $(h_k,h_l)$; Proposition~\ref{prop:counter}(a)
+shows that this pair violates the rule. Their Example on $S^7$ combines an
+anisotropic, non-centred first error with an isotropic second error and
+obtains $V=445/224$; Section~\ref{sec:example} explains why this example
+falls under Theorem~\ref{thm:transport} and therefore does not test the
+anisotropic second error.
+
+Lacalle, Pozo Coronado and Mart\'in-Cuevas~\cite{LacallePozoMartin2026}
+recall in 2026 that rule~\eqref{eq:formula} ``was proven for isotropic
+quantum errors and conjectured for general quantum errors'' and pose a twin
+conjecture for the fidelity. Remark~\ref{rem:fidelity} proves that twin
+formula in the transport model when the second error has an isotropic second
+moment. We found no proof, refutation or correction of the variance
+conjecture in the literature examined (Section~\ref{sec:scope}).
+
+The distinction between centred and biased errors parallels the familiar
+contrast between stochastic and coherent noise in fault tolerance: errors of
+equal average size can have very different worst-case effects, and coherent
+errors produce the largest gap~\cite{Kueng2016}. The counterexample of
+Proposition~\ref{prop:counter}(b) is an instance of this phenomenon in the
+variance language of~\cite{LacallePozo2019}.
+
+\section{Setting}\label{sec:setting}
+A pure state of $n$ qubits, $\Psi=(x_0+ix_1,\dots,x_{d-1}+ix_d)$ in the
+computational basis, is a point of the real unit sphere
+$S^d\subset\R^{d+1}$ with $d=2^{n+1}-1$. We write $\ip\cdot\cdot$ for the
+Euclidean inner product of $\R^{d+1}$; for two states,
+$\ip xy=\operatorname{Re}\langle\Psi_x|\Psi_y\rangle$. The error-free state is
+$P=(1,0,\dots,0)$, that is $\ket0$. An error is a random variable $X$ on
+$S^d$, and its variance in the sense of~\cite{LacallePozo2019} is
+\[
+V(X)=\E\norm{X-P}^2=2-2\,\E[x_0]\in[0,4].
+\]
+We define the \emph{mean overlap} $m(X)=\E\ip PX=\E[x_0]=1-V(X)/2$. Since
+$1-\tfrac12\bigl(V_1+V_2-\tfrac12V_1V_2\bigr)=\bigl(1-\tfrac12V_1\bigr)
+\bigl(1-\tfrac12V_2\bigr)$, rule~\eqref{eq:formula} is equivalent to
+\begin{equation}\label{eq:mult}
+m(X_1+X_2)=m(X_1)\,m(X_2).
+\end{equation}
+
+\begin{definition}
+An error $X$ is \emph{centred on $P$} if its Euclidean mean is parallel to
+$P$: $\E[X]=m(X)\,P$, that is, $\E[x_j]=0$ for $1\le j\le d$.
+\end{definition}
+
+This is the precise content of the convention in~\cite{LacallePozo2019} that
+$P$ ``represents the mean value'' of the distribution. An isotropic error is
+centred: its law is invariant under the isometries of $\R^{d+1}$ that fix $P$
+(the rotations about the axis $P$ when $d\ge2$, the reflection
+$\theta\mapsto-\theta$ when $d=1$), so $\E[X]$ is fixed by them and lies in
+$\R P$. The converse fails, since centring imposes $d$ linear conditions on
+the law, whereas isotropy prescribes its whole angular dependence.
+
+The source defines the sum $X_1+X_2$ explicitly only when the second error is
+isotropic: the second error is then applied around the point reached by the
+first, with a density depending only on the distance to that point. Two
+definitions extend this to anisotropic errors.
+
+\emph{Gate model.} Each error is a random isometry $R_j\in O(d+1)$; for $n$
+qubits, a random unitary in $U(2^n)\subset O(2^{n+1})$, for instance a noisy
+gate composed with the inverse of the ideal gate. The isometries $R_1,R_2$ are
+independent, $X_j=R_jP$ is the error seen from the reference state, and
+$X_1+X_2:=R_2R_1P$. This is the physical definition: the second error acts as
+an operator on the already erroneous state.
+
+\emph{Transport model.} The first error is a random point $X_1\in S^d$; the
+second is a random point $Y_2\in S^d$, independent of $X_1$, whose law is
+given around $P$. Choose a measurable section $T:S^d\to O(d+1)$ with
+$T(x)P=x$ and set $X_1+X_2:=T(X_1)\,Y_2$: the law of the second error is
+copied around the point reached by the first. When $Y_2$ is isotropic the law
+of $T(x)Y_2$ does not depend on the choice of $T$, and this is the definition
+of~\cite{LacallePozo2019}.
+
+\section{Results}\label{sec:results}
+\subsection{The identity behind the formula}
+
+\begin{theorem}[gate model]\label{thm:gate}
+Let $R_1,R_2$ be independent random isometries in $O(d+1)$, $X_j=R_jP$,
+$m_j=m(X_j)$ and $V_j=V(X_j)$. Let $u_1=\E[X_1]-m_1P$ be the transverse mean
+of the first error and $w_2=\E[R_2^\T P]-m_2P$ the transverse mean of the
+inverse error $R_2^{-1}P$. Then
+\begin{equation}\label{eq:identity}
+V(X_1+X_2)=V_1+V_2-\frac{V_1V_2}{2}-2\,\ip{w_2}{u_1}.
+\end{equation}
+Rule~\eqref{eq:formula} therefore holds if and only if $\ip{w_2}{u_1}=0$; in
+particular it holds for every second error as soon as the first error is
+centred.
+\end{theorem}
+
+\begin{proof}
+We have $\ip P{R_2R_1P}=\ip{R_2^\T P}{R_1P}$. The random vectors $R_2^\T P$
+and $R_1P$ are bounded and independent, and the inner product is bilinear, so
+$m(X_1+X_2)=\ip{\E[R_2^\T P]}{\E[R_1P]}$. Moreover
+$\ip P{\E[R_2^\T P]}=\E\ip{R_2P}P=m_2$, so $\E[R_2^\T P]=m_2P+w_2$ with
+$w_2\perp P$, and likewise $\E[R_1P]=m_1P+u_1$ with $u_1\perp P$. Hence
+$m(X_1+X_2)=m_1m_2+\ip{w_2}{u_1}$, and $V=2-2m$ gives~\eqref{eq:identity}.
+\end{proof}
+
+\begin{theorem}[transport model]\label{thm:transport}
+Let $X_1$ be any random point of $S^d$, let $Y_2$ be a random point of $S^d$
+independent of $X_1$ and centred on $P$, and let $T$ be any measurable
+section. Then $\E[T(X_1)Y_2\mid X_1]=m(Y_2)\,X_1$, and rule~\eqref{eq:formula}
+holds for $X_1+X_2=T(X_1)Y_2$.
+\end{theorem}
+
+\begin{proof}
+Conditionally on $X_1$ the matrix $T(X_1)$ is fixed and $Y_2$ keeps its law,
+so $\E[T(X_1)Y_2\mid X_1]=T(X_1)\E[Y_2]=m(Y_2)\,T(X_1)P=m(Y_2)\,X_1$. Taking
+expectations and the inner product with $P$ gives
+$m(X_1+X_2)=m(Y_2)\,m(X_1)$, which is~\eqref{eq:mult}.
+\end{proof}
+
+\begin{corollary}[the conjecture under the centring convention]\label{cor:k}
+Let $X_1,\dots,X_k$ be mutually independent errors, each centred on $P$,
+isotropic or not, with equal or different laws. In either model,
+\[
+1-\frac{V(X_1+\dots+X_k)}{2}=\prod_{j=1}^{k}\Bigl(1-\frac{V(X_j)}{2}\Bigr).
+\]
+In particular rule~\eqref{eq:formula} holds for $k=2$ in every dimension
+$d\ge1$, hence for every number of qubits.
+\end{corollary}
+
+\begin{proof}
+In the gate model, centring means $\E[R_j]P=m_jP$. By mutual independence
+$\E[R_k\cdots R_1]=\E[R_k]\cdots\E[R_1]$, and
+$\E[R_k]\cdots\E[R_1]P=m_k\cdots m_1P$ by induction; take the inner product
+with $P$. In the transport model, let $X^{(j)}$ be the state after $j$
+errors. Theorem~\ref{thm:transport}, applied conditionally on $X^{(j-1)}$,
+gives $\E[X^{(j)}\mid X^{(j-1)}]=m_jX^{(j-1)}$, hence
+$\E[X^{(k)}]=m_k\cdots m_1P$ by the tower property.
+\end{proof}
+
+The main theorem of~\cite{LacallePozo2019} is the special case of
+Corollary~\ref{cor:k} in which every law is invariant under the isometries
+fixing $P$. Isotropy is used there only to make $P$ an eigenvector of the
+mean operators, and centring is enough for that.
+
+\subsection{Counterexamples without centring}
+
+\begin{proposition}\label{prop:counter}
+Rule~\eqref{eq:formula} fails for independent errors that are not centred, in
+each of the following exact situations.
+\begin{enumerate}
+\item[(a)] \emph{On the circle.} Let $X_1,X_2$ be independent with density
+$h_1(\theta)=(1+\sin\theta)/(2\pi)$ on $S^1$. Then $V(X_j)=2$, so
+rule~\eqref{eq:formula} predicts $2$, whereas $V(X_1+X_2)=5/2$ when the sum
+is the rotation $\theta=\theta_1+\theta_2$, and $3/2$ with the convention
+$\theta=\theta_2-\theta_1$. In either case Theorem~3
+of~\cite{LacallePozo2019} is false as stated.
+\item[(b)] \emph{One qubit, coherent errors.} For $U_1=U_2=R_x(2\pi/3)$ one has
+$V_1=V_2=1$ and $V(X_1+X_2)=3$, whereas rule~\eqref{eq:formula} predicts
+$3/2$.
+\item[(c)] \emph{Centring the second error is not enough in the gate model.}
+On one qubit, let $U_2$ equal $R_y(\pi/2)$ or $R_y(-\pi/2)Z$ with probability
+$\tfrac12$ each, and let $X_1=R_y(\pi/2)\ket0$ be deterministic. Then the
+second error is centred with $m_2=\tfrac{\sqrt2}2$, $m_1=\tfrac{\sqrt2}2$, and
+$m(X_1+X_2)=0\ne\tfrac12$, so $V(X_1+X_2)=2$ instead of $1$.
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+(a) The density $h_1$ is nonnegative with total mass $1$, and
+$\E\cos\theta=0$, $\E\sin\theta=\tfrac12$. Hence $m(X_j)=0$ and $V(X_j)=2$.
+By independence,
+$\E\cos(\theta_1\pm\theta_2)=\E\cos\theta_1\E\cos\theta_2\mp
+\E\sin\theta_1\E\sin\theta_2=\mp\tfrac14$, so $V(X_1+X_2)=2\pm\tfrac12$.
+The density $h_1$ belongs to the family $\{h_k\}$ used in the proof of
+Theorem~3 of~\cite{LacallePozo2019}; the case $(h_k,h_l)$ is the one missing
+from that proof. On $S^1$ the correct statement is
+$V(X_1+X_2)=V_1+V_2-\tfrac12V_1V_2+2\,\E[\sin\theta_1]\,\E[\sin\theta_2]$ for
+the rotation convention, the special case of~\eqref{eq:identity} with
+$u_1=\E[\sin\theta_1]e_1$ and $w_2=-\E[\sin\theta_2]e_1$.
+
+(b) In the real picture, $\bra0R_x(\alpha)\ket0=\cos(\alpha/2)$, so
+$m_1=m_2=\cos(\pi/3)=\tfrac12$ and $V_1=V_2=1$. The product is
+$R_x(4\pi/3)$, with $m(X_1+X_2)=\cos(2\pi/3)=-\tfrac12$ and
+$V(X_1+X_2)=3$. More generally, for independent random over-rotations
+$R_x(\alpha_j)$ the identity~\eqref{eq:identity} reads
+$V_{12}=V_1+V_2-\tfrac12V_1V_2+2\,\E[\sin\tfrac{\alpha_1}2]\,
+\E[\sin\tfrac{\alpha_2}2]$: a systematic bias of the same sign makes the
+variance grow faster than rule~\eqref{eq:formula}, and the rule is exact when
+one of the angles has a symmetric law.
+
+(c) With $R_y(\alpha)=\begin{pmatrix}\cos\frac\alpha2&-\sin\frac\alpha2\\
+\sin\frac\alpha2&\cos\frac\alpha2\end{pmatrix}$ and $Z=\mathrm{diag}(1,-1)$,
+the mean operator is
+$M_2=\E[U_2]=\tfrac{\sqrt2}{2}\begin{pmatrix}1&-1\\0&0\end{pmatrix}$, so
+$M_2\ket0=\tfrac{\sqrt2}2\ket0$ and the second error is centred, whereas
+$M_2^\T\ket0=\tfrac{\sqrt2}2(\ket0-\ket1)$ has a transverse part. With
+$X_1=\tfrac{\sqrt2}2(\ket0+\ket1)$, independence gives
+$m(X_1+X_2)=\bra0M_2X_1=\tfrac12(1-1)=0$, while
+$m_1m_2=\tfrac12$. This agrees with~\eqref{eq:identity}:
+$u_1=\tfrac{\sqrt2}2\ket1$, $w_2=-\tfrac{\sqrt2}2\ket1$ and
+$\ip{w_2}{u_1}=-\tfrac12$.
+\end{proof}
+
+In the gate model it is therefore the centring of the first error, or of the
+inverse second error $R_2^{-1}P$, that matters. In the transport model, when
+the second error is not centred, the variance of the sum depends in addition
+on the choice of the section $T$, so that the sum is not determined by the
+laws of $X_1$ and $X_2$ alone; the checker of Section~\ref{sec:verification}
+exhibits finite ensembles for which two sections give variances differing by
+more than $1$.
+
+\subsection{The example on the seven-sphere}\label{sec:example}
+The example illustrating the conjecture in~\cite{LacallePozo2019} uses
+hyperspherical angles $(\theta_0,\theta_1,\theta_2,\dots)$ on $S^7$, with
+$x_0=\cos\theta_0$ and $x_1=\sin\theta_0\cos\theta_1$, and takes the
+densities
+\[
+g_1\propto2+\cos\theta_0\sin^2\theta_1+\cos\theta_1\sin\theta_2,\qquad
+g_2\propto1+\cos\theta_0
+\]
+for the first and the second error. The density $g_2$ is isotropic, hence
+centred. The density $g_1$ is anisotropic and not centred: an exact
+integration gives $\E[x_1]=32768/(55125\,\pi^2)\approx0.0602$. The example
+therefore falls under Theorem~\ref{thm:transport}, which gives
+$V=2-2m_1m_2$ with $m_1=\tfrac3{56}$ and $m_2=\tfrac18$, that is
+$V=\tfrac{445}{224}\approx1.98661$, the value obtained
+in~\cite{LacallePozo2019} by a sixfold integral. It tests neither an
+anisotropic nor a non-centred second error.
+
+\subsection{The companion fidelity formula}
+
+\begin{remark}\label{rem:fidelity}
+Lacalle, Pozo Coronado and Mart\'in-Cuevas~\cite{LacallePozoMartin2026}
+conjecture, for $F^2(X)=\E[x_0^2+x_1^2]=\E\lvert\langle0|\Psi_X\rangle\rvert^2$
+and $f_0^2=2/(d+1)$, that
+\[
+F^2(X_1+X_2)=f_0^2+\frac{\bigl(F^2(X_1)-f_0^2\bigr)\bigl(F^2(X_2)-f_0^2\bigr)}{1-f_0^2}.
+\]
+In the transport model this holds, for an arbitrary first error and any
+section, whenever the second error has an isotropic second moment,
+$\E[Y_2Y_2^\T]=a\,PP^\T+b\,(\one-PP^\T)$ with $a+db=1$.
+\end{remark}
+
+\begin{proof}
+Conditionally on $X_1$,
+$\E[XX^\T\mid X_1]=T(X_1)\E[Y_2Y_2^\T]T(X_1)^\T
+=a\,X_1X_1^\T+b\,(\one-X_1X_1^\T)$, independently of the section. Taking the
+sum of the $(0,0)$ and $(1,1)$ entries and then expectations,
+$F^2(X_1+X_2)=(a-b)F^2(X_1)+2b$. Moreover $F^2(X_2)=a+b$, and $a+db=1$
+implies $1-(a-b)=(d+1)b$, so that $2b=f_0^2\bigl(1-(a-b)\bigr)$ and
+$a+b-f_0^2=(a-b)(1-f_0^2)$. Substituting gives the formula.
+\end{proof}
+
+The checker shows that the fidelity formula fails for a generic second error;
+the gate model is not treated here.
+
+\section{Verification}\label{sec:verification}
+The statements above are proved analytically. The public
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/variance-sum-quantum-errors/checks/check_variance_formula.py}{Python checker}
+tests them, and its
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/variance-sum-quantum-errors/data/verification.json}{recorded output}
+is part of the same entry. In exact arithmetic (SymPy) it recomputes the three
+counterexamples of Proposition~\ref{prop:counter} and the example of
+Section~\ref{sec:example}: $V(g_1)=\tfrac{53}{28}$, $V(g_2)=\tfrac74$,
+$2-2m_1m_2=\tfrac{445}{224}$ and $\E[x_1]\ne0$ under $g_1$. A Monte Carlo
+simulation of that example in the transport model, with about $3\times10^6$
+samples and a fixed seed, agrees with $\tfrac{445}{224}$ within four standard
+errors and excludes the value $2$. In floating-point arithmetic the checker
+verifies the identity~\eqref{eq:identity} to $10^{-12}$ on $360$ random finite
+ensembles of anisotropic, non-identically distributed isometries in $O(2)$,
+$O(4)$ and $O(8)$, the exactness of rule~\eqref{eq:formula} when the first
+error is centred and its generic failure (deviations up to $0.67$),
+Theorem~\ref{thm:transport} on $45$ finite ensembles on $S^1$, $S^3$ and $S^7$
+with two different sections, and Remark~\ref{rem:fidelity} on $S^3$ and $S^7$.
+The run takes a few seconds.
+
+\section{Scope and limitations}\label{sec:scope}
+\emph{Analytic proof.} Theorems~\ref{thm:gate} and~\ref{thm:transport},
+Corollary~\ref{cor:k}, Proposition~\ref{prop:counter} and
+Remark~\ref{rem:fidelity} are proved in full; the remark only in the
+transport model.
+
+\emph{What this says about the conjecture.} The conjecture specifies neither
+the sum of anisotropic errors nor whether centring is assumed. Read with the
+centring convention stated in~\cite{LacallePozo2019}, it is true in both
+natural models, and the proof uses neither isotropy nor equality of the laws.
+Read without that convention, as the theorem on the circle and the example on
+$S^7$ suggest, since both use non-centred densities, it is false, and the
+theorem on the circle must be restricted to pairs in which one error is
+centred. The weakest sufficient condition in the gate model is
+$\ip{w_2}{u_1}=0$. Independence enters only through the factorisation
+$\E[R_2^\T P\otimes R_1P]=\E[R_2^\T P]\otimes\E[R_1P]$; for $k$ errors the
+expectation of the full product must factorise, which pairwise independence
+does not ensure.
+
+\emph{Physical scope.} Centring excludes biased coherent errors, such as a
+systematic over-rotation, for which the variance grows faster than
+rule~\eqref{eq:formula} predicts, as in
+Proposition~\ref{prop:counter}(b). The threshold estimate that the source
+derives from the rule, a variance per gate below $C/k$ for $k$ gates, relies on
+the absence of such bias. The variance $V$ is sensitive to the global phase;
+the ``quantum variance'' $V_q=2-2\,\E\sqrt{x_0^2+x_1^2}$ introduced
+in~\cite{LacallePozo2019} to remove this dependence is not a function of
+$\E[X]$, and none of the results above concerns it. The two models of the sum
+cover the natural readings of the source without exhausting every
+conceivable definition, for instance a Markov kernel whose shape depends on
+the starting point.
+
+\emph{Bibliographic priority.} The source was read in its arXiv \TeX{} file,
+and the 2026 companion paper in its published version. The works citing the
+source were listed through the Semantic Scholar interface and complemented by
+web searches; none of them proves, refutes or corrects the conjecture, and its
+authors still describe it as conjectural in January 2026. Priority is claimed
+only within the limits of this documented search. The proofs are short and
+rest on linearity of expectation, and equivalent statements may exist in the
+literature on random walks on spheres and compact groups, which was not
+surveyed.
+
+\begingroup\small
+\begin{thebibliography}{9}
+\setlength{\itemsep}{2pt}
+\bibitem{LacallePozo2019}
+J. Lacalle and L. M. Pozo Coronado,
+\emph{Variance of the sum of independent quantum computing errors},
+Quantum Inf. Comput. \textbf{19}, 1294--1312 (2019);
+\href{https://doi.org/10.26421/QIC19.15-16-3}{doi:10.26421/QIC19.15-16-3};
+\href{https://arxiv.org/abs/2412.15800}{arXiv:2412.15800}.
+
+\bibitem{LacallePozoMartin2026}
+J. Lacalle, L. M. Pozo Coronado and R. Mart\'in-Cuevas,
+\emph{Fidelity of the sum of independent quantum computing errors},
+Quantum Inf. Process. \textbf{25}, 38 (2026);
+\href{https://doi.org/10.1007/s11128-025-05037-5}{doi:10.1007/s11128-025-05037-5}.
+
+\bibitem{Kueng2016}
+R. Kueng, D. M. Long, A. C. Doherty and S. T. Flammia,
+\emph{Comparing Experiments to the Fault-Tolerance Threshold},
+Phys. Rev. Lett. \textbf{117}, 170502 (2016);
+\href{https://doi.org/10.1103/PhysRevLett.117.170502}{doi:10.1103/PhysRevLett.117.170502};
+\href{https://arxiv.org/abs/1510.05653}{arXiv:1510.05653}.
+\end{thebibliography}
+\endgroup
+\end{document}

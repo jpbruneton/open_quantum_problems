@@ -1,0 +1,146 @@
+{
+  "entry": "real-three-qubit-states-three-cz",
+  "checker": "checks/verify_three_cz.py",
+  "seed": 220103724,
+  "python": "3.13.18",
+  "numpy": "2.5.3",
+  "sympy": "1.14.0",
+  "result": "PASS",
+  "checks": {
+    "operator_identities_max_dev": [
+      0.0,
+      0.0
+    ],
+    "random_states": {
+      "count": 20000,
+      "with_negative_hyperdeterminant": 4330,
+      "worst_infidelity": 6.661338147750939e-16
+    },
+    "named_states": {
+      "|000>": {
+        "hyperdeterminant": 0.0,
+        "YY": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "infidelity": 0.0
+      },
+      "GHZ": {
+        "hyperdeterminant": 0.2499999999999999,
+        "YY": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "infidelity": 1.1102230246251565e-16
+      },
+      "W": {
+        "hyperdeterminant": 0.0,
+        "YY": [
+          0.6666666666666669,
+          0.6666666666666669,
+          0.6666666666666669
+        ],
+        "infidelity": 0.0
+      },
+      "N = |000>-|011>-|101>-|110>": {
+        "hyperdeterminant": -0.25,
+        "YY": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "infidelity": 0.0
+      },
+      "Bell x |0>": {
+        "hyperdeterminant": 0.0,
+        "YY": [
+          -0.9999999999999998,
+          0.0,
+          0.0
+        ],
+        "infidelity": 1.1102230246251565e-16
+      },
+      "|0> x Bell": {
+        "hyperdeterminant": 0.0,
+        "YY": [
+          0.0,
+          0.0,
+          -0.9999999999999998
+        ],
+        "infidelity": 2.220446049250313e-16
+      },
+      "Bell(0,2) x |1>": {
+        "hyperdeterminant": 0.0,
+        "YY": [
+          0.0,
+          -0.9999999999999998,
+          0.0
+        ],
+        "infidelity": 1.1102230246251565e-16
+      },
+      "|+++>": {
+        "hyperdeterminant": 0.0,
+        "YY": [
+          0.0,
+          0.0,
+          0.0
+        ],
+        "infidelity": 1.1102230246251565e-16
+      },
+      "uniform with one sign": {
+        "hyperdeterminant": 0.06249999999999996,
+        "YY": [
+          0.4999999999999999,
+          0.4999999999999999,
+          0.4999999999999999
+        ],
+        "infidelity": 2.220446049250313e-16
+      }
+    },
+    "exact_angle_circuit_N_float_dev": 1.9460019357548916e-16,
+    "negative_hyperdeterminant_states": {
+      "count": 5000,
+      "worst_infidelity": 5.551115123125783e-16
+    },
+    "two_cz_circuits_max_min_YY": 2.220446049250313e-16,
+    "synthesis_two_cz_prefix_max_Y0Y2": 2.220446049250313e-16,
+    "jacobian_ranks_three_cz": {
+      "((0, 1), (0, 1), (0, 1))": [
+        4
+      ],
+      "((0, 1), (0, 1), (0, 2))": [
+        6
+      ],
+      "((0, 1), (0, 2), (0, 1))": [
+        7
+      ],
+      "((0, 1), (0, 2), (0, 2))": [
+        7
+      ],
+      "((0, 1), (0, 2), (1, 2))": [
+        7
+      ]
+    },
+    "jacobian_ranks_two_cz_chains": [
+      6
+    ],
+    "hyperdeterminant_local_orthogonal_invariance_max_dev": 1.3877787807814457e-16,
+    "exact": {
+      "circuit_output_equals_N": true,
+      "N_hyperdeterminant": "-1/4",
+      "N_YY": [
+        "1",
+        "1",
+        "1"
+      ],
+      "W_hyperdeterminant": "0",
+      "W_YY": [
+        "2/3",
+        "2/3",
+        "2/3"
+      ]
+    }
+  }
+}

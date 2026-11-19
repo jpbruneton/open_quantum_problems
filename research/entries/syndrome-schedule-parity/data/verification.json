@@ -1,0 +1,613 @@
+{
+  "status": "passed",
+  "seed": 260819917,
+  "checks": [
+    {
+      "check": "[1] I(S) = sum(D - t) - C(|S|,2) and C(a+b,2) - C(a,2) - C(b,2) = ab",
+      "passed": true,
+      "detail": "1022 subsets, D <= 9"
+    },
+    {
+      "check": "[2] sum over X/Z pairs of X-before-Z incidences = g*wa*wb (random depth-D colourings)",
+      "passed": true,
+      "detail": "60 colourings"
+    },
+    {
+      "check": "[3a] uniform schedules, wa and wb odd: none of depth D (16 codes, odd and even g)",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "[3b] uniform schedules with an even weight: depth D attained (4 controls)",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "[4a] exhaustive search: no proper depth-D schedule (16 odd/odd codes)",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "[4b] the three-band schedule of depth D+1 is proper on the same codes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "[4c] even-weight controls admit proper depth-D schedules (4 codes)",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "[5] certificate: proper depth-6 schedule for wa = wb = 3 over Z_6, code [[12, 4]]",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "[6] [[90, 8, 10]] bivariate bicycle code: lifted product over a group of order 45, D = 6, parity count g*wa*wb = 405 is odd",
+      "passed": true,
+      "detail": "n = 90, k = 8, regular = True"
+    }
+  ],
+  "uniform_schedules": [
+    {
+      "g": 1,
+      "a": [
+        0
+      ],
+      "b": [
+        0
+      ],
+      "proper_uniform_depth_D": 0
+    },
+    {
+      "g": 2,
+      "a": [
+        0
+      ],
+      "b": [
+        1
+      ],
+      "proper_uniform_depth_D": 0
+    },
+    {
+      "g": 3,
+      "a": [
+        0
+      ],
+      "b": [
+        1
+      ],
+      "proper_uniform_depth_D": 0
+    },
+    {
+      "g": 4,
+      "a": [
+        0
+      ],
+      "b": [
+        1
+      ],
+      "proper_uniform_depth_D": 0
+    },
+    {
+      "g": 5,
+      "a": [
+        0
+      ],
+      "b": [
+        1
+      ],
+      "proper_uniform_depth_D": 0
+    },
+    {
+      "g": 6,
+      "a": [
+        0
+      ],
+      "b": [
+        1
+      ],
+      "proper_uniform_depth_D": 0
+    },
+    {
+      "g": 3,
+      "a": [
+        0
+      ],
+      "b": [
+        0,
+        1,
+        2
+      ],
+      "proper_uniform_depth_D": 0
+    },
+    {
+      "g": 4,
+      "a": [
+        0
+      ],
+      "b": [
+        0,
+        1,
+        2
+      ],
+      "proper_uniform_depth_D": 0
+    },
+    {
+      "g": 5,
+      "a": [
+        0
+      ],
+      "b": [
+        0,
+        1,
+        3
+      ],
+      "proper_uniform_depth_D": 0
+    },
+    {
+      "g": 5,
+      "a": [
+        0,
+        1,
+        2
+      ],
+      "b": [
+        0
+      ],
+      "proper_uniform_depth_D": 0
+    },
+    {
+      "g": 6,
+      "a": [
+        0
+      ],
+      "b": [
+        0,
+        1,
+        3
+      ],
+      "proper_uniform_depth_D": 0
+    },
+    {
+      "g": 3,
+      "a": [
+        0,
+        1,
+        2
+      ],
+      "b": [
+        0,
+        1,
+        2
+      ],
+      "proper_uniform_depth_D": 0
+    },
+    {
+      "g": 4,
+      "a": [
+        0,
+        1,
+        2
+      ],
+      "b": [
+        0,
+        1,
+        3
+      ],
+      "proper_uniform_depth_D": 0
+    },
+    {
+      "g": 5,
+      "a": [
+        0,
+        1,
+        2
+      ],
+      "b": [
+        0,
+        1,
+        3
+      ],
+      "proper_uniform_depth_D": 0
+    },
+    {
+      "g": 6,
+      "a": [
+        0,
+        1,
+        2
+      ],
+      "b": [
+        0,
+        1,
+        2
+      ],
+      "proper_uniform_depth_D": 0
+    },
+    {
+      "g": 7,
+      "a": [
+        0,
+        1,
+        3
+      ],
+      "b": [
+        0,
+        2,
+        3
+      ],
+      "proper_uniform_depth_D": 0
+    },
+    {
+      "g": 3,
+      "a": [
+        0
+      ],
+      "b": [
+        0,
+        1
+      ],
+      "proper_uniform_depth_D": 2
+    },
+    {
+      "g": 4,
+      "a": [
+        0
+      ],
+      "b": [
+        0,
+        1
+      ],
+      "proper_uniform_depth_D": 2
+    },
+    {
+      "g": 5,
+      "a": [
+        0,
+        1
+      ],
+      "b": [
+        0,
+        1,
+        3
+      ],
+      "proper_uniform_depth_D": 104
+    },
+    {
+      "g": 3,
+      "a": [
+        0,
+        1
+      ],
+      "b": [
+        0,
+        1,
+        2
+      ],
+      "proper_uniform_depth_D": 768
+    }
+  ],
+  "exhaustive_search": [
+    {
+      "g": 1,
+      "a": [
+        0
+      ],
+      "b": [
+        0
+      ],
+      "D": 2,
+      "proper_depth_D_exists": false,
+      "nodes": 7,
+      "three_band_depth_D_plus_1_proper": true,
+      "seconds": 0.0
+    },
+    {
+      "g": 2,
+      "a": [
+        0
+      ],
+      "b": [
+        1
+      ],
+      "D": 2,
+      "proper_depth_D_exists": false,
+      "nodes": 7,
+      "three_band_depth_D_plus_1_proper": true,
+      "seconds": 0.0
+    },
+    {
+      "g": 3,
+      "a": [
+        0
+      ],
+      "b": [
+        1
+      ],
+      "D": 2,
+      "proper_depth_D_exists": false,
+      "nodes": 7,
+      "three_band_depth_D_plus_1_proper": true,
+      "seconds": 0.0
+    },
+    {
+      "g": 4,
+      "a": [
+        0
+      ],
+      "b": [
+        1
+      ],
+      "D": 2,
+      "proper_depth_D_exists": false,
+      "nodes": 7,
+      "three_band_depth_D_plus_1_proper": true,
+      "seconds": 0.0
+    },
+    {
+      "g": 5,
+      "a": [
+        0
+      ],
+      "b": [
+        1
+      ],
+      "D": 2,
+      "proper_depth_D_exists": false,
+      "nodes": 7,
+      "three_band_depth_D_plus_1_proper": true,
+      "seconds": 0.0
+    },
+    {
+      "g": 6,
+      "a": [
+        0
+      ],
+      "b": [
+        1
+      ],
+      "D": 2,
+      "proper_depth_D_exists": false,
+      "nodes": 7,
+      "three_band_depth_D_plus_1_proper": true,
+      "seconds": 0.0
+    },
+    {
+      "g": 7,
+      "a": [
+        0
+      ],
+      "b": [
+        1
+      ],
+      "D": 2,
+      "proper_depth_D_exists": false,
+      "nodes": 7,
+      "three_band_depth_D_plus_1_proper": true,
+      "seconds": 0.0
+    },
+    {
+      "g": 8,
+      "a": [
+        0
+      ],
+      "b": [
+        1
+      ],
+      "D": 2,
+      "proper_depth_D_exists": false,
+      "nodes": 7,
+      "three_band_depth_D_plus_1_proper": true,
+      "seconds": 0.0
+    },
+    {
+      "g": 3,
+      "a": [
+        0
+      ],
+      "b": [
+        0,
+        1,
+        2
+      ],
+      "D": 4,
+      "proper_depth_D_exists": false,
+      "nodes": 3403,
+      "three_band_depth_D_plus_1_proper": true,
+      "seconds": 0.01
+    },
+    {
+      "g": 4,
+      "a": [
+        0
+      ],
+      "b": [
+        0,
+        1,
+        2
+      ],
+      "D": 4,
+      "proper_depth_D_exists": false,
+      "nodes": 7677,
+      "three_band_depth_D_plus_1_proper": true,
+      "seconds": 0.02
+    },
+    {
+      "g": 5,
+      "a": [
+        0
+      ],
+      "b": [
+        0,
+        1,
+        2
+      ],
+      "D": 4,
+      "proper_depth_D_exists": false,
+      "nodes": 9377,
+      "three_band_depth_D_plus_1_proper": true,
+      "seconds": 0.03
+    },
+    {
+      "g": 5,
+      "a": [
+        0
+      ],
+      "b": [
+        0,
+        1,
+        3
+      ],
+      "D": 4,
+      "proper_depth_D_exists": false,
+      "nodes": 29521,
+      "three_band_depth_D_plus_1_proper": true,
+      "seconds": 0.08
+    },
+    {
+      "g": 6,
+      "a": [
+        0
+      ],
+      "b": [
+        0,
+        1,
+        2
+      ],
+      "D": 4,
+      "proper_depth_D_exists": false,
+      "nodes": 9737,
+      "three_band_depth_D_plus_1_proper": true,
+      "seconds": 0.03
+    },
+    {
+      "g": 7,
+      "a": [
+        0
+      ],
+      "b": [
+        0,
+        1,
+        3
+      ],
+      "D": 4,
+      "proper_depth_D_exists": false,
+      "nodes": 150115,
+      "three_band_depth_D_plus_1_proper": true,
+      "seconds": 0.53
+    },
+    {
+      "g": 3,
+      "a": [
+        0,
+        1,
+        2
+      ],
+      "b": [
+        0
+      ],
+      "D": 4,
+      "proper_depth_D_exists": false,
+      "nodes": 4013,
+      "three_band_depth_D_plus_1_proper": true,
+      "seconds": 0.01
+    },
+    {
+      "g": 5,
+      "a": [
+        0,
+        1,
+        3
+      ],
+      "b": [
+        0
+      ],
+      "D": 4,
+      "proper_depth_D_exists": false,
+      "nodes": 26733,
+      "three_band_depth_D_plus_1_proper": true,
+      "seconds": 0.07
+    },
+    {
+      "g": 3,
+      "a": [
+        0
+      ],
+      "b": [
+        0,
+        1
+      ],
+      "D": 3,
+      "proper_depth_D_exists": true,
+      "nodes": 42
+    },
+    {
+      "g": 5,
+      "a": [
+        0
+      ],
+      "b": [
+        0,
+        1
+      ],
+      "D": 3,
+      "proper_depth_D_exists": true,
+      "nodes": 54
+    },
+    {
+      "g": 3,
+      "a": [
+        0,
+        1
+      ],
+      "b": [
+        0,
+        1,
+        2
+      ],
+      "D": 5,
+      "proper_depth_D_exists": true,
+      "nodes": 90
+    },
+    {
+      "g": 5,
+      "a": [
+        0,
+        1
+      ],
+      "b": [
+        0,
+        1,
+        3
+      ],
+      "D": 5,
+      "proper_depth_D_exists": true,
+      "nodes": 1146122
+    }
+  ],
+  "even_order_certificate": {
+    "g": 6,
+    "a": [
+      0,
+      1,
+      2
+    ],
+    "b": [
+      0,
+      1,
+      2
+    ],
+    "depth": 6,
+    "n": 12,
+    "k": 4
+  },
+  "bivariate_bicycle_90": {
+    "code": "[[90, 8, 10]] bivariate bicycle",
+    "group_order": 45,
+    "n": 90,
+    "k": 8,
+    "D": 6,
+    "parity_count": 405
+  }
+}

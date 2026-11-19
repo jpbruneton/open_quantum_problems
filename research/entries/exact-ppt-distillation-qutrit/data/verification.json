@@ -1,0 +1,62 @@
+{
+  "status": "passed",
+  "seed": 20261119,
+  "support_blocks": {
+    "01": "Matrix([[64/113, 56/113], [56/113, 49/113]])",
+    "12": "Matrix([[49/113, 56/113], [56/113, 64/113]])",
+    "02": "Matrix([[1/2, I/2], [-I/2, 1/2]])"
+  },
+  "optimum": {
+    "exact": "sqrt(177)/(7+sqrt(177))",
+    "value": 0.6552426338316367,
+    "complement_weights": {
+      "01": "241/128 - 113*sqrt(177)/896",
+      "12": "241/128 - 113*sqrt(177)/896",
+      "02": "113/64 - 7*sqrt(177)/64"
+    },
+    "rate_lower_bound_log2": 0.6098988648675152
+  },
+  "lower_bound_checks": {
+    "random_feasible_effects": 20000,
+    "smallest_random_norm": 0.7791155018003715,
+    "symmetric_family_multistart_minimum": 0.6552426338316367,
+    "dual_witness_value": 0.6552426338316367
+  },
+  "output_dimensions": [
+    {
+      "copies": 1,
+      "lower": 1,
+      "upper": 1,
+      "determined": true
+    },
+    {
+      "copies": 2,
+      "lower": 2,
+      "upper": 2,
+      "determined": true
+    },
+    {
+      "copies": 3,
+      "lower": 3,
+      "upper": 3,
+      "determined": true
+    },
+    {
+      "copies": 4,
+      "lower": 5,
+      "upper": 5,
+      "determined": true
+    },
+    {
+      "copies": 5,
+      "lower": 8,
+      "upper": 9,
+      "determined": false
+    }
+  ],
+  "elapsed_seconds": 14.5,
+  "sha256": {
+    "checks/verify_ppt_distillation.py": "1229556bfddae1ca3c64c056a914e987742efd5fe43f3d656bddbb8958defca4"
+  },
+  "limits": "Steps 1, 2 and 4 are exact; step 3 is floating point and complements, but does not replace, the analytic lower bound."
+}

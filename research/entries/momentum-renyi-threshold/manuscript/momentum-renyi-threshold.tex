@@ -1,0 +1,466 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+\theoremstyle{plain}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\aTH}{\alpha_{\mathrm{TH}}}
+\setlength{\emergencystretch}{2em}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em plus 0.1em minus 0.1em}
+\title{Momentum R\'enyi and Tsallis entropies behind hard walls:\\
+the existence threshold $1/(2(m+1))$}
+\author{Fable \& Astra\\[0.35em]
+\normalsize Research led by Jean-Philippe Bruneton\\[-0.1em]
+\small Universit\'e Paris Cit\'e, France}
+\date{19 November 2026}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+A particle confined by impenetrable walls has a wave function that vanishes
+outside its well. Cutting the wave function off at a wall produces an
+algebraic tail in the momentum distribution, and R\'enyi or Tsallis entropies
+of order $\alpha<1$, which weigh tails heavily, exist only when $\alpha$
+exceeds a threshold $\aTH$. Olendski found $\aTH=1/4$ for Dirichlet walls and
+$\aTH=1/2$ for Neumann and Robin walls in the one-dimensional well, and
+conjectured that $1/2$ is the threshold of every one-dimensional
+non-Dirichlet system. We prove a general criterion: if the first derivative
+of the zero-extended wave function that jumps has order $m$, the momentum
+entropies exist exactly for $\alpha>\aTH=1/(2(m+1))$, and the R\'enyi entropy
+diverges logarithmically at the threshold with an explicit rate. For
+eigenfunctions of a Schr\"odinger operator with integrable potential between
+hard walls only $m=0$ and $m=1$ occur, so $\aTH=1/4$ when both walls are
+Dirichlet and $\aTH=1/2$ otherwise. This proves Olendski's conjecture for
+every level, for real or complex Robin lengths, and for any integrable
+potential inside the well; the same holds on a half-line.
+\end{abstract}
+
+\section{Introduction}
+A quantum particle in a well with impenetrable walls has a wave function that
+is zero beyond the walls. Its momentum distribution is the squared modulus of
+the Fourier transform of this truncated function, and the truncation costs a
+slowly decaying tail at large momentum. Information-theoretic measures of the
+momentum distribution feel this tail. For a normalised $\psi\in L^2(\R)$ let
+\[
+\phi(p)=\frac{1}{\sqrt{2\pi}}\int_\R\psi(x)e^{-ipx}\,dx,\qquad
+\gamma(p)=|\phi(p)|^2,\qquad I_\alpha=\int_\R\gamma(p)^\alpha\,dp .
+\]
+The momentum R\'enyi and Tsallis \cite{Tsallis1988} entropies are
+\[
+R_\gamma(\alpha)=\frac{1}{1-\alpha}\ln I_\alpha,\qquad
+T_\gamma(\alpha)=\frac{1}{\alpha-1}\bigl(1-I_\alpha\bigr),
+\]
+and for $\alpha\neq1$ they exist exactly when $I_\alpha<\infty$. When
+$\alpha<1$ the power $\gamma^\alpha$ enhances the tail, so the entropies exist
+only above a threshold $\aTH$ fixed by its decay rate.
+
+Olendski computed these entropies for the one-dimensional well of width $a$
+\cite{Olendski2020}. From the explicit momentum wave functions he found
+$\aTH=1/4$ for the Dirichlet condition $\psi=0$ at the walls and $\aTH=1/2$
+for the Neumann condition $\psi'=0$. Noting that the same value $1/2$ appears
+for the attractive Robin wall and for mixed Dirichlet--Neumann walls, he
+conjectured that ``the threshold $\aTH$ of one half is characteristic of any
+1D non-Dirichlet system'' \cite{Olendski2020}. The class of systems is not
+specified and no proof is given.
+
+The simplest example shows the mechanism. The Neumann ground state
+$\psi=a^{-1/2}$ on $[0,a]$ jumps from $0$ to $a^{-1/2}$ at each wall, so
+$|\phi(p)|$ decays like $1/|p|$ and $\gamma^\alpha\sim|p|^{-2\alpha}$ is
+integrable exactly for $\alpha>1/2$. The Dirichlet ground state is continuous,
+its derivative jumps, $|\phi|$ decays like $|p|^{-2}$, and the threshold is
+$1/4$. The general statement measures the order $m$ of the first derivative
+that jumps.
+
+Theorem~\ref{thm:threshold} shows that, if the zero-extended wave function has
+its first jump in the derivative of order $m$, then $I_\alpha<\infty$ if and
+only if $\alpha>1/(2(m+1))$. The delicate direction is divergence at and below
+the threshold: with two walls, the leading coefficient of the momentum tail
+is a trigonometric sum that may vanish periodically, and Lemma~\ref{lem:B}
+shows that it stays large on a set of momenta of positive density.
+Proposition~\ref{prop:rate} gives the exact divergence rate of $I_\alpha$ as
+$\alpha\downarrow\aTH$. Corollary~\ref{cor:well} applies the theorem to
+eigenfunctions of Schr\"odinger operators with integrable potential and
+proves Olendski's conjecture in that setting.
+
+\section{Related work}\label{sec:related}
+Olendski's paper \cite{Olendski2020} determines the thresholds $1/4$ and $1/2$
+for the Dirichlet and Neumann wells by a comparison test on explicit formulas,
+and states the conjecture. Its introduction writes that the momentum entropies
+exist ``at $\alpha\geq1/2$ only'', while its section on the Neumann well uses a
+strict inequality; Theorem~\ref{thm:threshold} shows that the strict
+inequality is correct. The attractive Robin wall had been treated earlier in
+\cite{Olendski2019}. The author later extended the observation case by case to
+other geometries: for two-dimensional circular dots he obtained $2/5$
+(Dirichlet) and $2/3$ (Neumann) \cite{Olendski2021a}; for $d$-dimensional
+balls, $d/(d+3)$ and $d/(d+1)$ \cite{Olendski2021b}, which reduce to $1/4$ and
+$1/2$ for $d=1$; and for the pseudo-harmonic oscillator on the half-line, with
+a potential containing a term $\mathfrak a/x^2$, a level-independent threshold
+$1/(3+\sqrt{1+4\mathfrak a})$ \cite{Olendski2023}. All these thresholds are
+obtained from explicit wave functions. Section~\ref{sec:scope} explains how the
+ball and pseudo-harmonic values fit the formula $1/(2(m+1))$ heuristically.
+
+The mechanism behind Lemma~\ref{lem:A} is classical: the large-frequency
+asymptotics of a Fourier integral over an interval is governed by the jumps of
+derivatives at the endpoints, as follows from repeated integration by parts;
+see Erd\'elyi \cite{Erdelyi1955} for the general theory of such expansions.
+What the present note adds is the full translation into an existence
+criterion for the momentum entropies, including the divergence direction,
+which requires controlling the interference between the contributions of two
+walls, and the divergence rate at the threshold.
+
+\section{Setting and statement}
+\begin{hypothesis}[$H_m$]
+Let $m\ge0$ be an integer. The function $\psi$ belongs to
+$L^1(\R)\cap L^2(\R)$. If $m\ge1$, $\psi$ is of class $C^{m-1}$ on $\R$,
+$\psi^{(m-1)}$ is absolutely continuous, and $\psi',\dots,\psi^{(m)}$ are
+integrable on $\R$. There are points $x_1<\dots<x_N$, $N\ge1$, such that on
+each open interval of $\R\setminus\{x_1,\dots,x_N\}$ the function
+$\psi^{(m)}$ is locally absolutely continuous, and its derivative
+$h=\psi^{(m+1)}$, defined almost everywhere, is integrable on $\R$. The jumps
+$J_k=\psi^{(m)}(x_k^+)-\psi^{(m)}(x_k^-)$ are all nonzero.
+\end{hypothesis}
+
+The one-sided limits exist because $h$ is integrable, and for the same reason,
+together with the integrability of $\psi^{(m)}$, $\psi^{(m)}$ tends to zero at
+$\pm\infty$. The integer $m$ is the order of the first derivative of $\psi$
+that jumps. For a smooth function on $[a,b]$ extended by zero, $N\le2$, the
+points are the walls, $m$ is the smallest order such that $\psi^{(m)}(a)$ or
+$\psi^{(m)}(b)$ is nonzero, and the jumps are $\psi^{(m)}(a)$ at $a$ and
+$-\psi^{(m)}(b)$ at $b$ (only the nonzero ones are kept). Set
+\[
+G(p)=\sum_{k=1}^NJ_ke^{-ipx_k},\qquad \sigma^2=\sum_k|J_k|^2,\qquad
+S=\sum_k|J_k| .
+\]
+
+\begin{lemma}[leading term]\label{lem:A}
+Under $(H_m)$, for every $p\neq0$,
+\[
+\sqrt{2\pi}\,(ip)^{m+1}\phi(p)=G(p)+\hat h(p),\qquad
+\hat h(p)=\int_\R h(x)e^{-ipx}\,dx\xrightarrow[|p|\to\infty]{}0 .
+\]
+\end{lemma}
+
+\begin{proof}
+For $j\le m$, $j$ integrations by parts on $\R$ give
+$\int_\R\psi^{(j)}e^{-ipx}dx=(ip)^j\sqrt{2\pi}\,\phi(p)$; there are no
+boundary terms because $\psi,\dots,\psi^{(m-1)}$ are absolutely continuous,
+integrable with integrable derivatives, and hence tend to zero at infinity. On
+each interval of $\R\setminus\{x_k\}$ one more integration by parts gives
+\[
+\int\psi^{(m)}e^{-ipx}dx=\Bigl[\frac{\psi^{(m)}e^{-ipx}}{-ip}\Bigr]
++\frac{1}{ip}\int he^{-ipx}dx .
+\]
+Summing over the intervals, the boundary terms at $x_k$ combine into
+$J_ke^{-ipx_k}/(ip)$ and those at infinity vanish, so
+$(ip)^m\sqrt{2\pi}\,\phi(p)=\bigl(G(p)+\hat h(p)\bigr)/(ip)$. The
+Riemann--Lebesgue lemma gives $\hat h(p)\to0$.
+\end{proof}
+
+\begin{lemma}[the leading coefficient is large on a set of positive density]\label{lem:B}
+If $N\ge2$, let $\delta=\min_{k\ne l}|x_k-x_l|$, $T_0=4S^2/(\sigma^2\delta)$
+and $\mu_0=1/\delta$. For every real $P$, the set
+$\Omega_P=\{p\in[P,P+T_0]:|G(p)|\ge\sigma/2\}$ has Lebesgue measure at least
+$\mu_0$. If $N=1$, $|G|$ is constant and equal to $\sigma$, and the statement
+holds with $T_0=\mu_0=1$.
+\end{lemma}
+
+\begin{proof}
+Expanding the square,
+\[
+\frac1{T_0}\int_P^{P+T_0}|G|^2dp=\sigma^2+\sum_{k\ne l}J_k\bar J_l\,
+\frac1{T_0}\int_P^{P+T_0}e^{-ip(x_k-x_l)}dp .
+\]
+Each oscillatory integral is bounded in modulus by $2/(T_0\delta)$, so the
+cross terms are bounded by $2S^2/(T_0\delta)=\sigma^2/2$, and
+$\int_P^{P+T_0}|G|^2dp\ge T_0\sigma^2/2$. Since $|G|\le S$ everywhere and
+$|G|<\sigma/2$ outside $\Omega_P$, also
+$\int_P^{P+T_0}|G|^2dp\le S^2|\Omega_P|+T_0\sigma^2/4$. Hence
+$|\Omega_P|\ge T_0\sigma^2/(4S^2)=1/\delta$.
+\end{proof}
+
+Lemma~\ref{lem:B} is where the two walls interfere. The coefficient $G$ can
+vanish: $G(p)=\psi(a)e^{-ipa}-\psi(b)e^{-ipb}$ has periodic zeros when
+$|\psi(a)|=|\psi(b)|$. It cannot, however, be small on a proportion of
+momenta large enough to restore convergence.
+
+\begin{theorem}[threshold]\label{thm:threshold}
+Under $(H_m)$ and for $\alpha>0$,
+\[
+I_\alpha=\int_\R\gamma(p)^\alpha\,dp<\infty
+\quad\Longleftrightarrow\quad
+\alpha>\aTH=\frac{1}{2(m+1)} .
+\]
+The momentum entropies $R_\gamma(\alpha)$ and $T_\gamma(\alpha)$ therefore
+exist for $\alpha>\aTH$, $\alpha\neq1$, and do not exist for
+$0<\alpha\le\aTH$.
+\end{theorem}
+
+\begin{proof}
+The function $\phi$ is continuous and bounded by $\|\psi\|_1/\sqrt{2\pi}$, so
+$\gamma^\alpha$ is locally integrable. By Lemma~\ref{lem:A} there is
+$P_1\ge1$ such that $|\hat h(p)|\le\sigma/4$ for $|p|\ge P_1$. For such $p$,
+$\gamma(p)\le(S+\sigma/4)^2/(2\pi|p|^{2m+2})$, so $I_\alpha<\infty$ as soon
+as $2\alpha(m+1)>1$. Conversely, for $P\ge P_1$ and $p\in\Omega_P$ one has
+$|G(p)+\hat h(p)|\ge\sigma/4$, hence $\gamma(p)\ge\sigma^2/(32\pi p^{2m+2})$
+and
+\[
+\int_P^{P+T_0}\gamma^\alpha\,dp\ge\mu_0\Bigl(\frac{\sigma^2}{32\pi}\Bigr)^\alpha(P+T_0)^{-2\alpha(m+1)} .
+\]
+Summing over $P=P_1+jT_0$, $j\ge0$, gives a series whose general term is
+equivalent to a constant times $j^{-2\alpha(m+1)}$, which diverges when
+$2\alpha(m+1)\le1$.
+\end{proof}
+
+\begin{proposition}[divergence rate]\label{prop:rate}
+Assume $(H_m)$ with $N\le2$, and let $M$ be the mean value of the periodic
+function $|G|^{1/(m+1)}$: $M=|J_1|^{1/(m+1)}$ if $N=1$, and
+\[
+M=\frac1{2\pi}\int_0^{2\pi}\bigl(|J_1|^2+|J_2|^2+2|J_1||J_2|\cos\theta\bigr)^{\frac{1}{2(m+1)}}d\theta
+\]
+if $N=2$. Then
+\[
+\lim_{\alpha\downarrow\aTH}(\alpha-\aTH)\,I_\alpha=\frac{(2\pi)^{-\aTH}M}{m+1}>0,
+\qquad
+R_\gamma(\alpha)=\frac{1}{1-\aTH}\ln\frac{1}{\alpha-\aTH}+O(1) .
+\]
+\end{proposition}
+
+\begin{proof}
+We use an Abelian fact: if $f:[P,\infty)\to[0,U]$ is measurable, $P\ge1$, and
+$\frac1T\int_P^{P+T}f\to M$ as $T\to\infty$, then
+$(s-1)\int_P^\infty f(p)p^{-s}dp\to M$ as $s\downarrow1$. Indeed, with
+$F(p)=\int_P^pf\le Up$, an integration by parts gives
+$\int_P^\infty fp^{-s}dp=s\int_P^\infty F(p)p^{-s-1}dp$. For $\varepsilon>0$
+there is $P_\varepsilon$ with $|F(p)-Mp|\le\varepsilon p$ for $p\ge P_\varepsilon$,
+whence
+\[
+\Bigl|s\int_P^\infty Fp^{-s-1}dp-sM\int_P^\infty p^{-s}dp\Bigr|
+\le s(U+M)P_\varepsilon+\frac{s\varepsilon}{s-1};
+\]
+multiplying by $s-1$ and letting $s\to1$, then $\varepsilon\to0$, proves the
+claim.
+
+Set $s=2\alpha(m+1)$, so $s-1=2(m+1)(\alpha-\aTH)$. For $p\ge P_1$,
+Lemma~\ref{lem:A} reads $\gamma(p)^\alpha=(2\pi)^{-\alpha}p^{-s}f_\alpha(p)$
+with $f_\alpha=|G+\hat h|^{2\alpha}$. Since
+$\bigl||G+\hat h|-|G|\bigr|\le|\hat h|\to0$ and $(u,\alpha)\mapsto u^{2\alpha}$
+is uniformly continuous on $[0,2S]\times[\aTH,1]$, for every $\eta>0$ there
+are $P_\eta\ge P_1$ and $\alpha_\eta>\aTH$ such that
+$|f_\alpha(p)-|G(p)|^{2\aTH}|\le\eta$ for $p\ge P_\eta$ and
+$\aTH<\alpha\le\alpha_\eta$; the corresponding error on
+$(s-1)\int_{P_\eta}^\infty f_\alpha p^{-s}dp$ is at most
+$\eta P_\eta^{1-s}\le\eta$. For $N\le2$, $|G|^{2\aTH}=|G|^{1/(m+1)}$ is
+periodic (constant if $N=1$) with mean $M$, so the Abelian fact gives the
+limit $M$ on the positive half-line. The same holds on the negative half-line,
+since $|G(-p)|^2=|J_1|^2+|J_2|^2+2|J_1||J_2|\cos(\cdot)$ has the same mean. The
+contribution of $|p|\le P_\eta$ is bounded uniformly in $\alpha$ and
+disappears after multiplication by $s-1$. Altogether
+$(s-1)I_\alpha\to2(2\pi)^{-\aTH}M$, which is the stated limit; $M>0$ by
+Lemma~\ref{lem:B}. The expansion of $R_\gamma$ follows by taking logarithms.
+\end{proof}
+
+The divergence of the R\'enyi entropy at the threshold is therefore
+logarithmic, as Olendski's figures show \cite{Olendski2020}, with the
+universal coefficient $1/(1-\aTH)$: $2$ for a non-Dirichlet wall and $4/3$ for
+the Dirichlet well. For the Neumann ground state of the well of width $a$,
+$\psi=a^{-1/2}$, $J_1=-J_2=a^{-1/2}$, $M=4/(\pi\sqrt a)$, and
+\[
+\lim_{\alpha\downarrow1/2}\Bigl(\alpha-\frac12\Bigr)I_\alpha
+=\frac{4}{\pi\sqrt{2\pi a}}\approx\frac{0.5079}{\sqrt a}.
+\]
+For $N\ge3$ the proposition should remain true with $M$ the Bohr mean value of
+the almost periodic function $|G|^{1/(m+1)}$; this extension is not written
+out here.
+
+\section{Hard-wall eigenfunctions: the conjecture}
+\begin{corollary}[well with hard walls]\label{cor:well}
+Let $a<b$, let $V\in L^1(a,b)$ be a complex-valued potential and $E\in\C$, and
+let $\psi$ be a solution of $-\psi''+V\psi=E\psi$ on $[a,b]$, not identically
+zero, with $\psi$ and $\psi'$ absolutely continuous, extended by zero outside
+$[a,b]$. If $\psi(a)=\psi(b)=0$, then $\aTH=1/4$; in every other case
+$\aTH=1/2$. In particular, if one of the walls carries a Robin condition
+$\psi'(a)=\psi(a)/\Lambda_a$ or $-\psi'(b)=\psi(b)/\Lambda_b$ with
+$\Lambda\in\C\setminus\{0\}$, or a Neumann condition ($\Lambda=\infty$), then
+every eigenfunction, at every level, has $\aTH=1/2$.
+\end{corollary}
+
+\begin{proof}
+By the uniqueness theorem for linear differential equations with integrable
+coefficients, a solution with $\psi(c)=\psi'(c)=0$ at some $c\in[a,b]$
+vanishes identically. If $\psi(a)\neq0$ or $\psi(b)\neq0$, the extended
+function satisfies $(H_0)$: it is bounded with compact support, its derivative
+$h=\psi'$ on $(a,b)$ is integrable, and its jumps are $\psi(a)$ at $a$ and
+$-\psi(b)$ at $b$, of which only the nonzero ones are kept; where $\psi$
+vanishes at a wall the extension is continuous there. If $\psi(a)=\psi(b)=0$,
+the extended function is absolutely continuous on $\R$, its derivative jumps
+by $\psi'(a)\ne0$ at $a$ and by $-\psi'(b)\neq0$ at $b$ by uniqueness, and
+$h=\psi''=(V-E)\psi$ is integrable on $(a,b)$ because $\psi$ is bounded: this
+is $(H_1)$. Theorem~\ref{thm:threshold} concludes. Finally, at a Robin or
+Neumann wall, $\psi(a)=0$ would force $\psi'(a)=0$ and hence $\psi\equiv0$, so
+$\psi(a)\neq0$.
+\end{proof}
+
+\begin{corollary}[half-line]\label{cor:half}
+Let $\psi$ be a nonzero solution of the same equation on $[0,\infty)$, with
+$V$ locally integrable on $[0,\infty)$, extended by zero for $x<0$, such that
+$\psi$, $\psi'$ and $\psi''$ are integrable on $(0,\infty)$. If
+$\psi(0)\neq0$, then $\aTH=1/2$; if $\psi(0)=0$ and $\psi'(0)\neq0$, then
+$\aTH=1/4$.
+\end{corollary}
+
+\begin{proof}
+Hypotheses $(H_0)$ and $(H_1)$ are verified as in Corollary~\ref{cor:well},
+with $N=1$; $\psi\in L^2$ because $\psi$ is integrable and bounded.
+\end{proof}
+
+The attractive Robin wall, with bound state $\psi(x)=\sqrt{2\kappa}\,e^{-\kappa x}$
+on the half-line \cite{Olendski2019}, falls under the first case. Here
+$\gamma(p)=\kappa/(\pi(\kappa^2+p^2))$ and
+\[
+I_\alpha=\Bigl(\frac\kappa\pi\Bigr)^\alpha\kappa^{1-2\alpha}\sqrt\pi\,
+\frac{\Gamma(\alpha-\frac12)}{\Gamma(\alpha)},
+\]
+finite exactly for $\alpha>1/2$, with a simple pole of residue
+$\sqrt{\kappa/\pi}=(2\pi)^{-1/2}|J_1|$, as Proposition~\ref{prop:rate}
+predicts. The quasi-one-dimensional hydrogen ground state, $\psi(x)\propto
+xe^{-x}$, satisfies $(H_1)$ directly with a single jump of $\psi'$ at the
+origin and recovers the threshold $1/4$ reported by Olendski.
+
+The theorem also explains why only two values occur in these models: an
+eigenfunction of a Schr\"odinger operator with integrable potential cannot
+have both $\psi$ and $\psi'$ zero at a wall, so $m\in\{0,1\}$. Values $m\ge2$
+require functions that are not such eigenfunctions, for example
+$\psi\propto x^2(1-x)^2$ on $[0,1]$, whose second derivative jumps by $2$ at
+$0$ and by $-2$ at $1$, so that $\aTH=1/6$.
+
+\section{Verification}\label{sec:verification}
+The statements above are proved analytically. The public
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/momentum-renyi-threshold/checks/check_momentum_threshold.py}{Python checker}
+illustrates them numerically and writes its
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/momentum-renyi-threshold/data/verification.json}{verification record}
+to the same entry. It builds nine eigenfunctions of the well $[0,1]$ with
+Neumann, Dirichlet, mixed, real Robin ($\Lambda=0.5$, $-0.3$, $2$, $0.7$) and
+complex Robin ($\Lambda=0.4+0.3i$) walls, whose Fourier transforms are known
+in closed form and are checked against quadrature to about $10^{-16}$. It
+verifies that $m=1$ exactly when both walls are Dirichlet; that the difference
+between $|p|^{m+1}\sqrt{2\pi}\,|\phi(p)|$ and $|G(p)|$, multiplied by $P$,
+stays bounded on windows at $\pm P$ for $P=10^2,10^3,10^4$
+(Lemma~\ref{lem:A}); that the dyadic blocks $\int_P^{2P}\gamma^{\aTH}dp$
+approach the nonzero constant $\ln2\,(2\pi)^{-\aTH}M$, within a relative
+$2\times10^{-3}$ at $P=6400$, which is the divergence at the threshold; and
+that the ratio of successive blocks equals $2^{1-2\alpha(m+1)}$ within
+$5\times10^{-3}$ for $\alpha=\aTH\pm0.1$. It also treats the polynomial example
+with $m=2$, the closed form for the attractive Robin wall, and the divergence
+rate of the Neumann ground state through a Hurwitz zeta representation:
+$(\alpha-\frac12)I_\alpha=0.5131$, $0.5085$ and $0.5080$ for
+$\alpha-\frac12=10^{-2},10^{-3},10^{-4}$, against the limit $0.5079$. The
+checker requires NumPy, SciPy and mpmath and runs in under a minute. These
+computations illustrate the proof and do not replace it.
+
+\section{Scope and limitations}\label{sec:scope}
+\emph{Analytic proof.} Lemmas~\ref{lem:A} and~\ref{lem:B},
+Theorem~\ref{thm:threshold}, Proposition~\ref{prop:rate} for $N\le2$ and
+Corollaries~\ref{cor:well} and~\ref{cor:half}. The conjecture is thus
+established for a particle on a bounded interval or a half-line, with a wave
+function vanishing beyond hard walls and solving a Schr\"odinger equation with
+integrable potential (locally integrable near the wall on the half-line), with
+at least one wall where the condition is not Dirichlet. It holds for every
+level, for real or complex Robin lengths, and also for superpositions and
+non-stationary states whenever $\psi$ does not vanish at a wall and satisfies
+$(H_0)$.
+
+\emph{Not covered.} A one-dimensional system without hard walls has no
+threshold of this type, and ``non-Dirichlet'' has no meaning there. Potentials
+that are singular at the wall, such as $\mathfrak a/x^2$, produce
+$\psi\sim x^\nu$ with non-integer $\nu$. Olendski's value
+$1/(3+\sqrt{1+4\mathfrak a})$ for the pseudo-harmonic oscillator
+\cite{Olendski2023} coincides with $1/(2(\nu+1))$ for
+$\nu=\frac12(1+\sqrt{1+4\mathfrak a})$, the natural extension of
+Theorem~\ref{thm:threshold}, but this fractional case is not proved here. In
+dimension $d$, the thresholds $d/(d+1)$ and $d/(d+3)$ found for balls
+\cite{Olendski2021b} are those given by the heuristic
+$\gamma\sim|p|^{-(d+1+2m)}$ integrated against $|p|^{d-1}d|p|$, namely
+$\aTH=d/(d+1+2m)$; no general proof is attempted for arbitrary domains.
+
+\emph{Bibliographic priority.} The source \cite{Olendski2020} was read in
+full. The twelve works citing it listed by OpenAlex (2020 to 2026) were
+examined by title only; the author's later preprints were examined through
+their abstracts, and the relevant passage of \cite{Olendski2023} in its
+source. Two web searches on the existence of momentum R\'enyi entropies, boundary
+conditions and Fourier decay returned no general statement. The asymptotic
+expansion of Lemma~\ref{lem:A} is classical, and Olendski already asserts the
+threshold $1/2$ for the Robin well on the basis of a comparison test. The
+general statement in terms of $m$, the proof of divergence with two walls and
+the divergence rate were not found in this documented search, which does not
+establish priority.
+
+\clearpage
+\begingroup\small
+\begin{thebibliography}{99}
+\setlength{\itemsep}{2pt}
+\bibitem{Olendski2020}
+O. Olendski,
+\emph{R\'enyi and Tsallis entropies of the Dirichlet and Neumann
+one-dimensional quantum wells},
+Int. J. Quantum Chem. \textbf{120}, e26220 (2020);
+\href{https://doi.org/10.1002/qua.26220}{doi:10.1002/qua.26220};
+\href{https://arxiv.org/abs/2003.04351}{arXiv:2003.04351}.
+
+\bibitem{Olendski2019}
+O. Olendski,
+\emph{R\'enyi and Tsallis entropies: three analytic examples},
+Eur. J. Phys. \textbf{40}, 025402 (2019);
+\href{https://doi.org/10.1088/1361-6404/aaf45c}{doi:10.1088/1361-6404/aaf45c};
+\href{https://arxiv.org/abs/1811.09089}{arXiv:1811.09089}.
+
+\bibitem{Olendski2021a}
+O. Olendski,
+\emph{Comparative analysis of information measures of the Dirichlet and
+Neumann two-dimensional quantum dots},
+Int. J. Quantum Chem. \textbf{121}, e26455 (2021);
+\href{https://doi.org/10.1002/qua.26455}{doi:10.1002/qua.26455};
+\href{https://arxiv.org/abs/1806.07509}{arXiv:1806.07509}.
+
+\bibitem{Olendski2021b}
+O. Olendski,
+\emph{Quantum information measures of the Dirichlet and Neumann hyperspherical
+dots},
+Eur. Phys. J. Plus \textbf{136}, 390 (2021);
+\href{https://doi.org/10.1140/epjp/s13360-021-01366-3}{doi:10.1140/epjp/s13360-021-01366-3};
+\href{https://arxiv.org/abs/2103.13094}{arXiv:2103.13094}.
+
+\bibitem{Olendski2023}
+O. Olendski,
+\emph{One-dimensional pseudoharmonic oscillator: classical remarks and
+quantum-information theory}, preprint (2023);
+\href{https://arxiv.org/abs/2304.06428}{arXiv:2304.06428}.
+
+\bibitem{Erdelyi1955}
+A. Erd\'elyi,
+\emph{Asymptotic Representations of Fourier Integrals and the Method of
+Stationary Phase},
+J. Soc. Indust. Appl. Math. \textbf{3}, 17--27 (1955);
+\href{https://doi.org/10.1137/0103002}{doi:10.1137/0103002}.
+
+\bibitem{Tsallis1988}
+C. Tsallis,
+\emph{Possible generalization of Boltzmann-Gibbs statistics},
+J. Stat. Phys. \textbf{52}, 479--487 (1988);
+\href{https://doi.org/10.1007/BF01016429}{doi:10.1007/BF01016429}.
+\end{thebibliography}
+\endgroup
+\end{document}

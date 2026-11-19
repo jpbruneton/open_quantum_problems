@@ -1,0 +1,194 @@
+{
+  "status": "passed",
+  "seed": 20261119,
+  "qubit": {
+    "maps_tested": 4000,
+    "cyclic_cases": 2466,
+    "cut_cases": 1534,
+    "max_relative_choi_error": 4.3206363811197364e-16,
+    "depolarizing_choi_rank": 4
+  },
+  "lower_bound_table": [
+    {
+      "d": 2,
+      "cone_dimension": 12,
+      "lower_bound": 4
+    },
+    {
+      "d": 3,
+      "cone_dimension": 63,
+      "lower_bound": 13
+    },
+    {
+      "d": 4,
+      "cone_dimension": 208,
+      "lower_bound": 30
+    },
+    {
+      "d": 5,
+      "cone_dimension": 525,
+      "lower_bound": 59
+    },
+    {
+      "d": 6,
+      "cone_dimension": 1116,
+      "lower_bound": 102
+    }
+  ],
+  "random_type_ranks": [
+    {
+      "d": 2,
+      "r": 2,
+      "rank": 6,
+      "ceiling": 6
+    },
+    {
+      "d": 2,
+      "r": 3,
+      "rank": 9,
+      "ceiling": 9
+    },
+    {
+      "d": 2,
+      "r": 4,
+      "rank": 10,
+      "ceiling": 12
+    },
+    {
+      "d": 2,
+      "r": 5,
+      "rank": 12,
+      "ceiling": 12
+    },
+    {
+      "d": 3,
+      "r": 8,
+      "rank": 40,
+      "ceiling": 40
+    },
+    {
+      "d": 3,
+      "r": 11,
+      "rank": 43,
+      "ceiling": 55
+    },
+    {
+      "d": 3,
+      "r": 12,
+      "rank": 45,
+      "ceiling": 60
+    },
+    {
+      "d": 3,
+      "r": 13,
+      "rank": 59,
+      "ceiling": 63
+    },
+    {
+      "d": 3,
+      "r": 14,
+      "rank": 57,
+      "ceiling": 63
+    }
+  ],
+  "qutrit": {
+    "types": [
+      [
+        1,
+        0,
+        1
+      ],
+      [
+        1,
+        2,
+        0
+      ],
+      [
+        1,
+        2,
+        2
+      ],
+      [
+        0,
+        1,
+        1
+      ],
+      [
+        2,
+        0,
+        2
+      ],
+      [
+        1,
+        1,
+        0
+      ],
+      [
+        2,
+        1,
+        1
+      ],
+      [
+        0,
+        0,
+        1
+      ],
+      [
+        2,
+        0,
+        0
+      ],
+      [
+        0,
+        1,
+        0
+      ],
+      [
+        2,
+        1,
+        2
+      ],
+      [
+        0,
+        2,
+        2
+      ],
+      [
+        2,
+        2,
+        1
+      ]
+    ],
+    "prime": 2147483647,
+    "jacobian_shape": [
+      81,
+      78
+    ],
+    "identically_zero_rows": 18,
+    "jacobian_rank_mod_p": 63,
+    "trace_map_rank_mod_p": 9,
+    "S_diagonal": [
+      91,
+      209,
+      155
+    ],
+    "float_ranks_at_random_points": [
+      63,
+      63,
+      63,
+      63,
+      63,
+      63,
+      63,
+      63,
+      63,
+      63
+    ]
+  },
+  "elapsed_seconds": 3.6,
+  "sha256": {
+    "checks/verify_incoherent_kraus.py": "5dd19ad53a987ecfa3599f37ad4fc05c0aae6e390299a274842cb005fb4056c7",
+    "data/qutrit_certificate.json": "748d18a0ff9274dbac917133374c0e37fd58674e2313e1a1f3523d850c819166"
+  },
+  "limits": "The qutrit ranks are exact (integer matrices, rank modulo a prime). The qubit reconstruction and the random-type ranks are floating-point checks."
+}

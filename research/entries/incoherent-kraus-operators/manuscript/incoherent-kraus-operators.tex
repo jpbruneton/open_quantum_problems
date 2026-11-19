@@ -1,0 +1,476 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage[margin=27mm]{geometry}
+\usepackage[colorlinks=true,urlcolor=blue,citecolor=blue,linkcolor=blue]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\theoremstyle{plain}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\rank}{rank}
+\newcommand{\ket}[1]{\lvert#1\rangle}
+\newcommand{\bra}[1]{\langle#1\rvert}
+\newcommand{\kket}[1]{\lvert#1\rangle\!\rangle}
+\newcommand{\bbra}[1]{\langle\!\langle#1\rvert}
+\newcommand{\norm}[1]{\lVert#1\rVert}
+\newcommand{\one}{\mathbf{1}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\setlength{\emergencystretch}{2em}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em plus 0.1em minus 0.1em}
+\title{How many incoherent Kraus operators?\\
+A generic lower bound in every dimension and thirteen for the qutrit}
+\author{Fable \& Astra\\[0.35em]
+\normalsize Research led by Jean-Philippe Bruneton\\[-0.1em]
+\small Universit\'e Paris Cit\'e, France}
+\date{19 November 2026}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+In the resource theory of quantum coherence, the free operations are quantum
+channels that can be written with Kraus operators each of which maps
+incoherent (diagonal) states to incoherent states. A channel on a
+$d$-dimensional system always has a Kraus decomposition with at most $d^2$
+operators, but the shortest decomposition of this restricted form can be
+longer, and the minimal number of incoherent Kraus operators is known only for
+a qubit, where it equals four. We recast the question as a decomposition of
+the Choi matrix into positive blocks supported on cliques of a complete
+multipartite graph. For a qubit the graph is a four-cycle, and a short
+fixed-point argument re-derives the known value four. In dimension $d$, a
+dimension count shows that a generic incoherent completely positive map needs
+at least $\lceil d^2(d^2-d+1)/(2d-1)\rceil$ incoherent Kraus operators,
+which is $4$, $13$ and $30$ for $d=2,3,4$ and grows like $d^3/2$, faster
+than the largest Choi rank $d^2$. For the qutrit the bound $13$ is attained:
+an exact rank certificate shows that thirteen incoherent operators of fixed
+shapes cover a non-empty open set of incoherent completely positive maps, and
+also a non-empty open set of trace-preserving incoherent operations. Whether
+generic trace-preserving qutrit operations need thirteen operators is left
+open; the best proven range for the worst qutrit operation remains $9$ to
+$32$.
+\end{abstract}
+
+\section{Introduction}
+Coherence, the presence of superpositions in a fixed basis
+$\{\ket0,\dots,\ket{d-1}\}$, is treated as a resource in the framework of
+Baumgratz, Cramer and Plenio \cite{Baumgratz2014}: states diagonal in the
+basis are free, and so are the incoherent operations, channels
+$\Lambda(\rho)=\sum_kK_k\rho K_k^\dagger$ that admit a Kraus decomposition in
+which every $K_k$ maps diagonal density matrices to diagonal ones, up to
+normalization \cite{Baumgratz2014,Streltsov2017RMP}. The definition depends
+on the decomposition: a channel may be incoherent through one set of Kraus
+operators and not through another. This raises a basic structural question.
+Every channel has a Kraus decomposition with at most $d^2$ operators, its
+Choi rank. How many operators are needed if every one of them must be
+incoherent?
+
+Streltsov, Rana, Boes and Eisert proved upper bounds on this number, showed
+that five incoherent Kraus operators suffice for a qubit, and asked whether
+four suffice \cite{Streltsov2017PRL}. Qiao, Sun, Wang, Li, Shen, Li and Fei
+answered that four suffice for a qubit and reduced the qutrit upper bound to
+$32$ \cite{Qiao2020}. Four is optimal for a qubit, since the depolarizing
+channel has Choi rank four. For $d\ge3$ no lower bound beyond the Choi rank
+$d^2$ appears in these works.
+
+This note gives such a lower bound for incoherent completely positive maps,
+together with a matching construction for the qutrit. The main tool is a
+reformulation. An operator is incoherent exactly when each of its columns has
+at most one non-zero entry, so its Choi vector is supported on a set of
+matrix positions containing at most one position per column. Such sets are
+the cliques of a complete $d$-partite graph, and an incoherent Kraus
+decomposition is a decomposition of the Choi matrix into positive
+semidefinite blocks supported on cliques (Section~\ref{sec:cliques}). For the
+qubit the graph is a four-cycle, and a monotone recurrence around the cycle
+yields a decomposition with four rank-one blocks; this re-derives the result
+of Qiao et al.\ by a different route (Section~\ref{sec:qubit}). In general
+dimension, each incoherent Kraus operator carries $2d-1$ real parameters,
+whereas the incoherent Choi matrices span a space of dimension
+$d^2(d^2-d+1)$. Hence a generic incoherent completely positive map needs at
+least
+\[
+r_d=\left\lceil\frac{d^2(d^2-d+1)}{2d-1}\right\rceil
+\]
+incoherent Kraus operators (Section~\ref{sec:lower}). For $d=3$ this is
+$13$, and an exact integer rank computation shows that thirteen operators of
+suitable shapes parametrize an open set of incoherent completely positive
+maps and an open set of incoherent channels (Section~\ref{sec:qutrit}). For
+a qutrit the gap between the Choi rank and the incoherent length is therefore
+generic, not an artefact of particular examples.
+
+\section{Related work}\label{sec:related}
+Baumgratz, Cramer and Plenio introduced the incoherent operations through
+Kraus decompositions and the axioms for coherence measures
+\cite{Baumgratz2014}; the review of Streltsov, Adesso and Plenio surveys the
+classes of free operations and their relations \cite{Streltsov2017RMP}.
+Streltsov, Rana, Boes and Eisert studied the structure of incoherent
+operations, proved general upper bounds on the number of incoherent Kraus
+operators, established five for a qubit and posed the question whether four
+suffice \cite{Streltsov2017PRL}. Qiao et al.\ settled that question by
+constructing a suitable unitary matrix, obtained the upper bound $32$ for
+qutrit incoherent operations, which they compare with the bound $39$ of
+\cite{Streltsov2017PRL}, and reduced the corresponding number for strictly
+incoherent operations of a qutrit to $13$ \cite{Qiao2020}. That last number
+concerns a different, smaller class of operations; its coincidence with our
+$r_3=13$ is not a consequence of either argument.
+
+Our qubit theorem therefore restates a known result. The proof given here,
+through the cycle graph and a fixed point of a monotone recurrence, is
+different from the unitary construction of \cite{Qiao2020}; we include it
+because it is short and because the same clique formulation underlies the
+results in higher dimension. The clique formulation, the generic lower bound
+$r_d$ and the qutrit results of Section~\ref{sec:qutrit} were not found in
+the cited works. The documented search consisted of these sources and two
+targeted literature queries; it does not establish priority. The Choi matrix
+\cite{Choi1975} and elementary facts on semialgebraic sets
+\cite{BochnakCosteRoy1998} are the only other tools used.
+
+\section{The clique formulation}\label{sec:cliques}
+Write $e_{ij}=\ket i\bra j$ and identify an operator $K$ on $\C^d$ with its
+vector of entries $\kket K=\sum_{i,j}K_{ij}\,e_{ij}\in\C^{d^2}$. The Choi
+matrix of a completely positive map with Kraus operators $\{K_k\}$ is
+$J=\sum_k\kket{K_k}\bbra{K_k}$, with entries
+$J_{(i,j),(i',j')}=\sum_kK_{k,ij}\overline{K_{k,i'j'}}$; it does not depend on
+the decomposition \cite{Choi1975}. Trace preservation is the linear condition
+$S(J)=\one$, where
+\begin{equation}\label{eq:S}
+S(J)_{jl}=\sum_iJ_{(i,l),(i,j)}=\Bigl(\sum_kK_k^\dagger K_k\Bigr)_{jl}.
+\end{equation}
+
+An operator $K$ maps every diagonal matrix to a diagonal matrix exactly when
+$K\ket j\bra jK^\dagger$ is diagonal for each $j$, that is, when each column
+$K\ket j$ has at most one non-zero entry. Such a $K$ has the form
+\[
+K=\sum_{j}c_j\ket{f(j)}\bra j
+\]
+for a function $f:\{0,\dots,d-1\}\to\{0,\dots,d-1\}$, which we call the
+\emph{type} of $K$, and coefficients $c_j\in\C$. Its support is a
+\emph{transversal}: a set of positions $e_{ij}$ containing at most one
+position in each column $j$.
+
+Let $G_d$ be the graph with vertex set $\{e_{ij}\}$ in which two distinct
+positions are adjacent when they lie in different columns. It is the complete
+$d$-partite graph whose parts are the columns, and its cliques are exactly
+the transversals.
+
+\begin{proposition}\label{prop:cliques}
+A completely positive map with Choi matrix $J$ admits a decomposition into
+incoherent Kraus operators if and only if $J=\sum_TB_T$, where $T$ runs over
+the maximal cliques of $G_d$ and each $B_T$ is positive semidefinite with
+support in $T\times T$. The minimal number of incoherent Kraus operators,
+which we call the incoherent length $\ell(J)$, is the minimum of
+$\sum_T\rank B_T$ over such decompositions.
+\end{proposition}
+\begin{proof}
+Given incoherent Kraus operators, assign each to a maximal clique containing
+its support and let $B_T$ be the sum of $\kket{K_k}\bbra{K_k}$ over the
+operators assigned to $T$; then $\rank B_T$ is at most the number of those
+operators. Conversely, a positive semidefinite $B_T$ supported on $T\times
+T$ is a sum of $\rank B_T$ rank-one terms $\kket v\bbra v$ with $v$
+supported on $T$, and each such $v$ is the Choi vector of an incoherent
+operator.
+\end{proof}
+
+Because two positions in the same column never share a clique, every
+incoherent Choi matrix satisfies $J_{(i,j),(i',j)}=0$ for $i\ne i'$. Let
+$V_d$ be the real vector space of Hermitian $d^2\times d^2$ matrices with this
+zero pattern and $\mathcal C_d\subset V_d$ the convex cone of Choi matrices of
+incoherent completely positive maps.
+
+\begin{lemma}\label{lem:dim}
+$\dim_\R V_d=D_d:=d^2(d^2-d+1)$, and $\mathcal C_d$ has non-empty interior
+in $V_d$.
+\end{lemma}
+\begin{proof}
+$V_d$ has $d^2$ real diagonal coordinates and one complex coordinate for each
+unordered pair of positions in different columns. There are
+$\binom d2d^2$ such pairs (two columns, then a row in each), so
+$\dim V_d=d^2+2\binom d2d^2=d^2(d^2-d+1)$. Every matrix unit allowed by the
+pattern lies in the span of $\mathcal C_d$: a diagonal position is the Choi
+matrix of a single-entry operator, and for two positions in different
+columns, $\kket u\bbra u$ with $u$ equal to $e_{ij}+e_{i'j'}$ or
+$e_{ij}+ie_{i'j'}$ is in $\mathcal C_d$, so the real and imaginary parts of
+the off-diagonal entry are obtained by subtracting diagonal terms. A convex
+cone that spans $V_d$ has non-empty interior in $V_d$.
+\end{proof}
+
+\section{The qubit: four operators suffice}\label{sec:qubit}
+For $d=2$ the graph $G_2$ is the four-cycle
+$v_0=e_{00}$, $v_1=e_{11}$, $v_2=e_{10}$, $v_3=e_{01}$, in which edge $k$ joins
+$v_k$ and $v_{k+1}$ (indices modulo $4$); the two non-adjacent pairs
+$(v_0,v_2)$ and $(v_1,v_3)$ lie in the same column. The four edges are the
+four maximal transversals, corresponding to diagonal operators, operators with
+image $\ket1$, antidiagonal operators and operators with image $\ket0$. An
+incoherent Choi matrix has diagonal entries $d_k=J_{v_kv_k}\ge0$, an entry
+$c_k=J_{v_kv_{k+1}}$ on each edge, and zeros elsewhere. Put $m_k=|c_k|^2$.
+
+\begin{theorem}[Qiao et al.\ \cite{Qiao2020}]\label{thm:qubit}
+Every incoherent completely positive map of a qubit, in particular every
+incoherent operation, admits a decomposition into four incoherent Kraus
+operators. Four are necessary for the depolarizing channel.
+\end{theorem}
+\begin{proof}
+By Proposition~\ref{prop:cliques}, $J=\sum_{k=0}^3B_k$ with $B_k$ positive
+semidefinite and supported on edge $k$; single-vertex blocks have been
+absorbed into an adjacent edge block, which keeps it positive. Write
+$B_k=\begin{pmatrix}\alpha_k&c_k\\\bar c_k&\beta_k\end{pmatrix}$ in the basis
+$(v_k,v_{k+1})$. Then $\alpha_k,\beta_k\ge0$, $\alpha_k\beta_k\ge m_k$, and
+$d_{k+1}=\alpha_{k+1}+\beta_k$ for every $k$. A block is of rank at most one
+exactly when $\alpha_k\beta_k=m_k$, and a rank-one block
+$\kket w\bbra w$ with $w=\sqrt{\alpha_k}\,v_k+(\bar c_k/\sqrt{\alpha_k})\,v_{k+1}$
+is the Choi matrix of one incoherent operator.
+
+\emph{All $m_k>0$.} Then all $\alpha_k,\beta_k$ are positive. For $a>0$ let
+$f_k(a)=d_{k+1}-m_k/a$, a continuous, strictly increasing function. The
+constraints give $\alpha_{k+1}=d_{k+1}-\beta_k\le f_k(\alpha_k)$. Define the
+sequence $a_0=a$, $a_{k+1}=f_k(a_k)$, and $F(a)=a_4$, as long as the
+$a_k$ stay positive. Starting from $a=\alpha_0$, induction and monotonicity
+give $a_k\ge\alpha_k>0$ for $k=1,2,3$ and $F(\alpha_0)\ge
+f_3(\alpha_3)\ge\alpha_0$. For $a\ge\alpha_0$ every $a_k$ is at least its
+value at $\alpha_0$, hence positive, so $G(a)=F(a)-a$ is continuous on
+$[\alpha_0,\infty)$, with $G(\alpha_0)\ge0$ and $G(a)\le d_0-a\to-\infty$. By
+the intermediate value theorem there is $a^*\ge\alpha_0$ with $F(a^*)=a^*$.
+Setting $\alpha_k=a_k(a^*)$ and $\beta_k=m_k/\alpha_k$ satisfies every vertex
+equation, the last one because $a_4=a^*=\alpha_0$, and makes all four blocks
+of rank one.
+
+\emph{Some $m_k=0$.} Relabel the cycle so that $m_3=0$. Then $B_3$ is
+diagonal, and its two diagonal entries can be moved into $B_2$ and $B_0$; we
+may thus assume $\alpha_0=d_0$ and $d_3\ge\beta_2$, and work on the path
+$v_0v_1v_2v_3$. Define $a_0=d_0$ and $a_{k+1}=d_{k+1}-m_k/a_k$ for $k=0,1$,
+with the convention $m_k/a_k=0$ when $m_k=0$. As before $a_k\ge\alpha_k$ for
+$k=0,1,2$, and $\alpha_k>0$ whenever $m_k>0$, so the recurrence is defined.
+The three blocks with diagonal entries $(a_k,m_k/a_k)$ are of rank at most
+one, and the remainder $d_3-m_2/a_2\ge d_3-m_2/\alpha_2\ge d_3-\beta_2\ge0$
+at $v_3$ is a single-entry operator. This gives four operators.
+
+The four Pauli matrices are incoherent, and $\{\one/2,X/2,Y/2,Z/2\}$ is a
+Kraus decomposition of the completely depolarizing channel, whose Choi matrix
+$\one/2$ has rank four; no decomposition with fewer than four operators
+exists.
+\end{proof}
+
+\section{A generic lower bound in dimension \texorpdfstring{$d$}{d}}\label{sec:lower}
+\begin{theorem}\label{thm:lower}
+For $r$ with $(2d-1)\,r<D_d$, the set of $J\in\mathcal C_d$ with
+$\ell(J)\le r$ is a semialgebraic set of dimension less than $D_d$; it is
+nowhere dense and of Lebesgue measure zero in $V_d$. Consequently a generic
+incoherent completely positive map on $\C^d$ requires at least
+\[
+r_d=\left\lceil\frac{d^2(d^2-d+1)}{2d-1}\right\rceil
+\]
+incoherent Kraus operators. The first values are $r_2=4$, $r_3=13$,
+$r_4=30$, $r_5=59$, and $r_d=d^3/2+O(d^2)$.
+\end{theorem}
+\begin{proof}
+Fix types $f_1,\dots,f_r$ and consider the polynomial map
+$\Phi:(c_{k,j})\in\C^{dr}\mapsto J=\sum_k\kket{K_k}\bbra{K_k}$ with
+$K_k=\sum_jc_{k,j}\ket{f_k(j)}\bra j$. Multiplying $K_k$ by a phase does not
+change $J$, so $\Phi$ has the same image on the semialgebraic subset $A$ of
+parameters in which, for each $k$ with $K_k\ne0$, the first non-zero
+coefficient of $K_k$ is real and positive. The set $A$ is a finite union of
+semialgebraic sets of dimension at most $(2d-1)r$. The image of a
+semialgebraic set under a polynomial map is semialgebraic of dimension at
+most that of the set \cite[Ch.~2]{BochnakCosteRoy1998}, so $\Phi(A)$ has
+dimension at most $(2d-1)r<D_d$. The set $\{\ell\le r\}$ is the finite union
+of these images over the $d^{dr}$ choices of types. A semialgebraic subset of
+$V_d\cong\R^{D_d}$ of dimension less than $D_d$ has closure of the same
+dimension, hence is nowhere dense and of measure zero. Since $\mathcal C_d$
+has non-empty interior (Lemma~\ref{lem:dim}), the complement of
+$\{\ell\le r\}$ contains an open dense subset of $\mathcal C_d$. Applying this
+to the largest $r$ with $(2d-1)r<D_d$, namely $r_d-1$, gives the bound. The
+asymptotic form follows from $d^2(d^2-d+1)/(2d-1)=d^3/2-d^2/4+O(d)$.
+\end{proof}
+
+For $d=2$ the bound equals the value of Theorem~\ref{thm:qubit}, which
+holds for every map. For $d=3$ a generic incoherent map, whose Choi rank is
+$9$, has no incoherent decomposition with $9$, $10$, $11$ or $12$
+operators. The incoherent length thus exceeds the Choi rank on an open set
+of maps as soon as $d\ge3$, and the gap grows like $d^3/2$ against $d^2$.
+
+\section{The qutrit: thirteen operators are attained}\label{sec:qutrit}
+Write a type as the triple $(f(0),f(1),f(2))$ and consider the thirteen types
+\begin{equation}\label{eq:types}
+\begin{gathered}
+(1,0,1),\ (1,2,0),\ (1,2,2),\ (0,1,1),\ (2,0,2),\ (1,1,0),\ (2,1,1),\\
+(0,0,1),\ (2,0,0),\ (0,1,0),\ (2,1,2),\ (0,2,2),\ (2,2,1).
+\end{gathered}
+\end{equation}
+
+\begin{theorem}\label{thm:qutrit}
+Let $\Phi:\C^{39}\to V_3$ be the map of the proof of Theorem~\ref{thm:lower}
+for the types \eqref{eq:types}. Its image contains a non-empty open subset
+$\mathcal U$ of $V_3$, contained in $\mathcal C_3$. Every $J\in\mathcal U$
+has $\ell(J)\le13$, and $\ell(J)=13$ for all $J$ in an open dense subset of
+$\mathcal U$.
+\end{theorem}
+\begin{proof}
+Regard $\Phi$ as a map from $\R^{78}$ (real and imaginary parts) to
+$V_3\cong\R^{63}$. At a point $c^{(0)}$ with Gaussian-integer coefficients,
+recorded in the public certificate, the real Jacobian of $\Phi$ is an integer
+$81\times78$ matrix in the coordinates given by the diagonal entries and the
+real and imaginary parts of the upper triangle of $J$; eighteen of its rows,
+those of the same-column positions, vanish identically. Its rank modulo the
+prime $p=2^{31}-1$ is $63$. A non-zero minor modulo $p$ is a non-zero
+integer, so the rank over $\R$ is $63=\dim V_3$. Thus $\Phi$ is a submersion
+at $c^{(0)}$, and by the local submersion theorem its image contains an open
+neighbourhood $\mathcal U$ of $\Phi(c^{(0)})$ in $V_3$. Every element of the
+image is the Choi matrix of the thirteen incoherent operators that produce
+it, so $\mathcal U\subset\mathcal C_3$ and $\ell\le13$ on $\mathcal U$. By
+Theorem~\ref{thm:lower}, $\ell\ge13$ on an open dense subset of
+$\mathcal C_3$, whose intersection with $\mathcal U$ is open and dense in
+$\mathcal U$.
+\end{proof}
+
+Trace-preserving maps form the affine slice $\{S(J)=\one\}$ of $V_3$, where $S$
+is the linear map \eqref{eq:S}; it has dimension $63-9=54$. The same
+certificate shows that thirteen operators also suffice on an open set of
+incoherent channels.
+
+\begin{theorem}\label{thm:channels}
+There is a non-empty set of incoherent operations on a qutrit, open in the
+affine space $\{J\in V_3: S(J)=\one\}$, each of which admits a decomposition
+into thirteen incoherent Kraus operators of the types \eqref{eq:types}.
+\end{theorem}
+\begin{proof}
+The certificate point $c^{(0)}$ is chosen so that
+$\sum_kK_k^\dagger K_k=\operatorname{diag}(s_0,s_1,s_2)$ is diagonal, with
+$(s_0,s_1,s_2)=(91,209,155)$. Let $\Delta=\operatorname{diag}(s_j^{-1/2})$
+and $c^{(1)}_{k,j}=c^{(0)}_{k,j}s_j^{-1/2}$, so that the operators become
+$K_k\Delta$, which are incoherent of the same types and satisfy
+$\sum_k\Delta K_k^\dagger K_k\Delta=\one$. Right multiplication by $\Delta$
+acts linearly and invertibly on the parameters and on $V_3$, and intertwines
+$\Phi$; hence the Jacobian of $\Phi$ at $c^{(1)}$ also has rank $63$, and its
+image is all of $V_3$.
+
+The restriction of $S$ to $V_3$ maps onto the nine-dimensional space of
+Hermitian $3\times3$ matrices: the composite of $S$ with the integer Jacobian
+at $c^{(0)}$ has rank $9$ modulo $p$, hence over $\R$. Consequently
+$\Psi=S\circ\Phi$ has surjective differential at $c^{(1)}$, the fibre
+$N=\Psi^{-1}(\one)$ is a smooth manifold near $c^{(1)}$, and its tangent space
+is $\ker(S\circ d\Phi)=d\Phi^{-1}(\ker S)$. Because $d\Phi$ maps onto $V_3$,
+the differential of $\Phi|_N$ maps onto $\ker S\cap V_3$, which is the tangent
+space of the 54-dimensional slice. So $\Phi|_N$ is a submersion onto the slice
+at $c^{(1)}$, and its image contains an open neighbourhood of $\Phi(c^{(1)})$
+in the slice. Every point of this neighbourhood is the Choi matrix of a
+trace-preserving map with thirteen incoherent Kraus operators.
+\end{proof}
+
+The matching lower bound for channels is not proved. Theorem~\ref{thm:lower}
+concerns the full cone, and the trace-preserving slice has measure zero in it,
+so the theorem does not apply directly. The natural reduction does not close
+the gap: right multiplication by invertible diagonal matrices is the only
+obvious symmetry that preserves incoherence of the operators, and it can
+normalize the diagonal of $\sum_kK_k^\dagger K_k$ but not its off-diagonal
+entries. A naive count gives the same threshold, since at a point where the
+trace-preservation constraint is a submersion the fibre has dimension
+$6r-9$, of which $r$ dimensions are phases, so $r$ operators reach at most a
+$(5r-9)$-dimensional part of the $54$-dimensional slice, and $5r-9\ge54$
+requires $r\ge13$. This count ignores the singular points of the fibre, where
+the dimension can jump.
+
+\begin{conjecture}\label{conj:channels}
+A generic incoherent operation on a qutrit requires thirteen incoherent Kraus
+operators; more generally, $r_d$ incoherent Kraus operators are required by a
+generic incoherent operation on $\C^d$.
+\end{conjecture}
+
+\section{Verification}\label{sec:verification}
+The theorems are proved above; Theorems~\ref{thm:qutrit} and
+\ref{thm:channels} rest on exact rank computations that the public bundle
+reproduces. The
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/incoherent-kraus-operators/checks/verify_incoherent_kraus.py}{Python checker}
+reads the
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/incoherent-kraus-operators/data/qutrit_certificate.json}{qutrit certificate},
+which lists the thirteen types and the Gaussian-integer point $c^{(0)}$,
+and writes its
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/incoherent-kraus-operators/data/verification.json}{recorded output}.
+It checks that $\sum_kK_k^\dagger K_k=\operatorname{diag}(91,209,155)$
+exactly, builds the integer $81\times78$ Jacobian, confirms that eighteen
+rows vanish, and computes its rank and the rank of its composite with $S$
+modulo $2^{31}-1$ by Gaussian elimination in Python integers, obtaining $63$
+and $9$. In floating point it also confirms rank $63$ at ten random points,
+compares the rank of the parametrization with the ceiling
+$\min\{(2d-1)r,D_d\}$ for random types with $d=2,3$, and tabulates $r_d$ for
+$d\le6$. For the qubit it applies the construction of
+Theorem~\ref{thm:qubit} to $4000$ random incoherent maps given by five to
+twelve incoherent operators ($2466$ with all edge coherences non-zero,
+$1534$ with a vanishing one); the reconstructed four operators are
+incoherent and reproduce the Choi matrix to a relative error below
+$10^{-15}$.
+
+\section{Scope and limitations}\label{sec:scope}
+Theorem~\ref{thm:qubit} is a known result \cite{Qiao2020}, given here with an
+independent proof. Theorems~\ref{thm:lower}, \ref{thm:qutrit} and
+\ref{thm:channels} are proved, the last two through an exact integer rank
+certificate. The lower bound of Theorem~\ref{thm:lower} is generic: it says
+nothing about specific maps on the exceptional measure-zero set, and it is
+proved for incoherent completely positive maps, not for trace-preserving
+ones, for which Conjecture~\ref{conj:channels} remains open. For the worst
+case over all qutrit incoherent operations, the proven range is therefore
+$9\le\max\ell\le32$: the lower end is the Choi rank of the completely
+depolarizing qutrit channel, which has the nine incoherent Kraus operators
+$X^aZ^b/3$ built from the cyclic shift $X$ and the clock matrix $Z$, and the
+upper end is the bound of \cite{Qiao2020}. The conjecture would raise the
+lower end to $13$. By Proposition~\ref{prop:cliques} the exact value is a rank
+minimization over decompositions supported on the $27$ maximal transversals
+of a qutrit. Priority for the clique formulation, the bound $r_d$ and the
+qutrit results is supported only by the documented reading of the cited
+sources.
+
+\begingroup\small
+\begin{thebibliography}{99}
+\setlength{\itemsep}{2pt}
+\bibitem{Baumgratz2014}
+T. Baumgratz, M. Cramer and M.~B. Plenio,
+\emph{Quantifying coherence},
+Phys. Rev. Lett. \textbf{113}, 140401 (2014);
+\href{https://doi.org/10.1103/PhysRevLett.113.140401}{doi:10.1103/PhysRevLett.113.140401};
+\href{https://arxiv.org/abs/1311.0275}{arXiv:1311.0275}.
+
+\bibitem{Streltsov2017RMP}
+A. Streltsov, G. Adesso and M.~B. Plenio,
+\emph{Colloquium: Quantum coherence as a resource},
+Rev. Mod. Phys. \textbf{89}, 041003 (2017);
+\href{https://doi.org/10.1103/RevModPhys.89.041003}{doi:10.1103/RevModPhys.89.041003};
+\href{https://arxiv.org/abs/1609.02439}{arXiv:1609.02439}.
+
+\bibitem{Streltsov2017PRL}
+A. Streltsov, S. Rana, P. Boes and J. Eisert,
+\emph{Structure of the resource theory of quantum coherence},
+Phys. Rev. Lett. \textbf{119}, 140402 (2017);
+\href{https://doi.org/10.1103/PhysRevLett.119.140402}{doi:10.1103/PhysRevLett.119.140402};
+\href{https://arxiv.org/abs/1705.04189}{arXiv:1705.04189}.
+
+\bibitem{Qiao2020}
+J. Qiao, L. Sun, J. Wang, M. Li, S. Shen, L. Li and S. Fei,
+\emph{The reduction of the number of incoherent Kraus operations for qutrit
+systems},
+EPL \textbf{129}, 60006 (2020);
+\href{https://doi.org/10.1209/0295-5075/129/60006}{doi:10.1209/0295-5075/129/60006};
+\href{https://arxiv.org/abs/2005.01083}{arXiv:2005.01083}.
+
+\bibitem{Choi1975}
+M.-D. Choi,
+\emph{Completely positive linear maps on complex matrices},
+Linear Algebra Appl. \textbf{10}, 285--290 (1975);
+\href{https://doi.org/10.1016/0024-3795(75)90075-0}{doi:10.1016/0024-3795(75)90075-0}.
+
+\bibitem{BochnakCosteRoy1998}
+J. Bochnak, M. Coste and M.-F. Roy,
+\emph{Real Algebraic Geometry},
+Springer, Berlin (1998);
+\href{https://doi.org/10.1007/978-3-662-03718-8}{doi:10.1007/978-3-662-03718-8}.
+\end{thebibliography}
+\endgroup
+\end{document}

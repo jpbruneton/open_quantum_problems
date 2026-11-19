@@ -1,0 +1,813 @@
+{
+ "description": "Proper depth-6 syndrome-extraction schedule for the lifted product of the 1x1 protographs a = b = 1 + x + x^2 over Z_6 (X(i)-VV(i+s), X(i)-CC(i+t), Z(i)-VV(i-t), Z(i)-CC(i-s)). Each entry gives the CNOT layer of one ancilla-qubit edge.",
+ "g": 6,
+ "a": [
+  0,
+  1,
+  2
+ ],
+ "b": [
+  0,
+  1,
+  2
+ ],
+ "depth": 6,
+ "code": [
+  12,
+  4
+ ],
+ "schedule": [
+  {
+   "ancilla": [
+    "X",
+    0
+   ],
+   "qubit": [
+    "VV",
+    0
+   ],
+   "layer": 1
+  },
+  {
+   "ancilla": [
+    "X",
+    0
+   ],
+   "qubit": [
+    "VV",
+    1
+   ],
+   "layer": 2
+  },
+  {
+   "ancilla": [
+    "X",
+    0
+   ],
+   "qubit": [
+    "VV",
+    2
+   ],
+   "layer": 3
+  },
+  {
+   "ancilla": [
+    "X",
+    0
+   ],
+   "qubit": [
+    "CC",
+    0
+   ],
+   "layer": 4
+  },
+  {
+   "ancilla": [
+    "X",
+    0
+   ],
+   "qubit": [
+    "CC",
+    1
+   ],
+   "layer": 5
+  },
+  {
+   "ancilla": [
+    "X",
+    0
+   ],
+   "qubit": [
+    "CC",
+    2
+   ],
+   "layer": 6
+  },
+  {
+   "ancilla": [
+    "Z",
+    0
+   ],
+   "qubit": [
+    "VV",
+    0
+   ],
+   "layer": 2
+  },
+  {
+   "ancilla": [
+    "Z",
+    0
+   ],
+   "qubit": [
+    "VV",
+    5
+   ],
+   "layer": 1
+  },
+  {
+   "ancilla": [
+    "Z",
+    0
+   ],
+   "qubit": [
+    "VV",
+    4
+   ],
+   "layer": 3
+  },
+  {
+   "ancilla": [
+    "Z",
+    0
+   ],
+   "qubit": [
+    "CC",
+    0
+   ],
+   "layer": 5
+  },
+  {
+   "ancilla": [
+    "Z",
+    0
+   ],
+   "qubit": [
+    "CC",
+    5
+   ],
+   "layer": 4
+  },
+  {
+   "ancilla": [
+    "Z",
+    0
+   ],
+   "qubit": [
+    "CC",
+    4
+   ],
+   "layer": 6
+  },
+  {
+   "ancilla": [
+    "X",
+    1
+   ],
+   "qubit": [
+    "VV",
+    1
+   ],
+   "layer": 4
+  },
+  {
+   "ancilla": [
+    "X",
+    1
+   ],
+   "qubit": [
+    "VV",
+    2
+   ],
+   "layer": 5
+  },
+  {
+   "ancilla": [
+    "X",
+    1
+   ],
+   "qubit": [
+    "VV",
+    3
+   ],
+   "layer": 1
+  },
+  {
+   "ancilla": [
+    "X",
+    1
+   ],
+   "qubit": [
+    "CC",
+    1
+   ],
+   "layer": 6
+  },
+  {
+   "ancilla": [
+    "X",
+    1
+   ],
+   "qubit": [
+    "CC",
+    2
+   ],
+   "layer": 2
+  },
+  {
+   "ancilla": [
+    "X",
+    1
+   ],
+   "qubit": [
+    "CC",
+    3
+   ],
+   "layer": 3
+  },
+  {
+   "ancilla": [
+    "Z",
+    1
+   ],
+   "qubit": [
+    "VV",
+    1
+   ],
+   "layer": 1
+  },
+  {
+   "ancilla": [
+    "Z",
+    1
+   ],
+   "qubit": [
+    "VV",
+    0
+   ],
+   "layer": 4
+  },
+  {
+   "ancilla": [
+    "Z",
+    1
+   ],
+   "qubit": [
+    "VV",
+    5
+   ],
+   "layer": 5
+  },
+  {
+   "ancilla": [
+    "Z",
+    1
+   ],
+   "qubit": [
+    "CC",
+    1
+   ],
+   "layer": 3
+  },
+  {
+   "ancilla": [
+    "Z",
+    1
+   ],
+   "qubit": [
+    "CC",
+    0
+   ],
+   "layer": 6
+  },
+  {
+   "ancilla": [
+    "Z",
+    1
+   ],
+   "qubit": [
+    "CC",
+    5
+   ],
+   "layer": 2
+  },
+  {
+   "ancilla": [
+    "X",
+    2
+   ],
+   "qubit": [
+    "VV",
+    2
+   ],
+   "layer": 6
+  },
+  {
+   "ancilla": [
+    "X",
+    2
+   ],
+   "qubit": [
+    "VV",
+    3
+   ],
+   "layer": 4
+  },
+  {
+   "ancilla": [
+    "X",
+    2
+   ],
+   "qubit": [
+    "VV",
+    4
+   ],
+   "layer": 2
+  },
+  {
+   "ancilla": [
+    "X",
+    2
+   ],
+   "qubit": [
+    "CC",
+    2
+   ],
+   "layer": 5
+  },
+  {
+   "ancilla": [
+    "X",
+    2
+   ],
+   "qubit": [
+    "CC",
+    3
+   ],
+   "layer": 1
+  },
+  {
+   "ancilla": [
+    "X",
+    2
+   ],
+   "qubit": [
+    "CC",
+    4
+   ],
+   "layer": 3
+  },
+  {
+   "ancilla": [
+    "Z",
+    2
+   ],
+   "qubit": [
+    "VV",
+    2
+   ],
+   "layer": 2
+  },
+  {
+   "ancilla": [
+    "Z",
+    2
+   ],
+   "qubit": [
+    "VV",
+    1
+   ],
+   "layer": 6
+  },
+  {
+   "ancilla": [
+    "Z",
+    2
+   ],
+   "qubit": [
+    "VV",
+    0
+   ],
+   "layer": 5
+  },
+  {
+   "ancilla": [
+    "Z",
+    2
+   ],
+   "qubit": [
+    "CC",
+    2
+   ],
+   "layer": 4
+  },
+  {
+   "ancilla": [
+    "Z",
+    2
+   ],
+   "qubit": [
+    "CC",
+    1
+   ],
+   "layer": 1
+  },
+  {
+   "ancilla": [
+    "Z",
+    2
+   ],
+   "qubit": [
+    "CC",
+    0
+   ],
+   "layer": 3
+  },
+  {
+   "ancilla": [
+    "X",
+    3
+   ],
+   "qubit": [
+    "VV",
+    3
+   ],
+   "layer": 3
+  },
+  {
+   "ancilla": [
+    "X",
+    3
+   ],
+   "qubit": [
+    "VV",
+    4
+   ],
+   "layer": 6
+  },
+  {
+   "ancilla": [
+    "X",
+    3
+   ],
+   "qubit": [
+    "VV",
+    5
+   ],
+   "layer": 4
+  },
+  {
+   "ancilla": [
+    "X",
+    3
+   ],
+   "qubit": [
+    "CC",
+    3
+   ],
+   "layer": 5
+  },
+  {
+   "ancilla": [
+    "X",
+    3
+   ],
+   "qubit": [
+    "CC",
+    4
+   ],
+   "layer": 2
+  },
+  {
+   "ancilla": [
+    "X",
+    3
+   ],
+   "qubit": [
+    "CC",
+    5
+   ],
+   "layer": 1
+  },
+  {
+   "ancilla": [
+    "Z",
+    3
+   ],
+   "qubit": [
+    "VV",
+    3
+   ],
+   "layer": 5
+  },
+  {
+   "ancilla": [
+    "Z",
+    3
+   ],
+   "qubit": [
+    "VV",
+    2
+   ],
+   "layer": 4
+  },
+  {
+   "ancilla": [
+    "Z",
+    3
+   ],
+   "qubit": [
+    "VV",
+    1
+   ],
+   "layer": 3
+  },
+  {
+   "ancilla": [
+    "Z",
+    3
+   ],
+   "qubit": [
+    "CC",
+    3
+   ],
+   "layer": 6
+  },
+  {
+   "ancilla": [
+    "Z",
+    3
+   ],
+   "qubit": [
+    "CC",
+    2
+   ],
+   "layer": 1
+  },
+  {
+   "ancilla": [
+    "Z",
+    3
+   ],
+   "qubit": [
+    "CC",
+    1
+   ],
+   "layer": 2
+  },
+  {
+   "ancilla": [
+    "X",
+    4
+   ],
+   "qubit": [
+    "VV",
+    4
+   ],
+   "layer": 4
+  },
+  {
+   "ancilla": [
+    "X",
+    4
+   ],
+   "qubit": [
+    "VV",
+    5
+   ],
+   "layer": 6
+  },
+  {
+   "ancilla": [
+    "X",
+    4
+   ],
+   "qubit": [
+    "VV",
+    0
+   ],
+   "layer": 3
+  },
+  {
+   "ancilla": [
+    "X",
+    4
+   ],
+   "qubit": [
+    "CC",
+    4
+   ],
+   "layer": 1
+  },
+  {
+   "ancilla": [
+    "X",
+    4
+   ],
+   "qubit": [
+    "CC",
+    5
+   ],
+   "layer": 5
+  },
+  {
+   "ancilla": [
+    "X",
+    4
+   ],
+   "qubit": [
+    "CC",
+    0
+   ],
+   "layer": 2
+  },
+  {
+   "ancilla": [
+    "Z",
+    4
+   ],
+   "qubit": [
+    "VV",
+    4
+   ],
+   "layer": 5
+  },
+  {
+   "ancilla": [
+    "Z",
+    4
+   ],
+   "qubit": [
+    "VV",
+    3
+   ],
+   "layer": 6
+  },
+  {
+   "ancilla": [
+    "Z",
+    4
+   ],
+   "qubit": [
+    "VV",
+    2
+   ],
+   "layer": 1
+  },
+  {
+   "ancilla": [
+    "Z",
+    4
+   ],
+   "qubit": [
+    "CC",
+    4
+   ],
+   "layer": 4
+  },
+  {
+   "ancilla": [
+    "Z",
+    4
+   ],
+   "qubit": [
+    "CC",
+    3
+   ],
+   "layer": 2
+  },
+  {
+   "ancilla": [
+    "Z",
+    4
+   ],
+   "qubit": [
+    "CC",
+    2
+   ],
+   "layer": 3
+  },
+  {
+   "ancilla": [
+    "X",
+    5
+   ],
+   "qubit": [
+    "VV",
+    5
+   ],
+   "layer": 2
+  },
+  {
+   "ancilla": [
+    "X",
+    5
+   ],
+   "qubit": [
+    "VV",
+    0
+   ],
+   "layer": 6
+  },
+  {
+   "ancilla": [
+    "X",
+    5
+   ],
+   "qubit": [
+    "VV",
+    1
+   ],
+   "layer": 5
+  },
+  {
+   "ancilla": [
+    "X",
+    5
+   ],
+   "qubit": [
+    "CC",
+    5
+   ],
+   "layer": 3
+  },
+  {
+   "ancilla": [
+    "X",
+    5
+   ],
+   "qubit": [
+    "CC",
+    0
+   ],
+   "layer": 1
+  },
+  {
+   "ancilla": [
+    "X",
+    5
+   ],
+   "qubit": [
+    "CC",
+    1
+   ],
+   "layer": 4
+  },
+  {
+   "ancilla": [
+    "Z",
+    5
+   ],
+   "qubit": [
+    "VV",
+    5
+   ],
+   "layer": 3
+  },
+  {
+   "ancilla": [
+    "Z",
+    5
+   ],
+   "qubit": [
+    "VV",
+    4
+   ],
+   "layer": 1
+  },
+  {
+   "ancilla": [
+    "Z",
+    5
+   ],
+   "qubit": [
+    "VV",
+    3
+   ],
+   "layer": 2
+  },
+  {
+   "ancilla": [
+    "Z",
+    5
+   ],
+   "qubit": [
+    "CC",
+    5
+   ],
+   "layer": 6
+  },
+  {
+   "ancilla": [
+    "Z",
+    5
+   ],
+   "qubit": [
+    "CC",
+    4
+   ],
+   "layer": 5
+  },
+  {
+   "ancilla": [
+    "Z",
+    5
+   ],
+   "qubit": [
+    "CC",
+    3
+   ],
+   "layer": 4
+  }
+ ]
+}

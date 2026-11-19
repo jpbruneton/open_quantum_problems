@@ -1,0 +1,118 @@
+{
+  "status": "passed",
+  "known_codes": {
+    "[[18,8,2]]": {
+      "k": 8,
+      "d": 2,
+      "agrees": true
+    },
+    "[[36,8,4]]": {
+      "k": 8,
+      "d": 4,
+      "agrees": true
+    },
+    "[[54,8,6]]": {
+      "k": 8,
+      "d": 6,
+      "agrees": true
+    },
+    "[[72,12,6]]": {
+      "k": 12,
+      "d": 6,
+      "agrees": true
+    },
+    "[[90,8,10]]": {
+      "k": 8,
+      "d": 10,
+      "agrees": true
+    },
+    "[[108,8,10]]": {
+      "k": 8,
+      "d": 10,
+      "agrees": true
+    }
+  },
+  "chain_maps_36_to_18": true,
+  "double_covers": {
+    "lm_max": 9,
+    "bases": 42,
+    "covers": 672,
+    "s<d bases": 0,
+    "k_h=2k": 50,
+    "k_h=k": 622,
+    "d_h<d": 0,
+    "d_h>2d": 0,
+    "T1 fail": 0,
+    "T2 fail": 0,
+    "T3 fail": 0,
+    "histogram_d_dh": {
+      "2,2": 292,
+      "2,4": 300,
+      "4,4": 44,
+      "4,6": 36
+    },
+    "independent_rank_crosschecks": 40
+  },
+  "fourfold_covers": {
+    "covers": 1280,
+    "k_h>4k": 0,
+    "d_h<min(d,s)": 0,
+    "d_h<d": 0,
+    "d_h>4d": 0
+  },
+  "example_42_to_84": {
+    "base": [
+      42,
+      4,
+      6
+    ],
+    "cover": [
+      84,
+      4,
+      10
+    ],
+    "dim_ker_transfer": 2,
+    "d_tau": 8,
+    "passed": true
+  },
+  "cover_of_90_8_10": {
+    "n": 180,
+    "k_h": 8,
+    "no_logical_weight_le_9": true
+  },
+  "covers_of_108_8_10": [
+    {
+      "cover": [
+        12,
+        9
+      ],
+      "n": 216,
+      "k_h": 8,
+      "is_double_cover": true,
+      "witness_weight": 10,
+      "witness_valid": true,
+      "no_logical_weight_le_9": true,
+      "least_weight_found_by_anchored_search": 10
+    },
+    {
+      "cover": [
+        12,
+        9
+      ],
+      "n": 216,
+      "k_h": 8,
+      "is_double_cover": true,
+      "witness_weight": 12,
+      "witness_valid": true,
+      "no_logical_weight_le_9": true,
+      "least_weight_found_by_anchored_search": 10
+    }
+  ],
+  "s_of_72_12_6": 6,
+  "elapsed_seconds": 65.7,
+  "sha256": {
+    "checks/check_bb_covers.py": "133e24c03aafe6b11e25ce1b8a11f6e99a056442c1de93cc55342fcd6ab829ac",
+    "checks/bb_tools.py": "433758e0f41dfd30d80bc99f287fc1c51e7dd290770adf6c04236733973055f4"
+  },
+  "limits": "Exact GF(2) computations on small codes; they test the theorems proved in the manuscript and search for counterexamples, but do not replace the proofs."
+}
