@@ -11,7 +11,7 @@ export const RENORMALIZATION = [
     relations: [{ id: "R2", type: "related" }, { id: "R3", type: "related" }],
     title: "The a-theorem in six dimensions",
     statement: r`For every nontrivial unitary renormalization-group flow between ultraviolet and infrared conformal fixed points in $d=6$, prove $a_{\rm UV}>a_{\rm IR}$, where $a$ is the Euler-anomaly coefficient, or give a counterexample. A stationary theory is excluded from the strict inequality. The search for monotones in every dimension $d\ge5$ is a broader extension.`,
-    definition: r`**Irreversibility of the renormalization group** says that flows lose degrees of freedom: some measure of them decreases from the ultraviolet to the infrared fixed point. It is a theorem in $d=2$ ($c$-theorem, Zamolodchikov 1986), $d=3$ ($F$-theorem, Casini–Huerta 2012) and $d=4$ ($a$-theorem, Komargodski–Schwimmer 2011). Cardy, “Is there a c-theorem in four dimensions?”, [Phys. Lett. B 215 (1988) 749](https://doi.org/10.1016/0370-2693(88)90054-8), proposed the Euler anomaly $a$ in even dimensions.`,
+    definition: r`**Irreversibility of the renormalization group** says that flows lose degrees of freedom: some measure of them decreases from the ultraviolet to the infrared fixed point. It is a theorem in $d=2$ ($c$-theorem, Zamolodchikov 1986), $d=3$ ($F$-theorem, Casini–Huerta 2012, whose entropic argument assumes an intrinsic definition of the constant term of the entanglement entropy) and $d=4$ ($a$-theorem, Komargodski–Schwimmer 2011).`,
     progress: r`- Elvang, Freedman, Hung, Kiermaier, Myers and Theisen (2012): the dilaton argument of Komargodski–Schwimmer does not give positivity in $d=6$.
 - Cordova, Dumitrescu and Intriligator (2015 preprint, published 2016): proof for flows of six-dimensional $(1,0)$ superconformal theories onto the tensor branch ([arXiv:1506.03807](https://arxiv.org/abs/1506.03807)).
 - Fazzi, Giri and Levy (2023, revised 2025): Higgs-branch flows between type-A orbi-instanton theories only, despite the general title.
@@ -23,10 +23,9 @@ export const RENORMALIZATION = [
     ],
     refs: [
       { label: "Komargodski, Schwimmer, 'On renormalization group flows in four dimensions' (2011)", url: "https://arxiv.org/abs/1107.3987" },
-      { label: "Casini, Huerta, F-theorem from entanglement (2012)", url: "https://arxiv.org/abs/1202.5650" },
+      { label: "Casini, Huerta, 'On the RG running of the entanglement entropy of a circle', Phys. Rev. D 85, 125016 (2012)", url: "https://arxiv.org/abs/1202.5650" },
       { label: "Elvang, Freedman, Hung, Kiermaier, Myers, Theisen, 'On renormalization group flows and the a-theorem in 6d' (2012)", url: "https://arxiv.org/abs/1205.3994" },
       { label: "Fazzi, Giri, Levy, 'Proving the 6d a-theorem with the double affine Grassmannian' (2023)", url: "https://arxiv.org/abs/2312.17178" },
-      { label: "Cardy, 'Is there a c-theorem in four dimensions?', Phys. Lett. B 215, 749 (1988)", url: "https://doi.org/10.1016/0370-2693(88)90054-8" },
       { label: "Cordova, Dumitrescu, Intriligator, 'Anomalies, renormalization group flows, and the a-theorem in six-dimensional (1,0) theories', JHEP 10 (2016) 080", url: "https://arxiv.org/abs/1506.03807" },
       { label: "Casini, Testé, Torroba, 'Markov property of the CFT vacuum and the a-theorem', Phys. Rev. Lett. 118, 261602 (2017)", url: "https://arxiv.org/abs/1704.01870" },
       { label: "Giombi, Klebanov, 'Interpolating between a and F' (2014)", url: "https://arxiv.org/abs/1409.1937" },
@@ -79,7 +78,7 @@ export const RENORMALIZATION = [
       { label: "Jack, Jones, Poole, 'Gradient flows in three dimensions' (2015)", url: "https://arxiv.org/abs/1505.05400" },
       { label: "Friedan, Konechny, 'Gradient formula for the beta-function of 2d quantum field theory', J. Phys. A 43 (2010) 215401", url: "https://arxiv.org/abs/0910.3109" },
       { label: "Jack, Osborn, 'Constraints on RG flow for four dimensional quantum field theories' (2013; revised 2015)", url: "https://arxiv.org/abs/1312.0428" },
-      { label: "Friedan, Konechny, boundary entropy and gradient formula (2003)", url: "https://arxiv.org/abs/hep-th/0312197" },
+      { label: "Friedan, Konechny, 'On the boundary entropy of one-dimensional quantum systems at low temperature' (arXiv 2003)", url: "https://arxiv.org/abs/hep-th/0312197" },
       { label: "Luty, Polchinski, Rattazzi (2012)", url: "https://arxiv.org/abs/1204.5221" },
     ] },
 

@@ -35,16 +35,14 @@ This spectral gap is distinct from screening of external colour charges and from
     statement: r`In zero-temperature continuum pure $SU(N)$ Yang–Mills theory, prove a positive asymptotic string tension for external sources with nonzero $N$-ality, using a renormalized Wilson-loop or static-potential criterion.`,
     definition: r`**Confinement** here means confinement of unscreened external colour sources in pure gauge theory: for large separation $R$, the static potential should have a positive linear coefficient, the string tension. A corresponding large-loop area law is $\langle W(C)\rangle\sim e^{-\sigma\,\mathrm{Area}(C)}$, after specifying renormalization and the loop limit.
 
-Nonzero $N$-ality matters: adjoint charges can be screened by gluons, and dynamical fundamental matter permits string breaking. An unqualified area law is therefore not a universal definition for every gauge theory with matter. The Wilson-loop criterion goes back to Wilson, “Confinement of quarks”, [Phys. Rev. D 10, 2445 (1974)](https://journals.aps.org/prd/abstract/10.1103/PhysRevD.10.2445).`,
+Nonzero $N$-ality matters: adjoint charges can be screened by gluons, and dynamical fundamental matter permits string breaking. An unqualified area law is therefore not a universal definition for every gauge theory with matter. The Wilson-loop criterion goes back to Wilson's 1974 lattice formulation of confinement; see Chatterjee's survey ([arXiv:1803.01950](https://arxiv.org/abs/1803.01950)).`,
     progress: r`- Strong-coupling lattice expansions establish area laws in their convergence regimes.
 - Lattice Monte Carlo supports positive string tension in four-dimensional pure non-Abelian theories. This is numerical evidence, not a continuum proof.
 - Rigorous Wilson-loop results in particular lattice gauge theories and large-$N$ settings provide additional benchmarks, whose gauge groups and coupling regimes must be retained.`,
     residual: r`Proving confinement in the continuum 4D theory presupposes (or must be done jointly with) the construction in QF1, and then requires showing that the area law survives the weak-coupling continuum limit, precisely the regime where strong-coupling expansions fail. This is a long-horizon programme intertwined with QF1.`,
     refs: [
-      { label: "Wilson, 'Confinement of quarks', PRD 10, 2445 (1974)", url: "https://journals.aps.org/prd/abstract/10.1103/PhysRevD.10.2445" },
       { label: "Chatterjee, 'Yang–Mills for probabilists' (2018)", url: "https://arxiv.org/abs/1803.01950" },
       { label: "Chatterjee, 'Wilson loops in Ising lattice gauge theory'", url: "https://arxiv.org/abs/1811.09770" },
-      { label: "Seiler, 'Gauge Theories as a Problem of Constructive Quantum Field Theory and Statistical Mechanics', Lect. Notes Phys. 159 (1982)", url: "https://link.springer.com/book/10.1007/3-540-11559-5" },
     ] },
 
   { id: "QF3", cat: "qft", horizon: "programme",
@@ -54,29 +52,27 @@ Nonzero $N$-ality matters: adjoint charges can be screened by gluons, and dynami
     definition: r`**Continuum QED₄** would be four-dimensional quantum electrodynamics constructed nonperturbatively as a relativistic QFT. QED is the most experimentally precise theory in physics, yet it has no nonperturbative mathematical construction.
 
 The central worry is “triviality”: the Landau pole suggests that the renormalized charge is driven to zero as the ultraviolet cutoff is removed, so a nontrivial continuum interacting QED may not exist.`,
-    progress: r`- Aizenman and Fröhlich established scalar triviality results above four dimensions (Aizenman, [Phys. Rev. Lett. 47, 1 (1981)](https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.47.1)).
+    progress: r`- Scalar fields above four dimensions have Gaussian scaling limits; this classical triviality is the background to the four-dimensional results below.
 - Aizenman and Duminil-Copin proved Gaussianity of scaling limits for specified critical four-dimensional Ising and $\phi^4$ models ([arXiv:1912.07973](https://arxiv.org/abs/1912.07973)).
 - These scalar theorems are important comparisons, not QED theorems. They do not establish triviality for a gauge–fermion theory or for the Higgs sector coupled to gauge fields.
 - The perturbative Landau-pole argument motivates the question but is not a nonperturbative exclusion proof.`,
     residual: r`The open problem has two faces: either construct a nontrivial 4D continuum QED (controlling the Landau pole, the infrared and soft-photon sectors, and charge renormalization), or rigorously establish its triviality and characterize QED only as an effective theory with a cutoff. Either resolution is a major programme. Related: QF7 (infrared).`,
     refs: [
       { label: "Aizenman & Duminil-Copin, 'Marginal triviality of the scaling limits of critical 4D Ising and φ⁴ models', Ann. of Math. 194 (2021)", url: "https://arxiv.org/abs/1912.07973" },
-      { label: "Aizenman, 'Proof of the Triviality of φ⁴ Field Theory and Some Mean-Field Features of Ising Models for d > 4', Phys. Rev. Lett. 47, 1 (1981)", url: "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.47.1" },
     ] },
 
   { id: "QF4", cat: "qft", horizon: "programme",
     archive: { kind: "merged", targets: ["QF1", "QF3", "QF5"], reason: "Construction umbrella retained for history; its gauge, ultraviolet-consistency and chiral-regularization tasks are tracked separately instead of counted again." },
     title: "Nonperturbative construction of the Standard Model",
     statement: r`Give a mathematically complete continuum definition of the chiral gauge theory underlying the Standard Model and establish its consistency beyond formal perturbation theory.`,
-    definition: r`**A nonperturbative construction of the Standard Model** would define this chiral, non-Abelian gauge theory with Higgs and Yukawa couplings as a rigorous quantum field theory. This requires nonperturbative constructions of its gauge sector (QF1), a nonperturbative regularization of its chiral fermions (QF5), and control of the Higgs sector, which, like $\phi^4$, may be trivial and thus only an effective description.
-
-Standard reference for the lattice approach: Montvay and Münster, *Quantum Fields on a Lattice* (Cambridge University Press, 1994), [doi:10.1017/CBO9780511470783](https://doi.org/10.1017/CBO9780511470783).`,
+    definition: r`**A nonperturbative construction of the Standard Model** would define this chiral, non-Abelian gauge theory with Higgs and Yukawa couplings as a rigorous quantum field theory. This requires nonperturbative constructions of its gauge sector (QF1), a nonperturbative regularization of its chiral fermions (QF5), and control of the Higgs sector, which, like $\phi^4$, may be trivial and thus only an effective description.`,
     progress: r`- Perturbative renormalizability and anomaly cancellation are established.
 - Vector-like lattice gauge theories, nonperturbative Abelian chiral constructions and more recent chiral regulator proposals are available. A finite-cutoff proposal is not a proof of the full interacting continuum Standard Model.
 - The scalar and Abelian sectors may instead require a cutoff effective description; a general scalar triviality theorem cannot simply be transferred to the coupled theory.`,
     residual: r`This historical umbrella is merged into QF1, QF3 and QF5. Their results must ultimately be compatible with the Higgs and Yukawa interactions and the full particle content. The merge does not claim that the Standard Model has been constructed or that it must possess a nontrivial continuum limit.`,
     refs: [
-      { label: "Montvay & Münster, 'Quantum Fields on a Lattice' (Cambridge University Press, 1994)", url: "https://doi.org/10.1017/CBO9780511470783" },
+      { label: "Chatterjee, 'Yang–Mills for probabilists' (2018)", url: "https://arxiv.org/abs/1803.01950" },
+      { label: "Lüscher, 'Abelian chiral gauge theories on the lattice with exact gauge invariance', Nucl. Phys. B549 (1999)", url: "https://arxiv.org/abs/hep-lat/9811032" },
     ] },
 
   { id: "QF5", cat: "qft", horizon: "programme", status: "improved",
@@ -103,7 +99,7 @@ Standard reference for the lattice approach: Montvay and Münster, *Quantum Fiel
     statement: r`Construct nonperturbative regulators for non-Abelian chiral gauge theories with all local and global anomalies cancelled, proving locality, global gauge consistency, removal of unwanted mirror modes and the required continuum fermion content.`,
     definition: r`**Lattice chiral gauge theory** asks for a nonperturbative regulator of gauge theories whose fermions couple chirally, as in the electroweak sector. Putting chiral fermions on a lattice is obstructed by the Nielsen–Ninomiya theorem: a local, translation-invariant, hermitian lattice fermion action with the right symmetries necessarily produces species doublers, spoiling chirality.
 
-This is why nonperturbatively defining the electroweak (chiral) sector is hard, whereas vector-like QCD is fine. Reference: Nielsen and Ninomiya, Nucl. Phys. B185, 20 (1981), [doi:10.1016/0550-3213(81)90361-8](https://doi.org/10.1016/0550-3213(81)90361-8).`,
+This is why nonperturbatively defining the electroweak (chiral) sector is hard, whereas vector-like QCD is fine.`,
     progress: r`- The Ginsparg–Wilson relation and overlap/domain-wall constructions avoid the naive doubling obstruction by modifying its assumptions.
 - Lüscher's anomaly-free Abelian construction is nonperturbative, with exact gauge invariance including finite-volume topological sectors; it is not merely an all-orders perturbative result ([arXiv:hep-lat/9811032](https://arxiv.org/abs/hep-lat/9811032)).
 - Symmetric mass generation and interacting mirror-fermion approaches provide further proposals, whose locality and mirror decoupling must be checked for the intended representation.
@@ -124,7 +120,6 @@ This is why nonperturbatively defining the electroweak (chiral) sector is hard, 
       { label: "Hsu, 'The Standard Model on a finite bosonic lattice with continuum Weyl fermions' (2026 preprint, v2 of 6 November 2026)", url: "https://arxiv.org/abs/2610.29019v2" },
       { label: "Witten, 'A Note On Lattice Definition of Gauge Theories With Chiral Fermions' (2026 preprint, v1)", url: "https://arxiv.org/abs/2611.05051v1" },
       { label: "Lootens & Singh, 'Simulating a chiral gauge theory' (2026 preprint, v1)", url: "https://arxiv.org/abs/2611.06880v1" },
-      { label: "Nielsen & Ninomiya, 'Absence of neutrinos on a lattice: (I). Proof by homotopy theory', Nucl. Phys. B185, 20–40 (1981)", url: "https://doi.org/10.1016/0550-3213(81)90361-8" },
       { label: "Lüscher, 'Abelian chiral gauge theories on the lattice with exact gauge invariance', Nucl. Phys. B549 (1999)", url: "https://arxiv.org/abs/hep-lat/9811032" },
       { label: "Kaplan, 'Chiral gauge theory at the boundary between topological phases', PRL 132, 141603 (2024; preprint 2023)", url: "https://arxiv.org/abs/2312.01494" },
       { label: "Thorngren, Preskill & Fidkowski, 'Chiral lattice gauge theories from symmetry disentanglers', JHEP 07 (2026) 271", url: "https://link.springer.com/article/10.1007/JHEP07(2026)271" },
@@ -135,15 +130,13 @@ This is why nonperturbatively defining the electroweak (chiral) sector is hard, 
     statement: r`For a specified massive, local, interacting relativistic QFT in $3+1$ dimensions, prove that the vacuum and scattering states of stable particles span the chosen physical sector; formulate separate completeness criteria when massless particles or charges invalidate this particle description.`,
     definition: r`**Asymptotic completeness**, in a massive particle-scattering setting, says that scattering states built from the specified stable particles exhaust the physical sector under consideration. It is stronger than existence of an S-matrix on a scattering subspace.
 
-Different superselection sectors or theories without a complete particle interpretation require an explicitly different target. Standard reference: Haag, *Local Quantum Physics* (Springer, 2nd ed., 1996), [doi:10.1007/978-3-642-61458-3](https://link.springer.com/book/10.1007/978-3-642-61458-3).`,
+Different superselection sectors or theories without a complete particle interpretation require an explicitly different target.`,
     progress: r`- Haag–Ruelle theory constructs scattering states in massive theories under spectral assumptions; existence of these states does not prove completeness.
 - Complete results exist for particular factorizing $1+1$-dimensional models.
 - Duell and Dybalski establish results for massive wedge-local theories in higher dimensions ([Comm. Math. Phys. 2023](https://link.springer.com/article/10.1007/s00220-023-04690-0)), which are not the same target as strictly local theories.
 - Earlier constructive results in restricted energy sectors or space-cutoff models are not a general completeness theorem for $P(\phi)_2$ or interacting 2D/3D QFT. Many-body Schrödinger completeness theorems likewise concern a different setting.`,
     residual: r`The four-dimensional local target can be pursued by conditional axiomatic theorems as well as explicit constructions (QF1, QF3). With massless quanta, especially charged infraparticle sectors, ordinary finite-particle Fock completeness is not the right unrestricted statement; QF7 tracks alternative asymptotic observables and sectors.`,
     refs: [
-      { label: "Haag, 'Local Quantum Physics: Fields, Particles, Algebras' (Springer, 2nd ed., 1996)", url: "https://link.springer.com/book/10.1007/978-3-642-61458-3" },
-      { label: "Buchholz, 'Collision theory for massless bosons', Comm. Math. Phys. 52 (1977)", url: "https://doi.org/10.1007/BF01625781" },
       { label: "Duell & Dybalski, 'Asymptotic Completeness in a Class of Massive Wedge-Local Quantum Field Theories in Any Dimension', CMP (2023)", url: "https://link.springer.com/article/10.1007/s00220-023-04690-0" },
     ] },
 
@@ -159,7 +152,7 @@ Different superselection sectors or theories without a complete particle interpr
     statement: r`For a specified charged model, construct infrared-finite scattering predictions for stated inclusive observables and asymptotic charge sectors, prove the applicable completeness statement, and control collinear singularities where massless charged particles are included.`,
     definition: r`**An infraparticle** is a charged particle, as in QED, that is inevitably accompanied by a cloud of soft photons. It has no sharp mass and does not sit in a standard Wigner irreducible representation of the Poincaré group.
 
-Naive scattering amplitudes are infrared-divergent, and the usual Fock-space asymptotic states do not exist for charged particles. Reference: Buchholz, “Gauss' law and the infraparticle problem”, Phys. Lett. B174 (1986), [doi:10.1016/0370-2693(86)91110-X](https://doi.org/10.1016/0370-2693(86)91110-X).`,
+Naive scattering amplitudes are infrared-divergent, and the usual Fock-space asymptotic states do not exist for charged particles.`,
     progress: r`- Bloch–Nordsieck cancellation concerns inclusive probabilities, summed over unresolved soft radiation. Faddeev–Kulish-type constructions instead use charged states dressed with soft-photon clouds to define infrared-finite amplitudes under suitable assumptions on the charged particles and dressing; neither statement is a general nonperturbative completeness theorem.
 - Algebraically, Buchholz and collaborators developed the theory of superselection sectors, the Gauss-law charge, and the breaking of Lorentz symmetry in charged sectors, characterizing infraparticles rigorously.
 - The connection to asymptotic symmetries and soft theorems (Strominger et al., [arXiv:1703.05448](https://arxiv.org/abs/1703.05448)) and to the memory effect has reorganized the subject, linking soft photons to large gauge transformations.
@@ -176,7 +169,6 @@ Naive scattering amplitudes are infrared-divergent, and the usual Fock-space asy
       { label: "Choi & Mitra, 'Dressed Fock Spaces in Gauge Theory and Gravity' (2026 preprint, v2)", url: "https://arxiv.org/abs/2606.15988v2" },
       { label: "Oertel, 'Memory detectors and fully constraining Faddeev-Kulish dressings in QED and gravity' (2026 preprint, v2)", url: "https://arxiv.org/abs/2605.06774v2" },
       { label: "Semenoff & Waterfield, 'The Wilson-line-dressed charged sector of scalar QED: superselection and the infraparticle' (2026 preprint, v1 reviewed; v2 of 12 September 2026 reports typo fixes and clarifying remarks)", url: "https://arxiv.org/abs/2609.06224v1" },
-      { label: "Buchholz, 'Gauss' law and the infraparticle problem', Phys. Lett. B174 (1986)", url: "https://doi.org/10.1016/0370-2693(86)91110-X" },
       { label: "Strominger, 'Lectures on the Infrared Structure of Gravity and Gauge Theory' (Princeton, 2018)", url: "https://arxiv.org/abs/1703.05448" },
       { label: "Prabhu & Satishchandran, 'Infrared finite scattering theory: Amplitudes and soft theorems', PRD 110, 085022 (2024)", url: "https://journals.aps.org/prd/abstract/10.1103/PhysRevD.110.085022" },
     ] },

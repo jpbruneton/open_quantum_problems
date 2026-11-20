@@ -9,8 +9,8 @@ export const QUANTUM_GRAVITY = [
     statement: r`Is the four-graviton amplitude of $\mathcal N=8$ supergravity in $D=4$ ultraviolet finite at seven loops? Precisely: is the coefficient of the logarithmic divergence associated with the $D^8R^4$ counterterm at $L=7$, computed from the double-copy integrand and generalized unitarity, equal to zero?`,
     definition: r`**Maximal supergravity** in four dimensions is the most symmetric field theory of gravity. Whether it is ultraviolet finite, contrary to power counting, would show whether a pointlike theory of gravity can be perturbatively consistent. Beisert et al., “E7(7) constraints on counterterms in N=8 supergravity” (2010), [arXiv:1009.1643](https://arxiv.org/abs/1009.1643), exclude candidate counterterms below seven loops and identify the four-graviton amplitude as the decisive seven-loop test. Green–Russo–Vanhove (2007) is an earlier ultraviolet analysis, not the source of this seven-loop target.`,
     progress: r`- Four-graviton ultraviolet finiteness in $D=4$ is established by explicit calculations through five loops. The five-loop divergence in $D=24/5$ (Bern et al. 2018) leaves the seven-loop $D=4$ question undecided.
-- $E_{7(7)}$ symmetry, supersymmetry and superspace arguments exclude counterterms up to six loops (Beisert et al. 2010; Bossard–Howe–Stelle–Vanhove 2011); $D^8R^4$ at seven loops is the first compatible one.
-- Kallosh (2014) argues for finiteness to all orders; not accepted as established.
+- $E_{7(7)}$ symmetry, supersymmetry and superspace arguments exclude counterterms up to six loops (Beisert et al. 2010; Bossard–Howe–Stelle–Vanhove 2011); $D^8R^4$ at seven loops is the first candidate not excluded (Beisert et al. find a supersymmetrization compatible with $E_{7(7)}$ only through six points).
+- Kallosh (2014), building on Karlsson's pure-spinor analysis and $E_{7(7)}$ current conservation, argues that the four-point amplitude may be finite to all orders and calls for explicit checks at five and more loops; not accepted as established.
 - Bern, Carrasco, Chiodaroli, Johansson and Roiban (2023 review) note cancellations in cuts that may signal an enhanced cancellation at seven loops; a direct test requires technical advances. No seven-loop computation was found as of 9 November 2026.`,
     residual: r`The seven-loop integrand and its UV behaviour in $D=4$, or a non-renormalization argument covering $D^8R^4$ accepted as rigorous.`,
     evidence: [
@@ -32,7 +32,7 @@ export const QUANTUM_GRAVITY = [
     definition: r`**The S-matrix bootstrap** maps the space of consistent scattering amplitudes using only unitarity, analyticity and high-energy bounds. Applied to gravitons, it asks whether string theory is the unique ultraviolet completion of gravity. Guerrieri, Penedones, Vieira, “Where is string theory?”, PRL 127, 081601 (2021), [arXiv:2102.02847](https://arxiv.org/abs/2102.02847).`,
     progress: r`- Camanho, Edelstein, Maldacena and Zhiboedov (2014): causality requires an infinite tower of higher-spin states once the three-graviton coupling is corrected.
 - Guerrieri, Penedones and Vieira (2021) study the non-perturbative bootstrap. Guerrieri, Murali, Penedones and Vieira (2022; JHEP 2023) extrapolate a ten-dimensional minimum $0.124\pm0.003$, below the string minimum $0.138949$; this is a numerical estimate, not a certified consistent theory below the string value. They discuss missing inelasticity as a possible explanation.
-- Caron-Huot, Mazáč, Rastelli and Simmons-Duffin (2021): two-sided bounds on higher Wilson coefficients. Häring and Zhiboedov: gravitational Regge bounds (2022) and the black-disk limit (2023).
+- Caron-Huot, Mazáč, Rastelli and Simmons-Duffin (2021): two-sided bounds on higher Wilson coefficients. Häring and Zhiboedov: gravitational Regge bounds (2022) and the stringy S-matrix bootstrap with maximal spin and superpolynomial softness (2023).
 - Albert, Knop and Rastelli (2024): an extremal solution with a single Regge trajectory; string theory lies strictly inside the allowed region for other observables.`,
     residual: r`A proof of the bound throughout the stated bootstrap admissible set, or an amplitude below it with all of those constraints certified. Finite truncations and extrapolated numerical bounds are partial progress. The sharp target is this amplitude bound; completing a bootstrap-admissible amplitude to an entire quantum-gravity theory is a separate question.`,
     evidence: [
@@ -43,8 +43,8 @@ export const QUANTUM_GRAVITY = [
       { label: "Guerrieri, Penedones, Vieira, 'Where is string theory?' (2021)", url: "https://arxiv.org/abs/2102.02847" },
       { label: "Guerrieri, Murali, Penedones, Vieira, 'Where is M-theory in the space of scattering amplitudes?', JHEP 06 (2023) 064", url: "https://arxiv.org/abs/2212.00151" },
       { label: "Caron-Huot, Mazáč, Rastelli, Simmons-Duffin, 'Sharp boundaries for the swampland' (2021)", url: "https://arxiv.org/abs/2102.08951" },
-      { label: "Häring, Zhiboedov (2022)", url: "https://arxiv.org/abs/2202.08280" },
-      { label: "Häring, Zhiboedov (2023)", url: "https://arxiv.org/abs/2311.13631" },
+      { label: "Häring, Zhiboedov, 'Gravitational Regge bounds' (2022)", url: "https://arxiv.org/abs/2202.08280" },
+      { label: "Häring, Zhiboedov, 'The stringy S-matrix bootstrap: maximal spin and superpolynomial softness' (2023)", url: "https://arxiv.org/abs/2311.13631" },
       { label: "Albert, Knop, Rastelli, 'Where is tree-level string theory?' (2024)", url: "https://arxiv.org/abs/2406.12959" },
     ] },
 
@@ -106,7 +106,7 @@ export const QUANTUM_GRAVITY = [
 - Causal dynamical triangulations are reflection positive after Wick rotation; nothing analogous is proved for the continuum theory at the fixed point. Recent overview: Schiffer (2025).`,
     residual: r`A programme with the sharp sub-target above. Existence of the fixed point itself is a separate question. Related: R3 (gradient flows).`,
     evidence: [
-      { kind: "preprint", role: "progress", summary: "Four-page proceedings overview (2025), noting recent work on unitarity and Lorentzian signature; no new unitarity theorem.", url: "https://arxiv.org/abs/2509.26352v1", date: "2025-09-30", version: "v1" },
+      { kind: "preprint", role: "progress", summary: "Proceedings overview (2025) of functional and lattice approaches; it only notes recent studies of unitarity and Lorentzian signature and proves no new unitarity theorem.", url: "https://arxiv.org/abs/2509.26352v1", date: "2025-09-30", version: "v1" },
     ],
     refs: [
       { label: "Reuter (1996)", url: "https://arxiv.org/abs/hep-th/9605030" },
