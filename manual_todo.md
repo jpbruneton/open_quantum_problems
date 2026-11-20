@@ -505,3 +505,412 @@ Lecture arrêtée à 53 lots terminés sur 101 (fichiers channels, complexity, e
 | Mark Howard, Joel J. Wallman, Victor Veitch, Joseph Emerson, 'Contextuality supplies the magic for quantum computation', Nature 510, 351 (2014), arXiv:1401.4174v2, DOI 10.1038/nature13460 | coupée dans le matériel supplémentaire (preuve du Théorème 6) ; texte principal lu en entier | N10 | Contextualité nécessaire pour le calcul par états magiques en dimension première impaire (référence standard de l'entrée) | |
 | H. Fu, C. A. Miller, W. Slofstra, 'The membership problem for constant-sized quantum correlations is undecidable', Comm. Math. Phys. (2025), DOI 10.1007/s00220-024-05229-7, arXiv:2101.11087v5 | coupée au début de la section 5.2 (PDF arXiv, 64 532 caractères extraits ; sections 5.3 à 7 et fin de la preuve du Théorème 1.1 non lues) | N13 | Indécidabilité de l'appartenance à C_qa et C_qc dans un scénario fixé, pour des comportements algébriques ; référence de Tsirelson problème 2.10 | |
 | L. Masanes, 'Tight Bell inequality for d-outcome measurements correlations', Quantum Inf. Comput. 3, 345 (2003), arXiv:quant-ph/0210073 | coupée : tables de générateurs de la preuve de tightness non extraites par l'outil | N14 | CGLMP is a facet (tight) of the local polytope for every d | |
+
+## Lecture intégrale du catalogue (20 novembre 2026), lots 54 à 101
+
+Fichiers nonlocality (fin), open-systems, qft, quantum-gravity, renormalization, semiclassical-gravity, spectral, undecidability et pages New problems. Corrections relues une à une avant application (journal : `oqmresearch/docs/research/bilans/2026-11-19-lecture-catalogue/propositions/applique-lots-054-101.md`).
+
+### Inaccessibles depuis la session (retirées du catalogue, sauf source du problème ou lecture empêchée temporairement)
+
+| Référence | Accès | Fiche | Ce qu'elle soutient | Déposée |
+|---|---|---|---|---|
+| Mishra & Senthilkumar, IQOQI-OQP-27, papers/arxiv/main.pdf, commit d5213b7 | PDF binaire non extrait (seul le README est lu) | N14 | projective CGLMP optimality, computer-assisted d>=21, Lean d<=20 | |
+| Pitowsky, Correlation polytopes: Their geometry and complexity, Math. Programming 50, 395 (1991), doi:10.1007/BF01594946 | payant | N15 | complexity of facet enumeration | |
+| Fine, PRL 48, 291 (1982), doi:10.1103/PhysRevLett.48.291 | payant | N15 | CHSH only facet for 2x2 | |
+| Summers & Werner, The vacuum violates Bell's inequalities, Phys. Lett. A 110, 257 (1985), doi:10.1016/0375-9601(85)90093-3 | payant (Elsevier) | N16 | vacuum violates CHSH; beta=sqrt2 for tangent regions | |
+| Summers & Werner, Bell's inequalities and QFT II, J. Math. Phys. 28, 2448 (1987), doi:10.1063/1.527734 | PDF payant (résumé seul) | N16 | Bell inequalities maximally violated in the vacuum | |
+| Fredenhagen, A remark on the cluster theorem, Commun. Math. Phys. 97, 461 (1985), doi:10.1007/BF01213409 | payant (aperçu seul) | N16 | exponential decay of vacuum correlations with a mass gap | |
+| Horodecki, Rudnicki, Życzkowski, Five open problems in quantum information theory, PRX Quantum 3, 010101 (2022), doi:10.1103/PRXQuantum.3.010101 | payant/bloqué (version publiée ; la version arXiv v2 lue n'a pas ce problème). ALERTE source du problème non lisible : N19 doi:10.1103/prxquantum.3.010101 | N19 | Problem 3 (single-copy saturability) of the published list | |
+| Nurdin, Corrections to 'Saturability of the quantum Cramér-Rao bound ... single-copy level', IEEE Control Syst. Lett. 8, 2111-2113 (2024), doi:10.1109/LCSYS.2024.3451468 | payant (IEEE) | N19 | invalidation of Nurdin's conditions for general POVMs; counterexample to Condition 1 | |
+| G. Lindblad, On the generators of quantum dynamical semigroups, Commun. Math. Phys. 48, 119-130 (1976), doi:10.1007/BF01608499 | payant (Springer preview) / Project Euclid bloqué | O1 | complete GKLS characterization of bounded generators (1976) | |
+| V. Gorini, A. Kossakowski, E. C. G. Sudarshan, Completely positive dynamical semigroups of N-level systems, J. Math. Phys. 17, 821-825 (1976), doi:10.1063/1.522979 | payant (PDF seulement) | O1 | complete GKLS characterization of bounded generators (1976) | |
+| E. B. Davies, Markovian master equations, Commun. Math. Phys. 39, 91-110 (1974), doi:10.1007/BF01608389 | payant (Springer preview) | O2 | rigorous weak-coupling (van Hove) derivation of the Lindblad equation | |
+| P. Pechukas, Reduced dynamics need not be completely positive, Phys. Rev. Lett. 73, 1060 (1994), doi:10.1103/PhysRevLett.73.1060 | payant (APS) | O4 | assignment-map approach; reduced dynamics need not be CP with initial correlations | |
+| A. Shabani, D. A. Lidar, Erratum: Vanishing quantum discord is necessary and sufficient for completely positive maps, Phys. Rev. Lett. 116, 049901 (2016) | payant (APS) | O4 | restriction of the 2009 zero-discord claim | |
+| Breuer, Laine, Piilo, Vacchini, Colloquium: Non-Markovian dynamics in open quantum systems, Rev. Mod. Phys. 88, 021002 (2016), arXiv:1505.01385 | coupée à la fin de §IV.B (arXiv v1); page APS inaccessible | O5 | standard review of non-Markovianity criteria | |
+| Seifert, First and second law of thermodynamics at strong coupling, PRL 116, 020601 (2016) | payant/page APS bloquée, pas d arXiv | O8 | Hamiltonian-of-mean-force first law and integral fluctuation theorem for driven classical systems | |
+| Hahn, Sweke, Deshpande, Shtanko, PRX Quantum 7, 020314 (2026) (arXiv:2506.04321v2) | page APS inaccessible ; arXiv v2 coupée à l'annexe D3 | O10 | local-circuit Gibbs sampling; PRX volume/article number | |
+| Rakovszky et al., PRL 137, 050402 (2026), arXiv:2412.09598 | coupée au supplément S III ; page APS inaccessible | O10 | bottleneck theorem | |
+| Machado, Zhuang, Yao, Zaletel, Absolutely stable time crystals at finite temperature, PRL 131, 180402 (2023), arXiv:2110.00585v2 | texte v2 non obtenu (v1 lu) | O11 | quoted wording of v2 | |
+| Lu & Raz, PNAS 114, 5083 (2017), arXiv:1609.05271 (version publiée/v3) | seule v1 lue | O12 | Mpemba iff non-monotonic /b_2/ | |
+| OpenAI, Working with academic communities to build scientific understanding (announcement, 26 October 2026), https://openai.com/index/building-scientific-understanding-with-academic-communities/ | page inaccessible (client error, two attempts) | QF1 | date and content of the OpenAI announcement of a Yang-Mills existence proof | |
+| Wilson, Confinement of quarks, Phys. Rev. D 10, 2445 (1974) | payant (APS) | QF2 | origin of the Wilson-loop confinement criterion | |
+| Seiler, Gauge Theories as a Problem of Constructive Quantum Field Theory and Statistical Mechanics, Lect. Notes Phys. 159 (1982), doi:10.1007/3-540-11559-5 | livre (Springer) | QF2 | background on strong-coupling area laws | |
+| Aizenman, Proof of the Triviality of phi^4 Field Theory and Some Mean-Field Features of Ising Models for d>4, Phys. Rev. Lett. 47, 1 (1981) | payant (APS) | QF3 | triviality of scalar theories above four dimensions (with Fröhlich 1982) | |
+| Montvay & Münster, Quantum Fields on a Lattice, CUP 1994, doi:10.1017/CBO9780511470783 | livre (CUP) | QF4 | standard reference for the lattice approach | |
+| Nielsen & Ninomiya, Absence of neutrinos on a lattice: (I). Proof by homotopy theory, Nucl. Phys. B185, 20 (1981), doi:10.1016/0550-3213(81)90361-8 | payant (Elsevier) | QF5 | Nielsen-Ninomiya doubling theorem | |
+| R. Haag, Local Quantum Physics, Springer 2e éd. 1996, doi:10.1007/978-3-642-61458-3 | livre payant | QF6 | standard reference for asymptotic completeness | |
+| D. Buchholz, Collision theory for massless bosons, CMP 52, 147 (1977), doi:10.1007/BF01625781 | payant | QF6 | massless-boson collision theory (listed in refs) | |
+| D. Buchholz, Gauss law and the infraparticle problem, Phys. Lett. B 174 (1986), doi:10.1016/0370-2693(86)91110-X | payant | QF7 | definition of infraparticle / Gauss-law sectors | |
+| Cardy, Is there a c-theorem in four dimensions?, Phys. Lett. B 215, 749 (1988), doi:10.1016/0370-2693(88)90054-8 | payant (Elsevier) | R1 | proposal of the Euler anomaly a in even dimensions | |
+| K. Farnsworth, M. Luty, V. Prelipina, Scale invariance plus unitarity implies conformal invariance in four dimensions, arXiv:1309.4095v2 (withdrawal) | v2 non lisible (v1 : résumé seulement) | R2 | withdrawal March 2014, invalid momentum-space OPE step | |
+| OpenAI, Scale and conformal symmetry in four-dimensional operational quantum field theory, 26 Sept 2026, github.com/openai/math commit 1581d4c paper.pdf | inaccessible (erreur client GitHub et raw) | R2 | claimed local traceless improvement under discrete-spectrum hypotheses | |
+| Fredenhagen & Haag, On the derivation of Hawking radiation associated with the formation of a black hole, CMP 127 (1990) 273 | page Project Euclid bloquée | G2 | free-field derivation and remark on interacting theories (source du problème non lisible : G2 url:projecteuclid FH1990) | |
+| Easson, Cauchy-horizon flux coefficients in the reduced Polyakov model, CQG (2026), doi:10.1088/1361-6382/aeb78e; arXiv:2511.05656 v1-v2 and v4 | historique de versions et page éditeur non vérifiables (page arXiv consultée : v3 seulement, pas de DOI) | G3 | v1-v2 claim of enforcement by the trace anomaly, v4 date 20 October 2026, DOI | |
+| Lieb, Bound on the maximum negative ionization of atoms and molecules, Phys. Rev. A 29, 3018 (1984), doi:10.1103/PhysRevA.29.3018 | payant (page APS non accessible) | M1 | N_c < 2Z+M, sans principe de Pauli | |
+| Fefferman & Seco, Asymptotic neutrality of large ions, Commun. Math. Phys. 128, 109-130 (1990), doi:10.1007/BF02097048 | payant (résumé seul : Z+O(Z^{47/56})) | M1 | neutralité asymptotique N_c <= Z+o(Z) | |
+| Seco, Sigal & Solovej, Bound on the ionization energy of large atoms, Commun. Math. Phys. 131, 307-315 (1990), doi:10.1007/BF02161416 | payant (résumé seul) | M1 | N_c <= Z+O(Z^{5/7}) | |
+| Lieb & Seiringer, The Stability of Matter in Quantum Mechanics, CUP 2010, chap. 12, doi:10.1017/CBO9780511819681 | livre | M1 | référence standard sur le problème d'ionisation | |
+| Simon, Fifteen problems in mathematical physics (1984), math.caltech.edu/SimonPapers/R27.pdf | PDF numérisé sans couche texte (OCR nécessaire) | M1 | problèmes 10C-10D et note ajoutée en épreuve sur N_c(Z)-Z borné | |
+| Benguria & Lieb, Proof of the stability of highly negative ions in the absence of the Pauli principle, Phys. Rev. Lett. 50, 1771 (1983) | payant (page APS non accessible) | M1 | un noyau lie ~1.21 Z bosons | |
+| Solovej, Asymptotics for bosonic atoms, Lett. Math. Phys. 20, 165-172 (1990), doi:10.1007/BF00398282 | payant (résumé seul) | M1 | asymptotique exacte 1+γ pour les atomes bosoniques | |
+| Goto, arXiv:2107.01826 v1 (texte intégral de la v1) | seul résumé et historique lus ; v1 PDF non lu ; commentaire « The proof is incorrect » non retrouvé dans l'extraction de la page | M1 | revendication retirée d'extension moléculaire de la borne de Nam | |
+| J. Fröhlich, T. Spencer, Absence of diffusion in the Anderson tight binding model for large disorder or low energy, Comm. Math. Phys. 88 (1983) 151, doi:10.1007/BF01209475 | payant (Springer, aperçu seulement) | M2 | multiscale localization at strong disorder/low energy | |
+| M. Aizenman, S. Molchanov, Localization at large disorder and at extreme energies: an elementary derivation, Comm. Math. Phys. 157 (1993) 245, doi:10.1007/BF02099760 | payant (Springer, aperçu seulement) | M2 | fractional-moment localization | |
+| A. Klein, Extended states in the Anderson model on the Bethe lattice, Adv. Math. 133 (1998) 163 | payant (ScienceDirect, résumé seulement) | M2 | a.c. spectrum at weak disorder on the Bethe lattice | |
+| M. Aizenman, S. Warzel, Random Operators, AMS GSM 168 (2015), doi:10.1090/gsm/168 | livre | M2, M3 | standard reference for the Anderson model | |
+| B. Simon, Fifteen problems in mathematical physics (1984), Problem 12A | PDF numérisé sans couche texte | M2 | origin of the delocalization problem | |
+| A. Avila, Global theory of one-frequency Schrödinger operators (I), arXiv:0905.3902 (version publiée Acta Math. 215 (2015)) | lue en entier en préimpression partie I (2009) ; version Acta non lue | M3 | almost-Mathieu spectral type | |
+| F. D. M. Haldane, Nonlinear field theory of large-spin Heisenberg antiferromagnets, PRL 50 (1983) 1153 | payant (APS) | M5 | Haldane's 1983 prediction | |
+| I. Affleck, T. Kennedy, E. H. Lieb, H. Tasaki, Valence bond ground states in isotropic quantum antiferromagnets, CMP 115 (1988) 477 | Project Euclid (anti-bot) | M5 | AKLT model unique gapped ground state | |
+| E. Lieb, T. Schultz, D. Mattis, Two soluble models of an antiferromagnetic chain, Ann. Phys. 16 (1961) 407 | payant (Elsevier) | M5 | LSM theorem | |
+| Z. Rudnick, P. Sarnak, The behaviour of eigenstates of arithmetic hyperbolic manifolds, Commun. Math. Phys. 161 (1994) 195-213, doi:10.1007/BF02099418 | payant / protégé ; illisible depuis la session | M8 | definition of quantum unique ergodicity (source of the conjecture) | |
+| O. Bohigas, M.-J. Giannoni, C. Schmit, Characterization of chaotic quantum spectra and universality of level fluctuation laws, PRL 52 (1984) 1 | payant (APS) | M9 | original BGS conjecture | |
+| M. Sieber, K. Richter, Correlations between periodic orbits and their role in spectral statistics, Phys. Scr. T90 (2001) 128 | payant/illisible (IOP) | M9 | leading correction from self-crossing orbit pairs | |
+| E. J. Heller, Bound-state eigenfunctions of classically chaotic Hamiltonian systems: scars of periodic orbits, PRL 53 (1984) 1515 | payant (APS) | M10 | original observation of scars | |
+| A. S. Holevo, Quantum Systems, Channels, Information, De Gruyter 2nd ed. 2019, doi:10.1515/9783110642490 | livre sous licence | M11 | standard reference | |
+| Aizenman & Warzel, Random Operators, AMS GSM 168 (2015), doi:10.1090/gsm/168 | livre | M12 | standard reference on Anderson localization | |
+| Ding & Smart, Localization near the edge for the Anderson Bernoulli model on the two dimensional lattice, Invent. Math. 219 (2020), doi:10.1007/s00222-019-00910-4 | payant (aperçu) | M12 | 2D localization near the edge for Bernoulli potentials | |
+| Stahl, Proof of the BMV conjecture, Acta Math. 211 (2013) 255-290, arXiv:1107.4875 | partielle (arXiv coupée section 7.1) ; page Springer payante | M14 | proof of BMV | |
+| Cha (& Lee), arXiv:2603.19927 v1 and v6 | NON LUE : limite de débit arXiv répétée (RATE_LIMIT_EXCEEDED), pas une inaccessibilité éditeur | M14 | 3x3 counterexample to the upper bound; unbounded ratio (v6) | |
+| Perdew, Parr, Levy, Balduz, Density-functional theory for fractional particle number, PRL 49, 1691 (1982), doi:10.1103/PhysRevLett.49.1691 | payant (APS) | M15 | origin of convexity in DFT | |
+| Lieb, Density functionals for Coulomb systems, Int. J. Quantum Chem. 24, 243 (1983), doi:10.1002/qua.560240302 | payant (Wiley) | M15 | Question 7: convexity for every external potential | |
+| Lieb, Thomas-Fermi and related theories of atoms and molecules, Rev. Mod. Phys. 53, 603 (1981), doi:10.1103/RevModPhys.53.603 | payant (APS) | M15 | Thomas-Fermi limit and convexity (Lieb-Simon) | |
+| Ayers, Energy is not a convex function of particle number for r^-k interparticle potentials with k > log_3 4, J. Chem. Phys. 160, 044110 (2024), doi:10.1063/5.0179137 | payant (AIP ; résumé seul) | M15 | non-convexity for Riesz interactions s > log_3 4 | |
+| Lieb & Thirring, Universal nature of van der Waals forces for Coulomb systems, Phys. Rev. A 34, 40 (1986), doi:10.1103/PhysRevA.34.40 | payant (APS) | M16 | van der Waals attraction between neutral fragments | |
+| Malagutti, Parmeggiani, arXiv:2601.17924v4 | v1 lue ; v4 (21 août 2026) non lue | M18 | Braak's conjecture for finite families (perturbative model) | |
+| Passare, Rullgård, Duke Math. J. 121 (2004) 481, doi:10.1215/S0012-7094-04-12134-7 | Project Euclid (anti-bot) | M17 | Ronkin function convex, affine on amoeba complement | |
+| Tilli, J. Math. Anal. Appl. 239 (1999), doi:10.1006/jmaa.1999.6572 | payant | M17 | multilevel Toeplitz eigenvalues, empty-interior symbol | |
+| Donatelli, Neytcheva, Serra-Capizzano (2012), doi:10.1007/978-3-0348-0297-0_15 | chapitre de livre | M17 | multilevel block version | |
+| Schmidt, Spitzer, Math. Scand. 8 (1960) 15-38, doi:10.7146/math.scand.a-10588 | PDF numérisé sans texte | M17 | limit set of banded Toeplitz spectra | |
+| Hirschman, Illinois J. Math. 11 (1967) 145-159, doi:10.1215/ijm/1256054792 | Project Euclid (anti-bot) | M17 | limiting eigenvalue distribution | |
+| Widom, Adv. Math. 13 (1974) 284-322, doi:10.1016/0001-8708(74)90072-3 | Elsevier (page vide) | M17 | block Toeplitz asymptotics | |
+| Weihrauch, Computable Analysis: An Introduction, Springer (2000), doi:10.1007/978-3-642-56999-9 | livre | U5 | Type-2 computable analysis as representation framework | |
+| Pour-El, Richards, Computability in Analysis and Physics, Springer 1989 / CUP 2017, doi:10.1017/9781316717325 | livre | U5 | wave-equation examples: representation and regularity affect computability | |
+| T. Matsui, Translational symmetry breaking and soliton sectors for massive quantum spin models in 1+1 dimensions, CMP 189 (1997) 127-144, doi:10.1007/s002200050193 | payant (résumé seulement) | PM3 | no non-translation-invariant ground states for AKLT-type models | |
+| Aronow & Lopatto, Uniform Spectral Gap for the AKLT Model on the Square Lattice, Hexagon hexagon:2611.00580v1, 18 Nov 2026 | corps (147 p.) derrière connexion ORCID ; seule la page de dépôt lue | PM5 | théorème 1.1 : trou uniforme explicite sur tores carrés assez grands, deux parités | |
+| Yang-Mills working group, assessment of the OpenAI submission of 28 Oct 2026 (10 Nov 2026), github.com/yang-mills-group/YM, docs/ PDF | PDF d'évaluation non lu (dossier docs non accessible : robots) ; seule la page d'accueil lue | PQF1, PQF2 | Wilson-lattice construction at fixed volume; Theorem 7.1 trace two-point limit 3 dim(g)/pi^4 (section 7.2); large-volume uniqueness unresolved | |
+| Grewal, Mutreja, Tomer, A classical oracle separation between QMA and QMA(2), arXiv:2610.06760v2 | non lue : limite de débit arXiv (temporaire), plusieurs essais | PA1 | classical-oracle separation of QMA and QMA(2); their problem admits an SBQP algorithm; SBQP question posed as interesting direction; AI use. No removal proposed (source of the problem). | |
+| OpenAI, QMA-hardness of continuum Coulomb energy with unit nuclear charges (24 Sep 2026), github.com/openai/math preprints/ ... /paper.pdf | non lue (PDF) : github.com/tree interdit (robots), dépôt non autorisé pour gh/MCP ; seul lean/docs/275.md lu | PA7 | announced QMA-hardness; membership not asserted (source du problème : alerte) | |
+| Caban, Mohsin, Two-qutrit Werner state is always local, arXiv:2610.02997 | section II brouillée (Éq. 13 manquante) | SN2 | LHV model for two three-outcome projective settings | |
+| Rey, A rapidly mixing quantum Swendsen-Wang sampler and a locality lower bound for Gibbs sampling, Zenodo doi:10.5281/zenodo.21501715 | résumé seulement (PDF binaire) | SO1 | claimed local Arrhenius bound and commuting cluster sampler (lead withdrawn) | |
+| OpenAI, A Nearly Quartic Separation Between Randomized and Quantum Query Complexity (5 Oct 2026), github.com/openai/math/preprints/... | non lue : robots.txt, dépôt non autorisé, PDF binaire (source du problème : alerte) | SA4 | Theorem 1.1 | |
+| Goldsheid, Sodin, Real eigenvalues in the non-Hermitian Anderson model, arXiv:1707.02181 | texte incomplet (Éq. 5.5, preuve de §5.2, Prop. 6.1) | PM8 | baseline | |
+| Molinari, Spectral duality and distribution of exponents for transfer matrices of block tridiagonal Hamiltonians, arXiv:math-ph/0210042 | texte inachevé (section 3, preuve de la Prop. 2) | PM8 | baseline: duality, Lyapunov exponents and winding | |
+| Wehner, Winter, Entropic uncertainty relations - a survey, arXiv:0907.3704 | texte avec ruptures (introduction, I.C, II.C.1) | PN4 | open question on tight relations for MUBs | |
+| Evidence Press (anonymous), Sharp qutrit discrimination and unavoidable correlation overcounting for complementary measurements, 4 Nov 2026, Zenodo 10.5281/zenodo.23933731 | manuscrit PDF non lu (page d'annonce lue) | PN5 | Corollary 3.3, margin 0.1005 nats | |
+| Russell, Wu, Rabitz, Reply to comment on control landscapes are almost always trap free, J. Phys. A (2018), doi:10.1088/1751-8121/aaecf2 | non lue (non liée sur le site ; citée par Zhdanov arXiv:1811.01416) | PO5 | whether the authors maintain the generic trap-freeness claim | |
+
+### Lues en partie (texte coupé par l'outil ; gardées sur le site, décision du mainteneur)
+
+| Référence | Accès | Fiche | Ce qu'elle soutient | Déposée |
+|---|---|---|---|---|
+| L. Masanes, 'Tight Bell inequality for d-outcome measurements correlations', Quantum Inf. Comput. 3, 345 (2003), arXiv:quant-ph/0210073 | coupée : tables de générateurs de la preuve de tightness non extraites par l'outil | N14 | CGLMP is a facet (tight) of the local polytope for every d | |
+| Ioannou & Rosset, arXiv:2112.10803v2 | coupée à la section IX (Sliwa) ; section CGLMP lue | N14 | SOS certificates for CGLMP d=3,4 | |
+| van Dam, Gill, Grünwald, arXiv:quant-ph/0307125 | coupée dans l'annexe II-D | N14 | statistical strength (KL) background | |
+| Brunner, Cavalcanti, Pironio, Scarani, Wehner, Bell nonlocality, RMP 86, 419 (2014), arXiv:1303.2849 | coupée à II.G | N15 | standard reference | |
+| Śliwa, Symmetries of the Bell correlation inequalities, arXiv:quant-ph/0305190 | coupée à tableau I, classe 13/46 | N15 | 2x2 only CHSH; 3x3 one new class | |
+| Cope & Colbeck, arXiv:1812.10017 | coupée au théorème 4 (annexe A) | N15 | 175 classes, 18277 for (4,5,2,2) | |
+| Jesus & Zambrini Cruzeiro, arXiv:2212.03212 | coupée annexe B (tableau IV) | N15 | complete facet sets for listed scenarios | |
+| Chen, Hu, Tura, arXiv:2511.07523v3 | coupée supplément IV.A | N15 | v3 facet theorem | |
+| C. de Gois, T. S. R. Santos, C. Vieira, Quantum communication and Bell nonlocality require infinite classical communication to simulate, arXiv:2609.04182v1 | coupée à la fin de l'annexe B.5 (annexes ultérieures non lues) | N18 | no bounded-communication exact simulation of maximally entangled ququarts; qutrits finite | |
+| R. Castellano, P. Sekatski, N. Brunner, The cost of classically simulating quantum communication is as high as it could be, arXiv:2610.19060v1 | coupée dans l'annexe F | N18 | finite average bits in every finite dimension; infinite expected alphabet for d>=4 | |
+| Imai, Yang, Pezzè, Hierarchy of saturation conditions for multiparameter quantum metrology bounds, arXiv:2602.12097v2 | coupée à l'Observation 4 (Exemple 7 non vu) | N19 | Example 7 (rank-two qutrit, partial but not one-sided commutativity) | |
+| Conlon, Suzuki, Lam, Assad, The gap persistence theorem for quantum multiparameter estimation, arXiv:2208.07386v3 | coupée dans l'annexe C (Lemme 18) | N19 | equivalences for single-copy saturability; gap persistence | |
+| Suzuki, Yang, Hayashi, Quantum state estimation with nuisance parameters, J. Phys. A 53, 453001 (2020), arXiv:1911.02790 | coupée en Section 3.1 ; Annexe B.1 non vue | N19 | full-rank states: saturable iff SLDs commute (Nagaoka 1987), Appendix B.1 | |
+| Kahn, Guţă, Local asymptotic normality for finite dimensional quantum systems, CMP 289, 597 (2009), arXiv:0804.3876 | coupée en Section 5.1 | N19 | quantum LAN underlying asymptotic Holevo attainability | |
+| Yang, Chiribella, Hayashi, Attaining the ultimate precision limit in quantum state estimation, CMP 368, 223 (2019), arXiv:1802.07587 | coupée dans la preuve du Théorème 6 | N19 | Holevo bound attained asymptotically by collective measurements | |
+| Yang, Pang, Zhou, Jordan, Optimal measurements for quantum multiparameter estimation with general states, PRA 100, 032104 (2019), arXiv:1806.07337 | coupée dans l'annexe B.3 | N19 | partial commutativity necessary; per-POVM-element conditions | |
+| Langrenez, Arvidsson-Shukur, De Bièvre, Characterizing the geometry of the Kirkwood-Dirac positive states, arXiv:2306.00086 (J. Math. Phys. 65, 072201, 2024) | coupée à la preuve du lemme 5.1 (sections 5.2-5.4, conclusion, annexes non lues) | N20 | mixed KD-positive states outside the convex hull for other basis pairs | |
+| Yang, Yao, Geng, Wang, Chen, Geometry of Kirkwood-Dirac classical states, arXiv:2404.09399 (J. Phys. A 57, 435303, 2024) | coupée à l'annexe D (annexe E, références non lues) | N20 | equality in dimension p^2, belief for pq | |
+| Cai, Yang, Zheng, Kirkwood-Dirac classical states based on DFT: representation with directed graph, arXiv:2603.13863 | coupée à l'annexe F | N20 | new proof for p^r, directed graph | |
+| Uola, Costa, Nguyen, Gühne, Quantum steering, arXiv:1903.06663 (Rev. Mod. Phys. 92, 015001) | coupée à la section III.D | N21 | LHS bounds for POVMs, open question | |
+| Kotowski, Oszmaniec, arXiv:2501.09339 | annexes A-C absentes, bibliographie coupée | N21 | constant visibility simulation | |
+| Kotowski & Oszmaniec, Pretty-good simulation of all quantum measurements by projective measurements, arXiv:2501.09339v1 | coupée : annexes A-C absentes, bibliographie coupée à [8] | N22 | v_d borné inférieurement par une constante (c=0.02) indépendante de d | |
+| T. Ikeuchi, T. Mori, Error Bounds on the Universal Lindblad Equation in the Thermodynamic Limit, arXiv:2503.14916v4 (PRB 112, 094309) | coupée en V.C (68 624 caractères) | O2 | uniform-in-time error vanishing under accelerated dissipation | |
+| M. Scandi, A. M. Alhambra, Thermalization in open many-body systems and KMS detailed balance, arXiv:2505.20064v2 (PRX 16, 011040) | coupée au théorème 12 (section IV) | O2 | exact KMS detailed balance w.r.t. renormalized Hamiltonian (section V) | |
+| E. Mozgunov, D. Lidar, Completely positive master equation for arbitrary driving and small level spacing, Quantum 4, 227 (2020), arXiv:1908.01095v2 | coupée à la section 3.7 | O2 | rigorous error bounds for Redfield, Davies, coarse-grained equations (section 6) | |
+| J. Agerskov, F. Nathan, Markovian quantum master equations are exponentially accurate in the weak coupling regime, arXiv:2603.04504v1 | supplément coupé dans la preuve de la proposition S.4 (texte principal lu) | O2 | Theorem 1 residual bound (proof in S.VI) | |
+| I. de Vega, D. Alonso, Dynamics of non-Markovian open quantum systems, Rev. Mod. Phys. 89, 015001 (2017), arXiv:1511.06994 | coupée en section III.E | O3 | standard review of non-Markovian dynamics | |
+| H. Chen, Z. Cai, Quantum Simulation of Non-Markovian Open Quantum Systems via Low-Rank Kernel Compression and Coupling Dilution, arXiv:2610.29372v1 | coupée dans l'annexe F | O3 | certified scheme for Gaussian baths | |
+| J. M. Dominy, A. Shabani, D. A. Lidar, A general framework for complete positivity, arXiv:1312.0908 | coupée à l'exemple 3 (section IV.C.1) | O4 | inequivalent CP notions on restricted domains; discord limits | |
+| Brandão, Horodecki, Ng, Oppenheim, Wehner, The second laws of quantum thermodynamics, PNAS 112, 3275 (2015), arXiv:1305.5278 | coupée à l annexe E (preuve du Thm 17) | O6 | thermomajorization / second laws background | |
+| Shiraishi, Takagi, Recovery of the second law in fully quantum thermodynamics, arXiv:2510.05642 | supplément coupé au Lemme S.13 | O6 | approximate correlated-catalytic conversion theorem | |
+| Yamanouchi, Shiraishi, Optimal asymptotic pure-state conversion under thermal operations, arXiv:2611.08974v1 | supplément coupé à §IV.A.4 | O6 | optimal asymptotic pure-state rate | |
+| Woods, Silva, Oppenheim, Autonomous Quantum Machines and Finite-Sized Clocks, Ann. Henri Poincaré 20, 125 (2019), arXiv:1607.04591 | coupée à §VIII (Lemme VIII.0.1) | O7 | autonomous machine definition and quasi-ideal clock exponential accuracy | |
+| Talkner, Hänggi, Colloquium: Statistical mechanics and thermodynamics at strong coupling, RMP 92, 041002 (2020), arXiv:1911.11660 | coupée à §IV.B.2 (§V, VI et bibliographie non lues) | O8 | Hamiltonian of mean force equilibrium thermodynamics at strong coupling | |
+| Chen, Yu, Learning Arbitrary Lindbladians from Time Evolution, arXiv:2607.28610 (v1, v2) | v2 coupé au §2.5, v1 au §3.3; section AI use disclosure de v2 non lue | O9 | near-optimal Lindbladian learning, lower bounds, and AI-use provenance statements | |
+| L. Kim, arXiv:2610.01190v1 | coupée au lemme 4.12 (sect. 4) | O10 | O(log(n/eps)) mixing 1D every finite temperature; AI disclosure | |
+| H. Chen, Z. Ding, arXiv:2610.05848v2 | coupée à la sect. 5.1 | O10 | O(log^4 n+log(1/eps)) mixing | |
+| Capel, Pérez-García, Scandi, arXiv:2610.03683v1 | coupée à la sect. 4 | O10 | MLSI 1/log n heat-bath 1D | |
+| Rouzé, Stilck França, arXiv:2610.03578v1 | coupée à la sect. 4.1 ; déclaration d'IA p. 55 non vue | O10 | Dobrushin-Shlosman mixing; AI disclosure | |
+| R.-H. Li, arXiv:2609.09291v1 | coupée à la sect. IV.D | O10 | core-tail Gibbs preparation | |
+| Gao, Guo, Wang, arXiv:2610.28600v1 | coupée à l'annexe C.1 | O10 | complete MLSI 1D CKG | |
+| Bertoni, De Palma, arXiv:2610.40361v1 | coupée à la sect. 5.2.1 | O10 | all-to-all high-temperature mixing | |
+| Chen, Ding, Lu, arXiv:2610.31571v1 | coupée à la sect. 6.1 | O10 | temperature-path LSI | |
+| Gao, Guo, arXiv:2609.15902v1 | coupée à la sect. 6.1 (sect. 7 non lue) | O10 | MLSI iff BKM coercivity; CKG complete MLSI | |
+| Rouzé, Stilck França, Alhambra, arXiv:2403.12691v3 | coupée à l'annexe B.2 ; venue Nature Physics déduite du DOI 10.1038/s41567-026-03246-y | O10 | high-temperature polynomial thermalization | |
+| Bergamaschi, Chen, arXiv:2510.08533v2 | coupée à la sect. III.C | O10 | 1D all-temperature size-independent gap | |
+| Slezak et al., arXiv:2601.16154 | coupée à l'annexe B | O10 | system-bath polynomial thermalization | |
+| Gamarnik, Kiani, Zlokapa, arXiv:2411.04300v2 | coupée à la sect. 4.4 | O10 | slow mixing exp(n^{1/2-o(1)}) CKG 2D TFIM | |
+| Hwang, Jiang, Quantum 10, 2209 (2026), arXiv:2410.04909v5 | coupée à la sect. 5.2.1 | O10 | commuting Gibbs preparation by classical reduction | |
+| Bakshi, Liu, Moitra, Tang, arXiv:2403.16850 | coupée à la sect. 4.2 (registre) | O10 | high-temperature separability and preparation | |
+| Kiani, arXiv:2609.30149 | coupée à la sect. 5.3 (registre) | O10 | separability threshold | |
+| Drechsler, Oreg, Aharonov, Autonomous Quantum Memories from Classical Stochastic Processes, arXiv:2610.05589v1 | coupée section 2.1.5 (remarque 2.26) | O11 | 4D toric code + Toom memory, Floquet Lindbladian, time-independent open | |
+| Ogami, Tajima, Open Quantum Time Crystals without External Thermodynamic Resources, arXiv:2611.09540v1 | coupée dans le supplément I.D.1 | O11 | go/no-go theorems | |
+| Bringmann, Cao, Hairer, Zhao, Construction of the 2D non-Abelian Yang-Mills-Higgs measure via stochastic quantisation, arXiv:2611.03640v1 | coupée au milieu du théorème 2.4 (section 2.1) | QF1 | 2D YMH measure construction (kept) | |
+| Jaffe & Witten, Quantum Yang-Mills theory, in The Millennium Prize Problems, Clay/AMS, pp. 129-152 (MPPc.pdf) | coupée avant le chapitre Yang-Mills (tool text ends in the Hodge chapter) | QF1 | official problem statement (kept) | |
+| Chandra, Chevyrev, Hairer, Shen, Langevin dynamic for the 2D Yang-Mills measure, arXiv:2006.04987 | coupée au milieu de la preuve du théorème 3.11 | QF1 | 2D Yang-Mills Langevin dynamic (kept) | |
+| Chatterjee, Wilson loops in Ising lattice gauge theory, arXiv:1811.09770 | coupée au milieu du lemme 7.11 | QF2 | rigorous Wilson-loop result in 4D Z2 lattice gauge theory (kept) | |
+| Aizenman & Duminil-Copin, Marginal triviality of the scaling limits of critical 4D Ising and phi^4 models, Ann. of Math. 194 (2021), arXiv:1912.07973 | coupée au milieu de la preuve de la prop. 4.3 | QF3 | Gaussianity of scaling limits in four dimensions (kept) | |
+| Grabowska, Lattice Hamiltonians for Chiral Gauge Theories, arXiv:2611.13886v1 | coupée en annexe D.1 | QF5 | Hamiltonian slab regularization (kept) | |
+| Hsu, The Standard Model on a finite bosonic lattice with continuum Weyl fermions, arXiv:2610.29019v2 | coupée en section 8.1 ; déclaration IA (v1) non retrouvée | QF5 | finite bosonic lattice SM and AI provenance (kept) | |
+| Craig, A gauge-invariant measure for lattice chiral fermions, arXiv:2610.09093v1 | coupée en section 7.2 ; déclaration IA non vue | QF5 | overlap measure claim and AI provenance (kept) | |
+| Witten, A Note On Lattice Definition of Gauge Theories With Chiral Fermions, arXiv:2611.05051v1 | coupée dans la section 3 ; remerciement à Claude non vu | QF5 | variant of Craig algorithm, not Monte Carlo (kept) | |
+| Lootens & Singh, Simulating a chiral gauge theory, arXiv:2611.06880v1 | coupée en annexe C.1 | QF5 | 1+1D Abelian chiral qudit regularization (kept) | |
+| Lüscher, Abelian chiral gauge theories on the lattice with exact gauge invariance, Nucl. Phys. B549 (1999), hep-lat/9811032 | coupée en section 11.2 | QF5 | nonperturbative Abelian construction (kept) | |
+| M. Duell, W. Dybalski, Asymptotic Completeness in a Class of Massive Wedge-Local QFTs in any Dimension, CMP 401, 2355 (2023), doi:10.1007/s00220-023-04690-0 | coupée en section 3.3 | QF6 | asymptotic completeness for massive wedge-local (Grosse-Lechner) models | |
+| G. Semenoff, C. Waterfield, Wilson-line-dressed charged sector of scalar QED, arXiv:2609.06224v1 | coupée en section 4.3 | QF7 | perturbative Wilson-line-dressed scalar QED results | |
+| A. Strominger, Lectures on the Infrared Structure of Gravity and Gauge Theory, arXiv:1703.05448 | coupée en section 2.8.3 | QF7 | asymptotic symmetries, soft theorems and memory | |
+| K. Prabhu, G. Satishchandran, Infrared finite scattering theory: Amplitudes and soft theorems, PRD 110, 085022; arXiv:2402.18637v3 | coupée dans la remarque 3.3 | QF7 | algebraic IR-finite scattering with superscattering and soft theorems | |
+| E. Witten, Notes on some entanglement properties of QFT, RMP 90, 045003 (2018), arXiv:1803.04993 | coupée en section 4.1 | QF8 | type III local algebras, no density matrix; review of entanglement in QFT | |
+| R. Longo, F. Xu, Relative Entropy in CFT, arXiv:1712.07283 | coupée dans la Prop. 4.5 (4.3.2) | QF8 | rigorous examples and divergence as interval boundaries meet | |
+| L. van Luijk et al., Pure State Entanglement and von Neumann Algebras, CMP 406, 296 (2025), doi:10.1007/s00220-025-05465-5 | coupée en section 2.4 | QF8 | LOCC for commuting von Neumann algebras, Nielsen theorem for factors, type III conversion | |
+| L. van Luijk et al., Embezzlement of entanglement, quantum fields and classification of von Neumann algebras, arXiv:2401.07299v4 | coupée dans la Prop. 19 (4.2) | QF8 | universal entanglement embezzlement | |
+| F. Ceyhan, T. Faulkner, Recovering the QNEC from the ANEC, CMP 377 (2020), arXiv:1812.04683 | coupée dans le Lemme 6 (4.1) | QF8 | listed in refs | |
+| Y. Liang, Failure of disjoint additivity under magnetic Gauss constraints, arXiv:2610.25329v1 (supplément) | supplément coupé en S4.3 | QF9 | lattice additivity counterexamples | |
+| W. Donnelly, L. Freidel, Local subsystems in gauge theory and gravity, JHEP 09 (2016) 102, arXiv:1601.04744 | coupée en section 4.1 | QF9 | boundary edge-mode descriptions | |
+| R. Brunetti, K. Fredenhagen, R. Verch, The Generally Covariant Locality Principle, CMP 237 (2003), arXiv:math-ph/0112041 | coupée dans Th. 3.2(c) | QF10 | locally covariant algebraic QFT, Hadamard states, stress tensor | |
+| S. Hollands, R. Wald, Quantum fields in curved spacetime, Phys. Rep. 574 (2015), arXiv:1401.2026 | coupée en section 3.1 | QF10 | perturbative construction on curved backgrounds | |
+| C. Fewster, R. Verch, Dynamical locality and covariance, arXiv:1106.4785 | coupée en section 4.1 | QF10 | no-go for natural states | |
+| Fewster, Verch, Quantum fields and local measurements, arXiv:1810.06512v3 | coupée en Section 5.3 | QF11 | local probe framework | |
+| Fewster, Jubb, Ruep, Asymptotic measurement schemes for every observable of a quantum field theory, arXiv:2203.09529 | coupée en Section 6.1 | QF11 | asymptotic schemes for every local observable of the real scalar field | |
+| Mandrysch, Navascués, Quantum field measurements in the Fewster–Verch framework, Lett. Math. Phys. 115, 115 (2025), doi:10.1007/s11005-025-02001-3 | coupée dans la preuve de la Proposition 2 (Section 5) | QF11 | Gaussian-modulated measurements, movable cut | |
+| Bern, Carrasco, Chiodaroli, Johansson, Roiban, Supergravity amplitudes, the double copy and ultraviolet behavior, arXiv:2304.07392 (Handbook of Quantum Gravity) | coupée à la section 4.2 (sections 5-6 non lues) | QG1 | cancellations in cuts, direct seven-loop test needs technical advances | |
+| Bern et al., Ultraviolet Properties of N=8 Supergravity at Five Loops, arXiv:1804.09311 | coupée à la note 6 de VI.A | QG1 | five-loop divergence in D=24/5 | |
+| Bossard, Howe, Stelle, Vanhove, The vanishing volume of D=4 superspace, arXiv:1105.6087 | coupée dans la conclusion | QG1 | exclusion of counterterms up to six loops; nabla^8R^4 at seven loops | |
+| Albert, Knop, Rastelli, Where is tree-level string theory?, arXiv:2406.12959 | coupée à la section 4.6 | QG2 | extremal single Regge trajectory solution | |
+| Camanho, Edelstein, Maldacena, Zhiboedov, arXiv:1407.5597 | coupée à la section 5.2 | QG2 | infinite tower of higher-spin states | |
+| Häring, Zhiboedov, Gravitational Regge bounds, arXiv:2202.08280 | coupée à l'annexe D | QG2 | gravitational Regge bounds | |
+| Häring, Zhiboedov, The Stringy S-matrix Bootstrap, arXiv:2311.13631 | coupée à l'annexe A.4 | QG2 | maximal spin constraint | |
+| Harlow, Ooguri, Symmetries in QFT and Quantum Gravity, arXiv:1810.05338 | coupée à la section 2.4 | QG3 | holographic proof of no global symmetries in AdS | |
+| Reece, TASI Lectures: (No) Global Symmetries to Axion Physics, arXiv:2304.08512 | coupée à la section 7 (partie 4 non lue) | QG3 | description of the Harlow-Ooguri proof and its expected extension beyond AdS | |
+| Bonanno, Eichhorn, Gies, Pawlowski, Percacci, Reuter, Saueressig, Vacca, Critical reflections on asymptotically safe gravity, Front. Phys. 8, 269 (2020), arXiv:2004.06810 | coupée à la section VII.B (sections VIII-X, dont unitarité, non lues) | QG5 | point fixe dans les troncations ; unitarité question ouverte | |
+| Feng & Vedral, Testing non-classical gravitational phase dynamics under strong dephasing, arXiv:2611.12229v2 | coupée en annexe G (après Eq. G18) ; annexe H absente | QG6 | écart fini exact et extension PPT diagonale | |
+| Oppenheim, Sparaciari, Šoda, Weller-Davies, Gravitationally induced decoherence vs space-time diffusion, Nat. Commun. 14, 7910 (2023), arXiv:2203.01982 | coupée en annexe A | QG6 | compromis décohérence-diffusion | |
+| Gundhi, Infantino, Bassi, Can classical theories of gravity produce entanglement?, arXiv:2604.19696 | coupée en section IV.B du supplément | QG6 | contestation de Aziz-Howl | |
+| J. Feldbrugge, J.-L. Lehners, N. Turok, Lorentzian quantum cosmology, Phys. Rev. D 95 (2017), arXiv:1703.02076 | coupée (annexe A et fin de bibliographie absentes) | QG7 | Lorentzian N>0 integral gives the tunnelling wavefunction | |
+| J. Feldbrugge, J.-L. Lehners, N. Turok, No Rescue for the No Boundary Proposal: Pointers to the Future of Quantum Cosmology, arXiv:1708.05104 | coupée avant la section VI (preuve par énumération) ; texte principal jusqu'à IV.B.4 lu | QG7 | no lapse contour avoids unsuppressed perturbations in the specified model | |
+| J.-L. Lehners, Review of the No-Boundary Wave Function, Phys. Rept. 1022 (2023), arXiv:2303.08802 | coupée en section 3.1 | QG7 | review of the no-boundary wave function | |
+| T. Cohen, D. Green, A. Premkumar, A. Ridgway, Stochastic Inflation at NNLO, JHEP 09 (2021) 159, arXiv:2106.09728 | coupée en 4.2 | QG8 | NNLO stochastic inflation as an EFT | |
+| D. Marolf, I. A. Morrison, The IR stability of de Sitter: Loop corrections to scalar propagators, arXiv:1006.0035 | coupée en annexe B | QG8 | massive IR stability at one loop | |
+| S. Hollands, Correlators, Feynman diagrams, and quantum no-hair in deSitter spacetime, arXiv:1010.5367 | coupée en 4.3 | QG8 | massive no-hair to all orders | |
+| S. Hollands, Massless interacting quantum fields in deSitter spacetime, arXiv:1105.1996 | coupée en annexe A.3 | QG8 | modified perturbative expansion for massless fields | |
+| V. Gorbenko, L. Senatore, lambda phi^4 in dS, arXiv:1911.00022 | coupée en 4.2 | QG8 | IR dynamics, Fokker-Planck from wave function | |
+| T. Cohen, D. Green, Soft de Sitter Effective Theory, arXiv:2007.03693 | coupée en 4.1 | QG8 | SdSET | |
+| Giombi, Klebanov, Interpolating between a and F, arXiv:1409.1937 (JHEP 03 (2015) 117) | coupée à §5.3 | R1 | F-tilde interpolation, decreasing in examples | |
+| Fazzi, Giri, Levy, Proving the 6d a-theorem with the double affine Grassmannian, arXiv:2312.17178v2 | coupée à §3.1.2 | R1 | a-theorem for Higgs-branch flows between type-A orbi-instanton theories | |
+| Elvang, Freedman, Hung, Kiermaier, Myers, Theisen, On renormalization group flows and the a-theorem in 6d, arXiv:1205.3994 (JHEP 12 (2012) 099) | coupée au Résumé (§8) | R1 | dilaton argument does not directly give positivity in 6d | |
+| Nakayama, Scale invariance vs conformal invariance, arXiv:1302.0884v4 (Phys. Rept. 569 (2015) 1) | coupée au §3.3.1 | R2 | review of scale vs conformal invariance, d=2 and d=4 status | |
+| Luty, Polchinski, Rattazzi, The a-theorem and the Asymptotics of 4D QFT, arXiv:1204.5221 | coupée à l'annexe Callan-Symanzik | R2 | perturbative results in d=4; limit cycles conformal (R2, R3) | |
+| Friedan, Konechny, Gradient formula for the beta-function of 2d quantum field theory, J. Phys. A 43 (2010) 215401, arXiv:0910.3109 | coupée en 9.3 | R3 | nonperturbative gradient formula in 2d | |
+| Jack, Osborn, Constraints on RG flow for four dimensional quantum field theories, arXiv:1312.0428 | coupée en section 3 | R3 | local RG equations, gradient-flow relation in 4d | |
+| Aizenman, arXiv:2112.04248v3 | coupée au début des questions ouvertes de la sect. 11 | R4 | critical 3D scaling limit listed as open | |
+| Aizenman, Duminil-Copin, arXiv:1912.07973 | coupée à la sect. 4.2 | R4 | marginal 4D Gaussianity | |
+| Kos, Poland, Simmons-Duffin, arXiv:1406.4858 | coupée à la fig. 5 | R4 | mixed-correlator islands | |
+| Penington, Entanglement wedge reconstruction and the information paradox, arXiv:1905.08255 | coupée section 2.3 | G1 | QES Page curve | |
+| Almheiri, Engelhardt, Marolf, Maxfield, arXiv:1905.08762 | coupée section 4.6 | G1 | QES Page curve in JT+bath | |
+| Penington, Shenker, Stanford, Yang, Replica wormholes and the black hole interior, arXiv:1911.11977v2 | coupée section 4.2 | G1 | replica wormholes derive island formula | |
+| Almheiri, Hartman, Maldacena, Shaghoulian, Tajdini, arXiv:1911.12333 | coupée annexe A | G1 | replica wormholes derive island formula | |
+| Laddha, Prabhu, Raju, Shrivastava, The holographic nature of null infinity, arXiv:2002.02448 | coupée annexe A (annexe B absente) | G1 | entropy of segment of scri+ independent of u | |
+| Geng, Making the case for massive islands, arXiv:2509.22775v1 | coupée section 5.1 | G1 | graviton mass necessary | |
+| Geng et al., Inconsistency of islands in theories with long-range gravity, arXiv:2107.03390 | coupée annexe A.1 | G1 | islands inconsistent with long-range gravity | |
+| Hartman, Jiang, Shaghoulian, Islands in cosmology, arXiv:2008.01022v2 | coupée section 8 | G1 | islands in cosmology | |
+| Bouvier & Gérard, Hawking effect for a toy model of interacting fermions, arXiv:1310.1279v1 | coupée section 7.1 | G2 | 1+1 interacting toy model | |
+| Häfner, Creation of fermions by rotating charged black-holes, arXiv:math/0612501 | coupée lemme 3.4 chap. 3 | G2 | free Dirac Kerr-Newman | |
+| Dappiaggi, Moretti, Pinamonti, arXiv:0907.1034 | coupée section 3.2 | G2 | Unruh state Hadamard | |
+| Hollands, Wald, Zahn, Quantum instability of the Cauchy horizon in RNdS, arXiv:1912.06047 | coupée dans la preuve du thm 4.4 | G3 | C/V^2 state independence and generic nonvanishing (numerical evidence) | |
+| Dafermos & Luk, The interior of dynamical vacuum black holes I, arXiv:1710.01722 | coupée au début de la section 1.4 | G3 | C^0 strong cosmic censorship fails for Kerr if the exterior is stable | |
+| Dias, Reall, Santos, Strong cosmic censorship: taking the rough with the smooth, arXiv:1808.02895 | coupée dans la section 3.2 | G3 | weak-solution censorship violated near extremal RNdS | |
+| Kay & Lupo, Non-existence of isometry-invariant Hadamard states for a Kruskal black hole in a box, arXiv:1502.06582 | coupée dans la preuve du thm 4.7 | G4 | Kay-Lupo conjecture; gap in Kay-Wald | |
+| Hafner & Klein, The Unruh state for bosonic Teukolsky fields on subextreme Kerr spacetimes, arXiv:2602.09796 | coupée en section 3.4 ; remarque 8.5 non vue | G4 | Unruh state Hadamard for spin 0, 1, 2; spin 0 equals massless scalar (Remark 8.5) | |
+| Gerard, Hafner, Wrochna, The Unruh state for massless fermions on Kerr, arXiv:2008.10995 | coupée en section 5.4 | G4 | Unruh state for massless fermions, slow rotation | |
+| Sanders, Hartle-Hawking-Israel states across a static bifurcate Killing horizon, arXiv:1310.5537 | coupée en section 3.1 | G4 | HHI state in static setting | |
+| Klein, Construction of the Unruh state for a real scalar field on Kerr-de Sitter, arXiv:2206.05073 | coupée dans le lemme V.3 | G4 | Unruh state for scalar on Kerr-dS | |
+| Flanagan, Wald, gr-qc/9602052 | coupée en section IV | G5 | fourth-order, runaway solutions, order reduction | |
+| Galanda et al., arXiv:2604.01047v1 | coupée en section 3.2 | G5 | linearised well-posedness and late-time instability announced | |
+| Meda, Pinamonti, Siemssen, arXiv:2007.14665v1 | coupée dans la Prop. 4.1 | G5 | local existence for arbitrary coupling flat FLRW | |
+| Gottschalk, Siemssen, arXiv:1809.03812 | coupée en section 5 | G5 | global/maximal solutions vacuum-like, local thermal-like | |
+| Juárez-Aubry, arXiv:2011.05947 | coupée en section 6.1 | G5 | static and ultrastatic constrained problem | |
+| Juárez-Aubry, Kay, Miramontes, Sudarsky, arXiv:2205.11671v5 | coupée en section 2 | G5 | initial value problem with/without state collapse | |
+| Faulkner, Proof of the QNEC, without assumptions and under a weight, arXiv:2611.11920v1 | coupée dans le Lemme 16 (4.1) ; remerciements non lus | G6 | algebraic QNEC without purification assumption; AI-use disclosure | |
+| Faulkner, Proof of the Renyi QNEC, arXiv:2611.11760v1 | coupée en section 3.2 ; remerciements non lus | G6 | Renyi QNEC for p>=2; AI-use disclosure | |
+| Franken et al., Tests of restricted quantum focusing and a new CFT bound, arXiv:2510.13961v3 | coupée en section 4 | G6 | JT counterexamples and rQFC | |
+| Balakrishnan, Faulkner, Khandker, Wang, arXiv:1706.09432 | coupée en section 3.3.2 | G6 | general QNEC proof in flat space | |
+| Ceyhan, Faulkner, arXiv:1812.04683 | coupée dans le Lemme 6 (4.1) | G6 | QNEC from ANEC | |
+| Bousso, Fisher, Leichenauer, Wall, arXiv:1506.02669 | coupée dans réf. [43] (corps lu) | G6 | QFC definition | |
+| Bousso, Tabor, Discrete max-focusing, arXiv:2410.18192 | coupée dans réf. [22] | G6 | discrete max-focusing | |
+| Stoffels, Positive thinking: A search for energy conditions, arXiv:2411.11050v1 | coupée dans la Section 4.3 | G7 | thesis: conformal variant of ANEC in conformally flat cases; unknown which energy condition a realistic theory obeys | |
+| Kontou, Sanders, Energy conditions in general relativity and quantum field theory, arXiv:2003.01815v2 | coupée en Section 4.1 (plafond de l'outil à 100000 caractères) | G7 | review of energy conditions | |
+| Wall, A proof of the generalized second law for rapidly changing fields and arbitrary horizon slices, PRD 85, 104049 (2012), arXiv:1105.3445 | coupée en Section 5.2 | G8 | GSL / crossed-product entropy statements of G8 | |
+| Faulkner, Speranza, Gravitational algebras and the generalized second law, JHEP 11 (2024) 099, arXiv:2405.00847v2 | coupée en Section 3.3 | G8 | GSL / crossed-product entropy statements of G8 | |
+| Kirklin, Generalised second law beyond the semiclassical regime, JHEP 07 (2025) 192, arXiv:2412.01903v3 | coupée en Section 3.4 | G8 | GSL / crossed-product entropy statements of G8 | |
+| Chandrasekaran, Penington, Witten, Large N algebras and generalized entropy, arXiv:2209.10454 | coupée en Section 4.3 | G8 | GSL / crossed-product entropy statements of G8 | |
+| Kudler-Flam, Leutheusser, Satishchandran, Generalized black hole entropy is von Neumann entropy, arXiv:2309.15897 | coupée en Section 2.2 | G8 | GSL / crossed-product entropy statements of G8 | |
+| Fewster, Lectures on quantum energy inequalities, arXiv:1208.5399 | coupée en Section 3.2 | G9 | QEI statements of G9 | |
+| Bostelmann, Cadamuro, Mandrysch, QEI in integrable models with several particle species and bound states, arXiv:2302.00063v2 | coupée en Section 7.1 | G9 | QEI statements of G9 | |
+| Bostelmann, Fewster, Quantum inequalities from operator product expansions, CMP 292, 761 (2009), arXiv:0812.4760 | coupée dans la preuve de la Proposition 6.4 | G9 | QEI statements of G9 | |
+| Fewster, Smith, Absolute quantum energy inequalities in curved spacetime, Ann. Henri Poincaré 9 (2008), arXiv:gr-qc/0702056 | coupée en Section 3.3 | G9 | QEI statements of G9 | |
+| Fewster, Hollands, Quantum energy inequalities in two-dimensional conformal field theory, Rev. Math. Phys. 17 (2005), arXiv:math-ph/0412028 | coupée en Section 5.2 | G9 | QEI statements of G9 | |
+| Bousso, Shahbazi-Moghaddam, Tomašević, Quantum Information Bound on the Energy, arXiv:1909.02001 | coupée dans l'annexe B (figure 10) | G10 | long companion paper on the quantum Penrose inequality | |
+| Mars, Present status of the Penrose inequality, arXiv:0906.5566 | coupée à la section 5.3 | G10 | classical Riemannian Penrose inequality proved (Huisken-Ilmanen, Bray), general case open | |
+| Xu, The Spacetime Penrose Inequality: Conditional Results, arXiv:2512.04137 | coupée à la remarque 2.28 (sections 3-10 non lues) | G10 | conditional classical spacetime Penrose inequality, unassessed | |
+| Chen & Wu, arXiv:2610.09997v2 | coupée dans la section 7 (preuve du théorème 2.2) | M1 | N <= Z + C Z^{153/154}(1+log Z)^{3/8} en TFDW à deux centres | |
+| Hundertmark, Pattakos & Schulz, arXiv:2504.18487 | coupée dans la section 5 (lemme 5.5) | M1 | N_c(Z) < 1.1185 Z + O(Z^{1/3}) | |
+| Solovej, The ionization conjecture in Hartree-Fock theory, Ann. of Math. 158 (2003), arXiv:math-ph/0012026 | coupée en section 7 (preuve du théorème 3.6 en section 13) | M1 | conjecture d'ionisation en Hartree-Fock, N < Z+Q | |
+| S. Becker, I. Oltman, Disorder on the hyperbolic square lattice I, arXiv:2609.20798v1 | coupée dans la preuve du Lemme 2.18 (section 2.4) | M2 | a.c. spectrum on Z^d x hyperbolic square lattice | |
+| D. Abanin, E. Altman, I. Bloch, M. Serbyn, Rev. Mod. Phys. 91 (2019) 021001, arXiv:1804.11065 | coupée dans la discussion de la sous-diffusion (région de Griffiths) | M4 | MBL review | |
+| W. De Roeck, L. Giacomin, F. Huveneers, O. Prośniak, arXiv:2408.04338 | coupée en 8.3 | M4 | conductance vanishes faster than 1/L | |
+| H. Tasaki, uniqueness of translation-invariant ground states of S=1 Heisenberg and J-D chains, arXiv:2610.34330v2 | coupée en 6.2 | M5 | uniqueness and convergence extension | |
+| T. Grover, arXiv:2611.07400v1 | coupée en annexe B2 | M5 | extension of the purity bootstrap | |
+| Schuch, Cirac, Perez-Garcia, PEPS as ground states: degeneracy and topology, Ann. Phys. 325 (2010) 2153, arXiv:1001.3807 | coupée en 6.3 | M7 | G-injective PEPS degeneracy on the torus | |
+| Cirac, Perez-Garcia, Schuch, Verstraete, MPS and PEPS: concepts, symmetries, theorems, RMP 93, 045003, arXiv:2011.12127 | coupée en II.C.2.a (registre) | M7 | review of PEPS | |
+| Kastoryano, Spectral gap of the hexagonal AKLT model via boundary-state factorization, arXiv:2609.27993v1 | coupée en 5.4 (registre) | M7 | analytic hexagonal AKLT gap, Lean certificate | |
+| Bravyi, Hastings, Michalakis, arXiv:1001.0344 | coupée en 7 | M6 | stability of TQO | |
+| Nachtergaele, Sims, Young, Quasi-locality bounds Part I, arXiv:1810.02428 | coupée en 3.2 | M6 | quasi-local stability tools | |
+| Jackson, Nachtergaele, Young, arXiv:2605.12184v3 | coupée en section 4 (registre) | M6 | LTQO for AKLT hexagonal and Lieb | |
+| Teufel, Bulk gap stability and spectral flow for fermions with weak long-range interactions, arXiv:2610.40299v1 | coupée en 3.3 ; déclaration d'usage de l'IA (provenance du site) non retrouvée dans la partie lue | M6 | free-fermion gap stability; AI-use disclosure | |
+| Dyatlov, Jin, arXiv:1705.05019 | coupée au §5.2 | M8 | full support of semiclassical measures, hyperbolic surfaces | |
+| Dyatlov, Jin, Nonnenmacher, arXiv:1906.08923 | coupée au §2.3.2 | M8 | full support, Anosov surfaces | |
+| Lindenstrauss, Ann. Math. 163 (2006), doi:10.4007/annals.2006.163.165 | coupée en 7.2 | M8 | arithmetic QUE | |
+| Anantharaman, Ann. Math. 168 (2008) 435, doi:10.4007/annals.2008.168.435 | coupée à l'annexe A1 | M8 | entropy bounds on semiclassical measures | |
+| Anantharaman, Nonnenmacher, Half-delocalization..., arXiv:math-ph/0610019 | coupée dans le Lemme 3.3 | M10 | entropy bounds, Anosov | |
+| Faure, Nonnenmacher, De Bièvre, arXiv:nlin/0207060 | coupée en 5.5 | M10 | half-scarred cat map eigenstates | |
+| M. E. Shirokov, Tight continuity bounds for the QCMI, the Holevo quantity and capacities, J. Math. Phys. 58, 102202 (2017), arXiv:1512.09047 | coupée en 4.2 (Prop. 9) | M11 | energy-constrained continuity | |
+| V. Ferrari-Dominguez, Half-delocalization for semiclassical measures of split higher-dimensional quantum cat maps, arXiv:2610.28026 | coupée en 3.3 (texte lu = v2 du 15 nov. 2026) | M10 | optimal KS-entropy lower bound for split quantum cat maps | |
+| Bucaj et al., arXiv:1706.06135 | coupée section 5 | M12 | 1D localization | |
+| Hurtado, CMP 407, 64 (2026), doi:10.1007/s00220-026-05559-8 | accès libre mais texte coupé section 5 par l'outil | M12 | localization at bottom of spectrum for non-stationary potentials | |
+| Frank, Gontier, Lewin, arXiv:2002.04964 | coupée section 4.2 | M13 | partial disproof of two-candidate conjecture | |
+| Di Marino, Lewin, Nenna, Grand-canonical optimal transport, ARMA 249, 12 (2025), arXiv:2201.06859 | coupée dans la section 3.3.2 | M15 | underlying analysis of the Coulomb counterexample (kept) | |
+| Lewin, A mountain pass for reacting molecules, Ann. Henri Poincare 5, 477 (2004), doi:10.1007/s00023-004-0176-6 | coupée au début de la section 3.3.3 | M16 | mountain-pass compactness for two rigid molecules (kept) | |
+| Anapolitanos & Lewin, Compactness of molecular reaction paths in quantum mechanics, ARMA 236, 505 (2020), arXiv:1809.06110 | coupée en section 2.2.1 | M16 | Conjecture 1.2 and boundedness of paths for two rigid sub-molecules (kept) | |
+| Anapolitanos, Olivieri, Zalczer, On boundedness of isomerization paths for non- and semirelativistic molecules, J. Funct. Anal. 288, 110713 (2025), arXiv:2212.11938 | coupée en section 1.4 | M16 | relaxed assumptions, semirelativistic (kept) | |
+| A. Boutet de Monvel, L. Zielinski, Oscillatory behavior of large eigenvalues in quantum Rabi models, arXiv:1711.03366 | coupée en 5.2.1 | M18 | three-term asymptotics of large eigenvalues | |
+| Wang, Song, Wang, Amoeba formulation..., PRX 14, 021011, arXiv:2212.11743 | coupée dans l'annexe A (corps lu) | M17 | amoeba formula proposal, rigor status | |
+| Xiong, Xing, Hu, arXiv:2407.01296 | coupée en VIII.C (registre) | M17 | geometry-adaptive spectral potential | |
+| Wang, Pi, Liu, Li, Liu, Universal theory for geometry-dependent non-Hermitian bands, arXiv:2506.22743 | coupée en IV-C | M17 | geometry-dependent OBC spectra | |
+| Kaneshiro, Peters, arXiv:2511.11349, PRResearch 8, 013292 | coupée dans l'annexe B | M17 | Wiener-Hopf, 1D multiband amoeba | |
+| Cubitt, Pérez-García, Wolf, Undecidability of the spectral gap (full version), Forum Math. Pi 10, e14 (2022), arXiv:1502.04573 | coupée en Section 3.1.2 | U1 | full proof of 2D undecidability | |
+| Bausch, Cubitt, Lucia, Pérez-García, Undecidability of the spectral gap in one dimension, PRX 10, 031038 (2020) (lu via arXiv:1810.01858) | coupée en Section VII | U1 | 1D undecidability, fixed large local dimension | |
+| Bravyi, Gosset, Gapped and gapless phases of frustration-free spin-1/2 chains, J. Math. Phys. 56, 061902 (2015), arXiv:1503.04035 | coupée en Section 5.2 | U1 | complete gapped/gapless classification of the qubit class | |
+| Rai et al., A hierarchy of spectral gap certificates for frustration-free spin systems, Quantum 10, 2065 (2026), doi:10.22331/q-2026-04-13-2065 | coupée dans l'annexe D | U1 | hierarchy of certificates; not a decision procedure | |
+| Matsumoto, More on intractability of thermalization, arXiv:2507.02601v1 | coupée en Section 5.6.3 | U3 | state-as-input undecidability | |
+| Hege, Moscolari, Teufel, Computing the spectrum and pseudospectrum of infinite-volume operators from local patches, arXiv:2403.19055v2 | coupée dans l'annexe A | U5 | local-patch spectral algorithm | |
+| Aggarwal, Lopatto, Mobility Edge for the Anderson Model on the Bethe Lattice, arXiv:2503.08949 | coupée dans la section 5 | PM1 | mobility edge on the Bethe lattice | |
+| Erdős, Salmhofer, Yau, Quantum diffusion for the Anderson model in the scaling limit, arXiv:math-ph/0502025 | coupée dans la section 8 | PM1 | baseline quantum diffusion, lattice | |
+| Erdős, Salmhofer, Yau, Quantum diffusion of the random Schrödinger evolution in the scaling limit, arXiv:math-ph/0512014 | coupée dans la section 7.1 | PM1 | baseline quantum diffusion, continuum | |
+| Nachtergaele, Sims, Young, Stability of the bulk gap for frustration-free topologically ordered quantum lattice systems, arXiv:2102.07209 | coupée en 4.1 | PM2 | baseline gap stability | |
+| Grover, arXiv:2611.07400 | coupée en annexe B2 | PM2 | Hermitian L-independent transfer matrix, does not treat spin 2 | |
+| Tasaki, arXiv:2610.34330v2 | coupée en 6.2 | PM3 | uniqueness among translation-invariant ground states; free-end open chains | |
+| Hundertmark, Pattakos, Schulz, arXiv:2504.18487 | coupée dans le lemme 5.5 (registre) | PM4 | N_c < 1.1185 Z + 4 Z^{1/3} | |
+| Chen, Wu, arXiv:2610.09997 | coupée en section 7 (registre) | PM4 | asymptotic neutrality in two-centre TFDW | |
+| Kastoryano, Spectral Gap of the Hexagonal AKLT Model via Boundary-State Factorization, arXiv:2609.27993 | coupée au milieu de la preuve du lemme 5.1 (§5.4) | PM5 | re-preuve analytique du trou hexagonal spin-3/2 | |
+| Jackson, Nachtergaele & Young, LTQO and spectral gap stability for AKLT on hexagonal and Lieb lattices, arXiv:2605.12184 | coupée au milieu de la section 4 | PM5 | LTQO et stabilité du trou, présuppose un trou | |
+| Grover, Extensions of the Haldane gap proof, arXiv:2611.07400 | coupée annexe B2 (annexes C-E non lues) | PM5 | décroissance exponentielle pour l'état de Jian-Zaletel ; trou ouvert | |
+| Frank, The Lieb-Thirring inequalities: recent results and open problems, arXiv:2007.09326 | coupée à la section 5.13 | PM6 | L^(1)>L^cl en 2D à γ=1 ; L=L^(1) conceivable pour 0<γ≤1 | |
+| Frank, Gontier & Lewin, NLS for orthonormal functions II, arXiv:2002.04964 | coupée à la section 4.2 | PM6 | réfutation de la conjecture de Lieb-Thirring en 2D pour 1<γ≲1.165 | |
+| Kuwahara, The Rényi area law conjecture is false below α=1 in high dimensions, arXiv:2610.15199 | coupée à l'annexe D.5 (sections I-V lues) | PB1 | échec Rényi α<1 pour D≥2 ; rang-erreur seul insuffisant | |
+| Warzel, Young, A bulk spectral gap in the presence of edge states for a truncated pseudopotential, arXiv:2108.10794 | coupée en 3.3 | PB2 | thin-cylinder bosonic bulk gap | |
+| Deuchert, Seiringer, Yngvason, BEC in a dilute trapped gas at positive temperature, arXiv:1803.05180 | coupée en 2.3 | PB3 | scaling-limit condensation, trapped | |
+| Deuchert, Seiringer, GP limit of a homogeneous Bose gas at positive temperature, arXiv:1901.11363 | coupée en 3.4 | PB3 | scaling-limit condensation, homogeneous | |
+| Scheer, Khalaf, A hierarchy of exact lower bounds on the Laughlin spectral gap, arXiv:2610.18854 | coupée (v1 §IV.B, v2 §III.E ; la « note added » §V non lue : la citation « generalization to bosonic states also appears straightforward » n'est pas vérifiée) | PB2 | quoted remark on bosonic generalization | |
+| Lemoine, Nohra, Universality of two-dimensional Markovian holonomy fields, arXiv:2608.15923 | coupée en section 5 | PQF1 | 2D non-Abelian universality across Wilson/heat-kernel/Manton | |
+| Chevyrev, Qu, Shen, Scaling limit of the 3D abelian Yang-Mills Langevin dynamics, arXiv:2608.27828 | coupée en 5.2 | PQF1 | 3D Abelian Langevin limit | |
+| Chatterjee, A scaling limit of SU(2) lattice Yang-Mills-Higgs theory, arXiv:2401.10507 | coupée en 4.5 | PQF2 | listed baseline (relevance to the trace anomaly question not apparent from the text read) | |
+| Chatterjee, A Probabilistic Mechanism for Quark Confinement, arXiv:2006.16229v5 | coupée dans la preuve du Lemme 12.3 | PQF3 | Definition 2.3, Theorem 2.4 and the caution about the mass gap | |
+| Shen-Zhu-Zhu, A stochastic analysis approach to lattice Yang-Mills at strong coupling, arXiv:2204.12737 | coupée dans le Lemme 4.10 | PQF3 | strong-coupling clustering results | |
+| Adhikari-Cao, Correlation decay for finite lattice gauge theories at weak coupling, arXiv:2202.10375v3 | coupée dans l'annexe B | PQF3 | weak-coupling decay for finite gauge groups | |
+| Shen-Zhu-Zhu, Langevin dynamics of lattice Yang-Mills-Higgs and applications, arXiv:2401.13299 | coupée dans la section 3 (Lemme 3.2) | PQF4 | infinite-volume lattice YMH gap at strong coupling | |
+| Barashkov-Chandra-Chevyrev-Koller-Mohamed, A variational approach for the 2D Abelian Yang-Mills-Higgs measure, arXiv:2609.21972 | coupée au Th. 3.10 | PQF4 | 2D Abelian YMH measure | |
+| Chevyrev-Shen, Uniqueness of gauge covariant renormalisation of stochastic 3D Yang-Mills-Higgs, arXiv:2503.03060 | coupée dans la Prop. 2.7 | PQF5 | existence of invariant measure would construct 3D YMH on T^3 (open) | |
+| Chandra-Chevyrev-Hairer-Shen, Stochastic quantisation of Yang-Mills-Higgs in 3D, arXiv:2201.03487v2 | coupée dans le Lemme 2.32 | PQF5 | local solutions, blow-up open | |
+| Cao-Chatterjee, A state space for 3D Euclidean Yang-Mills theories, arXiv:2111.12813 | coupée dans la section 3.1 | PQF5 | 3D state space | |
+| Mourrat-Weber, The dynamic Phi^4_3 model comes down from infinity, arXiv:1601.01234 | coupée dans le Th. 2.1 | PQF5 | scalar analogue: global existence | |
+| Gubinelli-Hofmanova, A PDE construction of the Euclidean Phi^4_3 QFT, arXiv:1810.01700 | coupée dans le Lemme 4.1 | PQF5 | scalar analogue (equilibrium construction) | |
+| Cárdenes Wuttig, Tindall, Using topology to reveal all mutually unbiased bases in dimension six, arXiv:2611.06917v1 | corps et références lus ; supplément coupé à la Proposition S.5 | PN1 | N(6)=3 and the outlook naming ten and twelve as smallest open dimensions | |
+| McNulty, Weigert, Mutually Unbiased Bases in Composite Dimensions - A Review, Quantum 10, 2051 (2026), arXiv:2410.23997 | coupée au §3.12 (Steering) ; §4-6 et appendices non lus | PN1 | Problem 10.7 (larger sets in composite dimensions) | |
+| Ozols, Smith, Smolin, Bound entangled states with private key and their classical counterpart, arXiv:1305.0848 (PRL 112, 110502 (2014) non imprimé dans le texte) | coupée à l'annexe E | PE3 | 3x3 bound-entangled state with positive key | |
+| Bavarian, Vidick, Yuen, Anchoring games for parallel repetition, arXiv:1509.07466v2 | coupée section 5.1 | PN3 | anchored-game theorem for two entangled players | |
+| Cheng & Tomamichel, No information transmission through quantum channels above capacity, arXiv:2609.08998 | coupée annexe C.2 | PC1 | regularized strong-converse exponent | |
+| Cheng, Hirche, Tomamichel, arXiv:2609.38144 | coupée section 4.3 | PC1 | exact private strong-converse exponent | |
+| Beigi & Tomamichel, arXiv:2609.11771 v2 | v2 coupée annexe A (v1 lue en entier) | PC1 | strong converse for quantum capacity | |
+| Wilde, arXiv:2610.00440 | coupée section 8.1 ; contenu hors sujet pour l'entrée | PC1 | (retirée) | |
+| Lami, Plenio, Giovannetti, Holevo, arXiv:2003.08895 | supplément coupé S13 | PC2 | antidegradability / zero-capacity thresholds | |
+| Kuperberg, How hard is it to approximate the Jones polynomial?, arXiv:0908.0512 | coupée après la remarque suivant la section 4.4 | PA1 | definition of SBQP (= A0PP) | |
+| Kobayashi, Le Gall, Nishimura, Stronger methods of making quantum interactive proofs perfectly complete, arXiv:1210.1290 | coupée dans la preuve du thm 2 (section 6.2) | PA2 | QMA in QIP_1(2) and perfect completeness background | |
+| Turturean, A proof of the Aaronson-Ambainis conjecture, arXiv:2611.09773 and the PSI GitHub manuscript, sections 5-9 | coupée au §4 (arXiv PDF et HTML) | PA3 | sections 9.2, 9.3, 9.5, row-cost inequality (2,4) and simulation cost (4T)^8 eps^-14 delta^-8 | |
+| Gharibian, Le Gall, arXiv:2111.09079 (SICOMP 52 (2023) non vérifié) | corps lu ; coupée dans la bibliographie | PA5 | NLSS conjecture | |
+| Coble et al., Local Hamiltonians with no low-energy stabilizer states, arXiv:2302.14755 | coupée dans l'annexe A.2 | PA5 | no low-energy stabilizer states | |
+| Coble et al., Hamiltonians whose low-energy states require Omega(n) T gates, arXiv:2310.01347 | coupée dans l'annexe B.1 | PA5 | linear T-count requirement | |
+| Wei, Han, Li, Liu, arXiv:2609.40220 | coupée dans l'annexe B.4 | PA5 | NLTM claim | |
+| O'Gorman, Irani, Whitfield, Fefferman, Electronic Structure in a Fixed Basis is QMA-complete, arXiv:2103.08215; PRX Quantum 3, 020322 (2022) | coupée dans la preuve du Th. 2 (§5) | PA7 | fixed-basis QMA-completeness; open questions; pathological potentials | |
+| Björnberg, Grimmett, The Phase Transition of the Quantum Ising Model is Sharp, arXiv:0901.0328 | coupée dans la preuve du Lemme 4.6 | PO1 | sharp transition of the TFIM | |
+| Kastoryano, Brandão, Quantum Gibbs Samplers: The Commuting Case, arXiv:1409.3435v3 | coupée dans la preuve du Th. 28 | PO1 | gap <=> strong clustering for commuting Hamiltonians | |
+| Raikovich, Mák, Czabán, Gilyén, The complete phase diagram of detailed-balanced Gibbs samplers for the mean-field Heisenberg model, arXiv:2610.06818v1 | coupée en Section 4.3 (déclaration d'usage de LLM non vue) | PO2 | gap Theta(n^-1/2) at beta=2; phase diagram; LLM-assistance statement | |
+| Levin, Luczak, Peres, Glauber dynamics for the mean-field Ising model: cut-off, critical power law, and metastability, arXiv:0712.0790 | coupée dans la preuve de la Proposition 5.2 | PO2 | critical mixing time n^{3/2}; Curie–Weiss critical window | |
+| Meier et al., Precision is not limited by the second law of thermodynamics, Nat. Phys. 21, 1147 (2025), arXiv:2407.07948 | coupée dans l'annexe D | PO3 | exponential accuracy-entropy construction; 'ultimate bounds ... unknown' | |
+| Honma, Van Vu, Information-thermodynamic bounds on precision in interacting quantum systems, PRA 113, 032207 (2026), arXiv:2510.04866v2 | coupée dans l'annexe A4 | PO3 | information flow and coherence circumvent entropy-only bounds | |
+| Woods, Silva, Pütz, Stupar, Renner, Quantum clocks are more precise than classical ones, arXiv:1806.00491v3 | coupée dans l'annexe A | PO3 | d^2 versus d precision | |
+| Miller, Erker, Feedback-induced advantage in quantum clockworks, arXiv:2603.04556 | coupée dans l'annexe F | PO3 | feedback advantage in quantum clockworks | |
+| Van Vu, Honma, Saito, Universal precision limits in general open quantum systems, PRL 136, 190401 (2026), arXiv:2508.21567 | supplément coupé en S2.D | PO3 | Eq. (8) generalized quantum TUR | |
+| Kuwahara, The Rényi area law conjecture is false below alpha = 1 in high dimensions, arXiv:2610.15199v1 | coupée à l'appendice D.5 (lemme D.2) ; l'Outlook sur le compromis rang-erreur-gap des AGSP n'a pas été confirmé | SB1 | Outlook: AGSP rank-error-gap trade-off left open | |
+| Dall'Acqua, Solovej, Excess charge for pseudo-relativistic atoms in Hartree-Fock theory, arXiv:1001.5417 | coupée en Section 4.1 (preuves de la Section 5 non vues) | SM2 | pseudo-relativistic Hartree-Fock excess-charge bound | |
+| Witten, A note on lattice definition of gauge theories with chiral fermions, arXiv:2611.05051v1 | coupée dans la Section 3 ; Sections 3-4 non vues | SQF1 | chiral lattice definition; integral not positive, not Monte Carlo | |
+| Hsu, The Standard Model on a finite bosonic lattice with continuum Weyl fermions, arXiv:2610.29019v2 | coupée en Section 8.1 | SQF1 | lattice definition with continuum Weyl fermions | |
+| Lu, Bridging gaps with tensor networks: from the Haldane gap and beyond, arXiv:2611.11049v1 | supplément coupé (Table SIII.A) ; sections SIV-SV non vues | SM1 | certified gaps 0.0729 (periodic) and 0.01556 (open) | |
+| Faraji, Rényi-2 entanglement of purification of the symmetric Werner state, arXiv:2611.00144 | coupée dans la preuve du Cor. 11 (sect. VII) | SE2 | Rényi-2 EoP of symmetric Werner states (different family/index) | |
+| Han, Liu, Purely-logarithmic-time- and constant-space-overhead fault-tolerant quantum computation, arXiv:2609.28461 | coupée dans le Lemme 5.4 | SA2 | depth O(D log(WD/eps)) with constant space overhead | |
+| Sarma, Kulkarni, Purkayastha, Tupkary, Semidefinite programming for understanding the limitations of Lindblad equations, arXiv:2602.01794 | coupée dans la preuve du Lemme 1 (annexe C) | SO2 | SDP feasibility criterion and impossibility examples | |
+| Cepollaro, Chughtai, Spalvieri, Huber, Rolandi, Autonomization of Quantum Systems and the Emergence of the Work Operator, arXiv:2607.20602 | coupée dans l'annexe A.1 (A.2 non lue) | SO3 | Theorem 4 and Appendix A.2: timing imprecision, finite-spectrum clocks | |
+| Shmueli, What Can Be Computed with Indefinite Causal Structure?, arXiv:2610.40573 | coupée dans le Lemme 4.1 | SF1 | pure USO process; physical realizability open | |
+| Garmier, Hausmann, Castro-Ruiz, The Perspectives of Non-Ideal Quantum Reference Frames, arXiv:2512.19343v2 | coupée dans la Discussion | SF2 | non-ideal QRF transformation prescription | |
+| Bousso & Tabor, Discrete Max-Focusing, arXiv:2410.18192 (JHEP 06 (2025) 240) | coupée dans la référence [22] (corps lu) | PG1 | max-focusing discret comme voie liée | |
+| Franken & Rondeau, On the Quantum Bousso Bound in JT gravity, arXiv:2311.17152 | coupée dans l'annexe A.2 ; annexe B et bibliographie absentes | PG1 | borne quantique de Bousso en gravité JT ; venue JHEP 03 (2024) 178 non confirmée | |
+| Faulkner, Proof of the Rényi QNEC, arXiv:2611.11760v1 | coupée à la section 3.2 | PG2 | QNEC de Rényi diagonale pour tout p>2 | |
+| Kibe & Roy, A general proof of integer Rényi QNEC, arXiv:2605.15272v3 | coupée à la section 5.2 | PG2 | preuve pour n entier ≥2 par inclusion modulaire à demi-côté | |
+| Kibe & Roy, Quasi-local form for α–z Rényi QNEC from fixed-ray escorts, arXiv:2609.04016 | coupée à la section 5.1 | PG2 | forme quasi-locale de la conjecture α–z | |
+| Moosa, Rath & Su, A Renyi QNEC: proof for free field theories, JHEP 01 (2021) 064, arXiv:2007.15025 | coupée à la section 4.2 | PG2 | preuve pour champs libres, d>2, n>1 ; contre-exemples n<1 | |
+| Balakrishnan, Faulkner, Khandker & Wang, A general proof of the QNEC, arXiv:1706.09432 | coupée à la section 3.3.2 | PG2 | QNEC générale | |
+| Ceyhan & Faulkner, Recovering the QNEC from the ANEC, arXiv:1812.04683 | coupée dans la preuve du lemme 6 (§4.1) | PG2 | QNEC depuis ANEC | |
+| Collier, Maloney, Maxfield, Tsiares, Universal Dynamics of Heavy Operators in CFT2, arXiv:1912.00222 | coupée dans la section 3.1 | PH1 | universal OPE asymptotics, ETH at finite c | |
+| Beşken, Datta, Kraus, Quantum Thermalization and Virasoro Symmetry, arXiv:1907.06661 | coupée dans l'annexe A.4 | PH1 | ETH for Virasoro matrix elements | |
+| Chen, Dymarsky, Tian, Wang, Subsystem entropy in 2d CFT and KdV ETH, arXiv:2409.19046 | coupée dans la Discussion | PH1 | KdV generalized ensemble | |
+| Marx-Kuo, An Inverse Problem for Renormalized Area, arXiv:2401.07394 | coupée dans la section 7.1 | PH2 | renormalized area rigidity | |
+| Stefanov, Uhlmann, Vasy, Local and global boundary rigidity and the geodesic X-ray transform in the normal gauge, arXiv:1702.03638 | coupée dans la section 4.5 | PH2 | higher-dimensional rigidity under convex foliation | |
+| Graham, Guillarmou, Stefanov, Uhlmann, X-ray transform and boundary rigidity for asymptotically hyperbolic manifolds, arXiv:1709.05053 | coupée dans la preuve du Lemme 3.8 | PH2 | renormalized geodesic lengths | |
+| Alexakis, Balehowsky, Nachman, Determining a Riemannian metric from minimal areas, arXiv:1711.09379 | coupée dans la preuve du Lemme 2.10 | PH2 | least-area determination of 3D metric | |
+| He, Hubeny, Rota, Algorithmic construction of SSA-compatible extreme rays of the subadditivity cone and the N=6 solution, arXiv:2412.15364 | coupée dans l'algorithme 2 (§3.3) | PH3 | 150 of 156 orbits realized | |
+| Bao, Nezami, Ooguri, Stoica, Sully, Walter, The Holographic Entropy Cone, arXiv:1505.07839 | coupée dans la section 6 | PH3 | cone complete for n<=4, MMI/SSA | |
+| Carney, Domcke, Rodd, Graviton detection and the quantization of gravity, arXiv:2308.12988 | coupée dans l'annexe F.1 | PQG1 | single-graviton clicks admit classical explanation | |
+| Krovi, Improved quantum algorithms for linear and nonlinear differential equations, arXiv:2202.01054 | coupée dans la bibliographie [19] ; preuves des Lemmes 15 et 18 (annexes) non incluses | PA8 | baseline; F_1 need not be diagonalizable | |
+| Mizuta, Kuwahara, Trotterization is substantially efficient for low-energy states, arXiv:2504.20746 | coupée dans la section S6 du supplément | PA9 | shifted low-energy Trotter bound; quotes from Conclusion and S5 | |
+| Zhou, Pan, Gong, Li, Time-Dependent Low-Energy Simulation Accelerates Adiabatic State Preparation, arXiv:2601.01550 | coupée dans la bibliographie | PA9 | time-dependent low-energy simulation; zero-point correction quote | |
+| Gong, Zhou, Li, Complexity of Digital Quantum Simulation in the Low-Energy Subspace, arXiv:2312.08867 | coupée dans la section 3.2 | PA9 | baseline | |
+| Childs, Su, Tran, Wiebe, Zhu, A Theory of Trotter Error, arXiv:1912.08854 | coupée dans la section 3.4 | PA9 | baseline | |
+| Zhao, Zhou, Shaw, Li, Childs, Hamiltonian simulation with random inputs, arXiv:2111.04773 | coupée dans l'annexe A.5 | PA9 | sqrt N average-case error for 1D Heisenberg | |
+| Kronenberger, Erakovic, Reiher, Trotter Error and Orbital Transformations in Quantum Phase Estimation, arXiv:2602.18913 | coupée dans la bibliographie [69] | PA9 | 2026 numerical/chemistry Trotter error work | |
+| Bay-Smidt et al., Quantum simulation of nanographenes and Trotter error cancellation, arXiv:2605.00745v2 | coupée dans l'annexe B1 | PA9 | 2026 numerical/chemistry Trotter error work | |
+| Wang, Pi, Liu, Li, Liu, Universal theory for geometry-dependent non-Hermitian bands, arXiv:2506.22743v3 | coupée dans la section III C / IV-C ; citation « not sufficient for uniform bands » non retrouvée | PM7 | refined criterion for geometry-dependent bands | |
+| Wang, Song, Wang, Amoeba Formulation of Non-Bloch Band Theory in Arbitrary Dimensions, arXiv:2212.11743v3 | coupée dans l'annexe B | PM7 | baseline | |
+| Fortin, Wang, Pereg-Barnea, Unifying Anderson transitions and topological amplification in non-Hermitian chains, arXiv:2509.05842v2 | coupée dans la bibliographie [7] | PM8 | later preprint on disordered Hatano-Nelson chains (nearest-neighbour only) | |
+| Zhang, Complexity and hardness of random peaked circuits, arXiv:2510.00132 | coupée dans la section 4.5 ; sections 5-6 et annexes A-C non lues | PA10 | Zhang's results and Conjecture 3.15 | |
+| Jamoussi, The optimization landscape of peaked-circuit generation, arXiv:2608.11890v2 | coupée dans l'annexe A.3 | PA10 | generation; both branches open | |
+| Riccardi, Macchiavello, Maccone, Tight entropic uncertainty relations for systems with dimension three to five, arXiv:1701.04304 | coupée dans l'annexe A | PN4 | d=3 proved, d=4 and d=5 values | |
+| Qian Lilong, Separable Counterexamples to Complementary Quantum Correlations, arXiv:2608.14806v2 | coupée annexe A.2 (A.3 absente) | PN5 | counterexamples m,n>=3, 2x3 open, ACC condition | |
+| Jiang, Wang, Zhang, Korepin, Circuit-depth optimization of quantum partial-search algorithms, arXiv:2609.28147 | coupée annexe C | PA11 | circuit depth | |
+| Schuster, Haferkamp, Huang, arXiv:2407.07754 | coupée annexe B.3.2 (registre existant) | PB5 | baseline | |
+| Ma & Huang, arXiv:2410.10116 | coupée au §3/§4.1 (registre existant) | PB5 | baseline | |
+| Schuster, Kufel, Yao, Huang, Hardness of recognizing phases of matter, arXiv:2510.08503v2 | coupée annexe A.2 | PB5 | hardness exp(xi), open constant-local question | |
+| Kumar et al., Unlearnable phases of matter, arXiv:2602.11262v2 | coupée annexe J | PB5 | mixed-state phases, restricted SQ model | |
+| Huang, Kueng, Torlai, Albert, Preskill, arXiv:2106.12627 | coupée annexe D.1 (fig. 8) | PB5 | ML phase classification | |
+| Romero, Chen, Ban, Cumulative locality governs collective quantum charging, arXiv:2610.28614 | coupée dans le matériel supplémentaire (exemple de la chaîne XY) | PO4 | N^{3/2} versus N^2 gap for free-fermion chargers (kept) | |
