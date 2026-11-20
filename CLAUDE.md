@@ -13,6 +13,7 @@ Before starting any literature update, catalogue change or site change:
 
 ## Working conventions
 
+- Catalogue scope (maintainer, 20 November 2026): do not add problems whose central subject is string theory, string compactifications, or the swampland programme. General quantum gravity, field-theoretic supergravity, holography, and gauge-theory confinement are not excluded merely by their connections or terminology. The maintainer explicitly chose to retain the existing quantum-gravity catalogue, including QG2 and QG4; do not archive or rewrite these entries on scope grounds.
 - `npm test` (catalogue integrity, KaTeX, rendered views) and `npm run build` must pass before committing.
 - Commit and push only when the maintainer asks.
 - Statuses: a full resolution that is announced but not independently assessed is "Claimed solved", never "Solved". An unpublished announcement goes in the entry's context only, not in its evidence.

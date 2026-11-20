@@ -1,10 +1,11 @@
 // Aggregator for "Open Problems in Quantum Mechanics for AI Agents".
 //
 // Each problem carries a single evaluability badge (horizon):
-//   "sharp"       a proof or single counterexample closes it (solved / open).
+//   "sharp"       a defined domain and resolution criterion; a proof or
+//                 counterexample settles the full stated target.
 //   "incremental" no binary finish; progress = better bound / larger class.
-//   "programme"   a whole research field; not closable by one submission.
-//   "conceptual"  no community-agreed success criterion (foundations).
+//   "programme"   several distinct research targets, not one proposition.
+//   "conceptual"  framework, admissible class or criterion still to be fixed.
 //
 // status    : "open" | "improved" | "claimed-solved" | "solved" (default: "open").
 // lean: { url, note } only for claimed-solved entries; partial formalizations belong in evidence.
@@ -34,6 +35,7 @@ import { HOLOGRAPHY } from "./cat-holography";
 import { QUANTUM_GRAVITY } from "./cat-quantum-gravity";
 import { RENORMALIZATION } from "./cat-renormalization";
 import { CROSSREFS } from "./crossrefs";
+import { LEAN_FORMULATIONS } from "./lean-formulations";
 
 export const CATEGORIES = [
   { slug: "spectral", code: "M", name: "Mathematical QM & spectral theory",
@@ -77,6 +79,11 @@ export const REVIEW = {
 
 // A targeted literature update does not reset the full-review date of every entry.
 export const LITERATURE_UPDATES = [{
+  date: "2026-11-20",
+  label: "20 November 2026",
+  ids: ["A49", "A50", "B23", "A24", "C11", "E21", "C10", "R3", "H4", "B12", "QG4", "B16", "N2", "N3", "O2", "B15", "F8", "M19", "M20", "A51", "A52", "E30", "A53", "QF11", "QG8", "QG3", "G1", "H1", "QG7", "F14", "QG6", "G3", "QF5", "QF7"],
+  reportUrl: "https://github.com/jpbruneton/open_quantum_problems/blob/main/docs/reviews/2026-11-20-literature-update.md",
+}, {
   date: "2026-11-16",
   label: "16 November 2026",
   ids: ["A23", "N13", "A26", "A28", "B3", "M6", "M7", "N5", "O2", "O3", "E23", "E24", "E25", "A35", "A36", "E26", "F16", "F17", "N20", "F18", "A37", "A38", "E27", "E28", "E29", "A39", "A40", "A41", "M17", "B20", "B21", "A42", "A43", "N21", "N22", "C14", "A44", "A45", "M18", "B22", "O11", "O12", "A46", "A47", "O13", "A48"],
@@ -135,6 +142,11 @@ export const LITERATURE_UPDATE = LITERATURE_UPDATES[0];
 // Latest published correction report; private reviews do not change this link.
 // Source and consistency corrections do not change entry review dates.
 export const CORRECTION_LOGS = [{
+  date: "2026-11-20",
+  label: "20 November 2026",
+  ids: ["F13", "G2", "G3", "G5", "G6", "G7", "G8", "G9", "G10", "H1", "H2", "H3", "H4", "H5", "H6", "QG2", "QG4", "QG6", "QG7", "QG8", "R1", "R2", "R3", "R4"],
+  reportUrl: "https://github.com/jpbruneton/open_quantum_problems/blob/main/docs/reviews/2026-11-20-correction-log.md",
+}, {
   date: "2026-11-16",
   label: "16 November 2026",
   ids: ["O13", "A37", "QG8"],
@@ -172,6 +184,7 @@ export const ALL_PROBLEMS = [
   catalogues: [],
   reviewedAt: REVIEW.date,
   ...p,
+  leanFormulations: LEAN_FORMULATIONS[p.id] || [],
   catalogues: [...(p.catalogues || []), ...(CROSSREFS[p.id] || [])],
 }));
 
@@ -193,10 +206,10 @@ export function getCategory(slug) {
 }
 
 export const HORIZONS = {
-  sharp: { label: "Sharp", desc: "A proof or single counterexample closes it." },
+  sharp: { label: "Sharp", desc: "Defined domain and resolution criterion; a proof or counterexample settles the stated target." },
   incremental: { label: "Incremental", desc: "Progress = a better bound or larger tractable class." },
-  programme: { label: "Programme", desc: "A whole research field." },
-  conceptual: { label: "Conceptual", desc: "No community-agreed success criterion (yet)." },
+  programme: { label: "Programme", desc: "A research programme with several distinct targets." },
+  conceptual: { label: "Conceptual", desc: "The framework, admissible class or resolution criterion still needs to be fixed." },
 };
 export const STATUSES = {
   open: { label: "Open", desc: "The stated problem remains open." },

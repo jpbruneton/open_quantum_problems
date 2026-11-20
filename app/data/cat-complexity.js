@@ -680,22 +680,26 @@ Caveats:
     ] },
 
   { id: "A24", cat: "complexity", horizon: "incremental",
-    reviewedAt: "2026-11-08",
+    reviewedAt: "2026-11-20",
     title: "Stabilizer rank of magic-state tensor powers",
     statement: r`For $|T\rangle=(|0\rangle+e^{i\pi/4}|1\rangle)/\sqrt2$, determine the growth of the exact stabilizer rank $\chi(|T\rangle^{\otimes n})$, the least number of stabilizer states whose linear span contains $|T\rangle^{\otimes n}$. Prove a super-polynomial lower bound, or a sub-exponential upper bound; separately, decide whether the $\delta$-approximate rank is $2^{\Omega(n)}$ for fixed $\delta$.`,
     definition: r`**The stabilizer rank** of a state is the least number of stabilizer states whose linear span contains it. Stabilizer-rank simulators run in time roughly linear in the rank, so exponential growth for magic-state tensor powers is expected if universal quantum computation is not classically simulable. That conditional argument is not an unconditional bound.
 
 Standard reference: Bravyi, Smith and Smolin, “Trading classical and quantum computational resources”, PRX 6 (2016), [arXiv:1506.01396](https://arxiv.org/abs/1506.01396).`,
     progress: r`- The best upper bound is $O(2^{\alpha n})$ with $\alpha\approx0.396$ (Qassim, Pashayan and Gosset, [arXiv:2106.07740](https://arxiv.org/abs/2106.07740)), improving earlier constructions of Bravyi et al. ([arXiv:1808.00128](https://arxiv.org/abs/1808.00128)).
+- For seven copies, the partial decomposition of Kissinger, van de Wetering and Vilmart reduces five copies to three terms with one magic state each. Applying it to five of the seven copies and using the three-term decomposition for the three remaining magic states gives $\chi(|T\rangle^{\otimes7})\leq 9$ ([Section 4.2](https://arxiv.org/abs/2202.09202)). Ganesan gives a separate, explicit ten-term identity whose coefficients reproduce all 128 amplitudes in exact arithmetic ([Appendix A.5](https://arxiv.org/pdf/2610.35579v1#page=32), [certificate](https://doi.org/10.5281/zenodo.23525753)). The exact seven-copy rank remains open.
 - Earlier unconditional exact-rank lower bounds reached $\Omega(n)$ (Peleg, Shpilka and Volk, [arXiv:2106.03214](https://arxiv.org/abs/2106.03214); also Labib, and Lovitz–Steffan).
 - For approximate rank, Mehraban and Tahmasbi prove a quadratic lower bound up to polylogarithmic factors in their stated approximation regimes ([arXiv:2305.10277](https://arxiv.org/abs/2305.10277)). This also lower-bounds the exact rank, since every exact decomposition is an admissible approximate one.`,
     residual: r`Any super-polynomial unconditional bound would be a major advance in circuit-complexity terms.`,
     evidence: [
       { kind: "preprint", role: "progress", summary: "Quadratic lower bound, up to polylogarithmic factors, on approximate stabilizer rank of magic-state tensor powers (STOC 2024).", url: "https://arxiv.org/abs/2305.10277v4", date: "2024-03-29", version: "v4" },
     ],
+    provenance: [{ summary: "Ganesan reports that Infinity Machine found the ten-term decomposition and that the author checked the amplitude identity in exact arithmetic.", url: "https://doi.org/10.5281/zenodo.23525753" }],
     relations: [{ id: "A1", type: "related" }],
     refs: [
       { label: "Bravyi, Smith & Smolin, 'Trading classical and quantum computational resources', PRX 6 (2016)", url: "https://arxiv.org/abs/1506.01396" },
+      { label: "Kissinger, van de Wetering & Vilmart, 'Classical Simulation of Quantum Circuits with Partial and Graphical Stabiliser Decompositions', TQC (2022), Section 4.2", url: "https://arxiv.org/abs/2202.09202" },
+      { label: "Ganesan, 'Infinity Machine: a self-improving AI agent for research' (2026), Appendix A.5", url: "https://arxiv.org/abs/2610.35579v1" },
       { label: "Bravyi, Browne, Calpin, Campbell, Gosset & Howard, 'Simulation of quantum circuits by low-rank stabilizer decompositions', Quantum 3 (2019)", url: "https://arxiv.org/abs/1808.00128" },
       { label: "Qassim, Pashayan & Gosset, 'Improved upper bounds on the stabilizer rank of magic states', Quantum 5 (2021)", url: "https://arxiv.org/abs/2106.07740" },
       { label: "Peleg, Shpilka & Volk, 'Lower Bounds on Stabilizer Rank', Quantum 6 (2022)", url: "https://arxiv.org/abs/2106.03214" },
@@ -1825,5 +1829,90 @@ The question is restated as open by Ito, Mori, Sakamoto and Fujii (Quantum 10, 2
       { label: "Laneve, 'An adversary bound for quantum signal processing', Quantum 10, 2025 (2026)", url: "https://arxiv.org/abs/2506.20484" },
       { label: "Low, 'Multivariate Quantum Signal Processing' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.01125v1" },
       { label: "Shen, Wu, Yuan, Zhang & Zhang, 'Quantum Algorithms for Multivariable Polynomial Transformations' (2026 preprint, v1)", url: "https://arxiv.org/abs/2610.08714v1" },
+    ] },
+  { id: "A49", cat: "complexity", horizon: "sharp", status: "open", reviewedAt: "2026-11-20",
+    title: "Maximum dimension of a seven-qubit distance-two code",
+    statement: r`What is the largest dimension of a seven-qubit subspace that detects every error on one qubit: $24$, $25$ or $26$?`,
+    definition: r`An error is detectable if its action within the code is a scalar. Write $P$ for the orthogonal projector onto the code in $(\mathbb C^2)^{\otimes 7}$. For each site $j$ and each single-qubit Pauli operator $E\in\{X_j,Y_j,Z_j\}$, require $PEP=c_E P$ for some scalar $c_E$. By linearity these 21 tests cover every single-qubit error. The code dimension is $K=\operatorname{rank}P$. The optimization includes degenerate and nonadditive codes. [Rains, Theorems 2 and 4](https://arxiv.org/abs/quant-ph/9704043).`,
+    progress: r`Rains constructed a code of dimension $24$. His linear-programming bound gives $K\leq 80/3$ at length seven, hence $K\leq 26$. The 2026 table of rational semidefinite bounds still lists $24$–$26$ for this case. [Rains](https://arxiv.org/abs/quant-ph/9704043) and [Anglès Munné and Huber, Table 1](https://arxiv.org/html/2603.19901v1#S4.T1).
+
+Ganesan reports a search for a larger code. Its candidate of dimension $25$ had a nonzero compression residual and failed the exact detection condition. Both dimensions remain possible. [Infinity Machine, Section 3.7 and Appendix E](https://arxiv.org/abs/2610.35579v1).`,
+    residual: r`An exact rank-$26$ projector would settle the maximum. Ruling out rank $25$ would settle it at $24$, since every subspace of a detecting code also detects the same errors. The remaining possibility, $25$, requires a construction at rank $25$ and an exclusion at rank $26$.`,
+    evidence: [{ kind: "preprint", role: "progress", summary: "Table 1 records the interval from 24 to 26 for unrestricted seven-qubit codes of distance at least two.", url: "https://arxiv.org/abs/2603.19901v1", date: "2026-03-20", version: "v1" }],
+    provenance: [{ summary: "Ganesan used Infinity Machine to search for a higher-dimensional code and reports a null result.", url: "https://arxiv.org/abs/2610.35579v1" }],
+    relations: [{ id: "A32", type: "related" }],
+    refs: [
+      { label: "Rains, 'Quantum codes of minimum distance two', IEEE Transactions on Information Theory (1999)", url: "https://arxiv.org/abs/quant-ph/9704043" },
+      { label: "Anglès Munné & Huber, 'SDP bounds on quantum codes: rational certificates' (2026), Table 1", url: "https://arxiv.org/abs/2603.19901v1" },
+      { label: "Ganesan, 'Infinity Machine: a self-improving AI agent for research' (2026), Section 3.7", url: "https://arxiv.org/abs/2610.35579v1" },
+    ] },
+
+  { id: "A50", cat: "complexity", horizon: "sharp", status: "improved", reviewedAt: "2026-11-20",
+    title: "CNOT count and depth for preparing the Golay logical zero",
+    statement: r`How many controlled-NOT (CNOT) gates are needed to prepare the logical zero of the $[[23,1,7]]$ quantum Golay code at each allowed two-qubit depth?`,
+    definition: r`Fix the binary $[23,12,7]$ Golay code $C$ in cyclic coordinates. Its logical zero is the equal superposition $|0_L\rangle=2^{-11/2}\sum_{c\in C^\perp}|c\rangle$ over the dual code. Start from $|0\rangle^{\otimes23}$. A CNOT may act on any pair of qubits, and single-qubit Clifford gates are free. Use exactly these 23 qubits throughout, without measurements or postselection. A depth layer consists of CNOTs on disjoint pairs. Let $g(D)$ be the minimum CNOT count for exact preparation up to global phase in at most $D$ layers, with $g(D)=\infty$ if no circuit fits. [Paetznick and Reichardt, Sections 3 and 6](https://arxiv.org/abs/1106.2190).`,
+    progress: r`Paetznick and Reichardt used 57 CNOTs in seven layers. Doherty et al. found circuits with 45 entangling gates in seven layers and 44 in eight. A controlled-$Z$ costs one CNOT under the free local Clifford convention. [Doherty et al., Table I](https://arxiv.org/abs/2603.17743).
+
+Ganesan deposited a circuit with 44 CNOTs in six layers. It gives $g(D)\leq44$ for every $D\geq6$. The deposit includes the circuit in cyclic coordinates and a verifier for the prepared state. [Appendix A.4](https://arxiv.org/html/2610.35579v1#A1.SS4) and [circuit and verifier](https://doi.org/10.5281/zenodo.23509367).`,
+    residual: r`Can any depth achieve 43 CNOTs or fewer? Can five layers suffice with at most 44 CNOTs? A lower bound must cover every allowed Clifford circuit. Together with matching constructions, such bounds would determine the attainable tradeoff.`,
+    evidence: [{ kind: "preprint", role: "progress", summary: "Appendix A.4 gives the six two-qubit layers and reports a stabilizer-tableau check and a statevector comparison in cyclic coordinates.", url: "https://arxiv.org/abs/2610.35579v1", date: "2026-10-26", version: "v1" }],
+    provenance: [{ summary: "Doherty et al. used reinforcement learning and tree search. Ganesan reports that Infinity Machine optimized their 44-gate circuit for depth.", url: "https://arxiv.org/abs/2610.35579v1" }],
+    relations: [{ id: "A33", type: "related" }],
+    refs: [
+      { label: "Paetznick & Reichardt, 'Fault-tolerant ancilla preparation and noise threshold lower bounds for the 23-qubit Golay code', Quantum Information & Computation (2012)", url: "https://arxiv.org/abs/1106.2190" },
+      { label: "Doherty et al., 'Fast stabilizer state preparation via AI-optimized graph decimation' (2026), Table I", url: "https://arxiv.org/abs/2603.17743" },
+      { label: "Ganesan, 'Infinity Machine: a self-improving AI agent for research' (2026), Appendix A.4", url: "https://arxiv.org/abs/2610.35579v1" },
+    ] },
+  { id: "A51", cat: "complexity", horizon: "sharp", status: "improved", reviewedAt: "2026-11-20",
+    title: "Learning a local parent Hamiltonian from a ground state",
+    statement: r`Can a polynomial-time quantum learner, given copies of the unique ground state $|\psi\rangle$ of an unknown geometrically local Hamiltonian, output a local Hamiltonian with a unique ground state close to $|\psi\rangle$? Resolve the gapped version, with bounded interaction strengths and an inverse-polynomial lower bound on the input and output gaps.`,
+    definition: r`Fix a finite-dimensional lattice of $n$ qubits, a constant interaction radius and a bounded number of terms per site. The unknown Hamiltonian is $H=\sum_a h_a$, with $\|h_a\|\leq1$, unique ground state $|\psi\rangle$ and promised gap at least $\Delta>0$. The learner receives independent copies of $|\psi\rangle$, but no evolution oracle for $H$. It must output a classical description of $\widehat H$ with bounded local terms and constant interaction radius, whose unique ground state $|\widehat\psi\rangle$ satisfies $\tfrac12\||\widehat\psi\rangle\langle\widehat\psi|-|\psi\rangle\langle\psi|\|_1\leq\varepsilon$. Require time and copies polynomial in $n,\Delta^{-1},\varepsilon^{-1}$, and an output gap at least inverse polynomial in these parameters.
+
+This is a precise gapped benchmark for [Tang's first question](https://ewintang.com/blog/2025/04/22/open/). The output gap is an additional explicit benchmark requirement; uniqueness excludes the trivial zero Hamiltonian. Different Hamiltonians may have the same ground state, so recovering the original coefficients is unnecessary.`,
+    progress: r`Yu and Wei show that sufficiently accurate local reduced density matrices determine a unique gapped ground state robustly. Their overlapping-tomography bounds give polynomial copy complexity for constant locality and an inverse-polynomial gap, without an efficient general reconstruction algorithm. [Lemma 4.2 and Corollary 4.3](https://arxiv.org/abs/2303.08938v2).
+
+Kim, Kim and Ranard give polynomial-time circuit-learning algorithms for states obtained from product states with constant-depth local circuits, including an ancillary-state extension, and for specified locally extendible topological states on a disk. The latter include the toric code with uniform boundary conditions. Their hypotheses do not cover arbitrary unique gapped local ground states. A learned preparation circuit is also a different output from the local parent required here. [Theorems 1 and 5, discussion and appendices](https://arxiv.org/abs/2410.23544v3).`,
+    residual: r`Find a learner for the stated class, or establish a computational obstruction under a specified complexity assumption and copy-access model. A polynomial-size description of the unknown Hamiltonian and polynomial statistical information do not by themselves make its reconstruction efficient.`,
+    evidence: [{ kind: "published", role: "progress", summary: "Quantum 2270 (2026): efficient circuit learning for invertible states with a finite-depth promise and for specified locally extendible topological states; no general gapped-ground-state parent learner.", url: "https://arxiv.org/abs/2410.23544v3", date: "2026-11-05", version: "v3" }],
+    provenance: [{ summary: "Kim, Kim and Ranard disclose using Claude Opus 5.5 for editing and correcting errors; they attribute the ideas to the authors and take responsibility for the content.", url: "https://arxiv.org/abs/2410.23544v3", version: "v3" }],
+    relations: [{ id: "A28", type: "related" }, { id: "B2", type: "related" }, { id: "M7", type: "related" }],
+    refs: [
+      { label: "Tang, 'Some open problems', 22 April 2025, Question 1 and glossary", url: "https://ewintang.com/blog/2025/04/22/open/" },
+      { label: "Yu & Wei, 'Learning marginals suffices!' (2023 preprint, v2)", url: "https://arxiv.org/abs/2303.08938v2" },
+      { label: "Kim, Kim & Ranard, 'Learning State Preparation Circuits for Quantum Phases of Matter', Quantum 2270 (2026; arXiv v3)", url: "https://arxiv.org/abs/2410.23544v3" },
+    ] },
+  { id: "A52", cat: "complexity", horizon: "sharp", status: "improved", reviewedAt: "2026-11-20",
+    title: "Hamiltonian learning with a fixed minimum evolution time",
+    statement: r`Can an unknown geometrically local Hamiltonian on $n$ qubits be learned with polynomial total evolution time when every query to its dynamics must last at least a fixed constant $T>0$? Can the precision dependence be improved to $\mathrm{poly}(n)/\varepsilon$, up to logarithms, while keeping $T$ independent of both $n$ and $\varepsilon$?`,
+    definition: r`On a fixed finite-dimensional lattice, write $H=\sum_a\lambda_a P_a$ in a known basis of nonidentity Pauli products of bounded support and diameter, with bounded degree and $\max_i\sum_{a:i\in\mathrm{supp}(P_a)}|\lambda_a|\leq1$. Fix the unobservable identity coefficient to zero. A query applies the channel $\rho\mapsto e^{-iHt}\rho e^{iHt}$ at any chosen real duration $t\geq T$; known controls, ancillas and measurements between queries are allowed. Estimate every coefficient to additive error $\varepsilon$ with probability at least $2/3$, in polynomial computation time. The dynamical resource is $t_{\mathrm{tot}}=\sum_j t_j$. [Tang, Question 4 and glossary](https://ewintang.com/blog/2025/04/22/open/).
+
+The lower bound on each duration still allows fine control of its value. Restricting times to multiples of a fixed clock interval, or giving only one fixed evolution, imposes additional assumptions.`,
+    progress: r`The FOCS 2024 workshop asks the question with all durations above 100 in fixed interaction units; Tang's 2025 account distinguishes polynomial total time from the stronger inverse-precision target. [Workshop, page 10](https://jerryzli.github.io/focs2024-slides/open_questions.pdf).
+
+Shin, Lee and Oh report a learner with arbitrary fixed $T$ and inverse-precision scaling for logarithmically many nonzero Pauli terms. Their globally normalized model assumes $\|H\|\leq1$. For polynomial sparsity $m$, their theorem trades $T=\Theta(m^{-1/K})$ against a polynomial cost for fixed $K$; taking $K$ of order $\log m$ yields constant minimum duration with quasipolynomial cost. Section VII explicitly leaves the polynomial-cost, arbitrary-fixed-$T$ problem open. The norm normalization must be tracked when comparing these bounds with an extensive lattice Hamiltonian. [Theorems 1–2 and Section VII](https://arxiv.org/abs/2604.27838v1).`,
+    residual: r`Obtain polynomial time for general bounded-degree local systems at fixed $T$ in the stated interaction units, or prove a lower bound excluding it. Then determine whether inverse-precision total evolution time is attainable. Time-dependent cancellation controls inserted inside a query would change the access model.`,
+    evidence: [{ kind: "preprint", role: "progress", summary: "Arbitrary fixed minimum duration is compatible with Heisenberg scaling for logarithmic Pauli sparsity under global norm normalization; polynomial sparsity retains a duration-versus-cost tradeoff.", url: "https://arxiv.org/abs/2604.27838v1", date: "2026-04-30", version: "v1" }],
+    relations: [{ id: "A28", type: "related" }, { id: "O9", type: "related" }],
+    refs: [
+      { label: "Tang, 'Some open problems', 22 April 2025, Question 4 and glossary", url: "https://ewintang.com/blog/2025/04/22/open/" },
+      { label: "Chen, Cotler, Huang, Li & Tang, 'Some Open Problems in Quantum Learning', FOCS workshop, 27 October 2024, p. 10", url: "https://jerryzli.github.io/focs2024-slides/open_questions.pdf" },
+      { label: "Shin, Lee & Oh, 'Heisenberg-limited Hamiltonian learning without short-time control' (2026 preprint, v1)", url: "https://arxiv.org/abs/2604.27838v1" },
+    ] },
+  { id: "A53", cat: "complexity", horizon: "incremental", status: "improved", reviewedAt: "2026-11-20",
+    title: "Quantum query–space tradeoffs for collision and element distinctness",
+    statement: r`Determine the optimal tradeoff between oracle queries and memory for general quantum algorithms that find a collision in a random function or solve element distinctness. In particular, do the tight collision-search tradeoffs proved for algorithms symmetric under relabelling of the output alphabet extend to unrestricted algorithms?`,
+    definition: r`An evaluation query maps $|x,y\rangle$ to $|x,y+f(x)\bmod N\rangle$. For random collision search, $f:[N]\to[N]$ is uniform and the output is a pair $x\ne x'$ with $f(x)=f(x')$, with constant success probability. Count queries $Q$ and all retained workspace $S$ in qubits, including retained classical records. For element-distinctness search, require such a pair on every noninjective input $f:[n]\to[n^2]$. The corresponding decision problem asks only whether a pair exists. Aaronson's original question also includes distinguishing injective from two-to-one functions under that promise. [Problem 3](https://arxiv.org/abs/2109.06917v1).
+
+Memory that stores classical data but can be queried in superposition is a distinct implementation resource from a fully coherent quantum table. Any comparison must specify which memory is counted and how it is accessed.`,
+    progress: r`Without a memory restriction, collision and element-distinctness decision have optimal query exponents $1/3$ and $2/3$. Aaronson asks whether these advantages can be retained with small memory. [Section 3](https://arxiv.org/abs/2109.06917v1).
+
+Magniez and Zur prove $Q=\Omega(N^{1/3})$ and $Q^2S=\Omega(N\log N)$ for random collision search under label symmetry. For element-distinctness search they obtain $Q=\Omega(n^{2/3})$ and $Q^2S=\Omega(n^2\log n)$. Suitable implementations of the standard algorithms match these bounds. Their extension to intermediate measurements requires a corresponding conditional symmetry property. [Theorem 4.19, Corollary 4.20 and Section 5](https://arxiv.org/abs/2609.10808v2).`,
+    residual: r`Remove the symmetry restriction, or find an asymmetric algorithm that improves the tradeoff. Naively storing a random permutation to symmetrize an algorithm can consume the very memory being bounded. Establish decision tradeoffs in their own right: converting a decision algorithm to collision search need not preserve a small-space bound.`,
+    evidence: [{ kind: "preprint", role: "progress", summary: "Tight random-collision and element-distinctness search tradeoffs under label symmetry; Section 1.4 explicitly leaves unrestricted algorithms open.", url: "https://arxiv.org/abs/2609.10808v2", date: "2026-10-02", version: "v2" }],
+    provenance: [{ summary: "Magniez and Zur attribute the connection between collision-free compressed databases and arrangement graphs, via the deletion map, to ChatGPT 5.3; they also disclose AI use for supplementary checks, editing and discussing ideas.", url: "https://arxiv.org/abs/2609.10808v2", version: "v2" }],
+    relations: [{ id: "A23", type: "related" }],
+    refs: [
+      { label: "Aaronson, 'Open Problems Related to Quantum Query Complexity', ACM Trans. Quantum Comput. 2(4), 14 (2021), Problem 3", url: "https://arxiv.org/abs/2109.06917v1" },
+      { label: "Magniez & Zur, 'Tight Time-Space Lower Bounds for Collision Finding and Element Distinctness under Label Symmetry' (2026 preprint, v2)", url: "https://arxiv.org/abs/2609.10808v2" },
     ] },
 ];

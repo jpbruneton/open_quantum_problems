@@ -65,7 +65,7 @@ h1.title {
   letter-spacing: -0.015em;
   max-width: 900px;
 }
-.subtitle { color: var(--muted); max-width: 720px; margin: 0; font-size: 16px; }
+.subtitle { color: var(--muted); max-width: 1040px; margin: 0; font-size: 16px; }
 
 .header-links { display: flex; flex-wrap: wrap; align-items: center; gap: 0; margin-top: 18px; }
 .gh-link {

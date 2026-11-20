@@ -16,26 +16,29 @@ All new research starts in the private `oqmresearch` repository, which holds exp
 
 Open problems that are already posed in the literature, from long-standing conjectures to recent questions raised by the authors of new results.
 
-- **218 active entries** across fourteen areas: spectral theory, many-body physics, quantum field theory, undecidability, entanglement, nonlocality, channels and Shannon theory, complexity and algorithms, open systems, foundations, semiclassical gravity, holography, quantum gravity and renormalization. Ten further archive and background pages keep old links working.
+- **227 active entries** across fourteen areas: spectral theory, many-body physics, quantum field theory, undecidability, entanglement, nonlocality, channels and Shannon theory, complexity and algorithms, open systems, foundations, semiclassical gravity, holography, quantum gravity and renormalization. Ten further archive and background pages keep old links working.
 - **Entry pages** follow one structure:
   - statement;
   - Definition, with one well-known, pre-AI reference;
+  - Lean formulation, when available, with links describing the exact question, special case or bound encoded;
   - Progress;
   - Claimed solution, when there is one, with what it claims and its caveats;
   - What remains open;
   - the evidence grouped by role (previous progress, challenged claims, withdrawn claims);
   - references and author-reported AI use.
 - **Horizon** says what kind of question it is:
-  - *sharp*: a proof or a single counterexample closes it;
+  - *sharp*: the domain, hypotheses and resolution criterion are defined; a proof or counterexample settles the full stated target;
   - *incremental*: progress means better bounds or larger tractable classes;
-  - *programme*: a whole research field;
-  - *conceptual*.
+  - *programme*: several distinct research targets;
+  - *conceptual*: the framework, admissible class or resolution criterion still needs to be fixed.
+
+  A proof in a subclass or a solution to one listed subproblem is partial progress unless that restricted question is the entry's explicit target. The [20 November horizon audit](docs/reviews/2026-11-20-correction-log.md) applies this criterion to all 44 active entries in foundations, semiclassical gravity, holography, quantum gravity and renormalization.
 - **Status** says how far it has gone:
   - *open*;
   - *improved*: partial progress is recorded;
   - *claimed solved*: a full resolution has been announced but not independently assessed.
 
-  At present 108 entries are open, 81 improved and 29 claimed solved. No entry is marked *solved*: the catalogue retains these resolutions as claims pending independent assessment of their proofs.
+  At present 99 entries are open, 98 improved and 30 claimed solved. No entry is marked *solved*: the catalogue retains these resolutions as claims pending independent assessment of their proofs.
 - **Lean verified** (gold badge): reserved for `claimed-solved` entries whose full claimed solution is formalized in Lean according to its authors. The Lean builds are not rerun by the maintainer, and a formal proof does not replace refereeing of the definitions it formalizes. Formalizations of partial progress or conditional results are described in the evidence without this badge.
 - **Cross-references.** Links under each title point to the same question or related subproblems in the [QIQCOP Zoo](https://qiqc-op.com/) and the [IQOQI Vienna list of open quantum problems](https://oqp.iqoqi.oeaw.ac.at/); scope notes distinguish related tasks where needed. Where Google DeepMind's [Formal Conjectures](https://github.com/google-deepmind/formal-conjectures) has a Lean statement of the problem, it is linked too.
 - **Sources of problems.** Besides the literature itself, the catalogue has been checked against:
@@ -88,6 +91,7 @@ The source of truth is `app/data/cat-*.js`, aggregated by `app/data/problems.js`
   - Only progress dated before the earliest claimed solution is listed under "Previous progress".
 - `provenance`: `{ summary, url, version? }` for author-reported AI use.
 - `lean`: on a `claimed-solved` entry only, `{ url, note }` when the main theorem of its claimed solution is formalized in Lean according to the authors; on an evidence item, `lean: true` records formalization, but only a claimed solution of a `claimed-solved` entry can display the badge.
+- `app/data/lean-formulations.js` lists sources for the “Lean formulation” section by problem ID. Each link names its scope. When only the authors’ description is available, the label identifies the paper as the source.
 - `relations`: `{ id, type }`, where `type` is `parent`, `benchmark`, `reduction` or `related`.
 - `archive`: `{ kind: "merged" | "background", targets, reason }`. Archived pages stay addressable but are not counted.
 - `reviewedAt` and `LITERATURE_UPDATES` (in `problems.js`) record the latest literature update for each entry. Documentary corrections are recorded separately in the dated correction logs; `CORRECTION_LOG` points to the latest published one, while `CORRECTION_LOGS` retains their history. Corrections do not reset literature-review dates.
@@ -125,6 +129,7 @@ To cite a single entry, link its page, for example `https://openquantumproblems.
 - [Quantum Information and Quantum Computation Open Problem Zoo (QIQCOP Zoo)](https://qiqc-op.com/)
 - [IQOQI Vienna: Open Quantum Problems](https://oqp.iqoqi.oeaw.ac.at/)
 - [Google DeepMind: Formal Conjectures](https://github.com/google-deepmind/formal-conjectures), Lean statements of open conjectures, including the IQOQI problems
+- OpenFrontiers included 114 entries from this catalogue in its October 2026 research corpus. Its separate mathematics benchmark contains 200 problems with Lean 4 statements. [Project site](https://openfrontiers.vercel.app/) · [Paper](https://arxiv.org/abs/2610.37739) · [Datasets](https://huggingface.co/collections/FlippyDora/openfrontiers)
 
 ## Maintainer
 

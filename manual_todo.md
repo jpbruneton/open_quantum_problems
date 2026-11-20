@@ -1,5 +1,26 @@
 # Références à trouver à la main
 
+## Fiches nouvelles du 20 novembre 2026 : manuscrit non public
+
+| Référence à obtenir | Fiche | Point à vérifier |
+| --- | --- | --- |
+| Ye Li, *An Improvement on the Lieb–Oxford Bound*, manuscrit daté du 19 octobre 2026, annoncé comme soumis à Physical Review A | M19 | Le dépôt public `pkupkupku123/improvement-lieb-oxford-bound`, commit `60d71d55c10e2f66ea6387923f6887f47a6355fc`, contient les données et le code mais pas le manuscrit. README et les trois documents de méthode/validation lus intégralement. Obtenir le texte complet, notamment l'extension analytique à plusieurs canaux de covariance et l'annexe C, avant d'ajouter la borne annoncée 1.5342 aux preuves de la fiche. Seul le README public est actuellement cité comme annonce de contexte. |
+
+## Veille arXiv du 20 novembre 2026 : lectures complémentaires
+
+Les références ci-dessous ont été repérées dans les listings ou par les métadonnées des nouvelles versions. Leur lecture intégrale n'est **pas achevée** dans cette veille. Elles ne sont donc pas ajoutées aux références ou aux preuves des fiches et aucun changement de statut ne repose sur elles. Les PDF sont publics : cette liste ne signale pas un blocage d'accès et ne demande pas de téléchargement manuel. Pour les versions révisées, la version antérieure déjà évaluée reste celle citée.
+
+| Référence à lire | Fiche concernée | Vérification à effectuer avant utilisation |
+| --- | --- | --- |
+| E. Panwar, A. Chaturvedi, *The speed limit of gravitational entanglement and the cost of noise*, arXiv:2611.21546v1 | QG6 | Lire les hypothèses et les preuves des bornes de génération d'intrication et de bruit ; déterminer si elles contraignent la classe de médiateurs de QG6. |
+| C. Yin, V. Khemani, *Fast mixing and thermal phases from strong decay of correlations*, arXiv:2611.17433v2 | O10 | Vérifier les restrictions de commutativité et les hypothèses de décroissance ; ne pas extrapoler une équivalence au cas non commutant général. |
+| I. Cirac, R. Trivedi, *Efficient representations by PEPS: critical free-fermion and chiral topological states*, arXiv:2611.17936v1 | B2, B3 | Fixer les classes d'états, normes d'approximation, dimensions de lien et coûts de contraction avant toute attribution de progrès. |
+| Z. Shen, Y. Wu, X. Yuan, Y. Zhang, *Shallow Quantum Circuits for Geometrically Local Lindblad Dynamics*, arXiv:2610.05362v2, révisé le 16 novembre | A48 | Comparer intégralement v2 et v1 : hypothèses de localité, dimensions, normes d'erreur et coût des circuits. La fiche garde v1. |
+| J. Kitchen, *Causal Query Compression for Lindblad Dynamics: Optimal Queries and Nearly Linear Local Simulation*, arXiv:2609.31312v2, révisé le 16 novembre | A48 | Comparer intégralement v2 et v1 : modèle oracle, coût en requêtes, portes et dépendance en précision. La fiche garde v1. |
+| R. G. Ahmed, S. Bhalerao, S. Lee, F. Leditzky, D. Leung, L. Schaeffer, G. Smith, *A depolarizing choir sings in Gaussian harmony*, arXiv:2609.39747v3, révisé le 17 novembre | Proposition PC1, contexte de C11 | Lire les changements de v3 et les hypothèses de correspondance entre canaux gaussiens et dépolarisants ; les métadonnées seules ne justifient pas une nouvelle borne. |
+
+## Références signalées lors des audits antérieurs
+
 Liste maintenue des articles et livres que les sessions n'ont pas pu lire en entier (accès payant, livre, page bloquée, PDF coupé par l'outil de lecture). Règle des `CLAUDE.md` d'OQM et d'oqmresearch : on ne cite qu'un travail lu en entier, donc ces références ne sont pas citées tant qu'elles ne sont pas lues.
 
 Pour en débloquer une : déposer le PDF dans le dépôt privé `oqmresearch`, dossier `docs/references-pdf/` (nom : premier auteur, année, mot du titre ; pas dans ce dépôt public, pour les droits d'auteur), puis remplir la colonne « Déposée » avec la date. La session suivante la lit, décide de la citer et retire la ligne.

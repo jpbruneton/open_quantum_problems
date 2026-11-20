@@ -101,7 +101,8 @@ function Header({ crumbs }) {
         <h1 className="title">Open Problems in Quantum Mechanics for AI Agents</h1>
         <p className="subtitle">
           A literature-reviewed catalogue for human researchers and AI agents.
-          Each entry records a question, its status, evidence and references.
+          Entries give the question, status, evidence and references.
+          Where available, we link to Lean statements and verified proofs on their original sites.
           Corrections and contributions are welcome.
         </p>
         <div className="header-links">
@@ -201,11 +202,13 @@ function Home() {
           </div>
 
           <div className="review-note">
-            <b>Last update · {LITERATURE_UPDATE.label}.</b> A map of the 2024–2026 quant-ph literature found nine active theoretical themes with no entry, and papers the catalogue did not yet cite.
+            <b>Last update · {LITERATURE_UPDATE.label}.</b> Nine new questions and literature updates, including the gr-qc and hep-th catch-up since 1 August. The selected evidence papers were read in full, including appendices.
             <ul>
-              <li>36 new entries on graph states and quantum walks, magic and stabilizer entropies, quasiprobabilities, non-Hermitian spectra, monitored circuits and designs, steering and measurements, Hamiltonian simulation and QSP, QAOA and DQI, and time crystals and quantum thermodynamics. Three are “Claimed solved”: <a href="/p/E23">LU equivalence of graph states</a>, <a href="/p/A46">spatial search on the 2D grid</a> and <a href="/p/A47">lattice Lindbladian simulation</a>. Eleven partly inferred questions were added to the <a href="/new-problems">AI-suggested problems</a>.</li>
-              <li>Two existing entries are now “Claimed solved”: a first superlinear lower bound, Ω(n<sup>13/12</sup>), for <a href="/p/A23">quantum triangle finding</a>, and a negative answer to Tsirelson’s question on the <a href="/p/N13">semialgebraicity of quantum correlations</a>.</li>
-              <li>Seven existing entries are now “Improved”: <a href="/p/A26">Quantum Max-Cut</a>, <a href="/p/A28">structure learning from Gibbs states</a>, <a href="/p/B3">PEPS contraction</a>, <a href="/p/M6">gap stability</a>, <a href="/p/M7">PEPS parent gaps</a>, <a href="/p/N5">dimension of nonlocal correlations</a> and <a href="/p/O2">master-equation error bounds</a>. Partial progress was also added to <a href="/p/O3">certified strong-coupling dynamics</a>.</li>
+              <li><a href="/p/E21">Gaussian optimality of entanglement of formation</a> is now “Claimed solved” for arbitrary finite multimode bipartitions. The same preprint adds multimode Gaussian channel results to <a href="/p/C10">C10</a>, which remains “Improved”.</li>
+              <li>Four entries become “Improved”: <a href="/p/B12">long-range propagation</a> in the Frobenius norm, <a href="/p/H4">python’s lunch decoding</a> in a Haar-oracle model, <a href="/p/QG4">nonsupersymmetric AdS stability</a> within a scalar effective theory, and <a href="/p/R3">renormalization-group flows</a> with a positive semidefinite metric. Their broader residual questions remain.</li>
+              <li>Further results concern <a href="/p/B16">3D passive memory</a>, <a href="/p/N2">dimension-six MUBs</a>, <a href="/p/N3">restricted dimension-ten MUBs</a>, <a href="/p/O2">master-equation errors</a>, <a href="/p/F8">finite-resource frames</a> and <a href="/p/B15">the kagome spin liquid</a>. The kagome evidence is numerical and its status stays “Open”.</li>
+              <li>Eight more entries become “Improved”: <a href="/p/QF11">local QFT measurements</a>, <a href="/p/QG8">de Sitter scalar equilibrium</a>, <a href="/p/QG3">flat-space charge completeness</a>, <a href="/p/G1">radiation algebras and the Page curve</a>, <a href="/p/H1">modular spectral gaps</a>, <a href="/p/QG7">no-boundary integration cycles</a>, <a href="/p/F14">causal nonlinear dynamics</a> and <a href="/p/QG6">gravitational quantum witnesses</a>. All retain their broader open targets. Evidence was also updated for <a href="/p/G3">quantum cosmic censorship</a>, <a href="/p/QF5">chiral gauge theory</a> and <a href="/p/QF7">infrared-finite scattering</a>.</li>
+              <li>New entries: <a href="/p/A49">seven-qubit codes</a>, <a href="/p/A50">Golay-state preparation</a>, <a href="/p/B23">XXZ domain-wall fluctuations</a>, <a href="/p/M19">the Lieb–Oxford constant</a>, <a href="/p/M20">Kohn–Sham representability</a>, <a href="/p/E30">separability testing</a>, <a href="/p/A51">parent-Hamiltonian learning</a>, <a href="/p/A52">Hamiltonian learning at fixed minimum time</a> and <a href="/p/A53">query–space tradeoffs</a>. Exact-certificate context was updated for <a href="/p/A24">stabilizer rank</a> and <a href="/p/C11">depolarizing-channel capacity</a>. <a href={LITERATURE_UPDATE.reportUrl}>Read the sources, scope and full-text audit</a>.</li>
             </ul>
           </div>
 
@@ -215,12 +218,6 @@ function Home() {
               {Object.entries(HORIZONS).map(([k, v]) => (
                 <li key={k}><span className="dot" style={{ background: `var(--${k})` }} /> <b>{v.label}</b>: {v.desc}</li>
               ))}
-            </ul>
-            <p><b>Status</b> says how far it has gone:</p>
-            <ul className="horizon-list">
-              <li><span className="dot" style={{ background: "var(--improved)" }} /> <b>Improved</b>: partial progress.</li>
-              <li><span className="dot" style={{ background: "var(--claimed-solved)" }} /> <a href="/claimed-solved"><b>Claimed solved</b></a>: full resolution awaiting independent assessment.</li>
-              <li><span className="dot" style={{ background: "var(--solved)" }} /> <b>Solved</b>: established. Zero entries are Solved: the catalogue records these resolutions as claims pending independent assessment.</li>
             </ul>
           </div>
 
@@ -263,6 +260,7 @@ function Home() {
 
           <div className="note">
             Corrections and additions are welcome.
+            <p>“Claimed solved” means the authors report a complete solution to the problem. We keep that label until independent experts have reviewed the solution and confirmed that it settles the question.</p>
           </div>
         </div>
       </section>
@@ -357,7 +355,7 @@ function FilteredProblemsView({ status = null, leanOnly = false }) {
           <p className="intro">
             {leanOnly ? LEAN_TITLE : status
               ? STATUSES[status].desc
-              : "Open sharp problems: a single proof or counterexample closes them. Excludes claimed solved and Lean verified entries."}
+              : "Open sharp problems have a defined domain and resolution criterion: a proof or counterexample settles the stated target. Excludes claimed solved and Lean verified entries."}
           </p>
 
           <ProblemFilter ariaLabel={`Filter ${label.toLowerCase()} problems`} countLabel={label.toLowerCase()} total={rows.length}>
@@ -459,6 +457,16 @@ function ProblemView({ id }) {
             <>
               <h4>Definition</h4>
               <div className="context"><Paras text={p.definition} /></div>
+              {p.leanFormulations.length > 0 && (
+                <>
+                  <h4>Lean formulation</h4>
+                  <ul className="refs">
+                    {p.leanFormulations.map(({ label, url }) => (
+                      <li key={url}><a href={url} target="_blank" rel="noreferrer">{label}</a></li>
+                    ))}
+                  </ul>
+                </>
+              )}
               {p.progress && (<><h4>Progress</h4><div className="context"><Paras text={p.progress} /></div></>)}
               {p.claim && (<><h4>Claimed solution</h4><div className="context claim-block"><Paras text={p.claim} /></div></>)}
               {p.residual && (<><h4>What remains open</h4><div className="context"><Paras text={p.residual} /></div></>)}
@@ -930,6 +938,7 @@ const SIMILAR_PROJECTS = [
   { name: "Open Quantum Problems (IQOQI Vienna)", href: "https://oqp.iqoqi.oeaw.ac.at/open-quantum-problems", desc: "The historical list started by Reinhard Werner, maintained by IQOQI Vienna: about thirty classic questions in entanglement, foundations, communication and complexity, with a separate page of solved problems." },
   { name: "QMBL — Quantum Many-Body Leaderboard", href: "https://github.com/quantum-many-body-leaderboard/open-problems", desc: "A record book of the best verified ground-state energies for hundreds of many-body models without an exact solution (Hubbard, J1–J2, electron gases, hydrogen chains…), designed as a benchmark for scientists and AI systems." },
   { name: "OpenProblemBench", href: "https://arxiv.org/abs/2610.11118", desc: "A benchmark of 82 literature-grounded open problems in mathematics and theoretical physics, including quantum information, used to evaluate AI models on research-level questions (Li et al., October 2026)." },
+  { name: "OpenFrontiers", href: "https://openfrontiers.vercel.app/", desc: "A searchable index spanning mathematics, physics, computer science and other fields. Its October 2026 corpus includes 114 entries from this catalogue. The accompanying mathematics benchmark contains 200 problems with Lean 4 statements." },
   { name: "Erdős problems", href: "https://www.erdosproblems.com/", desc: "The database of Paul Erdős's problems that inspired the format of this catalogue: precise statements, status and references. Mathematics rather than physics." },
   { name: "FrontierMath: Open Problems (Epoch AI)", href: "https://epoch.ai/latest/benchmarking-ai-on-unsolved-math-problems", desc: "Unsolved research mathematics problems with computationally verifiable answers, used to benchmark AI systems." },
 ];
@@ -970,14 +979,6 @@ const NEW_RESEARCH_NOTES = [
       { label: "Langrenez, De Bièvre & Arvidsson-Shukur, Convex roofs witnessing KD nonpositivity (J. Phys. A 2025)", doi: "https://doi.org/10.1088/1751-8121/add58f", arxiv: "https://arxiv.org/abs/2407.04558", note: "Faithful convex-roof witness of the pure-state hull and a spin-one KD-positive state outside it." },
       { label: "Langrenez et al., Almost sure minimality of experiments with classical KD representations (Phys. Rev. A 2026)", doi: "https://doi.org/10.1103/v7z4-qsz8", arxiv: "https://arxiv.org/abs/2405.17557v2", note: "For almost every pair of bases the KD-positive states are exactly the mixtures of basis states." },
     ],
-    citation: {
-      bibtex: `@misc{bruneton2026kdz3x3,
-  author = {Jean-Philippe Bruneton},
-  title = {An exact KD-positive state outside the pure-state hull for the Fourier pair on Z3 x Z3},
-  year = {2026},
-  url = {https://openquantumproblems.com/research/kd-z3x3.pdf}
-}`,
-    },
   },
   {
     title: "Exact ensemble-steering defect under partial environmental access",
@@ -994,14 +995,6 @@ const NEW_RESEARCH_NOTES = [
       { label: "Blume-Kohout & Zurek, Quantum Darwinism: entanglement, branches, and redundantly stored information (2006)", doi: "https://doi.org/10.1103/PhysRevA.73.062310", arxiv: "https://arxiv.org/abs/quant-ph/0505031", note: "Introduces the branch states and products of decoherence factors that the spatial model also uses." },
       { label: "Zurek, Quantum Darwinism (2009)", doi: "https://doi.org/10.1038/nphys1202", arxiv: "https://arxiv.org/abs/0903.5082", note: "Places environmental records and access to environment fragments in their broader measurement-theory context." },
     ],
-    citation: {
-      bibtex: `@misc{bruneton2026steering,
-  author = {Jean-Philippe Bruneton},
-  title = {Exact ensemble-steering defect under partial environmental access},
-  year = {2026},
-  url = {https://openquantumproblems.com/research/steering-localization.pdf}
-}`,
-    },
   },
   {
     title: "Local discrimination of maximally entangled two-qubit states",
@@ -1022,14 +1015,6 @@ const NEW_RESEARCH_NOTES = [
       { label: "Deconinck & Terhal, Qubit state discrimination (2010)", doi: "https://doi.org/10.1103/PhysRevA.81.062304", arxiv: "https://arxiv.org/abs/1002.4388", note: "States the discrimination duality and reduces equally likely pure qubit states to the smallest enclosing ball used for the receiver's measurement." },
       { label: "Bae & Hwang, Minimum-error discrimination of qubit states: Methods, solutions, and properties (2013)", doi: "https://doi.org/10.1103/PhysRevA.87.012334", arxiv: "https://arxiv.org/abs/1204.2313", note: "Gives the Bloch-sphere geometry of minimum-error qubit discrimination with equal priors." },
     ],
-    citation: {
-      bibtex: `@misc{bruneton2026localdiscrimination,
-  author = {Jean-Philippe Bruneton},
-  title = {Local discrimination of maximally entangled two-qubit states: the separable optimum and when one message attains it},
-  year = {2026},
-  url = {https://openquantumproblems.com/research/local-discrimination-entangled-qubits.pdf}
-}`,
-    },
   },
   {
     title: "Real three-qubit states need at most three CZ gates",
@@ -1050,14 +1035,6 @@ const NEW_RESEARCH_NOTES = [
       { label: "Lee, Kim, Three-qubit-state preparation: Classification and explicit circuits (2026)", doi: "https://doi.org/10.1103/5bw6-339b", arxiv: "https://arxiv.org/abs/2603.00845", note: "Classifies three-qubit states and gives explicit circuits with general rotations; it does not treat CZ counts for real circuits." },
       { label: "Kristjuhan, Berry, Quantum phase estimation with optimal confidence interval using three control qubits (arXiv v1, 2026)", arxiv: "https://arxiv.org/abs/2601.16474v1", note: "Uses real three-qubit state preparation as a subroutine without a two-qubit gate count; the note bounds that cost by three CZ gates." },
     ],
-    citation: {
-      bibtex: `@misc{bruneton2026realthreecz,
-  author = {Jean-Philippe Bruneton},
-  title = {Every real three-qubit state can be prepared with rotations and three {CZ} gates},
-  year = {2026},
-  url = {https://openquantumproblems.com/research/real-three-qubit-states-three-cz.pdf}
-}`,
-    },
   },
   {
     title: "Spectra of particle-reduced fermionic density operators",
@@ -1070,14 +1047,6 @@ const NEW_RESEARCH_NOTES = [
       { label: "Amosov & Filippov, Spectral properties of reduced fermionic density operators and parity superselection rule (2017)", doi: "https://doi.org/10.1007/s11128-016-1467-9", arxiv: "https://arxiv.org/abs/1512.01828", note: "Defines ρₚ and Φ on the Fock space and states the conjecture settled here; its fixed-N Proposition 4 needs the factor (N−p)!. It attributes the fixed-N spectral duality to Carlson and Keller." },
       { label: "Gigena, Di Tullio & Rossignoli, Many-body entanglement in fermion systems (2021)", doi: "https://doi.org/10.1103/PhysRevA.103.052424", arxiv: "https://arxiv.org/abs/2012.13785", note: "Shows that the M- and (N−M)-body density operators of a pure N-fermion state share their spectrum up to zero eigenvalues, and writes the M-body operator with the prefactor 1/(N−M)!, the fixed-N form of the factorial correction; does not treat variable particle number." },
     ],
-    citation: {
-      bibtex: `@misc{bruneton2026fermionicreductions,
-  author = {Jean-Philippe Bruneton},
-  title = {Spectra of particle-reduced fermionic density operators: the Amosov--Filippov conjecture holds up to a factor $p!$},
-  year = {2026},
-  url = {https://openquantumproblems.com/research/fermionic-particle-reductions.pdf}
-}`,
-    },
   },
   {
     title: "Exact PPT distillation from the Zhu–Wang qutrit support",
@@ -1096,14 +1065,6 @@ const NEW_RESEARCH_NOTES = [
       { label: "Rains, A semidefinite program for distillable entanglement (2001)", doi: "https://doi.org/10.1109/18.959270", arxiv: "https://arxiv.org/abs/quant-ph/0008047", note: "Semidefinite program for PPT distillation fidelity and the Rains bound." },
       { label: "Horodecki, Horodecki and Horodecki, Mixed-state entanglement and distillation (1998)", doi: "https://doi.org/10.1103/PhysRevLett.80.5239", arxiv: "https://arxiv.org/abs/quant-ph/9801069", note: "PPT states are undistillable, the basis of partial-transpose bounds." },
     ],
-    citation: {
-      bibtex: `@misc{bruneton2026pptqutrit,
-  author = {Jean-Philippe Bruneton},
-  title = {Exact {PPT} entanglement distillation from the {Zhu--Wang} qutrit support: the one-copy optimum and the first four output dimensions},
-  year = {2026},
-  url = {https://openquantumproblems.com/research/exact-ppt-distillation-qutrit.pdf}
-}`,
-    },
   },
   {
     title: "The variance of a sum of independent quantum errors",
@@ -1118,14 +1079,6 @@ const NEW_RESEARCH_NOTES = [
       { label: "Kueng, Long, Doherty, Flammia, Comparing experiments to the fault-tolerance threshold (2016)", doi: "https://doi.org/10.1103/PhysRevLett.117.170502", arxiv: "https://arxiv.org/abs/1510.05653", note: "Shows that errors of equal average size can differ greatly in worst-case effect, coherent errors appearing to produce the largest gap." },
       { label: "Carignan-Dugas, Wallman, Emerson, Bounding the average gate fidelity of composite channels using the unitarity (2019)", doi: "https://doi.org/10.1088/1367-2630/ab1800", arxiv: "https://arxiv.org/abs/1610.05296", note: "Infidelity accumulates linearly for stochastic errors and up to quadratically for coherent ones; the biased over-rotation counterexample is an instance of this coherent accumulation." },
     ],
-    citation: {
-      bibtex: `@misc{bruneton2026variancesum,
-  author = {Jean-Philippe Bruneton},
-  title = {The variance of a sum of independent quantum errors: a proof for centred errors and counterexamples without centring},
-  year = {2026},
-  url = {https://openquantumproblems.com/research/variance-sum-quantum-errors.pdf}
-}`,
-    },
   },
   {
     title: "Momentum Rényi and Tsallis entropies behind hard walls: the threshold 1/(2(m+1))",
@@ -1141,14 +1094,6 @@ const NEW_RESEARCH_NOTES = [
       { label: "Olendski, Quantum-information theory of a Dirichlet ring with Aharonov–Bohm field (2022)", doi: "https://doi.org/10.1140/epjp/s13360-022-02627-5", arxiv: "https://arxiv.org/abs/2202.04692", note: "Finds the disk threshold 2/5 for a Dirichlet annulus, independent of the inner radius, consistent with a threshold fixed at the boundary." },
       { label: "Bialynicki-Birula, Formulation of the uncertainty relations in terms of the Rényi entropies (2006)", doi: "https://doi.org/10.1103/PhysRevA.74.052101", arxiv: "https://arxiv.org/abs/quant-ph/0608116", note: "Rényi uncertainty relation with conjugate orders 1/α + 1/β = 2, in which the momentum order ranges over (1/2, ∞)." },
     ],
-    citation: {
-      bibtex: `@misc{bruneton2026momentumrenyi,
-  author = {Jean-Philippe Bruneton},
-  title = {Momentum R\'enyi and Tsallis entropies behind hard walls: the existence threshold $1/(2(m+1))$},
-  year = {2026},
-  url = {https://openquantumproblems.com/research/momentum-renyi-threshold.pdf}
-}`,
-    },
   },
   {
     title: "A Mpemba mode invisible to every strict reduction",
@@ -1162,14 +1107,6 @@ const NEW_RESEARCH_NOTES = [
       { label: "Carollo, Lasanta & Lesanovsky, Exponentially accelerated approach to stationarity in Markovian open quantum systems through the Mpemba effect (2021)", doi: "https://doi.org/10.1103/PhysRevLett.127.060401", arxiv: "https://arxiv.org/abs/2103.05020", note: "Removes the slowest-mode component by a unitary rotation; in this example removal is local while detection is global." },
       { label: "Choquehuanca, Obando, Sarandy & de Paula, Witnessing the quantum Mpemba effect with a single observable (2026)", arxiv: "https://arxiv.org/abs/2607.12163", note: "Single-observable Mpemba witness illustrated on one qubit; the note shows such a witness can be forced to have full support in a local many-body chain." },
     ],
-    citation: {
-      bibtex: `@misc{bruneton2026mpembamode,
-  author = {Jean-Philippe Bruneton},
-  title = {A Mpemba mode invisible to every strict reduction},
-  year = {2026},
-  url = {https://openquantumproblems.com/research/locally-invisible-mpemba-mode.pdf}
-}`,
-    },
   },
   {
     title: "Covariance data cannot bound the Schmidt number, even at fixed energy",
@@ -1184,14 +1121,6 @@ const NEW_RESEARCH_NOTES = [
       { label: "Simon, Peres-Horodecki separability criterion for continuous variable systems (2000)", doi: "https://doi.org/10.1103/PhysRevLett.84.2726", arxiv: "https://arxiv.org/abs/quant-ph/9909044", note: "Covariance-matrix form of the partial-transpose criterion, necessary and sufficient for two-mode Gaussian states." },
       { label: "Shchukin, Vogel, Inseparability criteria for continuous bipartite quantum states (2005)", doi: "https://doi.org/10.1103/PhysRevLett.95.230502", arxiv: "https://arxiv.org/abs/quant-ph/0508132", note: "Hierarchy of moment conditions of all orders; the example is detected only by moments of degree at least 2m." },
     ],
-    citation: {
-      bibtex: `@misc{bruneton2026schmidtcovariance,
-  author = {Jean-Philippe Bruneton},
-  title = {Separable states with the low-order moments of states of arbitrary Schmidt rank at bounded energy},
-  year = {2026},
-  url = {https://openquantumproblems.com/research/schmidt-number-separable-covariance.pdf}
-}`,
-    },
   },
   {
     title: "How many incoherent Kraus operators?",
@@ -1208,14 +1137,6 @@ const NEW_RESEARCH_NOTES = [
       { label: "Baumgratz, Cramer and Plenio, Quantifying coherence (2014)", doi: "https://doi.org/10.1103/PhysRevLett.113.140401", arxiv: "https://arxiv.org/abs/1311.0275", note: "Defines incoherent operations through incoherent Kraus decompositions." },
       { label: "Choi, Completely positive linear maps on complex matrices (1975)", doi: "https://doi.org/10.1016/0024-3795(75)90075-0", note: "The Choi matrix on which the clique formulation is built." },
     ],
-    citation: {
-      bibtex: `@misc{bruneton2026incoherentkraus,
-  author = {Jean-Philippe Bruneton},
-  title = {How many incoherent {Kraus} operators? {A} generic lower bound in every dimension and thirteen for the qutrit},
-  year = {2026},
-  url = {https://openquantumproblems.com/research/incoherent-kraus-operators.pdf}
-}`,
-    },
   },
   {
     title: "Leakage threshold for the Margenau–Hill state of a post-selected system",
@@ -1228,14 +1149,6 @@ const NEW_RESEARCH_NOTES = [
       { label: "Kam, Wong, Forbidden subspaces in quantum state smoothing (2026)", arxiv: "https://arxiv.org/abs/2609.17307", note: "Shows that the Margenau–Hill operator is not positive when the subspace forbidden by the effect is not invariant under the state; this note quantifies how much leakage removes the obstruction and recovers the converse at zero leakage." },
       { label: "Guevara, Wiseman, Quantum state smoothing (2015)", doi: "https://doi.org/10.1103/PhysRevLett.115.180407", arxiv: "https://arxiv.org/abs/1503.02799", note: "Introduces quantum state smoothing, the setting in which a filtered state and a retrofiltered effect are combined." },
     ],
-    citation: {
-      bibtex: `@misc{bruneton2026leakage,
-  author = {Jean-Philippe Bruneton},
-  title = {How much leakage makes the {Margenau--Hill} state of a post-selected system positive},
-  year = {2026},
-  url = {https://openquantumproblems.com/research/postselection-leakage-threshold.pdf}
-}`,
-    },
   },
 ];
 
@@ -1247,8 +1160,21 @@ function NewResearchView() {
         <div className="container detail new-science-page">
           <h2>New Research</h2>
           <div className="science-caution">
-            <b>Research notes published here.</b> The stated mathematical results are proved exactly and accompanied by reproducible checks. Each note states the extent of its literature search; unless a note says otherwise, no direct antecedent for its specific results was found. Several notes settle conjectures posed in published papers.
+            <b>About the research notes published here.</b> Each note gives an exact proof of its mathematical results, with reproducible checks available on <a href="https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries" target="_blank" rel="noreferrer">GitHub</a>. Each note describes the scope of its literature search. Unless otherwise stated, the search found no earlier work establishing the same results. Several notes settle conjectures posed in published papers.
           </div>
+          <section className="research-citation">
+            <h4>To cite this work</h4>
+            <p>Use the example below for the Kirkwood–Dirac note. For another note, replace the citation key, title, year and PDF URL.</p>
+            <div className="citation-format">
+              <span>BibTeX</span>
+              <pre><code>{String.raw`@misc{bruneton2026kdz3x3,
+  author = {Jean-Philippe Bruneton},
+  title = {An exact {KD}-positive state outside the pure-state hull for the {Fourier} pair on $\mathbf{Z}_3 \times \mathbf{Z}_3$},
+  year = {2026},
+  url = {https://openquantumproblems.com/research/kd-z3x3.pdf}
+}`}</code></pre>
+            </div>
+          </section>
           <div className="research-list">
             {NEW_RESEARCH_NOTES.map((note) => (
               <article className="research-note" key={note.dossier}>
@@ -1271,13 +1197,6 @@ function NewResearchView() {
                       </li>
                     ))}
                   </ul>
-                </div>
-                <div className="research-citation">
-                  <h4>To cite this work</h4>
-                  <div className="citation-format">
-                    <span>BibTeX</span>
-                    <pre><code>{note.citation.bibtex}</code></pre>
-                  </div>
                 </div>
               </article>
             ))}
