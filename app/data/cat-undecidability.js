@@ -87,16 +87,13 @@ This asks for computability, not an efficient formula or a polynomial-time algor
     statement: r`Methods background: before asking whether a quantum quantity is computable, specify the representation of the input, the admissible operators and domains, the output norm or error criterion, and the information and termination guarantees available to an algorithm.`,
     definition: r`**Computable analysis** supplies the frameworks needed before asking whether a quantum quantity is computable: the representation of the input, the admissible operators and domains, the output norm or error criterion, and the information and termination guarantees available to an algorithm.
 
-Weihrauch's Type-2 computable analysis and Pour-El and Richards' computability structures already provide such frameworks. An algorithm receiving a name for a computable real or operator can request finite approximations; that is not the same input model as a finite rational matrix, nor permission to access infinitely many digits at once. Standard reference: Weihrauch, Computable Analysis: An Introduction (Springer, 2000), [doi:10.1007/978-3-642-56999-9](https://doi.org/10.1007/978-3-642-56999-9).`,
+Type-2 computable analysis and computability structures already provide such frameworks. An algorithm receiving a name for a computable real or operator can request finite approximations; that is not the same input model as a finite rational matrix, nor permission to access infinitely many digits at once.`,
     progress: r`- Unbounded operators require domain and topology information. Infinite-volume limits require effective error control.
-- Pour-El and Richards' wave-equation examples show how representation and regularity affect solution computability ([doi:10.1017/9781316717325](https://doi.org/10.1017/9781316717325)); they do not establish experimentally accessible quantum hypercomputation.
 - A concrete positive example is Hege, Moscolari and Teufel's spectral algorithm for normal discrete short-range infinite-volume operators with finite local complexity, using local patches and two-sided error control under the paper's input assumptions ([arXiv:2403.19055](https://arxiv.org/abs/2403.19055v2)). This is not an algorithm for every many-body thermodynamic spectral gap.`,
     residual: r`This methodological checklist supports the distinct finite-input questions U1–U4. It is background, not a new universal framework still waiting to be invented. Related: U1, U2, U3, U4, M11.`,
     evidence: [{ kind: "preprint", role: "progress", summary: "Two-sided local-patch spectral approximation for specified short-range infinite-volume operators; computability requires the finite-local-complexity/input hypotheses.", url: "https://arxiv.org/abs/2403.19055v2", date: "2025-02-14", version: "v2" }],
     relations: [{ id: "U1", type: "related" }, { id: "U2", type: "related" }, { id: "U3", type: "related" }, { id: "U4", type: "related" }, { id: "M11", type: "related" }],
     refs: [
-      { label: "Weihrauch, 'Computable Analysis: An Introduction' (Springer, 2000)", url: "https://doi.org/10.1007/978-3-642-56999-9" },
-      { label: "Pour-El & Richards, 'Computability in Analysis and Physics' (Springer, 1989; reissued by Cambridge University Press, 2017)", url: "https://doi.org/10.1017/9781316717325" },
       { label: "Hege, Moscolari & Teufel, 'Computing the spectrum and pseudospectrum of infinite-volume operators from local patches' (2024 preprint; revised 2025)", url: "https://arxiv.org/abs/2403.19055v2" },
     ] },
 ];
