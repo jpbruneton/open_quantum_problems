@@ -204,8 +204,14 @@ test("targeted literature updates preserve untouched review dates and expose pen
   // 16 November 2026, carte v2 batch: 36 new entries from nine uncovered themes of the quant-ph corpus.
   const carteV2 = ["E23", "E24", "E25", "A35", "A36", "E26", "F16", "F17", "N20", "F18", "A37", "A38", "E27", "E28", "E29", "A39", "A40", "A41", "M17", "B20", "B21", "A42", "A43", "N21", "N22", "C14", "A44", "A45", "M18", "B22", "O11", "O12", "A46", "A47", "O13", "A48"];
   for (const id of carteV2) assert.ok(november16.ids.includes(id), `${id}: in the 16 November update`);
-  assert.equal(LITERATURE_UPDATE.date, "2026-11-20");
-  assert.deepEqual([...LITERATURE_UPDATE.ids].sort(), ["A24", "A49", "A50", "A51", "A52", "A53", "B12", "B15", "B16", "B23", "C10", "C11", "E21", "E30", "F14", "F8", "G1", "G3", "H1", "H4", "M19", "M20", "N2", "N3", "O2", "QF11", "QF5", "QF7", "QG3", "QG4", "QG6", "QG7", "QG8", "R3"]);
+  // 21 November 2026: full-reading bibliography of F4 (Frauchiger–Renner critiques, Local Friendliness theorems and tests).
+  assert.equal(LITERATURE_UPDATE.date, "2026-11-21");
+  assert.deepEqual(LITERATURE_UPDATE.ids, ["F4"]);
+  assert.ok(fs.existsSync(path.join(root, "docs/reviews/2026-11-21-literature-update.md")), "missing F4 report");
+  assert.equal(getProblem("F4").status, "open", "F4: a conceptual programme, no status change");
+  assert.ok(getProblem("F4").provenance.some((item) => item.url.includes("2611.17431")), "F4: Polino et al. AI-use disclosure");
+  const november20 = LITERATURE_UPDATES.find((update) => update.date === "2026-11-20");
+  assert.deepEqual([...november20.ids].sort(), ["A24", "A49", "A50", "A51", "A52", "A53", "B12", "B15", "B16", "B23", "C10", "C11", "E21", "E30", "F14", "F8", "G1", "G3", "H1", "H4", "M19", "M20", "N2", "N3", "O2", "QF11", "QF5", "QF7", "QG3", "QG4", "QG6", "QG7", "QG8", "R3"]);
   assert.ok(fs.existsSync(path.join(root, "docs/reviews/2026-11-16-new-problems-carte-v2.md")), "missing carte v2 report");
   for (const [id, source] of [["E23", "2610.00527v2"], ["A46", "2610.23560v1"], ["A47", "2609.31312v1"]]) {
     assert.equal(getProblem(id).status, "claimed-solved", `${id}: unassessed preprint claim`);

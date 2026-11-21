@@ -79,6 +79,11 @@ export const REVIEW = {
 
 // A targeted literature update does not reset the full-review date of every entry.
 export const LITERATURE_UPDATES = [{
+  date: "2026-11-21",
+  label: "21 November 2026",
+  ids: ["F4"],
+  reportUrl: "https://github.com/jpbruneton/open_quantum_problems/blob/main/docs/reviews/2026-11-21-literature-update.md",
+}, {
   date: "2026-11-20",
   label: "20 November 2026",
   ids: ["A49", "A50", "B23", "A24", "C11", "E21", "C10", "R3", "H4", "B12", "QG4", "B16", "N2", "N3", "O2", "B15", "F8", "M19", "M20", "A51", "A52", "E30", "A53", "QF11", "QG8", "QG3", "G1", "H1", "QG7", "F14", "QG6", "G3", "QF5", "QF7"],
