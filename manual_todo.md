@@ -112,6 +112,25 @@ Lectures publiques restées partielles à l'issue de cette relecture. Les textes
 | F. Camia, J. Jiang, C. M. Newman, arXiv:1709.00582 (théorème 4) et arXiv:1707.02668 (proposition 2, lemme 11) ; F. Camia, C. Garban, C. M. Newman, arXiv:1205.6610, 1205.6612, 1307.3926 | Énoncés des théorèmes cités, relus par les relecteurs | centre-disque-critique, amplitude-par-correlations, quadrature-onsager, champ-complexe-critique, zeros-du-polynome-impair | Existence de l'amplitude critique, exposant 1/15, limite d'échelle du champ d'aimantation |
 | S. C. Park, T. Virtanen, C. Webb, « Near-critical Ising, sine-Gordon at the free fermion point, and bosonization », arXiv:2512.11304v2 | Résumé seul ; le texte fait plus de 500 000 caractères | equation-etat-echelle, equation-etat-deux-phases | Travail récent voisin, sans champ magnétique : Ising quasi-critique en température et sine-Gordon au point de fermions libres ; non cité dans les notes |
 
+### Manuscrit privé du 21 novembre 2026 (`ising-2d-champ/manuscript/`)
+
+Sources classiques que le manuscrit nomme sans les citer, faute de lecture intégrale. Les notices marquées « à vérifier » sont reprises des bibliographies d'articles lus en entier, non de la source elle-même. Lee et Yang (1952), Kurtze et Fisher (1979) et Guttmann et Enting (1996) figurent déjà dans le tableau ci-dessus.
+
+| Référence | Accès | Ce qu'elle soutiendrait | Déposée |
+|---|---|---|---|
+| L. Onsager, « Crystal statistics. I. A two-dimensional model with an order-disorder transition », Phys. Rev. 65, 117 (1944) | APS payant | Pression à champ nul et point critique du réseau carré | |
+| C. N. Yang, « The spontaneous magnetization of a two-dimensional Ising model », Phys. Rev. 85, 808 (1952) | APS payant | Formule de l'aimantation spontanée, employée dans le théorème de convexité ; il faudra aussi une source établissant qu'elle est la limite de l'aimantation en champ tendant vers zéro | |
+| R. B. Griffiths, C. A. Hurst, S. Sherman, « Concavity of magnetization of an Ising ferromagnet in a positive external field », J. Math. Phys. 11, 790 (1970), doi:10.1063/1.1665211 ; notice à vérifier | AIP payant | Inégalité sur les troisièmes cumulants, employée dans le théorème de convexité | |
+| T. de Neef, I. G. Enting, « Series expansions from the finite lattice method », J. Phys. A 10, 801–805 (1977) ; notice à vérifier | IOP payant | Origine de la méthode des réseaux finis, citée à travers Chan | |
+| R. J. Baxter, I. G. Enting, « Series expansions from corner transfer matrices: the square lattice model », J. Stat. Phys. 21, 103–123 (1979) ; I. G. Enting, R. J. Baxter, « An investigation of the high-field series expansions for the square lattice Ising model », J. Phys. A 13, 3723–3734 (1980) ; notices à vérifier | Springer et IOP payants | Antériorité possible : séries de champ fort du carré, ordres atteints et propriétés de signe éventuellement relevées | |
+| M. F. Sykes, J. W. Essam, D. S. Gaunt, « Derivation of low-temperature expansions for the Ising model of a ferromagnet and an antiferromagnet », J. Math. Phys. 6, 283 (1965) ; notice à vérifier | AIP payant | Antériorité possible : polynômes de champ fort des premiers ordres | |
+| I. Jensen, A. J. Guttmann, I. G. Enting, « Low-temperature series expansions for the spin-1 Ising model », J. Phys. A 27, 6987–7005 (1994) ; « Low-temperature series expansions for the square lattice Ising model with spin S > 1 », J. Phys. A 29, 3805–3815 (1996) ; notices à vérifier, versions arXiv à chercher | IOP payant | Mise en œuvre de la méthode des réseaux finis avec la variable de champ | |
+| D. S. Gaunt, Phys. Rev. 179, 174 (1969) ; M. E. Fisher, Phys. Rev. Lett. 40, 1610 (1978) ; G. A. Baker Jr., P. Moussa, J. Appl. Phys. 49, 1360 (1978) ; titres à relever | APS et AIP payants | Réduction du bord de Lee–Yang à haute température au gaz de dimères, rappelée à travers Butera et Pernici | |
+| C. D. Godsil, *Algebraic Combinatorics*, Chapman and Hall (1993) | livre | Identité de l'arbre des chemins pour le polynôme des couplages, citée à travers Abért, Csikvári et Hubai | |
+| O. Penrose, « Convergence of fugacity expansions for classical systems », dans *Statistical Mechanics: Foundations and Applications*, Benjamin (1967) ; notice à vérifier | livre | Borne des coefficients d'Ursell par le nombre d'arbres couvrants | |
+
+Deux sources sont probablement en accès libre sur Project Euclid et n'ont pas été lues, faute de temps le 21 novembre ; elles ne demandent pas de dépôt : C. M. Fortuin, P. W. Kasteleyn, J. Ginibre, « Correlation inequalities on some partially ordered sets », Commun. Math. Phys. 22, 89–103 (1971), pour l'inégalité FKG ; O. J. Heilmann, E. H. Lieb, « Theory of monomer-dimer systems », Commun. Math. Phys. 25, 190–232 (1972), pour la réalité des racines du polynôme des couplages.
+
 ## Lecture intégrale du catalogue (19-20 novembre 2026), lots 1 à 55
 
 Lecture arrêtée à 53 lots terminés sur 101 (fichiers channels, complexity, entanglement, foundations, holography, many-body, nonlocality). Détail : `oqmresearch/docs/research/bilans/2026-11-19-lecture-catalogue/`.
