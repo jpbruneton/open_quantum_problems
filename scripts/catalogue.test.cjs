@@ -566,3 +566,38 @@ test("draft trends page renders, is not linked from home, and its entry links re
   }
   for (const t of TRENDS.gaps) assert.equal(t.entries.length, 0, `${t.label}: gap with entries`);
 });
+
+test("robots, sitemap and llms.txt expose every public page and keep the draft trends page out", () => {
+  const { ALL_PROBLEMS, CATEGORIES, LITERATURE_UPDATES } = loadApp("app/data/problems.js");
+  const { PRIORITY_RECORDS } = loadApp("app/data/proposals.js");
+  const { NEW_RESEARCH_NOTES } = loadApp("app/data/research-notes.js");
+  const site = "https://openquantumproblems.com";
+  const robots = loadApp("app/robots.js").default();
+  assert.equal(robots.sitemap, `${site}/sitemap.xml`);
+  assert.equal(robots.rules.allow, "/");
+  const sitemap = loadApp("app/sitemap.js").default();
+  const urls = sitemap.map((u) => u.url);
+  assert.equal(new Set(urls).size, urls.length, "duplicate sitemap URL");
+  for (const p of ALL_PROBLEMS) assert.ok(urls.includes(`${site}/p/${p.id}`), p.id);
+  for (const c of CATEGORIES) assert.ok(urls.includes(`${site}/c/${c.slug}`), c.slug);
+  for (const it of PRIORITY_RECORDS) assert.ok(urls.includes(`${site}/np/${it.key}`), it.key);
+  for (const path of ["/", "/new-problems", "/new-research", "/sharp", "/improved", "/claimed-solved", "/lean-verified", "/similar"]) assert.ok(urls.includes(`${site}${path}`), path);
+  const pdfs = fs.readdirSync(path.join(root, "public/research")).filter((f) => f.endsWith(".pdf"));
+  assert.equal(NEW_RESEARCH_NOTES.length, pdfs.length, "every published PDF has a New Research card");
+  for (const n of NEW_RESEARCH_NOTES) {
+    const pdf = n.pdf.split("?")[0];
+    assert.ok(fs.existsSync(path.join(root, "public", pdf)), pdf);
+    assert.ok(urls.includes(`${site}${pdf}`), pdf);
+    assert.match(n.updated, /^\d{4}-\d{2}-\d{2}$/);
+  }
+  assert.ok(!urls.some((u) => u.includes("/trends")), "draft trends page must stay out of the sitemap");
+  for (const u of sitemap) assert.match(u.lastModified, /^\d{4}-\d{2}-\d{2}$/, u.url);
+  const latest = LITERATURE_UPDATES[0];
+  for (const id of latest.ids) assert.equal(sitemap.find((u) => u.url === `${site}/p/${id}`).lastModified, latest.date, id);
+  const { llmsTxt, llmsFullTxt } = loadApp("app/llms.js");
+  const index = llmsTxt(), full = llmsFullTxt();
+  assert.ok(index.startsWith("# Open Quantum Problems\n\n> "));
+  for (const p of ALL_PROBLEMS) assert.ok(index.includes(`${site}/p/${p.id})`), p.id);
+  for (const p of ALL_PROBLEMS.filter((q) => !q.archive)) assert.ok(full.includes(`## ${p.id} · `), p.id);
+  for (const text of [index, full]) assert.ok(!text.includes("/trends"), "draft trends page must stay out of llms.txt");
+});
