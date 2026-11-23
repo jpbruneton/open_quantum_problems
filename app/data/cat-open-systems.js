@@ -328,7 +328,8 @@ Machado et al. map probabilistic cellular automata to continuous-time Langevin d
   { id: "O12",
     cat: "open-systems",
     horizon: "sharp",
-    reviewedAt: "2026-11-16",
+    status: "claimed-solved",
+    reviewedAt: "2026-11-23",
     title: "Triplet reduction for the Markovian Mpemba effect",
     statement: r`(Avitan, Factor and Gelbwaser-Klimovsky 2026.) An $N$-level system with energies $E_1<\dots<E_N$ relaxes under a Pauli master equation $\dot{\mathbf p}=M\mathbf p$ whose rates obey detailed balance at bath inverse temperature $0<\beta_b<\infty$. From a thermal initial state at $\beta_{\rm in}$, write $\mathbf p(t)-\pi(\beta_b)=\sum_{k\ge2}b_k(\beta_{\rm in})e^{\lambda_kt}\mathbf v_k$ with $0>\lambda_2>\lambda_3\ge\cdots$. Following Lu and Raz, a Markovian Mpemba effect occurs if and only if $|b_2|$, as a function of $\beta_{\rm in}$, has a maximum at some $\beta_{\rm in}\neq\beta_b$. For each triplet $i<j<k$, let $\mathcal C_{ijk}$ be the three-level necessary conditions of Avitan et al. (their Eq. (3)) applied to the rates among $\{i,j,k\}$. Prove or refute: if every triplet violates $\mathcal C_{ijk}$, the $N$-level system shows no Markovian Mpemba effect.`,
     definition: r`**The Markovian Mpemba effect** is the faster relaxation of a system prepared farther from equilibrium. For Markov jump processes, Lu and Raz reduced it to the non-monotonicity of the slowest-mode coefficient $b_2$, “Nonequilibrium thermodynamics of the Markovian Mpemba effect and its inverse”, PNAS 114, 5083 (2017), [arXiv:1609.05271](https://arxiv.org/abs/1609.05271). Klich, Raz, Hirschberg and Vucelja introduced the strong effect and the Mpemba index, PRX 9, 021060 (2019), [arXiv:1711.05829](https://arxiv.org/abs/1711.05829).
@@ -337,8 +338,24 @@ The conjecture is stated by Avitan, Factor and Gelbwaser-Klimovsky in the sectio
     progress: r`- Avitan, Factor and Gelbwaser-Klimovsky (4 March 2026, v1) derive necessary conditions on the rates of a three-level system. At zero bath temperature ($M$ triangular, non-degenerate eigenvalues) they prove by induction that no $N$-level system shows the effect when every triplet strongly violates the conditions. At finite temperature, random sampling of 4- to 7-level systems supports the conjecture ([arXiv:2603.04567](https://arxiv.org/abs/2603.04567v1)).
 - Gelbwaser-Klimovsky (9 September 2026, v1) gives necessary and sufficient conditions for three-level systems and an algorithm to find Mpemba parameters in $N$-level systems. He writes that “we cannot use the 3LS mechanisms to rule out or ensure the Markovian Mpemba effect in an N-level system”; four-level sampling ($5\times10^5$ realizations) is consistent with the conjecture ([arXiv:2609.09988](https://arxiv.org/abs/2609.09988v1)). That paper describes the triplet implication as shown in the earlier work, whereas the earlier work proves it only at zero bath temperature.
 - The review of Ares, Calabrese and Murciano (Nat. Rev. Phys. 7, 451 (2025)) gives no general necessary and sufficient condition for open systems ([arXiv:2502.08087](https://arxiv.org/abs/2502.08087)).`,
-    residual: r`The finite-temperature conjecture is open, as is a characterization of which $N$-level systems show the effect. Sub-targets: $N=4$ at finite $\beta_b$, using the exact three-level conditions of 2609.09988; or a four-level counterexample found by targeted optimization rather than uniform sampling. Weak versus strong violation of the triplet conditions should be kept apart: the zero-temperature proof needs strong violation.`,
+    claim: r`**The Omega Institute, trureturing repository, [pull request #17892 “Settle Avitan–Factor–Gelbwaser-Klimovsky 2026”](https://github.com/the-omega-institute/trureturing/pull/17892)** (merged 16 October 2026; preregistered the same day in [issue #17871](https://github.com/the-omega-institute/trureturing/issues/17871)). The result is published on GitHub only: no article or preprint presenting it was found.
+
+What it claims:
+- The conjecture is false at finite bath temperature. The counterexample has four levels, energies $E=(0,1,2,64)\log16$ and $\beta_b=1$, so that the Boltzmann weights are $w=(1,\tfrac1{16},\tfrac1{256},r)$ with $r=16^{-64}$. With $g=(0,1,\tfrac23,\tfrac8{15})$ and $\mu=w\cdot g/\sum_iw_i$, the downward rates are $a_{12}=\tfrac{47}{48}-\mu-\tfrac{112}{25}r$, $a_{13}=\tfrac32-\tfrac32\mu-\tfrac{128}{25}r$, $a_{14}=\tfrac{31}{20}-\tfrac{15}8\mu$, $a_{23}=1$, $a_{24}=\tfrac35$, $a_{34}=\tfrac1{10}$, and the upward rates follow from detailed balance.
+- All four triplets violate the three-level conditions (Eq. (3) of Avitan et al.), yet the overlap of the thermal initial state with the slowest mode has an interior maximum on the hot side, so the system shows the Markovian Mpemba effect.
+- The pull request reports a Lean formalization of the refutation.
+
+Caveats:
+- The claim is neither peer reviewed nor posted as a manuscript, and the repository is a public collection of automated resolutions of arXiv conjectures. Hence “Claimed solved” rather than “Solved”, and no “Lean verified” badge: the Lean file could not be read for this catalogue.
+- An exact recomputation made for this catalogue (rational arithmetic; eigenvalues to 120 digits) reproduces the counterexample: the twelve rates are positive, the slow mode is $f=g-\mu$ with eigenvalue $-1$ (the other nonzero eigenvalues are $-2.1355$ and $-2.4519$), the four triplets violate the conditions in both branches, and the overlap takes the values $0.4890371$ and $0.4892978$ at $16^{-\beta_{\rm in}}=1023/1024$ and $127/128$ while it vanishes at $\beta_b$. This check is not an independent expert assessment.
+- The transcription of the conjecture and of Eq. (3) in the issue was compared with the main text of the source; the supplement of the source was not read.`,
+    residual: r`If the claim holds, the triplet reduction fails at finite temperature already for $N=4$, and the three-level conditions cannot by themselves exclude the effect in larger systems. What remains is assessment of the counterexample by the authors of the conjecture or in a refereed publication, and the broader question of which $N$-level systems show the effect. The counterexample uses an extreme energy scale ($r=16^{-64}$); whether counterexamples exist with moderate parameters, and why uniform sampling up to seven levels missed them, is open. The zero-temperature theorem (strong violation by every triplet) is unaffected.`,
     evidence: [
+      { kind: "preprint",
+        role: "claimed-solution",
+        summary: "Claimed refutation of the finite-temperature triplet conjecture by an explicit four-level system whose four triplets violate the three-level conditions while the Mpemba effect occurs. GitHub pull request with a reported Lean formalization; no article or preprint; not peer reviewed.",
+        url: "https://github.com/the-omega-institute/trureturing/pull/17892",
+        date: "2026-10-16" },
       { kind: "preprint",
         role: "progress",
         summary: "Three-level necessary conditions on rates; proof at zero bath temperature that strong violation by every triplet excludes the Mpemba effect in N-level systems; finite-temperature conjecture supported by sampling up to 7 levels.",
@@ -352,9 +369,13 @@ The conjecture is stated by Avitan, Factor and Gelbwaser-Klimovsky in the sectio
         date: "2026-09-09",
         version: "v1" },
     ],
-    provenance: [],
+    provenance: [
+      { summary: "The claimed refutation comes from the trureturing repository of The Omega Institute, a public collection of automated resolutions of conjectures from arXiv papers, with Lean files. How the mathematics was produced, and by whom, was not established for this catalogue.", url: "https://github.com/the-omega-institute/trureturing/pull/17892" },
+    ],
     relations: [],
     refs: [
+      { label: "The Omega Institute, trureturing repository, pull request #17892 'Settle Avitan–Factor–Gelbwaser-Klimovsky 2026' (GitHub, merged 16 October 2026)", url: "https://github.com/the-omega-institute/trureturing/pull/17892" },
+      { label: "The Omega Institute, trureturing repository, issue #17871 (preregistration of the refutation, 16 October 2026)", url: "https://github.com/the-omega-institute/trureturing/issues/17871" },
       { label: "Avitan, Factor & Gelbwaser-Klimovsky, 'Necessary conditions for the Markovian Mpemba effect' (2026 preprint, v1)", url: "https://arxiv.org/abs/2603.04567" },
       { label: "Gelbwaser-Klimovsky, 'Efficient protocol for the Markovian Mpemba effect in N-level systems' (2026 preprint, v1)", url: "https://arxiv.org/abs/2609.09988" },
       { label: "Lu & Raz, 'Nonequilibrium thermodynamics of the Markovian Mpemba effect and its inverse', PNAS 114, 5083 (2017)", url: "https://arxiv.org/abs/1609.05271" },

@@ -1,0 +1,46 @@
+{
+ "group": "Z_5 x Z_5",
+ "u": [
+  [
+   0,
+   1,
+   -1,
+   -1,
+   1
+  ],
+  [
+   0,
+   1,
+   -1,
+   -1,
+   1
+  ],
+  [
+   0,
+   1,
+   -1,
+   -1,
+   1
+  ],
+  [
+   0,
+   -1,
+   1,
+   1,
+   -1
+  ]
+ ],
+ "trace_is_one": true,
+ "min_N_Q": "799/10000000",
+ "kd_positive": true,
+ "Tr_W_rho": "-2181631/10000000",
+ "witness_negative": true,
+ "pure_states": 200,
+ "min_Tr_W_pure": "0",
+ "witness_nonnegative_on_pure": true,
+ "float_convention_check_max_error": 5.476162193697165e-18,
+ "float_Tr_W_rho": -0.21816309999999994,
+ "positive_definite_certified": true,
+ "eigenvalue_lower_bound": "[7.9989666527291698318435630383974191227012527945e-5 +/- 1.29e-53]",
+ "all_ok": true
+}
