@@ -960,3 +960,6 @@ Fichiers nonlocality (fin), open-systems, qft, quantum-gravity, renormalization,
 | Kumar et al., Unlearnable phases of matter, arXiv:2602.11262v2 | coupée annexe J | PB5 | mixed-state phases, restricted SQ model | |
 | Huang, Kueng, Torlai, Albert, Preskill, arXiv:2106.12627 | coupée annexe D.1 (fig. 8) | PB5 | ML phase classification | |
 | Romero, Chen, Ban, Cumulative locality governs collective quantum charging, arXiv:2610.28614 | coupée dans le matériel supplémentaire (exemple de la chaîne XY) | PO4 | N^{3/2} versus N^2 gap for free-fermion chargers (kept) | |
+| F. Szöllősi, All complex equiangular tight frames in dimension 3, arXiv:1402.6429 | non lue (faute de temps dans la session N22) | N22 | every qutrit SIC is (anti)unitarily equivalent to a member of the one-parameter family E_theta, theta in [0, pi/9] | |
+| L. P. Hughston, S. M. Salamon, Surveying points in the complex projective plane, Adv. Math. 286, 1017 (2016) | article de revue, non lu dans la session | N22 | classification of qutrit SICs (all Weyl–Heisenberg covariant, one-parameter family) | |
+| H. Zhu, SIC POVMs and Clifford groups in prime dimensions, J. Phys. A 43, 305305 (2010) | non lue dans la session | N22 | parametrisation theta in [0, pi/9] of qutrit SIC fiducials up to Clifford equivalence | |
