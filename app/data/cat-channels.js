@@ -70,12 +70,12 @@ Scope:
 
   { id: "C2", cat: "channels", horizon: "incremental", status: "improved",
     provenance: [
-      { summary: "Mele, Catalano, Fanizza, Giovannetti and Lami credit ChatGPT with substantial help in finding the non-Gaussian counterexample after their own attempts.", url: "https://arxiv.org/abs/2607.27449v1", version: "v1" },
+      { summary: "Mele, Catalano, Fanizza, Giovannetti and Lami state in v2 that they used OpenAI GPT-5.5, GPT-5.6 and GPT-6 and Anthropic Claude Opus 5, Opus 5.5 and Fable 5.1 to search for and simplify the non-Gaussian inputs, explore approaches and draft arguments, and that they verified everything independently. In v1 they credited ChatGPT 5.6 Sol with producing the non-Gaussian counterexample families after earlier failed attempts.", url: "https://arxiv.org/abs/2607.27449v2", version: "v2" },
     ],
     evidence: [
-      { kind: "preprint", role: "progress", summary: "Thermal-input bound optimal among single-mode Gaussian inputs; a certified non-Gaussian input gives positive capacity beyond the Gaussian threshold.", url: "https://arxiv.org/abs/2607.27449v1", date: "2026-07-29", version: "v1" },
+      { kind: "preprint", role: "progress", summary: "Two uses attain the multimode Gaussian optimum, which equals the thermal-input bound for N_th ≥ 0.296 but not below; non-Gaussian inputs give positive capacity below the thermal threshold at every N_th > 0; a new upper bound fixes the energy-unconstrained capacity to first order in the loss.", url: "https://arxiv.org/abs/2607.27449v2", date: "2026-11-19", version: "v2" },
     ],
-    reviewedAt: "2026-11-08",
+    reviewedAt: "2026-11-23",
     relations: [{ id: "C3", type: "related" }, { id: "C10", type: "parent" }],
     title: "Quantum capacity of the thermal attenuator",
     statement: r`For a bosonic thermal attenuator with transmissivity $\eta$, environment mean occupation $N_{\rm th}$ and mean input-photon budget $N_S$ per use, determine the unassisted quantum capacity $Q(\eta,N_{\rm th},N_S)$ outside known zero-capacity and pure-loss cases. Treat private capacity as a separate subtarget.`,
@@ -86,14 +86,14 @@ The zero-temperature pure-loss case is solved, and some noisy regimes are known 
 - Upper bounds follow from channel decompositions, data processing and two-way bounds such as PLOB ([arXiv:1510.08863](https://arxiv.org/abs/1510.08863)); coherent information yields achievable lower bounds.
 - Rosati, Mari and Giovannetti give narrow bounds for the capacity of thermal attenuators ([Nature Communications 9, 4339 (2018)](https://www.nature.com/articles/s41467-018-06848-0)).
 - Correlated multimode Gaussian coding can improve on product thermal-input strategies (Noh, Pirandola and Jiang, [Nature Communications 11, 457 (2020)](https://www.nature.com/articles/s41467-020-14329-6)).
-- Mele, Catalano, Fanizza, Giovannetti and Lami prove that the Holevo–Werner thermal-input lower bound ([arXiv:quant-ph/9912067](https://arxiv.org/abs/quant-ph/9912067)) is the exact optimum over single-mode Gaussian inputs, and that a non-Gaussian input beats it (29 July 2026, v1) ([arXiv:2607.27449](https://arxiv.org/abs/2607.27449)). Hence the capacity is positive in a region where the channel is not antidegradable but every single-mode Gaussian input gives zero coherent information. For one thermal environment photon they narrow the positivity threshold to $0.75\le\eta_c\le0.7841<4/5$.`,
+- Mele, Catalano, Fanizza, Giovannetti and Lami determine the optimum over Gaussian inputs across any number of uses: two uses suffice, and the Holevo–Werner thermal-input bound $[\log_2(\eta/(1-\eta))-g(N_{\rm th})]_+$, with $g(x)=(x+1)\log_2(x+1)-x\log_2x$ ([arXiv:quant-ph/9912067](https://arxiv.org/abs/quant-ph/9912067)), is optimal among all multimode Gaussian inputs when $N_{\rm th}\ge\nu_c\approx0.296$, while for $0<N_{\rm th}<\nu_c$ a separable two-mode Gaussian input beats it at and just below the thermal threshold $\eta_G=2^{g(N_{\rm th})}/(1+2^{g(N_{\rm th})})$ (v1 of 29 July 2026; v2 of 19 November 2026) ([arXiv:2607.27449](https://arxiv.org/abs/2607.27449v2)). A finite-energy mixture of two displaced squeezed states gives positive capacity for every $N_{\rm th}>0$ whenever $\eta>(8N_{\rm th}^2+9N_{\rm th}+2)/[4(2N_{\rm th}+1)(N_{\rm th}+1)]$, a threshold strictly between the antidegradability threshold and $\eta_G$. For one thermal photon, certified Fock-comb inputs give $0.75\le\eta_c\le0.7841<19/24<4/5$. A new degradable-extension upper bound shows that, at fixed $N_{\rm th}>0$ and without an energy constraint, $Q=\log_2(1/\varepsilon)-g(N_{\rm th})-\varepsilon/\ln2+O(\varepsilon^2\log(1/\varepsilon))$ as the loss $\varepsilon=1-\eta$ tends to zero.`,
     residual: r`The exact capacity and the exact positivity threshold remain open. The target is matching achievable and converse bounds for fixed $(\eta,N_{\rm th},N_S)$. Across this three-parameter family progress is incremental: closing the gap on a specified parameter region counts, and no single proof or counterexample settles every point.
 
 Cautions:
 - “Gaussian optimization” must not silently mean a one-mode product ansatz, and the remaining upper/lower gaps should not all be called uniformly small.
 - Private capacity requires its own coding and secrecy definition and should not be assumed equal to quantum capacity.`,
     refs: [
-      { label: "Mele, Catalano, Fanizza, Giovannetti & Lami, 'Bosonic quantum communication beyond the thermal threshold' (2026 preprint, v1) (found via the QIQCOP Zoo)", url: "https://arxiv.org/abs/2607.27449v1" },
+      { label: "Mele, Catalano, Fanizza, Giovannetti & Lami, 'Bosonic quantum communication beyond the thermal threshold' (2026 preprint, v2) (found via the QIQCOP Zoo)", url: "https://arxiv.org/abs/2607.27449v2" },
       { label: "Holevo & Werner, 'Evaluating capacities of bosonic Gaussian channels', PRA 63, 032312 (2001); arXiv December 1999", url: "https://arxiv.org/abs/quant-ph/9912067" },
       {"label":"Rosati, Mari & Giovannetti, 'Narrow bounds for the quantum capacity of thermal attenuators', Nature Communications 9, 4339 (2018)","url":"https://www.nature.com/articles/s41467-018-06848-0"},
       {"label":"Noh, Pirandola & Jiang, 'Enhanced energy-constrained quantum communication over bosonic Gaussian channels', Nature Communications 11, 457 (2020)","url":"https://www.nature.com/articles/s41467-020-14329-6"},

@@ -860,8 +860,9 @@ The conjecture is attributed to Geelen in R. McCarty's thesis, “Local structur
   { id: "E26",
     cat: "entanglement",
     horizon: "sharp",
-    status: "improved",
-    reviewedAt: "2026-11-16",
+    status: "claimed-solved",
+    lean: { url: "https://github.com/rrajasek95/krenn-conjecture/blob/7f78a17ecedd245bd1c17b0dce3f6a9ea2afd66f/formal/upstream-adapter/FullProof.lean#L29", note: "The normalized equation system over the complex numbers, for every even N ≥ 6 and every D ≥ 3, is formalized in Lean 4 against the Formal Conjectures definitions of monochromatic quantum graphs; the repository's axiom report lists only propext, Classical.choice and Quot.sound. The build was not rerun here." },
+    reviewedAt: "2026-11-23",
     title: "Krenn–Gu conjecture on GHZ graphs",
     statement: r`(Conjecture of Krenn and Gu, as stated by Chandran and Gajjala; model of Krenn, Gu and Soltész 2019.) Let $G$ be a loopless multigraph whose edges carry colours from $\{1,\dots,d\}$ (in the general model each half-edge carries its own colour, allowing bichromatic edges) and nonzero complex weights. Each perfect matching induces a vertex colouring, with weight equal to the product of its edge weights. The weight of a vertex colouring is the sum of the weights of the perfect matchings inducing it. $G$ is a GHZ graph if every monochromatic induced colouring has weight $1$ and every non-monochromatic one has weight $0$; its dimension is the number of monochromatic colourings that occur. Conjecture: every GHZ graph on more than four vertices has dimension at most $2$. Physically, path-identity photonic set-ups without additional resources could then not produce GHZ states of more than four photons with local dimension $3$ or more.`,
     definition: r`**GHZ graphs.** Krenn, Gu and Zeilinger showed that a class of photonic experiments (path identity with probabilistic pair sources) corresponds to graphs whose vertices are photon paths and whose edges are pair sources. The output state is a coherent superposition over perfect matchings, “Quantum Experiments and Graphs: Multiparty States as coherent superpositions of Perfect Matchings”, PRL 119, 240403 (2017), [arXiv:1705.06646](https://arxiv.org/abs/1705.06646). The complete graph $K_4$ gives a three-dimensional four-photon GHZ state. Krenn, Gu and Soltész introduced the general model with complex edge weights and bicoloured edges, in which a GHZ graph produces a $d$-dimensional GHZ state, and stated the related graph-theoretic questions in “Questions on the structure of perfect matchings inspired by quantum physics”, Proc. 2nd Croatian Combinatorial Days (2019), [arXiv:1902.06023](https://arxiv.org/abs/1902.06023).
@@ -871,8 +872,20 @@ Chandran and Gajjala report that the conjecture “has been extensively publiciz
 - Cervera-Lierta, Krenn and Aspuru-Guzik (Quantum 6, 836, 2022) used SAT solvers to show that, without bichromatic edges (multi-edges allowed, per Table 1 of Chandran and Gajjala 2026), the dimension is at most $2$ on six vertices and at most $3$ on eight vertices ([arXiv:2109.13273](https://arxiv.org/abs/2109.13273)).
 - Chandran and Gajjala (Quantum 8, 1396, 2024) proved that no simple GHZ graph on $n>4$ vertices has dimension $d\ge n/\sqrt2$, even with bichromatic edges ([arXiv:2304.06407](https://arxiv.org/abs/2304.06407v3)).
 - Chandran, Gajjala and Illickan (MFCS 2024) proved the conjecture for graphs of vertex connectivity at most $2$ and for cubic graphs, and showed that a minimal counterexample must be $4$-connected ([arXiv:2407.00303](https://arxiv.org/abs/2407.00303v1)).
-- Chandran and Gajjala (15 October 2026) proved that every simple connected GHZ graph on at least four vertices has dimension at most $2^{\kappa(G)-1}+\binom{\kappa(G)}{2}$, where $\kappa$ is the vertex connectivity. They also gave a combinatorial proof that simple graphs have matching index at most $2$ on six vertices and at most $3$ on eight, and a bound in terms of maximum degree for multigraphs ([arXiv:2610.22190](https://arxiv.org/abs/2610.22190v1)).`,
-    residual: r`The conjecture is open in general, in particular for $4$-connected graphs, multigraphs and bichromatic edges. Chandran and Gajjala note that the optimal dependence on $\kappa(G)$ is open, including whether a polynomial bound in $\kappa(G)$ holds, and that a short purely combinatorial proof of the four-vertex result is still missing. Sub-targets: prove the conjecture for simple $4$-connected graphs of bounded maximum degree; obtain a bound polynomial in $\kappa(G)$.`,
+- Chandran and Gajjala (15 October 2026) proved that every simple connected GHZ graph on at least four vertices has dimension at most $2^{\kappa(G)-1}+\binom{\kappa(G)}{2}$, where $\kappa$ is the vertex connectivity. They also gave a combinatorial proof that simple graphs have matching index at most $2$ on six vertices and at most $3$ on eight, and a bound in terms of maximum degree for multigraphs ([arXiv:2610.22190](https://arxiv.org/abs/2610.22190v1)).
+- Krenn, Firsching, Tsoukalas, Gajjala, Gu and Chaudhuri (19 November 2026, v1) prove that no complex-weighted monochromatic quantum graph exists for even $N\ge4$ when $D\ge N$, with multigraphs and bichromatic edges allowed ([arXiv:2611.26300](https://arxiv.org/abs/2611.26300v1)). A weighted sum of amplitudes whose coefficients factor vertex by vertex vanishes on the graph amplitudes but not on the GHZ target; the argument reduces to an $(N-1)\times N$ matrix of effective edge weights at one vertex. The proof was first found as a Lean proof by AlphaProof Nexus. Their Table I and outlook report that the full conjecture was later proved, with a Lean formalization, and state that no human had yet digested that proof.`,
+    claim: r`**[“A two-replica proof of the Krenn–Gu conjecture”](https://github.com/rrajasek95/krenn-conjecture/blob/1db2e5a23d97e3b2d03c30c6d9af773111ec682b/proofs/krenn-gu-all-orders-paper.pdf)** (22-page paper dated 26 September 2026, revised 27 September, in the GitHub repository [rrajasek95/krenn-conjecture](https://github.com/rrajasek95/krenn-conjecture), not on arXiv). The PDF names no author; Krenn et al. attribute the proof to Rishi Rajasekaran, the repository's committer.
+
+What it claims:
+- Theorem 1.2: for every even number of vertices greater than four, no complex-weighted half-edge-coloured multigraph has nonzero amplitudes on at least three monochromatic colourings and zero amplitude on every mixed colouring. Arbitrary nonzero pure amplitudes, parallel edges and bichromatic edges are allowed; this is the statement above.
+- Method: two formal copies of the matching polynomial with a common pairing table and their complex orthogonal symmetries give vanishing identities. These force every aggregate bichromatic weight to zero (Lemma 4.2) and every supported edge of an active colour to carry the whole amplitude of that colour (Theorem 5.1), so each colour is a perfect matching; Bogdanov's three-matching obstruction then gives a mixed matching with nonzero amplitude.
+- A Lean 4 formalization of the normalized equation system for all even $N\ge6$ and $D\ge3$, connected by an adapter to the exact definitions of the Formal Conjectures file on monochromatic quantum graphs.
+
+Caveats:
+- Not peer reviewed and not on arXiv. The Lean build was not rerun here; hence “Claimed solved” rather than “Solved”.
+- Formal Conjectures pull request #6627 (26 September 2026), which marks the statement as solved with this proof link, was not merged when checked on 23 November 2026; the upstream file still marks it open.
+- Krenn et al. (arXiv:2611.26300) cite the proof as a full solution formally verified in Lean, and say it had not yet been digested by a human.`,
+    residual: r`If the claim holds, the conjecture is settled for path-identity graphs with pair sources and arbitrary complex weights. A human-checked account of the two-replica argument and independent replay of the Lean proof remain to be done. Krenn et al. ask which states such graphs can produce and whether higher-order photon sources (hypergraphs) can produce high-dimensional GHZ states of many photons.`,
     evidence: [
       { kind: "published", role: "progress", summary: "SAT-solver bounds without bichromatic edges: dimension at most 2 on six vertices and at most 3 on eight vertices.", url: "https://doi.org/10.22331/q-2022-10-13-836", date: "2022-10-13" },
       { kind: "published", role: "progress", summary: "No simple GHZ graph on n > 4 vertices has dimension at least n/√2, bichromatic edges allowed.", url: "https://doi.org/10.22331/q-2024-07-03-1396", date: "2024-07-03" },
@@ -888,8 +901,21 @@ Chandran and Gajjala report that the conjecture “has been extensively publiciz
         url: "https://arxiv.org/abs/2610.22190v1",
         date: "2026-10-15",
         version: "v1" },
+      { kind: "preprint", role: "claimed-solution", lean: true,
+        summary: "Claimed proof of the full conjecture for complex weights, multigraphs and bichromatic edges, by a two-replica algebraic argument; Lean 4 formalization of the normalized equation system for every even N ≥ 6 and D ≥ 3. GitHub paper, not peer reviewed.",
+        url: "https://github.com/rrajasek95/krenn-conjecture/blob/1db2e5a23d97e3b2d03c30c6d9af773111ec682b/proofs/krenn-gu-all-orders-paper.pdf",
+        date: "2026-09-26",
+        version: "v1" },
+      { kind: "preprint", role: "progress",
+        summary: "No complex-weighted monochromatic quantum graph on even N ≥ 4 vertices has dimension D ≥ N, proof found in Lean by AlphaProof Nexus; the paper also reports the later full proof.",
+        url: "https://arxiv.org/abs/2611.26300v1",
+        date: "2026-11-19",
+        version: "v1" },
     ],
-    provenance: [],
+    provenance: [
+      { summary: "Krenn et al. state that their D ≥ N proof was discovered by AlphaProof Nexus, an AI system searching for formal proofs in Lean, and give their own human-digested account of it.", url: "https://arxiv.org/abs/2611.26300v1", version: "v1" },
+      { summary: "Krenn et al.'s Table I describes the full proof as AI-assisted with Codex and Claude and formally verified. The GitHub paper itself mentions only internal agent audits, which it says are not external peer review.", url: "https://arxiv.org/abs/2611.26300v1", version: "v1" },
+    ],
     relations: [],
     refs: [
       { label: "Krenn, Gu & Zeilinger, 'Quantum Experiments and Graphs: Multiparty States as coherent superpositions of Perfect Matchings', PRL 119, 240403 (2017)",
@@ -902,6 +928,10 @@ Chandran and Gajjala report that the conjecture “has been extensively publiciz
       { label: "Chandran & Gajjala, 'Connectivity Bounds for GHZ Graphs' (2026 preprint)", url: "https://arxiv.org/abs/2610.22190" },
       { label: "Cervera-Lierta, Krenn & Aspuru-Guzik, 'Design of quantum optical experiments with logic artificial intelligence', Quantum 6, 836 (2022)",
         url: "https://arxiv.org/abs/2109.13273" },
+      { label: "Krenn, Firsching, Tsoukalas, Gajjala, Gu & Chaudhuri, 'A Tensor-Algebraic No-Go Theorem for High-Dimensional Photonic Greenberger–Horne–Zeilinger States Discovered with AlphaProof Nexus' (2026 preprint, v1)",
+        url: "https://arxiv.org/abs/2611.26300v1" },
+      { label: "'A two-replica proof of the Krenn–Gu conjecture' (GitHub paper, 26 September 2026; attributed to R. Rajasekaran)",
+        url: "https://github.com/rrajasek95/krenn-conjecture/blob/1db2e5a23d97e3b2d03c30c6d9af773111ec682b/proofs/krenn-gu-all-orders-paper.pdf" },
     ] },
 
   { id: "E27",
