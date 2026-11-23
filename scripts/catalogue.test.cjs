@@ -134,7 +134,7 @@ test("targeted literature updates preserve untouched review dates and expose pen
     assert.equal(getProblem(id).status, id === "C5" ? "improved" : "claimed-solved", `${id}: distinguish partial progress from a full pending claim`);
     assert.ok(getProblem(id).evidence.some((e) => e.kind === "preprint" && e.url.includes(source)), id);
   }
-  assert.deepEqual(PROBLEMS.filter((p) => p.status === "claimed-solved").map((p) => p.id).sort(), ["A11", "A20", "A23", "A30", "A31", "A34", "A4", "A46", "A47", "A7", "B1", "B14", "B16", "B17", "B18", "C12", "C4", "E10", "E16", "E18", "E21", "E23", "M1", "M12", "M2", "M5", "N1", "N13", "N19", "N2"]);
+  assert.deepEqual(PROBLEMS.filter((p) => p.status === "claimed-solved").map((p) => p.id).sort(), ["A11", "A20", "A23", "A30", "A31", "A34", "A4", "A46", "A47", "A7", "B1", "B14", "B16", "B17", "B18", "C12", "C4", "E10", "E16", "E18", "E21", "E23", "E26", "M1", "M12", "M2", "M5", "N1", "N13", "N19", "N2"]);
   assert.equal(getProblem("C10").status, "improved", "a solved subcase must not close the broader programme");
   assert.equal(PROBLEMS.filter((p) => p.status === "solved").length, 0, "pending claims must not count as established solutions");
   const earlierE10 = getProblem("E10").evidence.find((e) => e.url.includes("2609.29539v1"));
@@ -205,8 +205,8 @@ test("targeted literature updates preserve untouched review dates and expose pen
   const carteV2 = ["E23", "E24", "E25", "A35", "A36", "E26", "F16", "F17", "N20", "F18", "A37", "A38", "E27", "E28", "E29", "A39", "A40", "A41", "M17", "B20", "B21", "A42", "A43", "N21", "N22", "C14", "A44", "A45", "M18", "B22", "O11", "O12", "A46", "A47", "O13", "A48"];
   for (const id of carteV2) assert.ok(november16.ids.includes(id), `${id}: in the 16 November update`);
   // 21 November 2026: full-reading bibliography of F4 (Frauchiger–Renner critiques, Local Friendliness theorems and tests).
-  assert.equal(LITERATURE_UPDATE.date, "2026-11-21");
-  assert.deepEqual(LITERATURE_UPDATE.ids, ["F4"]);
+  const november21 = LITERATURE_UPDATES.find((update) => update.date === "2026-11-21");
+  assert.deepEqual(november21.ids, ["F4"]);
   assert.ok(fs.existsSync(path.join(root, "docs/reviews/2026-11-21-literature-update.md")), "missing F4 report");
   assert.equal(getProblem("F4").status, "open", "F4: a conceptual programme, no status change");
   assert.ok(getProblem("F4").provenance.some((item) => item.url.includes("2611.17431")), "F4: Polino et al. AI-use disclosure");
@@ -221,6 +221,15 @@ test("targeted literature updates preserve untouched review dates and expose pen
   assert.equal(getProblem("A48").status, "improved", "A48: the multivariate QSP preprints use broader query models");
   assert.equal(getProblem("O13").status, "improved", "O13: two proof steps rely on a supplement that is not on arXiv");
   assert.ok([...getProblem("F16").evidence, ...getProblem("F16").refs].some((e) => e.url.includes("2609.24670")), "F16: cite the refutation of the 1 + ln π conjecture");
+  // 23 November 2026: arXiv announcements of 20 and 23 November and replacements of cited sources.
+  assert.equal(LITERATURE_UPDATE.date, "2026-11-23");
+  assert.deepEqual(LITERATURE_UPDATE.ids, ["E26", "A3", "C2", "O10"]);
+  assert.equal(getProblem("E26").status, "claimed-solved", "E26: an unrefereed GitHub proof with an unrebuilt Lean formalization");
+  assert.ok(getProblem("E26").lean, "E26: the full claim is formalized");
+  assert.ok(getProblem("E26").evidence.some((e) => e.role === "claimed-solution" && e.url.includes("rrajasek95/krenn-conjecture")), "E26: claimed solution");
+  assert.equal(getProblem("A3").status, "improved", "A3: a relativized separation");
+  assert.equal(getProblem("C2").status, "improved", "C2: the capacity is still undetermined");
+  assert.ok(getProblem("O10").evidence.some((e) => e.url.includes("2411.04300v3")), "O10: cite the corrected v3");
   const home = render(views.Home);
   assert.ok(home.includes(LITERATURE_UPDATE.label) && home.includes("Last update"));
 });
@@ -312,8 +321,8 @@ test("home, all categories, filtered lists and missing-page views render", () =>
   assert.ok(home.includes('href="/claimed-solved"'));
   assert.ok(home.includes('href="/lean-verified"'));
   assert.ok(home.includes('See open sharp problems'));
-  assert.ok(home.includes('aria-label="See all 98 improved problems"'));
-  assert.ok(home.includes('aria-label="See all 30 claimed solved problems"'));
+  assert.ok(home.includes('aria-label="See all 97 improved problems"'));
+  assert.ok(home.includes('aria-label="See all 31 claimed solved problems"'));
   assert.ok(home.includes('href="https://quantumlectures.org/en"'));
   assert.ok(home.includes('href="https://learnthermo.org/"'));
   assert.ok(!home.includes("IDs M1–"), "category count must not fabricate contiguous IDs");
