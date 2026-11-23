@@ -10,6 +10,7 @@
 // Before sending, each entry page is fetched from the live site and must contain a link to
 // https://arxiv.org/abs/<id> (otherwise the trackback is skipped: page not deployed yet).
 // Sent trackbacks are recorded in scripts/arxiv-trackbacks.sent.json and never resent.
+// Behind an HTTPS proxy, Node's fetch needs NODE_USE_ENV_PROXY=1 (Node >= 22.21).
 const path = require("node:path");
 const fs = require("node:fs");
 const vm = require("node:vm");

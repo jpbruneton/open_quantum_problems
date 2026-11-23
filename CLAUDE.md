@@ -59,3 +59,7 @@ Before starting any literature update, catalogue change or site change:
 - Python checkers must resolve inputs relative to their entry directory and write generated records into `data/`. They must run without access to the private workspace or historical archive.
 - The manuscript's verification section must link directly to the relevant public Python checker files and exact certificate on GitHub. The site button `Source, certificate and checks` must link to the canonical entry directory.
 - Start a new public entry from `research/ENTRY_TEMPLATE.md` and preserve this layout for later notes.
+
+## Recurring checks
+
+- Weekly: check arXiv's answer to every trackback recorded in `scripts/arxiv-trackbacks.sent.json` (sent with `scripts/arxiv-trackbacks.cjs`). For each `arxivId`, open `https://arxiv.org/tb/<arxivId>` and the "Blog links" box of `https://arxiv.org/abs/<arxivId>`, and report to the maintainer which trackbacks are visible (accepted) and which are still absent. arXiv moderates trackbacks, so a missing link can mean either pending or rejected; after about four weeks, report a still-absent trackback as probably rejected. Do not resend a trackback without the maintainer's agreement.
