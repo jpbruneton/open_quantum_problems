@@ -202,8 +202,11 @@ function Home() {
           </div>
 
           <div className="review-note">
-            <b>Last update · {LITERATURE_UPDATE.label}.</b> Nine new questions and literature updates, including the gr-qc and hep-th catch-up since 1 August. The selected evidence papers were read in full, including appendices.
+            <b>Last update · {LITERATURE_UPDATE.label}.</b> Four entries become “Claimed solved” and three more are updated from the arXiv announcements of 20 and 23 November; the items below them date from the updates of 20 and 21 November (nine new questions and literature updates, including the gr-qc and hep-th catch-up since 1 August). The selected evidence papers were read in full, including appendices.
             <ul>
+              <li><a href="/p/N20">Kirkwood–Dirac positivity for finite abelian Fourier pairs</a> is now “Claimed solved” by a <a href="/new-research">research note of this site</a>: mixtures of pure KD-positive states exhaust the KD-positive states only for cyclic groups of prime-power order. The claim is ours and awaits independent assessment.</li>
+              <li><a href="/p/O12">The triplet conjecture for the Markovian Mpemba effect</a> and <a href="/p/F17">the extremality of Fock-bounded beam-splitter states</a> are now “Claimed solved” in the negative, by counterexamples published only as GitHub pull requests of the trureturing repository. Exact recomputations made for this catalogue reproduce both counterexamples.</li>
+              <li><a href="/p/E26">The Krenn–Gu conjecture on GHZ graphs</a> is now “Claimed solved” by a proof posted on GitHub with a Lean 4 formalization, found through Krenn et al. (arXiv:2611.26300). Evidence was also updated for <a href="/p/A3">QMA versus QCMA</a>, <a href="/p/C2">the thermal attenuator</a> and <a href="/p/O10">Gibbs sampling beyond high temperature</a>.</li>
               <li><a href="/p/E21">Gaussian optimality of entanglement of formation</a> is now “Claimed solved” for arbitrary finite multimode bipartitions. The same preprint adds multimode Gaussian channel results to <a href="/p/C10">C10</a>, which remains “Improved”.</li>
               <li>Four entries become “Improved”: <a href="/p/B12">long-range propagation</a> in the Frobenius norm, <a href="/p/H4">python’s lunch decoding</a> in a Haar-oracle model, <a href="/p/QG4">nonsupersymmetric AdS stability</a> within a scalar effective theory, and <a href="/p/R3">renormalization-group flows</a> with a positive semidefinite metric. Their broader residual questions remain.</li>
               <li>Further results concern <a href="/p/B16">3D passive memory</a>, <a href="/p/N2">dimension-six MUBs</a>, <a href="/p/N3">restricted dimension-ten MUBs</a>, <a href="/p/O2">master-equation errors</a>, <a href="/p/F8">finite-resource frames</a> and <a href="/p/B15">the kagome spin liquid</a>. The kagome evidence is numerical and its status stays “Open”.</li>
@@ -966,54 +969,22 @@ function SimilarProjectsView() {
 // ---------- new research ----------
 const NEW_RESEARCH_NOTES = [
   {
-    title: "Kirkwood–Dirac positivity on Z₃ × Z₃",
-    meta: "Research note · exact certificate · 17 November 2026, bibliography revised 19 November 2026",
+    title: "Kirkwood–Dirac positivity for finite abelian groups",
+    meta: "Research note · classification, computer-assisted proof · 23 November 2026 (first version on Z₃ × Z₃: 17 November 2026)",
     pdf: "/research/kd-z3x3.pdf",
     dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/kd-z3x3",
-    summary: "For the position and Fourier bases of two qutrits (the group Z₃ × Z₃), an explicit mixed state has a strictly positive Kirkwood–Dirac distribution yet is not a mixture of the 54 pure KD-positive states. Earlier separations for Fourier pairs concerned Z₆ and Z₂ⁿ and relied on numerical positivity checks; no earlier treatment of Z₃ × Z₃ was found.",
-    result: "The state is obtained by the facet-perturbation construction of De Bièvre, Langrenez and Radchenko and is certified in exact rational arithmetic: positivity by weighted diagonal dominance, an integer witness with maximum 18 on the pure-state hull and value 206973/10000 on the state, and trace-norm distance at least 111/20000. Subgroup and quotient isometries preserve this distance, so every finite abelian group with a Z₃² subquotient has such states, and among groups of order 2ᵃ3ᵇ the hull equals the KD-positive set exactly for the cyclic groups of prime-power order, consistent with the necessity part of Spriet's conjecture.",
+    summary: "For the position and Fourier bases of a finite abelian group G, the pure states with a nonnegative Kirkwood–Dirac distribution are known. The note proves that every KD-positive state is a mixture of them if and only if G is cyclic of prime-power order. The “if” part is due to De Bièvre, Langrenez and Radchenko, who left the other groups open apart from Z₆ and Z₂ × Z₂. This settles catalogue entry N20, pending independent assessment.",
+    result: "Subgroup and quotient embeddings preserve the trace-norm distance to the pure-state hull, which reduces the question to Z_p × Z_q with p, q prime. There the four product bases form a CHSH scenario: an explicit Bell-type witness is nonnegative on every pure KD-positive state and negative on an explicit KD-positive state for all pairs outside a list of eight. Z₂ × Z₂ is settled by hand, six pairs by states with exact rational KD tables whose positive definiteness is certified in ball arithmetic, and Z₃ × Z₃ by a state certified in rational arithmetic alone, at trace-norm distance at least 111/20000 from the hull. The result refutes the conjecture of Yang et al. for every dimension pq and proves that Spriet's ordering condition is necessary for finite groups.",
     refs: [
-      { label: "De Bièvre, Langrenez & Radchenko, Fourier positivity for finite abelian groups (Ann. Henri Poincaré 2026)", doi: "https://doi.org/10.1007/s00023-025-01614-7", arxiv: "https://arxiv.org/abs/2501.12252v2", note: "Classifies the pure KD-positive states (Theorem 3.1), proves hull equality for cyclic prime-power groups (Theorem 6.1), and gives numerical counterexamples for Z₆ and Z₂ × Z₂ by the facet-perturbation method used here (Section 7)." },
+      { label: "De Bièvre, Langrenez & Radchenko, Fourier positivity for finite abelian groups (Ann. Henri Poincaré 2026)", doi: "https://doi.org/10.1007/s00023-025-01614-7", arxiv: "https://arxiv.org/abs/2501.12252v2", note: "Classifies the pure KD-positive states (Theorem 3.1), proves hull equality for cyclic prime-power groups (Theorem 6.1), gives numerical counterexamples for Z₆ and Z₂ × Z₂ (Section 7), and states the general abelian case as open (Section 8)." },
+      { label: "Langrenez, Arvidsson-Shukur & De Bièvre, Geometry of the KD-positive states (J. Math. Phys. 2024)", doi: "https://doi.org/10.1063/5.0164672", arxiv: "https://arxiv.org/abs/2306.00086v1", note: "First study of mixed KD-positive states; hull equality for the discrete Fourier transform in prime dimension; a spin-one pair of bases with KD-positive states outside the pure-state hull." },
+      { label: "Yang, Yao, Geng, Wang & Chen, Geometry of KD classical states for the discrete Fourier transform (J. Phys. A 2024)", doi: "https://doi.org/10.1088/1751-8121/ad819a", arxiv: "https://arxiv.org/abs/2404.09399v2", note: "Hull equality in dimension p²; conjectures it in every dimension and believes it for dimension pq, which the note refutes." },
+      { label: "Cai, Yang & Zheng, KD classical states and directed graphs (2026 preprint)", arxiv: "https://arxiv.org/abs/2603.13863v1", note: "Second proof of the prime-power case; states the structure in general dimension as open." },
+      { label: "Burkat & Strelchuk, KD positivity-preserving unitaries (Phys. Rev. A 2026)", doi: "https://doi.org/10.1103/rsy9-12fx", arxiv: "https://arxiv.org/abs/2502.11784v4", note: "Records in Appendix D that hull equality for d = pq ≠ 6 was an open question." },
       { label: "Thio et al., KD nonpositivity is a necessary resource for quantum computing (Phys. Rev. Lett. 2026)", doi: "https://doi.org/10.1103/x819-898d", arxiv: "https://arxiv.org/abs/2506.08092v2", note: "Exotic KD-positive states for multiqubit groups Z₂ⁿ, found by a facet search." },
       { label: "Spriet, KD positivity on second-countable LCA groups (J. Fourier Anal. Appl. 2026)", doi: "https://doi.org/10.1007/s00041-026-10309-4", arxiv: "https://arxiv.org/abs/2507.23628v3", note: "Extends the pure-state classification and conjectures that hull equality holds when the compact open subgroups are totally ordered, possibly only then." },
       { label: "Langrenez, De Bièvre & Arvidsson-Shukur, Convex roofs witnessing KD nonpositivity (J. Phys. A 2025)", doi: "https://doi.org/10.1088/1751-8121/add58f", arxiv: "https://arxiv.org/abs/2407.04558", note: "Faithful convex-roof witness of the pure-state hull and a spin-one KD-positive state outside it." },
       { label: "Langrenez et al., Almost sure minimality of experiments with classical KD representations (Phys. Rev. A 2026)", doi: "https://doi.org/10.1103/v7z4-qsz8", arxiv: "https://arxiv.org/abs/2405.17557v2", note: "For almost every pair of bases the KD-positive states are exactly the mixtures of basis states." },
-    ],
-  },
-  {
-    title: "Exact ensemble-steering defect under partial environmental access",
-    meta: "Research note · exact value in a model · 17 November 2026, revised 19 November 2026",
-    pdf: "/research/steering-localization.pdf",
-    dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/steering-localization",
-    summary: "How much steering power is lost when part of a purification escapes into a hidden environment? For a two-branch state with branch weights p, q and hidden-record overlap κ, the worst-case ensemble-preparation error is exactly (1 − κ)√(pq).",
-    result: "The note proves this minimax value with an explicit binary target ensemble and a two-outcome measurement; for orthogonal hidden records it reduces to half the known ℓ₁ coherence of assistance of a qubit. It computes the matching conditional-expectation defect q√(1 − κ²), turns the formula into matching spatial bounds as Bob gains access to a growing segment of a controlled-rotation chain, and realizes the state as the unique ground state of a gapped quasi-local Hamiltonian. The proofs are short and use standard tools; no general theory of partial steering is claimed.",
-    refs: [
-      { label: "Kirkpatrick, The Schrödinger–HJW theorem (2006)", doi: "https://doi.org/10.1007/s10702-006-1852-1", arxiv: "https://arxiv.org/abs/quant-ph/0305068v3", note: "States and traces the history of the theorem that an observer holding the whole purifier can prepare every decomposition of a mixed state." },
-      { label: "Wiseman, Jones & Doherty, Steering, entanglement, nonlocality, and the EPR paradox (2007)", doi: "https://doi.org/10.1103/PhysRevLett.98.140402", arxiv: "https://arxiv.org/abs/quant-ph/0612147v3", note: "Gives the operational definition of steering and its strict place between entanglement and Bell nonlocality." },
-      { label: "Jevtic, Pusey, Jennings & Rudolph, Quantum steering ellipsoids (2014)", doi: "https://doi.org/10.1103/PhysRevLett.113.020402", arxiv: "https://arxiv.org/abs/1303.4724v2", note: "Shows that every entangled two-qubit state steers completely within its ellipsoid; the note's defect also counts targets outside it." },
-      { label: "Zhao, Ma, Quan, Fan & Pereira, ℓ₁-norm coherence of assistance (2019)", doi: "https://doi.org/10.1103/PhysRevA.100.012315", arxiv: "https://arxiv.org/abs/2002.03823", note: "Proves the Cauchy–Schwarz bound and the optimal binary ensemble that the note's result reduces to when the hidden records are orthogonal." },
-      { label: "Blume-Kohout & Zurek, Quantum Darwinism: entanglement, branches, and redundantly stored information (2006)", doi: "https://doi.org/10.1103/PhysRevA.73.062310", arxiv: "https://arxiv.org/abs/quant-ph/0505031", note: "Introduces the branch states and products of decoherence factors that the spatial model also uses." },
-      { label: "Zurek, Quantum Darwinism (2009)", doi: "https://doi.org/10.1038/nphys1202", arxiv: "https://arxiv.org/abs/0903.5082", note: "Places environmental records and access to environment fragments in their broader measurement-theory context." },
-    ],
-  },
-  {
-    title: "Local discrimination of maximally entangled two-qubit states",
-    meta: "Research note · exact optimum · 18 November 2026",
-    pdf: "/research/local-discrimination-entangled-qubits.pdf",
-    dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/local-discrimination-entangled-qubits",
-    summary: "How well can two distant parties identify one of k maximally entangled two-qubit states? The optimum over separable measurements is (1 + sin 2Θ)/k, where Θ is the angular radius of the smallest cone containing the states, viewed as lines in R⁴; it saturates at the known trace bound 2/k for Θ ≥ π/4.",
-    result: "The note proves this formula, which is also the optimum over positive-partial-transpose measurements, and gives a separate exact formula for protocols with a single classical message. One message is optimal for every family of at most three states, which fixes the LOCC optimum there, and is strictly weaker for four states on a tetrahedron. For the five equiangular states of Wei, Cobucci and Tavakoli, one bit reaches the known upper bound 2/5 exactly, above the value of about 0.395 that their numerical search had found without communication and had not improved with one-way protocols.",
-    refs: [
-      { label: "Wei, Cobucci & Tavakoli, Nonprojective Bell-state measurements (2024)", doi: "https://doi.org/10.1103/PhysRevA.110.042206", arxiv: "https://arxiv.org/abs/2405.03872v1", note: "Constructs the five equiangular maximally entangled states and reports the numerical local values (Section VIII of the preprint) that the note settles with one message." },
-      { label: "Nathanson, Distinguishing bipartitite orthogonal states using LOCC: Best and worst cases (2005)", doi: "https://doi.org/10.1063/1.1914731", arxiv: "https://arxiv.org/abs/quant-ph/0411110", note: "Lemma 8 bounds the LOCC success for k maximally entangled states by D/k without assuming orthogonality, the trace bound reached by the note's formula." },
-      { label: "Bandyopadhyay & Nathanson, Tight bounds on the distinguishability of quantum states under separable measurements (2013)", doi: "https://doi.org/10.1103/PhysRevA.88.052313", arxiv: "https://arxiv.org/abs/1306.2712", note: "Lemma 2 gives the overlap bound for PPT operators behind the trace bound 2/k." },
-      { label: "Virmani et al., Optimal local discrimination of two multipartite pure states (2001)", doi: "https://doi.org/10.1016/S0375-9601(01)00484-4", arxiv: "https://arxiv.org/abs/quant-ph/0102073", note: "Covers the case of two states, which the formula recovers." },
-      { label: "Bandyopadhyay et al., Limitations on separable measurements by convex optimization (2015)", doi: "https://doi.org/10.1109/TIT.2015.2417755", arxiv: "https://arxiv.org/abs/1408.6981", note: "Gives exact values for three or four orthogonal Bell states, the orthogonal cases of the formula." },
-      { label: "Chitambar, Duan & Hsieh, When do LOCC suffice for two-qubit state discrimination? (2014)", doi: "https://doi.org/10.1109/TIT.2013.2295356", arxiv: "https://arxiv.org/abs/1308.1737", note: "Shows that almost all triples of pure two-qubit states cannot be discriminated optimally by LOCC." },
-      { label: "Nathanson, Three maximally entangled states can require two-way LOCC (2013)", doi: "https://doi.org/10.1103/PhysRevA.88.062316", arxiv: "https://arxiv.org/abs/1310.4220", note: "Exhibits a gap between one-way and two-way LOCC for orthogonal states in higher dimensions." },
-      { label: "Bandyopadhyay, Ghosh & Kar, LOCC distinguishability of unilaterally transformable quantum states (2011)", doi: "https://doi.org/10.1088/1367-2630/13/12/123013", arxiv: "https://arxiv.org/abs/1102.0841", note: "Relates perfect one-way local discrimination to the perfect discrimination of the generating unitaries." },
-      { label: "Deconinck & Terhal, Qubit state discrimination (2010)", doi: "https://doi.org/10.1103/PhysRevA.81.062304", arxiv: "https://arxiv.org/abs/1002.4388", note: "States the discrimination duality and reduces equally likely pure qubit states to the smallest enclosing ball used for the receiver's measurement." },
-      { label: "Bae & Hwang, Minimum-error discrimination of qubit states: Methods, solutions, and properties (2013)", doi: "https://doi.org/10.1103/PhysRevA.87.012334", arxiv: "https://arxiv.org/abs/1204.2313", note: "Gives the Bloch-sphere geometry of minimum-error qubit discrimination with equal priors." },
     ],
   },
   {
@@ -1037,6 +1008,26 @@ const NEW_RESEARCH_NOTES = [
     ],
   },
   {
+    title: "Local discrimination of maximally entangled two-qubit states",
+    meta: "Research note · exact optimum · 18 November 2026",
+    pdf: "/research/local-discrimination-entangled-qubits.pdf",
+    dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/local-discrimination-entangled-qubits",
+    summary: "How well can two distant parties identify one of k maximally entangled two-qubit states? The optimum over separable measurements is (1 + sin 2Θ)/k, where Θ is the angular radius of the smallest cone containing the states, viewed as lines in R⁴; it saturates at the known trace bound 2/k for Θ ≥ π/4.",
+    result: "The note proves this formula, which is also the optimum over positive-partial-transpose measurements, and gives a separate exact formula for protocols with a single classical message. One message is optimal for every family of at most three states, which fixes the LOCC optimum there, and is strictly weaker for four states on a tetrahedron. For the five equiangular states of Wei, Cobucci and Tavakoli, one bit reaches the known upper bound 2/5 exactly, above the value of about 0.395 that their numerical search had found without communication and had not improved with one-way protocols.",
+    refs: [
+      { label: "Wei, Cobucci & Tavakoli, Nonprojective Bell-state measurements (2024)", doi: "https://doi.org/10.1103/PhysRevA.110.042206", arxiv: "https://arxiv.org/abs/2405.03872v1", note: "Constructs the five equiangular maximally entangled states and reports the numerical local values (Section VIII of the preprint) that the note settles with one message." },
+      { label: "Nathanson, Distinguishing bipartitite orthogonal states using LOCC: Best and worst cases (2005)", doi: "https://doi.org/10.1063/1.1914731", arxiv: "https://arxiv.org/abs/quant-ph/0411110", note: "Lemma 8 bounds the LOCC success for k maximally entangled states by D/k without assuming orthogonality, the trace bound reached by the note's formula." },
+      { label: "Bandyopadhyay & Nathanson, Tight bounds on the distinguishability of quantum states under separable measurements (2013)", doi: "https://doi.org/10.1103/PhysRevA.88.052313", arxiv: "https://arxiv.org/abs/1306.2712", note: "Lemma 2 gives the overlap bound for PPT operators behind the trace bound 2/k." },
+      { label: "Virmani et al., Optimal local discrimination of two multipartite pure states (2001)", doi: "https://doi.org/10.1016/S0375-9601(01)00484-4", arxiv: "https://arxiv.org/abs/quant-ph/0102073", note: "Covers the case of two states, which the formula recovers." },
+      { label: "Bandyopadhyay et al., Limitations on separable measurements by convex optimization (2015)", doi: "https://doi.org/10.1109/TIT.2015.2417755", arxiv: "https://arxiv.org/abs/1408.6981", note: "Gives exact values for three or four orthogonal Bell states, the orthogonal cases of the formula." },
+      { label: "Chitambar, Duan & Hsieh, When do LOCC suffice for two-qubit state discrimination? (2014)", doi: "https://doi.org/10.1109/TIT.2013.2295356", arxiv: "https://arxiv.org/abs/1308.1737", note: "Shows that almost all triples of pure two-qubit states cannot be discriminated optimally by LOCC." },
+      { label: "Nathanson, Three maximally entangled states can require two-way LOCC (2013)", doi: "https://doi.org/10.1103/PhysRevA.88.062316", arxiv: "https://arxiv.org/abs/1310.4220", note: "Exhibits a gap between one-way and two-way LOCC for orthogonal states in higher dimensions." },
+      { label: "Bandyopadhyay, Ghosh & Kar, LOCC distinguishability of unilaterally transformable quantum states (2011)", doi: "https://doi.org/10.1088/1367-2630/13/12/123013", arxiv: "https://arxiv.org/abs/1102.0841", note: "Relates perfect one-way local discrimination to the perfect discrimination of the generating unitaries." },
+      { label: "Deconinck & Terhal, Qubit state discrimination (2010)", doi: "https://doi.org/10.1103/PhysRevA.81.062304", arxiv: "https://arxiv.org/abs/1002.4388", note: "States the discrimination duality and reduces equally likely pure qubit states to the smallest enclosing ball used for the receiver's measurement." },
+      { label: "Bae & Hwang, Minimum-error discrimination of qubit states: Methods, solutions, and properties (2013)", doi: "https://doi.org/10.1103/PhysRevA.87.012334", arxiv: "https://arxiv.org/abs/1204.2313", note: "Gives the Bloch-sphere geometry of minimum-error qubit discrimination with equal priors." },
+    ],
+  },
+  {
     title: "Spectra of particle-reduced fermionic density operators",
     meta: "Research note · conjecture settled (true for p = 1, false for p ≥ 2, corrected by p!) · 19 November 2026",
     pdf: "/research/fermionic-particle-reductions.pdf",
@@ -1046,6 +1037,37 @@ const NEW_RESEARCH_NOTES = [
     refs: [
       { label: "Amosov & Filippov, Spectral properties of reduced fermionic density operators and parity superselection rule (2017)", doi: "https://doi.org/10.1007/s11128-016-1467-9", arxiv: "https://arxiv.org/abs/1512.01828", note: "Defines ρₚ and Φ on the Fock space and states the conjecture settled here; its fixed-N Proposition 4 needs the factor (N−p)!. It attributes the fixed-N spectral duality to Carlson and Keller." },
       { label: "Gigena, Di Tullio & Rossignoli, Many-body entanglement in fermion systems (2021)", doi: "https://doi.org/10.1103/PhysRevA.103.052424", arxiv: "https://arxiv.org/abs/2012.13785", note: "Shows that the M- and (N−M)-body density operators of a pure N-fermion state share their spectrum up to zero eigenvalues, and writes the M-body operator with the prefactor 1/(N−M)!, the fixed-N form of the factorial correction; does not treat variable particle number." },
+    ],
+  },
+  {
+    title: "Momentum Rényi and Tsallis entropies behind hard walls: the threshold 1/(2(m+1))",
+    meta: "Research note · conjecture proved; particular thresholds due to Olendski · 19 November 2026",
+    pdf: "/research/momentum-renyi-threshold.pdf",
+    dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/momentum-renyi-threshold",
+    summary: "Olendski found the momentum-entropy thresholds 1/4 (Dirichlet) and 1/2 (Neumann, Robin, mixed) for the one-dimensional well from explicit formulas, and conjectured that 1/2 is the threshold of every one-dimensional non-Dirichlet system. The note turns the classical mechanism behind these values, endpoint jumps governing Fourier decay, into a two-sided existence criterion with a divergence rate, and deduces the conjecture for hard-wall Schrödinger eigenfunctions.",
+    result: "If the zero-extended wave function first jumps in its derivative of order m, then ∫γ(p)^α dp is finite exactly for α > α_TH = 1/(2(m+1)); the divergence at and below the threshold with two walls rests on a positive-density bound for the interfering leading coefficient. The Rényi entropy diverges like ln(1/(α − α_TH))/(1 − α_TH) at the threshold, with an explicit rate. For eigenfunctions of a Schrödinger operator with integrable potential between hard walls only m = 0 or 1 can occur, so α_TH = 1/4 when both walls are Dirichlet and α_TH = 1/2 otherwise, for every level and for real or complex Robin lengths; the threshold value itself is excluded. The same dichotomy holds on a half-line.",
+    refs: [
+      { label: "Olendski, Rényi and Tsallis entropies of the Dirichlet and Neumann one-dimensional quantum wells (2020)", doi: "https://doi.org/10.1002/qua.26220", arxiv: "https://arxiv.org/abs/2003.04351", note: "Finds the thresholds 1/4 and 1/2 by a comparison test on explicit formulas and states the conjecture proved here." },
+      { label: "Olendski, Rényi and Tsallis entropies: three analytic examples (2019)", doi: "https://doi.org/10.1088/1361-6404/aaf45c", arxiv: "https://arxiv.org/abs/1811.09089", note: "Treats the attractive Robin wall on the half-line in closed form; the note recovers it as a half-line case." },
+      { label: "Aptekarev, Dehesa, Sánchez-Moreno & Tulyakov, Rényi entropy of the infinite well potential in momentum space and Dirichlet-like trigonometric functionals (2012)", doi: "https://doi.org/10.1007/s10910-011-9950-0", arxiv: "https://arxiv.org/abs/1305.4743", note: "Closed-form momentum entropic moments of the Dirichlet well for integer orders, leaving non-integer orders open." },
+      { label: "Olendski, Quantum-information theory of a Dirichlet ring with Aharonov–Bohm field (2022)", doi: "https://doi.org/10.1140/epjp/s13360-022-02627-5", arxiv: "https://arxiv.org/abs/2202.04692", note: "Finds the disk threshold 2/5 for a Dirichlet annulus, independent of the inner radius, consistent with a threshold fixed at the boundary." },
+      { label: "Bialynicki-Birula, Formulation of the uncertainty relations in terms of the Rényi entropies (2006)", doi: "https://doi.org/10.1103/PhysRevA.74.052101", arxiv: "https://arxiv.org/abs/quant-ph/0608116", note: "Rényi uncertainty relation with conjugate orders 1/α + 1/β = 2, in which the momentum order ranges over (1/2, ∞)." },
+    ],
+  },
+  {
+    title: "How many incoherent Kraus operators?",
+    meta: "Research note · new lower bound and qutrit construction · 19 November 2026",
+    pdf: "/research/incoherent-kraus-operators.pdf",
+    dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/incoherent-kraus-operators",
+    summary: "Incoherent operations in the resource theory of coherence must be written with Kraus operators that each keep diagonal states diagonal. The note asks how many such operators are needed beyond the qubit, where Rana and Lewenstein showed in 2018 that the answer is four.",
+    result: "A generic incoherent completely positive map on a d-dimensional system needs at least ⌈d²(d²−d+1)/(2d−1)⌉ incoherent Kraus operators: 4, 13 and 30 for d = 2, 3, 4, growing like d³/2 against the Choi rank d². Individual operations with such a gap were known; the bound shows that from d = 3 on it holds on an open set. For the qutrit, an exact integer rank certificate shows that thirteen operators cover an open set of incoherent maps, so 13 is attained, and also an open set of incoherent channels. The qubit value four, due to Rana and Lewenstein (2018), is re-derived with a short fixed-point argument on the Choi matrix; the generic lower bound for trace-preserving operations remains a conjecture.",
+    refs: [
+      { label: "Rana and Lewenstein, Optimal decomposition of incoherent qubit channel (2018)", doi: "https://doi.org/10.1088/1751-8121/aad8c8", arxiv: "https://arxiv.org/abs/1807.01676", note: "First proves that four incoherent Kraus operators suffice and are optimal for every incoherent qubit channel, by decomposing the Choi matrix into rank-one blocks, and gives individual operations whose incoherent length exceeds the Choi rank; the note re-derives the qubit case by a fixed-point argument." },
+      { label: "Streltsov, Rana, Boes and Eisert, Structure of the resource theory of quantum coherence (2017)", doi: "https://doi.org/10.1103/PhysRevLett.119.140402", arxiv: "https://arxiv.org/abs/1705.04189", note: "Proves the first upper bounds (five for a qubit, 39 for a qutrit) by classifying incoherent operators by type, and asks whether four suffice for a qubit; the types are the maximal cliques of the note's graph." },
+      { label: "Qiao et al., The reduction of the number of incoherent Kraus operations for qutrit systems (2020)", doi: "https://doi.org/10.1209/0295-5075/129/60006", arxiv: "https://arxiv.org/abs/2005.01083", note: "Gives a second proof of the qubit value four and the qutrit upper bound 32, the best known." },
+      { label: "Winter and Yang, Operational resource theory of coherence (2016)", doi: "https://doi.org/10.1103/PhysRevLett.116.120404", arxiv: "https://arxiv.org/abs/1506.07975", note: "Defines strictly incoherent operations and characterizes incoherent Kraus operators by an index function." },
+      { label: "Baumgratz, Cramer and Plenio, Quantifying coherence (2014)", doi: "https://doi.org/10.1103/PhysRevLett.113.140401", arxiv: "https://arxiv.org/abs/1311.0275", note: "Defines incoherent operations through incoherent Kraus decompositions." },
+      { label: "Choi, Completely positive linear maps on complex matrices (1975)", doi: "https://doi.org/10.1016/0024-3795(75)90075-0", note: "The Choi matrix on which the clique formulation is built." },
     ],
   },
   {
@@ -1081,34 +1103,6 @@ const NEW_RESEARCH_NOTES = [
     ],
   },
   {
-    title: "Momentum Rényi and Tsallis entropies behind hard walls: the threshold 1/(2(m+1))",
-    meta: "Research note · conjecture proved; particular thresholds due to Olendski · 19 November 2026",
-    pdf: "/research/momentum-renyi-threshold.pdf",
-    dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/momentum-renyi-threshold",
-    summary: "Olendski found the momentum-entropy thresholds 1/4 (Dirichlet) and 1/2 (Neumann, Robin, mixed) for the one-dimensional well from explicit formulas, and conjectured that 1/2 is the threshold of every one-dimensional non-Dirichlet system. The note turns the classical mechanism behind these values, endpoint jumps governing Fourier decay, into a two-sided existence criterion with a divergence rate, and deduces the conjecture for hard-wall Schrödinger eigenfunctions.",
-    result: "If the zero-extended wave function first jumps in its derivative of order m, then ∫γ(p)^α dp is finite exactly for α > α_TH = 1/(2(m+1)); the divergence at and below the threshold with two walls rests on a positive-density bound for the interfering leading coefficient. The Rényi entropy diverges like ln(1/(α − α_TH))/(1 − α_TH) at the threshold, with an explicit rate. For eigenfunctions of a Schrödinger operator with integrable potential between hard walls only m = 0 or 1 can occur, so α_TH = 1/4 when both walls are Dirichlet and α_TH = 1/2 otherwise, for every level and for real or complex Robin lengths; the threshold value itself is excluded. The same dichotomy holds on a half-line.",
-    refs: [
-      { label: "Olendski, Rényi and Tsallis entropies of the Dirichlet and Neumann one-dimensional quantum wells (2020)", doi: "https://doi.org/10.1002/qua.26220", arxiv: "https://arxiv.org/abs/2003.04351", note: "Finds the thresholds 1/4 and 1/2 by a comparison test on explicit formulas and states the conjecture proved here." },
-      { label: "Olendski, Rényi and Tsallis entropies: three analytic examples (2019)", doi: "https://doi.org/10.1088/1361-6404/aaf45c", arxiv: "https://arxiv.org/abs/1811.09089", note: "Treats the attractive Robin wall on the half-line in closed form; the note recovers it as a half-line case." },
-      { label: "Aptekarev, Dehesa, Sánchez-Moreno & Tulyakov, Rényi entropy of the infinite well potential in momentum space and Dirichlet-like trigonometric functionals (2012)", doi: "https://doi.org/10.1007/s10910-011-9950-0", arxiv: "https://arxiv.org/abs/1305.4743", note: "Closed-form momentum entropic moments of the Dirichlet well for integer orders, leaving non-integer orders open." },
-      { label: "Olendski, Quantum-information theory of a Dirichlet ring with Aharonov–Bohm field (2022)", doi: "https://doi.org/10.1140/epjp/s13360-022-02627-5", arxiv: "https://arxiv.org/abs/2202.04692", note: "Finds the disk threshold 2/5 for a Dirichlet annulus, independent of the inner radius, consistent with a threshold fixed at the boundary." },
-      { label: "Bialynicki-Birula, Formulation of the uncertainty relations in terms of the Rényi entropies (2006)", doi: "https://doi.org/10.1103/PhysRevA.74.052101", arxiv: "https://arxiv.org/abs/quant-ph/0608116", note: "Rényi uncertainty relation with conjugate orders 1/α + 1/β = 2, in which the momentum order ranges over (1/2, ∞)." },
-    ],
-  },
-  {
-    title: "A Mpemba mode invisible to every strict reduction",
-    meta: "Research note · explicit construction · 19 November 2026",
-    pdf: "/research/locally-invisible-mpemba-mode.pdf",
-    dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/locally-invisible-mpemba-mode",
-    summary: "In the Mpemba effect a state farther from equilibrium relaxes sooner, because late-time relaxation is set by the slowest mode of the dynamics. The note gives a local, primitive qubit-chain dynamics whose slowest mode cannot be seen in the reduced state of any strict subset of sites.",
-    result: "For n ≥ 2 qubits and 0 < ε < 1, the Lindbladian Σⱼ D[XⱼXⱼ₊₁] + ε D[X₁] + Σⱼ D[Zⱼ] has spectrum {−2(m + εb)} with multiplicity C(2n−1, m), a unique stationary state, and the global parity Z₁⋯Zₙ as its unique slowest mode at rate 2ε. The state (𝟙 + αZ₁⋯Zₙ)/2ⁿ looks maximally mixed on every strict subsystem at all times, yet it is overtaken by (𝟙 + βXₙ)/2ⁿ, β > α, at time log(β/α)/(2 − 2ε). Any observable sensitive to the slow amplitude, including a single-observable Mpemba witness, must act on all n sites.",
-    refs: [
-      { label: "Lu & Raz, Nonequilibrium thermodynamics of the Markovian Mpemba effect and its inverse (2017)", doi: "https://doi.org/10.1073/pnas.1701264114", arxiv: "https://arxiv.org/abs/1609.05271", note: "Formulates the Mpemba effect for Markovian dynamics, the setting used here." },
-      { label: "Carollo, Lasanta & Lesanovsky, Exponentially accelerated approach to stationarity in Markovian open quantum systems through the Mpemba effect (2021)", doi: "https://doi.org/10.1103/PhysRevLett.127.060401", arxiv: "https://arxiv.org/abs/2103.05020", note: "Removes the slowest-mode component by a unitary rotation; in this example removal is local while detection is global." },
-      { label: "Choquehuanca, Obando, Sarandy & de Paula, Witnessing the quantum Mpemba effect with a single observable (2026)", arxiv: "https://arxiv.org/abs/2607.12163", note: "Single-observable Mpemba witness illustrated on one qubit; the note shows such a witness can be forced to have full support in a local many-body chain." },
-    ],
-  },
-  {
     title: "Covariance data cannot bound the Schmidt number, even at fixed energy",
     meta: "Research note · no-go example · 19 November 2026",
     pdf: "/research/schmidt-number-separable-covariance.pdf",
@@ -1123,19 +1117,32 @@ const NEW_RESEARCH_NOTES = [
     ],
   },
   {
-    title: "How many incoherent Kraus operators?",
-    meta: "Research note · new lower bound and qutrit construction · 19 November 2026",
-    pdf: "/research/incoherent-kraus-operators.pdf",
-    dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/incoherent-kraus-operators",
-    summary: "Incoherent operations in the resource theory of coherence must be written with Kraus operators that each keep diagonal states diagonal. The note asks how many such operators are needed beyond the qubit, where Rana and Lewenstein showed in 2018 that the answer is four.",
-    result: "A generic incoherent completely positive map on a d-dimensional system needs at least ⌈d²(d²−d+1)/(2d−1)⌉ incoherent Kraus operators: 4, 13 and 30 for d = 2, 3, 4, growing like d³/2 against the Choi rank d². Individual operations with such a gap were known; the bound shows that from d = 3 on it holds on an open set. For the qutrit, an exact integer rank certificate shows that thirteen operators cover an open set of incoherent maps, so 13 is attained, and also an open set of incoherent channels. The qubit value four, due to Rana and Lewenstein (2018), is re-derived with a short fixed-point argument on the Choi matrix; the generic lower bound for trace-preserving operations remains a conjecture.",
+    title: "Exact ensemble-steering defect under partial environmental access",
+    meta: "Research note · exact value in a model · 17 November 2026, revised 19 November 2026",
+    pdf: "/research/steering-localization.pdf",
+    dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/steering-localization",
+    summary: "How much steering power is lost when part of a purification escapes into a hidden environment? For a two-branch state with branch weights p, q and hidden-record overlap κ, the worst-case ensemble-preparation error is exactly (1 − κ)√(pq).",
+    result: "The note proves this minimax value with an explicit binary target ensemble and a two-outcome measurement; for orthogonal hidden records it reduces to half the known ℓ₁ coherence of assistance of a qubit. It computes the matching conditional-expectation defect q√(1 − κ²), turns the formula into matching spatial bounds as Bob gains access to a growing segment of a controlled-rotation chain, and realizes the state as the unique ground state of a gapped quasi-local Hamiltonian. The proofs are short and use standard tools; no general theory of partial steering is claimed.",
     refs: [
-      { label: "Rana and Lewenstein, Optimal decomposition of incoherent qubit channel (2018)", doi: "https://doi.org/10.1088/1751-8121/aad8c8", arxiv: "https://arxiv.org/abs/1807.01676", note: "First proves that four incoherent Kraus operators suffice and are optimal for every incoherent qubit channel, by decomposing the Choi matrix into rank-one blocks, and gives individual operations whose incoherent length exceeds the Choi rank; the note re-derives the qubit case by a fixed-point argument." },
-      { label: "Streltsov, Rana, Boes and Eisert, Structure of the resource theory of quantum coherence (2017)", doi: "https://doi.org/10.1103/PhysRevLett.119.140402", arxiv: "https://arxiv.org/abs/1705.04189", note: "Proves the first upper bounds (five for a qubit, 39 for a qutrit) by classifying incoherent operators by type, and asks whether four suffice for a qubit; the types are the maximal cliques of the note's graph." },
-      { label: "Qiao et al., The reduction of the number of incoherent Kraus operations for qutrit systems (2020)", doi: "https://doi.org/10.1209/0295-5075/129/60006", arxiv: "https://arxiv.org/abs/2005.01083", note: "Gives a second proof of the qubit value four and the qutrit upper bound 32, the best known." },
-      { label: "Winter and Yang, Operational resource theory of coherence (2016)", doi: "https://doi.org/10.1103/PhysRevLett.116.120404", arxiv: "https://arxiv.org/abs/1506.07975", note: "Defines strictly incoherent operations and characterizes incoherent Kraus operators by an index function." },
-      { label: "Baumgratz, Cramer and Plenio, Quantifying coherence (2014)", doi: "https://doi.org/10.1103/PhysRevLett.113.140401", arxiv: "https://arxiv.org/abs/1311.0275", note: "Defines incoherent operations through incoherent Kraus decompositions." },
-      { label: "Choi, Completely positive linear maps on complex matrices (1975)", doi: "https://doi.org/10.1016/0024-3795(75)90075-0", note: "The Choi matrix on which the clique formulation is built." },
+      { label: "Kirkpatrick, The Schrödinger–HJW theorem (2006)", doi: "https://doi.org/10.1007/s10702-006-1852-1", arxiv: "https://arxiv.org/abs/quant-ph/0305068v3", note: "States and traces the history of the theorem that an observer holding the whole purifier can prepare every decomposition of a mixed state." },
+      { label: "Wiseman, Jones & Doherty, Steering, entanglement, nonlocality, and the EPR paradox (2007)", doi: "https://doi.org/10.1103/PhysRevLett.98.140402", arxiv: "https://arxiv.org/abs/quant-ph/0612147v3", note: "Gives the operational definition of steering and its strict place between entanglement and Bell nonlocality." },
+      { label: "Jevtic, Pusey, Jennings & Rudolph, Quantum steering ellipsoids (2014)", doi: "https://doi.org/10.1103/PhysRevLett.113.020402", arxiv: "https://arxiv.org/abs/1303.4724v2", note: "Shows that every entangled two-qubit state steers completely within its ellipsoid; the note's defect also counts targets outside it." },
+      { label: "Zhao, Ma, Quan, Fan & Pereira, ℓ₁-norm coherence of assistance (2019)", doi: "https://doi.org/10.1103/PhysRevA.100.012315", arxiv: "https://arxiv.org/abs/2002.03823", note: "Proves the Cauchy–Schwarz bound and the optimal binary ensemble that the note's result reduces to when the hidden records are orthogonal." },
+      { label: "Blume-Kohout & Zurek, Quantum Darwinism: entanglement, branches, and redundantly stored information (2006)", doi: "https://doi.org/10.1103/PhysRevA.73.062310", arxiv: "https://arxiv.org/abs/quant-ph/0505031", note: "Introduces the branch states and products of decoherence factors that the spatial model also uses." },
+      { label: "Zurek, Quantum Darwinism (2009)", doi: "https://doi.org/10.1038/nphys1202", arxiv: "https://arxiv.org/abs/0903.5082", note: "Places environmental records and access to environment fragments in their broader measurement-theory context." },
+    ],
+  },
+  {
+    title: "A Mpemba mode invisible to every strict reduction",
+    meta: "Research note · explicit construction · 19 November 2026",
+    pdf: "/research/locally-invisible-mpemba-mode.pdf",
+    dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/locally-invisible-mpemba-mode",
+    summary: "In the Mpemba effect a state farther from equilibrium relaxes sooner, because late-time relaxation is set by the slowest mode of the dynamics. The note gives a local, primitive qubit-chain dynamics whose slowest mode cannot be seen in the reduced state of any strict subset of sites.",
+    result: "For n ≥ 2 qubits and 0 < ε < 1, the Lindbladian Σⱼ D[XⱼXⱼ₊₁] + ε D[X₁] + Σⱼ D[Zⱼ] has spectrum {−2(m + εb)} with multiplicity C(2n−1, m), a unique stationary state, and the global parity Z₁⋯Zₙ as its unique slowest mode at rate 2ε. The state (𝟙 + αZ₁⋯Zₙ)/2ⁿ looks maximally mixed on every strict subsystem at all times, yet it is overtaken by (𝟙 + βXₙ)/2ⁿ, β > α, at time log(β/α)/(2 − 2ε). Any observable sensitive to the slow amplitude, including a single-observable Mpemba witness, must act on all n sites.",
+    refs: [
+      { label: "Lu & Raz, Nonequilibrium thermodynamics of the Markovian Mpemba effect and its inverse (2017)", doi: "https://doi.org/10.1073/pnas.1701264114", arxiv: "https://arxiv.org/abs/1609.05271", note: "Formulates the Mpemba effect for Markovian dynamics, the setting used here." },
+      { label: "Carollo, Lasanta & Lesanovsky, Exponentially accelerated approach to stationarity in Markovian open quantum systems through the Mpemba effect (2021)", doi: "https://doi.org/10.1103/PhysRevLett.127.060401", arxiv: "https://arxiv.org/abs/2103.05020", note: "Removes the slowest-mode component by a unitary rotation; in this example removal is local while detection is global." },
+      { label: "Choquehuanca, Obando, Sarandy & de Paula, Witnessing the quantum Mpemba effect with a single observable (2026)", arxiv: "https://arxiv.org/abs/2607.12163", note: "Single-observable Mpemba witness illustrated on one qubit; the note shows such a witness can be forced to have full support in a local many-body chain." },
     ],
   },
   {
@@ -1169,7 +1176,7 @@ function NewResearchView() {
               <span>BibTeX</span>
               <pre><code>{String.raw`@misc{bruneton2026kdz3x3,
   author = {Jean-Philippe Bruneton},
-  title = {An exact {KD}-positive state outside the pure-state hull for the {Fourier} pair on $\mathbf{Z}_3 \times \mathbf{Z}_3$},
+  title = {{Kirkwood--Dirac} positive states of finite abelian {Fourier} pairs: mixtures of pure states exhaust them only for cyclic groups of prime-power order},
   year = {2026},
   url = {https://openquantumproblems.com/research/kd-z3x3.pdf}
 }`}</code></pre>

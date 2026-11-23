@@ -1,0 +1,66 @@
+{
+ "group": "Z_3 x Z_17",
+ "u": [
+  [
+   0,
+   -1,
+   1
+  ],
+  [
+   0,
+   -1,
+   1,
+   -1,
+   1,
+   -1,
+   1,
+   -1,
+   1,
+   -1,
+   1,
+   -1,
+   1,
+   -1,
+   1,
+   -1,
+   1
+  ],
+  [
+   0,
+   -1,
+   1
+  ],
+  [
+   0,
+   -1,
+   1,
+   -1,
+   1,
+   -1,
+   1,
+   -1,
+   1,
+   -1,
+   1,
+   -1,
+   1,
+   -1,
+   1,
+   -1,
+   1
+  ]
+ ],
+ "trace_is_one": true,
+ "min_N_Q": "391/10000000",
+ "kd_positive": true,
+ "Tr_W_rho": "-943767/5000000",
+ "witness_negative": true,
+ "pure_states": 204,
+ "min_Tr_W_pure": "0",
+ "witness_nonnegative_on_pure": true,
+ "float_convention_check_max_error": 1.0644284756053926e-17,
+ "float_Tr_W_rho": -0.18875340000000013,
+ "positive_definite_certified": true,
+ "eigenvalue_lower_bound": "[3.9187506995140932388760043160912047936400813907e-5 +/- 4.33e-52]",
+ "all_ok": true
+}

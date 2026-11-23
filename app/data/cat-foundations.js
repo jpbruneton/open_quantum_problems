@@ -523,7 +523,8 @@ The question of the optimal constant is posed in the “Discussion and outlook�
   { id: "F17",
     cat: "foundations",
     horizon: "sharp",
-    reviewedAt: "2026-11-16",
+    status: "claimed-solved",
+    reviewedAt: "2026-11-23",
     title: "Extremality of Fock-bounded beam-splitter states among Wigner-positive states",
     statement: r`Let $\mathcal D_+$ be the convex set of single-mode states with non-negative Wigner function. For pure states $|\psi\rangle,|\varphi\rangle$ with finite Fock support (Fock-bounded), let $\hat\sigma(\psi,\varphi)$ be the beam-splitter state: the reduced state of one output mode after $|\psi\rangle\otimes|\varphi\rangle$ passes through a balanced beam splitter. Is every such $\hat\sigma(\psi,\varphi)$ an extreme point of $\mathcal D_+$? (Van Herstraeten, Davis, Dias, Prata, Cerf and Chabaud, 2025, Section 6 “Conclusion and open problems”.) Without the Fock-bounded hypothesis the answer is negative: two squeezed vacua of orthogonal quadratures give a non-extreme beam-splitter state.`,
     definition: r`**Wigner-positive states and Hudson's theorem.** Hudson's theorem says that a pure state has a non-negative Wigner function if and only if it is Gaussian, as recalled by Mandilara, Karpov and Cerf. Mixed Wigner-positive states form a convex set $\mathcal D_+$ whose structure is not understood; an operational characterization of it is the “mixed-state Hudson problem” (Mandilara, Karpov and Cerf, PRA 79, 062302 (2009), [arXiv:0808.2501](https://arxiv.org/abs/0808.2501)). By a Krein–Milman argument, describing $\mathcal D_+$ reduces to describing its extreme points.
@@ -532,8 +533,24 @@ The question of the optimal constant is posed in the “Discussion and outlook�
     progress: r`- Mandilara, Karpov and Cerf (2009) bound the non-Gaussianity of Wigner-positive mixed states from above and below; the bounds are not tight ([arXiv:0808.2501](https://arxiv.org/abs/0808.2501)).
 - Cerf, Chabaud, Davis, Dias, Prata and Van Herstraeten (December 2025) study the topology and convex geometry of the sets of Wigner-positive states, prove a Krein–Milman-type theorem in infinite dimension, and show that the Fock-bounded sets form a hierarchy of proper closed faces ([arXiv:2512.14820](https://arxiv.org/abs/2512.14820)).
 - The companion paper (December 2025, revised January 2026) characterizes the phase-invariant extreme points of the larger set of Wigner-positive quasi-states, introduces the “Vertigo map” and extremality-preserving maps, and generates all extreme Wigner-positive states of low Fock dimension from beam-splitter states. Its Theorem 4 proves that $\hat\sigma(m,n)$, built from two Fock states, is extreme for all $m,n\ge0$ ([arXiv:2512.14831](https://arxiv.org/abs/2512.14831)).`,
-    residual: r`The general Fock-bounded case is open. Natural first cases: $\psi,\varphi\in\mathrm{span}\{|0\rangle,|1\rangle\}$, the first case without phase invariance, and $\psi$ arbitrary with $\varphi=|n\rangle$ a Fock state. The authors also call for “more general parametrizations of extreme WPS valid in higher dimensions, for instance based on the set of zeros their Wigner function”.`,
+    claim: r`**The Omega Institute, trureturing repository, [pull request #14609 “Refute finite-Fock beam-splitter extremality with a positive-parameter family”](https://github.com/the-omega-institute/trureturing/pull/14609)** (closed 9 October 2026; preregistered on 8 October 2026 in [issue #14447](https://github.com/the-omega-institute/trureturing/issues/14447)). The result is published on GitHub only: no article or preprint presenting it was found.
+
+What it claims:
+- The answer is negative. For $a>0$ and $|\psi_a\rangle,|\varphi_a\rangle=(|0\rangle\pm a|2\rangle)/\sqrt{1+a^2}$, the beam-splitter state $\hat\sigma(\psi_a,\varphi_a)$ is not an extreme point of $\mathcal D_+$.
+- Write $\hat\sigma=S/(1+a^2)^2$. Up to the Gaussian factor, the Wigner function of $S$ is a sum of two squares $R^2+I^2$, and there is a Hermitian operator $H$ with the same Fock support whose Wigner function is $I^2$. For small $\varepsilon>0$ the two normalized operators $S\pm\varepsilon\,(H-cS)$, with $c$ fixed by the trace, are distinct Wigner-positive states whose midpoint is $\hat\sigma$.
+- The pull request reports a Lean proof for every $a>0$, concluded at $a=\tfrac12$.
+
+Caveats:
+- The claim is neither peer reviewed nor posted as a manuscript, and the repository is a public collection of automated resolutions of arXiv conjectures. Hence “Claimed solved” rather than “Solved”, and no “Lean verified” badge: the Lean file could not be read for this catalogue.
+- The pull request itself says that two steps are mathematical readings that are not formalized: the parity correspondence between the repository's beam-splitter convention and that of the source, and the passage from the finite-support midpoint to the full set $\mathcal D_+$. Both look elementary.
+- An exact recomputation made for this catalogue at $a=\tfrac12$ (symbolic arithmetic) reproduces the witness: the Wigner function of $H$ is $8x^2y^2$ up to the Gaussian factor, and $S\pm\tfrac3{800}H$ are positive semidefinite. A separate numerical computation of the balanced beam splitter reproduces $\hat\sigma$. This check is not an independent expert assessment, and the full text of the source paper was not reread for it.`,
+    residual: r`If the claim holds, Fock-bounded beam-splitter states are not all extreme, already for inputs supported on $\{|0\rangle,|2\rangle\}$. What remains is assessment of the counterexample by the authors of the question or in a refereed publication, and the question it leaves: which Fock-bounded pairs $(\psi,\varphi)$ give extreme states, beyond the Fock-state pairs of Theorem 4 of the source. The authors also call for “more general parametrizations of extreme WPS valid in higher dimensions, for instance based on the set of zeros their Wigner function”.`,
     evidence: [
+      { kind: "preprint",
+        role: "claimed-solution",
+        summary: "Claimed negative answer: the beam-splitter state of (|0⟩ ± a|2⟩)/√(1+a²), a > 0, is the midpoint of two distinct Wigner-positive states. GitHub pull request with a reported Lean proof; no article or preprint; not peer reviewed.",
+        url: "https://github.com/the-omega-institute/trureturing/pull/14609",
+        date: "2026-10-09" },
       { kind: "preprint",
         role: "progress",
         summary: "Beam-splitter states of two Fock states are extreme Wigner-positive states (Theorem 4); construction of all extreme Wigner-positive states of low Fock dimension; poses the Fock-bounded extremality problem in Section 6.",
@@ -552,11 +569,15 @@ The question of the optimal constant is posed in the “Discussion and outlook�
         url: "https://doi.org/10.1103/PhysRevA.79.062302",
         date: "2009-06-03" },
     ],
-    provenance: [],
+    provenance: [
+      { summary: "The claimed refutation comes from the trureturing repository of The Omega Institute, a public collection of automated resolutions of conjectures from arXiv papers, with Lean files. How the mathematics was produced, and by whom, was not established for this catalogue.", url: "https://github.com/the-omega-institute/trureturing/pull/14609" },
+    ],
     relations: [
       { id: "F16", type: "related" },
     ],
     refs: [
+      { label: "The Omega Institute, trureturing repository, pull request #14609 'Refute finite-Fock beam-splitter extremality with a positive-parameter family' (GitHub, closed 9 October 2026)", url: "https://github.com/the-omega-institute/trureturing/pull/14609" },
+      { label: "The Omega Institute, trureturing repository, issue #14447 (preregistration of the refutation, 8 October 2026)", url: "https://github.com/the-omega-institute/trureturing/issues/14447" },
       { label: "Van Herstraeten, Davis, Dias, Prata, Cerf & Chabaud, 'Extreme non-negative Wigner functions' (2025 preprint), Section 6", url: "https://arxiv.org/abs/2512.14831" },
       { label: "Cerf, Chabaud, Davis, Dias, Prata & Van Herstraeten, 'Characterising the sets of quantum states with non-negative Wigner function' (2025 preprint)",
         url: "https://arxiv.org/abs/2512.14820" },

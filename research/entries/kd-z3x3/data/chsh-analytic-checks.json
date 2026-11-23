@@ -1,0 +1,114 @@
+{
+ "Z2xZ2_rho_eigenvalues": {
+  "1/4": 2,
+  "1/4 - sqrt(2)/6": 1,
+  "sqrt(2)/6 + 1/4": 1
+ },
+ "Z2xZ2_rho_psd": true,
+ "Z2xZ2_Q_min": "1/48",
+ "Z2xZ2_Q_real_nonnegative": true,
+ "Z2xZ2_Tr_Wprime_rho": "-1/3",
+ "Z2xZ2_pure_states": 20,
+ "Z2xZ2_min_Tr_Wprime_pure": "0",
+ "Z2xZ2_ok": true,
+ "pure_state_checks": {
+  "2,3": {
+   "pure_states": 24,
+   "min_Tr_W_pure": "0",
+   "ok": true
+  },
+  "2,5": {
+   "pure_states": 40,
+   "min_Tr_W_pure": "0",
+   "ok": true
+  },
+  "2,7": {
+   "pure_states": 56,
+   "min_Tr_W_pure": "0",
+   "ok": true
+  },
+  "3,5": {
+   "pure_states": 60,
+   "min_Tr_W_pure": "0",
+   "ok": true
+  },
+  "3,7": {
+   "pure_states": 84,
+   "min_Tr_W_pure": "0",
+   "ok": true
+  },
+  "5,7": {
+   "pure_states": 140,
+   "min_Tr_W_pure": "0",
+   "ok": true
+  },
+  "3,19": {
+   "pure_states": 228,
+   "min_Tr_W_pure": "0",
+   "ok": true
+  },
+  "7,11": {
+   "pure_states": 308,
+   "min_Tr_W_pure": "0",
+   "ok": true
+  },
+  "3,3": {
+   "pure_states": 54,
+   "min_Tr_W_pure": "0",
+   "ok": true
+  },
+  "5,5": {
+   "pure_states": 200,
+   "min_Tr_W_pure": "0",
+   "ok": true
+  },
+  "7,7": {
+   "pure_states": 490,
+   "min_Tr_W_pure": "0",
+   "ok": true
+  },
+  "11,11": {
+   "pure_states": 1694,
+   "min_Tr_W_pure": "0",
+   "ok": true
+  },
+  "13,13": {
+   "pure_states": 2704,
+   "min_Tr_W_pure": "0",
+   "ok": true
+  }
+ },
+ "case_inequalities": {
+  "(2,3): nu = s2 s3 > max(2, 2 kappa_3)": {
+   "nu_lower": "8/3",
+   "threshold_upper": "1024139487/407562500",
+   "ok": true
+  },
+  "(2,q), q >= 5: nu >= s2 s5 > 2 sqrt 2": {
+   "nu_lower": "16/5",
+   "threshold_upper": "5657/2000",
+   "ok": true
+  },
+  "(3,q), q >= 19: nu >= s3 s19 > max(2, 2 kappa_3)": {
+   "nu_lower": "48/19",
+   "threshold_upper": "1024139487/407562500",
+   "ok": true
+  },
+  "(5,q), q >= 7: nu >= s5 s7 > max(2, 2 kappa_5)": {
+   "nu_lower": "96/35",
+   "threshold_upper": "1124344873133/436566500000",
+   "ok": true
+  },
+  "(p,q), 7 <= p < q: nu >= s7 s11 > 2 sqrt 2": {
+   "nu_lower": "240/77",
+   "threshold_upper": "5657/2000",
+   "ok": true
+  },
+  "(p,p), p >= 7: nu >= s7^2 > 2 sqrt 2": {
+   "nu_lower": "144/49",
+   "threshold_upper": "5657/2000",
+   "ok": true
+  }
+ },
+ "all_ok": true
+}
