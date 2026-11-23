@@ -1,0 +1,58 @@
+{
+ "group": "Z_3 x Z_13",
+ "u": [
+  [
+   0,
+   -1,
+   1
+  ],
+  [
+   0,
+   -1,
+   1,
+   -1,
+   1,
+   -1,
+   1,
+   -1,
+   1,
+   -1,
+   1,
+   -1,
+   1
+  ],
+  [
+   0,
+   -1,
+   1
+  ],
+  [
+   0,
+   -1,
+   1,
+   -1,
+   1,
+   -1,
+   1,
+   -1,
+   1,
+   -1,
+   1,
+   -1,
+   1
+  ]
+ ],
+ "trace_is_one": true,
+ "min_N_Q": "4/78125",
+ "kd_positive": true,
+ "Tr_W_rho": "-35569/200000",
+ "witness_negative": true,
+ "pure_states": 156,
+ "min_Tr_W_pure": "0",
+ "witness_nonnegative_on_pure": true,
+ "float_convention_check_max_error": 1.1271129103080331e-17,
+ "float_Tr_W_rho": -0.17784500000000028,
+ "positive_definite_certified": true,
+ "eigenvalue_lower_bound": "[5.1256572528406281813668312585215866966521576977e-5 +/- 7.17e-53]",
+ "all_ok": true
+}

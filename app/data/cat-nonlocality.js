@@ -680,8 +680,8 @@ Caveats:
   { id: "N20",
     cat: "nonlocality",
     horizon: "sharp",
-    status: "improved",
-    reviewedAt: "2026-11-16",
+    status: "claimed-solved",
+    reviewedAt: "2026-11-23",
     title: "Fourier Kirkwood–Dirac representations whose positive states form a polytope of pure ones",
     statement: r`For a finite abelian group $G$, consider the Kirkwood–Dirac (KD) representation on $L^2(G)$ defined by the position basis $\{|g\rangle\}$ and the Fourier (character) basis $\{|\chi\rangle\}$: $Q_\rho(g,\chi)=\langle\chi|g\rangle\langle g|\rho|\chi\rangle$. Let $\mathcal E_{KD+}$ be the set of states with $Q_\rho\ge0$ and $\mathcal E^{\rm pure}_{KD+}$ its pure elements. For which $G$ does $\mathcal E_{KD+}=\mathrm{conv}(\mathcal E^{\rm pure}_{KD+})$ hold? De Bièvre, Langrenez and Radchenko (2025, Section 8) prove it for $\mathbb Z_{p^k}$, disprove it for $\mathbb Z_6$ and $\mathbb Z_2\times\mathbb Z_2$, and state: “What the situation is for arbitrary abelian groups remains an open question.” For second-countable locally compact abelian groups, Spriet (2025) conjectures that the equality (with trace-norm-closed convex hull) holds when the open compact subgroups are totally ordered by inclusion, adding “It might also be necessary”. For finite $G$, total ordering of subgroups means $G\cong\mathbb Z_{p^k}$.`,
     definition: r`**Kirkwood–Dirac quasiprobability.** Given two orthonormal bases $\{|a_i\rangle\}$, $\{|b_j\rangle\}$, the KD distribution of $\rho$ is $Q_{ij}=\langle b_j|a_i\rangle\langle a_i|\rho|b_j\rangle$; it is complex in general, and negative or non-real values signal non-classicality (contextuality, anomalous weak values, metrological advantage). A state is KD-positive (KD-classical) if all $Q_{ij}\ge0$. For a pair of bases in general position, the KD-positive states are only the mixtures of basis projectors (Langrenez, Arvidsson-Shukur and De Bièvre, J. Math. Phys. 65, 072201 (2024), [arXiv:2306.00086](https://arxiv.org/abs/2306.00086)). The Fourier pair on an abelian group is the opposite extreme: its pure KD-positive states are, up to the Heisenberg–Weyl action, the normalized indicator functions (Haar measures) of subgroups.
@@ -692,9 +692,31 @@ The question is posed in [arXiv:2501.12252](https://arxiv.org/abs/2501.12252), S
 - Xu (J. Math. Phys. 66, 102104 (2025)) shows that for the DFT in every dimension each KD-positive state is a real linear combination of pure KD-positive states ([arXiv:2412.16945](https://arxiv.org/abs/2412.16945)).
 - De Bièvre, Langrenez and Radchenko (Ann. Henri Poincaré 27, 3093 (2026)) identify the pure KD-positive states for every finite abelian group, give an equivalent condition (Theorem 5.2: every “quantum” positive function on $G\times\hat G$ splits into positive $H\times H^\perp$-periodic functions over subgroups $H$), prove the equality for all $\mathbb Z_{p^k}$ (Theorem 6.1), and exhibit KD-positive states outside the convex hull for $\mathbb Z_6$ and $\mathbb Z_2\times\mathbb Z_2$ ([arXiv:2501.12252](https://arxiv.org/abs/2501.12252)).
 - Spriet (J. Fourier Anal. Appl. 32, 99 (2026)) extends the framework to second-countable LCA groups, identifies the generalized pure KD-positive states as Haar measures on closed subgroups, and proves the closed-convex-hull equality for connected compact groups (Theorem 1.3) ([arXiv:2507.23628](https://arxiv.org/abs/2507.23628)).
-- Cai, Yang and Zheng (March 2026) give a new proof for dimension $p^r$ and a directed-graph description of pure KD-classical states in every dimension ([arXiv:2603.13863](https://arxiv.org/abs/2603.13863)).`,
-    residual: r`No other finite abelian group is decided: in particular $\mathbb Z_{pq}$ for general distinct primes, $\mathbb Z_p\times\mathbb Z_p$ for odd $p$, and $\mathbb Z_2\times\mathbb Z_4$. A reduction from $G$ to subgroups or quotients that would propagate the $\mathbb Z_6$ and $\mathbb Z_2\times\mathbb Z_2$ counterexamples is not established. For infinite groups, the sufficiency conjecture of Spriet (for example $\mathbb Z_p$ or $\mathbb Q_p$, the $p$-adic integers and numbers) is open.`,
+- Cai, Yang and Zheng (March 2026) give a new proof for dimension $p^r$ and a directed-graph description of pure KD-classical states in every dimension ([arXiv:2603.13863](https://arxiv.org/abs/2603.13863)).
+- Thio, Yang, Yunger Halpern, De Bièvre, Barnes and Arvidsson-Shukur (Phys. Rev. Lett. 137, 080601 (2026)) find KD-positive states outside the convex hull of pure ones for the multiqubit groups $\mathbb Z_2^n$, $n\ge2$ ([arXiv:2506.08092](https://arxiv.org/abs/2506.08092v2)).
+- Burkat and Strelchuk (Phys. Rev. A 114, 042446 (2026), Appendix D) record that for the DFT in dimension $pq\neq6$ the equality was still an open question ([arXiv:2502.11784](https://arxiv.org/abs/2502.11784v4)).`,
+    claim: r`**Bruneton (research note of this site), [“Kirkwood–Dirac positive states of finite abelian Fourier pairs: mixtures of pure states exhaust them only for cyclic groups of prime-power order”](https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/kd-z3x3)** (23 November 2026; first version, on $\mathbb Z_3\times\mathbb Z_3$, of 17 November 2026). The claim is made by the maintainers of this catalogue.
+
+What it claims:
+- For a finite abelian group $G$, $\mathcal E_{KD+}=\mathrm{conv}(\mathcal E^{\rm pure}_{KD+})$ if and only if $G\cong\mathbb Z_{p^k}$. The “if” part is Theorem 6.1 of De Bièvre, Langrenez and Radchenko.
+- Zero extension from a subgroup and pull-back from a quotient preserve the trace-norm distance to the pure-state hull, so a counterexample for a subquotient gives one for $G$. A group that is not cyclic of prime-power order contains $\mathbb Z_p\times\mathbb Z_q$ with $p,q$ prime.
+- For $\mathbb Z_p\times\mathbb Z_q$, a CHSH-type witness $I+A_0B_0+A_1B_0+A_1B_1-A_0B_1$, built from zero-mean observables diagonal in the position and Fourier bases of each factor, is nonnegative on every pure KD-positive state and negative on the KD-positive state $(I-c\,\mathcal B)/pq$ for all pairs of primes outside a list of eight. $\mathbb Z_2\times\mathbb Z_2$ is treated by hand, six pairs by explicit states, and $\mathbb Z_3\times\mathbb Z_3$ by a state at trace-norm distance at least $111/20000$ from the hull.
+
+Caveats:
+- The note is not peer reviewed and has not been assessed by anyone outside this project. Hence “Claimed solved” rather than “Solved”.
+- The proof is computer-assisted in three places: two norm bounds certified in interval arithmetic, and the positive definiteness of six explicit states, also in interval arithmetic; the other steps are exact or written out. The checkers and certificates are public.
+- The priority search covered the literature citing De Bièvre–Langrenez–Radchenko, arXiv, and one public repository of machine-generated proofs; two doctoral theses were searched by keyword and read only in their relevant chapters.`,
+    residual: r`If the claim holds, the finite case is closed and Spriet's ordering condition is necessary for finite groups. What remains is independent assessment of the note, and the infinite case: the sufficiency conjecture of Spriet for second-countable locally compact abelian groups whose open compact subgroups are totally ordered (for example $\mathbb Z_p$ or $\mathbb Q_p$, the $p$-adic integers and numbers), and the necessity of that condition beyond finite groups. A proof of the six computer-certified pairs $(3,5)$, $(3,7)$, $(3,11)$, $(3,13)$, $(3,17)$, $(5,5)$ without interval arithmetic would also be of interest.`,
     evidence: [
+      { kind: "preprint",
+        role: "claimed-solution",
+        summary: "Research note of this site (not peer reviewed, not on arXiv): hull equality holds exactly for cyclic groups of prime-power order. Transfer theorem for subgroups and quotients, CHSH-type witness for Z_p × Z_q, exact Z_3 × Z_3 certificate; public checkers and certificates.",
+        url: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/kd-z3x3",
+        date: "2026-11-23" },
+      { kind: "published",
+        role: "progress",
+        summary: "KD-positive states outside the hull of pure ones for the multiqubit groups Z_2^n, n ≥ 2 (Phys. Rev. Lett. 137, 080601).",
+        url: "https://doi.org/10.1103/x819-898d" },
       { kind: "published",
         role: "progress",
         summary: "Equality conv(pure KD-positive) = KD-positive for G = Z_{p^k}; equivalent decomposition criterion; counterexamples for Z_6 and Z_2 × Z_2 (Ann. Henri Poincaré 27, 3093–3112).",
@@ -723,11 +745,19 @@ The question is posed in [arXiv:2501.12252](https://arxiv.org/abs/2501.12252), S
         url: "https://doi.org/10.1088/1751-8121/ad819a",
         date: "2024-10-10" },
     ],
-    provenance: [],
+    provenance: [
+      { summary: "The research note claiming the resolution was produced in this project with AI systems, under the direction of the maintainer: the author line reads “Fable & Astra. Research led by Jean-Philippe Bruneton”. The proofs, the checkers and the literature search were written by AI systems; the result has not been checked by an independent expert.", url: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/kd-z3x3" },
+    ],
     relations: [
       { id: "N10", type: "related" },
     ],
     refs: [
+      { label: "Bruneton, 'Kirkwood–Dirac positive states of finite abelian Fourier pairs: mixtures of pure states exhaust them only for cyclic groups of prime-power order' (research note of this site, 23 November 2026)",
+        url: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/kd-z3x3" },
+      { label: "Thio, Yang, Yunger Halpern, De Bièvre, Barnes & Arvidsson-Shukur, 'Kirkwood-Dirac nonpositivity is a necessary resource for quantum computing', Phys. Rev. Lett. 137, 080601 (2026)",
+        url: "https://arxiv.org/abs/2506.08092v2" },
+      { label: "Burkat & Strelchuk, 'Classification of Kirkwood-Dirac positivity-preserving unitaries', Phys. Rev. A 114, 042446 (2026)",
+        url: "https://arxiv.org/abs/2502.11784v4" },
       { label: "De Bièvre, Langrenez & Radchenko, 'The Kirkwood-Dirac representation associated to the Fourier transform for finite abelian groups: positivity', Ann. Henri Poincaré 27, 3093 (2026)",
         url: "https://arxiv.org/abs/2501.12252" },
       { label: "Spriet, 'Characterizing the Kirkwood-Dirac positivity on second countable LCA groups', J. Fourier Anal. Appl. 32, 99 (2026)",

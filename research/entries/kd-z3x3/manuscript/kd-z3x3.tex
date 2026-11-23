@@ -8,6 +8,7 @@
 \usepackage[hidelinks]{hyperref}
 \newtheorem{theorem}{Theorem}
 \newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
 \theoremstyle{definition}
 \newtheorem{definition}[theorem]{Definition}
@@ -33,34 +34,48 @@
 \newcommand{\F}{\mathbb F}
 \newcommand{\E}{\mathcal E}
 \newcommand{\hull}{\mathcal C}
+\newcommand{\B}{\mathcal B}
+\newcommand{\Wc}{\mathcal W}
 \newcommand{\ket}[1]{\lvert#1\rangle}
 \newcommand{\bra}[1]{\langle#1\rvert}
+\newcommand{\leg}[2]{\left(\frac{#1}{#2}\right)}
 \setlength{\emergencystretch}{2em}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.3em plus 0.1em minus 0.1em}
-\title{An exact KD-positive state outside the pure-state hull\\
-for the Fourier pair on $\Z_3\times\Z_3$}
+\title{Kirkwood--Dirac positive states of finite abelian Fourier pairs:\\
+mixtures of pure states exhaust them only for cyclic groups\\ of prime-power order}
 \author{Fable \& Astra\\[0.35em]
 \normalsize Research led by Jean-Philippe Bruneton\\[-0.1em]
 \small Universit\'e Paris Cit\'e, France}
-\date{17 November 2026}
+\date{23 November 2026\\[0.2em]
+\small First version, on $\Z_3\times\Z_3$: 17 November 2026}
 
 \begin{document}
 \maketitle
 \begin{abstract}
-For the position and Fourier bases of $G=\Z_3\times\Z_3$, we give an explicit
-strictly positive Kirkwood--Dirac distribution whose inverse is a positive
-definite density operator outside the convex hull of all pure KD-positive
-states. An integer witness has maximum $18$ on that hull and expectation
-$206973/10000\approx20.6973$ on our state. Weighted diagonal dominance proves positivity
-using rational arithmetic alone, and the trace-norm distance to the hull is
-at least $111/20000$. We also verify that the natural subgroup and quotient
-isometries preserve exactly the trace-norm distance to the corresponding
-pure-state hulls. This yields consequences for finite abelian groups with
-a $\Z_3^2$ subquotient and completes the classification for groups of order
-$2^a3^b$. Previously published separations for Fourier pairs concern the
-groups $\Z_6$ and $\Z_2^n$ and rely on numerical positivity checks; we found
-no earlier treatment of $\Z_3\times\Z_3$.
+Two incompatible quantum measurements have no joint probability distribution
+in general, but the Kirkwood--Dirac (KD) representation assigns to every state
+a table of complex quasiprobabilities with the correct marginals. When the two
+measurements are the position basis and the Fourier basis attached to a finite
+abelian group $G$, the states whose table is a genuine probability
+distribution form a convex set, and its pure elements are known: they are
+uniform superpositions over a coset of a subgroup, multiplied by a character.
+This note determines when these pure states generate the whole set. Every
+KD-positive state is a mixture of pure KD-positive states if and only if $G$
+is cyclic of prime-power order. The ``if'' part is a theorem of De~Bi\`evre,
+Langrenez and Radchenko, who also found counterexamples for $\Z_6$ and
+$\Z_2\times\Z_2$; the ``only if'' part was open for all other groups. Our
+proof has three ingredients. Subgroup and quotient embeddings preserve
+exactly the trace-norm distance to the pure-state hull, which reduces the
+question to the groups $\Z_p\times\Z_q$ with $p,q$ prime. On such a group the
+four product bases form a Clauser--Horne--Shimony--Holt scenario, and an
+explicit Bell-type witness is nonnegative on every pure KD-positive state and
+negative on an explicit KD-positive state for all pairs $(p,q)$ outside a
+list of eight. One of the eight, $\Z_2\times\Z_2$, is settled by hand; six are
+settled by explicit states with exact rational KD tables whose positive
+definiteness is certified in interval arithmetic; the last, $\Z_3\times\Z_3$,
+by a state certified in rational arithmetic alone, at trace-norm distance at
+least $111/20000$ from the hull.
 \end{abstract}
 
 \section{Introduction}
@@ -73,33 +88,59 @@ entry is real and nonnegative, the table is a genuine probability distribution
 and the state is called KD-positive for that pair of bases. This condition
 depends on the chosen bases, and its failure is a resource: for multiqubit
 systems, for instance, KD nonpositivity is necessary for a quantum
-computational advantage \cite{Thio}.
+computational advantage \cite{Thio}. Among all quasiprobability
+representations, the KD ones are singled out by the fact that they alone
+produce natural conditional expectations \cite{SLBD}.
 
-The example studied here is a pair of qutrits. The nine computational basis
-vectors are labelled by $G=\Z_3\times\Z_3$, and the conjugate basis is obtained
-by applying the three-dimensional Fourier transform to each qutrit, namely
-$F_3\otimes F_3$. This is different from the Fourier transform $F_9$ of the
-cyclic group $\Z_9$. For the chosen pair, the pure KD-positive states are known
-exactly: each of the six subgroups of $G$ gives nine states, for a total of
-$54$ \cite{DLR}. They include both product and entangled states.
+The pairs of bases studied here come from a finite abelian group $G$. The
+first basis is labelled by the elements of $G$ and the second is its Fourier
+transform, labelled by the characters of $G$. For a cyclic group this is the
+discrete Fourier transform, and for $G=\Z_2^n$ it is the pair of
+computational and Hadamard bases of $n$ qubits. For such a pair the pure
+KD-positive states are completely known: each is the uniform superposition
+over a coset of a subgroup, multiplied by a character \cite{DLR}. There are
+finitely many of them, and every mixture of them is KD-positive.
 
-Every mixture of those $54$ pure states is KD-positive. The basic geometric
-question is whether the converse holds: does every KD-positive mixed state lie
-in their convex hull? An affirmative answer would make the positive region a
-finite polytope described completely by the pure-state classification. The
-answer depends strongly on the basis pair. It is affirmative for almost every
-pair of bases \cite{almost} and for the cyclic Fourier pairs of prime-power
-order \cite{DLR}, and negative for some spin-one bases \cite{convexroof} and
-for the Fourier pairs of $\Z_6$ and $\Z_2\times\Z_2$ \cite{DLR}.
+The geometric question is whether the converse holds: is every KD-positive
+mixed state a mixture of pure KD-positive states? An affirmative answer makes
+the positive region a polytope whose vertices are listed by the pure-state
+classification, and several arguments about KD-positive states need exactly
+this description; the tight entropic uncertainty relations of
+\cite{ThioEntropic}, for instance, are established under the hypothesis that
+the KD-positive set is the hull of the basis projectors
+\cite[Lemma~2]{ThioEntropic}. The answer depends on the basis pair. It is
+affirmative for almost every pair of bases \cite{almost}, for the discrete
+Fourier transform in prime dimension \cite{LAD} and in dimension $p^2$
+\cite{Yang}, and for all cyclic groups of prime-power order \cite{DLR}. It is negative for some spin-one
+bases \cite{LAD,convexroof} and for the Fourier pairs of $\Z_6$ and
+$\Z_2\times\Z_2$ \cite{DLR}. De~Bi\`evre, Langrenez and Radchenko state the
+case of an arbitrary finite abelian group as an open question
+\cite[Section~8]{DLR}.
 
-This note gives an explicit negative answer for the pair $F_3\otimes F_3$. We construct a
-strictly positive KD array whose inverse is a positive-definite density
-operator, and an integer witness that separates it from all $54$ pure
-KD-positive projectors. The witness value is exactly
-$206973/10000\approx20.6973$, whereas the pure-state maximum is $18$.
-The same certificate yields a trace-norm gap, and subgroup and quotient
-embeddings transfer the example to further finite abelian groups.
+This note answers it: the cyclic groups of prime-power order are the only
+ones for which the answer is affirmative. The obstruction is a Bell-type
+inequality. Take $G=\Z_p\times\Z_q$ with $p$ and $q$ prime. The Hilbert space
+is $\C^p\otimes\C^q$, and each factor carries two bases, position and Fourier.
+A KD-positive state supplies a joint probability distribution for the four
+resulting outcomes, so it obeys every classical correlation bound, such as
+the Clauser--Horne--Shimony--Holt (CHSH) bound. Mixtures of pure KD-positive
+states obey a strictly stronger bound, because in each pure KD-positive state
+one of the two outcomes of each factor is uniformly distributed. Quantum
+mechanics offers states whose KD table is still a probability distribution
+but whose correlations violate the stronger bound; the room between the two
+bounds exists because Tsirelson's bound $2\sqrt2$ exceeds the classical value
+$2$. In the simplest case $G=\Z_2\times\Z_2$ the two bases of each qubit are
+the eigenbases of the Pauli matrices $Z$ and $X$, and the state
+\begin{equation}\label{eq:qubits}
+ \rho=\frac14\Bigl(I-\frac13\bigl(Z\otimes Z+X\otimes Z+X\otimes X
+ -Z\otimes X\bigr)\Bigr)
+\end{equation}
+is KD-positive without being a mixture of pure KD-positive states
+(Proposition~\ref{prop:Z2Z2}). The general construction replaces $Z$ and $X$
+by zero-mean observables that are diagonal in the two bases of $\Z_p$ and of
+$\Z_q$, and what it measures is the gap between the two correlation bounds.
 
+\paragraph{Setting.}
 Let $G$ be a finite abelian group of cardinality $N$, with counting measure.
 Its position basis is $(\ket g)_{g\in G}$ and its Fourier basis is
 \[
@@ -122,12 +163,476 @@ $\hull_G=\conv\{P\in\E_G:P\text{ is a rank-one projector}\}$.
 We use the full trace norm $\|A\|_1=\Tr\sqrt{A^*A}$, without a factor $1/2$.
 
 The classification of pure KD-positive states due to
-De Bi\`evre, Langrenez and Radchenko \cite{DLR} is an input:
+De Bi\`evre, Langrenez and Radchenko \cite[Theorem~3.1]{DLR} is an input:
 their vectors, up to global phase, are
 \begin{equation}\label{eq:pures}
  \psi(g)=|H|^{-1/2}\gamma(g)\mathbf1_{a+H}(g),
  \qquad H\leq G,\quad a\in G,\quad\gamma\in\widehat G.
 \end{equation}
+With $H^\perp=\{\chi\in\widehat G:\chi|_H=1\}$, the projector $P$ onto $\psi$
+has the array
+\begin{equation}\label{eq:masks}
+ Q_G(P)=\frac1N\,\mathbf1_{(a+H)\times(\gamma H^\perp)} ,
+\end{equation}
+supported on a ``rectangle'' with $|H|\,|H^\perp|=N$ points. By
+\eqref{eq:overlap}, for a Hermitian operator $W$ with real array,
+\begin{equation}\label{eq:average}
+ \Tr(WP)=\text{the average of }N\,Q_G(W)\text{ over the rectangle }
+ (a+H)\times(\gamma H^\perp).
+\end{equation}
+
+\paragraph{Results.}
+The main statement is the following classification. The trivial group counts
+as cyclic of prime-power order.
+
+\begin{statementframe}
+\begin{theorem}\label{thm:main}
+Let $G$ be a finite abelian group. Then $\E_G=\hull_G$ if and only if $G$ is
+cyclic of prime-power order.
+\end{theorem}
+\end{statementframe}
+
+The ``if'' direction is \cite[Theorem~6.1]{DLR}. The ``only if'' direction
+follows from three results proved below. Theorem~\ref{thm:lift} shows that the
+zero extension from a subgroup and the pull-back from a quotient preserve the
+trace-norm distance to the pure-state hull; a finite abelian group that is not
+cyclic of prime-power order contains a subgroup isomorphic to
+$\Z_p\times\Z_q$ with $p,q$ prime, so only these groups need a
+counterexample. Theorem~\ref{thm:pq} provides one for every pair of primes,
+by the CHSH mechanism described above. For $\Z_3\times\Z_3$ the counterexample
+is the fully explicit state of Theorem~\ref{thm:example}, whose separation
+from the hull is certified in rational arithmetic with the distance bound
+$111/20000$.
+
+\paragraph{Versions.}
+The first version of this note (17 November 2026) contained the exact
+$\Z_3\times\Z_3$ certificate, the transfer theorem and the resulting
+classification for groups of order $2^a3^b$. The present version adds
+Theorem~\ref{thm:pq} and, with it, the classification for all finite abelian
+groups. The earlier material is kept unchanged in
+Sections~\ref{sec:transfer} and~\ref{sec:z3}.
+
+\section{Related work}
+The first systematic study of mixed KD-positive states is due to Langrenez,
+Arvidsson-Shukur and De~Bi\`evre. They proved that the KD-positive states are
+exactly the mixtures of the basis projectors for the discrete Fourier
+transform in prime dimension \cite[Theorem~1.1(iii)]{LAD}, and they exhibited
+a pair of spin-one bases with KD-positive states outside the hull of the pure
+ones \cite[Section~5.2]{LAD}. For a generic pair of bases the picture is the
+simplest possible: with probability one the only pure KD-positive states are
+the basis vectors, and every KD-positive state is a mixture of them
+\cite[Theorem~1]{almost}. Mixed KD-positive states outside the pure-state
+hull therefore require special basis pairs. For the spin-one pair, the convex
+roof of the total KD nonpositivity equals one exactly on the pure-state hull,
+so that it witnesses the separation faithfully
+\cite[Section~4 and Appendix~B]{convexroof}.
+
+The Fourier pairs are the natural structured case. For the discrete Fourier
+transform in dimension $d$, Yang, Yao, Geng, Wang and Chen proved the
+equality $\E=\hull$ for $d=p^2$ \cite[Theorem~1]{Yang} and conjectured it for
+every $d$ \cite[Conjecture~1]{Yang}. For $d=pq$ with distinct primes they
+showed that the operators with a real KD array are the real span of the pure
+KD-positive projectors \cite[Lemma~4]{Yang}, and wrote that they believe the
+equality but could not prove it. De~Bi\`evre, Langrenez and Radchenko moved
+to arbitrary finite abelian groups: they classified the pure KD-positive
+states \cite[Theorem~3.1]{DLR}, reduced the equality $\E_G=\hull_G$ to a
+decomposition property of positive periodic functions
+\cite[Theorem~5.2]{DLR}, and proved the equality for every cyclic group of
+prime-power order \cite[Theorem~6.1]{DLR}. They refuted the conjecture of
+\cite{Yang} by separated states for $\Z_6$ and for $\Z_2\times\Z_2$, obtained
+by perturbing a state on a facet of the hull along its outward normal, with
+positivity checked numerically \cite[Section~7]{DLR}, and left the general
+abelian case open \cite[Section~8]{DLR}. Cai, Yang and Zheng gave a second
+proof of the prime-power case based on a directed graph, proved
+the equality on the real span of the pure states attached to any path of
+that graph, and stated the structure for general $d$ as an open question
+\cite[Theorems~1 and~2, Conclusion]{Cai}. Burkat and Strelchuk, classifying
+the unitaries that preserve KD positivity, record that for $d=pq\neq6$ the
+equality remained an open question to the best of their knowledge
+\cite[Appendix~D]{Burkat}. Thio et al.\ found exotic states, KD-positive
+and outside the pure-state hull, for the multiqubit groups $\Z_2^n$ with
+$n\geq2$ by a related facet search \cite{Thio}. Spriet extended the pure-state
+classification to second-countable locally compact abelian groups and
+conjectured that the equality holds when the compact open subgroups are
+totally ordered by inclusion, a condition that ``might also be necessary''
+\cite[discussion after Eq.~(12)]{Spriet}. For finite groups this condition
+singles out the cyclic groups of prime-power order.
+
+Against this background, Theorem~\ref{thm:main} settles the finite case
+completely. It refutes \cite[Conjecture~1]{Yang} for every $d=pq$ with
+distinct primes, answers the open question of \cite[Section~8]{DLR}, and
+proves that Spriet's condition is necessary for finite groups. The new cases
+are the groups $\Z_p\times\Z_q$ with $pq\notin\{4,6\}$ and everything that
+contains them; the subgroup reduction itself is elementary. The witness of
+Section~\ref{sec:chsh} is of a different nature from the facet perturbations
+used so far: it is given in closed form for all primes at once and identifies
+the obstruction as a Bell inequality. The first version of this note treated
+$\Z_3\times\Z_3$ by the facet construction of \cite[Section~7]{DLR} with an
+exact certificate; that example is kept because it comes with an explicit
+distance to the hull.
+
+A search of the literature citing \cite{DLR} and of public repositories of
+machine-generated proofs, made on 23 November 2026, found no earlier proof of
+Theorem~\ref{thm:pq} or of Theorem~\ref{thm:main}. This statement concerns
+bibliographic priority and is independent of the mathematical verification
+described in Section~\ref{sec:verif}.
+
+\section{Transfer between a group, its subgroups and its quotients}
+\label{sec:transfer}
+The following specialization of a channel-retraction argument carries a
+counterexample from a subgroup or a quotient to the whole group, with its
+distance to the hull. Its general norm-contraction mechanism is standard; the
+point to verify is the action on the KD hulls.
+
+\begin{statementframe}
+\begin{theorem}\label{thm:lift}
+Let $H\leq G$ and $K=G/H$, with $m=|H|$. Let $V:\ell^2(H)\to\ell^2(G)$
+be zero extension and let $J:\ell^2(K)\to\ell^2(G)$ be the isometry
+$(Jf)(g)=m^{-1/2}f(g+H)$. Each isometry sends KD-positive states to
+KD-positive states and sends its pure-state hull into $\hull_G$.
+Moreover, for $E=V$ with $T=H$, or $E=J$ with $T=K$, and every density
+operator $\omega$ on $\ell^2(T)$,
+\begin{equation}\label{eq:isometry}
+ \dist_1(E\omega E^*,\hull_G)=\dist_1(\omega,\hull_T).
+\end{equation}
+\end{theorem}
+\end{statementframe}
+
+\begin{proof}
+Equation \eqref{eq:KD} first gives the two formulas
+\begin{align}
+ Q_G(V\omega V^*)(g,\chi)
+ &=\begin{cases}\dfrac mN Q_H(\omega)(g,\chi|_H),&g\in H,\\0,&g\notin H,
+ \end{cases}\label{eq:subgroup}\\
+ Q_G(J\omega J^*)(g,\chi)
+ &=\begin{cases}\dfrac1m Q_K(\omega)(g+H,\bar\chi),&\chi|_H=1,\\0,&\chi|_H\ne1.
+ \end{cases}\label{eq:quotient}
+\end{align}
+Here $\bar\chi$ is the induced character of $K$. These prove preservation
+of KD positivity. Formula \eqref{eq:pures} proves preservation of pure
+KD-positive projectors: for $V$, extend a character of $H$ to $G$; for
+$J$, take the preimage in $G$ of the subgroup and coset in $K$.
+
+We next check compression of a pure KD-positive vector $\psi$ of $G$.
+For $V^*\psi$, its support is the intersection of a subgroup coset
+$a+L$ with $H$. This is empty or a coset of $L\cap H$, so the compression
+is zero or proportional to a vector in \eqref{eq:pures} for $H$.
+For $J^*\psi$, sum the character on each intersection of a fibre of
+$G\to K$ with $a+L$. Such an intersection is a coset of $H\cap L$.
+If the character is nontrivial on $H\cap L$, the sum vanishes.
+Otherwise its magnitude is constant on the coset $\pi(a+L)$, where
+$\pi:G\to K$ is the quotient map, and its phase is a character of $\pi(L)$,
+extendible to $K$. This compression is again zero or proportional to a pure
+KD-positive vector of $K$.
+
+Fix any pure $\tau\in\hull_T$. The completely positive trace-preserving map
+\[
+ \mathcal R_E(X)=E^*XE+\Tr[(I-EE^*)X]\tau
+\]
+satisfies $\mathcal R_E(\hull_G)\subseteq\hull_T$ by the compression check,
+and $\mathcal R_E(E\omega E^*)=\omega$. The inclusion
+$E\hull_TE^*\subseteq\hull_G$ and trace-norm invariance under an isometry
+give the ``$\leq$'' direction of \eqref{eq:isometry}. For the reverse
+direction, every $\sigma\in\hull_G$ satisfies
+\[
+ \|\omega-\mathcal R_E(\sigma)\|_1
+ =\|\mathcal R_E(E\omega E^*-\sigma)\|_1
+ \leq\|E\omega E^*-\sigma\|_1,
+\]
+by channel contraction on Hermitian operators. Taking infima finishes
+the proof.
+\end{proof}
+
+\begin{corollary}\label{cor:reduction}
+Let $T$ be a subgroup or a quotient of $G$, or a quotient of a subgroup. If
+$\E_T\neq\hull_T$, then $\E_G\neq\hull_G$. Moreover, a finite abelian group
+that is not cyclic of prime-power order contains a subgroup isomorphic to
+$\Z_p\times\Z_q$ for some primes $p\leq q$.
+\end{corollary}
+
+\begin{proof}
+The hull $\hull_T$ is a polytope, hence closed, so a state
+$\omega\in\E_T\setminus\hull_T$ lies at positive distance from it, and
+Theorem~\ref{thm:lift} gives a state of $\E_G$ at the same positive distance
+from $\hull_G$. For the second assertion, if two distinct primes $p<q$ divide
+$|G|$, Cauchy's theorem provides elements of orders $p$ and $q$, which
+generate a subgroup isomorphic to $\Z_p\times\Z_q$. Otherwise $G$ is a
+non-cyclic $p$-group, a direct sum of at least two nontrivial cyclic groups,
+and elements of order $p$ in two summands generate $\Z_p\times\Z_p$.
+\end{proof}
+
+The sets $\E_G$ and $\hull_G$ are defined by the group structure alone: a
+group isomorphism induces a unitary that maps position basis to position
+basis and Fourier basis to Fourier basis. The group $\Z_p\times\Z_q$ with
+$p\neq q$ may therefore be replaced by the cyclic group $\Z_{pq}$ whenever
+convenient.
+
+\section{A CHSH witness for $\Z_p\times\Z_q$}\label{sec:chsh}
+
+\begin{statementframe}
+\begin{theorem}\label{thm:pq}
+For all primes $p\leq q$, the group $G=\Z_p\times\Z_q$ satisfies
+$\E_G\neq\hull_G$.
+\end{theorem}
+\end{statementframe}
+
+The case $p=q=3$ is Theorem~\ref{thm:example} of Section~\ref{sec:z3}. This
+section proves all the others.
+
+\subsection{The witness and the candidate state}
+Here $N=pq$. Write a point of $G\times\widehat G$ as $x=(x_1,x_2,x_3,x_4)$,
+where $(x_1,x_2)\in\Z_p\times\Z_q$ is the position and $(x_3,x_4)\in
+\Z_p\times\Z_q$ labels the character
+$\chi_{(x_3,x_4)}(g_1,g_2)=e^{2\pi i(x_3g_1/p+x_4g_2/q)}$. The Fourier basis
+of $G$ is the tensor product of the Fourier bases $(\ket{f_\alpha})$ of
+$\C^p$ and $(\ket{f_\beta})$ of $\C^q$. Let $u_1,u_3:\Z_p\to[-1,1]$ and
+$u_2,u_4:\Z_q\to[-1,1]$ be functions with zero mean, and set
+\begin{gather}
+ A_0=\sum_{a\in\Z_p}u_1(a)\ket a\bra a,\qquad
+ A_1=\sum_{\alpha\in\Z_p}u_3(\alpha)\ket{f_\alpha}\bra{f_\alpha},\notag\\
+ B_0=\sum_{b\in\Z_q}u_2(b)\ket b\bra b,\qquad
+ B_1=\sum_{\beta\in\Z_q}u_4(\beta)\ket{f_\beta}\bra{f_\beta},\notag\\
+ \B=A_0\otimes B_0+A_1\otimes B_0+A_1\otimes B_1-A_0\otimes B_1,
+ \qquad \Wc=I+\B,\qquad \rho_c=\frac{I-c\,\B}{N}\quad(c>0).
+ \label{eq:chsh}
+\end{gather}
+The observables $A_0,A_1$ act on the first factor and $B_0,B_1$ on the
+second; $\B$ is a CHSH operator, $\Wc$ is the witness and $\rho_c$ the
+candidate state. Two families of functions are used. The \emph{alternating}
+function is $v_2=(1,-1)$ for the prime $2$, and $v_p(0)=0$,
+$v_p(x)=(-1)^x$ for $1\leq x\leq p-1$ when $p$ is odd. If $p\neq q$ we take
+$u_1=u_3=v_p$ and $u_2=u_4=v_q$. If $p=q$ is odd we take the Legendre symbol
+$u_1=u_2=u_3=\leg{\cdot}{p}$ and $u_4=-\leg{-1}{p}\leg{\cdot}{p}$. For a
+function $u$ on $\Z_p$ put $\|u\|^2=\frac1p\sum_xu(x)^2$; this equals $1$ for
+$v_2$ and $(p-1)/p$ for $v_p$ and for the Legendre symbol with $p$ odd. Let
+\begin{equation}\label{eq:nu}
+ S(x)=u_1(x_1)u_2(x_2)+u_3(x_3)u_2(x_2)+u_3(x_3)u_4(x_4)-u_1(x_1)u_4(x_4),
+ \qquad
+ \nu=\bigl(\|u_1\|^2+\|u_3\|^2\bigr)\bigl(\|u_2\|^2+\|u_4\|^2\bigr).
+\end{equation}
+
+\begin{lemma}\label{lem:props}
+With the notation above:
+\begin{enumerate}
+\item[(a)] $N\,Q_G(\Wc)=1+S$ and $N^2Q_G(\rho_c)=1-c\,S$, with $|S|\leq2$.
+Hence $Q_G(\rho_c)\geq0$ whenever $c\leq\frac12$.
+\item[(b)] If $(p,q)\neq(2,2)$, then $\Tr(\Wc P)\geq0$ for every pure
+KD-positive projector $P$ of $G$.
+\item[(c)] $\Tr(\Wc\rho_c)=1-c\,\nu$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+(a) In $\bra g(A_i\otimes B_j)\ket\chi$, let an observable that is diagonal
+in the position basis act on $\bra g$ and one that is diagonal in the Fourier
+basis act on $\ket\chi$. This gives
+$Q_G(A_0\otimes B_0)(x)=u_1(x_1)u_2(x_2)/N$,
+$Q_G(A_1\otimes B_0)(x)=u_3(x_3)u_2(x_2)/N$, and similarly for the two other
+terms, while $Q_G(I)=1/N$. Finally
+$|S|=|u_2(u_1+u_3)+u_4(u_3-u_1)|\leq|u_1+u_3|+|u_3-u_1|\leq2$.
+
+(b) By \eqref{eq:average}, $\Tr(\Wc P)$ is the average of $1+S$ over a
+rectangle $(a+H)\times(\gamma H^\perp)$. For $H=0$, the position $(x_1,x_2)$
+is fixed and $(x_3,x_4)$ is uniform on $\Z_p\times\Z_q$; the zero means
+remove three of the four terms of $S$ and leave $1+u_1(x_1)u_2(x_2)\geq0$.
+In the same way $H=G$, $H=\Z_p\times0$ and $H=0\times\Z_q$ give
+$1+u_3u_4$, $1+u_3u_2$ and $1-u_1u_4$, all nonnegative. For $p\neq q$ there
+are no other subgroups. For $p=q$ odd, the remaining subgroups are the lines
+$L_s=\{(t,st)\}$ with $s\neq0$, for which $L_s^\perp=\{(x_3,x_4):x_3=-sx_4\}$.
+On a rectangle attached to $L_s$ one has $x_2=sx_1+d$ with $x_1$ uniform and
+$x_3=-sx_4+e$ with $x_4$ uniform and independent of $x_1$. The two mixed
+terms of $S$ average to zero and
+\[
+ \Tr(\Wc P)=1+\mathbb E\bigl[u_1(x_1)u_2(sx_1+d)\bigr]
+ +\mathbb E\bigl[u_3(-sx_4+e)u_4(x_4)\bigr].
+\]
+For $k\neq0$, the identity $\sum_x\leg{x(x+k)}{p}=-1$ holds, because for
+$x\neq0$ one has $\leg{x(x+k)}{p}=\leg{1+k/x}{p}$ and $1+k/x$ runs over
+$\F_p\setminus\{1\}$. Therefore $\frac1p\sum_x\leg xp\leg{sx+d}p$ equals
+$\leg sp\frac{p-1}p$ if $d=0$ and $-\leg sp\frac1p$ if $d\neq0$. The first
+expectation is thus $\leg sp\frac{p-1}p$ or $-\leg sp\frac1p$. By the choice
+of $u_4$ and $\leg{-1}p\leg{-s}p=\leg sp$, the second expectation is
+$-\leg sp\frac{p-1}p$ or $\leg sp\frac1p$. Whatever the sign of $\leg sp$,
+one of the two expectations is at least $-\frac1p$ and the other at least
+$-\frac{p-1}p$, so $\Tr(\Wc P)\geq0$.
+
+(c) The zero means give $\Tr A_i=\Tr B_j=0$ and
+$\Tr(A_0A_1)=\sum_{a,\alpha}u_1(a)u_3(\alpha)|\langle a|f_\alpha\rangle|^2
+=\frac1p\sum_au_1(a)\sum_\alpha u_3(\alpha)=0$, and likewise $\Tr(B_0B_1)=0$.
+Hence $\Tr\B=0$, the cross terms of $\Tr\B^2$ vanish, and
+$\frac1N\Tr\B^2=\nu$. Then
+$\Tr(\Wc\rho_c)=\frac1N\Tr\bigl((I+\B)(I-c\B)\bigr)=1-c\nu$.
+\end{proof}
+
+The operator $\rho_c$ is positive semidefinite when
+$c\,\lambda_{\max}(\B)\leq1$, where $\lambda_{\max}$ denotes the largest
+eigenvalue. Two bounds on $\lambda_{\max}(\B)$ are used.
+
+\begin{lemma}\label{lem:tsirelson}
+Let $A_0,A_1$ and $B_0,B_1$ be Hermitian contractions on two
+finite-dimensional Hilbert spaces and let $\B$ be as in \eqref{eq:chsh}. Then
+$\lambda_{\max}(\B)\leq2\sqrt2$. Moreover $\lambda_{\max}(\B)\leq2\kappa_A$,
+where $\kappa_A=\max_\theta\|\cos\theta\,A_0+i\sin\theta\,A_1\|$ in operator
+norm, and
+symmetrically $\lambda_{\max}(\B)\leq2\kappa_B$ with
+$\kappa_B=\max_\theta\|\cos\theta\,B_0+i\sin\theta\,B_1\|$.
+\end{lemma}
+
+\begin{proof}
+Write $B_j$ for $I\otimes B_j$. For a unit vector $\psi$, the Cauchy--Schwarz
+inequality gives
+\[
+ |\langle\psi,\B\psi\rangle|\leq\|(B_0-B_1)\psi\|+\|(B_0+B_1)\psi\|
+ \leq\sqrt2\,\langle\psi,(2B_0^2+2B_1^2)\psi\rangle^{1/2}\leq2\sqrt2 ,
+\]
+which is Tsirelson's bound. For the second bound, dilate each $B_j$ to the
+Hermitian unitary
+\[
+ R_j=\begin{pmatrix}B_j&\sqrt{I-B_j^2}\\\sqrt{I-B_j^2}&-B_j\end{pmatrix}
+\]
+on the doubled space. Both $R_0$ and $R_1$ compress to $B_0$ and $B_1$ under
+the same isometry, so $\lambda_{\max}(\B)\leq\lambda_{\max}(\B')$, where
+$\B'$ is built from $A_0,A_1,R_0,R_1$. Two Hermitian unitaries $R_0,R_1$
+decompose their space into common invariant subspaces of dimension one or
+two: if $w$ is an eigenvector of the unitary $R_0R_1$ with eigenvalue
+$\lambda$, then $R_1w=\lambda R_0w$ and $R_1R_0w=\bar\lambda w$, so the span
+of $w$ and $R_0w$ is invariant under both, and so is its orthogonal
+complement. On a one-dimensional block $R_0=r_0$ and $R_1=r_1$ are signs and
+$\B'=(r_0-r_1)A_0+(r_0+r_1)A_1$ is $\pm2A_0$ or $\pm2A_1$, of norm at most
+$2\kappa_A$ (take $\theta=0$ or $\pi/2$). A two-dimensional block on which
+$R_0$ or $R_1$ is $\pm I$ splits into one-dimensional blocks. On the others,
+$R_0=\sigma_z$ and $R_1=\cos t\,\sigma_z+\sin t\,\sigma_x$ in a suitable
+basis. Then $R_0-R_1=2\sin\frac t2\,\sigma_a$ and
+$R_0+R_1=2\cos\frac t2\,\sigma_b$ for two anticommuting Pauli matrices
+$\sigma_a,\sigma_b$, and in a basis where $\sigma_a=\sigma_x$ and
+$\sigma_b=\pm\sigma_y$,
+\[
+ \B'=2\begin{pmatrix}0&M^*\\M&0\end{pmatrix},\qquad
+ M=\sin\tfrac t2\,A_0\pm i\cos\tfrac t2\,A_1 ,
+\]
+whose largest eigenvalue is $2\|M\|\leq2\kappa_A$. Exchanging the roles of
+the two factors gives the bound with $\kappa_B$.
+\end{proof}
+
+\begin{proposition}\label{prop:crit}
+Let $(p,q)\neq(2,2)$, let $\Lambda\geq\lambda_{\max}(\B)$ and
+$c=\min(\frac12,\frac1\Lambda)$. If $\nu>\max(2,\Lambda)$, then
+$\rho_c\in\E_G\setminus\hull_G$.
+\end{proposition}
+
+\begin{proof}
+The operator $\rho_c$ has trace one and is positive semidefinite since
+$c\Lambda\leq1$; it is KD-positive by Lemma~\ref{lem:props}(a). By
+Lemma~\ref{lem:props}(c), $\Tr(\Wc\rho_c)=1-c\nu<0$, whereas
+$\Tr(\Wc\sigma)\geq0$ for every $\sigma\in\hull_G$ by
+Lemma~\ref{lem:props}(b).
+\end{proof}
+
+\subsection{Case analysis}
+Put $s_2=2$ and $s_p=2(p-1)/p$ for odd $p$, so that $\nu=s_ps_q$ for the
+functions chosen above; $s_p$ increases with $p$ over the odd primes. Let
+$\kappa_3$ and $\kappa_5$ be the constants $\kappa_A$ of
+Lemma~\ref{lem:tsirelson} for the alternating functions $v_3$ and $v_5$. The
+computation described in Section~\ref{sec:verif} certifies
+$\kappa_3\leq1.25642$ and $\kappa_5\leq1.28772$.
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{llll}
+\hline
+pairs $(p,q)$ & lower bound on $\nu$ & $\Lambda$ & bound used\\
+\hline
+$(2,3)$ & $8/3\approx2.667$ & $2\kappa_3\leq2.5129$ & $\kappa$ bound on the $\Z_3$ factor\\
+$(2,q)$, $q\geq5$ & $16/5=3.2$ & $2\sqrt2\approx2.8284$ & Tsirelson\\
+$(3,q)$, $q\geq19$ & $48/19\approx2.5263$ & $2\kappa_3\leq2.5129$ & $\kappa$ bound on the $\Z_3$ factor\\
+$(5,q)$, $q\geq7$ & $96/35\approx2.7429$ & $2\kappa_5\leq2.5755$ & $\kappa$ bound on the $\Z_5$ factor\\
+$(p,q)$, $7\leq p<q$ & $240/77\approx3.1169$ & $2\sqrt2$ & Tsirelson\\
+$(p,p)$, $p\geq7$ & $144/49\approx2.9388$ & $2\sqrt2$ & Tsirelson\\
+\hline
+\end{tabular}
+\end{center}
+In every row $\nu>\max(2,\Lambda)$, so Proposition~\ref{prop:crit} applies and
+proves Theorem~\ref{thm:pq} for these pairs. The pairs left over are $(2,2)$,
+$(3,3)$, $(5,5)$, $(3,5)$, $(3,7)$, $(3,11)$, $(3,13)$ and $(3,17)$.
+
+\subsection{The group $\Z_2\times\Z_2$}
+For two qubits the witness $\Wc$ takes the value $-1$ on one Bell state, and
+a term $Y\otimes Y$ repairs it.
+
+\begin{proposition}\label{prop:Z2Z2}
+Let $G=\Z_2\times\Z_2$, so that $A_0=B_0=Z$ and $A_1=B_1=X$, and let
+$\Wc'=I+\B-Y\otimes Y$. Then $\Tr(\Wc'P)\geq0$ on the twenty pure KD-positive
+projectors, and for $\frac14<c\leq\frac{\sqrt2}4$ the operator $\rho_c$ is a
+KD-positive state with $\Tr(\Wc'\rho_c)=1-4c<0$. The state \eqref{eq:qubits}
+is $\rho_{1/3}$.
+\end{proposition}
+
+\begin{proof}
+The subgroups $0$, $\Z_2\times0$, $0\times\Z_2$ and $G$ give sixteen product
+states. On each of them exactly one of the four correlators of $\B$ equals
+$\pm1$, the three others vanish, and $\langle Y\otimes Y\rangle=0$, so
+$\Tr(\Wc'P)\in\{0,2\}$. The diagonal subgroup $\{00,11\}$ gives the four Bell
+states, on which $(\langle Z\otimes Z\rangle,\langle X\otimes X\rangle,
+\langle Y\otimes Y\rangle)$ is $(1,1,-1)$, $(1,-1,1)$, $(-1,1,1)$ or
+$(-1,-1,-1)$ and the two mixed correlators vanish; the values of
+$\Tr(\Wc'P)$ are $4,0,0,0$. The spectrum of $\B$ is $\{0,0,\pm2\sqrt2\}$, so
+$\rho_c\geq0$ for $c\leq\sqrt2/4$, and $c\leq\frac12$ gives KD positivity by
+Lemma~\ref{lem:props}(a). Finally $\Tr(\B\rho_c)=-c\nu=-4c$ and
+$\Tr((Y\otimes Y)\rho_c)=0$.
+\end{proof}
+
+\subsection{Six pairs settled by explicit states}\label{sec:six}
+For $(3,5)$, $(3,7)$, $(3,11)$, $(3,13)$, $(3,17)$ and $(5,5)$ the witness
+$\Wc$ is kept and $\rho_c$ is replaced by a state of the form
+\begin{align*}
+ \rho&=\sum_{a,b}w_{12}(a,b)\,\ket a\bra a\otimes\ket b\bra b
+ +\sum_{\alpha,b}w_{32}(\alpha,b)\,\ket{f_\alpha}\bra{f_\alpha}\otimes\ket b\bra b\\
+ &\quad+\sum_{\alpha,\beta}w_{34}(\alpha,\beta)\,\ket{f_\alpha}\bra{f_\alpha}\otimes\ket{f_\beta}\bra{f_\beta}
+ +\sum_{a,\beta}w_{14}(a,\beta)\,\ket a\bra a\otimes\ket{f_\beta}\bra{f_\beta},
+\end{align*}
+a real combination of the product pure KD-positive projectors, with rational
+weights of denominator $10^7$ that sum to one and may be negative. By
+\eqref{eq:masks},
+\[
+ N\,Q_G(\rho)(x)=w_{12}(x_1,x_2)+w_{32}(x_3,x_2)+w_{34}(x_3,x_4)+w_{14}(x_1,x_4),
+\]
+and $\Tr(\Wc\rho)$ is the corresponding weighted sum of the values
+$1\pm u_iu_j$ of Lemma~\ref{lem:props}(b). Both are exact rational numbers.
+The weights were obtained by semidefinite programming, mixed with the
+maximally mixed state to gain a positivity margin, and rounded; the proof
+uses only the stored weights. The checker verifies in exact arithmetic that
+$Q_G(\rho)\geq0$, that $\Tr(\Wc\rho)<0$, and again that $\Tr(\Wc P)\geq0$ on
+every pure KD-positive projector, and certifies $\rho>0$ in interval (ball)
+arithmetic.
+\begin{center}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{llll}
+\hline
+$(p,q)$ & $\Tr(\Wc\rho)$ & $\min N\,Q_G(\rho)$ & certified lower bound on $\lambda_{\min}(\rho)$\\
+\hline
+$(3,5)$ & $-246111/2500000$ & $333/2500000$ & $1.33\times10^{-4}$\\
+$(3,7)$ & $-663653/5000000$ & $951/10000000$ & $9.52\times10^{-5}$\\
+$(3,11)$ & $-334063/2000000$ & $151/2500000$ & $6.05\times10^{-5}$\\
+$(3,13)$ & $-35569/200000$ & $4/78125$ & $5.12\times10^{-5}$\\
+$(3,17)$ & $-943767/5000000$ & $391/10000000$ & $3.91\times10^{-5}$\\
+$(5,5)$ & $-2181631/10000000$ & $799/10000000$ & $7.99\times10^{-5}$\\
+\hline
+\end{tabular}
+\end{center}
+Together with Proposition~\ref{prop:crit}, the case table,
+Proposition~\ref{prop:Z2Z2} and Theorem~\ref{thm:example} below, this proves
+Theorem~\ref{thm:pq}.
+
+\section{An exact certificate for $\Z_3\times\Z_3$}\label{sec:z3}
+For $G=\Z_3\times\Z_3$ the conjugate basis is obtained by applying the
+three-dimensional Fourier transform to each qutrit, namely $F_3\otimes F_3$;
+this is different from the Fourier transform $F_9$ of the cyclic group
+$\Z_9$, for which $\E=\hull$. Each of the six subgroups of $G$ gives nine
+pure KD-positive states, for a total of $54$, which include both product and
+entangled states. The following statement gives a separated state by the
+facet construction of \cite[Section~7]{DLR}, with a certificate that uses
+rational arithmetic alone and yields a distance to the hull. In this section
+$W$ denotes the witness of the theorem, normalized so that the hull lies
+below the value $18$.
 
 \begin{statementframe}
 \begin{theorem}\label{thm:example}
@@ -143,43 +648,6 @@ In particular, $\hull_G\subsetneq\E_G$.
 \end{theorem}
 \end{statementframe}
 
-\section{Related work}
-For a generic pair of bases the question has a simple answer: with
-probability one the only pure KD-positive states are the basis vectors, and
-every KD-positive state is a mixture of them \cite[Theorem~1]{almost}.
-Mixed KD-positive states outside the pure-state hull therefore require
-special basis pairs. Langrenez, De Bi\`evre and Arvidsson-Shukur exhibit
-such a state for a pair of spin-one bases, and show that the convex roof of
-the total KD nonpositivity equals one exactly on the pure-state hull, so that
-it witnesses the separation faithfully
-\cite[Section~4 and Appendix~B]{convexroof}.
-
-The Fourier pairs of finite abelian groups are the natural structured case.
-De Bi\`evre, Langrenez and Radchenko classified their pure KD-positive
-states \cite[Theorem~3.1]{DLR}, reduced the equality $\E_G=\hull_G$ to a
-decomposition property of positive periodic functions
-\cite[Theorem~5.2]{DLR}, and proved the equality for every cyclic group of
-prime-power order \cite[Theorem~6.1]{DLR}; this includes $\Z_9$, whose
-transform $F_9$ differs from $F_3\otimes F_3$. They exhibited separated states
-for $\Z_6$ and $\Z_2\times\Z_2$ by perturbing a state on a facet of the hull
-along its outward normal, with positivity checked numerically
-\cite[Section~7]{DLR}, and left the general abelian case open. Thio et al.\
-found exotic states for the multiqubit groups $\Z_2^n$ by a related
-facet search \cite{Thio}. Spriet extended the pure-state
-classification to second-countable locally compact abelian groups and
-conjectured that the equality holds when the compact open subgroups are
-totally ordered by inclusion, a condition that ``might also be necessary''
-\cite[discussion after Eq.~(12)]{Spriet}. For finite groups this condition
-singles out the cyclic groups of prime-power order.
-
-The present note uses the construction of \cite[Section~7]{DLR} for the
-first non-cyclic group of odd order, $\Z_3\times\Z_3$, and replaces the
-numerical checks by an exact rational certificate with an explicit distance
-bound. The subgroup and quotient transfer then confirms the necessity part of
-Spriet's conjecture for all finite abelian groups with a $\Z_3^2$
-subquotient and for all groups of order $2^a3^b$.
-
-\section{Exact result for the fixed Fourier pair}
 Identify $G$ with $\F_3^2$ and put $\zeta=e^{2\pi i/3}$. Rows and columns
 are both ordered lexicographically as
 $(0,0),(0,1),(0,2),(1,0),\ldots,(2,2)$; column $c$ represents the character
@@ -244,10 +712,10 @@ For $s=(1,1,1,1,1,2,1,1,2)$, exact rational arithmetic gives
  &\hspace{36mm}330636,786094,786094,536024).
 \end{split}
 \end{equation}
-Every entry is strictly positive. With $S=\operatorname{diag}(s)$, the
-Hermitian matrix $S\rho S$ has positive diagonal and is strictly diagonally
+Every entry is strictly positive. With $D=\operatorname{diag}(s)$, the
+Hermitian matrix $D\rho D$ has positive diagonal and is strictly diagonally
 dominant, hence is positive definite. Equivalently, Gershgorin applied to
-$S^{-1}\rho S$ gives the useful explicit bound
+$D^{-1}\rho D$ gives the useful explicit bound
 \begin{equation}\label{eq:eiglower}
  \lambda_{\min}(\rho)\geq\min_i\frac{m_i}{s_i}
  =\frac{27553}{10320000}>0.
@@ -257,14 +725,12 @@ The much larger numerical eigenvalue estimate is not used in this proof.
 \subsection{Separation from all pure KD-positive mixtures}
 The subgroups of $\F_3^2$ are the zero subgroup, four lines, and the full
 group. For each subgroup $H$ the distinct pure projectors in
-\eqref{eq:pures} have arrays
-\begin{equation}\label{eq:masks}
- Q_G(P)(g,c)=\frac19\mathbf1_{a+H}(g)\mathbf1_{b+H^\perp}(c).
-\end{equation}
+\eqref{eq:pures} have the arrays \eqref{eq:masks}, with $N=9$.
 There are $|G/H||\widehat G/H^\perp|=9$ of them for each $H$,
-and hence $54$ in total. Each mask has nine occupied entries.
+and hence $54$ in total. Each rectangle has nine occupied entries.
 By \eqref{eq:overlap}, $\Tr(WP)$ is the sum of the entries of $M$ on
-that mask. Enumerating the six subgroups and their cosets gives the multiset
+that rectangle. Enumerating the six subgroups and their cosets gives the
+multiset
 \begin{equation}\label{eq:scores}
  \{\Tr(WP):P\text{ pure KD-positive}\}
  =\{18\ (43\text{ times}),\ -63\ (10\text{ times}),\ -144\ (1\text{ time})\}.
@@ -305,68 +771,17 @@ construction of \cite[Section~7.2]{DLR}; the witness was found numerically,
 and the positivity proof above is independent of that search.
 \end{remark}
 
-\section{Consequences for other finite abelian groups}
-The following specialization of a channel-retraction argument provides
-quantitative consequences of the example. Its general norm-contraction
-mechanism is standard; the point to verify is the action on the KD hulls.
-
-\begin{statementframe}
-\begin{theorem}\label{thm:lift}
-Let $H\leq G$ and $K=G/H$, with $m=|H|$. Let $V:\ell^2(H)\to\ell^2(G)$
-be zero extension and let $J:\ell^2(K)\to\ell^2(G)$ be the isometry
-$(Jf)(g)=m^{-1/2}f(g+H)$. Each isometry sends KD-positive states to
-KD-positive states and sends its pure-state hull into $\hull_G$.
-Moreover, for $E=V$ with $T=H$, or $E=J$ with $T=K$, and every density
-operator $\omega$ on $\ell^2(T)$,
-\begin{equation}\label{eq:isometry}
- \dist_1(E\omega E^*,\hull_G)=\dist_1(\omega,\hull_T).
-\end{equation}
-\end{theorem}
-\end{statementframe}
-
-\begin{proof}
-Equation \eqref{eq:KD} first gives the two formulas
-\begin{align}
- Q_G(V\omega V^*)(g,\chi)
- &=\begin{cases}\dfrac mN Q_H(\omega)(g,\chi|_H),&g\in H,\\0,&g\notin H,
- \end{cases}\label{eq:subgroup}\\
- Q_G(J\omega J^*)(g,\chi)
- &=\begin{cases}\dfrac1m Q_K(\omega)(g+H,\bar\chi),&\chi|_H=1,\\0,&\chi|_H\ne1.
- \end{cases}\label{eq:quotient}
-\end{align}
-Here $\bar\chi$ is the induced character of $K$. These prove preservation
-of KD positivity. Formula \eqref{eq:pures} proves preservation of pure
-KD-positive projectors: for $V$, extend a character of $H$ to $G$; for
-$J$, take the preimage in $G$ of the subgroup and coset in $K$.
-
-We next check compression of a pure KD-positive vector $\psi$ of $G$.
-For $V^*\psi$, its support is the intersection of a subgroup coset
-$a+L$ with $H$. This is empty or a coset of $L\cap H$, so the compression
-is zero or proportional to a vector in \eqref{eq:pures} for $H$.
-For $J^*\psi$, sum the character on each intersection of a fibre of
-$G\to K$ with $a+L$. Such an intersection is a coset of $H\cap L$.
-If the character is nontrivial on $H\cap L$, the sum vanishes.
-Otherwise its magnitude is constant on the coset $q(a+L)$, and its phase
-is a character of $q(L)$, extendible to $K$. This compression is again
-zero or proportional to a pure KD-positive vector of $K$.
-
-Fix any pure $\tau\in\hull_T$. The completely positive trace-preserving map
-\[
- \mathcal R_E(X)=E^*XE+\Tr[(I-EE^*)X]\tau
-\]
-satisfies $\mathcal R_E(\hull_G)\subseteq\hull_T$ by the compression check,
-and $\mathcal R_E(E\omega E^*)=\omega$. The inclusion
-$E\hull_TE^*\subseteq\hull_G$ and trace-norm invariance under an isometry
-give the ``$\leq$'' direction of \eqref{eq:isometry}. For the reverse
-direction, every $\sigma\in\hull_G$ satisfies
-\[
- \|\omega-\mathcal R_E(\sigma)\|_1
- =\|\mathcal R_E(E\omega E^*-\sigma)\|_1
- \leq\|E\omega E^*-\sigma\|_1,
-\]
-by channel contraction on Hermitian operators. Taking infima finishes
-the proof.
+\section{Proof of Theorem~\ref{thm:main} and consequences}
+\begin{proof}[Proof of Theorem~\ref{thm:main}]
+If $G$ is cyclic of prime-power order, $\E_G=\hull_G$ by
+\cite[Theorem~6.1]{DLR}. Otherwise $G$ contains a subgroup isomorphic to
+$\Z_p\times\Z_q$ with $p\leq q$ prime (Corollary~\ref{cor:reduction}), for
+which the equality fails by Theorem~\ref{thm:pq}, and the failure passes to
+$G$ by Corollary~\ref{cor:reduction}.
 \end{proof}
+
+Theorem~\ref{thm:lift} also transports distances, which gives a quantitative
+statement wherever an explicit distance is available.
 
 \begin{statementframe}
 \begin{corollary}
@@ -380,28 +795,41 @@ Compose the subgroup and quotient isometries in Theorem~\ref{thm:lift}.
 A noncyclic abelian $3$-group contains a subgroup $\Z_3^2$.
 \end{proof}
 
-\begin{statementframe}
-\begin{corollary}
-Among finite abelian groups of order $2^a3^b$, with $a,b\geq0$,
-one has $\E_G=\hull_G$ exactly for the trivial group and the cyclic groups
-whose order is a power of one prime.
-\end{corollary}
-\end{statementframe}
-\begin{proof}
-For a noncyclic group, a Sylow subgroup is noncyclic and contains
-$\Z_2^2$ or $\Z_3^2$. Use respectively the published example
-in \cite[Section~7.2]{DLR} or Theorem~\ref{thm:example}, and then
-Theorem~\ref{thm:lift}. A cyclic group with $a,b>0$ contains $\Z_6$, another
-published counterexample \cite[Section~7.1]{DLR}. The positivity of the two
-published examples was verified numerically in \cite{DLR}. The remaining
-cyclic prime-power cases have $\E_G=\hull_G$ by \cite[Theorem~6.1]{DLR}.
-\end{proof}
+\begin{remark}
+For groups of order $2^a3^b$ the classification already follows from
+Theorem~\ref{thm:lift}, Theorem~\ref{thm:example} and the two examples of
+\cite[Section~7]{DLR}: a noncyclic group has a noncyclic Sylow subgroup,
+which contains $\Z_2^2$ or $\Z_3^2$, and a cyclic group with $a,b>0$ contains
+$\Z_6$. This was the content of the first version of this note; it relied on
+the numerical positivity checks of \cite{DLR} for $\Z_6$ and $\Z_2^2$, which
+Proposition~\ref{prop:Z2Z2} and the first row of the case table now replace
+by proofs.
+\end{remark}
 
-\section{Verification materials}
-Exact verification data and independent standard-library checkers accompany
-this note. They reconstruct all 54 pure arrays, verify strict positivity and
-the witness value, and check the diagonal-dominance certificate using exact
-arithmetic. The public bundle contains the
+\begin{remark}
+The state $\rho_c$ has a joint probability distribution for the four product
+bases, so it satisfies the classical CHSH bound
+$\Tr(\B\rho_c)\geq-2$, while mixtures of pure KD-positive states satisfy
+$\Tr(\B\sigma)\geq-1$ for $(p,q)\neq(2,2)$. In the decomposition criterion of
+\cite[Theorem~5.2]{DLR}, the obstruction comes from the four-cycle formed by
+the subgroups $0$, $\Z_p\times0$, $G$ and $0\times\Z_q$, which is absent when
+the subgroups form a chain, as they do for $\Z_{p^k}$. The analogous question
+for infinite locally compact abelian groups, including the sufficiency
+conjecture of \cite{Spriet}, is not addressed here.
+\end{remark}
+
+\section{Verification materials}\label{sec:verif}
+The proofs of Theorems~\ref{thm:lift} and~\ref{thm:example},
+Lemmas~\ref{lem:props} and~\ref{lem:tsirelson} and
+Propositions~\ref{prop:crit} and~\ref{prop:Z2Z2} are written out above. Three
+steps of Theorem~\ref{thm:pq} are computer-assisted: the bounds on $\kappa_3$
+and $\kappa_5$, the six states of Section~\ref{sec:six}, and, as a
+convenience, the arithmetic of Theorem~\ref{thm:example}. The public bundle
+contains the corresponding checkers and data.
+
+For $\Z_3\times\Z_3$, standard-library Python programs reconstruct all $54$
+pure arrays, verify strict positivity and the witness value, and check the
+diagonal-dominance certificate in exact arithmetic: the
 \href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/kd-z3x3/checks/verify_diagonal_certificate.py}{weighted diagonal-dominance checker},
 the
 \href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/kd-z3x3/checks/verify_z3_certificate.py}{independent cyclotomic checker},
@@ -409,6 +837,30 @@ and the
 \href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/kd-z3x3/checks/verify_paper_data.py}{manuscript-data checker},
 together with the
 \href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/kd-z3x3/data/z3x3-simple-certificate.json}{exact certificate}.
+
+For the CHSH witness, the
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/kd-z3x3/checks/certify_chsh_states.py}{state checker}
+reads the stored rational weights of the six states
+(\href{https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/kd-z3x3/data}{files \texttt{chsh-state-p-q.json}})
+and verifies, in exact rational arithmetic, the trace, the nonnegativity of
+the KD array, the sign of $\Tr(\Wc\rho)$ and the nonnegativity of $\Wc$ on
+every pure KD-positive projector. Positive definiteness is certified with Arb
+ball arithmetic at 160 bits: the matrix is conjugated by a floating-point
+approximation $U$ of its eigenvectors, and $U^*\rho U$ is shown to have a
+positive diagonal and to be strictly diagonally dominant, which implies
+$\rho>0$ whatever the quality of the approximation. The
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/kd-z3x3/checks/certify_kappa.py}{$\kappa$ checker}
+uses $\|\cos\theta\,A_0+i\sin\theta\,A_1\|^2=\lambda_{\max}\bigl(C_0+\cos2\theta\,
+C_1+\sin2\theta\,C_2\bigr)$ with $C_0=\frac12(A_0^2+A_1^2)$,
+$C_1=\frac12(A_0^2-A_1^2)$ and $C_2=\frac i2[A_0,A_1]$; it certifies an upper
+bound at each of $4000$ equally spaced angles by the same ball-arithmetic
+test and adds the Lipschitz term $\frac{\pi}{4000}(\|C_1\|_F+\|C_2\|_F)$,
+where $\|\cdot\|_F$ is the Frobenius norm. The
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/kd-z3x3/checks/check_chsh_analytic.py}{analytic cross-checker}
+verifies Proposition~\ref{prop:Z2Z2} symbolically, the rational inequalities
+of the case table, and Lemma~\ref{lem:props}(b) exhaustively on thirteen
+pairs up to $(13,13)$. The common routines are in
+\href{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/kd-z3x3/checks/chsh_common.py}{\texttt{chsh\_common.py}}.
 These files complement the proofs given above.
 
 \begingroup\small
@@ -421,6 +873,21 @@ for finite abelian groups: positivity},
 Ann. Henri Poincar\'e \textbf{27}, 3093--3112 (2026);
 \href{https://doi.org/10.1007/s00023-025-01614-7}{doi:10.1007/s00023-025-01614-7};
 \href{https://arxiv.org/abs/2501.12252v2}{arXiv:2501.12252v2}.
+
+\bibitem{LAD}
+C. Langrenez, D. R. M. Arvidsson-Shukur and S. De Bi\`evre,
+\emph{Characterizing the geometry of the Kirkwood--Dirac-positive states},
+J. Math. Phys. \textbf{65}, 072201 (2024);
+\href{https://doi.org/10.1063/5.0164672}{doi:10.1063/5.0164672};
+\href{https://arxiv.org/abs/2306.00086v1}{arXiv:2306.00086v1}.
+
+\bibitem{Yang}
+Y.-H. Yang, S. Yao, S.-J. Geng, X.-L. Wang and P.-Y. Chen,
+\emph{Geometry of Kirkwood--Dirac classical states: a case study based on
+discrete Fourier transform},
+J. Phys. A: Math. Theor. \textbf{57}, 435303 (2024);
+\href{https://doi.org/10.1088/1751-8121/ad819a}{doi:10.1088/1751-8121/ad819a};
+\href{https://arxiv.org/abs/2404.09399v2}{arXiv:2404.09399v2}.
 
 \bibitem{almost}
 C. Langrenez, W. Salmon, S. De Bi\`evre, J. J. Thio, C. K. Long and
@@ -438,6 +905,19 @@ J. Phys. A: Math. Theor. \textbf{58}, 215301 (2025);
 \href{https://doi.org/10.1088/1751-8121/add58f}{doi:10.1088/1751-8121/add58f};
 \href{https://arxiv.org/abs/2407.04558}{arXiv:2407.04558}.
 
+\bibitem{Cai}
+L.-Y. Cai, Y.-H. Yang and Z.-J. Zheng,
+\emph{Kirkwood--Dirac classical states based on discrete Fourier transform:
+representation with directed graph},
+\href{https://arxiv.org/abs/2603.13863v1}{arXiv:2603.13863v1} (2026).
+
+\bibitem{Burkat}
+J. Burkat and S. Strelchuk,
+\emph{Classification of Kirkwood--Dirac positivity-preserving unitaries},
+Phys. Rev. A \textbf{114}, 042446 (2026);
+\href{https://doi.org/10.1103/rsy9-12fx}{doi:10.1103/rsy9-12fx};
+\href{https://arxiv.org/abs/2502.11784v4}{arXiv:2502.11784v4}.
+
 \bibitem{Spriet}
 M. Spriet,
 \emph{Characterizing the Kirkwood--Dirac positivity on second countable LCA groups},
@@ -452,6 +932,20 @@ and D. R. M. Arvidsson-Shukur,
 Phys. Rev. Lett. \textbf{137}, 080601 (2026);
 \href{https://doi.org/10.1103/x819-898d}{doi:10.1103/x819-898d};
 \href{https://arxiv.org/abs/2506.08092v2}{arXiv:2506.08092v2}.
+
+\bibitem{ThioEntropic}
+J. J. Thio, S. De Bi\`evre, C. H. W. Barnes and D. R. M. Arvidsson-Shukur,
+\emph{Tight quasiprobabilistic entropic uncertainty relations for discrete
+quantum systems},
+\href{https://arxiv.org/abs/2611.04009v1}{arXiv:2611.04009v1} (2026).
+
+\bibitem{SLBD}
+M. Spriet, C. Langrenez, R. Brummelhuis and S. De Bi\`evre,
+\emph{What is special about the Kirkwood--Dirac distributions? Only they
+produce natural conditional expectations},
+\href{https://arxiv.org/abs/2511.01996v2}{arXiv:2511.01996v2} (2026);
+journal version in Symmetry,
+\href{https://doi.org/10.3390/sym18061008}{doi:10.3390/sym18061008}.
 \end{thebibliography}
 \endgroup
 \end{document}

@@ -1,0 +1,30 @@
+[
+ {
+  "p": 3,
+  "u": [
+   0,
+   -1,
+   1
+  ],
+  "grid_points": 4000,
+  "max_grid_bound": 1.5773502701896263,
+  "lipschitz_term_upper": 0.0012388480044560027,
+  "kappa_squared_upper": 1.5785891181940823,
+  "kappa_upper": 1.2564191650058838
+ },
+ {
+  "p": 5,
+  "u": [
+   0,
+   -1,
+   1,
+   -1,
+   1
+  ],
+  "grid_points": 4000,
+  "max_grid_bound": 1.6568158097680825,
+  "lipschitz_term_upper": 0.001386852114437704,
+  "kappa_squared_upper": 1.6582026618825203,
+  "kappa_upper": 1.287712181305481
+ }
+]
