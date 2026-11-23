@@ -971,7 +971,7 @@ const NEW_RESEARCH_NOTES = [
   {
     title: "Kirkwood–Dirac positivity for finite abelian groups",
     meta: "Research note · classification, computer-assisted proof · 23 November 2026 (first version on Z₃ × Z₃: 17 November 2026)",
-    pdf: "/research/kd-z3x3.pdf",
+    pdf: "/research/kd-z3x3.pdf?v=2026-11-23",
     dossier: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/kd-z3x3",
     summary: "For the position and Fourier bases of a finite abelian group G, the pure states with a nonnegative Kirkwood–Dirac distribution are known. The note proves that every KD-positive state is a mixture of them if and only if G is cyclic of prime-power order. The “if” part is due to De Bièvre, Langrenez and Radchenko, who left the other groups open apart from Z₆ and Z₂ × Z₂. This settles catalogue entry N20, pending independent assessment.",
     result: "Subgroup and quotient embeddings preserve the trace-norm distance to the pure-state hull, which reduces the question to Z_p × Z_q with p, q prime. There the four product bases form a CHSH scenario: an explicit Bell-type witness is nonnegative on every pure KD-positive state and negative on an explicit KD-positive state for all pairs outside a list of eight. Z₂ × Z₂ is settled by hand, six pairs by states with exact rational KD tables whose positive definiteness is certified in ball arithmetic, and Z₃ × Z₃ by a state certified in rational arithmetic alone, at trace-norm distance at least 111/20000 from the hull. The result refutes the conjecture of Yang et al. for every dimension pq and proves that Spriet's ordering condition is necessary for finite groups.",
