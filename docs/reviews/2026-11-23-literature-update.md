@@ -86,7 +86,7 @@ What was checked for this update:
 - Prior art. Every entry of the Google Scholar list of works citing De Bièvre–Langrenez–Radchenko (supplied by the maintainer) was examined: the articles were read in full in their arXiv versions, and the two doctoral theses (Thio, Cambridge 2026; Langrenez, Lille 2025) were read in their relevant chapters and searched by keyword, not in full. None contains the Z_p × Z_q theorem or the classification. arXiv listings and the public repository `the-omega-institute/trureturing` were searched as well. The per-reference record is in the private repository (`docs/research/N20/lecture.md`).
 - Two further papers were read in full on 23 November so that the note can cite them: Langrenez, Arvidsson-Shukur and De Bièvre, arXiv:2306.00086v1 (35 pages), and Yang, Yao, Geng, Wang and Chen, arXiv:2404.09399v2 (26 pages). Journal versions were not compared with the arXiv versions.
 
-Not done: the compiled PDF of the note was not rebuilt in the session that wrote this report (no LaTeX installation was available); see the pull request. Xu (J. Math. Phys. 66, 102104), already cited in the entry by an earlier update, was not reread and is not cited in the note.
+The PDF of the note was compiled on merge by the repository's GitHub Actions workflow `compile-manuscripts.yml` (pdflatex, two passes; 12 pages, no undefined reference or citation), and copied to `public/research/kd-z3x3.pdf`. Xu (J. Math. Phys. 66, 102104), already cited in the entry by an earlier update, was not reread and is not cited in the note.
 
 ### O12 · Triplet reduction for the Markovian Mpemba effect
 
