@@ -1,0 +1,100 @@
+name: Compile research manuscripts
+
+# Compiles research/entries/<slug>/manuscript/<slug>.tex with pdflatex (two passes),
+# fails on LaTeX errors, undefined references or citations, then commits the PDF
+# to the entry's manuscript/ directory and its site mirror public/research/<slug>.pdf.
+
+on:
+  workflow_dispatch:
+    inputs:
+      entries:
+        description: "Space-separated entry slugs to compile (default: every entry)"
+        required: false
+        default: ""
+  push:
+    branches-ignore: [main]
+    paths:
+      - "research/entries/*/manuscript/*.tex"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: compile-manuscripts-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  compile:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Select entries
+        id: select
+        env:
+          INPUT_ENTRIES: ${{ github.event.inputs.entries }}
+          BEFORE: ${{ github.event.before }}
+        run: |
+          if [ -n "$INPUT_ENTRIES" ]; then
+            entries="$INPUT_ENTRIES"
+          elif [ "${{ github.event_name }}" = "push" ] && [ -n "$BEFORE" ] && git cat-file -e "$BEFORE" 2>/dev/null; then
+            entries=$(git diff --name-only "$BEFORE" HEAD -- 'research/entries/*/manuscript/*.tex' | cut -d/ -f3 | sort -u | tr '\n' ' ')
+          else
+            entries=$(ls research/entries | tr '\n' ' ')
+          fi
+          echo "entries=$entries" >> "$GITHUB_OUTPUT"
+          echo "Entries: $entries"
+
+      - name: Install TeX Live
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq --no-install-recommends texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-science lmodern
+
+      - name: Compile (pdflatex twice, then check the log)
+        env:
+          ENTRIES: ${{ steps.select.outputs.entries }}
+        run: |
+          status=0
+          for slug in $ENTRIES; do
+            dir="research/entries/$slug/manuscript"
+            tex="$dir/$slug.tex"
+            [ -f "$tex" ] || { echo "skip $slug (no $tex)"; continue; }
+            echo "::group::$slug"
+            ( cd "$dir" && pdflatex -interaction=nonstopmode -halt-on-error "$slug.tex" >/dev/null && pdflatex -interaction=nonstopmode -halt-on-error "$slug.tex" > "$slug.pass2.txt" ) || { echo "::error file=$tex::pdflatex failed"; tail -60 "$dir/$slug.log"; status=1; echo "::endgroup::"; continue; }
+            log="$dir/$slug.log"
+            grep -nE "^! |LaTeX Warning: (Reference|Citation).*undefined|There were undefined references|Label\(s\) may have changed" "$log" && { echo "::error file=$tex::undefined references, citations or unstable labels"; status=1; }
+            grep -nE "Overfull \\\\hbox \(([2-9][0-9]|[0-9]{3,})\." "$log" && echo "::warning file=$tex::overfull boxes wider than 20pt"
+            pages=$(grep -oE "Output written on .* \(([0-9]+) pages?" "$log" | grep -oE "[0-9]+ pages?")
+            echo "$slug: $pages"
+            echo "- \`$slug\`: $pages" >> "$GITHUB_STEP_SUMMARY"
+            mkdir -p logs && cp "$log" "logs/$slug.log"
+            echo "::endgroup::"
+          done
+          exit $status
+
+      - name: Upload PDFs and logs
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: manuscripts
+          path: |
+            research/entries/*/manuscript/*.pdf
+            logs/
+
+      - name: Commit PDFs
+        if: success() && github.ref != 'refs/heads/main'
+        env:
+          ENTRIES: ${{ steps.select.outputs.entries }}
+        run: |
+          for slug in $ENTRIES; do
+            pdf="research/entries/$slug/manuscript/$slug.pdf"
+            [ -f "$pdf" ] && cp "$pdf" "public/research/$slug.pdf"
+          done
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git add research/entries/*/manuscript/*.pdf public/research/*.pdf
+          if git diff --cached --quiet; then echo "No PDF change"; exit 0; fi
+          git commit -m "Compile manuscripts: $ENTRIES"
+          git push origin "HEAD:${GITHUB_REF_NAME}"
