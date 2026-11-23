@@ -1,0 +1,5 @@
+{
+ "orthonormality_error": 1.6653423546708968e-15,
+ "unbiasedness_error": 9.159339953157541e-16,
+ "gram_vs_direct_max_relative_error": 5.352437193158156e-15
+}

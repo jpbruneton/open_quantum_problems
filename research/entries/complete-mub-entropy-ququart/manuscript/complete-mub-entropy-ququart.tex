@@ -1,0 +1,681 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage[margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{xcolor}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{plain}
+\newtheorem{remark}[theorem]{Remark}
+\newsavebox{\statementbox}
+\newenvironment{statementframe}{%
+  \par\addvspace{0.55\baselineskip}\noindent
+  \begingroup\setlength{\fboxrule}{0.3pt}\setlength{\fboxsep}{7pt}%
+  \begin{lrbox}{\statementbox}%
+  \begin{minipage}{\dimexpr\linewidth-2\fboxsep-2\fboxrule\relax}%
+}{%
+  \end{minipage}\end{lrbox}%
+  {\color{black!45}\fbox{\color{black}\usebox{\statementbox}}}%
+  \endgroup\par\addvspace{0.45\baselineskip}%
+}
+\DeclareMathOperator{\Tr}{Tr}
+\DeclareMathOperator{\diag}{diag}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\ket}[1]{\lvert#1\rangle}
+\newcommand{\bra}[1]{\langle#1\rvert}
+\newcommand{\repo}{https://github.com/jpbruneton/open_quantum_problems/blob/main/research/entries/complete-mub-entropy-ququart}
+\setlength{\emergencystretch}{2em}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0.3em plus 0.1em minus 0.1em}
+\title{The five mutually unbiased bases of a ququart:\\
+the sum of their Shannon entropies is at least seven bits}
+\author{Opus 5.5\\[0.35em]
+\normalsize Research led by Jean-Philippe Bruneton\\[-0.1em]
+\small Universit\'e Paris Cit\'e, France}
+\date{23 November 2026}
+
+\begin{document}
+\maketitle
+\begin{abstract}
+Two orthonormal bases are mutually unbiased when a state that is certain in one
+of them is completely random in the other. In a four-level system there are
+five such bases, and quantum mechanics forbids the five measurement outcomes
+from being simultaneously predictable. The entropic form of this
+complementarity asks how small the sum of the five Shannon entropies can be.
+Riccardi, Macchiavello and Maccone found the value of seven bits by numerical
+minimization in 2017; the best proved lower bound was
+$2+3\log_2 3\approx 6.755$ bits, due to S\'anchez-Ruiz. We prove that the sum
+is at least $7$ bits for every state of $\C^4$ and every complete set of five
+mutually unbiased bases, and that equality holds for exactly forty pure states.
+In the two-qubit Pauli realization these are the stabilizer states whose
+stabilizer group meets three of the five classes of commuting Pauli operators;
+each gives the distribution $(\tfrac12,\tfrac12,0,0)$ in three bases and the
+uniform distribution in the other two. The proof compares the Shannon entropy
+with an explicit quartic symmetric polynomial and certifies two inequalities by
+computer: a one-distribution inequality on the probability simplex, and a
+degree-eight polynomial inequality on pure states. Both certificates are
+replayed in exact rational or ball arithmetic. The same two-step scheme, with
+an exact Hermitian sum-of-squares certificate, gives the non-tight bound
+$10.2205$ bits for the six mutually unbiased bases of $\C^5$, above the
+previously known $6\log_2 3\approx 9.510$ and below the numerical value
+$10.2524$.
+\end{abstract}
+
+\section{Introduction}
+
+Mutually unbiased bases model maximally complementary measurements. Two
+orthonormal bases $\{\ket{a}\}$ and $\{\ket{b}\}$ of $\C^d$ are mutually
+unbiased when $|\langle a|b\rangle|^2=1/d$ for every pair of vectors, so that a
+state prepared in a vector of one basis gives uniformly distributed outcomes in
+the other. At most $d+1$ bases can be pairwise unbiased, and this number is
+reached when $d$ is a prime power. Such a \emph{complete set} is
+informationally complete: its outcome statistics determine the state.
+
+The uncertainty principle for a complete set says that the $d+1$ outcome
+distributions cannot all be sharp. Its entropic form bounds the sum of the
+Shannon entropies from below. For a state $\rho$ and bases
+$A_1,\dots,A_{d+1}$, write $p_{j,a}=\langle a_j|\rho|a_j\rangle$ for the
+probability of outcome $a$ in basis $A_j$ and
+\begin{equation}
+  H(A_j)=-\sum_{a=1}^{d}p_{j,a}\log_2p_{j,a}
+\end{equation}
+for its Shannon entropy in bits, with $0\log_20=0$. The question is the exact
+value of $\min_\rho\sum_jH(A_j)$ and the states that attain it. For a qubit the
+answer is $2$ bits, attained by the eigenstates of the three Pauli
+operators~\cite{WW2010,CBTW2017}. In dimension three the classical argument,
+which uses only the purity of the state, gives $4$ bits, and this value is
+attained~\cite{RMM2017}. From dimension four on, the classical bound is not
+attained, and no tight value had been proved.
+
+The four-level system, or ququart, is the first case where this argument
+fails, and two qubits give the simplest picture of it. The fifteen non-trivial
+two-qubit Pauli products split into five classes of three commuting operators,
+\begin{equation}\label{eq:classes}
+  \{XI,IX,XX\},\ \{ZI,IZ,ZZ\},\ \{YI,IY,YY\},\ \{XY,YZ,ZX\},\ \{XZ,YX,ZY\},
+\end{equation}
+and the common eigenbases of the five classes form a complete set of mutually
+unbiased bases of $\C^4$. A common eigenvector of one class gives entropy $0$
+in its own basis and $2$ bits in the four others, a total of $8$ bits. The
+state $(\ket{00}+\ket{01})/\sqrt2$ does better. It is stabilized by $IX$, $ZI$
+and $ZX$, which lie in three different classes, so it has the distribution
+$(\tfrac12,\tfrac12,0,0)$, of entropy $1$, in three bases, and is uniform in the
+other two. Its total is $3\cdot1+2\cdot2=7$ bits. Riccardi, Macchiavello and
+Maccone found by numerical minimization that $7$ is the minimum~\cite{RMM2017},
+and the value has since been tested experimentally~\cite{Serino2025}, but no
+proof was known. The theorem below supplies it.
+
+\begin{statementframe}
+\begin{theorem}\label{thm:main}
+Let $A_1,\dots,A_5$ be a complete set of mutually unbiased bases of $\C^4$.
+For every density matrix $\rho$ on $\C^4$,
+\begin{equation}\label{eq:main}
+  \sum_{j=1}^{5}H(A_j)\ \ge\ 7 .
+\end{equation}
+Equality holds for exactly forty states, all pure. For the Pauli
+realization~\eqref{eq:classes} they are the two-qubit stabilizer states whose
+stabilizer group contains one operator from each of three different classes;
+for each of the ten triples of classes there are four of them. Each minimizer
+has the distribution $(\tfrac12,\tfrac12,0,0)$ in three bases and the uniform
+distribution in the other two. For any other complete set, the minimizers are
+the images of these forty states under the equivalence that maps the set onto
+the Pauli realization.
+\end{theorem}
+\end{statementframe}
+
+The forty minimizers can also be described without Pauli operators: they are
+the states $(\ket{a}+e^{i\varphi}\ket{b})/\sqrt2$, with $a\ne b$ two vectors of
+one basis, that have the distribution $(\tfrac12,\tfrac12,0,0)$ in two further
+bases. They contain the twenty-four states of this form listed by Riccardi,
+Macchiavello and Maccone for the first basis~\cite[Eq.~(52)]{RMM2017}. The
+theorem therefore confirms their numerical value and shows that their list,
+closed under the symmetries of the complete set, exhausts the minimizers.
+
+The proof is computer-assisted. It compares $H$ with an explicit symmetric
+polynomial $F$ of degree four in the probabilities and certifies two
+inequalities: $H(p)\ge F(p)$ for every distribution on four outcomes, and
+$\sum_jF(p_j)\ge7$ for every pure state. The first is a three-variable problem
+on a simplex, the second a degree-eight polynomial inequality in six real
+variables after a reduction by symmetries. Both are certified by
+branch-and-bound searches whose leaves are replayed in exact rational
+arithmetic or in ball arithmetic, together with exact local lemmas at the
+equality points.
+
+The same two-step scheme gives a new lower bound in dimension five. There the
+classical bound $6\log_2 3\approx 9.510$ was the best one proved, while
+numerical minimization gives $10.2524$~\cite{RMM2017}. Replacing the
+branch-and-bound for the polynomial inequality by an exact Hermitian
+sum-of-squares certificate, we obtain the following bound, which is not
+tight.
+
+\begin{statementframe}
+\begin{theorem}\label{thm:d5}
+For every complete set of six mutually unbiased bases $A_1,\dots,A_6$ of $\C^5$
+and every density matrix $\rho$ on $\C^5$,
+\begin{equation}
+  \sum_{j=1}^{6}H(A_j)\ \ge\ \frac{20447}{2000}-\frac{6}{2000}=\frac{20441}{2000}=10.2205 .
+\end{equation}
+\end{theorem}
+\end{statementframe}
+
+\section{Related work}
+
+\emph{Entropic uncertainty for complete sets.} The reviews of Wehner and
+Winter~\cite{WW2010} and of Coles, Berta, Tomamichel and Wehner~\cite{CBTW2017}
+describe the state of the art. For a complete set of mutually unbiased bases
+and a pure state, the collision probabilities satisfy the identity
+\begin{equation}\label{eq:collision}
+  \sum_{j=1}^{d+1}\sum_{a=1}^{d}p_{j,a}^2=2,
+\end{equation}
+a consequence of the fact that a complete set forms a complex projective
+$2$-design~\cite{BW2007,CBTW2017}. Since the Shannon entropy dominates the
+collision entropy $-\log_2\sum_ap_a^2$, concavity of the logarithm gives the
+bound $\sum_jH(A_j)\ge(d+1)\log_2\frac{d+1}{2}$, attributed to Ivanovi\'c and
+to S\'anchez-Ruiz~\cite[Eq.~(6)]{WW2010}, \cite[Eq.~(81)]{CBTW2017}. For even
+$d$, S\'anchez-Ruiz improved it to
+$\frac d2\log_2\frac d2+(\frac d2+1)\log_2(\frac d2+1)$, which is tight for
+$d=2$~\cite{WW2010}, \cite[Eq.~(86)]{CBTW2017}. For $d=4$ this gives
+$2+3\log_2 3\approx 6.755$ bits, the best bound proved before this note. For
+$d=5$ the first bound gives $6\log_23\approx 9.510$, as recalled by Wu, Yu and
+M{\o}lmer~\cite[Eq.~(20)]{WYM2009}, who also derived bounds for subsets of a
+complete set. Design-based and purity-based arguments of the same kind give
+R\'enyi and collision-entropy bounds~\cite{KG2020,Howard2015,Frembs2026}; for the
+two-qubit Pauli classes, Frembs, Natale, Wever and H\"ohn derive the
+collision-entropy bound $5\log_2\frac52\approx6.610$ from a purity
+invariant~\cite[Thm.~4]{Frembs2026}. Min-entropy bounds for arbitrary numbers
+of mutually unbiased bases were obtained by Mandayam, Wehner and
+Balachandran~\cite{MWB2010}, who record that in $d=4$ tight relations were
+known for the min-entropy with two and four bases and for the collision
+entropy with three and five bases~\cite[Sec.~I.C]{MWB2010}. Wehner and Winter
+called tight uncertainty relations for all mutually unbiased bases ``an
+interesting open question''~\cite[Sec.~III.B.2]{WW2010}, and Coles et al.\
+list the strongest bound for a given number of bases as
+open~\cite[App.~A]{CBTW2017}.
+
+Section~\ref{sec:reduction} explains why the S\'anchez-Ruiz value is the
+natural limit of these methods in $d=4$: it is the minimum of the sum of the
+smallest entropies compatible with the individual collision probabilities under
+the constraint~\eqref{eq:collision}, and the distributions that realize it,
+three times $(\tfrac13,\tfrac13,\tfrac13,0)$ and twice $(\tfrac12,\tfrac12,0,0)$,
+do not come from any quantum state. The proof below therefore has to use the
+correlations between different bases.
+
+\emph{Numerical values and experiments.} Riccardi, Macchiavello and
+Maccone~\cite{RMM2017} minimized numerically, with Mathematica, the sum of
+entropies for every number of mutually unbiased bases in dimensions three to
+five. For the complete set in $d=3$ their value, $4$ bits, coincides with
+Ivanovi\'c's bound and is attained, so it is proved; the values $7$ for $d=4$
+and $10.25$ for $d=5$ come from numerical minimization only. Serino et al.\ tested all these values with
+frequency-bin photonic states~\cite{Serino2025} and showed that in $d=5$ the
+value for three bases depends on the choice of the triple~\cite{Serino2025b}. A
+2026 review by Chesi and Maccone still presents the $d=4$ and $d=5$ values for
+complete sets as numerical~\cite[Table~1]{CM2026}.
+
+\emph{Other uncertainty relations for subsets.} Ballester and Wehner showed
+that for $d=r^2$ there are $r+1$ mutually unbiased bases for which the trivial
+pairwise bound is attained~\cite{BW2007}; Ambainis showed that for three bases
+of the standard construction in prime dimension the average entropy can be
+close to $\frac12\log_2 d$~\cite{Ambainis2009}. Mandayam, Bandyopadhyay, Grassl
+and Wootters showed that any three of the five Pauli classes~\eqref{eq:classes}
+determine a fourth maximal commuting set built from their operators, whose
+common eigenstates give the distribution $(\tfrac12,\tfrac12,0,0)$ in each of
+the three bases, so that the collision-entropy bound for three bases in $d=4$ is
+tight~\cite[Thm.~1 and Thm.~6]{MBGW2014}. These common eigenstates are exactly
+the minimizers of Theorem~\ref{thm:main}: the forty minimizers are the
+eigenstates of the ten maximal commuting sets attached to the ten triples of
+classes. Niekamp, Kleinmann and G\"uhne studied entropic uncertainty for
+stabilizer bases and showed that the Maassen--Uffink bound is tight for any
+pair of them~\cite{NKG2012}. In odd prime dimension, Howard found that among
+equatorial states the magic states, not the stabilizer states, minimize the
+total collision entropy over the non-computational bases~\cite{Howard2015}; for the Shannon entropy of the
+complete set in $d=4$ the minimizers are stabilizer states. For odd prime
+$d\ge5$, Li proved the sharp lower bound on the total support of a state in the
+standard complete set and classified its extremizers; for $d=5$ they are the
+superpositions of two vectors of the computational basis~\cite{Li2026}. In $d=5$ these two-vector
+states also attain the numerical minimum $10.2524$ of the entropy sum (our
+computation, Section~\ref{sec:d5}).
+
+\emph{Classification of complete sets.} Brierley, Weigert and Bengtsson
+classified all sets of mutually unbiased bases in dimensions two to
+five~\cite{BWB2010}. In $d=4$ and in $d=5$ the complete set is unique up to an
+equivalence generated by a global unitary, rephasing and permutation of the
+vectors of each basis, permutation of the bases, and complex conjugation
+\cite[Sec.~3, Sec.~4 and App.~A]{BWB2010}. Each of these operations transports
+states and preserves $\sum_jH(A_j)$, so it suffices to prove the theorems for
+one complete set in each dimension.
+
+A search of the literature, of arXiv and of the public repository
+\texttt{the-omega-\allowbreak institute/\allowbreak trureturing}, made on 22
+and 23 November 2026, found no earlier proof of Theorem~\ref{thm:main} or of a
+bound above $6\log_23$ for $d=5$. The closest item in that repository treats
+the qubit case, in which the three Pauli entropies sum to at least two bits.
+The search could not reach a citation index, so the papers citing~\cite{RMM2017}
+were not all examined.
+
+\section{Reduction to two inequalities}\label{sec:reduction}
+
+\emph{Concavity.} The probabilities $p_{j,a}$ are linear in $\rho$ and $H$ is
+strictly concave, so $\sum_jH(A_j)$ is concave in $\rho$ and its minimum is
+attained at pure states. If a mixed state
+$\rho=\sum_k\lambda_k\ket{\psi_k}\bra{\psi_k}$ with $\lambda_k>0$ attained the
+minimum, every $\psi_k$ would be a minimizer and, by strict concavity, all
+$\psi_k$ would have the same twenty probabilities $p_{j,a}$; since a complete
+set is informationally complete, all $\psi_k$ would coincide. The minimizers are
+therefore pure, and by the classification of complete sets it suffices to treat
+the Pauli realization~\eqref{eq:classes}. The projector onto the common
+eigenvector with eigenvalues $s_1,s_2\in\{\pm1\}$ of the class
+$\{P_1,P_2,P_1P_2\}$ is $(I+s_1P_1)(I+s_2P_2)/4$, a matrix with entries in
+$\Q(i)$.
+
+\emph{Why purity is not enough.} For a distribution $p$ on four outcomes let
+$c_k(p)=\sum_ap_a^k$. If one keeps only the identity~\eqref{eq:collision},
+$\sum_jc_2(p_j)=2$, and bounds each entropy by the smallest entropy
+$\Phi(c)$ of a distribution with collision probability $c$, the resulting
+problem $\min\{\sum_j\Phi(c_j):\sum_jc_j=2\}$ has the value
+$3\log_23+2\approx6.755$, attained by three distributions
+$(\tfrac13,\tfrac13,\tfrac13,0)$ and two distributions
+$(\tfrac12,\tfrac12,0,0)$. This is the S\'anchez-Ruiz bound. A comparison
+function that depends on $c_2$ alone cannot do better, and the proof uses higher
+power sums.
+
+\emph{The comparison function.} Define the symmetric quartic polynomial
+\begin{equation}\label{eq:F}
+  F(p)=t_0+t_2c_2+t_3c_3+t_4c_4+t_{22}c_2^2,
+\end{equation}
+\begin{equation*}
+  t_0=\tfrac{2793}{640},\quad t_2=-\tfrac{21657}{1600},\quad
+  t_3=\tfrac{1841}{100},\quad t_4=-\tfrac{1081}{100},\quad t_{22}=\tfrac{61}{100}.
+\end{equation*}
+The coefficients $t_0$ and $t_2$ are fixed by $F(\tfrac12,\tfrac12,0,0)=1$ and
+$F(\tfrac14,\tfrac14,\tfrac14,\tfrac14)=2$, so that $F$ agrees with $H$ at the
+distributions of the minimizers. The other three were chosen by a semidefinite
+programme that maximizes the curvature of inequality~(B) below at its zeros;
+the proof uses only the rational values above.
+
+\begin{proposition}[Inequality A]\label{prop:A}
+For every probability vector $p$ on four outcomes, $H(p)\ge F(p)$, with
+equality only at the uniform vector and at the six permutations of
+$(\tfrac12,\tfrac12,0,0)$.
+\end{proposition}
+
+\begin{proposition}[Inequality B]\label{prop:B}
+For every unit vector $\psi\in\C^4$,
+$\sum_{j=1}^5F\bigl(p_j(\psi)\bigr)\ge7$, with equality only at the forty
+states of Theorem~\ref{thm:main}.
+\end{proposition}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main} from Propositions~\ref{prop:A} and~\ref{prop:B}]
+For a pure state, $\sum_jH(A_j)\ge\sum_jF(p_j)\ge7$. Equality in the second
+inequality forces $\psi$ to be one of the forty states, and these states
+satisfy $\sum_jH(A_j)=3\cdot1+2\cdot2=7$. The reduction above extends the
+bound to mixed states and to every complete set and shows that there are no
+other minimizers. The forty states are listed with their distributions in
+exact arithmetic in the verification data (\texttt{data/minimizers.json});
+each of them has exactly three Pauli products with expectation $\pm1$, one in
+each of three different classes, and each of the ten triples of classes occurs
+four times. The twenty common eigenvectors of single classes give $8$ bits.
+\end{proof}
+
+\section{Certification of inequality A}\label{sec:A}
+
+The domain is the three-dimensional simplex of probability vectors, in the
+coordinates $(p_1,p_2,p_3)$. The function $H-F$ vanishes at the seven equality
+points, so the proof combines two exact local lemmas with a branch-and-bound
+search away from them.
+
+\emph{Near the uniform vector $u$.} There $H-F$ vanishes with zero gradient,
+and its Hessian $-\frac1{\ln2}\bigl(\diag(1/p_i)+J/p_4\bigr)-\nabla^2F$, where
+$J$ is the all-ones matrix, is positive definite on the box
+$|p_i-\tfrac14|\le0.0015$. An exact Taylor expansion of $\nabla^2F$ at $u$
+bounds the variation of the polynomial part, and the smallest eigenvalue
+$1.18$ of the midpoint matrix exceeds the Frobenius norm $0.90$ of the radius
+matrix. The function $H-F$ is therefore strictly convex on the box and
+positive except at $u$.
+
+\emph{Near $e=(\tfrac12,\tfrac12,0,0)$.} Write $s=p_3+p_4$ and
+$t=(p_1-p_2)/2$, and let $\eta(x)=-x\log_2x$ and $h$ be the binary entropy.
+Subadditivity of $\eta$, the mean value theorem for $\eta$ and for $F$ along the
+segment that moves the mass $s$ back to the first two coordinates give
+\begin{equation}
+  H(p)-F(p)\ge\varphi(t)+s\bigl(\log_2(1/s)-e_1-K\bigr),\qquad
+  \varphi(t)=h(\tfrac12+t)-F(\tfrac12+t,\tfrac12-t,0,0),
+\end{equation}
+on the region $s\le0.02$, $|t|\le0.04$. Here $e_1=-0.2907$ bounds $\eta'$ from
+above on $[0.45,0.54]$ and $K=5.2919$, computed with upward rounding, bounds
+the corresponding directional derivative of $F$ on a box that contains the
+segment. Since $2^{-(e_1+K)}=0.0312>0.02$, the second term is positive for
+$0<s\le0.02$. The function $\varphi$ satisfies $\varphi(0)=\varphi'(0)=0$ and
+$\varphi''\ge0.33$ on $[-0.04,0.04]$ by interval arithmetic, so $\varphi\ge0$.
+Hence $H-F>0$ on the region except at $e$, and the symmetry of $H$ and $F$
+under permutations transports the lemma to the six permutations of $e$.
+
+\emph{Elsewhere.} On a simplex $S$ with vertices $v_0,\dots,v_3$ and longest
+edge $\ell$, let $L$ be the affine interpolant of $F$. Since $H$ is concave,
+$H-L$ is concave and attains its minimum on $S$ at a vertex. If
+$\nabla^2F\succeq-mI$ on $S$ with $m\ge0$, then
+$F-L\le\frac m2\sum_i\lambda_i|p-v_i|^2\le\frac m2\cdot\frac38\ell^2$ for the
+barycentric coordinates $\lambda_i$ of $p$, hence
+\begin{equation}
+  \min_S(H-F)\ \ge\ \min_i(H-F)(v_i)-\tfrac{3}{16}\,m\,\ell^2 .
+\end{equation}
+The constant $m$ is obtained from an outward-rounded interval enclosure of
+$\nabla^2F$ on the bounding box of $S$ and Gershgorin's theorem. Simplices
+whose bound is not positive are bisected along their longest edge; simplices
+inside the regions of the local lemmas are discarded. The search proves
+$207\,716$ simplices and discards $1\,159$. Vertex values are computed in double
+precision with an absolute margin of $10^{-12}$, and every proved simplex is
+re-checked with vertex values computed in ball arithmetic at $128$ bits from
+the exact rational vertices; no simplex is rejected. The smallest certified
+lower bound is $2.2\times10^{-10}$.
+
+\section{Certification of inequality B}\label{sec:B}
+
+\emph{Symmetries.} The $24$ permutation matrices of the computational basis,
+the $16$ diagonal matrices $\diag(1,i^a,i^b,i^c)$ with $a+b+c\equiv0\pmod4$,
+and complex conjugation map the set of twenty projectors onto itself; this is
+checked in exact arithmetic. Two orthogonal projectors of the set always belong
+to the same basis, because projectors from different bases have overlap
+$\tfrac14$, so these maps permute the bases and preserve $\sum_jF(p_j)$ and
+$\sum_jH(A_j)$. Sorting the moduli of the components, fixing the global phase,
+rotating the second and third components into the first quadrant and, when
+needed, conjugating, every state becomes equivalent to $\psi\propto(1,w)$ with
+$w=u+iv\in\C^3$ in
+\begin{equation}
+  D=\{\,|w_3|\le|w_2|\le|w_1|\le1,\ 0\le v_1\le u_1,\ u_2\ge0,\ v_2\ge0\,\}.
+\end{equation}
+
+\emph{The polynomial.} Homogenizing~\eqref{eq:F} with $N=|\psi|^2$, inequality
+B becomes $g(u,v)\ge0$ on $D$, where
+\begin{equation}
+  g=\sum_{j=1}^5\Bigl(t_0N^4+t_2c_2(\tilde p_j)N^2+t_3c_3(\tilde p_j)N
+  +t_4c_4(\tilde p_j)+t_{22}c_2(\tilde p_j)^2\Bigr)-7N^4,
+\end{equation}
+with $\tilde p_{j,a}=\langle\psi|\Pi_{j,a}|\psi\rangle$ the unnormalized
+probabilities of $\psi=(1,u+iv)$. It is a polynomial of degree eight in six
+real variables with $340$ rational coefficients. The forty minimizers give
+$28$ points of the chart $w\in\{0,\pm1,\pm i\}^3$ (those whose first component
+has maximal modulus), of which three lie in $D$: $w=(1,0,0)$, $(1,i,i)$ and
+$(1,1,-1)$.
+
+\emph{Local lemmas.} At each of the $28$ chart points $z_0$, exact rational
+arithmetic gives $g(z_0)=0$, $\nabla g(z_0)=0$ and the expansion
+$g(z_0+h)=h^{\mathsf T}Q_0h+\sum_{|\beta|\ge3}a_\beta h^\beta$. An exact
+$LDL^{\mathsf T}$ factorization shows that $Q_0-\mu I$ is positive definite, and
+$\mu>\sum_{k\ge3}A_kR^{k-2}$ with $A_k=\sum_{|\beta|=k}|a_\beta|$. Since
+$|h^\beta|\le|h|^{|\beta|}$, this gives $g(z_0+h)>0$ for $0<|h|\le R$. The radii
+are $R=2361/262144\approx9.0\times10^{-3}$ and, at the points of type
+$(1,1,-1)$, $R\approx3.7\times10^{-3}$.
+
+\emph{Branch-and-bound.} The search starts from the box
+$[0,1]\times[0,1]\times[-1,1]\times[0,\tfrac34]\times[0,1]\times[-1,1]$ in the
+variables $(u_1,u_2,u_3,v_1,v_2,v_3)$, which contains $D$ because $v_1\le u_1$
+and $u_1^2+v_1^2\le1$ give $v_1\le1/\sqrt2$. For a box $c+[-r,r]$ it computes the
+exact Taylor expansion $g(c+h)=\sum_\beta a_\beta h^\beta$, splits it into the
+constant term $a_0$, the linear part, the quadratic part $h^{\mathsf T}Qh$ and
+the tail $T=\sum_{|\beta|\ge3}|a_\beta|r^\beta$, and tests three lower bounds:
+\begin{align}
+  L_1&=a_0-\sum_{\beta\ne0}|a_\beta|r^\beta,\\
+  L_3&=a_0-\sum_i|a_{e_i}|r_i+m\sum_ir_i^2-T,\qquad Q-mI\succ0,\ m\le0,\\
+  L_2&=q(h^*)+\min_{|h_i|\le r_i}\nabla q(h^*)\cdot(h-h^*)-T,\qquad Q\succ0,
+\end{align}
+where $q$ is the quadratic Taylor polynomial and $h^*$ a point of the box; $L_2$
+uses the convexity of $q$. A box is proved when one bound is positive,
+discarded when it is disjoint from $D$ or contained in a ball of a local lemma,
+and bisected otherwise. The search proves $52\,892$ boxes, discards $15\,560$
+boxes disjoint from $D$ and $8$ boxes inside the balls, and runs in about one
+minute.
+
+\emph{Exact replay.} The search runs in double precision with explicit
+rounding margins, but the proof does not depend on them. For each of the
+$52\,892$ leaves, whose corners are dyadic numbers, an independent program
+recomputes the Taylor expansion of $g$ at the centre exactly over $\Q$ and
+verifies one of $L_1$, $L_3$, $L_2$ in exact rational arithmetic, with the
+eigenvalue conditions checked by exact $LDL^{\mathsf T}$ factorizations. It
+finds $2\,455$ leaves proved by $L_1$, $49\,078$ by $L_3$ and $1\,359$ by $L_2$,
+and no failure; the smallest exact lower bound is $1.6\times10^{-5}$. A second
+independent program rebuilds the bisection tree from the root box in exact
+rational arithmetic and checks that every node is a recorded leaf, is disjoint
+from $D$, or lies in a ball of a local lemma, the tests being exact; no node is
+left uncovered. Together with the local lemmas, this proves inequality B with
+no rounding argument. The zeros of $g$ in $D$ are thus exactly the three chart
+points above, whose orbits under the symmetries are the forty states.
+
+\section{Dimension five: a certified bound}\label{sec:d5}
+
+In $d=5$ the complete set is unique up to equivalence~\cite{BWB2010}, and we use
+$\{I,F_5,DF_5,\dots,D^4F_5\}$, where $F_5$ is the Fourier matrix and
+$D=\diag(\omega^{k^2})_{k\in\Z_5}$ with $\omega=e^{2\pi i/5}$. Numerical
+minimization from $1\,500$ random starts always returns
+\begin{equation}
+  V_5=6+5\,h\!\left(\tfrac{5+\sqrt5}{10}\right)\approx10.2524481255,
+\end{equation}
+attained by states $(\ket{j}+e^{i\varphi}\ket{k})/\sqrt2$ of two vectors of the
+computational basis, with the distribution $(\tfrac12,\tfrac12,0,0,0)$ in that
+basis and
+$\bigl(\tfrac{5+\sqrt5}{20},\tfrac{5+\sqrt5}{20},\tfrac{5-\sqrt5}{20},\tfrac{5-\sqrt5}{20},0\bigr)$
+in the five others. This value agrees with the $10.25$ of~\cite{RMM2017}; it is
+not proved here.
+
+The scheme of Sections~\ref{sec:A} and~\ref{sec:B} fails for a tight bound in
+$d=5$. For every symmetric polynomial comparison function built from
+$c_2,\dots,c_5$, the function $\sum_jF(p_j)-V_5$ is constant to $10^{-12}$
+along a curve through the minimizer, because the sums $\sum_jc_k(p_j)$ stay
+constant along it for $k\le5$. The zero of inequality B is then degenerate and
+no local lemma of the kind used above applies. A non-tight bound is
+nevertheless within reach.
+
+\emph{Step A.} Take
+$F=\sum_m\theta_m\prod_ic_{k_i}$ with the seven monomials $1$, $c_2$, $c_3$,
+$c_4$, $c_2^2$, $c_5$, $c_3c_2$ and dyadic coefficients $\theta_m$ listed in
+the verification data. A branch-and-bound on the ordered region
+$p_1\ge\dots\ge p_5$ of the four-dimensional simplex, with the same simplex
+bound as in Section~\ref{sec:A} (constant $\frac m2\cdot\frac25\ell^2$ for five
+vertices) and vertex values re-checked in ball arithmetic, proves
+$H(p)\ge F(p)-\eta$ with $\eta=\frac1{2000}$ ($6\,652\,089$ simplices, no
+rejection).
+
+\emph{Step B.} The Hermitian form
+$f(\psi)=N^{18-5}\bigl(\sum_jF_{\rm hom}(p_j(\psi))-V_BN^{5}\bigr)$, with
+$N=|\psi|^2$ and $V_B=\frac{20447}{2000}$, has a Gram matrix $G$ in the basis
+of monomials $\psi^\gamma$, $|\gamma|=18$. The sums over the vector label and
+over the power of $D$ are Gauss sums over $\Z_5$, so all roots of unity
+cancel and $G$ has rational entries. It is block diagonal according to the
+charge $\sum_kk\gamma_k\bmod5$, with five blocks of size $1\,463$. For each
+block $A$ (after an exact diagonal congruence), a floating-point Cholesky
+factor of $A-\tau I$ is rounded to a matrix $\tilde L$ with dyadic entries, and
+the residual $E=A-\tau I-\tilde L\tilde L^{\mathsf T}$ is computed exactly in
+integer arithmetic; the check $\|E\|_F<\tau$ with $\tau=2^{-20}$ shows that
+$A=\tilde L\tilde L^{\mathsf T}+(\tau I+E)$ is positive semidefinite. Hence
+$f\ge0$ and $\sum_jF(p_j)\ge V_B$ on unit vectors. The same check with
+$V_B=10.23$ fails, as it should.
+
+\emph{Conclusion.} Steps A and B give
+$\sum_jH(A_j)\ge\sum_j(F(p_j)-\eta)\ge V_B-6\eta=10.2205$, which proves
+Theorem~\ref{thm:d5} with the reduction of Section~\ref{sec:reduction}. The gap
+$V_5-V_B$ between the numerical value and the best value certified at lift
+degree $n$ was $0.149$, $0.091$, $0.071$, $0.051$ and $0.029$ for
+$n=10,12,14,16,18$, a slow decrease consistent with the degenerate zero.
+
+\section{Limitations}
+
+Both theorems rest on computer-assisted proofs. Every step that decides the
+result is checked in exact rational or integer arithmetic, or in ball
+arithmetic with outward rounding: the values at the minimizers, the
+symmetries, the local lemmas, the leaves and the coverage of the
+branch-and-bound for inequality~B, the vertex values for inequality~A, and the
+Gram certificates in dimension five. The interval enclosures of Hessians in
+the simplex searches use outward-rounded floating-point arithmetic. The
+coefficients of $F$ were found by optimization, which plays no role in the
+proof.
+
+Theorem~\ref{thm:main} answers the question for $d=4$ only. In $d=5$ the value
+$V_5$ and its minimizers remain conjectural, and the degenerate zero described
+in Section~\ref{sec:d5} suggests that a tight proof needs invariants of degree
+at least six or a certificate that allows exact zeros. Theorem~\ref{thm:d5}
+is $0.032$ bits below $V_5$.
+
+The result has not been independently refereed. An internal review in a
+separate session reran every certificate, wrote the exact coverage check, and
+found only formal defects, which were corrected before publication.
+
+\section{Verification materials}\label{sec:verif}
+
+All files are in the public entry directory
+\href{https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/complete-mub-entropy-ququart}{\texttt{research/entries/complete-mub-entropy-ququart}}.
+For $d=4$, the shared routines are
+\href{\repo/checks/common.py}{\texttt{common.py}} (exact projectors, the
+coefficients of $F$, the polynomial $g$) and
+\href{\repo/checks/ia.py}{\texttt{ia.py}} (outward-rounded interval
+arithmetic). The checkers are
+\href{\repo/checks/minimizers.py}{\texttt{minimizers.py}} (the forty minimizers
+and the twenty basis states, exact),
+\href{\repo/checks/symmetries.py}{\texttt{symmetries.py}} (the symmetry group,
+exact), \href{\repo/checks/prove_A.py}{\texttt{prove\_A.py}} (inequality~A),
+\href{\repo/checks/prove_B.py}{\texttt{prove\_B.py}} (local lemmas and
+branch-and-bound for inequality~B),
+\href{\repo/checks/replay_B_exact.py}{\texttt{replay\_B\_exact.py}} (exact
+replay of the leaves) and
+\href{\repo/checks/coverage_B_exact.py}{\texttt{coverage\_B\_exact.py}} (exact
+coverage of the tree). They write the records
+\href{\repo/data/minimizers.json}{\texttt{minimizers.json}},
+\href{\repo/data/symmetries.json}{\texttt{symmetries.json}},
+\href{\repo/data/A_certificate.json}{\texttt{A\_certificate.json}},
+\href{\repo/data/B_certificate.json}{\texttt{B\_certificate.json}},
+\href{\repo/data/B_leaves.npz}{\texttt{B\_leaves.npz}} (the leaves),
+\href{\repo/data/B_replay.json}{\texttt{B\_replay.json}} and
+\href{\repo/data/B_coverage.json}{\texttt{B\_coverage.json}}.
+For $d=5$, \href{\repo/checks/gram5.py}{\texttt{gram5.py}} gives the exact Gram
+matrices, \href{\repo/checks/check_gram5.py}{\texttt{check\_gram5.py}} compares
+them with a direct computation,
+\href{\repo/checks/params5.py}{\texttt{params5.py}} holds the coefficients,
+\href{\repo/checks/cert_A5.py}{\texttt{cert\_A5.py}} and
+\href{\repo/checks/cert_B5.py}{\texttt{cert\_B5.py}} prove steps A and B, and
+the records are
+\href{\repo/data/A5_certificate.json}{\texttt{A5\_certificate.json}},
+\href{\repo/data/B5_certificate.json}{\texttt{B5\_certificate.json}} and
+\href{\repo/data/B5_negative_test.json}{\texttt{B5\_negative\_test.json}}.
+The checks need Python~3 with \texttt{numpy}, \texttt{scipy}, \texttt{sympy}
+and \texttt{python-flint}. On a laptop, the $d=4$ checks take about twenty
+minutes in total, most of it for the exact replay, and the $d=5$ checks about
+twenty minutes.
+
+\begin{thebibliography}{99}
+
+\bibitem{RMM2017}
+A. Riccardi, C. Macchiavello and L. Maccone,
+\emph{Tight entropic uncertainty relations for systems with dimension three to five},
+Phys. Rev. A \textbf{95}, 032109 (2017);
+\href{https://doi.org/10.1103/PhysRevA.95.032109}{doi:10.1103/PhysRevA.95.032109};
+\href{https://arxiv.org/abs/1701.04304v1}{arXiv:1701.04304v1}.
+
+\bibitem{Serino2025}
+L. Serino, G. Chesi, B. Brecht, L. Maccone, C. Macchiavello and C. Silberhorn,
+\emph{Experimental entropic uncertainty relations in dimensions three to five},
+\href{https://arxiv.org/abs/2507.05025v1}{arXiv:2507.05025v1} (2025);
+published in Phys. Rev. A \textbf{113}, 032420 (2026).
+
+\bibitem{Serino2025b}
+L. Serino, G. Chesi, B. Brecht, L. Maccone, C. Macchiavello and C. Silberhorn,
+\emph{Complementarity-based complementarity: the choice of mutually unbiased
+observables shapes quantum uncertainty relations},
+Phys. Rev. Research \textbf{7}, 033152 (2025);
+\href{https://doi.org/10.1103/v24q-sl6n}{doi:10.1103/v24q-sl6n};
+\href{https://arxiv.org/abs/2406.11395v4}{arXiv:2406.11395v4}.
+
+\bibitem{CM2026}
+G. Chesi and L. Maccone,
+\emph{Quantum uncertainty and entropy},
+\href{https://arxiv.org/abs/2604.09384v1}{arXiv:2604.09384v1} (2026), book chapter,
+\href{https://doi.org/10.1016/B978-0-443-33965-3.00002-X}{doi:10.1016/B978-0-443-33965-3.00002-X}.
+
+\bibitem{WW2010}
+S. Wehner and A. Winter,
+\emph{Entropic uncertainty relations---a survey},
+New J. Phys. \textbf{12}, 025009 (2010);
+\href{https://doi.org/10.1088/1367-2630/12/2/025009}{doi:10.1088/1367-2630/12/2/025009};
+\href{https://arxiv.org/abs/0907.3704v1}{arXiv:0907.3704v1}.
+
+\bibitem{CBTW2017}
+P. J. Coles, M. Berta, M. Tomamichel and S. Wehner,
+\emph{Entropic uncertainty relations and their applications},
+Rev. Mod. Phys. \textbf{89}, 015002 (2017);
+\href{https://doi.org/10.1103/RevModPhys.89.015002}{doi:10.1103/RevModPhys.89.015002};
+\href{https://arxiv.org/abs/1511.04857v2}{arXiv:1511.04857v2}.
+
+\bibitem{WYM2009}
+S. Wu, S. Yu and K. M{\o}lmer,
+\emph{Entropic uncertainty relation for mutually unbiased bases},
+Phys. Rev. A \textbf{79}, 022104 (2009);
+\href{https://doi.org/10.1103/PhysRevA.79.022104}{doi:10.1103/PhysRevA.79.022104};
+\href{https://arxiv.org/abs/0811.2298}{arXiv:0811.2298}.
+
+\bibitem{BW2007}
+M. A. Ballester and S. Wehner,
+\emph{Entropic uncertainty relations and locking: tight bounds for mutually unbiased bases},
+Phys. Rev. A \textbf{75}, 022319 (2007);
+\href{https://doi.org/10.1103/PhysRevA.75.022319}{doi:10.1103/PhysRevA.75.022319};
+\href{https://arxiv.org/abs/quant-ph/0606244v4}{arXiv:quant-ph/0606244v4}.
+
+\bibitem{MWB2010}
+P. Mandayam, S. Wehner and N. Balachandran,
+\emph{A transform of complementary aspects with applications to entropic uncertainty relations},
+J. Math. Phys. \textbf{51}, 082201 (2010);
+\href{https://doi.org/10.1063/1.3477319}{doi:10.1063/1.3477319};
+\href{https://arxiv.org/abs/1004.5086v2}{arXiv:1004.5086v2}.
+
+\bibitem{MBGW2014}
+P. Mandayam, S. Bandyopadhyay, M. Grassl and W. K. Wootters,
+\emph{Unextendible mutually unbiased bases from Pauli classes},
+Quantum Inf. Comput. \textbf{14}, 823--844 (2014);
+\href{https://arxiv.org/abs/1302.3709v2}{arXiv:1302.3709v2}.
+
+\bibitem{NKG2012}
+S. Niekamp, M. Kleinmann and O. G\"uhne,
+\emph{Entropic uncertainty relations and the stabilizer formalism},
+J. Math. Phys. \textbf{53}, 012202 (2012);
+\href{https://doi.org/10.1063/1.3678200}{doi:10.1063/1.3678200};
+\href{https://arxiv.org/abs/1103.2316v2}{arXiv:1103.2316v2}.
+
+\bibitem{Frembs2026}
+M. Frembs, G. Natale, C. S. P. Wever and P. A. H\"ohn,
+\emph{Maximal complementarity in the $n$-qubit Pauli group},
+\href{https://arxiv.org/abs/2607.24988v1}{arXiv:2607.24988v1} (2026).
+
+\bibitem{KG2020}
+A. Ketterer and O. G\"uhne,
+\emph{Entropic uncertainty relations from quantum designs},
+Phys. Rev. Research \textbf{2}, 023130 (2020);
+\href{https://doi.org/10.1103/PhysRevResearch.2.023130}{doi:10.1103/PhysRevResearch.2.023130};
+\href{https://arxiv.org/abs/1911.07533v1}{arXiv:1911.07533v1}.
+
+\bibitem{Howard2015}
+M. Howard,
+\emph{Maximum nonlocality and minimum uncertainty using magic states},
+Phys. Rev. A \textbf{91}, 042103 (2015);
+\href{https://doi.org/10.1103/PhysRevA.91.042103}{doi:10.1103/PhysRevA.91.042103};
+\href{https://arxiv.org/abs/1501.05319v1}{arXiv:1501.05319v1}.
+
+\bibitem{Ambainis2009}
+A. Ambainis,
+\emph{Limits on entropic uncertainty relations for 3 and more MUBs},
+\href{https://arxiv.org/abs/0909.3720v2}{arXiv:0909.3720v2} (2009).
+
+\bibitem{Li2026}
+D. Li,
+\emph{Sharp total-support uncertainty for the standard complete set of mutually unbiased bases},
+\href{https://arxiv.org/abs/2609.16030v2}{arXiv:2609.16030v2} (2026).
+
+\bibitem{BWB2010}
+S. Brierley, S. Weigert and I. Bengtsson,
+\emph{All mutually unbiased bases in dimensions two to five},
+Quantum Inf. Comput. \textbf{10}, 803--820 (2010);
+\href{https://arxiv.org/abs/0907.4097v2}{arXiv:0907.4097v2}.
+
+\end{thebibliography}
+\end{document}

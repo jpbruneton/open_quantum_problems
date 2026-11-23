@@ -107,7 +107,9 @@ More generally, determine the analogous minimum for a specified complete MUB set
     caveat: r`The general openness of tight relations for complete MUB sets is stated by Wehner–Winter and, for analytic bounds, by Serino et al. The specific target “prove 7 for $d=4$” is inferred from Riccardi et al., who state that their $d=4$ and $d=5$ bounds were obtained numerically; they do not pose it as an open problem.`,
     assessment: { verdict: "open-substantive",
       confidence: "medium",
-      summary: r`No analytic or certified proof of the $d=4$ value was found as of 16 November 2026. [Riccardi, Macchiavello and Maccone](https://arxiv.org/abs/1701.04304v1) (v1, 16 January 2017) prove only $d=3$. [Riccardi and Maccone](https://arxiv.org/abs/2605.01832v2) (v2, 2 July 2026) treat two observables, not $d+1$ bases.` } },
+      summary: r`**Update, 23 November 2026: the $d=4$ question is claimed solved by a [research note of this site](https://openquantumproblems.com/research/complete-mub-entropy-ququart.pdf?v=2026-11-23)** ([source, certificate and checks](https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/complete-mub-entropy-ququart)). It proves $\sum_{j=1}^5H(A_j)\ge7$ for every state and every complete set, with equality for exactly forty pure states: the two-qubit stabilizer states whose stabilizer group meets three of the five Pauli classes. The proof is computer-assisted, with every leaf replayed in exact rational or ball arithmetic; the claim is ours and has not been independently assessed. The same note proves the non-tight bound $\sum_{j=1}^6H(A_j)\ge10.2205$ for $d=5$, above the classical $6\log_23\approx9.510$; the numerical value $10.2524$ and its minimizers, and the general prime-power question, remain open.
+
+Before this note, no analytic or certified proof of the $d=4$ value was known. [Riccardi, Macchiavello and Maccone](https://arxiv.org/abs/1701.04304v1) (v1, 16 January 2017) prove only $d=3$. [Riccardi and Maccone](https://arxiv.org/abs/2605.01832v2) (v2, 2 July 2026) treat two observables, not $d+1$ bases.` } },
 
   { key: "PN5",
     cat: "nonlocality",

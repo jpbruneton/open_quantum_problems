@@ -197,7 +197,7 @@ function Home() {
             <a className="box box-science" href="/new-research">
               <div className="box-kicker">Research notes</div>
               <h2>New Research</h2>
-              <p>Twelve research notes, several settling published conjectures, with downloadable manuscripts, exact certificates, reproducible checks and links to the relevant literature.</p>
+              <p>Thirteen research notes, several settling published conjectures, with downloadable manuscripts, exact certificates, reproducible checks and links to the relevant literature.</p>
               <span className="box-cta">Read the research notes <span aria-hidden="true">→</span></span>
             </a>
           </div>
@@ -206,6 +206,7 @@ function Home() {
             <b>Last update · {LITERATURE_UPDATE.label}.</b> Four entries become “Claimed solved” and three more are updated from the arXiv announcements of 20 and 23 November; the items below them date from the updates of 20 and 21 November (nine new questions and literature updates, including the gr-qc and hep-th catch-up since 1 August). The selected evidence papers were read in full, including appendices.
             <ul>
               <li><a href="/p/N20">Kirkwood–Dirac positivity for finite abelian Fourier pairs</a> is now “Claimed solved” by a <a href="/new-research">research note of this site</a>: mixtures of pure KD-positive states exhaust the KD-positive states only for cyclic groups of prime-power order. The claim is ours and awaits independent assessment.</li>
+              <li>A second <a href="/new-research">research note</a> proves that the Shannon entropies of the five mutually unbiased bases of a ququart sum to at least 7 bits, the value found numerically in 2017, and identifies the forty minimizing states. This answers the dimension-four question of proposal <a href="/np/PN4">PN4</a>, pending independent assessment.</li>
               <li><a href="/p/O12">The triplet conjecture for the Markovian Mpemba effect</a> and <a href="/p/F17">the extremality of Fock-bounded beam-splitter states</a> are now “Claimed solved” in the negative, by counterexamples published only as GitHub pull requests of the trureturing repository. Exact recomputations made for this catalogue reproduce both counterexamples.</li>
               <li><a href="/p/E26">The Krenn–Gu conjecture on GHZ graphs</a> is now “Claimed solved” by a proof posted on GitHub with a Lean 4 formalization, found through Krenn et al. (arXiv:2611.26300). Evidence was also updated for <a href="/p/A3">QMA versus QCMA</a>, <a href="/p/C2">the thermal attenuator</a> and <a href="/p/O10">Gibbs sampling beyond high temperature</a>.</li>
               <li><a href="/p/E21">Gaussian optimality of entanglement of formation</a> is now “Claimed solved” for arbitrary finite multimode bipartitions. The same preprint adds multimode Gaussian channel results to <a href="/p/C10">C10</a>, which remains “Improved”.</li>

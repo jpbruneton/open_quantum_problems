@@ -1,0 +1,19 @@
+{
+ "statement": "H(p) >= F(p) - ETA on the 5-outcome simplex (ordered region, S_5 symmetry)",
+ "theta": {
+  "()": "4828809/1048576",
+  "(2,)": "-8834707/524288",
+  "(3,)": "2624211/65536",
+  "(4,)": "-3085713/65536",
+  "(2, 2)": "-3232189/524288",
+  "(5,)": "15855625/1048576",
+  "(3, 2)": "5416695/524288"
+ },
+ "ETA": "1/2000",
+ "simplices_proved": 6652089,
+ "arb_recheck_rejections": 0,
+ "min_certified_lower_bound": 9.963526336782436e-10,
+ "min_vertex_value": 0.0002776377731195652,
+ "min_edge": 0.0011933790872280833,
+ "seconds": 569.8
+}
