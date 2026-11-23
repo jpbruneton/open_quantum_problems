@@ -695,7 +695,7 @@ The question is posed in [arXiv:2501.12252](https://arxiv.org/abs/2501.12252), S
 - Cai, Yang and Zheng (March 2026) give a new proof for dimension $p^r$ and a directed-graph description of pure KD-classical states in every dimension ([arXiv:2603.13863](https://arxiv.org/abs/2603.13863)).
 - Thio, Yang, Yunger Halpern, De Bièvre, Barnes and Arvidsson-Shukur (Phys. Rev. Lett. 137, 080601 (2026)) find KD-positive states outside the convex hull of pure ones for the multiqubit groups $\mathbb Z_2^n$, $n\ge2$ ([arXiv:2506.08092](https://arxiv.org/abs/2506.08092v2)).
 - Burkat and Strelchuk (Phys. Rev. A 114, 042446 (2026), Appendix D) record that for the DFT in dimension $pq\neq6$ the equality was still an open question ([arXiv:2502.11784](https://arxiv.org/abs/2502.11784v4)).`,
-    claim: r`**Bruneton (research note of this site), [“Kirkwood–Dirac positive states of finite abelian Fourier pairs: mixtures of pure states exhaust them only for cyclic groups of prime-power order”](https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/kd-z3x3)** (23 November 2026; first version, on $\mathbb Z_3\times\mathbb Z_3$, of 17 November 2026). The claim is made by the maintainers of this catalogue.
+    claim: r`**Bruneton (research note of this site), [“Kirkwood–Dirac positive states of finite abelian Fourier pairs: mixtures of pure states exhaust them only for cyclic groups of prime-power order”](https://openquantumproblems.com/research/kd-z3x3.pdf?v=2026-11-23)** (23 November 2026; first version, on $\mathbb Z_3\times\mathbb Z_3$, of 17 November 2026): [PDF](https://openquantumproblems.com/research/kd-z3x3.pdf?v=2026-11-23) · [source, certificate and checks](https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/kd-z3x3). The claim is made by the maintainers of this catalogue.
 
 What it claims:
 - For a finite abelian group $G$, $\mathcal E_{KD+}=\mathrm{conv}(\mathcal E^{\rm pure}_{KD+})$ if and only if $G\cong\mathbb Z_{p^k}$. The “if” part is Theorem 6.1 of De Bièvre, Langrenez and Radchenko.
@@ -752,7 +752,9 @@ Caveats:
       { id: "N10", type: "related" },
     ],
     refs: [
-      { label: "Bruneton, 'Kirkwood–Dirac positive states of finite abelian Fourier pairs: mixtures of pure states exhaust them only for cyclic groups of prime-power order' (research note of this site, 23 November 2026)",
+      { label: "Bruneton, 'Kirkwood–Dirac positive states of finite abelian Fourier pairs: mixtures of pure states exhaust them only for cyclic groups of prime-power order' (research note of this site, 23 November 2026), PDF",
+        url: "https://openquantumproblems.com/research/kd-z3x3.pdf?v=2026-11-23" },
+  { label: "Bruneton, 'Kirkwood–Dirac positive states of finite abelian Fourier pairs: mixtures of pure states exhaust them only for cyclic groups of prime-power order' (research note of this site, 23 November 2026), source, certificate and checks",
         url: "https://github.com/jpbruneton/open_quantum_problems/tree/main/research/entries/kd-z3x3" },
       { label: "Thio, Yang, Yunger Halpern, De Bièvre, Barnes & Arvidsson-Shukur, 'Kirkwood-Dirac nonpositivity is a necessary resource for quantum computing', Phys. Rev. Lett. 137, 080601 (2026)",
         url: "https://arxiv.org/abs/2506.08092v2" },
