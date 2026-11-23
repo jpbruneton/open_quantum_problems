@@ -1,0 +1,49 @@
+{
+ "statement": "Gram matrix of N^(n-deg) (sum_j F(p_j) - VB N^deg) is PSD (exact), hence sum_j F(p_j(psi)) >= VB",
+ "theta": {
+  "()": "4828809/1048576",
+  "(2,)": "-8834707/524288",
+  "(3,)": "2624211/65536",
+  "(4,)": "-3085713/65536",
+  "(2, 2)": "-3232189/524288",
+  "(5,)": "15855625/1048576",
+  "(3, 2)": "5416695/524288"
+ },
+ "VB": "1023/100",
+ "VB_float": 10.23,
+ "n": 18,
+ "blocks": [
+  {
+   "charge": 0,
+   "size": 1463,
+   "lambda_min_float": -0.006543721445985463,
+   "ok": false
+  },
+  {
+   "charge": 1,
+   "size": 1463,
+   "lambda_min_float": -0.0065437214459848885,
+   "ok": false
+  },
+  {
+   "charge": 2,
+   "size": 1463,
+   "lambda_min_float": -0.006543721445983206,
+   "ok": false
+  },
+  {
+   "charge": 3,
+   "size": 1463,
+   "lambda_min_float": -0.006543721445985809,
+   "ok": false
+  },
+  {
+   "charge": 4,
+   "size": 1463,
+   "lambda_min_float": -0.006543721445984811,
+   "ok": false
+  }
+ ],
+ "ok": false,
+ "seconds": 181.0
+}

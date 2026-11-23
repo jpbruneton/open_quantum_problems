@@ -1,0 +1,32 @@
+{
+ "statement": "H(p) >= F(p) on the 4-outcome simplex; equality only at uniform and (1/2,1/2,0,0) perms",
+ "theta": [
+  "2793/640",
+  "-21657/1600",
+  "1841/100",
+  "-1081/100",
+  "61/100"
+ ],
+ "lemma_uniform": {
+  "lambda_min_mid": 1.182762080879059,
+  "radius_frobenius": 0.90217922506948,
+  "ok": true
+ },
+ "lemma_edge": {
+  "K": 5.291868631015665,
+  "e1": -0.2906919474429134,
+  "S0": 0.02,
+  "T0": 0.04,
+  "s0_max": 0.03122452242570499,
+  "phi_second_derivative_lower": 0.3317189131133986,
+  "phi0": -1.3322676295501878e-15,
+  "ok": true
+ },
+ "rho_u": 0.0015,
+ "simplices_proved": 207716,
+ "simplices_excluded": 1159,
+ "arb_recheck_rejections": 0,
+ "min_certified_lower_bound": 2.2426931172515798e-10,
+ "min_edge": 0.00021579186437577745,
+ "seconds": 6.6
+}

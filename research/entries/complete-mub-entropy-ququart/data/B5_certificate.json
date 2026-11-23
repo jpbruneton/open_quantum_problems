@@ -1,0 +1,59 @@
+{
+ "statement": "Gram matrix of N^(n-deg) (sum_j F(p_j) - VB N^deg) is PSD (exact), hence sum_j F(p_j(psi)) >= VB",
+ "theta": {
+  "()": "4828809/1048576",
+  "(2,)": "-8834707/524288",
+  "(3,)": "2624211/65536",
+  "(4,)": "-3085713/65536",
+  "(2, 2)": "-3232189/524288",
+  "(5,)": "15855625/1048576",
+  "(3, 2)": "5416695/524288"
+ },
+ "VB": "20447/2000",
+ "VB_float": 10.2235,
+ "n": 18,
+ "blocks": [
+  {
+   "charge": 0,
+   "size": 1463,
+   "lambda_min_float": 0.000272879881297824,
+   "frobenius_residual": 1.0361695595775799e-10,
+   "tau": 9.5367431640625e-07,
+   "ok": true
+  },
+  {
+   "charge": 1,
+   "size": 1463,
+   "lambda_min_float": 0.00027287988129701503,
+   "frobenius_residual": 1.0399534515533217e-10,
+   "tau": 9.5367431640625e-07,
+   "ok": true
+  },
+  {
+   "charge": 2,
+   "size": 1463,
+   "lambda_min_float": 0.0002728798812994935,
+   "frobenius_residual": 1.0373401928024553e-10,
+   "tau": 9.5367431640625e-07,
+   "ok": true
+  },
+  {
+   "charge": 3,
+   "size": 1463,
+   "lambda_min_float": 0.000272879881299458,
+   "frobenius_residual": 1.0421173764315559e-10,
+   "tau": 9.5367431640625e-07,
+   "ok": true
+  },
+  {
+   "charge": 4,
+   "size": 1463,
+   "lambda_min_float": 0.00027287988129965615,
+   "frobenius_residual": 1.0372743493710774e-10,
+   "tau": 9.5367431640625e-07,
+   "ok": true
+  }
+ ],
+ "ok": true,
+ "seconds": 205.8
+}

@@ -1,0 +1,11 @@
+{
+ "leaves_recorded": 52892,
+ "leaves_reached": 52892,
+ "outside_D": 15560,
+ "inside_local_balls": 8,
+ "splits": 68459,
+ "uncovered": 0,
+ "unused_leaves": 0,
+ "ok": true,
+ "seconds": 38.9
+}
