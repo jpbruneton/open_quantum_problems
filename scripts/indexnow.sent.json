@@ -666,5 +666,19 @@
       "https://openquantumproblems.com/research/locally-invisible-mpemba-mode.pdf",
       "https://openquantumproblems.com/research/postselection-leakage-threshold.pdf"
     ]
+  },
+  {
+    "date": "2026-11-24T23:03:37.266Z",
+    "status": 200,
+    "count": 7,
+    "urls": [
+      "https://openquantumproblems.com/p/A14",
+      "https://openquantumproblems.com/p/A15",
+      "https://openquantumproblems.com/p/A22",
+      "https://openquantumproblems.com/p/M1",
+      "https://openquantumproblems.com/p/N1",
+      "https://openquantumproblems.com/p/N19",
+      "https://openquantumproblems.com/p/R2"
+    ]
   }
 ]
