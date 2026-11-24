@@ -17,7 +17,7 @@ Physically atoms bind at most one or two extra electrons, so one expects a small
 - On the upper side, Ruskai and Sigal showed that $N_c$ is finite, and Lieb's argument gives $N_c<2Z+M$, hence $N_c(Z)<2Z+1$ for atoms, without using the Pauli principle (Lewin 2025, §2.1.2; Nam 2012).
 - Lieb, Sigal, Simon and Thirring showed $N_c(Z)/Z\to1$ as $Z\to\infty$. Fefferman–Seco and Seco–Sigal–Solovej sharpened this asymptotically to $N_c(Z)\le Z+O(Z^{5/7})$ (Lewin 2025; Nam 2012).
 - Nam improved the explicit bound to roughly $N_c(Z)\le 1.22\,Z + 3Z^{1/3}$ ([arXiv:1009.2367](https://arxiv.org/abs/1009.2367)).
-- For molecules, Lieb's bound $N_c<2Z+M$ remains the best known for the full Schrödinger operator (Lewin 2025, §2.1.2); the improved explicit bounds of Nam and of Hundertmark–Pattakos–Schulz are atomic. A preprint of 5 July 2021 claiming a molecular extension of Nam's bound, and the molecular conjecture in Hartree–Fock and Müller theories, was withdrawn by its author the next day with the comment “The proof is incorrect” ([arXiv:2107.01826v2](https://arxiv.org/abs/2107.01826v2)).
+- For molecules, Lieb's bound $N_c<2Z+M$ remains the best known for the full Schrödinger operator (Lewin 2025, §2.1.2); the improved explicit bounds of Nam and of Hundertmark–Pattakos–Schulz are atomic.
 - On 7 October 2026 (v1; v2 on 9 October 2026), Chen and Wu proved $N\le Z+CZ^{153/154}(1+\log Z)^{3/8}$ for two nuclei in Thomas–Fermi–Dirac–von Weizsäcker theory, uniformly in charges and positions ([arXiv:2610.09997](https://arxiv.org/abs/2610.09997v2)). This is asymptotic neutrality in a mean-field model, not the many-body statement.
 - The sharp form $N_c(Z)\le Z+C$ has been proved in mean-field surrogates: Solovej established it for Hartree–Fock theory ([arXiv:math-ph/0012026](https://arxiv.org/abs/math-ph/0012026)), and analogous statements hold in Thomas–Fermi-type and reduced density-matrix models.
 - In 2025, Hundertmark, Pattakos and Schulz reported $N_c(Z)<1.1185Z+O(Z^{1/3})$ ([arXiv:2504.18487](https://arxiv.org/abs/2504.18487)). This improves an explicit non-asymptotic estimate, not the already known asymptotic bound $Z+O(Z^{5/7})$ and not the uniform excess-charge conjecture.`,
@@ -39,7 +39,6 @@ Caveats:
     evidence: [
       { kind: "preprint", role: "claimed-solution", summary: "Claimed universal excess-charge bound $N\\le Z+CM$ for the full Coulomb molecule, hence $N_c(Z)\\le Z+C$ for atoms; OpenAI GitHub manuscript, pending assessment.", url: `${OAI}preprints/Uniform-excess-charge-for-Coulomb-molecules-and-the-outer-radius-of-neutral-atoms-September-24-2026/paper.pdf`, date: "2026-10-06", version: "v1" },
       { kind: "preprint", role: "progress", summary: "An improved explicit ionization bound, not a proof of uniformly bounded excess charge.", url: "https://arxiv.org/abs/2504.18487" },
-    { kind: "withdrawn", summary: "Claimed molecular extension of Nam's explicit bound, and the molecular conjecture in Hartree–Fock and Müller theories with a constant depending on the minimal internuclear distance; withdrawn by the author on 6 July 2021 (v2), with the arXiv comment “The proof is incorrect”.", url: "https://arxiv.org/abs/2107.01826v2", date: "2021-07-06", version: "v2" },
     ],
     relations: [{ id: "M15", type: "related" }],
     refs: [
@@ -49,7 +48,6 @@ Caveats:
       { label: "Solovej, 'Structure of complex atoms and the periodic table of the elements', Quantissima lectures (2025)", url: "https://bruneau.perso.math.cnrs.fr/quantissima2025/slidesweek2/Solovej_Quantissima2025_Lectures.pdf" },
       { label: "OpenAI, 'Uniform excess charge for Coulomb molecules and the outer radius of neutral atoms' (OpenAI Math Release manuscript, dated 24 September 2026; public 6 October 2026)", url: `${OAI}preprints/Uniform-excess-charge-for-Coulomb-molecules-and-the-outer-radius-of-neutral-atoms-September-24-2026/paper.pdf` },
     { label: "Lewin, 'Some open mathematical problems concerning charged quantum particles', C. R. Physique 26, 369–380 (2025), Open Problem 1", url: "https://doi.org/10.5802/crphys.249" },
-    { label: "Goto, 'The maximal negative ion of molecules in Schrödinger, Hartree-Fock, and Müller theories' (2021 preprint; withdrawn by the author in v2)", url: "https://arxiv.org/abs/2107.01826v2" },
     { label: "Simon, 'Schrödinger operators in the twenty-first century' (2000), Problem 9", url: "https://math.caltech.edu/SimonPapers/R40.pdf" },
     { label: "Chen & Wu, 'Asymptotic Neutrality for the Ionization Conjecture in the Two-Center Thomas-Fermi-Dirac-von Weizsäcker Theory' (2026 preprint, v2)", url: "https://arxiv.org/abs/2610.09997v2" },
     ] },

@@ -398,13 +398,11 @@ Noisy experimental output distributions are separate targets. Classical simulati
     definition: r`**Graph isomorphism** asks whether two graphs are related by a vertex relabelling. It is in NP, with neither a polynomial-time classical algorithm nor NP-completeness known.
 
 Babai's quasipolynomial-time classical algorithm is the comparison baseline, not a proof that a polynomial-time quantum algorithm is unnecessary or impossible: Babai, “Graph isomorphism in quasipolynomial time”, STOC 2016, [arXiv:1512.03547](https://arxiv.org/abs/1512.03547).`,
-    progress: r`- The hidden-subgroup route uses permutation groups. Hallgren, Moore, Rötteler, Russell and Sen show that extracting useful information from the relevant coset states requires joint measurements on $\Omega(n\log n)$ states, matching an information-theoretic upper bound ([J. ACM 57 (2010)](https://www.cse.psu.edu/~sjh26/multireg.pdf)). This excludes single- and few-register approaches in that model. It does not prove that every sufficiently joint measurement has superpolynomial implementation complexity, or that all quantum approaches fail.
-- In September 2026, Li and Chen withdrew their 2019 claimed polynomial-time quantum algorithm after substantial errors were found ([arXiv:1901.06530](https://arxiv.org/abs/1901.06530v2)). The withdrawal supplies no positive evidence for graph isomorphism in BQP and leaves the question open.`,
+    progress: r`- The hidden-subgroup route uses permutation groups. Hallgren, Moore, Rötteler, Russell and Sen show that extracting useful information from the relevant coset states requires joint measurements on $\Omega(n\log n)$ states, matching an information-theoretic upper bound ([J. ACM 57 (2010)](https://www.cse.psu.edu/~sjh26/multireg.pdf)). This excludes single- and few-register approaches in that model. It does not prove that every sufficiently joint measurement has superpolynomial implementation complexity, or that all quantum approaches fail.`,
     relations: [{ id: "A15", type: "related" }],
     refs: [
       { label: "Hallgren, Moore, Rötteler, Russell & Sen, 'Limitations of quantum coset states for graph isomorphism', J. ACM 57 (2010)", url: "https://www.cse.psu.edu/~sjh26/multireg.pdf" },
       { label: "Babai, 'Graph isomorphism in quasipolynomial time', STOC 2016", url: "https://arxiv.org/abs/1512.03547" },
-      { label: "Li & Chen, 'The quantum algorithm for graph isomorphism problem' (withdrawn; September 2026 notice)", url: "https://arxiv.org/abs/1901.06530v2" },
     ] },
 
   { id: "A15", cat: "complexity", horizon: "programme",
@@ -413,13 +411,11 @@ Babai's quasipolynomial-time classical algorithm is the comparison baseline, not
     definition: r`**Learning With Errors** (LWE) samples have the form $(a,\langle a,s\rangle+e\bmod q)$; decision LWE distinguishes these from uniform, while search LWE recovers the secret. The noise width, modulus, number of samples and algebraic structure are part of the problem. Plain LWE, module/ring variants, and worst-case approximate lattice problems should not be treated as interchangeable.
 
 Regev's reduction relates suitable LWE regimes to worst-case approximate lattice problems using quantum computation, J. ACM 56 (2009), [arXiv:2401.03703](https://arxiv.org/abs/2401.03703). It is a conditional hardness reduction, not a quantum algorithm breaking LWE.`,
-    progress: r`- Known quantum techniques can improve exponential running-time constants, so “no quantum improvement” would be too strong; such improvements are different from a polynomial-time algorithm.
-- Chen retracted his 2024 polynomial-time quantum LWE claim after an error in Step 9 was identified; the manuscript remains online with the author's correction ([IACR ePrint 2024/555](https://eprint.iacr.org/2024/555)).`,
+    progress: r`- Known quantum techniques can improve exponential running-time constants, so “no quantum improvement” would be too strong; such improvements are different from a polynomial-time algorithm.`,
     residual: r`The running-time frontier must be determined for each concrete parameter family. Security conclusions require the exact parameter family and reduction; the safety or failure of deployed cryptographic schemes does not follow from the unresolved broad programme.`,
     relations: [{ id: "A2", type: "related" }, { id: "A14", type: "related" }],
     refs: [
       { label: "Regev, 'On lattices, learning with errors, random linear codes, and cryptography', J. ACM 56 (2009; arXiv deposit 2024)", url: "https://arxiv.org/abs/2401.03703" },
-      { label: "Chen, 'Quantum Algorithms for Lattice Problems' (2024 claim; error notice)", url: "https://eprint.iacr.org/2024/555" },
     ] },
 
   { id: "A16", cat: "complexity", horizon: "programme", status: "improved",
@@ -626,20 +622,17 @@ The dihedral case is central because Regev reduced unique-SVP-type lattice probl
 Standard reference: Regev, “On lattices, learning with errors, random linear codes, and cryptography”, J. ACM 56 (2009), [doi:10.1145/1568318.1568324](https://doi.org/10.1145/1568318.1568324).`,
     progress: r`- Quantum sieving and enumeration give only exponential-time improvements for SVP.
 - Chen, Liu and Zhandry solve LWE-like variants when samples are supplied as quantum states, outside the hard regime ([arXiv:2108.11015](https://arxiv.org/abs/2108.11015)).
-- Chen's 2024 claimed polynomial-time algorithm for certain LWE parameters had its main claim retracted by the author after a bug was found; the paper remains online ([IACR ePrint 2024/555](https://eprint.iacr.org/2024/555)).
 - Reductions to extrapolated dihedral coset problems connect LWE with A21. The Chen–Liu–Zhandry algorithms apply only in their specified EDCP parameter regimes; no general standard-LWE algorithm follows.
 - Simon's DCP announcement also claims lattice consequences, including SVP and LWE, and is challenged by Gupte–Ragavan–Zhandry; see A21 for the dispute and the author's response.`,
     residual: r`The target is whether a polynomial-time quantum algorithm exists in the stated regime. A barrier for natural algorithm classes would be evidence and partial progress, not a negative answer for all quantum algorithms.`,
     evidence: [
       { kind: "preprint", role: "progress", summary: "Polynomial-time quantum algorithms for average-case lattice variants with quantum-state inputs; the standard hard regime is not reached.", url: "https://arxiv.org/abs/2108.11015v2", date: "2021-10-06", version: "v2" },
-      { kind: "withdrawn", summary: "Claimed polynomial-time quantum algorithm for LWE with certain polynomial modulus-to-noise ratios; main claim retracted by the author after a bug in Step 9; paper remains online.", url: "https://eprint.iacr.org/2024/555", date: "2024-04-10" },
     ],
     relations: [{ id: "A21", type: "related" }, { id: "A2", type: "related" }],
     refs: [
       { label: "Regev, 'On lattices, learning with errors, random linear codes, and cryptography', J. ACM 56 (2009)", url: "https://doi.org/10.1145/1568318.1568324" },
       { label: "Regev, 'Quantum Computation and Lattice Problems', SIAM J. Comput. 33 (2004)", url: "https://arxiv.org/abs/cs/0304005" },
       { label: "Chen, Liu & Zhandry, 'Quantum Algorithms for Variants of Average-Case Lattice Problems via Filtering', EUROCRYPT 2022", url: "https://arxiv.org/abs/2108.11015" },
-      { label: "Chen, 'Quantum Algorithms for Lattice Problems' (IACR ePrint 2024/555; main claim retracted by the author)", url: "https://eprint.iacr.org/2024/555" },
     ] },
 
   { id: "A23", cat: "complexity", horizon: "incremental", status: "claimed-solved",

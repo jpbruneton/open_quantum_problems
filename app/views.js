@@ -73,9 +73,8 @@ function evidenceGroups(evidence) {
   const cutoff = claimDates[0];
   return [
     { key: "progress", label: "Previous progress", progressLabels: true,
-      items: evidence.filter((e) => e.kind !== "withdrawn" && e.kind !== "challenged" && e.role !== "claimed-solution" && e.role !== "claim-input" && (!cutoff || !e.date || e.date < cutoff)) },
+      items: evidence.filter((e) => e.kind !== "challenged" && e.role !== "claimed-solution" && e.role !== "claim-input" && (!cutoff || !e.date || e.date < cutoff)) },
     { key: "challenged", label: "Challenged claims", items: evidence.filter((e) => e.kind === "challenged") },
-    { key: "withdrawn", label: "Withdrawn claims", items: evidence.filter((e) => e.kind === "withdrawn") },
   ];
 }
 
@@ -493,7 +492,7 @@ function ProblemView({ id }) {
           ) : (
             <>
               <h4>Evidence &amp; scope</h4>
-              <EvidenceList status={p.status} items={[...p.evidence].sort((a, b) => (a.kind === "withdrawn") - (b.kind === "withdrawn"))} />
+              <EvidenceList status={p.status} items={p.evidence} />
             </>
           ))}
 

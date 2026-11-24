@@ -39,20 +39,17 @@ export const RENORMALIZATION = [
     definition: r`**Scale versus conformal invariance**: scale invariance follows from a vanishing trace of the stress tensor up to a total derivative (a virial current); conformal invariance requires a local stress-tensor improvement that removes its trace; a scalar virial potential is a sufficient route, while the general improvement problem also allows tensor potentials. Whether unitarity forces this is proved in two dimensions. Polchinski, “Scale and conformal invariance in quantum field theory”, Nucl. Phys. B 303 (1988) 226. Review: Nakayama (2013), [arXiv:1302.0884](https://arxiv.org/abs/1302.0884).`,
     progress: r`- $d=2$: proved (Zamolodchikov 1986; Polchinski 1988).
 - $d=4$: perturbative results (Luty–Polchinski–Rattazzi 2012; Fortin–Grinstein–Stergiou) and non-perturbative arguments with additional hypotheses (Dymarsky–Komargodski–Schwimmer–Theisen 2013).
-- Farnsworth–Luty–Prelipina withdrew their 2013 proof in March 2014: the momentum-space OPE step was invalid. It is not evidence for the implication.
 - OpenAI claims a local traceless stress-tensor improvement and conformal Ward action in a four-dimensional vacuum theory under discrete scaling spectrum, finite scaling support, physical-current and bounded-local-net reconstruction hypotheses ([manuscript](https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Scale-and-conformal-symmetry-in-four-dimensional-operational-quantum-field-theory-September-26-2026/paper.pdf), dated 26 September 2026; public 6 October 2026). The theorem does not integrate the Ward action to global conformal symmetry of the bounded net and does not cover arbitrary theories without its additional hypotheses; independent assessment is pending.
 - $d=3$: an argument for the 3D Ising model from the non-perturbative RG (Delamotte–Tissier–Wschebor 2015), without a general theorem.
 - Free Maxwell theory supplies a unitary scale-invariant counterexample in $d\ne4$ (El-Showk–Nakayama–Rychkov 2011). In $d=3$ conformal invariance can be restored by extending the local operator algebra; in $d\ge5$ the conformal extension considered there sacrifices unitarity.`,
     residual: r`A proof under the stated four-dimensional locality, unitarity, stress-tensor and dilatation-current hypotheses, or a counterexample obeying them. Additional spectral or reconstruction assumptions produce a restricted theorem and must remain explicit. Classification in other dimensions is a separate extension, not part of this sharp completion criterion. Related: R1, R3.`,
     evidence: [
-      { kind: "withdrawn", role: "progress", summary: "The claimed four-dimensional proof was withdrawn because its momentum-space OPE argument is invalid.", url: "https://arxiv.org/abs/1309.4095v2", date: "2014-03-17", version: "v2" },
     ],
     refs: [
       { label: "Nakayama, review of scale and conformal invariance (2013)", url: "https://arxiv.org/abs/1302.0884" },
       { label: "El-Showk, Nakayama, Rychkov, 'What Maxwell theory in d ≠ 4 teaches us about scale and conformal invariance' (2011)", url: "https://arxiv.org/abs/1101.5385" },
       { label: "Luty, Polchinski, Rattazzi (2012)", url: "https://arxiv.org/abs/1204.5221" },
       { label: "Dymarsky, Komargodski, Schwimmer, Theisen (2013)", url: "https://arxiv.org/abs/1309.2921" },
-      { label: "Farnsworth, Luty, Prelipina, 'Scale invariance plus unitarity implies conformal invariance in four dimensions' (2013; withdrawn March 2014)", url: "https://arxiv.org/abs/1309.4095v2" },
       { label: "Delamotte, Tissier, Wschebor (2015)", url: "https://arxiv.org/abs/1501.01776" },
     ] },
 

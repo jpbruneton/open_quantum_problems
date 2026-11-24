@@ -234,7 +234,6 @@ export const EVIDENCE_KINDS = {
   numerical: { label: "Numerical evidence", desc: "A computation or extrapolation with its stated error and model limitations." },
   conjecture: { label: "Conjecture", desc: "A proposed statement, not a proved result." },
   challenged: { label: "Challenged claim", desc: "A claimed proof with a published objection to a step; not evidence that the problem has been solved." },
-  withdrawn: { label: "Withdrawn claim", desc: "Not evidence that the problem has been solved." },
 };
 
 // These are not counted as open problems: their precise status needs another check.

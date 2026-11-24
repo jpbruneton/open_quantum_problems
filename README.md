@@ -24,7 +24,7 @@ Open problems that are already posed in the literature, from long-standing conje
   - Progress;
   - Claimed solution, when there is one, with what it claims and its caveats;
   - What remains open;
-  - the evidence grouped by role (previous progress, challenged claims, withdrawn claims);
+  - the evidence grouped by role (previous progress, challenged claims);
   - references and author-reported AI use.
 - **Horizon** says what kind of question it is:
   - *sharp*: the domain, hypotheses and resolution criterion are defined; a proof or counterexample settles the full stated target;
@@ -86,7 +86,7 @@ The source of truth is `app/data/cat-*.js`, aggregated by `app/data/problems.js`
 - `definition`, `progress`, `claim`, `residual`: the page sections, written as `String.raw` templates. Paragraphs are separated by blank lines; lines starting with `- ` form lists; `**bold**` and `[label](https://…)` are supported outside math.
 - `horizon`: `sharp`, `incremental`, `programme` or `conceptual`. `status`: `open`, `improved` or `claimed-solved` (`solved` is reserved for established resolutions).
 - `evidence`: `{ kind, role, summary, url, date?, version? }`.
-  - `kind` is one of `published`, `preprint`, `numerical`, `conjecture`, `challenged` or `withdrawn`.
+  - `kind` is one of `published`, `preprint`, `numerical`, `conjecture`, or `challenged`. Withdrawn or retracted works are never cited.
   - `role` is one of `claimed-solution`, `claim-input` or `progress`.
   - Only progress dated before the earliest claimed solution is listed under "Previous progress".
 - `provenance`: `{ summary, url, version? }` for author-reported AI use.
