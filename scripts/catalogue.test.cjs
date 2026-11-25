@@ -134,7 +134,7 @@ test("targeted literature updates preserve untouched review dates and expose pen
     assert.equal(getProblem(id).status, id === "C5" ? "improved" : "claimed-solved", `${id}: distinguish partial progress from a full pending claim`);
     assert.ok(getProblem(id).evidence.some((e) => e.kind === "preprint" && e.url.includes(source)), id);
   }
-  assert.deepEqual(PROBLEMS.filter((p) => p.status === "claimed-solved").map((p) => p.id).sort(), ["A11", "A20", "A23", "A30", "A31", "A34", "A4", "A46", "A47", "A7", "B1", "B14", "B16", "B17", "B18", "C12", "C4", "E10", "E16", "E18", "E21", "E23", "E26", "F17", "M1", "M12", "M2", "M5", "N1", "N13", "N19", "N2", "N20", "O12"]);
+  assert.deepEqual(PROBLEMS.filter((p) => p.status === "claimed-solved").map((p) => p.id).sort(), ["A11", "A20", "A23", "A30", "A31", "A34", "A4", "A46", "A47", "A7", "B1", "B14", "B16", "B17", "B18", "C12", "C4", "E10", "E16", "E18", "E21", "E23", "E26", "F17", "F18", "M1", "M12", "M2", "M5", "N1", "N13", "N19", "N2", "N20", "O12"]);
   assert.equal(getProblem("C10").status, "improved", "a solved subcase must not close the broader programme");
   assert.equal(PROBLEMS.filter((p) => p.status === "solved").length, 0, "pending claims must not count as established solutions");
   const earlierE10 = getProblem("E10").evidence.find((e) => e.url.includes("2609.29539v1"));
@@ -212,8 +212,8 @@ test("targeted literature updates preserve untouched review dates and expose pen
   assert.ok(getProblem("F4").provenance.some((item) => item.url.includes("2611.17431")), "F4: Polino et al. AI-use disclosure");
   // 23 November 2026: three pending resolution claims. N20 is claimed by a research note of this site;
   // O12 and F17 by pull requests of a public GitHub repository, with no article or preprint.
-  assert.equal(LITERATURE_UPDATE.date, "2026-11-23");
-  for (const id of ["N20", "O12", "F17"]) assert.ok(LITERATURE_UPDATE.ids.includes(id), `${id}: in the 23 November update`);
+  const november23 = LITERATURE_UPDATES.find((update) => update.date === "2026-11-23");
+  for (const id of ["N20", "O12", "F17"]) assert.ok(november23.ids.includes(id), `${id}: in the 23 November update`);
   assert.ok(fs.existsSync(path.join(root, "docs/reviews/2026-11-23-literature-update.md")), "missing 23 November report");
   for (const [id, source] of [["N20", "research/entries/kd-z3x3"], ["O12", "trureturing/pull/17892"], ["F17", "trureturing/pull/14609"]]) {
     assert.equal(getProblem(id).status, "claimed-solved", `${id}: unassessed resolution claim`);
@@ -234,14 +234,21 @@ test("targeted literature updates preserve untouched review dates and expose pen
   assert.equal(getProblem("O13").status, "improved", "O13: two proof steps rely on a supplement that is not on arXiv");
   assert.ok([...getProblem("F16").evidence, ...getProblem("F16").refs].some((e) => e.url.includes("2609.24670")), "F16: cite the refutation of the 1 + ln π conjecture");
   // 23 November 2026: arXiv announcements of 20 and 23 November and replacements of cited sources.
-  assert.equal(LITERATURE_UPDATE.date, "2026-11-23");
-  assert.deepEqual(LITERATURE_UPDATE.ids, ["E26", "A3", "C2", "O10", "N20", "O12", "F17"]);
+  assert.deepEqual(november23.ids, ["E26", "A3", "C2", "O10", "N20", "O12", "F17"]);
   assert.equal(getProblem("E26").status, "claimed-solved", "E26: an unrefereed GitHub proof with an unrebuilt Lean formalization");
   assert.ok(getProblem("E26").lean, "E26: the full claim is formalized");
   assert.ok(getProblem("E26").evidence.some((e) => e.role === "claimed-solution" && e.url.includes("rrajasek95/krenn-conjecture")), "E26: claimed solution");
   assert.equal(getProblem("A3").status, "improved", "A3: a relativized separation");
   assert.equal(getProblem("C2").status, "improved", "C2: the capacity is still undetermined");
   assert.ok(getProblem("O10").evidence.some((e) => e.url.includes("2411.04300v3")), "O10: cite the corrected v3");
+  // 25 November 2026: F18 claimed by a GitHub manuscript submitted in issue #21 (LaTeX and PDF, not on arXiv).
+  assert.equal(LITERATURE_UPDATE.date, "2026-11-25");
+  assert.deepEqual(LITERATURE_UPDATE.ids, ["F18"]);
+  assert.ok(fs.existsSync(path.join(root, "docs/reviews/2026-11-25-literature-update.md")), "missing 25 November report");
+  assert.equal(getProblem("F18").status, "claimed-solved", "F18: an unrefereed GitHub manuscript");
+  assert.ok(!getProblem("F18").lean, "F18: no formalization");
+  assert.ok(getProblem("F18").claim && getProblem("F18").provenance.length > 0, "F18: claim text and AI-use disclosure");
+  assert.ok(getProblem("F18").evidence.some((e) => e.role === "claimed-solution" && e.url.includes("HandsomeSteven666/spherical-wigner-negativity-for-all-pure-spin-states")), "F18: claimed solution");
   const home = render(views.Home);
   assert.ok(home.includes(LITERATURE_UPDATE.label) && home.includes("Last update"));
 });
@@ -334,7 +341,7 @@ test("home, all categories, filtered lists and missing-page views render", () =>
   assert.ok(home.includes('href="/lean-verified"'));
   assert.ok(home.includes('See open sharp problems'));
   assert.ok(home.includes('aria-label="See all 96 improved problems"'));
-  assert.ok(home.includes('aria-label="See all 34 claimed solved problems"'));
+  assert.ok(home.includes('aria-label="See all 35 claimed solved problems"'));
   assert.ok(home.includes('href="https://quantumlectures.org/en"'));
   assert.ok(home.includes('href="https://learnthermo.org/"'));
   assert.ok(!home.includes("IDs M1–"), "category count must not fabricate contiguous IDs");

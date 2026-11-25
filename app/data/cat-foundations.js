@@ -588,7 +588,8 @@ Caveats:
   { id: "F18",
     cat: "foundations",
     horizon: "sharp",
-    reviewedAt: "2026-11-16",
+    status: "claimed-solved",
+    reviewedAt: "2026-11-25",
     title: "No pure spin state has a non-negative SU(2) Wigner function",
     statement: r`For spin $j\in\tfrac12\mathbb N$, let $W_\rho(\mathbf n)=\mathrm{tr}[\rho\,\Delta_j(\mathbf n)]$ be the SU(2)-covariant Stratonovich Wigner function on the sphere (self-dual kernel, $s=0$), with $\Delta_j(\mathbf n)=\sum_m\Delta_{j,m}|j,m;\mathbf n\rangle\langle j,m;\mathbf n|$ and $\Delta_{j,m}=\sum_{l=0}^{2j}\frac{2l+1}{2j+1}\langle j,m;l,0|j,m\rangle$. Prove that for every $j$ and every pure state $|\psi\rangle\in\mathbb C^{2j+1}$, $\min_{\mathbf n\in S^2}W_{\psi}(\mathbf n)<0$; or exhibit a pure spin state with everywhere non-negative Wigner function. Kam (2026, Sections I and VI) states this as a conjecture attributed to Davis, Kumari, Mann and Ghose (2021) and Davis, Hennigar, Mann and Ghose (2023): “a proof of the conjecture that no pure spin state has a non-negative SU(2) Wigner function would complete the picture for constant curvature.”`,
     definition: r`**Spherical phase space.** A spin-$j$ system has the sphere $S^2=SU(2)/U(1)$ as classical phase space. The Stratonovich–Weyl correspondence builds SU(2)-covariant quasiprobabilities on it, as reviewed by Davis, Kumari, Mann and Ghose ([arXiv:2008.10167](https://arxiv.org/abs/2008.10167)); the Wigner kernel is the self-dual member, with traciality $\mathrm{tr}[AB]=\int W_AW_B\,d\mu$, $d\mu=\frac{2j+1}{4\pi}\sin\theta\,d\theta\,d\varphi$. In flat phase space, Hudson's theorem says that only Gaussian pure states have non-negative Wigner functions; for odd-dimensional discrete Weyl–Heisenberg phase spaces only stabilizer states do (Gross, J. Math. Phys. 47, 122107 (2006), [arXiv:quant-ph/0602001](https://arxiv.org/abs/quant-ph/0602001)). The conjecture is that on the sphere no pure state at all is Wigner-positive, not even spin coherent states. For $j=\tfrac12$ the Wigner function of $|\!\uparrow\rangle$ is $\tfrac12+\tfrac{\sqrt3}2\cos\theta$, which is negative near the south pole.
@@ -598,8 +599,23 @@ Davis, Hennigar, Mann and Ghose state that their coherent-state result “offers
 - Davis, Hennigar, Mann and Ghose (J. Phys. A 56, 265302 (2023)) prove that every spin coherent state, in every dimension, has non-zero Wigner negativity, using the Dicke-state Wigner function as a polynomial in $\cos\theta$, traciality and rotation invariance. They also study maximally Wigner-negative states via the Majorana representation ([arXiv:2206.00195](https://arxiv.org/abs/2206.00195)).
 - Denis, Davis, Mann and Martin (Quantum 8, 1550 (2024)) characterize mixed spin states whose Wigner function stays above a given bound under every unitary by eigenvalue polytopes ([arXiv:2304.09006](https://arxiv.org/abs/2304.09006)).
 - Contrast with negative curvature: Klimov, Muñoz, Leuchs, Gazeau and Sánchez-Soto (July 2026) show that all Perelomov SU(1,1) coherent states have strictly positive Wigner functions ([arXiv:2607.22810](https://arxiv.org/abs/2607.22810)), and Kam (September 2026) shows that on the SU(1,1) discrete series the set of Wigner-positive pure states is strictly larger than the coherent orbit, so Hudson's theorem fails there ([arXiv:2609.07242](https://arxiv.org/abs/2609.07242)).`,
-    residual: r`No proof beyond spin coherent states ($j=\tfrac12$ is immediate since every pure qubit state is coherent). Minimal targets: all pure states for $j=1$ and $j=\tfrac32$, using a Majorana parametrization by two or three stars; or all rotated Dicke states $R|j,m\rangle$. A quantitative version, a lower bound on the negativity of pure states that is uniform in the state for fixed $j$, is a further target; Davis et al. conjecture that spin coherent states minimize the negativity among pure states.`,
+    claim: r`**Xiuzhi Yang, [“Spherical Wigner Negativity of Pure Spin States”](https://github.com/HandsomeSteven666/spherical-wigner-negativity-for-all-pure-spin-states/tree/75c19189c67319604e061f7f1afc7f37562a11d1)** (manuscript dated 24 November 2026, LaTeX source and PDF in English and Chinese on GitHub; submitted to this catalogue on 25 November 2026 in [issue #21](https://github.com/jpbruneton/open_quantum_problems/issues/21)), Theorems 1 and 2.
+
+What it claims:
+- For every $j\ge\tfrac12$ and every pure state $\psi$, $\min_{\mathbf n\in S^2}W_\psi(\mathbf n)<0$. The result holds for the kernel stated above and for every other choice of signs $\varepsilon_l=\pm1$ ($\varepsilon_0=1$) in the self-dual kernel.
+- The proof has two steps. First, every pure state has a rotation $g$ with $\langle\psi|U_j(g)|\psi\rangle=0$. This follows from Corollary 1 of Gichev ([arXiv:math/0511688](https://arxiv.org/abs/math/0511688)), by which every orbit of a compact connected irreducible linear group meets every complex hyperplane; an appendix also gives a self-contained proof for SU(2). Second, the argument of Davis, Hennigar, Mann and Ghose for coherent states applies: traciality gives $\int W_\psi\,W_{U(g)\psi}\,d\mu=|\langle\psi|U_j(g)|\psi\rangle|^2=0$, which is impossible for two non-negative polynomials on the sphere that each integrate to one.
+- A uniform quantitative bound: the negative volume satisfies $\delta_j(\psi)\ge\frac{\sqrt{2j+1}}4\,e^{-4(1+e^{-1})j}$ for every pure state, and $-\min W_\psi\ge\frac{1}{4\sqrt{2j+1}}\,e^{-4(1+e^{-1})j}$. The proof bounds the logarithmic mean of a band-limited function on the sphere along meridians. At $j=\tfrac12$ the bound gives $\approx0.0229$, against the exact $\tfrac1{\sqrt3}-\tfrac12\approx0.0774$.
+
+Caveats:
+- The manuscript is published on GitHub only; it is neither posted on arXiv nor peer reviewed. Hence “Claimed solved” rather than “Solved”.
+- Both proofs were reread line by line for this catalogue, including the appendix proof of the orthogonal rotation, and no gap was found. A numerical check found an orthogonal rotation and a negative minimum for random pure states up to $j=5$. This is not an independent expert assessment.`,
+    residual: r`If the claim holds, every pure spin state is Wigner-negative. What remains is assessment of the proof and the quantitative question: the uniform bound decays like $e^{-5.47j}$, and Davis et al. conjecture that spin coherent states minimize the negativity among pure states. The exact minimal negative volume over pure states of spin $j$, and its asymptotics in $j$, are open.`,
     evidence: [
+      { kind: "preprint",
+        role: "claimed-solution",
+        summary: "Claimed proof that every pure state of every spin j has a negative SU(2) Wigner value, for all sign choices of the self-dual kernel, with a uniform lower bound on the negative volume. GitHub manuscript (LaTeX and PDF); not on arXiv; not peer reviewed.",
+        url: "https://github.com/HandsomeSteven666/spherical-wigner-negativity-for-all-pure-spin-states/blob/75c19189c67319604e061f7f1afc7f37562a11d1/F18_en.pdf",
+        date: "2026-11-24" },
       { kind: "published",
         role: "progress",
         summary: "Every spin coherent state, for every j, has a Wigner function taking negative values; presented as evidence that all pure spin states do (J. Phys. A 56, 265302).",
@@ -618,11 +634,15 @@ Davis, Hennigar, Mann and Ghose state that their coherent-state result “offers
         date: "2026-09-07",
         version: "v1" },
     ],
-    provenance: [],
+    provenance: [
+      { summary: "The manuscript states that ChatGPT assisted with proof development, literature screening and preparation of the manuscript. The author is named Xiuzhi Yang in the manuscript; the issue that submitted it is signed “Sent by dot.”.", url: "https://github.com/HandsomeSteven666/spherical-wigner-negativity-for-all-pure-spin-states/blob/75c19189c67319604e061f7f1afc7f37562a11d1/F18_en.tex" },
+    ],
     relations: [
       { id: "F17", type: "related" },
     ],
     refs: [
+      { label: "Yang, 'Spherical Wigner Negativity of Pure Spin States' (manuscript of 24 November 2026; GitHub repository with LaTeX source and PDF, not peer reviewed)", url: "https://github.com/HandsomeSteven666/spherical-wigner-negativity-for-all-pure-spin-states/tree/75c19189c67319604e061f7f1afc7f37562a11d1" },
+      { label: "Gichev, 'A note on common zeroes of Laplace–Beltrami eigenfunctions', Ann. Global Anal. Geom. 26, 201–208 (2004)", url: "https://arxiv.org/abs/math/0511688" },
       { label: "Davis, Hennigar, Mann & Ghose, 'Stellar representation of extremal Wigner-negative spin states', J. Phys. A 56, 265302 (2023)",
         url: "https://arxiv.org/abs/2206.00195" },
       { label: "Davis, Kumari, Mann & Ghose, 'Wigner negativity in spin-j systems', Phys. Rev. Research 3, 033134 (2021)", url: "https://arxiv.org/abs/2008.10167" },
