@@ -650,4 +650,49 @@ Caveats:
       { label: "Kam, 'Hudson's theorem fails for the SU(1,1) discrete series' (2026 preprint)", url: "https://arxiv.org/abs/2609.07242" },
       { label: "Gross, 'Hudson's theorem for finite-dimensional quantum systems', J. Math. Phys. 47, 122107 (2006)", url: "https://arxiv.org/abs/quant-ph/0602001" },
     ] },
+  { id: "F19",
+    cat: "foundations",
+    horizon: "sharp",
+    status: "improved",
+    reviewedAt: "2026-11-26",
+    title: "Sharp refinement of the Lieb–Solovej bound by Wigner negativity at Rényi order 1/2",
+    statement: r`For one bosonic mode ($\hbar=1$, $[\hat x,\hat p]=i$, phase-space point $r=(x,p)$, coherent state $|r\rangle$ of amplitude $(x+ip)/\sqrt2$), let $W_\rho(r)=\pi^{-1}\mathrm{tr}[\rho\,\hat D(r)(-1)^{\hat n}\hat D(r)^\dagger]$ be the Wigner function and $Q_\rho(r)=(2\pi)^{-1}\langle r|\rho|r\rangle$ the Husimi function, both normalized by $\int dx\,dp=1$. The Wigner logarithmic negativity is $\ln\|W_\rho\|_1$ with $\|W_\rho\|_1=\int|W_\rho|\,dx\,dp$, and the Rényi entropy of order $\tfrac12$ of the Husimi function is $h_{1/2}(Q_\rho)=2\ln\int\sqrt{Q_\rho}\,dx\,dp$; the generalized Wehrl inequality of Lieb and Solovej gives $h_{1/2}(Q_\rho)\ge\ln(8\pi)$, and Frank, Nicola and Tilli show that coherent states are its only minimizers. Prove or refute that every single-mode state satisfies $\ln\|W_\rho\|_1\le h_{1/2}(Q_\rho)-\ln(8\pi)$, equivalently $\int|W_\rho|\,dx\,dp\le(8\pi)^{-1}\left(\int\sqrt{Q_\rho}\,dx\,dp\right)^2$, with equality only for coherent states. Gagatsos (November 2026) states this as Conjecture 1 and proves it with $\ln(8\pi)$ replaced by $\ln(4\pi)$, that is, up to an additive $\ln2$.`,
+    definition: r`**Two phase-space functionals.** The Husimi function is the outcome density of heterodyne detection and is a probability density. Lieb and Solovej prove that coherent states minimize $\int f(\langle r|\rho|r\rangle)\,dx\,dp/2\pi$ for every continuous concave $f$ with $f(0)=0$ (Acta Math. 212, 379 (2014), Theorem 2.2, [arXiv:1208.3632](https://arxiv.org/abs/1208.3632)); $f(t)=\sqrt t$ gives $h_{1/2}(Q_\rho)\ge\ln(8\pi)$. Frank, Nicola and Tilli show that coherent states are the only minimizers and that the deficit is at least a constant times the squared trace distance from $\rho$ to the coherent states ([arXiv:2307.14089](https://arxiv.org/abs/2307.14089), Theorem 3). The Wigner function can take negative values: $\|W_\rho\|_1-1$ is twice its negative volume (Kenfack and Życzkowski, J. Opt. B 6, 396 (2004), [arXiv:quant-ph/0406015](https://arxiv.org/abs/quant-ph/0406015)), and $\ln\|W_\rho\|_1$ is an additive monotone under Gaussian protocols in the resource theory of Wigner negativity (Albarelli, Genoni, Paris and Ferraro, PRA 98, 052350 (2018), [arXiv:1804.05763](https://arxiv.org/abs/1804.05763)).
+
+**Meaning.** $e^{h_{1/2}(Q)}$ is an effective phase-space area, equal to $8\pi$ for a coherent state, so the conjecture reads “negativity costs area”: $\|W_\rho\|_1$ is at most the area occupied by $Q_\rho$ in units of the coherent-state area. Read from right to left it refines the Lieb–Solovej bound by a resource monotone, whereas the Frank–Nicola–Tilli remainder is a distance to coherent states; on Wigner-positive states it reduces to the Lieb–Solovej bound. $\|W_\rho\|_1$ is invariant under Gaussian unitaries and the right-hand side is not invariant under squeezing, so the conjecture is equivalent to its symplectically invariant form, in which $h_{1/2}$ is minimized over Gaussian unitaries and all pure Gaussian states attain equality. If true, heterodyne statistics alone would bound the Wigner negativity from above.
+
+**Time–frequency form.** For a pure state, $\int\sqrt{Q_\psi}$ is a multiple of the $L^1$ norm of the short-time Fourier transform of $\psi$ with Gaussian window, the norm of $\psi$ in the Feichtinger algebra $M^1$. Bounds of the form $\|W_\psi\|_{M^1}\lesssim\|\psi\|_{M^1}^2$, with unspecified constants, are a case of the continuity theory of the Wigner distribution on modulation spaces (Cordero and Nicola, Int. Math. Res. Not. 2018, 1779, Theorem 1.1, [arXiv:1605.00481](https://arxiv.org/abs/1605.00481)). The conjecture asks for the sharp constant in the $L^1$ version with Gaussian window and for its extremizers.
+
+The conjecture is stated in [arXiv:2611.30969](https://arxiv.org/abs/2611.30969), Conjecture 1.`,
+    progress: r`- Gagatsos (November 2026, [arXiv:2611.30969](https://arxiv.org/abs/2611.30969), Proposition 1) reduces the conjecture to pure states: $\rho\mapsto\|W_\rho\|_1$ is convex and $\rho\mapsto(\int\sqrt{Q_\rho})^2$ is concave (Cauchy–Schwarz), and if among pure states only coherent states give equality, every mixed state satisfies the bound strictly.
+- The same paper (Proposition 2) proves $\ln\|W_\rho\|_1\le h_{1/2}(Q_\rho)-\ln(4\pi)$ for every state, from the representation $W_\rho(r)=\pi^{-1}\int\frac{d^2s}{2\pi}e^{i(xs_p-ps_x)}\langle r+s|\rho|r-s\rangle$, the triangle inequality and $|\langle u|\rho|v\rangle|\le2\pi\sqrt{Q_\rho(u)Q_\rho(v)}$. This improves on the Lieb–Solovej bound only when $\|W_\rho\|_1>2$. For pure states the whole factor of two is lost by discarding the phase $e^{i(xs_p-ps_x)}$.
+- The same paper (Section IV, Appendices B–D) writes the Wigner function of a pure state $\psi$ as a rescaled position wavefunction of the two-mode state $\Xi=(1\otimes\hat F)\hat B(\bar\psi\otimes\psi)$, obtained by a balanced beam splitter $\hat B$ and a Fourier transform $\hat F$. Passive unitaries preserve the $L^1$ norm $N$ of the coherent-state amplitude, so the conjecture and Proposition 2 become $\|\Xi\|_{L^1}\le\frac{\sqrt\pi}2N(\Xi)$ and $\|\Xi\|_{L^1}\le\sqrt\pi\,N(\Xi)$. The constant $\sqrt\pi$ is sharp over all two-mode wavefunctions, approached by products of broad squeezed vacua, so a proof of the sharp bound must use that $\Xi$ comes from the product $\bar\psi\otimes\psi$.
+- The same paper (Section V) shows that the analogue fails for the Wehrl entropy and for Rényi orders 2 and $\infty$: for $|\psi\rangle\propto|0\rangle+0.2|\beta\rangle$ with $\beta=3\sqrt2$, $\ln\|W\|_1=0.204$, whereas the entropy excesses over the coherent-state values are $0.304$, $0.161$, $0.077$ and $0.039$ at orders $\tfrac12$, $1$, $2$ and $\infty$. The conjecture is therefore not a consequence of the majorization behind the Lieb–Solovej theorem. The author argues heuristically that the analogue fails for every order above $\tfrac12$ and, through large Fock states, for orders below about $0.17$. His numerical tests on $10^4$ random superpositions of at most eight Fock states, and on superpositions with the vacuum, find no violation; the smallest gap is $-5\times10^{-5}$.`,
+    residual: r`The sharp inequality is open, for pure states and hence for all states. Partial targets: a constant strictly between $1/8\pi$ and $1/4\pi$ in $\int|W_\psi|\le c\,(\int\sqrt{Q_\psi})^2$ for all pure states, which requires an argument that uses the product structure of $\Xi$; local maximality of coherent states for the ratio $\|W_\psi\|_1/(\int\sqrt{Q_\psi})^2$ (the author's question (i)); and the phase-invariant case. The author also asks whether the $m$-mode version holds with $(8\pi)^{-m}$, whether the weak form holds with $(4\pi)^{-m}$, and for which Rényi orders below $\tfrac12$ an analogue holds.`,
+    evidence: [
+      { kind: "preprint",
+        role: "progress",
+        summary: "States the conjecture (Conjecture 1); reduces it to pure states; proves it up to an additive ln 2 for all states; shows that ln 2 is optimal for arguments that treat the Wigner function as a generic two-mode wavefunction; counterexample showing that the analogue fails at Rényi orders 1, 2 and ∞.",
+        url: "https://arxiv.org/abs/2611.30969v1",
+        date: "2026-11-23",
+        version: "v1" },
+    ],
+    provenance: [
+      { summary: "Gagatsos acknowledges the use of Anthropic's Claude (Opus 5.5) in building and debugging the Python code of the numerical section (Section III); he states that he decided what the code does and how the data are presented, and takes full responsibility for the numerical results.",
+        url: "https://arxiv.org/abs/2611.30969v1",
+        version: "v1" },
+    ],
+    relations: [
+      { id: "F16", type: "related" },
+      { id: "F17", type: "related" },
+      { id: "F18", type: "related" },
+    ],
+    refs: [
+      { label: "Gagatsos, 'Wigner negativity costs phase-space area: A conjectured refinement of the Lieb–Solovej inequality at Rényi order one half' (2026 preprint, v1)", url: "https://arxiv.org/abs/2611.30969v1" },
+      { label: "Lieb & Solovej, 'Proof of an entropy conjecture for Bloch coherent spin states and its generalizations', Acta Math. 212, 379–398 (2014)", url: "https://arxiv.org/abs/1208.3632" },
+      { label: "Frank, Nicola & Tilli, 'The generalized Wehrl entropy bound in quantitative form' (2023 preprint)", url: "https://arxiv.org/abs/2307.14089" },
+      { label: "Albarelli, Genoni, Paris & Ferraro, 'Resource theory of quantum non-Gaussianity and Wigner negativity', PRA 98, 052350 (2018)", url: "https://arxiv.org/abs/1804.05763" },
+      { label: "Kenfack & Życzkowski, 'Negativity of the Wigner function as an indicator of nonclassicality', J. Opt. B 6, 396–404 (2004)", url: "https://arxiv.org/abs/quant-ph/0406015" },
+      { label: "Cordero & Nicola, 'Sharp integral bounds for Wigner distributions', Int. Math. Res. Not. 2018, 1779–1807", url: "https://arxiv.org/abs/1605.00481" },
+    ] },
 ];

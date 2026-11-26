@@ -2,13 +2,15 @@
 
 Before starting, `origin/main` was fetched. There were no open pull requests and two open issues: [#21](https://github.com/jpbruneton/open_quantum_problems/issues/21), already handled on 25 November, and [#22](https://github.com/jpbruneton/open_quantum_problems/issues/22), discussed below with the maintainer before any change. The arXiv announcements of 24, 25 and 26 November 2026 were then screened (quant-ph, math-ph, hep-th, hep-lat, cond-mat.str-el, cond-mat.stat-mech, math.OA, math.PR, cs.CC and cs.IT; 1,203 distinct announcements), and every arXiv identifier cited in the catalogue was checked for new versions and withdrawals. Every source cited below was read in full unless stated otherwise; the checks described were done for this review and are not independent expert assessments.
 
-## Status changes and new entry
+## Status changes and new entries
 
 | ID | Before | After | Reason |
 | --- | --- | --- | --- |
 | E1 · NPT bound entanglement | Improved | **Claimed solved** | Faisal (arXiv:2611.34921v1) claims an explicit NPT Werner state, $d=8$, $\alpha=-3/23$, undistillable for every number of copies. Single-author preprint, not peer reviewed; the one-copy certificate was verified here in exact arithmetic. |
 | A54 · Two-message quantum interactive proofs: QIP(2) versus PSPACE | — | **New, Claimed solved** | Liu (arXiv:2611.31236v1) claims QIP(2) = PSPACE. Added with the maintainer's agreement. |
 | C13 · Two-way quantum capacity of the amplitude-damping channel | Open | Improved | Pirandola (arXiv:2611.29650v1) gives the first upper bound strictly below all earlier ones; the capacity is still undetermined. |
+| C15 · Two-way quantum capacity of the qubit depolarizing channel | — | **New, Improved** | Added with the maintainer's agreement after the sweep: Barber and Pirandola (arXiv:2611.33317v1) prove a converse strictly below the relative-entropy bound at every noise level; Q₂ remains undetermined. |
+| F19 · Sharp refinement of the Lieb–Solovej bound by Wigner negativity at Rényi order 1/2 | — | **New, Improved** | Added with the maintainer's agreement: conjecture of Gagatsos (arXiv:2611.30969v1), proved there up to an additive ln 2. |
 
 Entries updated without a status change: QF5, QF11, N19, R3, E22, A39, E26, O10, A20, B16, F4, QF9, O11, A41, F9 and A5, plus the archived benchmark E2.
 
@@ -64,4 +66,48 @@ Antecedent searches of the-omega-institute/trureturing found no relevant issue o
 
 ## Flagged but not acted on
 
-The sweep also flagged possible new entries that were not added, pending the maintainer's decision: the two-way capacity of the depolarizing channel (arXiv:2611.33317), a refinement of a Lieb–Solovej conjecture (arXiv:2611.30969), a Koashi–Imoto criterion for Holevo-rate visible compression (arXiv:2611.33129), and a single-author claim of a full construction of the sine-Gordon model at $\beta^2=8\pi$ with a mass gap (arXiv:2611.29024), of which only the abstract was read. None of them is cited in the catalogue.
+Of the possible new entries flagged by the sweep, the maintainer chose to add two (C15 and F19, below). Two were not added: a Koashi–Imoto criterion for Holevo-rate visible compression (arXiv:2611.33129) and a single-author claim of a full construction of the sine-Gordon model at $\beta^2=8\pi$ with a mass gap (arXiv:2611.29024), of which only the abstract was read. Neither is cited in the catalogue.
+
+## New entries added after the sweep
+
+**C15 · Two-way quantum capacity of the qubit depolarizing channel (new entry, Improved).** Barber and Pirandola, "When does a noisy Bell pair attain the Rains bound?" (arXiv:2611.33317v1, 24 November 2026), was read in full from its TeX source, including Appendices A–H. Its analytic results were checked step by step: the score identity behind PPT attainment on the rank-three face, the annulus and trace-norm bounds on the test polynomial, the quadratic estimate at the nonphysical point (C=(Σ1/v_i−7)/16), the small-circle mean and the strip harmonic measure. No gap was found. We reproduced numerically the score identity, the trace-norm formula, the relative-entropy value 1−h2(3/4)=0.1887218755, the analytic shortfall 7.3×10⁻⁷ ebits at F=3/4 and the five lower bounds of Table I. The computer-certified enclosure 0.18355862 ≤ Q_PPT < 0.188642407 at F=3/4 (and the d=3 interval) was not checked: the paper says its witnesses and certificates are in ancillary files, but arXiv v1 has none (the ancillary listing returns "No Ancillary files"). The lower PPT value is not an LOCC rate. Barber and Pirandola's lookahead protocol search (arXiv:2608.13644v2) was read in full. Its LOCC yields, for example 0.0880 ebits per use at F=3/4, are exact floating-point evaluations without certificates and were not recomputed. PLOB (arXiv:1510.08863v9, Nat. Commun. 8, 15043) was read in its main text, Methods and the DV and converse Supplementary Notes for the bounds 1−h2(q)−q log2 3 ≤ Q2 ≤ K ≤ 1−h2(q); its bosonic Supplementary Notes were not reread. The 2611.33317 paper discloses use of ChatGPT (GPT-6 Astra) for candidate derivations and proofs and of Claude (Opus 5.5) for numerical checks and reference verification; this is recorded in provenance. No disclosure was found in 2608.13644v2. Antecedent search in the-omega-institute/trureturing (issues and pull requests, open and closed) for 2611.33317, 2608.13644, 1510.08863 and 2610.12454 returned no hits, and the keyword hits were unrelated. None of the cited works is withdrawn. The status is "improved": the strict converse and the new protocols narrow the gap without determining Q2 or K at any noise level.
+
+Bennett, DiVincenzo, Smolin and Wootters, "Mixed-state entanglement and quantum error correction" (arXiv:quant-ph/9604024v2, Phys. Rev. A 54, 3824 (1996)), was read in full from its TeX source, including both appendices; the hashing threshold F ≈ 0.8107 (q = 0.18929) and the entanglement of formation 0.117 of the Werner state with F = 5/8 were recomputed, while the two-way lower bound 0.00457 at q = 3/8 is quoted from the paper. Lami, "On PPT entanglement distillation" (arXiv:2610.12454v1, 8 October 2026), was read in full from its TeX source, including Appendices A–F; the proof of its analytic-family converse (Theorem 3) was checked line by line and the value (25/26)log₂5 − log₂3 ≈ 0.64766 recomputed, but its numerical certificates (0.5836 and 0.62107) were not rerun: the paper describes them as a companion supplement that is not posted on arXiv (no ancillary files). Lami states no result for two-qubit states. Barber and Pirandola state that they refine Lami's Theorem 3 by dropping its unit-trace normalization and using the positivity of the test polynomial's coefficients as a second bound. Lami discloses that the main results and techniques were derived almost entirely by ChatGPT Astra; this is recorded in provenance. Antecedent search in the-omega-institute/trureturing returned no hit for 2610.12454; the one hit for quant-ph/9604024 (issue #29451, universal teleportation in a repeater) cites the paper only for twirling and is unrelated. Neither work is withdrawn.
+
+**New entry F19 (foundations): sharp refinement of the Lieb–Solovej bound by Wigner negativity at Rényi order 1/2.**
+
+- **Source and conjecture.** Gagatsos (arXiv:2611.30969v1, 23 November 2026; single version, not withdrawn) conjectures that every single-mode state satisfies ln‖W‖₁ ≤ h_{1/2}(Q) − ln(8π), with equality only for coherent states. Here ‖W‖₁ is the L¹ norm of the Wigner function and h_{1/2}(Q) = 2 ln ∫√Q is the Rényi-½ entropy of the Husimi function.
+- **What the paper proves.**
+  - It reduces the conjecture to pure states.
+  - It proves the inequality with ln(4π), that is, up to an additive ln 2, for all states.
+  - It shows that this constant is the best possible for any argument that treats the Wigner function as a generic two-mode wavefunction.
+  - It exhibits a superposition |0⟩ + 0.2|3√2⟩ for which the analogous inequality fails at Rényi orders 1 (Wehrl), 2 and ∞.
+- **Status chosen.** The entry is "Improved", with that partial result as progress. Horizon: sharp.
+- **Reading.**
+  - The paper was read in full from its LaTeX source, including Appendices A–D. Propositions 1–2, Lemmas 1–4 and the corollaries were checked line by line, and no error was found.
+  - Also read in full, and cited in the entry:
+    - Lieb–Solovej, Acta Math. 212 (2014), arXiv:1208.3632v2. Its Theorem 2.2 gives h_{1/2}(Q) ≥ ln 8π; the paper does not prove uniqueness of the minimizers.
+    - Frank–Nicola–Tilli, arXiv:2307.14089v3. Their Theorem 3 with Φ(u) = −√u gives uniqueness and quadratic stability at order ½.
+    - Albarelli–Genoni–Paris–Ferraro, PRA 98, 052350 (2018), arXiv:1804.05763v2: the Wigner logarithmic negativity as a monotone.
+    - Kenfack–Życzkowski, J. Opt. B 6, 396 (2004), arXiv:quant-ph/0406015v1: the negative volume.
+    - Cordero–Nicola, IMRN 2018, arXiv:1605.00481v3. In time–frequency language the conjecture asks for the sharp constant in the L¹ bound of the Wigner distribution by the squared Feichtinger-algebra norm. Cordero–Nicola cover the qualitative modulation-space bound with unspecified constants only.
+- **Independent numerics.**
+  - Method: Wigner functions by zero-padded fast Fourier transform, Husimi functions in exact Fock or coherent-overlap form. For Fock states, an exact one-dimensional Laguerre reduction against the closed form exp Δ_{1/2} = 2ⁿΓ(n/2+1)²/n!.
+  - The counterexample is reproduced: ‖W‖₁ = 1.2268, excesses 0.3037, 0.1612, 0.0768 and 0.0392 at orders ½, 1, 2 and ∞ (paper: 1.227, 0.304, 0.161, 0.077, 0.039).
+  - The Fock values ‖W_n‖₁ − 1 agree with Kenfack–Życzkowski's exact values to 10⁻⁵.
+  - No violation of the conjecture was found for:
+    - Fock states with n ≤ 300 (largest gap −0.097 at n = 1), and selected n up to 10⁴ (gap → about −0.37);
+    - cat and three-component states;
+    - squeezed Fock and squeezed cat states;
+    - 300 Haar-random states per dimension 2–8 and 300 superpositions with the vacuum per dimension.
+  - Nelder–Mead maximization in span{|0⟩,…,|3⟩}: 11 of 12 runs converged to coherent states, and one stopped at a local maximum with gap −0.027; no run found a positive gap.
+  - An observation made here: the phase-invariant case is equivalent to the one-variable Laguerre inequality ½∫e^{-u/2}|L_n(u)|du ≤ 2ⁿΓ(n/2+1)²/n! for all n. Like the numerics above, it is not recorded in the catalogue, which keeps only the published results.
+- **AI use.** The author acknowledges Claude (Opus 5.5) for building and debugging the Python code of his numerical section; this is recorded in provenance.
+- **Priority search.** Nothing found that states or settles the conjecture.
+  - trureturing: 0 hits for 2611.30969. The 'Gagatsos' hits concern other papers (arXiv:2304.05539, 2312.02066); the 'Wehrl' and 'Husimi' hits concern unrelated conjectures.
+  - GitHub-wide issue search: 0 hits. Code search finds only arXiv-feed aggregators.
+  - Web search finds only the paper itself.
+- **Not checked.**
+  - The figures' underlying data in the paper.
+  - Multimode versions.
+  - Works not read in full: Lieb 1978, Carlen 1991, Frank 2023, Kulikov 2022, Kulikov–Nicola–Ortega-Cerdà–Tilli, Mari–Eisert, Pashayan et al. None of them is cited in the entry.
