@@ -1028,7 +1028,8 @@ The stabilizer Rényi entropy was introduced by Leone, Oliviero and Hamma, “St
   { id: "E28",
     cat: "entanglement",
     horizon: "sharp",
-    reviewedAt: "2026-11-16",
+    status: "improved",
+    reviewedAt: "2026-11-26",
     title: "Maximal stabilizer Rényi entropy without a Weyl–Heisenberg SIC",
     statement: r`For pure states of $n$ qubits, $d=2^n$, let $M_\alpha(\psi)=\frac{1}{1-\alpha}\log\big(d^{-1}\sum_{P}|\langle\psi|P|\psi\rangle|^{2\alpha}\big)$, the sum running over the $d^2$ Pauli strings. For $\alpha\ge2$, $M_\alpha\le\frac{1}{1-\alpha}\log\frac{1+(d-1)(d+1)^{1-\alpha}}{d}$, with equality exactly for fiducials of a Weyl–Heisenberg (Pauli-covariant) SIC, which exist only for $n=1,3$. (Liu–Low–Yin 2025, Conjecture.) Prove or disprove that for $n\notin\{1,3\}$ and $\alpha\ge2$, $\max_\psi M_\alpha(\psi)=\frac{1}{1-\alpha}\log\frac{1+(d-1)d^{1-\alpha}}{d}$, uniquely attained by Weyl–Heisenberg MUB fiducial states when these exist. For $n=2$, $\alpha=2$ this reads $\max M_2=\log(16/7)$. Bipartite variant (Knipfer–Roman–Matcheva–Matchev 2026): for two qudits of prime dimension $p$, $\max M_2=\log[p^4/(2p^2-1)]$, the same formula with $d=p^2$.`,
     definition: r`**Maximal magic.** Stabilizer entropies measure how far the Pauli spectrum of a state is from that of a stabilizer state ([arXiv:2106.12587](https://arxiv.org/abs/2106.12587)); for integer $\alpha\ge2$ they are monotones for pure states under stabilizer protocols (Leone and Bittel, PRA 110, L040403 (2024), [arXiv:2404.11652](https://arxiv.org/abs/2404.11652)). Cuffaro and Fuchs showed that Weyl–Heisenberg SIC fiducials, when they exist, uniquely saturate the general upper bound, so that maximal magic "inherits all the difficulties" of the SIC existence problem ([arXiv:2412.21083](https://arxiv.org/abs/2412.21083)). For multiqubit systems, Liu, Low and Yin recall that Pauli-covariant SICs exist only for $n=1$ and $n=3$, citing Godsil and Roy, Eur. J. Comb. 30, 246 (2009) ([arXiv:quant-ph/0511004](https://arxiv.org/abs/quant-ph/0511004)). The question is what replaces SIC fiducials in all other cases.
@@ -1037,8 +1038,10 @@ The conjecture is stated after the two-qubit result in Liu, Low and Yin, “Maxi
     progress: r`- Cuffaro and Fuchs (30 December 2024) characterize the states saturating the general bound for $\alpha\ge2$ in any dimension: exactly the Weyl–Heisenberg SIC fiducials ([arXiv:2412.21083](https://arxiv.org/abs/2412.21083v1)).
 - Liu, Low and Yin give strong numerical evidence that $\max M_2=\log(16/7)\approx0.827$ for two qubits, below the SIC bound $\log(5/2)$, and identify the 480 maximizers as Weyl–Heisenberg MUB fiducial states. Their numerics indicate that another state maximizes $M_\alpha$ for $\alpha<1.64$ ([arXiv:2502.17550](https://arxiv.org/abs/2502.17550v3)).
 - Roman, Knipfer, Suda Neto, Matchev, Matcheva and Gleyzer derive analytic families for the two-qubit magic–entanglement Pareto frontiers and recover $\log(16/7)$ and the 480 states. They do not prove that their families exhaust the upper boundary ([arXiv:2603.24902](https://arxiv.org/abs/2603.24902v1)).
-- Knipfer, Roman, Matcheva and Matchev locate the two-qutrit maxima numerically, evaluate them analytically ($\log(81/17)$ for qutrits) and conjecture $\log[p^4/(2p^2-1)]$ for two prime-dimensional qudits ([arXiv:2607.07197](https://arxiv.org/abs/2607.07197v1)).`,
-    residual: r`No rigorous proof is known even for two qubits. A first target is a proof that $\max_\psi M_2(\psi)=\log(16/7)$ for $n=2$, for instance by a certificate after reduction by local unitaries, or any rigorous upper bound strictly below $\log(5/2)$. For $n\ge4$ the conjecture is conditional on the existence of Weyl–Heisenberg MUB fiducial states, which is itself not settled here.`,
+- Knipfer, Roman, Matcheva and Matchev locate the two-qutrit maxima numerically, evaluate them analytically ($\log(81/17)$ for qutrits) and conjecture $\log[p^4/(2p^2-1)]$ for two prime-dimensional qudits ([arXiv:2607.07197](https://arxiv.org/abs/2607.07197v1)).
+- Zhaoting Ye (GitHub and Zenodo manuscript, 26 November 2026; submitted in [issue #26](https://github.com/jpbruneton/open_quantum_problems/issues/26)) claims a proof of the two-qubit case for every $\alpha\ge2$: $\sum_P|\langle\psi|P|\psi\rangle|^{2\alpha}\ge1+3\cdot4^{1-\alpha}$, hence $\max M_2=\log(16/7)$, with equality exactly on one Clifford orbit of 480 states, the two-qubit Pauli MUB fiducials, whose concurrence is $1/2$ (192 states) or $1/\sqrt2$ (288 states). The 15 Pauli expectations of a pure state form a $6\times6$ skew-symmetric matrix $A$ with $A^2=-I$ and positive Pfaffian; an exact degree-8 sum-of-squares certificate, symmetrized over the group $B_6^+$ of signed permutations of determinant one, gives $\sum_{P\ne I}\langle P\rangle^4\ge3/4$, and Hölder's inequality extends the bound to $\alpha>2$ ([repository at 5dabc72](https://github.com/LingyeNBird/two-qubit-maximal-magic/tree/5dabc72), [doi:10.5281/zenodo.24565157](https://doi.org/10.5281/zenodo.24565157)). The author reports a Lean 4 formalization; the certificate was re-checked here with independent code, and the Lean build was not rerun.
+- In a companion manuscript, Ye proves that for no $n\ge3$ does an $n$-qubit state have Pauli spectrum $|\langle\psi|P|\psi\rangle|^2\in\{0,2^{-n}\}$ for all $P\ne I$; equivalently, no Pauli-covariant MUB fiducial exists. This settles Conjecture 1 of Damski, Bistroń, Ponterio, Czartowski and Życzkowski and the stronger form they suggest ([arXiv:2603.15550](https://arxiv.org/abs/2603.15550v2)), so the maximizers conjectured by Liu, Low and Yin do not exist for $n\ge4$. The value of $\max M_\alpha$ for $n\ge4$ is not determined: an explicit four-qubit state gives $\sum_P\langle P\rangle^4<2.150521$, and numerical searches suggest that it is optimal, which would give $\max M_2\approx2.0069$, below the Liu–Low–Yin value $\log(256/31)\approx2.1112$ ([repository at 737cbc5](https://github.com/LingyeNBird/multi-qubit-mub-nonexistence/tree/737cbc5), [doi:10.5281/zenodo.24566133](https://doi.org/10.5281/zenodo.24566133)).`,
+    residual: r`If Ye's proof holds, the two-qubit case is settled for every $\alpha\ge2$; the proof awaits independent assessment. For $n\ge4$ qubits no Weyl–Heisenberg MUB fiducial exists, so the Liu–Low–Yin value cannot be attained by such states, and the exact maximum of $M_\alpha$ is open. A first target is $n=4$: any rigorous upper bound on $M_2$ strictly below $\log(256/31)$, or a proof that the four-qubit state with $\sum_P\langle P\rangle^4\approx2.150520$ is optimal. The two-qudit conjecture $\max M_2=\log[p^4/(2p^2-1)]$ is open.`,
     evidence: [
       { kind: "preprint",
         role: "progress",
@@ -1064,8 +1067,26 @@ The conjecture is stated after the two-qubit result in Liu, Low and Yin, “Maxi
         url: "https://arxiv.org/abs/2607.07197v1",
         date: "2026-07-08",
         version: "v1" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Claimed proof of the two-qubit case for all α ≥ 2: max M₂ = log(16/7), maximizers exactly the 480 Pauli MUB fiducials (one Clifford orbit), concurrence 1/2 or 1/√2. Exact sum-of-squares certificate and Lean 4 formalization; GitHub and Zenodo, not peer reviewed; certificate re-checked here, Lean build not rerun.",
+        url: "https://github.com/LingyeNBird/two-qubit-maximal-magic/blob/5dabc72/paper/main.pdf",
+        date: "2026-11-26" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Claimed proof that no n-qubit Pauli-covariant MUB fiducial exists for n ≥ 3, settling Damski et al.'s Conjecture 1; the Liu–Low–Yin maximizers do not exist for n ≥ 4, but the maximum is not determined. Lean 4 for the core theorems; GitHub and Zenodo, not peer reviewed.",
+        url: "https://github.com/LingyeNBird/multi-qubit-mub-nonexistence/blob/737cbc5/paper/main.pdf",
+        date: "2026-11-26" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Conjecture that no fiducial MUB vector with eighth-root-of-unity phases exists under the multiqubit Weyl–Heisenberg group for n > 2 qubits, with a suggested stronger form excluding all such fiducials.",
+        url: "https://arxiv.org/abs/2603.15550v2",
+        date: "2026-10-07",
+        version: "v2" },
     ],
-    provenance: [],
+    provenance: [
+      { summary: "Ye states that the bulk of the technical work in both manuscripts (proof discovery, the sum-of-squares certificate pipeline, the Lean formalization and drafting) was carried out with AI systems under the author's direction and oversight.", url: "https://github.com/LingyeNBird/two-qubit-maximal-magic/blob/5dabc72/README.md" },
+    ],
     relations: [
       { id: "N1", type: "related" },
       { id: "E27", type: "related" },
@@ -1078,6 +1099,9 @@ The conjecture is stated after the two-qubit result in Liu, Low and Yin, “Maxi
       { label: "Roman et al., 'The Pareto Frontiers of Magic and Entanglement: The Case of Two Qubits' (2026 preprint)", url: "https://arxiv.org/abs/2603.24902" },
       { label: "Knipfer, Roman, Matcheva & Matchev, 'Analytical Landscape of Maximal Magic for Two-Qutrit States and Beyond' (2026 preprint)",
         url: "https://arxiv.org/abs/2607.07197" },
+      { label: "Damski, Bistroń, Ponterio, Czartowski & Życzkowski, 'Product Weyl–Heisenberg covariant mutually unbiased bases and extremal non-stabilizerness' (2026 preprint)", url: "https://arxiv.org/abs/2603.15550" },
+      { label: "Ye, 'Rigorous Resolution of the Two-Qubit Maximal Magic Conjecture via SO(6) Geometry and Certified Equivariant Sum-of-Squares Proofs' (GitHub and Zenodo manuscript, v1.2, 26 November 2026; not peer reviewed)", url: "https://doi.org/10.5281/zenodo.24565157" },
+      { label: "Ye, 'Non-Existence of Multi-Qubit Pauli-Covariant MUB Fiducial States and Alltop Phase Functions on F₂ⁿ' (GitHub and Zenodo manuscript, v1.1, 26 November 2026; not peer reviewed)", url: "https://doi.org/10.5281/zenodo.24566133" },
     ] },
 
   { id: "E29",

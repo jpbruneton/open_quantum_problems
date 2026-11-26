@@ -362,7 +362,7 @@ test("home, all categories, filtered lists and missing-page views render", () =>
   assert.ok(home.includes('href="/claimed-solved"'));
   assert.ok(home.includes('href="/lean-verified"'));
   assert.ok(home.includes('See open sharp problems'));
-  assert.ok(home.includes('aria-label="See all 98 improved problems"'));
+  assert.ok(home.includes('aria-label="See all 99 improved problems"'));
   assert.ok(home.includes('aria-label="See all 37 claimed solved problems"'));
   assert.ok(home.includes('href="https://quantumlectures.org/en"'));
   assert.ok(home.includes('href="https://learnthermo.org/"'));
