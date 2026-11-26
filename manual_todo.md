@@ -663,7 +663,6 @@ Fichiers nonlocality (fin), open-systems, qft, quantum-gravity, renormalization,
 | C. de Gois, T. S. R. Santos, C. Vieira, Quantum communication and Bell nonlocality require infinite classical communication to simulate, arXiv:2609.04182v1 | coupée à la fin de l'annexe B.5 (annexes ultérieures non lues) | N18 | no bounded-communication exact simulation of maximally entangled ququarts; qutrits finite | |
 | R. Castellano, P. Sekatski, N. Brunner, The cost of classically simulating quantum communication is as high as it could be, arXiv:2610.19060v1 | coupée dans l'annexe F | N18 | finite average bits in every finite dimension; infinite expected alphabet for d>=4 | |
 | Imai, Yang, Pezzè, Hierarchy of saturation conditions for multiparameter quantum metrology bounds, arXiv:2602.12097v2 | coupée à l'Observation 4 (Exemple 7 non vu) | N19 | Example 7 (rank-two qutrit, partial but not one-sided commutativity) | |
-| Conlon, Suzuki, Lam, Assad, The gap persistence theorem for quantum multiparameter estimation, arXiv:2208.07386v3 | coupée dans l'annexe C (Lemme 18) | N19 | equivalences for single-copy saturability; gap persistence | |
 | Suzuki, Yang, Hayashi, Quantum state estimation with nuisance parameters, J. Phys. A 53, 453001 (2020), arXiv:1911.02790 | coupée en Section 3.1 ; Annexe B.1 non vue | N19 | full-rank states: saturable iff SLDs commute (Nagaoka 1987), Appendix B.1 | |
 | Kahn, Guţă, Local asymptotic normality for finite dimensional quantum systems, CMP 289, 597 (2009), arXiv:0804.3876 | coupée en Section 5.1 | N19 | quantum LAN underlying asymptotic Holevo attainability | |
 | Yang, Chiribella, Hayashi, Attaining the ultimate precision limit in quantum state estimation, CMP 368, 223 (2019), arXiv:1802.07587 | coupée dans la preuve du Théorème 6 | N19 | Holevo bound attained asymptotically by collective measurements | |
@@ -964,3 +963,11 @@ Fichiers nonlocality (fin), open-systems, qft, quantum-gravity, renormalization,
 | F. Szöllősi, All complex equiangular tight frames in dimension 3, arXiv:1402.6429 | non lue (faute de temps dans la session N22) | N22 | every qutrit SIC is (anti)unitarily equivalent to a member of the one-parameter family E_theta, theta in [0, pi/9] | |
 | L. P. Hughston, S. M. Salamon, Surveying points in the complex projective plane, Adv. Math. 286, 1017 (2016) | article de revue, non lu dans la session | N22 | classification of qutrit SICs (all Weyl–Heisenberg covariant, one-parameter family) | |
 | H. Zhu, SIC POVMs and Clifford groups in prime dimensions, J. Phys. A 43, 305305 (2010) | non lue dans la session | N22 | parametrisation theta in [0, pi/9] of qutrit SIC fiducials up to Clifford equivalence | |
+
+## Mise à jour du 26 novembre 2026 (A54, QIP(2) versus PSPACE)
+
+| Référence | Accès | Fiche | Ce qu'elle soutiendrait | Déposée |
+| --- | --- | --- | --- | --- |
+| J. Watrous, *PSPACE has constant-round quantum interactive proof systems*, Theor. Comput. Sci. 292(3), 575–588 (2003), doi:10.1016/S0304-3975(01)00375-9 | version journal (Elsevier) non accessible ; la v1 arXiv cs/9901015 ne pose pas la question en Section 4 | A54 | la Section 4 poserait la question de preuves interactives quantiques à deux messages pour PSPACE (citée par Liu, [Wat03, Sec. 4]) | |
+| T. Vidick, J. Watrous, *Quantum Proofs*, Found. Trends Theor. Comput. Sci. 11(1-2), 1–215 (2016), arXiv:1610.01664 | monographie de 218 pages, seule la Section 4.5 lue | A54 | Section 4.5 : extension de la parallélisation à deux messages ouverte, peu de résultats connus sur QIP(2) | |
+| A. Kitaev, J. Watrous, *Parallelization, amplification, and exponential time simulation of quantum interactive proof systems*, STOC 2000, 608–617, doi:10.1145/335305.335387 | pas sur arXiv | A54 | QIP = QIP(3) et complétude parfaite à partir de trois messages (actuellement énoncé via l'introduction de Jain–Ji–Upadhyay–Watrous) | |

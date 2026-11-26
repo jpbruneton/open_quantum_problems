@@ -95,7 +95,7 @@ Caveats:
     ] },
 
   { id: "A5", cat: "complexity", horizon: "sharp", status: "improved",
-    reviewedAt: "2026-10-26",
+    reviewedAt: "2026-11-26",
     title: "Multiple unentangled quantum proofs",
     statement: r`Determine whether $\mathsf{QMA}(2)=\mathsf{QMA}$, or whether two polynomial-size witnesses promised to be unentangled increase verification power.`,
     definition: r`**QMA(2)** is the class of problems verifiable with two polynomial-size quantum witnesses promised to be unentangled. The verifier may jointly process the two witnesses, but the honest and cheating witnesses must be product across the two prover registers. The product-state optimization underlying this model connects it to separability and tensor optimization.
@@ -115,7 +115,7 @@ Harrow and Montanaro showed that polynomially many unentangled witnesses collaps
     ],
     provenance: [
       { summary: "Grewal, Mutreja and Tomer report that the original proof was obtained in about ten rounds of interaction with ChatGPT 6 Astra; they verified the arguments independently, revised the proofs and link the original AI-generated manuscript.", url: "https://arxiv.org/abs/2610.06760v1", version: "v1" },
-      { summary: "The authors report substantial proof-development and writing assistance from ChatGPT-5.6 Sol, ChatGPT-6 Astra and Claude 5.0 Opus, and take responsibility for the claims.", url: "https://arxiv.org/html/2609.39668v1", version: "v1" },
+      { summary: "Della Schiava and Mataraarachchi's v3 states that GPT-5.6 Sol, GPT-6 Astra and Claude 5.0 Opus contributed substantially to the research and the manuscript, comparably to a primary human contributor: GPT-5.6 Sol generated the four-witness simulation behind Result 3 from the authors' notes, GPT-6 Astra later found a direct two-witness simulation, interactions with the models led to Results 1 and 2, and GPT-6 Astra's treatment of logarithmic-size witnesses led to Result 4. The authors revised the manuscript in full and take responsibility for the claims. (The v1 statement was shorter.)", url: "https://arxiv.org/abs/2609.39668v3", version: "v3" },
       { summary: "Product-test authors report ChatGPT 5.5 Pro assistance with analysis, ChatGPT/Claude assistance with writing and exploratory Codex-supported Lean work; they report human verification and responsibility for the manuscript.", url: "https://arxiv.org/abs/2607.21477v1", version: "v1" },
       { summary: "The September authors report that ChatGPT 5.6 Sol suggested the central proof idea after prompts about She–Yuen, and that they verified, simplified and developed it. This records their disclosure, not an independent provenance audit.", url: "https://arxiv.org/abs/2609.02865v1", version: "v1" },
     ],
@@ -549,7 +549,7 @@ Mahadev's classical-verification protocol is a landmark positive result with com
 
   { id: "A20", cat: "complexity", horizon: "sharp", status: "claimed-solved",
     lean: { url: "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/lean/docs/274.md", note: "OpenAI reports a Lean formalization of the main bounded-error parity lower bound with zero-initialized ancillary qubits. The build was not rerun here." },
-    reviewedAt: "2026-11-08",
+    reviewedAt: "2026-11-26",
     title: "Parity is not in QAC0",
     statement: r`Prove that no family of polynomial-size, constant-depth $\mathsf{QAC}^0$ circuits (arbitrary single-qubit gates and generalized Toffoli gates, with polynomially many ancillas initialized to $|0\rangle$) outputs $\mathrm{PARITY}_n(x)=x_1\oplus\cdots\oplus x_n$ with certainty on every input $x\in\{0,1\}^n$.`,
     definition: r`**The class** $\mathsf{QAC}^0$ is the class of polynomial-size, constant-depth quantum circuits built from arbitrary single-qubit gates and generalized Toffoli gates, the quantum analogue of $\mathsf{AC}^0$. Classically, parity is famously outside $\mathsf{AC}^0$.
@@ -557,25 +557,33 @@ Mahadev's classical-verification protocol is a landmark positive result with com
 Moore showed that parity and fanout are equivalent up to constant-depth reductions, so the question is equally whether constant-depth quantum circuits can implement fanout: Moore, “Quantum circuits: fanout, parity, and counting” (1999), [arXiv:quant-ph/9903046](https://arxiv.org/abs/quant-ph/9903046).`,
     progress: r`- Circuits with two layers of multi-qubit gates cannot even approximate parity, while depth-three circuits cannot compute it exactly, regardless of size (Rosenthal, [arXiv:2008.07470](https://arxiv.org/abs/2008.07470); Joshi, Tal, Vasconcelos and Wright, STOC 2026, [arXiv:2512.14643](https://arxiv.org/abs/2512.14643)).
 - Strong lower bounds hold when ancillas are restricted (Nadimpalli, Parham, Vasconcelos and Yuen, [arXiv:2311.09631](https://arxiv.org/abs/2311.09631); Anshu, Dong, Ou and Yao, [arXiv:2410.06499](https://arxiv.org/abs/2410.06499)).
-- Gretta, Gupta and Joshi (FOCS 2026) proved that parity $\notin\mathsf{QAC}^0$ is equivalent to a Fourier-concentration property of $\mathsf{QAC}^0$, and that inverse-polynomial correlation with parity can be amplified to exact computation ([arXiv:2604.02793](https://arxiv.org/abs/2604.02793v2)).`,
+- Gretta, Gupta and Joshi (FOCS 2026) proved that parity $\notin\mathsf{QAC}^0$ is equivalent to a Fourier-concentration property of $\mathsf{QAC}^0$, and that inverse-polynomial correlation with parity can be amplified to exact computation ([arXiv:2604.02793](https://arxiv.org/abs/2604.02793v2)).
+- Sun and Wang (25 November 2026, v1) use the localization theorem of the claimed proof as a black box ([arXiv:2611.34803](https://arxiv.org/abs/2611.34803v1)). With Pauli twirling and backward layer peeling they approximate the acceptance operator of any polynomial-width $\mathsf{QAC}^0$ circuit, in operator norm, by an advice-independent operator of sublinear Pauli degree on a designated register. Combined with Sherstov's approximate-degree lower bound, this gives explicit linear-size monotone depth-2 CNFs on which every $\mathsf{QAC}^0$ circuit with arbitrary quantum advice has only inverse-polynomial advantage, so $\mathsf{AC}^0\not\subseteq\mathsf{BQAC}^0/\mathsf{qpoly}$ in the single-copy, single-output model. They also note that the localization bound extends the parity lower bound to arbitrary quantum advice. These results depend on the claimed proof and do not assess it.`,
     claim: r`**OpenAI, [“Product-projection localization and the QAC0 parity lower bound”](https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Product-projection-localization-and-the-QAC0-parity-lower-bound-September-24-2026/paper.pdf)** (OpenAI Math Release on GitHub, public 6 October 2026, not on arXiv).
 
 **Gao, Ji and Liu, [“A simplified proof of PARITY ∉ QAC0”](https://eccc.weizmann.ac.il/report/2026/258/)** (ECCC TR26-258, 18 October 2026).
 
+**Kintali, [“PARITY ∉ QAC0 (via Polarization and Direct Induction)”](https://github.com/shivakintali/shivakintali.github.io/blob/55042dd8e6b118d5bbd390ededb8a0d4ebc832ee/papers/Parity.pdf)** (note dated 17 October 2026, posted on the author's web page; version of 20 October 2026).
+
 What it claims:
 - For every fixed depth and polynomially many qubits, no $\mathsf{QAC}^0$ circuit achieves success probability $1/2+\varepsilon$ on every input, for any fixed $\varepsilon>0$ and all large $n$. This implies the exact statement above.
 - Gao, Ji and Liu give a self-contained simplified proof of the same theorem, a self-contained simplification of OpenAI's proof by independent authors.
+- Kintali gives a second self-contained simplification (13 pages): polarization writes each conjugated product projection as a combination of product projections with total weight at most $18^k$, so the lower-depth localization bound applies term by term and OpenAI's low-count propagation step is not needed. OpenAI's localization statement, Chebyshev filter and inverse-circuit bootstrap are retained.
 
 Caveats:
-- The original proof and a simplified self-contained version by independent authors; neither is peer reviewed. Hence “Claimed solved” rather than “Solved”.
+- The original proof and two simplified self-contained versions by independent authors; none is peer reviewed. Hence “Claimed solved” rather than “Solved”. Kintali's version was read in full and checked step by step for the 26 November 2026 review without finding a gap; this is an internal check, not peer review.
 - OpenAI lists itself as author and states that an internal OpenAI model produced the manuscript collection. Its scope note reports the main positive-advantage parity lower bound formalized in Lean; the build was not rerun here.`,
     evidence: [
       { kind: "preprint", role: "claimed-solution", lean: true, summary: "Claimed proof that PARITY is not in QAC0, in the strong form that no constant-depth polynomial-size circuit beats random guessing by a fixed margin on all inputs; OpenAI GitHub manuscript, pending assessment.", url: "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Product-projection-localization-and-the-QAC0-parity-lower-bound-September-24-2026/paper.pdf", date: "2026-10-06", version: "v1" },
       { kind: "preprint", role: "claimed-solution", summary: "Self-contained simplified proof of the OpenAI theorem; independent engagement, not peer reviewed.", url: "https://eccc.weizmann.ac.il/report/2026/258/", date: "2026-10-18" },
+      { kind: "preprint", role: "claimed-solution", summary: "Second self-contained simplification of the OpenAI proof, replacing the low-count propagation step by a polarization expansion of the one-layer conjugation; note on the author's web page, not peer reviewed.", url: "https://github.com/shivakintali/shivakintali.github.io/blob/55042dd8e6b118d5bbd390ededb8a0d4ebc832ee/papers/Parity.pdf", date: "2026-10-17" },
+      { kind: "preprint", role: "progress", summary: "Downstream use of the claimed localization theorem: advice-independent sublinear-degree operator approximation of QAC0 acceptance operators, giving AC0 ⊄ BQAC0/qpoly (single copy, single output); depends on the claimed proof.", url: "https://arxiv.org/abs/2611.34803v1", date: "2026-11-25", version: "v1" },
       { kind: "preprint", role: "progress", summary: "Equivalence of PARITY not in QAC0 with Fourier concentration of QAC0, and amplification of weak correlation to exact computation (FOCS 2026).", url: "https://arxiv.org/abs/2604.02793v2", date: "2026-08-25", version: "v2" },
     ],
     provenance: [
       { summary: "OpenAI lists itself as author and states that an internal OpenAI model produced the manuscript collection. Its Lean scope note reports a formalization of the main parity lower bound; this is the author's account, not an independently rerun build.", url: "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/README.md" },
+      { summary: "Kintali states that his contribution is the use of polarization in the reflection expansion, and that he prompted Claude and ChatGPT to apply this idea to simplify OpenAI's proof, worked out details interactively and verified them manually.", url: "https://github.com/shivakintali/shivakintali.github.io/blob/55042dd8e6b118d5bbd390ededb8a0d4ebc832ee/papers/Parity.pdf" },
+      { summary: "Sun and Wang state that their proofs took shape through discussions with ChatGPT, in which they explored and refined approaches, and that ChatGPT and Gemini helped draft and revise the manuscript; they take responsibility for the claims, proofs and text.", url: "https://arxiv.org/abs/2611.34803v1", version: "v1" },
     ],
     relations: [{ id: "A16", type: "related" }],
     refs: [
@@ -586,6 +594,8 @@ Caveats:
       { label: "Gretta, Gupta & Joshi, 'Parity ∉ QAC0 ⟺ QAC0 is Fourier-Concentrated' (FOCS 2026; preprint v2)", url: "https://arxiv.org/abs/2604.02793v2" },
       { label: "OpenAI, 'Product-projection localization and the QAC0 parity lower bound' (OpenAI Math Release manuscript, dated 24 September 2026; public 6 October 2026)", url: "https://github.com/openai/math/blob/1581d4cbdd69a0faf34b2089614fe2a814316a6a/preprints/Product-projection-localization-and-the-QAC0-parity-lower-bound-September-24-2026/paper.pdf" },
       { label: "Gao, Ji & Liu, 'A simplified proof of PARITY ∉ QAC0', ECCC TR26-258 (18 October 2026)", url: "https://eccc.weizmann.ac.il/report/2026/258/" },
+      { label: "Kintali, 'PARITY ∉ QAC0 (via Polarization and Direct Induction)' (note dated 17 October 2026, author's web page; version of 20 October 2026)", url: "https://github.com/shivakintali/shivakintali.github.io/blob/55042dd8e6b118d5bbd390ededb8a0d4ebc832ee/papers/Parity.pdf" },
+      { label: "Sun & Wang, 'AC0 ⊄ BQAC0/qpoly via Sublinear-Degree Pauli Approximation' (2026 preprint, v1)", url: "https://arxiv.org/abs/2611.34803v1" },
     ] },
 
   { id: "A21", cat: "complexity", horizon: "sharp",
@@ -1204,7 +1214,7 @@ Iterative solvers started at $\Phi_0=\mathbf 0$ need no complementary polynomial
     cat: "complexity",
     horizon: "sharp",
     status: "improved",
-    reviewedAt: "2026-11-16",
+    reviewedAt: "2026-11-26",
     title: "Bound magic states for qubits",
     statement: r`Let $\rho$ be a single-qubit state whose Bloch vector lies outside the stabilizer octahedron, $|r_x|+|r_y|+|r_z|>1$. Stabilizer protocols may use stabilizer-state ancillas, Clifford unitaries, Pauli measurements with classical feed-forward, postselection with nonzero success probability, and partial trace. Prove or disprove that for every such $\rho$ and every $\varepsilon>0$ there are $n$ and a stabilizer protocol mapping $\rho^{\otimes n}$ to a qubit state $\varepsilon$-close to a Clifford image of $|T\rangle$ or $|H\rangle$; that is, whether qubit bound magic states exist when the number of copies is unbounded. (Bravyi–Kitaev 2005; Campbell–Browne 2010.)`,
     definition: r`**Magic state distillation** turns many noisy copies of a non-stabilizer state into fewer, purer ones using only operations that are classically simulable on their own, which makes Clifford circuits universal. States inside the stabilizer octahedron are useless by the Gottesman–Knill theorem. Bravyi and Kitaev called the computational power of the model in the region between the octahedron and their distillation threshold “the most exciting open problem”, “Universal quantum computation with ideal Clifford gates and noisy ancillas”, PRA 71, 022316 (2005), [arXiv:quant-ph/0403025](https://arxiv.org/abs/quant-ph/0403025). By analogy with bound entanglement, Campbell and Browne called non-distillable states outside the octahedron *bound states* for magic state distillation, PRL 104, 030503 (2010), [arXiv:0908.0836](https://arxiv.org/abs/0908.0836).
@@ -1214,8 +1224,9 @@ The question is recalled as open in 2026 by Liu, Haug, Ye, Liu and Roth ([arXiv:
 - Reichardt (2005) improves the $H$-direction protocols to a sharp threshold, at the octahedron boundary, in that direction; the $T$ direction remains open ([arXiv:quant-ph/0411036](https://arxiv.org/abs/quant-ph/0411036)).
 - Campbell and Browne (2009–2010) prove that for every fixed number $n$ of copies, $n$-to-one protocols cannot improve states in a region just above the octahedron faces. They state that this does not rule out protocols with growing $n$ reaching a tight threshold ([arXiv:0908.0836](https://arxiv.org/abs/0908.0836v3); structure theorem in [arXiv:0908.0838](https://arxiv.org/abs/0908.0838)).
 - For qudits of odd prime dimension, states with non-negative Wigner function are efficiently simulable, so non-stabilizer Wigner-positive states are bound magic (Veitch, Ferrie, Gross and Emerson, NJP 14, 113011 (2012), [arXiv:1201.1256](https://arxiv.org/abs/1201.1256)). Frembs shows that the normalized projector onto the complement of an unextendible stabiliser set is magic and "bound magic in odd prime dimension, yet need not be for qubits" ([arXiv:2608.10202](https://arxiv.org/abs/2608.10202v1)).
-- Sethi (29 October 2026, v1) gives an explicit lower bound, as a function of $n$, on the region of non-distillable states for $n$-to-one Clifford reductions. The certified region shrinks toward the octahedron as $n$ grows ([arXiv:2610.37807](https://arxiv.org/abs/2610.37807v1)).`,
-    residual: r`Open in the $T$ direction, and for general single-qubit states. A positive answer needs a family of protocols whose thresholds converge to the octahedron faces. A negative answer needs a region of non-distillable states that is uniform in $n$, for all stabilizer protocols, including those with several outputs. Beating the five-qubit $T$ threshold, a narrower target, is listed separately.`,
+- Sethi (29 October 2026, v1) gives an explicit lower bound, as a function of $n$, on the region of non-distillable states for $n$-to-one Clifford reductions. The certified region shrinks toward the octahedron as $n$ grows ([arXiv:2610.37807](https://arxiv.org/abs/2610.37807v1)).
+- Kitzinger, Eisert and Kunjwal (25 November 2026, v1) prove that bound magic exists for every number $n\ge3$ of qubits in the full asymptotic sense of this question: some $n$-qubit non-stabilizer states yield no pure magic state, even approximately, from any number of copies under adaptive stabilizer operations with postselection ([arXiv:2611.34872](https://arxiv.org/abs/2611.34872v1), Theorem 2 and Corollary 3). Their analogue of the positive-partial-transpose criterion is the convex hull $B_n$ of outputs of Pauli channels whose Choi state has a positive partial transpose. This family is closed under tensor products and stabilizer operations and strictly contains the stabilizer polytope at $n=3$; an explicit example applies a Pauli channel built from 21 three-qubit Paulis to $|000\rangle+|{+}{+}{+}\rangle$ (normalized). A linear program over the 1080 three-qubit stabilizer states, run here, confirms that this example lies outside the stabilizer polytope. The single-qubit question asked here is untouched: $B_1$ is the octahedron, and since the family is closed under partial trace, no tensor power of a single-qubit state outside the octahedron lies in it. The authors find $B_2=\mathrm{STAB}_2$ numerically and state that bound magic for one and two qubits remains open.`,
+    residual: r`Open in the $T$ direction, and for general single-qubit states. A positive answer needs a family of protocols whose thresholds converge to the octahedron faces. A negative answer needs a region of non-distillable states that is uniform in $n$, for all stabilizer protocols, including those with several outputs. Bound magic now exists for three or more qubits (Kitzinger, Eisert and Kunjwal, November 2026), but their tensor-stable criterion reduces to the octahedron for one qubit, so a single-qubit answer needs a different invariant. Beating the five-qubit $T$ threshold, a narrower target, is listed separately.`,
     evidence: [
       { kind: "published",
         role: "progress",
@@ -1231,8 +1242,11 @@ The question is recalled as open in 2026 by Liu, Haug, Ye, Liu and Roth ([arXiv:
         date: "2010-02-01",
         version: "v3" },
       { kind: "preprint", role: "progress", summary: "Explicit n-dependent lower bound on the non-distillable region for n-to-one Clifford reductions of single-qubit states.", url: "https://arxiv.org/abs/2610.37807v1", date: "2026-10-29", version: "v1" },
+      { kind: "preprint", role: "progress", summary: "Bound magic exists for every n ≥ 3 qubits: a tensor-stable, stabilizer-closed set of outputs of PPT Pauli channels strictly contains the three-qubit stabilizer polytope. It reduces to the octahedron for one qubit (and numerically to the stabilizer polytope for two), so the single-qubit question is untouched.", url: "https://arxiv.org/abs/2611.34872v1", date: "2026-11-25", version: "v1" },
     ],
-    provenance: [],
+    provenance: [
+      { summary: "Kitzinger, Eisert and Kunjwal report that Claude (Opus 5.5, Fable 5.2) and ChatGPT (5.6 Sol, 6.1 Sol) were used to automate coding, to prove and disprove mathematical conjectures and for literature searches, and that ChatGPT 6.1 Sol was used for language editing and for checking mathematical details of the manuscript.", url: "https://arxiv.org/abs/2611.34872v1", version: "v1" },
+    ],
     relations: [
       { id: "A40", type: "benchmark" },
       { id: "E1", type: "related" },
@@ -1249,6 +1263,7 @@ The question is recalled as open in 2026 by Liu, Haug, Ye, Liu and Roth ([arXiv:
       { label: "Zurel, Jana & de Silva, 'High-threshold magic state distillation with quantum quadratic residue codes', Quantum Sci. Technol. 11, 045052 (2026)",
         url: "https://arxiv.org/abs/2603.18560" },
       { label: "Sethi, 'Lower Bound for Region of Non-Distillable Magic States' (2026 preprint)", url: "https://arxiv.org/abs/2610.37807" },
+      { label: "Kitzinger, Eisert & Kunjwal, 'Bound magic in multi-qubit systems' (2026 preprint, v1)", url: "https://arxiv.org/abs/2611.34872v1" },
     ] },
 
   { id: "A40",
@@ -1294,15 +1309,16 @@ Kalra and Prakash state that the five-qubit threshold is “the best known thres
     cat: "complexity",
     horizon: "sharp",
     status: "improved",
-    reviewedAt: "2026-11-16",
+    reviewedAt: "2026-11-26",
     title: "Minimal length of permutation-invariant qubit codes",
     statement: r`A permutation-invariant (PI) code encoding one qubit in $n$ qubits is equivalently a code in the fixed-photon-number space $\mathrm{span}\{|k\rangle|n-k\rangle\}_{k=0}^{n}$ of two bosonic modes, where distance $d$ means correcting $d-1$ deletions (photon losses). Let $n_{\min}(d)$ be the least $n$ admitting such a code of distance $d$. Prove or disprove that $n_{\min}(d)=\lceil(3d^2+1)/4\rceil$ for all $d\ge2$; for odd $d=2t+1$ this is $3t^2+3t+1$, equivalently $d\le\sqrt{12n-3}/3$ for every qubit PI code. (Bond–Minář–Ozols–Safavi-Naini–Visnevskyi 2026, Conjecture 3.1; Giannisis Manes–Subramanian–Jiang 2026, Conjecture 4 for existence at this length.)`,
     definition: r`**Permutation-invariant codes** live in the symmetric subspace of $n$ qubits, where errors on any $t$ qubits reduce to deletions. Pollatsek and Ruskai, “Permutationally invariant codes for quantum error correction”, Lin. Alg. Appl. 392, 255 (2004), [arXiv:quant-ph/0304153](https://arxiv.org/abs/quant-ph/0304153); Ouyang, “Permutation-invariant quantum codes”, PRA 90, 062317 (2014), [arXiv:1302.3247](https://arxiv.org/abs/1302.3247). Known analytic families need $n=d^2+O(d)$ qubits, while the quantum Singleton bound only forces $n\ge2d-1$, so even the growth rate of $n_{\min}$ is unproved. Bond et al. note that their conjecture would imply there are no good qLDPC qubit PI codes.
 
 Bond et al. state the conjecture from numerical searches, [arXiv:2603.10981](https://arxiv.org/abs/2603.10981). Giannisis Manes, Subramanian and Jiang conjecture codes at length $\lceil(3d^2+1)/4\rceil$ for every $d$ and call stronger bounds “an important open problem” ([arXiv:2610.00561](https://arxiv.org/abs/2610.00561)).`,
     progress: r`- Ouyang (2014) and Aydin, Alekseyev and Barg (Quantum 8, 1321 (2024)) give analytic families of length $4t^2+4t+1$ and $4t^2+2t+1$ correcting $t$ errors, that is $2t$ deletions ([arXiv:1302.3247](https://arxiv.org/abs/1302.3247), [arXiv:2310.05358](https://arxiv.org/abs/2310.05358)).
+- Hagiwara and Nakayama (January 2020) settled the qubit case $d=2$, $n_{\min}(2)=4$: the permutation-invariant code spanned by $(|0000\rangle+|1111\rangle)/\sqrt2$ and the weight-two Dicke state corrects one deletion, and no code encoding a qubit that corrects one deletion has fewer than four qubits ([arXiv:2001.08405](https://arxiv.org/abs/2001.08405v1)).
 - Bond, Minář, Ozols, Safavi-Naini and Visnevskyi (March 2026) minimize the Knill–Laflamme violation numerically and find $n_{\min}=7,19,37$ for $t=1,2,3$, and $61,91$ for $t=4,5$ within a restricted family. They conjecture $n_{\min}(t)=3t^2+3t+1$ (Conjecture 3.1) ([arXiv:2603.10981](https://arxiv.org/abs/2603.10981v1)).
-- Kubischta and Teixeira (May 2026) prove that distance-two PI codes need exactly four qudits, for every local dimension, by a linear-programming bound and an explicit construction ([arXiv:2605.22439](https://arxiv.org/abs/2605.22439v1)). This is the case $d=2$, $n=4$ of the formula.
+- Kubischta and Teixeira (May 2026; v2 of 24 November 2026, accepted in IEEE Transactions on Information Theory) extend the $d=2$ case to every local dimension $q$: they construct $((4,q,2))_q$ permutation-invariant codes from edge colourings of the complete graph $K_q$, and prove by a decoupling-and-rank argument, and independently by linear programming, that no permutation-invariant code of dimension $q$ and distance two exists on three or fewer qudits ([arXiv:2605.22439](https://arxiv.org/abs/2605.22439v2)). For $q=2$ their code is the Hagiwara–Nakayama code.
 - Giannisis Manes, Subramanian and Jiang (30 September 2026) construct codes with binary-polyhedral symmetry at $n=\lceil(3d^2+1)/4\rceil$ for every $d\le10$, including $(n,d)=(28,6),(49,8),(76,10)$. Linear-programming certificates show their codes reach the maximal distance for 21 of the 22 photon numbers $4\le n\le25$; the exception is $n=18$, where the LP allows $d=5$. For $d=6$ and $8$ the LP first allows $n=26$ and $43$, below their codes at $28$ and $49$ ([arXiv:2610.00561](https://arxiv.org/abs/2610.00561v1)).`,
     residual: r`No lower bound of order $d^2$ is proved: the LP bound is not tight at the gaps above, and the minimality conjecture would imply that it is systematically non-tight. Sub-targets: show that no distance-5 code exists at $n=18$, so that $n_{\min}(5)=19$; prove $n_{\min}(d)\ge c\,d^2$ for some constant $c>0$; construct the conjectured binary-polyhedral family for all $d$.`,
     evidence: [
@@ -1315,10 +1331,16 @@ Bond et al. state the conjecture from numerical searches, [arXiv:2603.10981](htt
         version: "v1" },
       { kind: "preprint",
         role: "progress",
-        summary: "Distance-two permutation-invariant codes need exactly four qudits for every local dimension (LP bound plus construction).",
-        url: "https://arxiv.org/abs/2605.22439v1",
-        date: "2026-05-21",
+        summary: "Qubit case d = 2: a four-qubit permutation-invariant single-deletion code, and no single-deletion-correcting code encoding a qubit on fewer than four qubits.",
+        url: "https://arxiv.org/abs/2001.08405v1",
+        date: "2020-01-23",
         version: "v1" },
+      { kind: "preprint",
+        role: "progress",
+        summary: "Distance-two permutation-invariant codes need exactly four qudits for every local dimension q (edge-colouring construction; decoupling-and-rank and linear-programming lower bounds). Extends the qubit case of Hagiwara and Nakayama. Accepted in IEEE Transactions on Information Theory.",
+        url: "https://arxiv.org/abs/2605.22439v2",
+        date: "2026-11-24",
+        version: "v2" },
       { kind: "preprint",
         role: "progress",
         summary: "Codes at n = ⌈(3d²+1)/4⌉ for all d ≤ 10; LP certificates of maximal distance for 21 of 22 photon numbers 4 ≤ n ≤ 25, the exception being n = 18.",
@@ -1342,8 +1364,10 @@ Bond et al. state the conjecture from numerical searches, [arXiv:2603.10981](htt
       { label: "Pollatsek & Ruskai, 'Permutationally Invariant Codes for Quantum Error Correction', Lin. Alg. Appl. 392, 255 (2004)", url: "https://arxiv.org/abs/quant-ph/0304153" },
       { label: "Ouyang, 'Permutation-invariant quantum codes', PRA 90, 062317 (2014)", url: "https://arxiv.org/abs/1302.3247" },
       { label: "Aydin, Alekseyev & Barg, 'A family of permutationally invariant quantum codes', Quantum 8, 1321 (2024)", url: "https://arxiv.org/abs/2310.05358" },
-      { label: "Kubischta & Teixeira, 'Minimal Permutation-Invariant Qudit Codes from Edge-Colorings of Complete Graphs' (2026 preprint)",
-        url: "https://arxiv.org/abs/2605.22439" },
+      { label: "Hagiwara & Nakayama, 'A Four-Qubits Code that is a Quantum Deletion Error-Correcting Code with the Optimal Length' (2020 preprint)",
+        url: "https://arxiv.org/abs/2001.08405v1" },
+      { label: "Kubischta & Teixeira, 'Minimum-Length Permutation-Invariant Qudit Codes from Edge-Colorings of Complete Graphs' (2026 preprint, v2; accepted in IEEE Trans. Inf. Theory)",
+        url: "https://arxiv.org/abs/2605.22439v2" },
     ] },
 
   { id: "A42",
@@ -1913,5 +1937,49 @@ Magniez and Zur prove $Q=\Omega(N^{1/3})$ and $Q^2S=\Omega(N\log N)$ for random 
     refs: [
       { label: "Aaronson, 'Open Problems Related to Quantum Query Complexity', ACM Trans. Quantum Comput. 2(4), 14 (2021), Problem 3", url: "https://arxiv.org/abs/2109.06917v1" },
       { label: "Magniez & Zur, 'Tight Time-Space Lower Bounds for Collision Finding and Element Distinctness under Label Symmetry' (2026 preprint, v2)", url: "https://arxiv.org/abs/2609.10808v2" },
+    ] },
+
+  { id: "A54", cat: "complexity", horizon: "sharp", status: "claimed-solved", reviewedAt: "2026-11-26",
+    title: "Two-message quantum interactive proofs: QIP(2) versus PSPACE",
+    statement: r`Does every problem in $\mathsf{PSPACE}$ have a two-message quantum interactive proof system, that is, does $\mathsf{QIP}(2)=\mathsf{PSPACE}$? Since $\mathsf{QIP}=\mathsf{PSPACE}$, this asks whether every quantum interactive proof can be parallelized to two messages.`,
+    definition: r`**Two-message quantum interactive proofs.** On input $x$, a polynomial-time quantum verifier prepares a state on a message register and a private register, sends the message register to a computationally unbounded prover, receives the prover's quantum reply, and measures the reply together with its private register. $\mathsf{QIP}(2)$ is the class of promise problems with such a protocol of completeness $2/3$ and soundness $1/3$ ([Jain, Upadhyay and Watrous, Section 3.1](https://arxiv.org/abs/0905.1300v1)). More generally, $\mathsf{QIP}(m)$ allows $m$ messages, the prover sending the last, so $\mathsf{QIP}(1)=\mathsf{QMA}$.
+
+Three messages already give quantum interactive proofs their full power: every quantum interactive proof can be parallelized to three messages, and $\mathsf{QIP}(3)=\mathsf{QIP}=\mathsf{PSPACE}$ ([Jain, Ji, Upadhyay and Watrous, Section 1](https://arxiv.org/abs/0907.4737v2)). Classical interactive proofs with a constant number of messages, by contrast, only reach $\mathsf{AM}\subseteq\Pi_2^{\mathsf p}$. The open inclusion is therefore $\mathsf{PSPACE}\subseteq\mathsf{QIP}(2)$. A restricted model is qq-QAM, in which the verifier's only message consists of halves of EPR pairs, called quantum public coins ([Kobayashi, Le Gall and Nishimura](https://arxiv.org/abs/1312.4673v2)); a protocol of this type is in particular a two-message quantum interactive proof.`,
+    progress: r`- Watrous (January 1999; journal version in Theor. Comput. Sci. 292 (2003)) gives every $\mathsf{PSPACE}$ language a three-message quantum interactive proof with one-sided, exponentially small error. The prover sends a superposition of sum-check transcripts, and the verifier tests that the random challenges were not used ahead of time ([arXiv:cs/9901015](https://arxiv.org/abs/cs/9901015v1), Theorem 1).
+- Jain, Upadhyay and Watrous (May 2009; FOCS 2009) prove $\mathsf{QIP}(2)\subseteq\mathsf{PSPACE}$ with a parallel matrix multiplicative-weights algorithm for the semidefinite program of the optimal acceptance probability ([arXiv:0905.1300](https://arxiv.org/abs/0905.1300v1)). Among $\mathsf{QIP}(0)=\mathsf{BQP}$, $\mathsf{QIP}(1)=\mathsf{QMA}$, $\mathsf{QIP}(2)$ and $\mathsf{QIP}(3)=\mathsf{QIP}$, they describe $\mathsf{QIP}(2)$ as “the most mysterious”; its known lower bounds then included $\mathsf{QSZK}\subseteq\mathsf{QIP}(2)$.
+- Jain, Ji, Upadhyay and Watrous (July 2009; J. ACM 58, 30 (2011)) extend the method to $\mathsf{QIP}=\mathsf{PSPACE}$ ([arXiv:0907.4737](https://arxiv.org/abs/0907.4737v2)).
+- Kobayashi, Le Gall and Nishimura (December 2013; SIAM J. Comput. 48, 865 (2019)) introduce qq-QAM, prove that Close Image to Totally Mixed is complete for it, and classify constant-message quantum Arthur–Merlin games with classical or quantum public coins: a quantum message anywhere before the last two messages gives $\mathsf{PSPACE}$, and every other type collapses to qq-QAM, $\mathsf{QAM}$ or its classical-message variant ([arXiv:1312.4673](https://arxiv.org/abs/1312.4673v2), Theorems 2 and 7). They call the characterization of two-message quantum interactive proofs “one of the main open problems in this field” and ask whether qq-QAM has any upper bound better than $\mathsf{QIP}(2)$.
+- Liu and Vidick (September 2026; v3 of 9 October 2026) prove that $\mathsf{QIP}(2)$ and qq-QAM achieve perfect completeness, through an exact-half calibration, an EPR-pair completion and a new endpoint-inward turn-halving transformation ([arXiv:2609.15926](https://arxiv.org/abs/2609.15926v3), Theorems 1.1 and 1.2).`,
+    claim: r`**Yupan Liu, [“Two messages suffice for quantum interactive proof systems”](https://arxiv.org/abs/2611.31236v1)** (arXiv:2611.31236, v1, 23 November 2026), Theorem 1.1.
+
+What it claims:
+- $\mathsf{qq\text{-}StoqAM}_1=\mathsf{qq\text{-}QAM}=\mathsf{QIP}(2)=\mathsf{QIP}=\mathsf{PSPACE}$. Every quantum interactive proof can therefore be parallelized to two messages. The verifier sends only halves of EPR pairs, accepts honest provers with certainty, and then verifies stoquastically: $|0\rangle$ and $|+\rangle$ ancillas, Toffoli, CNOT and $X$ gates, and a single Hadamard-basis measurement.
+- The new direction is $\mathsf{PSPACE}$-hardness of Close Image to Uniform, a classical special case of Close Image to Totally Mixed. Given a sampler $S(u,r)$ with a uniform seed $r$, decide whether some input distribution makes the output exactly uniform, or every input distribution leaves it at total-variation distance at least $\eta$. The reduction from true quantified Boolean formulas builds the sampler from single transitions of the sum-check protocol with degree reduction over $\mathbb F_q$, with $T+1=O(|\Phi|^2)$ rounds and $q=8(T+1)$. For a false formula, every input distribution stays at distance at least $\tfrac{1}{32(T+1)^2}$ (Lemma 3.8).
+- In the protocol, the verifier undoes the sampler on the prover's reply and runs a SWAP test of the seed and output registers against $|+\rangle^{\otimes m_+}|0\rangle^{\otimes m_{\rm out}}$. Its soundness is $1-\eta^2/2$ (Theorem 4.4), and parallel repetition with a single final SWAP test brings it below $3/4$ (Lemma 4.2).
+- Consequences stated in the paper: a trichotomy for constant-message quantum Arthur–Merlin games with classical or quantum public coins, in which a quantum message anywhere before the last one gives $\mathsf{PSPACE}$; and two-message proofs with quantum public coins are strictly stronger than with classical public coins unless the counting hierarchy collapses.
+
+Caveats:
+- A single-author preprint, not peer reviewed; no independent assessment was found. Hence “Claimed solved” rather than “Solved”.
+- Lemmas 3.6–3.8, Theorem 4.4 and Appendix A were reread line by line for this catalogue, and no gap was found. Appendix A relies on the product rule of Molina and Watrous for the maximum probability of a prescribed outcome ([arXiv:1104.1140](https://arxiv.org/abs/1104.1140v2), Section 4), whose proof was also checked; the trichotomy follows from Theorem 1.1 and Theorem 7 of Kobayashi, Le Gall and Nishimura. This is not an independent expert assessment.
+- The upper bound $\mathsf{QIP}(2)\subseteq\mathsf{PSPACE}$ is the known one. The perfect completeness of Liu and Vidick enters only as a convention for qq-QAM, since the new protocol is perfectly complete by construction.`,
+    residual: r`If the claim holds, two messages suffice, with perfect completeness, quantum public coins and stoquastic verification, and the question is settled. What remains is independent assessment of the proof. Liu recalls that the two-message class with classical public coins, $\mathsf{QAM}$, lies in $\mathsf{BP}\cdot\mathsf{PP}$, so $\mathsf{QAM}=\mathsf{PSPACE}$ would collapse the counting hierarchy; the exact power of $\mathsf{QAM}$ is a separate question.`,
+    evidence: [
+      { kind: "preprint", role: "claimed-solution", summary: "Claimed proof of qq-StoqAM_1 = qq-QAM = QIP(2) = QIP = PSPACE: PSPACE-hardness of Close Image to Uniform via a sum-check sampler, and a perfectly complete two-message stoquastic protocol with quantum public coins. Single-author preprint, pending assessment.", url: "https://arxiv.org/abs/2611.31236v1", date: "2026-11-23", version: "v1" },
+      { kind: "preprint", role: "progress", summary: "Perfect completeness for QIP(2) and qq-QAM (and for QMA over the gate set H, X, Toffoli, S), via a new endpoint-inward turn-halving transformation; does not place PSPACE in QIP(2).", url: "https://arxiv.org/abs/2609.15926v3", date: "2026-10-09", version: "v3" },
+      { kind: "published", role: "progress", summary: "SIAM J. Comput. 48, 865 (2019): qq-QAM defined, Close Image to Totally Mixed qq-QAM-complete, and constant-message quantum Arthur–Merlin games classified into PSPACE, qq-QAM, QAM and its classical-message variant; the power of qq-QAM and QIP(2) left open.", url: "https://arxiv.org/abs/1312.4673v2", date: "2014-09-16", version: "v2" },
+    ],
+    provenance: [
+      { summary: "Liu discloses that large language model tools were used interactively at all stages, from exploratory research to the final exposition and writing, with access to OpenAI models through the ChatGPT for Academic Researchers program; the author takes sole responsibility for all claims and proofs.", url: "https://arxiv.org/abs/2611.31236v1", version: "v1" },
+      { summary: "Liu and Vidick make the same disclosure for the perfect-completeness paper: large language model tools at all stages, with access to OpenAI models through the ChatGPT for Academic Researchers program.", url: "https://arxiv.org/abs/2609.15926v3", version: "v3" },
+    ],
+    relations: [{ id: "A4", type: "related" }, { id: "A9", type: "related" }, { id: "A31", type: "related" }],
+    refs: [
+      { label: "Liu, 'Two messages suffice for quantum interactive proof systems' (2026 preprint, v1)", url: "https://arxiv.org/abs/2611.31236v1" },
+      { label: "Liu & Vidick, 'Achieving perfect completeness for one- and two-message quantum proof systems' (2026 preprint, v3)", url: "https://arxiv.org/abs/2609.15926v3" },
+      { label: "Kobayashi, Le Gall & Nishimura, 'Generalized Quantum Arthur–Merlin Games', SIAM J. Comput. 48, 865–902 (2019)", url: "https://arxiv.org/abs/1312.4673v2" },
+      { label: "Jain, Ji, Upadhyay & Watrous, 'QIP = PSPACE', J. ACM 58, 30 (2011)", url: "https://arxiv.org/abs/0907.4737v2" },
+      { label: "Jain, Upadhyay & Watrous, 'Two-message quantum interactive proofs are in PSPACE', FOCS 2009, pp. 534–543", url: "https://arxiv.org/abs/0905.1300v1" },
+      { label: "Watrous, 'PSPACE has 2-round quantum interactive proof systems' (1999 preprint; journal version 'PSPACE has constant-round quantum interactive proof systems', Theor. Comput. Sci. 292, 575–588 (2003))", url: "https://arxiv.org/abs/cs/9901015v1" },
+      { label: "Molina & Watrous, 'Hedging bets with correlated quantum strategies', Proc. R. Soc. A 468, 2614–2629 (2012)", url: "https://arxiv.org/abs/1104.1140v2" },
     ] },
 ];

@@ -53,8 +53,8 @@ function validUrl(value, label) {
 }
 
 test("all 111 original IDs remain addressable; 12 additions and 10 archives are counted correctly", () => {
-  assert.equal(ALL_PROBLEMS.length, 237);
-  assert.equal(PROBLEMS.length, 227);
+  assert.equal(ALL_PROBLEMS.length, 238);
+  assert.equal(PROBLEMS.length, 228);
   assert.equal(ARCHIVED_PROBLEMS.length, 10);
   assert.equal(new Set(ALL_PROBLEMS.map((p) => p.id)).size, ALL_PROBLEMS.length);
   for (const [prefix, n] of Object.entries(originalSeries)) {
@@ -134,7 +134,7 @@ test("targeted literature updates preserve untouched review dates and expose pen
     assert.equal(getProblem(id).status, id === "C5" ? "improved" : "claimed-solved", `${id}: distinguish partial progress from a full pending claim`);
     assert.ok(getProblem(id).evidence.some((e) => e.kind === "preprint" && e.url.includes(source)), id);
   }
-  assert.deepEqual(PROBLEMS.filter((p) => p.status === "claimed-solved").map((p) => p.id).sort(), ["A11", "A20", "A23", "A30", "A31", "A34", "A4", "A46", "A47", "A7", "B1", "B14", "B16", "B17", "B18", "C12", "C4", "E10", "E16", "E18", "E21", "E23", "E26", "F17", "F18", "M1", "M12", "M2", "M5", "N1", "N13", "N19", "N2", "N20", "O12"]);
+  assert.deepEqual(PROBLEMS.filter((p) => p.status === "claimed-solved").map((p) => p.id).sort(), ["A11", "A20", "A23", "A30", "A31", "A34", "A4", "A46", "A47", "A54", "A7", "B1", "B14", "B16", "B17", "B18", "C12", "C4", "E1", "E10", "E16", "E18", "E21", "E23", "E26", "F17", "F18", "M1", "M12", "M2", "M5", "N1", "N13", "N19", "N2", "N20", "O12"]);
   assert.equal(getProblem("C10").status, "improved", "a solved subcase must not close the broader programme");
   assert.equal(PROBLEMS.filter((p) => p.status === "solved").length, 0, "pending claims must not count as established solutions");
   const earlierE10 = getProblem("E10").evidence.find((e) => e.url.includes("2609.29539v1"));
@@ -242,13 +242,35 @@ test("targeted literature updates preserve untouched review dates and expose pen
   assert.equal(getProblem("C2").status, "improved", "C2: the capacity is still undetermined");
   assert.ok(getProblem("O10").evidence.some((e) => e.url.includes("2411.04300v3")), "O10: cite the corrected v3");
   // 25 November 2026: F18 claimed by a GitHub manuscript submitted in issue #21 (LaTeX and PDF, not on arXiv).
-  assert.equal(LITERATURE_UPDATE.date, "2026-11-25");
-  assert.deepEqual(LITERATURE_UPDATE.ids, ["F18"]);
+  const november25 = LITERATURE_UPDATES.find((update) => update.date === "2026-11-25");
+  assert.deepEqual(november25.ids, ["F18"]);
   assert.ok(fs.existsSync(path.join(root, "docs/reviews/2026-11-25-literature-update.md")), "missing 25 November report");
   assert.equal(getProblem("F18").status, "claimed-solved", "F18: an unrefereed GitHub manuscript");
   assert.ok(!getProblem("F18").lean, "F18: no formalization");
   assert.ok(getProblem("F18").claim && getProblem("F18").provenance.length > 0, "F18: claim text and AI-use disclosure");
   assert.ok(getProblem("F18").evidence.some((e) => e.role === "claimed-solution" && e.url.includes("HandsomeSteven666/spherical-wigner-negativity-for-all-pure-spin-states")), "F18: claimed solution");
+  // 26 November 2026: QF5 partial progress from two GitHub releases submitted in issue #22 (vector-like overlap, 2D U(1)).
+  assert.equal(LITERATURE_UPDATE.date, "2026-11-26");
+  for (const id of ["QF5", "N19", "QF11"]) assert.ok(LITERATURE_UPDATE.ids.includes(id), `${id}: in the 26 November update`);
+  assert.ok(fs.existsSync(path.join(root, "docs/reviews/2026-11-26-literature-update.md")), "missing 26 November report");
+  assert.equal(getProblem("QF5").status, "improved", "QF5: partial progress only");
+  for (const slug of ["overlap-link-rp-2x2-witness", "dwf-overlap-link-rp-second-order"]) {
+    assert.ok(getProblem("QF5").evidence.some((e) => e.role === "progress" && e.url.includes(`Multi-DAC/releases/tree/095e7de`) && e.url.endsWith(slug)), `QF5: ${slug}`);
+  }
+  assert.ok(getProblem("QF5").provenance.some((item) => item.summary.includes("Clawd")), "QF5: Multi-DAC AI-authorship disclosure");
+  // 26 November 2026: a strictly sharper converse for amplitude damping; the capacity is still open.
+  assert.equal(getProblem("C13").status, "improved", "C13: the sector converse narrows but does not close the gap");
+  assert.ok(getProblem("C13").evidence.some((e) => e.role === "progress" && e.url.includes("2611.29650v1")), "C13: sector converse");
+  assert.ok(getProblem("A20").evidence.some((e) => e.role === "claimed-solution" && e.url.includes("shivakintali.github.io/blob/55042dd")), "A20: Kintali simplification pinned to its commit");
+  // 26 November 2026: E1 claimed solved by an explicit NPT Werner state undistillable for every number of copies (arXiv:2611.34921v1).
+  assert.equal(getProblem("E1").status, "claimed-solved", "E1: unrefereed single-author preprint");
+  assert.ok(getProblem("E1").claim && getProblem("E1").provenance.some((item) => item.url.includes("2611.34921v1")), "E1: claim text and AI-use disclosure");
+  assert.ok(getProblem("E1").evidence.some((e) => e.role === "claimed-solution" && e.url.includes("2611.34921v1")), "E1: claimed solution");
+  // 26 November 2026: new entry A54 (QIP(2) versus PSPACE), claimed solved by a single-author arXiv preprint.
+  assert.equal(getProblem("A54").status, "claimed-solved", "A54: unrefereed single-author preprint");
+  assert.ok(!getProblem("A54").lean, "A54: no formalization");
+  assert.ok(getProblem("A54").claim && getProblem("A54").provenance.length > 0, "A54: claim text and AI-use disclosure");
+  assert.ok(getProblem("A54").evidence.some((e) => e.role === "claimed-solution" && e.url.includes("2611.31236v1")), "A54: claimed solution");
   const home = render(views.Home);
   assert.ok(home.includes(LITERATURE_UPDATE.label) && home.includes("Last update"));
 });
@@ -334,14 +356,14 @@ test("every active and archived detail view renders with valid links and Astra &
 
 test("home, all categories, filtered lists and missing-page views render", () => {
   const home = render(views.Home);
-  assert.ok(home.includes("227") && home.includes("Active entries"));
+  assert.ok(home.includes("228") && home.includes("Active entries"));
   assert.ok(!home.includes("#review") && home.includes("Powered by Astra &amp; Opus 5.5"));
   assert.ok(home.includes('href="/improved"'));
   assert.ok(home.includes('href="/claimed-solved"'));
   assert.ok(home.includes('href="/lean-verified"'));
   assert.ok(home.includes('See open sharp problems'));
   assert.ok(home.includes('aria-label="See all 96 improved problems"'));
-  assert.ok(home.includes('aria-label="See all 35 claimed solved problems"'));
+  assert.ok(home.includes('aria-label="See all 37 claimed solved problems"'));
   assert.ok(home.includes('href="https://quantumlectures.org/en"'));
   assert.ok(home.includes('href="https://learnthermo.org/"'));
   assert.ok(!home.includes("IDs M1–"), "category count must not fabricate contiguous IDs");
