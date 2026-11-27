@@ -206,7 +206,7 @@ function Home() {
             <b>Last update · {LITERATURE_UPDATE.label}.</b> Changes since 21 November. Every cited paper was read in full.
             <ul>
               <li>“Claimed solved”: <a href="/p/F18">Wigner negativity of pure spin states</a>, with two proofs and an all-spin Lean formalization (gold badge), <a href="/p/E1">distillability of NPT Werner states</a>, <a href="/p/E26">the Krenn–Gu conjecture</a>, <a href="/p/N20">Kirkwood–Dirac positivity</a> (our research note), <a href="/p/O12">the Mpemba triplet</a> and <a href="/p/F17">Fock-bounded beam-splitter states</a>.</li>
-              <li>Progress from contributions sent as GitHub issues: <a href="/p/M18">Rabi-model spectral inequalities</a> (two of three proved at every level), <a href="/p/N22">Weyl–Heisenberg covariant qutrit measurements</a>, <a href="/p/E28">two-qubit magic</a>, <a href="/p/F3">operational reconstruction</a>, <a href="/p/F8">reference frames</a> and <a href="/p/QF5">lattice chiral gauge theory</a>.</li>
+              <li>Progress from contributions sent as GitHub issues: <a href="/p/M18">Rabi-model spectral inequalities</a> (two of three proved at every level), <a href="/p/N22">Weyl–Heisenberg covariant qutrit measurements</a>, <a href="/p/F19">Wigner–Husimi inequality</a> (phase-invariant states),<a href="/p/E28">two-qubit magic</a>, <a href="/p/F3">operational reconstruction</a>, <a href="/p/F8">reference frames</a> and <a href="/p/QF5">lattice chiral gauge theory</a>.</li>
               <li>New entries: <a href="/p/C16">zero-capacity qubit channels</a>, <a href="/p/M21">the Berry–Tabor conjecture</a>, <a href="/p/C15">the two-way depolarizing capacity</a>, <a href="/p/F19">Wigner negativity and the Lieb–Solovej bound</a> and <a href="/p/A54">QIP(2) versus PSPACE</a>. Updated: <a href="/p/B8">gapped phases</a>, <a href="/p/C11">the depolarizing threshold</a>, <a href="/p/C13">two-way amplitude damping</a>.</li>
               <li><a href="/new-research">Research notes</a>: seven bits for the five MUBs of a ququart, and in dimension five the exact minimum over two-component states. New proposals: <a href="/np/PE5">PE5</a>, <a href="/np/PN6">PN6</a>, <a href="/np/PE6">PE6</a>, <a href="/np/PC4">PC4</a>.</li>
               <li>Contributions are welcome through the <a href="https://github.com/jpbruneton/open_quantum_problems/issues/new?template=contribution.yml">contribution form</a>. <a href={LITERATURE_UPDATE.reportUrl}>Read the 27 November report</a>.</li>
@@ -1034,6 +1034,7 @@ function Footer() {
             <a href="https://x.com/_quantumphy_" target="_blank" rel="noreferrer me">X: @_quantumphy_</a>
             <a href="https://quantumlectures.org/en">Quantum Lectures</a>
             <a href="https://learnthermo.org/">LearnThermo</a>
+            <a href="https://github.com/jpbruneton/open_quantum_problems#license" target="_blank" rel="noreferrer">Content CC BY 4.0 · Code MIT</a>
           </span>
         </div>
       </div>

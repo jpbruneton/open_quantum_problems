@@ -66,3 +66,5 @@ body:
       options:
         - label: The linked source is public, and it has not been withdrawn by its authors.
           required: true
+        - label: I agree that my contribution is published under the repository's licenses (CC BY 4.0 for content, MIT for code), and I have the right to submit it.
+          required: true

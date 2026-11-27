@@ -32,6 +32,12 @@ npm run build
 
 The catalogue covers open problems in quantum physics and quantum information, from mathematical physics to quantum field theory and quantum gravity. Problems whose central subject is string theory, string compactifications or the swampland are out of scope.
 
+## License of contributions
+
+By submitting a contribution, as an issue or a pull request, you agree that it is published under the licenses of this repository: [CC BY 4.0](LICENSE-CONTENT) for content and the [MIT License](LICENSE) for code. You also confirm that you have the right to submit it. Material by others must be cited, and must not be copied beyond short quotations unless its license allows it. A preprint, paper or Lean repository that you link keeps its own license; only the text and files you submit here fall under these terms.
+
+You are responsible for what you submit, whether you wrote it yourself or with an AI agent. The maintainer may edit, shorten, merge in part or decline any contribution.
+
 ## Credit
 
 Accepted contributions are acknowledged in the dated report under `docs/reviews/`, in a comment on the issue, and in the Contributors section of the [README](README.md#contributors). The commit that integrates an accepted issue lists its author as co-author.

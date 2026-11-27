@@ -258,7 +258,7 @@ test("targeted literature updates preserve untouched review dates and expose pen
   assert.ok(getProblem("F18").evidence.some((e) => e.role === "claimed-solution" && e.url.includes("HandsomeSteven666/spherical-wigner-negativity-for-all-pure-spin-states")), "F18: claimed solution");
   // 26 November 2026: QF5 partial progress from two GitHub releases submitted in issue #22 (vector-like overlap, 2D U(1)).
   assert.equal(LITERATURE_UPDATE.date, "2026-11-27");
-  assert.deepEqual(LITERATURE_UPDATE.ids, ["M18", "F18", "B8", "M21", "E26", "N22", "C16", "C11"]);
+  assert.deepEqual(LITERATURE_UPDATE.ids, ["M18", "F18", "B8", "M21", "E26", "N22", "C16", "C11", "F19", "QF5"]);
   assert.equal(getProblem("C16").status, "improved", "C16: zero-capacity qubit channels, partial progress only");
   assert.ok(getProblem("N22").evidence.some((e) => e.url.includes("zenodo.24594294")), "N22: Wang, WH-covariant qutrit POVMs (issue #29)");
   assert.ok(!getProblem("N22").lean, "N22: partial progress carries no Lean badge");

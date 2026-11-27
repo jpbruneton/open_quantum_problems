@@ -85,8 +85,8 @@ GitHub's contributor list counts only commit authors, so contributions sent as i
 - [anshM123](https://github.com/anshM123): pointed out the IQOQI Vienna problem with no counterpart here, now entry N14 ([#2](https://github.com/jpbruneton/open_quantum_problems/issues/2)).
 - Harish Santhanalakshmi Ganesan ([harishsg993010](https://github.com/harishsg993010)): certified positive coherent information for C11 ([pull request #1](https://github.com/jpbruneton/open_quantum_problems/pull/1)).
 - Xiuzhi Yang ([HandsomeSteven666](https://github.com/HandsomeSteven666)): claimed proof of F18 ([#21](https://github.com/jpbruneton/open_quantum_problems/issues/21)).
-- Clayton Iggulden-Schnell, with the agents Clawd and Wren ([Multi-DAC](https://github.com/Multi-DAC)): partial progress on QF5, F8 and F3 ([#22](https://github.com/jpbruneton/open_quantum_problems/issues/22), [#24](https://github.com/jpbruneton/open_quantum_problems/issues/24), [#25](https://github.com/jpbruneton/open_quantum_problems/issues/25)).
-- Ximing Wang ([vexpaer](https://github.com/vexpaer)): second claimed proof of F18 and its Lean 4 formalization for every spin ([#23](https://github.com/jpbruneton/open_quantum_problems/issues/23), [#28](https://github.com/jpbruneton/open_quantum_problems/issues/28)); projective simulability of Weyl–Heisenberg covariant qutrit measurements, N22 ([#29](https://github.com/jpbruneton/open_quantum_problems/issues/29)).
+- Clayton Iggulden-Schnell, with the agents Clawd and Wren ([Multi-DAC](https://github.com/Multi-DAC)): partial progress on QF5, F8 and F3 ([#22](https://github.com/jpbruneton/open_quantum_problems/issues/22), [#24](https://github.com/jpbruneton/open_quantum_problems/issues/24), [#25](https://github.com/jpbruneton/open_quantum_problems/issues/25), [#31](https://github.com/jpbruneton/open_quantum_problems/issues/31)).
+- Ximing Wang ([vexpaer](https://github.com/vexpaer)): second claimed proof of F18 and its Lean 4 formalization for every spin ([#23](https://github.com/jpbruneton/open_quantum_problems/issues/23), [#28](https://github.com/jpbruneton/open_quantum_problems/issues/28)); projective simulability of Weyl–Heisenberg covariant qutrit measurements, N22 ([#29](https://github.com/jpbruneton/open_quantum_problems/issues/29)); the sharp Wigner–Husimi inequality for phase-invariant states, F19 ([#30](https://github.com/jpbruneton/open_quantum_problems/issues/30)).
 - Yifan Zhang ([nylxiperia](https://github.com/nylxiperia)): spectral inequalities for the quantum Rabi model, M18 ([#27](https://github.com/jpbruneton/open_quantum_problems/issues/27)).
 - Zhaoting Ye ([LingyeNBird](https://github.com/LingyeNBird)): two-qubit case of E28 ([#26](https://github.com/jpbruneton/open_quantum_problems/issues/26)).
 
@@ -142,6 +142,14 @@ To cite a single entry, link its page, for example `https://openquantumproblems.
 - [IQOQI Vienna: Open Quantum Problems](https://oqp.iqoqi.oeaw.ac.at/)
 - [Google DeepMind: Formal Conjectures](https://github.com/google-deepmind/formal-conjectures), Lean statements of open conjectures, including the IQOQI problems
 - OpenFrontiers included 114 entries from this catalogue in its October 2026 research corpus. Its separate mathematics benchmark contains 200 problems with Lean 4 statements. [Project site](https://openfrontiers.vercel.app/) · [Paper](https://arxiv.org/abs/2610.37739) · [Datasets](https://huggingface.co/collections/FlippyDora/openfrontiers)
+
+## License
+
+The content of this repository is licensed under [Creative Commons Attribution 4.0 International (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/) ([`LICENSE-CONTENT`](LICENSE-CONTENT)). This covers the catalogue entries and their data in `app/data/`, the review reports and comparisons in `docs/`, and the research entries in `research/` (manuscripts, PDFs, READMEs and certificates), including their mirrors in `public/research/`. You may reuse and adapt it for any purpose, including commercial use, provided you credit "Open Problems in Quantum Mechanics for AI Agents, J.-P. Bruneton and contributors", link to https://openquantumproblems.com/ and indicate any changes.
+
+The code is licensed under the [MIT License](LICENSE). This covers the site source, the scripts in `scripts/`, the workflows and the Python checkers in `research/entries/*/checks/`.
+
+Works by others that the catalogue cites or links, such as articles, preprints and contributors' Lean repositories, keep their own licenses. Contributions are accepted under the same terms: see [CONTRIBUTING.md](CONTRIBUTING.md#license-of-contributions).
 
 ## Maintainer
 
