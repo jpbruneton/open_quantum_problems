@@ -16,7 +16,7 @@ All new research starts in the private `oqmresearch` repository, which holds exp
 
 Open problems that are already posed in the literature, from long-standing conjectures to recent questions raised by the authors of new results.
 
-- **230 active entries** across fourteen areas: spectral theory, many-body physics, quantum field theory, undecidability, entanglement, nonlocality, channels and Shannon theory, complexity and algorithms, open systems, foundations, semiclassical gravity, holography, quantum gravity and renormalization. Ten further archive and background pages keep old links working.
+- **231 active entries** across fourteen areas: spectral theory, many-body physics, quantum field theory, undecidability, entanglement, nonlocality, channels and Shannon theory, complexity and algorithms, open systems, foundations, semiclassical gravity, holography, quantum gravity and renormalization. Ten further archive and background pages keep old links working.
 - **Entry pages** follow one structure:
   - statement;
   - Definition, with one well-known, pre-AI reference;
@@ -53,7 +53,7 @@ Open problems that are already posed in the literature, from long-standing conje
 Candidate questions selected or formulated with AI assistance. Some are explicitly posed by the cited authors. They sit outside the catalogue counts.
 
 - **[New problems suggested by AI](https://openquantumproblems.com/new-problems).**
-  - **What they are:** 49 retained priority questions and 21 secondary leads. The [19 November selection report](docs/reviews/2026-11-19-proposal-selection.md) records an individual decision for all 79 original listings, including the nine withdrawals. They were formulated or selected with AI assistance from the catalogue and the literature. Each explains its motivation and relation to previous results.
+  - **Current selection.** 51 priority questions and 21 secondary leads. The [27 November review](docs/reviews/2026-11-27-proposal-review.md) revisits each of the 79 original listings and introduces two proposals. The [original selection](docs/reviews/2026-11-19-proposal-selection.md) records the nine withdrawals.
   - **What each page shows:** the motivation, the baseline literature, and the verdict of a separate AI literature review. The review verified the cited sources and searched for earlier answers. The assessments distinguish substantive, modest and narrow questions and identify cases awaiting verification.
   - **Later batches:** the original batches included six candidates in gravity and holography (9 November 2026), and eleven reformulated or partly inferred questions from a semantic map of the 2024–2026 quant-ph corpus (16 November 2026), each with a caveat saying what is inferred. The same map gave 36 catalogue entries.
   - **Sources:** the full proposal, with its verification marks, is in [`docs/reviews/2026-11-08-new-problems-proposal.md`](docs/reviews/2026-11-08-new-problems-proposal.md); the 16 November batch is in [`docs/reviews/2026-11-16-new-problems-carte-v2.md`](docs/reviews/2026-11-16-new-problems-carte-v2.md).

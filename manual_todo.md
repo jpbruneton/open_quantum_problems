@@ -971,3 +971,11 @@ Fichiers nonlocality (fin), open-systems, qft, quantum-gravity, renormalization,
 | J. Watrous, *PSPACE has constant-round quantum interactive proof systems*, Theor. Comput. Sci. 292(3), 575–588 (2003), doi:10.1016/S0304-3975(01)00375-9 | version journal (Elsevier) non accessible ; la v1 arXiv cs/9901015 ne pose pas la question en Section 4 | A54 | la Section 4 poserait la question de preuves interactives quantiques à deux messages pour PSPACE (citée par Liu, [Wat03, Sec. 4]) | |
 | T. Vidick, J. Watrous, *Quantum Proofs*, Found. Trends Theor. Comput. Sci. 11(1-2), 1–215 (2016), arXiv:1610.01664 | monographie de 218 pages, seule la Section 4.5 lue | A54 | Section 4.5 : extension de la parallélisation à deux messages ouverte, peu de résultats connus sur QIP(2) | |
 | A. Kitaev, J. Watrous, *Parallelization, amplification, and exponential time simulation of quantum interactive proof systems*, STOC 2000, 608–617, doi:10.1145/335305.335387 | pas sur arXiv | A54 | QIP = QIP(3) et complétude parfaite à partir de trois messages (actuellement énoncé via l'introduction de Jain–Ji–Upadhyay–Watrous) | |
+
+## Mise à jour du 27 novembre 2026 (M21, conjecture de Berry–Tabor)
+
+| Référence | Accès | Fiche | Ce qu'elle soutiendrait | Déposée |
+| --- | --- | --- | --- | --- |
+| M. V. Berry, M. Tabor, *Level clustering in the regular spectrum*, Proc. R. Soc. Lond. A 356, 375–394 (1977), doi:10.1098/rspa.1977.0140 | Royal Society, accès refusé (403) | M21 | énoncé original de la conjecture (statistique de Poisson pour les systèmes intégrables génériques) ; la fiche cite pour l'instant la formulation d'Aistleitner–Blomer–Radziwiłł et de Kim–Marklof–Welsh | |
+| P. Sarnak, *Values at integers of binary quadratic forms*, CMS Conf. Proc. 21, 181–203 (1997) | actes de conférence, non accessibles | M21 | corrélation de paires poissonnienne pour presque tout tore plat de dimension 2 (la fiche l'énonce d'après Eskin–Margulis–Mozes §1 et Aistleitner–Blomer–Radziwiłł §1.2, sans nommer Sarnak) | |
+| J. M. VanderKam, Duke Math. J. 97, 379–412 et 413–438 (1999) ; Comm. Math. Phys. 210, 203–223 (2000) | revues payantes | M21 | corrélation de paires presque sûre en dimension ≥ 4 et corrélations à k points en dimension ≥ 2k (d'après Kim–Marklof–Welsh) ; non mentionnée dans la fiche | |

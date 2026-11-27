@@ -15,7 +15,7 @@ import {
   consolidatedInto,
 } from "./data/problems";
 import { TRENDS } from "./data/trends-data";
-import { PROPOSALS, SECONDARY_PROPOSALS, PROPOSALS_META, PROPOSALS_META_NEW_AREAS, PROPOSALS_META_CARTE_V2, PROPOSALS_FORMULATION_REVIEW, PROPOSAL_COUNT, PRIORITY_RECORDS, WITHDRAWN_PROPOSALS, SELECTION_REPORT, proposalBatch } from "./data/proposals";
+import { PROPOSALS, SECONDARY_PROPOSALS, PROPOSALS_META, PROPOSALS_META_NEW_AREAS, PROPOSALS_META_CARTE_V2, PROPOSALS_FORMULATION_REVIEW, PROPOSAL_COUNT, PRIORITY_RECORDS, WITHDRAWN_PROPOSALS, SELECTION_REPORT, PROPOSALS_EVIDENCE_REVIEW, proposalBatch } from "./data/proposals";
 import { NEW_RESEARCH_NOTES } from "./data/research-notes";
 
 // Server components only: the catalogue is rendered to HTML and never shipped as JavaScript.
@@ -623,7 +623,7 @@ function ProposalView({ pkey }) {
           {!it.withdrawal && it.caveat && (<><h4>Caveats</h4><div className="context"><Paras text={it.caveat} /></div></>)}
           {it.ai && (<><h4>Reported AI use</h4><div className="context"><Paras text={it.ai} /></div></>)}
 
-          <p className="review-meta"><a href={SELECTION_REPORT + "#" + it.key.toLowerCase()}>Selection decision and sources · 19 November 2026</a></p>
+          <p className="review-meta"><a href={PROPOSALS_EVIDENCE_REVIEW.reportUrl + "#" + it.key.toLowerCase()}>Selection decision and sources · 27 November 2026</a></p>
           <p className="disclaimer">Suggested by AI on {proposalBatch(it).label} ({it.catName}). Outside the catalogue and its counts. <a href={proposalBatch(it).reportUrl} target="_blank" rel="noreferrer">Full proposal with verification marks →</a></p>
 
           <nav className="proposal-pager" aria-label="Other proposals">
@@ -644,8 +644,9 @@ function NewProblemsView() {
       <section className="body">
         <div className="container">
           <h2>New problems suggested by AI</h2>
-          <p className="intro">Proposed 8–16 November 2026 · {PROPOSAL_COUNT} priority candidates and {SECONDARY_PROPOSALS.length} secondary leads</p>
-          <p>These questions were selected or formulated with AI assistance. The <a href={SELECTION_REPORT}>19 November selection report</a> gives a decision, rationale and source for each of the 79 original listings. {WITHDRAWN_PROPOSALS.length} were withdrawn. Proposals are outside the catalogue and are not counted among its active entries.</p>
+          <p className="intro">Reviewed {PROPOSALS_EVIDENCE_REVIEW.label} · {PROPOSAL_COUNT} priority candidates and {SECONDARY_PROPOSALS.length} secondary leads</p>
+          <p>The <a href={PROPOSALS_EVIDENCE_REVIEW.reportUrl}>27 November review</a> compares each proposal with the catalogue and research notes. PN4 now asks for the exact entropy minimum in dimension five. The new questions concern <a href="/np/PE5">two-way local discrimination</a> and <a href="/np/PN6">three-copy measurement precision</a>. Proposals are not counted among catalogue entries.</p>
+          <p>The <a href={SELECTION_REPORT}>19 November selection</a> records the original 79 decisions, including the {WITHDRAWN_PROPOSALS.length} withdrawals.</p>
           <p>Open a priority question to read its statement, literature and assessment. “Extends” links to the catalogue problem that motivated it. Priority identifiers begin with P and secondary leads with S. Earlier priority identifiers still open their original records.</p>
           <p>The <a href={PROPOSALS_META.reportUrl}>8 November review</a> started from the catalogue, the <a href={PROPOSALS_META_NEW_AREAS.reportUrl}>9 November review</a> covered gravity and holography, and the <a href={PROPOSALS_META_CARTE_V2.reportUrl}>16 November review</a> drew on a map of recent quantum research. The <a href={PROPOSALS_FORMULATION_REVIEW.reportUrl}>17 November revision</a> specified models and resolution criteria. Scientific assessments and selection decisions are AI-assisted and await independent review.</p>
           <nav className="proposal-nav" aria-label="Areas">
@@ -698,7 +699,7 @@ function NewProblemsView() {
                 <b title={it.formerly ? `Formerly ${it.formerly}` : undefined}>{it.key} · {it.title}</b>
                 {it.extends.length > 0 && <span className="proposal-extends"> extends {it.extends.map((id, i) => <span key={id}>{i > 0 ? ", " : ""}<a href={`/p/${id}`}>{id}</a></span>)}</span>}
                 <div className="context"><Paras text={it.note} /></div>
-                <a href={SELECTION_REPORT + "#" + it.key.toLowerCase()}>Selection decision and sources</a>
+                <a href={PROPOSALS_EVIDENCE_REVIEW.reportUrl + "#" + it.key.toLowerCase()}>Selection decision and sources</a>
               </li>
             ))}
           </ul>
@@ -708,7 +709,7 @@ function NewProblemsView() {
               <li key={it.key} id={it.key}>
                 <b>{it.statement ? <a href={`/np/${it.key}`}>{it.key} · {it.title}</a> : it.key + " · " + it.title}</b>
                 <div className="context"><Paras text={it.withdrawal} /></div>
-                <a href={SELECTION_REPORT + "#" + it.key.toLowerCase()}>Selection decision and sources</a>
+                <a href={PROPOSALS_EVIDENCE_REVIEW.reportUrl + "#" + it.key.toLowerCase()}>Selection decision and sources</a>
               </li>
             ))}</ul>
           </details>

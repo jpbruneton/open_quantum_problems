@@ -53,8 +53,8 @@ function validUrl(value, label) {
 }
 
 test("all 111 original IDs remain addressable; 12 additions and 10 archives are counted correctly", () => {
-  assert.equal(ALL_PROBLEMS.length, 240);
-  assert.equal(PROBLEMS.length, 230);
+  assert.equal(ALL_PROBLEMS.length, 241);
+  assert.equal(PROBLEMS.length, 231);
   assert.equal(ARCHIVED_PROBLEMS.length, 10);
   assert.equal(new Set(ALL_PROBLEMS.map((p) => p.id)).size, ALL_PROBLEMS.length);
   for (const [prefix, n] of Object.entries(originalSeries)) {
@@ -258,7 +258,9 @@ test("targeted literature updates preserve untouched review dates and expose pen
   assert.ok(getProblem("F18").evidence.some((e) => e.role === "claimed-solution" && e.url.includes("HandsomeSteven666/spherical-wigner-negativity-for-all-pure-spin-states")), "F18: claimed solution");
   // 26 November 2026: QF5 partial progress from two GitHub releases submitted in issue #22 (vector-like overlap, 2D U(1)).
   assert.equal(LITERATURE_UPDATE.date, "2026-11-27");
-  assert.deepEqual(LITERATURE_UPDATE.ids, ["M18", "F18"]);
+  assert.deepEqual(LITERATURE_UPDATE.ids, ["M18", "F18", "B8", "M21"]);
+  assert.equal(getProblem("M21").status, "open", "M21: triple correlation open for almost every flat 2-torus");
+  assert.ok(getProblem("B8").evidence.some((e) => e.url.includes("2610.40235v2")), "B8: Yang's 3D QCA result");
   const november26 = LITERATURE_UPDATES.find((update) => update.date === "2026-11-26");
   for (const id of ["QF5", "N19", "QF11"]) assert.ok(november26.ids.includes(id), `${id}: in the 26 November update`);
   assert.ok(fs.existsSync(path.join(root, "docs/reviews/2026-11-26-literature-update.md")), "missing 26 November report");
@@ -365,7 +367,7 @@ test("every active and archived detail view renders with valid links and Astra &
 
 test("home, all categories, filtered lists and missing-page views render", () => {
   const home = render(views.Home);
-  assert.ok(home.includes("230") && home.includes("Active entries"));
+  assert.ok(home.includes("231") && home.includes("Active entries"));
   assert.ok(!home.includes("#review") && home.includes("Powered by Astra &amp; Opus 5.5"));
   assert.ok(home.includes('href="/improved"'));
   assert.ok(home.includes('href="/claimed-solved"'));
@@ -401,7 +403,7 @@ test("home, all categories, filtered lists and missing-page views render", () =>
   assert.doesNotMatch(home, /says how far it has gone|Zero entries are Solved/);
   assert.ok(!home.includes("Evidence matters"));
   // New-problems page: proposals render, link only to existing entries, are not counted.
-  const { PROPOSALS, SECONDARY_PROPOSALS, WITHDRAWN_PROPOSALS, PRIORITY_RECORDS, PROPOSAL_COUNT, PROPOSALS_META_NEW_AREAS, PROPOSALS_META_CARTE_V2, proposalBatch } = loadApp("app/data/proposals.js");
+  const { PROPOSALS, SECONDARY_PROPOSALS, WITHDRAWN_PROPOSALS, PRIORITY_RECORDS, PROPOSAL_COUNT, PROPOSALS_EVIDENCE_REVIEW, PROPOSALS_META_NEW_AREAS, PROPOSALS_META_CARTE_V2, proposalBatch } = loadApp("app/data/proposals.js");
   const newProblems = render(views.NewProblemsView);
   assert.ok(newProblems.includes("New problems suggested by AI") && newProblems.includes("not counted"));
   assert.ok(!newProblems.includes("katex-error"), "proposals: math rendering error");
@@ -421,14 +423,21 @@ test("home, all categories, filtered lists and missing-page views render", () =>
       assert.ok(newProblems.includes(it.title.replace(/&/g, "&amp;")) || newProblems.includes(it.key), `${it.key}: not rendered`);
     }
   }
-  assert.equal(PROPOSAL_COUNT, 49);
+  assert.equal(PROPOSAL_COUNT, 51);
   assert.equal(SECONDARY_PROPOSALS.length, 21);
   assert.deepEqual(WITHDRAWN_PROPOSALS.map(it => it.key).sort(), ["PA9", "PB2", "PG2", "PH3", "PM5", "PM7", "SF2", "SO1", "SQF1"]);
   const report = fs.readFileSync(path.join(root, "docs/reviews/2026-11-19-proposal-selection.md"), "utf8");
   const decisions = [...report.matchAll(/<a name="([a-z0-9]+)"><\/a>\*\*([A-Z0-9]+)\*\* \| (Keep|Withdraw)/g)];
   const withdrawn = new Set(WITHDRAWN_PROPOSALS.map(it => it.key));
   const reviewed = [...PRIORITY_RECORDS, ...SECONDARY_PROPOSALS, ...WITHDRAWN_PROPOSALS.filter(it => !it.statement)];
-  assert.deepEqual(decisions.map(m => m[2]).sort(), reviewed.map(it => it.key).sort());
+  const original = reviewed.filter(it => it.batch !== PROPOSALS_EVIDENCE_REVIEW.date);
+  assert.deepEqual(decisions.map(m => m[2]).sort(), original.map(it => it.key).sort());
+  const current = fs.readFileSync(path.join(root, "docs/reviews/2026-11-27-proposal-review.md"), "utf8");
+  const anchors = [...current.matchAll(/<a name="([a-z0-9]+)"><\/a>/g)].map(m => m[1]);
+  assert.deepEqual(anchors.sort(), reviewed.map(it => it.key.toLowerCase()).sort());
+  const additions = reviewed.filter(it => proposalBatch(it) === PROPOSALS_EVIDENCE_REVIEW);
+  assert.deepEqual(additions.map(it => it.key).sort(), ["PE5", "PN6"]);
+  assert.match(render(views.ProposalView, { pkey: "PN4" }), /dimension five/);
   for (const [, anchor, id, decision] of decisions) {
     assert.equal(anchor, id.toLowerCase());
     assert.equal(decision, withdrawn.has(id) ? "Withdraw" : "Keep");
@@ -460,7 +469,7 @@ test("home, all categories, filtered lists and missing-page views render", () =>
     const m = it.key.match(idPattern);
     assert.ok(m && m[1] === "P" && m[2] === codeOf[group.cat], `${it.key}: identifier must be P + ${codeOf[group.cat]} + number`);
     // Batches before 16 November 2026 keep their old P-number; the carte v2 batch never had one.
-    if (proposalBatch(it) === PROPOSALS_META_CARTE_V2) assert.equal(it.formerly, undefined, `${it.key}: carte v2 items have no former key`);
+    if ([PROPOSALS_META_CARTE_V2, PROPOSALS_EVIDENCE_REVIEW].includes(proposalBatch(it))) assert.equal(it.formerly, undefined, `${it.key}: later batches have no former key`);
     else assert.match(it.formerly, /^P\d+$/, `${it.key}: formerly`);
   }
   for (const it of SECONDARY_PROPOSALS) {

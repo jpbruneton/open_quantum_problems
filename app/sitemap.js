@@ -1,5 +1,5 @@
 import { ALL_PROBLEMS, CATEGORIES, CORRECTION_LOGS, LITERATURE_UPDATE, LITERATURE_UPDATES } from "./data/problems";
-import { PRIORITY_RECORDS, PROPOSALS_FORMULATION_REVIEW, SELECTION_REPORT, proposalBatch } from "./data/proposals";
+import { PRIORITY_RECORDS, PROPOSALS_EVIDENCE_REVIEW } from "./data/proposals";
 import { NEW_RESEARCH_NOTES } from "./data/research-notes";
 import { SITE_URL } from "./seo";
 
@@ -11,11 +11,7 @@ export function entryLastModified(p) {
   return latest([p.reviewedAt, ...logs]);
 }
 
-// Proposal pages last changed with their batch, the formulation review or the selection review.
-const SELECTION_DATE = SELECTION_REPORT.match(/\d{4}-\d{2}-\d{2}/)?.[0];
-function proposalLastModified(it) {
-  return latest([proposalBatch(it)?.date, PROPOSALS_FORMULATION_REVIEW.date, SELECTION_DATE]);
-}
+// Every proposal detail links to its individual decision in the current review.
 
 // One URL per page; former proposal identifiers are left out (their canonical is the current key).
 // The draft /trends page is unlisted and marked noindex until it is published.
@@ -26,7 +22,7 @@ export default function sitemap() {
     ["/new-research", latest(NEW_RESEARCH_NOTES.map((n) => n.updated))],
     ...CATEGORIES.map((c) => [`/c/${c.slug}`, latest(ALL_PROBLEMS.filter((p) => p.cat === c.slug).map(entryLastModified))]),
     ...ALL_PROBLEMS.map((p) => [`/p/${p.id}`, entryLastModified(p)]),
-    ...PRIORITY_RECORDS.map((it) => [`/np/${it.key}`, proposalLastModified(it)]),
+    ...PRIORITY_RECORDS.map((it) => [`/np/${it.key}`, PROPOSALS_EVIDENCE_REVIEW.date]),
     ...NEW_RESEARCH_NOTES.map((n) => [n.pdf.split("?")[0], n.updated]),
   ];
   return entries.map(([path, lastModified]) => ({ url: `${SITE_URL}${path}`, lastModified: lastModified || site }));

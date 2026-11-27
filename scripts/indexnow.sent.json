@@ -680,5 +680,24 @@
       "https://openquantumproblems.com/p/N19",
       "https://openquantumproblems.com/p/R2"
     ]
+  },
+  {
+    "date": "2026-11-27T12:54:00.934Z",
+    "status": 200,
+    "count": 11,
+    "since": "2026-11-27",
+    "urls": [
+      "https://openquantumproblems.com/",
+      "https://openquantumproblems.com/new-problems",
+      "https://openquantumproblems.com/sharp",
+      "https://openquantumproblems.com/improved",
+      "https://openquantumproblems.com/claimed-solved",
+      "https://openquantumproblems.com/lean-verified",
+      "https://openquantumproblems.com/similar",
+      "https://openquantumproblems.com/c/spectral",
+      "https://openquantumproblems.com/c/foundations",
+      "https://openquantumproblems.com/p/M18",
+      "https://openquantumproblems.com/p/F18"
+    ]
   }
 ]
