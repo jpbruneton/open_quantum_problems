@@ -16,7 +16,7 @@ All new research starts in the private `oqmresearch` repository, which holds exp
 
 Open problems that are already posed in the literature, from long-standing conjectures to recent questions raised by the authors of new results.
 
-- **231 active entries** across fourteen areas: spectral theory, many-body physics, quantum field theory, undecidability, entanglement, nonlocality, channels and Shannon theory, complexity and algorithms, open systems, foundations, semiclassical gravity, holography, quantum gravity and renormalization. Ten further archive and background pages keep old links working.
+- **232 active entries** across fourteen areas: spectral theory, many-body physics, quantum field theory, undecidability, entanglement, nonlocality, channels and Shannon theory, complexity and algorithms, open systems, foundations, semiclassical gravity, holography, quantum gravity and renormalization. Ten further archive and background pages keep old links working.
 - **Entry pages** follow one structure:
   - statement;
   - Definition, with one well-known, pre-AI reference;
@@ -35,10 +35,10 @@ Open problems that are already posed in the literature, from long-standing conje
   A proof in a subclass or a solution to one listed subproblem is partial progress unless that restricted question is the entry's explicit target. The [20 November horizon audit](docs/reviews/2026-11-20-correction-log.md) applies this criterion to all 44 active entries in foundations, semiclassical gravity, holography, quantum gravity and renormalization.
 - **Status** says how far it has gone:
   - *open*;
-  - *improved*: partial progress is recorded;
+  - *improved*: significant partial progress is recorded, as decided case by case by the maintainer;
   - *claimed solved*: a full resolution has been announced but not independently assessed.
 
-  At present 95 entries are open, 98 improved and 37 claimed solved. No entry is marked *solved*: the catalogue retains these resolutions as claims pending independent assessment of their proofs.
+  At present 94 entries are open, 101 improved and 37 claimed solved. No entry is marked *solved*: the catalogue retains these resolutions as claims pending independent assessment of their proofs.
 - **Lean verified** (gold badge): reserved for `claimed-solved` entries whose full claimed solution is formalized in Lean according to its authors. The Lean builds are not rerun by the maintainer, and a formal proof does not replace refereeing of the definitions it formalizes. Formalizations of partial progress or conditional results are described in the evidence without this badge.
 - **Cross-references.** Links under each title point to the same question or related subproblems in the [QIQCOP Zoo](https://qiqc-op.com/) and the [IQOQI Vienna list of open quantum problems](https://oqp.iqoqi.oeaw.ac.at/); scope notes distinguish related tasks where needed. Where Google DeepMind's [Formal Conjectures](https://github.com/google-deepmind/formal-conjectures) has a Lean statement of the problem, it is linked too.
 - **Sources of problems.** Besides the literature itself, the catalogue has been checked against:
@@ -53,7 +53,7 @@ Open problems that are already posed in the literature, from long-standing conje
 Candidate questions selected or formulated with AI assistance. Some are explicitly posed by the cited authors. They sit outside the catalogue counts.
 
 - **[New problems suggested by AI](https://openquantumproblems.com/new-problems).**
-  - **Current selection.** 51 priority questions and 21 secondary leads. The [27 November review](docs/reviews/2026-11-27-proposal-review.md) revisits each of the 79 original listings and introduces two proposals. The [original selection](docs/reviews/2026-11-19-proposal-selection.md) records the nine withdrawals.
+  - **Current selection.** 53 priority questions and 21 secondary leads. The [27 November review](docs/reviews/2026-11-27-proposal-review.md) revisits each of the 79 original listings and introduces four proposals. The [original selection](docs/reviews/2026-11-19-proposal-selection.md) records the nine withdrawals.
   - **What each page shows:** the motivation, the baseline literature, and the verdict of a separate AI literature review. The review verified the cited sources and searched for earlier answers. The assessments distinguish substantive, modest and narrow questions and identify cases awaiting verification.
   - **Later batches:** the original batches included six candidates in gravity and holography (9 November 2026), and eleven reformulated or partly inferred questions from a semantic map of the 2024–2026 quant-ph corpus (16 November 2026), each with a caveat saying what is inferred. The same map gave 36 catalogue entries.
   - **Sources:** the full proposal, with its verification marks, is in [`docs/reviews/2026-11-08-new-problems-proposal.md`](docs/reviews/2026-11-08-new-problems-proposal.md); the 16 November batch is in [`docs/reviews/2026-11-16-new-problems-carte-v2.md`](docs/reviews/2026-11-16-new-problems-carte-v2.md).

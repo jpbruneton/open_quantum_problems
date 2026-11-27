@@ -53,8 +53,8 @@ function validUrl(value, label) {
 }
 
 test("all 111 original IDs remain addressable; 12 additions and 10 archives are counted correctly", () => {
-  assert.equal(ALL_PROBLEMS.length, 241);
-  assert.equal(PROBLEMS.length, 231);
+  assert.equal(ALL_PROBLEMS.length, 242);
+  assert.equal(PROBLEMS.length, 232);
   assert.equal(ARCHIVED_PROBLEMS.length, 10);
   assert.equal(new Set(ALL_PROBLEMS.map((p) => p.id)).size, ALL_PROBLEMS.length);
   for (const [prefix, n] of Object.entries(originalSeries)) {
@@ -258,7 +258,8 @@ test("targeted literature updates preserve untouched review dates and expose pen
   assert.ok(getProblem("F18").evidence.some((e) => e.role === "claimed-solution" && e.url.includes("HandsomeSteven666/spherical-wigner-negativity-for-all-pure-spin-states")), "F18: claimed solution");
   // 26 November 2026: QF5 partial progress from two GitHub releases submitted in issue #22 (vector-like overlap, 2D U(1)).
   assert.equal(LITERATURE_UPDATE.date, "2026-11-27");
-  assert.deepEqual(LITERATURE_UPDATE.ids, ["M18", "F18", "B8", "M21", "E26", "N22"]);
+  assert.deepEqual(LITERATURE_UPDATE.ids, ["M18", "F18", "B8", "M21", "E26", "N22", "C16", "C11"]);
+  assert.equal(getProblem("C16").status, "improved", "C16: zero-capacity qubit channels, partial progress only");
   assert.ok(getProblem("N22").evidence.some((e) => e.url.includes("zenodo.24594294")), "N22: Wang, WH-covariant qutrit POVMs (issue #29)");
   assert.ok(!getProblem("N22").lean, "N22: partial progress carries no Lean badge");
   assert.equal(getProblem("M21").status, "open", "M21: triple correlation open for almost every flat 2-torus");
@@ -369,13 +370,13 @@ test("every active and archived detail view renders with valid links and Astra &
 
 test("home, all categories, filtered lists and missing-page views render", () => {
   const home = render(views.Home);
-  assert.ok(home.includes("231") && home.includes("Active entries"));
+  assert.ok(home.includes("232") && home.includes("Active entries"));
   assert.ok(!home.includes("#review") && home.includes("Powered by Astra &amp; Opus 5.5"));
   assert.ok(home.includes('href="/improved"'));
   assert.ok(home.includes('href="/claimed-solved"'));
   assert.ok(home.includes('href="/lean-verified"'));
   assert.ok(home.includes('See open sharp problems'));
-  assert.ok(home.includes('aria-label="See all 100 improved problems"'));
+  assert.ok(home.includes('aria-label="See all 101 improved problems"'));
   assert.ok(home.includes('aria-label="See all 37 claimed solved problems"'));
   assert.ok(home.includes('href="https://quantumlectures.org/en"'));
   assert.ok(home.includes('href="https://learnthermo.org/"'));
@@ -425,7 +426,7 @@ test("home, all categories, filtered lists and missing-page views render", () =>
       assert.ok(newProblems.includes(it.title.replace(/&/g, "&amp;")) || newProblems.includes(it.key), `${it.key}: not rendered`);
     }
   }
-  assert.equal(PROPOSAL_COUNT, 51);
+  assert.equal(PROPOSAL_COUNT, 53);
   assert.equal(SECONDARY_PROPOSALS.length, 21);
   assert.deepEqual(WITHDRAWN_PROPOSALS.map(it => it.key).sort(), ["PA9", "PB2", "PG2", "PH3", "PM5", "PM7", "SF2", "SO1", "SQF1"]);
   const report = fs.readFileSync(path.join(root, "docs/reviews/2026-11-19-proposal-selection.md"), "utf8");
@@ -438,7 +439,7 @@ test("home, all categories, filtered lists and missing-page views render", () =>
   const anchors = [...current.matchAll(/<a name="([a-z0-9]+)"><\/a>/g)].map(m => m[1]);
   assert.deepEqual(anchors.sort(), reviewed.map(it => it.key.toLowerCase()).sort());
   const additions = reviewed.filter(it => proposalBatch(it) === PROPOSALS_EVIDENCE_REVIEW);
-  assert.deepEqual(additions.map(it => it.key).sort(), ["PE5", "PN6"]);
+  assert.deepEqual(additions.map(it => it.key).sort(), ["PC4", "PE5", "PE6", "PN6"]);
   assert.match(render(views.ProposalView, { pkey: "PN4" }), /dimension five/);
   for (const [, anchor, id, decision] of decisions) {
     assert.equal(anchor, id.toLowerCase());

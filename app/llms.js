@@ -37,7 +37,7 @@ export function llmsTxt() {
     "",
     `- [Catalogue home](${url("/")}): all areas and entries, with filters.`,
     `- [Claimed solved](${url("/claimed-solved")}): entries with an announced full resolution awaiting independent assessment.`,
-    `- [Improved](${url("/improved")}): entries with recorded partial progress.`,
+    `- [Improved](${url("/improved")}): entries with significant partial progress, as judged case by case by the maintainer.`,
     `- [Sharp problems](${url("/sharp")}): entries a single proof or counterexample would settle.`,
     `- [Lean verified](${url("/lean-verified")}): claimed solved entries whose full claimed solution is formalized in Lean.`,
     `- [New problems suggested by AI](${url("/new-problems")}): candidate questions, not catalogue entries.`,

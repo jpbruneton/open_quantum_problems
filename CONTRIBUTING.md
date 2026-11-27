@@ -23,7 +23,7 @@ npm run build
 
 ## Statuses and badges
 
-- A full resolution that has not been independently assessed is listed as **Claimed solved**, never Solved. Partial progress moves an entry from Open to **Improved**.
+- A full resolution that has not been independently assessed is listed as **Claimed solved**, never Solved. Partial progress can move an entry from Open to **Improved**; the maintainer decides case by case, according to how much of the question it settles.
 - The **Lean verified** badge is given only to a claimed full solution whose main theorem is formalized. We check what the Lean statements say and rebuild the project; partial formalizations are recorded in the evidence without the badge.
 - Some entries are closed to further proofs of the same statement once a solution is listed; the entry says so.
 - AI-use statements are recorded as you give them. AI use is not evidence for or against correctness.
