@@ -1,0 +1,32 @@
+name: Catalogue checks
+
+# Runs the catalogue integrity tests and the production build on every pull
+# request and on every push to main, so that contributors see what breaks.
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Catalogue integrity, KaTeX and rendered views
+        run: npm test
+      - name: Production build
+        run: npm run build

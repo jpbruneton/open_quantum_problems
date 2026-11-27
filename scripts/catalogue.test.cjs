@@ -249,7 +249,7 @@ test("targeted literature updates preserve untouched review dates and expose pen
   // 27 November 2026 (issue #27): M18 improved by Zhang's Zenodo working paper; partial progress, so no Lean badge.
   assert.equal(getProblem("M18").status, "improved", "M18: the third inequality remains open for n >= 4");
   assert.ok(!getProblem("M18").lean, "M18: partial progress carries no Lean verified badge");
-  assert.ok(getProblem("M18").evidence.some((e) => e.role === "progress" && e.url.includes("zenodo.24582915")), "M18: Zhang v1.4.0");
+  assert.ok(getProblem("M18").evidence.some((e) => e.role === "progress" && e.url.includes("zenodo.24591166")), "M18: Zhang v1.4.1");
   assert.ok(getProblem("M18").provenance.some((item) => item.url.includes("/issues/27")), "M18: AI-use disclosure");
   // 27 November 2026 (issue #28): Wang's proof formalized for every spin and rebuilt locally at commit ac94e79.
   assert.ok(getProblem("F18").lean && getProblem("F18").lean.url.includes("ac94e7985878e2c5e51cca02bc1c9120d0c23161"), "F18: all-spin Lean formalization pinned to its commit");
@@ -258,7 +258,7 @@ test("targeted literature updates preserve untouched review dates and expose pen
   assert.ok(getProblem("F18").evidence.some((e) => e.role === "claimed-solution" && e.url.includes("HandsomeSteven666/spherical-wigner-negativity-for-all-pure-spin-states")), "F18: claimed solution");
   // 26 November 2026: QF5 partial progress from two GitHub releases submitted in issue #22 (vector-like overlap, 2D U(1)).
   assert.equal(LITERATURE_UPDATE.date, "2026-11-27");
-  assert.deepEqual(LITERATURE_UPDATE.ids, ["M18", "F18", "B8", "M21"]);
+  assert.deepEqual(LITERATURE_UPDATE.ids, ["M18", "F18", "B8", "M21", "E26"]);
   assert.equal(getProblem("M21").status, "open", "M21: triple correlation open for almost every flat 2-torus");
   assert.ok(getProblem("B8").evidence.some((e) => e.url.includes("2610.40235v2")), "B8: Yang's 3D QCA result");
   const november26 = LITERATURE_UPDATES.find((update) => update.date === "2026-11-26");

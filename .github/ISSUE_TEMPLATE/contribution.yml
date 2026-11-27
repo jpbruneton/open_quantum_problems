@@ -1,0 +1,68 @@
+name: Contribution to the catalogue
+description: Report progress, a claimed solution, a correction or a new problem.
+title: "[ID]: short description"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for contributing. Every submission is read and checked before the next update, and accepted contributions are credited in the README and in the dated report. See [CONTRIBUTING.md](https://github.com/jpbruneton/open_quantum_problems/blob/main/CONTRIBUTING.md) for what we check and how statuses are assigned.
+  - type: input
+    id: entry
+    attributes:
+      label: Catalogue entry
+      description: The entry identifier (for example M18 or F18), or "new" for a problem not yet in the catalogue.
+      placeholder: M18
+    validations:
+      required: true
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Type of contribution
+      options:
+        - Partial progress
+        - Claimed full solution
+        - Counterexample or disproof
+        - Correction to an entry (statement, sources, status)
+        - Missing reference
+        - New problem
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Result
+      description: State the result precisely, with its hypotheses, and say how it relates to the entry's statement (full statement, special case, variant). For a new problem, quote where the literature states it as open.
+    validations:
+      required: true
+  - type: input
+    id: source
+    attributes:
+      label: Fixed link to the source
+      description: A link that will not change, such as an arXiv identifier with its version (arXiv:2611.01234v2), a DOI, a Zenodo version DOI or a GitHub link pinned to a commit.
+      placeholder: https://arxiv.org/abs/2611.01234v1
+    validations:
+      required: true
+  - type: input
+    id: lean
+    attributes:
+      label: Lean formalization (optional)
+      description: Repository pinned to a commit, Lean and Mathlib versions, and the names of the main theorems. Say which parts of the result are formalized and which are not.
+  - type: textarea
+    id: checks
+    attributes:
+      label: Verification and reproducibility (optional)
+      description: Scripts, certificates or numerical checks, with the commands to run them and their expected output.
+  - type: textarea
+    id: ai
+    attributes:
+      label: AI-use statement
+      description: Which AI tools were used, and for what (proofs, computations, formalization, writing, literature search). Write "None" if no AI tool was used. The statement is recorded in the entry's provenance as you give it.
+    validations:
+      required: true
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Confirmation
+      options:
+        - label: The linked source is public, and it has not been withdrawn by its authors.
+          required: true

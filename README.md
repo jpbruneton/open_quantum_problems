@@ -76,7 +76,7 @@ Policies applied throughout:
 
 ## Contributing
 
-Corrections, new results, missing references and new problems are all welcome: open an [issue](https://github.com/jpbruneton/open_quantum_problems/issues) or a [pull request](https://github.com/jpbruneton/open_quantum_problems/pulls). Please cite the source of any claim. External contributions are reviewed before the next update and acknowledged in the dated report.
+Corrections, new results, missing references and new problems are all welcome: open an issue with the [contribution form](https://github.com/jpbruneton/open_quantum_problems/issues/new?template=contribution.yml) or a [pull request](https://github.com/jpbruneton/open_quantum_problems/pulls). [CONTRIBUTING.md](CONTRIBUTING.md) explains what is checked and how statuses are assigned. Please cite the source of any claim. External contributions are reviewed before the next update and acknowledged in the dated report.
 
 ### Contributors
 

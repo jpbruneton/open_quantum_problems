@@ -42,6 +42,9 @@ export const LEAN_FORMULATIONS = {
   E26: [
     { label: "Formal Conjectures · Krenn–Gu equations over complex weights for all even vertex counts of at least six", url: `${formalConjectures}/Paper/MonochromaticQuantumGraph.lean` },
     { label: "Six vertices and three colours · nonexistence certificate for unrestricted complex weights", url: "https://github.com/algal/krenn-gu-6x3-certificate/blob/c04696e515e0c02be140353fb52ea60c62e827b1/KrennGuCertificate/Unrestricted.lean" },
+    { label: "Kitamura · at most N − 2 colours for every even N ≥ 6, over every integral domain", url: "https://github.com/KitaKen1/monochromatic-quantum-graph-sharp-bound-lean/blob/6c5340384479dbb36129b2e0084449be2458cce2/lean/QuantumCR/SharpDegreeBound.lean" },
+    { label: "Kitamura · no solution with integer weights for every even N ≥ 6 and D ≥ 3", url: "https://github.com/KitaKen1/monochromatic-quantum-graphs-lean/blob/d3ed1892ef181f5f5f5d61d9b5817f05b53a6675/lean/QuantumLean/IntegerConclusion.lean" },
+    { label: "Kitamura · ten vertices and eight colours, over every integral domain", url: "https://github.com/KitaKen1/monochromatic-quantum-graph-n10-d8-lean/blob/a9309005c7a27a2615f8e7eebef7a1db017809ab/lean/QuantumGraphTenEightFC.lean" },
   ],
   N1: [
     { label: "Formal Conjectures · existence of a SIC-POVM in every positive dimension", url: `${formalConjectures}/OpenQuantumProblems/23.lean` },

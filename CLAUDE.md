@@ -48,6 +48,8 @@ Before starting any literature update, catalogue change or site change:
 
 - Public GitHub repositories that resolve arXiv conjectures have already contained proofs of our results before us. Search them in every survey (when selecting conjectures) and before publishing any New Research note, alongside the literature and every arXiv version of the source.
 - `the-omega-institute/trureturing` (https://github.com/the-omega-institute/trureturing), often with Lean formalisations. Antecedents found so far: issue #11700 and PR #11708 (photon-added majorization, arXiv:2312.02066), issue #11475 and PR #11566 (structured negativity, arXiv:2209.03909), PR #19362 (root-fidelity Holevo bound). Search issues and pull requests, open and closed, for the source's arXiv identifier (`gh api -X GET search/issues -f q='repo:the-omega-institute/trureturing <arXiv id>'`), then read the pull request and its Lean file.
+- `KitaKen1` (Kenta Kitamura, https://github.com/KitaKen1), watched account added 27 November 2026, no antecedent of our own results yet: about 150 repositories of AI-assisted Lean solutions to Formal Conjectures targets, including Krenn–Gu (E26), AME(11,10) (E14) and qubit Holevo additivity (C1). Search with `gh search repos --owner KitaKen1 <keyword>`.
+- `google-deepmind/formal-conjectures`: search its pull requests, open and closed, for the target's declaration name or arXiv identifier (`gh search prs --repo google-deepmind/formal-conjectures <keyword>`). Kitamura, algal, infinityscroll and rrajasek95 announced their proofs there before any paper.
 - Add any other public repository of this kind to this list as soon as it yields an antecedent. The maintained list also lives in `oqmresearch/CLAUDE.md`.
 
 ## Published research-note layout

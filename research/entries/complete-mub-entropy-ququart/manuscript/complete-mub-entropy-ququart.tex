@@ -39,7 +39,7 @@ the sum of their Shannon entropies is at least seven bits}
 \author{Opus 5.5\\[0.35em]
 \normalsize Research led by Jean-Philippe Bruneton\\[-0.1em]
 \small Universit\'e Paris Cit\'e, France}
-\date{23 November 2026}
+\date{23 November 2026; Section~\ref{sec:d5two} added 27 November 2026}
 
 \begin{document}
 \maketitle
@@ -65,7 +65,9 @@ replayed in exact rational or ball arithmetic. The same two-step scheme, with
 an exact Hermitian sum-of-squares certificate, gives the non-tight bound
 $10.2205$ bits for the six mutually unbiased bases of $\C^5$, above the
 previously known $6\log_2 3\approx 9.510$ and below the numerical value
-$10.2524$.
+$10.2524$. We also prove that this numerical value is the exact minimum over
+states supported on two vectors of one of the six bases, and that the $300$
+pure states attaining it are strict local minima among all states.
 \end{abstract}
 
 \section{Introduction}
@@ -502,6 +504,122 @@ $V_5-V_B$ between the numerical value and the best value certified at lift
 degree $n$ was $0.149$, $0.091$, $0.071$, $0.051$ and $0.029$ for
 $n=10,12,14,16,18$, a slow decrease consistent with the degenerate zero.
 
+\subsection{Two-component states and local minimality}\label{sec:d5two}
+
+Two analytic results, added on 27 November 2026, locate the candidate value
+$V_5$ more precisely. The first proves that it is the exact minimum over all
+states supported on two vectors of one of the six bases. The second proves
+that the states attaining it are strict local minima among all density
+matrices, including the directions that populate the other three components.
+Write $S(\rho)$ for the sum of the six Shannon entropies in bits and
+$h(x)=-x\log_2x-(1-x)\log_2(1-x)$.
+
+\begin{statementframe}
+\begin{theorem}\label{thm:d5two}
+Let $\rho$ be a density matrix on $\C^5$ supported on the span of two vectors
+of one of the six bases $I,F_5,DF_5,\dots,D^4F_5$. Then $S(\rho)\ge V_5$.
+For the computational basis, equality holds exactly for the pure states
+$(\ket j-\omega^s\ket k)/\sqrt2$ with $j<k$ and $s\in\Z_5$. This gives $50$
+rays in each basis and $300$ distinct rays in total; each has exactly four
+nonzero components in each of the five other bases.
+\end{theorem}
+\end{statementframe}
+
+The affine relabellings $x\mapsto ux+c$ of $\Z_5$ with $u\ne0$, the linear
+phases $\ket x\mapsto\omega^{bx}\ket x$, $D$ and $F_5$ permute the six bases.
+For $F_5$, completing the square in the Fourier transform of a chirp
+$\omega^{ax^2+bx}$ with $a\ne0$ gives another chirp, and the chirps with $a=0$
+are exchanged with the computational basis. The statement and the counts can
+therefore be transported from the computational basis to every basis.
+
+\begin{proof}
+Let $\psi=\sqrt p\,\ket j+\sqrt{1-p}\,e^{i\phi}\ket k$ with $j\ne k$, and set
+$r=2\sqrt{p(1-p)}$. Since $k-j$ is invertible modulo $5$, the distribution of
+$\psi$ in each of the five other bases is a permutation of
+$p_l=\bigl(1+r\cos(\phi+2\pi l/5)\bigr)/5$, $l=0,\dots,4$, for a phase $\phi$
+that depends on the basis only through a shift by a multiple of $2\pi/5$. At
+fixed $r$, minimizing the entropy of this distribution amounts to maximizing
+$\sum_lf(x_l)$ with $f(x)=(1+x)\ln(1+x)$ and $x_l=r\cos(\phi+2\pi l/5)$. The
+series $f(x)=x+\sum_{k\ge2}(-1)^kx^k/[k(k-1)]$ converges absolutely on
+$[-1,1]$. The power $\cos^k\theta$ is a combination with positive coefficients
+of $\cos(m\theta)$ for $m\le k$ with $m\equiv k\pmod 2$, and the average over
+$l$ keeps only the frequencies $m\in5\Z$, each contributing $\cos(m\phi)$. At
+$\phi=\pi$ every such term equals $(-1)^m=(-1)^k$, so each term of
+$\sum_k(-1)^k\sum_lx_l^k/[k(k-1)]$ takes its largest possible value
+simultaneously. For $r>0$ the frequency $5$ in the term $k=5$ forces
+$\phi\equiv\pi\pmod{2\pi/5}$ at any maximum.
+
+At this phase, the entropy deficit relative to the uniform distribution in
+each of the five bases is a series in $u=r^2$ with nonnegative coefficients
+of $u^{k/2}$, $k\ge2$, hence a convex function of $u$. The entropy in the
+initial basis, $h\bigl((1-\sqrt{1-u})/2\bigr)$, is strictly concave in $u$:
+its derivative is $\operatorname{artanh}(z)/(2z\ln2)$ with $z=\sqrt{1-u}$, and
+$\operatorname{artanh}(z)/z$ increases strictly with $z$. The total is
+therefore strictly concave in $u\in[0,1]$, and its minimum lies at an
+endpoint. At $u=0$ the state is a basis vector and $S=5\log_25\approx11.61$.
+At $u=1$ the distribution in each of the five other bases consists of a zero
+and twice each of $(5\pm\sqrt5)/20$, which gives $S=V_5<5\log_25$. Strict
+concavity excludes the intermediate weights, and the phase condition gives
+the $50$ rays. For a mixed state on the same two-dimensional span, concavity
+of the entropy gives $S(\rho)\ge V_5$. Equality would force all the pure
+components of $\rho$ to have the same distributions in all six bases; since
+the six bases determine a density matrix, $\rho$ would be pure.
+\end{proof}
+
+\begin{statementframe}
+\begin{proposition}\label{prop:d5local}
+Let $P=\ket\psi\bra\psi$ be one of the $300$ rays of
+Theorem~\ref{thm:d5two}. For every density matrix $\rho$ on $\C^5$, set
+$t=1-\Tr(P\rho)$. If $0<t<1$, then
+\[
+  S(\rho)-V_5\ \ge\ t\log_2(1/t)-48t .
+\]
+In particular $S(\rho)>V_5$ whenever $0<t<2^{-48}$.
+\end{proposition}
+\end{statementframe}
+
+\begin{proof}
+By the symmetries above we may take $\psi=(\ket0-\ket1)/\sqrt2$. Its outcomes
+of probability zero are $\ket2,\ket3,\ket4$ and, in the basis $D^aF_5$, the
+vector $z_a$ with components $\omega^{a(x^2-x)}/\sqrt5$. By orthogonality of
+characters, $\sum_az_az_a^*$ is block diagonal with all-ones blocks on the
+fibres $\{0,1\}$, $\{2,4\}$, $\{3\}$ of $x\mapsto x^2-x$. Adding the three
+coordinate projectors, the sum $Z$ of the projectors onto all zero-probability
+outcomes has spectrum $\{0,1,2,2,3\}$ and kernel $\C\psi$. Hence the total
+probability of these outcomes under $\rho$ is at least $t$, while each of them
+has probability at most $t$, since each projector is orthogonal to $\psi$.
+Their contribution to $S(\rho)$ is therefore at least $t\log_2(1/t)$.
+
+For the outcomes of positive probability $p$ under $P$, write
+$\eta(x)=-x\log_2x$ and $G=\sum\eta'(p)\,\Pi$, the sum running over their
+projectors $\Pi$. The maps $\ket x\mapsto\omega^{x(x-1)}\ket x$ and
+$\ket x\mapsto\ket{1-x}$ preserve the six bases and the ray of $\psi$, so they
+commute with $G$. In the eigenspace of eigenvalue $1$ of the first map, the
+odd subspace of the second is exactly $\C\psi$, so $G\psi$ is proportional to
+$\psi$ and $G$ has no matrix elements between $\psi$ and its orthogonal
+complement. Writing $X=\rho-P$, the linear term $\Tr(GX)$ is then at least
+$-2\|G\|\,t$. Since every positive probability lies in $(1/8,1/2]$, we have
+$|\eta'(p)|<2$ and $\|G\|\le12$.
+
+For the quadratic term, the inequality $s\ln s-s+1\le(s-1)^2$ gives
+$\eta(y)\ge\eta(p)+\eta'(p)(y-p)-(y-p)^2/(p\ln2)$ for every $y\ge0$. The six
+spaces of traceless diagonal matrices in the six bases are mutually orthogonal
+for the Hilbert--Schmidt product, because the bases are mutually unbiased, so
+$\sum(y-p)^2\le\Tr X^2\le2t$, the sum running over all outcomes. As $p>1/8$
+and $\ln2>2/3$, the quadratic loss is at most $24t$. Adding the three
+estimates gives $S(\rho)-V_5\ge t\log_2(1/t)-24t-24t$.
+\end{proof}
+
+By concavity of the entropies the minimum of $S$ is attained on pure states.
+Theorem~\ref{thm:d5two} then shows that a pure state with $S<V_5$, if one
+exists, has at least three nonzero components in each of the six bases, and
+Proposition~\ref{prop:d5local} shows that it stays away from the $300$ known
+minimizers. The global value remains between $10.2205$ and $V_5$. The checker
+\href{\repo/checks/two_sparse.py}{\texttt{two\_sparse.py}} confirms numerically
+the $300$ rays, their value, the spectrum of $Z$, the alignment of $G\psi$ with
+$\psi$ for each ray, and $S\ge V_5$ on $2\,000$ random two-component states;
+the proofs above do not rely on it.
+
 \section{Limitations}
 
 Both theorems rest on computer-assisted proofs. Every step that decides the
@@ -515,10 +633,14 @@ coefficients of $F$ were found by optimization, which plays no role in the
 proof.
 
 Theorem~\ref{thm:main} answers the question for $d=4$ only. In $d=5$ the value
-$V_5$ and its minimizers remain conjectural, and the degenerate zero described
-in Section~\ref{sec:d5} suggests that a tight proof needs invariants of degree
-at least six or a certificate that allows exact zeros. Theorem~\ref{thm:d5}
-is $0.032$ bits below $V_5$.
+$V_5$ is proved only for two-component states and as a strict local minimum
+(Section~\ref{sec:d5two}); the global minimum and the full set of minimizers
+remain conjectural. The degenerate zero described in Section~\ref{sec:d5}
+suggests that a tight proof needs invariants of degree at least six or a
+certificate that allows exact zeros. Theorem~\ref{thm:d5} is $0.032$ bits
+below $V_5$. The explicit radius $2^{-48}$ of
+Proposition~\ref{prop:d5local} is far from optimal and is not used to cover a
+neighbourhood in any certificate.
 
 The result has not been independently refereed. An internal review in a
 separate session reran every certificate, wrote the exact coverage check, and
@@ -560,6 +682,9 @@ the records are
 \href{\repo/data/A5_certificate.json}{\texttt{A5\_certificate.json}},
 \href{\repo/data/B5_certificate.json}{\texttt{B5\_certificate.json}} and
 \href{\repo/data/B5_negative_test.json}{\texttt{B5\_negative\_test.json}}.
+The numerical cross-check of Section~\ref{sec:d5two},
+\href{\repo/checks/two_sparse.py}{\texttt{two\_sparse.py}}, writes
+\href{\repo/data/two_sparse.json}{\texttt{two\_sparse.json}} in a few seconds.
 The checks need Python~3 with \texttt{numpy}, \texttt{scipy}, \texttt{sympy}
 and \texttt{python-flint}. On a laptop, the $d=4$ checks take about twenty
 minutes in total, most of it for the exact replay, and the $d=5$ checks about

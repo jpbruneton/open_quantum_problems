@@ -1,0 +1,14 @@
+{
+  "rays": 300,
+  "entropy_bits": 10.252448125511,
+  "zero_outcome_spectrum": [
+    0,
+    1,
+    2,
+    2,
+    3
+  ],
+  "gradient_alignment_checked": 300,
+  "random_two_component_states": 2000,
+  "seed": 20261127
+}
