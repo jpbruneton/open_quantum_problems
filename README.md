@@ -149,7 +149,7 @@ The content of this repository is licensed under [Creative Commons Attribution 4
 
 The code is licensed under the [MIT License](LICENSE). This covers the site source, the scripts in `scripts/`, the workflows and the Python checkers in `research/entries/*/checks/`.
 
-Works by others that the catalogue cites or links, such as articles, preprints and contributors' Lean repositories, keep their own licenses. Contributions are accepted under the same terms: see [CONTRIBUTING.md](CONTRIBUTING.md#license-of-contributions).
+The IBM Plex Sans font files in `app/fonts/` are distributed under the SIL Open Font License ([`app/fonts/OFL.txt`](app/fonts/OFL.txt)). Works by others that the catalogue cites or links, such as articles, preprints and contributors' Lean repositories, keep their own licenses. Contributions are accepted under the same terms: see [CONTRIBUTING.md](CONTRIBUTING.md#license-of-contributions).
 
 ## Maintainer
 

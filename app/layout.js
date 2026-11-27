@@ -1,10 +1,22 @@
 import "katex/dist/katex.min.css";
 import "./globals.css";
-import { IBM_Plex_Sans } from "next/font/google";
+import localFont from "next/font/local";
 import { Analytics } from "@vercel/analytics/next";
 import ClientEffects from "./components/ClientEffects";
 
-const sans = IBM_Plex_Sans({ subsets: ["latin"], weight: ["400", "500", "600", "700"], variable: "--font-sans", display: "swap" });
+// IBM Plex Sans (SIL Open Font License, app/fonts/OFL.txt), Latin subset from
+// Fontsource, served locally so that the build does not fetch Google Fonts.
+const sans = localFont({
+  src: [
+    { path: "./fonts/ibm-plex-sans-latin-400-normal.woff2", weight: "400", style: "normal" },
+    { path: "./fonts/ibm-plex-sans-latin-500-normal.woff2", weight: "500", style: "normal" },
+    { path: "./fonts/ibm-plex-sans-latin-600-normal.woff2", weight: "600", style: "normal" },
+    { path: "./fonts/ibm-plex-sans-latin-700-normal.woff2", weight: "700", style: "normal" },
+  ],
+  variable: "--font-sans",
+  display: "swap",
+  fallback: ["-apple-system", "Segoe UI", "Roboto", "Helvetica", "Arial", "sans-serif"],
+});
 
 const SITE_DESCRIPTION =
   "A literature-reviewed catalogue of open problems in quantum mechanics for human researchers and AI agents: precise questions, source-linked progress and claimed solutions.";
