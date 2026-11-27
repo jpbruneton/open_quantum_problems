@@ -81,7 +81,7 @@ export const REVIEW = {
 export const LITERATURE_UPDATES = [{
   date: "2026-11-27",
   label: "27 November 2026",
-  ids: ["M18", "F18", "B8", "M21", "E26"],
+  ids: ["M18", "F18", "B8", "M21", "E26", "N22"],
   reportUrl: "https://github.com/jpbruneton/open_quantum_problems/blob/main/docs/reviews/2026-11-27-literature-update.md",
 }, {
   date: "2026-11-26",

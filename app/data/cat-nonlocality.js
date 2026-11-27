@@ -836,7 +836,7 @@ The open question is stated in the review of Uola, Costa, Nguyen and Gühne, Rev
   { id: "N22",
     cat: "nonlocality",
     horizon: "sharp",
-    reviewedAt: "2026-11-16",
+    reviewedAt: "2026-11-27",
     title: "The most non-projective qutrit and ququart measurements",
     statement: r`For a POVM $\mathbf E=\{E_a\}$ on $\mathbb C^d$, let $v^*(\mathbf E)$ be the largest $v$ such that $\{vE_a+(1-v)\,\mathrm{Tr}(E_a)\,I/d\}$ is projective-simulable, that is, a convex mixture of projective measurements followed by classical post-processing. Let $v_d=\min_{\mathbf E}v^*(\mathbf E)$. Prove that $v_3=\tfrac16\big(1+4\cos\tfrac{\pi}{9}\big)\approx0.793$, attained by the Hesse SIC-POVM. Prove or refute the conjecture of Cobucci et al. (PRL 2026) that the most non-projective ququart measurement is the “flagged Hesse SIC” (the Hesse SIC in a three-dimensional subspace of $\mathbb C^4$, completed by the projector onto the orthogonal vector), with $v_4\approx0.7823$.`,
     definition: r`**Projective simulability.** A POVM is projective-simulable if it can be realized by randomly choosing a projective measurement and post-processing its outcome. Every POVM becomes simulable after enough depolarizing noise, and the threshold $v^*$ quantifies how genuinely non-projective it is. The framework is due to Oszmaniec, Guerini, Wittek and Acín, “Simulating positive-operator-valued measures with projective measurements”, PRL 119, 190501 (2017) ([arXiv:1609.06139](https://arxiv.org/abs/1609.06139)), and Guerini, Bavaresco, Terra Cunha and Acín, J. Math. Phys. 58, 092102 (2017) ([arXiv:1705.06343](https://arxiv.org/abs/1705.06343)). Oszmaniec et al. show that simulability is decidable by semidefinite programming for $d=2,3$.
@@ -844,9 +844,15 @@ The open question is stated in the review of Uola, Costa, Nguyen and Gühne, Rev
 The question is posed by Cobucci, Brinster, Khandelwal, Kampermann, Bruß, Wyderka and Tavakoli, “Maximally non-projective measurements are not always symmetric informationally complete”, PRL 136, 060201 (2026) ([arXiv:2508.03652](https://arxiv.org/abs/2508.03652)). They conjecture the ququart answer explicitly and write in the Discussion that it is still left to prove; for qutrits they report “significant evidence” that the Hesse SIC is optimal.`,
     progress: r`- For qubits, the SIC-POVM is the most non-projective measurement, with $v_2=\sqrt{2/3}\approx0.816$, a result due to Hirsch, Quintino, Vértesi, Navascués and Brunner, Quantum 1, 3 (2017) ([arXiv:1609.06114](https://arxiv.org/abs/1609.06114)), as credited by Cobucci et al.
 - Kotowski and Oszmaniec (16 January 2025, v1) proved that $v_d$ is bounded below by a positive constant independent of $d$ ([arXiv:2501.09339](https://arxiv.org/abs/2501.09339v1)).
-- Cobucci et al. (v2, 9 February 2026) developed an SDP criterion for genuine non-projectivity. For qutrits they gave an explicit projective simulation of the depolarized Hesse SIC at $v=\tfrac16(1+4\cos\tfrac\pi9)$, an upper bound on $v_3$, and their numerical searches converge to the Hesse SIC or get stuck in local extrema. Different qutrit SICs have different thresholds. For ququarts, the SIC-POVM has $v^*\approx0.826$, so it is not the most non-projective; their best search result is $v_4\lesssim0.782$, reached by the flagged Hesse SIC ([arXiv:2508.03652](https://arxiv.org/abs/2508.03652v2)).`,
-    residual: r`Both optimality claims are open: no lower bound on $v_3$ or $v_4$ matching the conjectured values is known. Sub-targets: prove $v^*(\mathbf E)\ge\tfrac16(1+4\cos\tfrac\pi9)$ for all rank-one qutrit POVMs with nine outcomes, or for all Weyl–Heisenberg covariant qutrit POVMs; or prove any explicit analytical lower bound on $v_3$, such as $v_3\ge0.75$. A dual certificate valid for all POVMs is needed. Related: N1 (existence of SIC-POVMs) and the steering thresholds of N21.`,
+- Cobucci et al. (v2, 9 February 2026) developed an SDP criterion for genuine non-projectivity. For qutrits they gave an explicit projective simulation of the depolarized Hesse SIC at $v=\tfrac16(1+4\cos\tfrac\pi9)$, which shows $v^*(\text{Hesse})\ge\tfrac16(1+4\cos\tfrac\pi9)$; the matching upper bound, and hence $v_3\le\tfrac16(1+4\cos\tfrac\pi9)$, was numerical. Their numerical searches converge to the Hesse SIC or get stuck in local extrema. Different qutrit SICs have different thresholds. For ququarts, the SIC-POVM has $v^*\approx0.826$, so it is not the most non-projective; their best search result is $v_4\lesssim0.782$, reached by the flagged Hesse SIC ([arXiv:2508.03652](https://arxiv.org/abs/2508.03652v2)).
+- Wang (27 November 2026, Zenodo v1.4.0; [doi:10.5281/zenodo.24594294](https://doi.org/10.5281/zenodo.24594294); [GitHub, commit ec300ab](https://github.com/vexpaer/oqp-n22/tree/ec300aba62df73e38473a322d4fecf29f37042b9); submitted in [issue #29](https://github.com/jpbruneton/open_quantum_problems/issues/29)) gives a computer-assisted proof that every Weyl–Heisenberg covariant qutrit POVM $E_g=D_g\rho D_g^\dagger/3$, for any trace-one fiducial $\rho$, satisfies $v^*(\mathbf E)\ge\tfrac16(1+4\cos\tfrac\pi9)$, with equality for the Hesse SIC. By convexity and extended Clifford symmetry it suffices to treat pure fiducials in a fundamental domain. Near the two Clifford orbits of Hesse-equivalent fiducials, explicit projective simulations are controlled by interval-arithmetic Taylor bounds; elsewhere, $5\,803$ boxes carrying rational projective simulations at their corners cover the domain above visibility $0.79313$. An overlap witness gives the matching upper bound for the Hesse SIC, so $v_3\le\tfrac16(1+4\cos\tfrac\pi9)$ now holds rigorously. For this catalogue the argument was reread, the certificate replayed (no uncovered region; mutated certificates fail) and spot-checked against exact semidefinite programs; it is not peer reviewed. The accompanying Lean files check only scalar lemmas and the final case split.`,
+    residual: r`Both optimality claims are open. Within Weyl–Heisenberg covariant qutrit POVMs the conjectured value is established by a computer-assisted proof (Wang, above), but no lower bound on $v_3$ over all qutrit POVMs, or on $v_4$, matching the conjectured values is known. Sub-targets: prove $v^*(\mathbf E)\ge\tfrac16(1+4\cos\tfrac\pi9)$ for all rank-one qutrit POVMs with nine outcomes, covariant or not, or prove any explicit lower bound on $v_3$, such as $v_3\ge0.75$. A lower bound needs explicit projective simulations for every POVM; a non-simulability witness only bounds $v^*$ from above. Related: N1 (existence of SIC-POVMs) and the steering thresholds of N21.`,
     evidence: [
+      { kind: "preprint",
+        role: "progress",
+        summary: "Computer-assisted proof that every Weyl–Heisenberg covariant qutrit POVM has v* ≥ (1 + 4cos(π/9))/6, with equality at the Hesse SIC; certificate replayed for this catalogue. Zenodo v1.4.0; not peer reviewed.",
+        url: "https://doi.org/10.5281/zenodo.24594294",
+        date: "2026-11-27" },
       { kind: "published",
         role: "progress",
         summary: "SDP criterion for non-projectivity; explicit projective simulation of the depolarized Hesse SIC at v = (1 + 4cos(π/9))/6 ≈ 0.793; numerical evidence that it is the most non-projective qutrit measurement; conjecture that the flagged Hesse SIC (v ≈ 0.782) is the most non-projective ququart measurement, while the ququart SIC has v ≈ 0.826 (PRL 136, 060201 (2026)).",
@@ -866,7 +872,9 @@ The question is posed by Cobucci, Brinster, Khandelwal, Kampermann, Bruß, Wyder
         date: "2017-04-14",
         version: "v4" },
     ],
-    provenance: [],
+    provenance: [
+      { summary: "Issue #29 states that Wang's work was developed with AI assistance under the author's direction; the manuscript and repository README contain no AI-use statement.", url: "https://github.com/jpbruneton/open_quantum_problems/issues/29" },
+    ],
     relations: [
       { id: "N1", type: "related" },
       { id: "N21", type: "related" },
@@ -881,5 +889,6 @@ The question is posed by Cobucci, Brinster, Khandelwal, Kampermann, Bruß, Wyder
       { label: "Hirsch, Quintino, Vértesi, Navascués & Brunner, 'Better local hidden variable models for two-qubit Werner states and an upper bound on the Grothendieck constant K_G(3)', Quantum 1, 3 (2017)",
         url: "https://arxiv.org/abs/1609.06114" },
       { label: "Kotowski & Oszmaniec, 'Pretty-good simulation of all quantum measurements by projective measurements' (2025 preprint)", url: "https://arxiv.org/abs/2501.09339" },
+      { label: "Wang, 'Analytical Projective Simulability Bounds, Weyl-Heisenberg Global Certification, and Lean 4 Formalization for Open Quantum Problems N22' (Zenodo v1.4.0, 27 November 2026; not peer reviewed)", url: "https://doi.org/10.5281/zenodo.24594294" },
     ] },
 ];
