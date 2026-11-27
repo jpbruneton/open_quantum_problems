@@ -516,7 +516,8 @@ In dimension $d\ge2$ no general theorem on non-Hermitian multilevel Toeplitz eig
   { id: "M18",
     cat: "spectral",
     horizon: "sharp",
-    reviewedAt: "2026-11-16",
+    status: "improved",
+    reviewedAt: "2026-11-27",
     title: "Spectral inequalities for the quantum Rabi model",
     statement: r`(Lanuza 2025–2026, reformulating a conjecture of Braak 2011.) Let $H_R=\omega a^\dagger a+g\,\sigma_x(a+a^\dagger)+\Delta\,\sigma_z$ on $\ell^2(\mathbb N)\otimes\mathbb C^2$, with $\omega>0$, $g\neq0$ and $\Delta\in\mathbb R$. The parity $\Pi=-\sigma_z(-1)^{a^\dagger a}$ splits $H_R=H_+\oplus H_-$, and each block has simple discrete spectrum $E^\pm_0<E^\pm_1<\cdots$. Prove or refute that, for all $(g,\Delta)$ and all $n\ge0$,
 $$-\omega\le E^+_n-E^-_n\le\omega,\qquad E^\pm_{n+1}-E^\pm_n\le2\omega,\qquad E^\pm_n\le\left(n+\tfrac12\right)\omega-\frac{g^2}{\omega},$$
@@ -527,9 +528,17 @@ Lanuza reports violations at large $\Delta$, all in the odd sector $H_-$ (units 
     progress: r`- Boutet de Monvel and Zielinski derived a three-term asymptotic expansion of the large eigenvalues ([arXiv:1711.03366](https://arxiv.org/abs/1711.03366)).
 - Rudnick (November 2023, v2 May 2024) used it to prove a density-one version of Braak's conjecture: at fixed parameters, the bunching rule holds for almost all $n$ ([arXiv:2311.12622](https://arxiv.org/abs/2311.12622v2)). This says nothing about small $n$, where the counterexamples lie.
 - Lanuza (v1 March 2025, v3 6 August 2026) proves a Weyl-type bound $|E^\pm_n-n\omega+g^2/\omega|\le|\Delta|$ after displacing the mode. It implies the three inequalities, and Braak's conjecture, for $|\Delta|\le\omega/2$. A variational argument (Appendix B) gives the $n=0$ case of the third inequality, with no restriction on $\Delta$ in the appendix. Gershgorin bounds give upper bounds on all levels that are useful only for $g\gg\omega$. For $\omega\ll|g|,|\Delta|$ a harmonic-oscillator approximation describes the low spectrum, without error bounds ([arXiv:2503.15572](https://arxiv.org/abs/2503.15572v3)).
-- Malagutti and Parmeggiani (v1 January 2026, v4 21 August 2026) prove, in a perturbative model of the Rabi system, that Braak's conjecture holds for finite families of eigenvalues, using Rellich's analytic perturbation theory. They do not address the reformulated inequalities ([arXiv:2601.17924](https://arxiv.org/abs/2601.17924v4)).`,
-    residual: r`All three inequalities remain open for $|\Delta|>\omega/2$ beyond $n=0$. Sub-targets: the gap bound $E^\pm_{n+1}-E^\pm_n\le2\omega$ for $\omega/2<|\Delta|\le\omega$; the third inequality for $n=1$ and all $\Delta$, for instance by a two-state variational argument modelled on Appendix B. A counterexample would most likely come from the region $|\Delta|\gg g^2/\omega$ at moderate $n$, where the counterexamples to Braak's original rule were found.`,
+- Malagutti and Parmeggiani (v1 January 2026, v4 21 August 2026) prove, in a perturbative model of the Rabi system, that Braak's conjecture holds for finite families of eigenvalues, using Rellich's analytic perturbation theory. They do not address the reformulated inequalities ([arXiv:2601.17924](https://arxiv.org/abs/2601.17924v4)).
+- Zhang, "Partial Spectral Bounds for the Quantum Rabi Model" (Zenodo working paper v1.4.0, 27 November 2026, [doi:10.5281/zenodo.24582915](https://doi.org/10.5281/zenodo.24582915); submitted in [issue #27](https://github.com/jpbruneton/open_quantum_problems/issues/27); not peer reviewed) treats both parity blocks as $N+g(a+a^\dagger)-t(-1)^N$ with $t=\pm\Delta$, in units $\omega=1$. The gap inequality $E^\pm_{n+1}-E^\pm_n<2$ is proved for every $n$, every $g\neq0$ and every $\Delta$ by a commutator sum rule with trial vectors $(a^\dagger)^2\psi_k$ and $a^2\psi_k$. The parity-splitting inequality $|E^+_n-E^-_n|<1$ is proved for every $n$ by a Schur-complement comparison of finite truncations. The third inequality is proved analytically for $n=1$, by computer-assisted proofs for $n=2$ and $n=3$ (exact rational and Arb interval certificates, with the finite-dimensional variational statements formalized in Lean 4), and for every $n$ below an explicit coupling threshold that is extremely small, about $10^{-63}$ for $n=2$. The passage from finite certificates to the full operator is a written min–max argument.
+- For this catalogue, the proof of the gap inequality was rederived without finding a gap. The parity-splitting proof was followed except for three compressed technical lemmas (the positivity of two Gram differences, the finite-interval recurrence and the last odd interval), whose intermediate claims were tested numerically without failure. The certificate scripts and the Lean files were rerun successfully. Independent diagonalizations with $g\le15$ and $|\Delta|\le200$, including Lanuza's three counterexample points, found no violation of any of the three inequalities.`,
+    residual: r`If Zhang's proofs hold, the first two inequalities are settled. The third remains open for $n\ge4$ outside the weak-coupling and large-detuning regimes; the margin vanishes like $g^5$ at small-coupling resonances for $n=2$, so certificates become delicate near $g=0$. An independent check of the parity-splitting lemmas is also needed. A counterexample to the third inequality would most likely come from moderate $n$ and coupling with $|\Delta|\gg g^2/\omega$, where the counterexamples to Braak's original rule were found.`,
     evidence: [
+      { kind: "preprint",
+        role: "progress",
+        summary: "Gap inequality for every level and parity-splitting inequality for every level, both for all g ≠ 0 and all Δ; third inequality for n = 1 (analytic), n = 2 and 3 (computer-assisted, Arb certificates and Lean-formalized finite statements) and below an explicit, extremely small coupling threshold for every n. Zenodo working paper v1.4.0; not peer reviewed.",
+        url: "https://doi.org/10.5281/zenodo.24582915",
+        date: "2026-11-27",
+        lean: true },
       { kind: "preprint",
         role: "progress",
         summary: "Counterexamples to Braak's bunching conjecture at large Δ, all in the odd-parity sector; proposes three eigenvalue inequalities and proves them, and Braak's conjecture, for |Δ| ≤ ω/2 via a Weyl-type bound; n = 0 case of the third inequality by a variational argument.",
@@ -549,10 +558,13 @@ Lanuza reports violations at large $\Delta$, all in the odd sector $H_-$ (units 
         date: "2024-05-05",
         version: "v2" },
     ],
-    provenance: [],
+    provenance: [
+      { summary: "Issue #27 states that AI tools assisted with the mathematical derivations, the formalization, the software and the manuscript of Zhang's working paper.", url: "https://github.com/jpbruneton/open_quantum_problems/issues/27" },
+    ],
     relations: [],
     refs: [
       { label: "Braak, 'Integrability of the Rabi Model', PRL 107, 100401 (2011)", url: "https://arxiv.org/abs/1103.2461" },
+      { label: "Zhang, 'Partial Spectral Bounds for the Quantum Rabi Model' (Zenodo working paper v1.4.0, 27 November 2026; not peer reviewed)", url: "https://doi.org/10.5281/zenodo.24582915" },
       { label: "Lanuza, 'Universal spectral bounds for the quantum Rabi model: Reformulating Braak's conjecture' (2025 preprint, v3 2026)",
         url: "https://arxiv.org/abs/2503.15572" },
       { label: "Rudnick, 'The Quantum Rabi model: Towards Braak's conjecture' (2023 preprint)", url: "https://arxiv.org/abs/2311.12622" },

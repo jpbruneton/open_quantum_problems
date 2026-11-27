@@ -125,6 +125,7 @@ function Header({ crumbs }) {
         </a>
         <a className="gh-link about-link" href="/similar">Similar projects</a>
         {TRENDS_PUBLISHED && <a className="gh-link about-link" href="/trends">Quantum trends</a>}
+        <span className="monitoring-since">Monitoring since July 2026</span>
         <span className="powered-by">Powered by Astra &amp; Opus 5.5</span>
         </div>
         {crumbs && (

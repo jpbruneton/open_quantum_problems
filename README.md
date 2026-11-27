@@ -78,6 +78,18 @@ Policies applied throughout:
 
 Corrections, new results, missing references and new problems are all welcome: open an [issue](https://github.com/jpbruneton/open_quantum_problems/issues) or a [pull request](https://github.com/jpbruneton/open_quantum_problems/pulls). Please cite the source of any claim. External contributions are reviewed before the next update and acknowledged in the dated report.
 
+### Contributors
+
+GitHub's contributor list counts only commit authors, so contributions sent as issues do not appear there. The commit that integrates an accepted issue carries its author as co-author, and the list below records them.
+
+- [anshM123](https://github.com/anshM123): pointed out the IQOQI Vienna problem with no counterpart here, now entry N14 ([#2](https://github.com/jpbruneton/open_quantum_problems/issues/2)).
+- Harish Santhanalakshmi Ganesan ([harishsg993010](https://github.com/harishsg993010)): certified positive coherent information for C11 ([pull request #1](https://github.com/jpbruneton/open_quantum_problems/pull/1)).
+- Xiuzhi Yang ([HandsomeSteven666](https://github.com/HandsomeSteven666)): claimed proof of F18 ([#21](https://github.com/jpbruneton/open_quantum_problems/issues/21)).
+- Clayton Iggulden-Schnell, with the agents Clawd and Wren ([Multi-DAC](https://github.com/Multi-DAC)): partial progress on QF5, F8 and F3 ([#22](https://github.com/jpbruneton/open_quantum_problems/issues/22), [#24](https://github.com/jpbruneton/open_quantum_problems/issues/24), [#25](https://github.com/jpbruneton/open_quantum_problems/issues/25)).
+- Ximing Wang ([vexpaer](https://github.com/vexpaer)): second claimed proof of F18 and its Lean 4 formalization for every spin ([#23](https://github.com/jpbruneton/open_quantum_problems/issues/23), [#28](https://github.com/jpbruneton/open_quantum_problems/issues/28)).
+- Yifan Zhang ([nylxiperia](https://github.com/nylxiperia)): spectral inequalities for the quantum Rabi model, M18 ([#27](https://github.com/jpbruneton/open_quantum_problems/issues/27)).
+- Zhaoting Ye ([LingyeNBird](https://github.com/LingyeNBird)): two-qubit case of E28 ([#26](https://github.com/jpbruneton/open_quantum_problems/issues/26)).
+
 ### Data layout
 
 The source of truth is `app/data/cat-*.js`, aggregated by `app/data/problems.js`. Do not renumber existing IDs or reuse an archived ID.

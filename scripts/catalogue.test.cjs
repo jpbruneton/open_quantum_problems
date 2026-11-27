@@ -246,12 +246,21 @@ test("targeted literature updates preserve untouched review dates and expose pen
   assert.deepEqual(november25.ids, ["F18"]);
   assert.ok(fs.existsSync(path.join(root, "docs/reviews/2026-11-25-literature-update.md")), "missing 25 November report");
   assert.equal(getProblem("F18").status, "claimed-solved", "F18: an unrefereed GitHub manuscript");
-  assert.ok(!getProblem("F18").lean, "F18: no formalization");
+  // 27 November 2026 (issue #27): M18 improved by Zhang's Zenodo working paper; partial progress, so no Lean badge.
+  assert.equal(getProblem("M18").status, "improved", "M18: the third inequality remains open for n >= 4");
+  assert.ok(!getProblem("M18").lean, "M18: partial progress carries no Lean verified badge");
+  assert.ok(getProblem("M18").evidence.some((e) => e.role === "progress" && e.url.includes("zenodo.24582915")), "M18: Zhang v1.4.0");
+  assert.ok(getProblem("M18").provenance.some((item) => item.url.includes("/issues/27")), "M18: AI-use disclosure");
+  // 27 November 2026 (issue #28): Wang's proof formalized for every spin and rebuilt locally at commit ac94e79.
+  assert.ok(getProblem("F18").lean && getProblem("F18").lean.url.includes("ac94e7985878e2c5e51cca02bc1c9120d0c23161"), "F18: all-spin Lean formalization pinned to its commit");
+  assert.match(getProblem("F18").lean.note, /j = 1\/2 and j = 1 only/, "F18: Clebsch–Gordan identification caveat");
   assert.ok(getProblem("F18").claim && getProblem("F18").provenance.length > 0, "F18: claim text and AI-use disclosure");
   assert.ok(getProblem("F18").evidence.some((e) => e.role === "claimed-solution" && e.url.includes("HandsomeSteven666/spherical-wigner-negativity-for-all-pure-spin-states")), "F18: claimed solution");
   // 26 November 2026: QF5 partial progress from two GitHub releases submitted in issue #22 (vector-like overlap, 2D U(1)).
-  assert.equal(LITERATURE_UPDATE.date, "2026-11-26");
-  for (const id of ["QF5", "N19", "QF11"]) assert.ok(LITERATURE_UPDATE.ids.includes(id), `${id}: in the 26 November update`);
+  assert.equal(LITERATURE_UPDATE.date, "2026-11-27");
+  assert.deepEqual(LITERATURE_UPDATE.ids, ["M18", "F18"]);
+  const november26 = LITERATURE_UPDATES.find((update) => update.date === "2026-11-26");
+  for (const id of ["QF5", "N19", "QF11"]) assert.ok(november26.ids.includes(id), `${id}: in the 26 November update`);
   assert.ok(fs.existsSync(path.join(root, "docs/reviews/2026-11-26-literature-update.md")), "missing 26 November report");
   assert.equal(getProblem("QF5").status, "improved", "QF5: partial progress only");
   for (const slug of ["overlap-link-rp-2x2-witness", "dwf-overlap-link-rp-second-order"]) {
@@ -362,7 +371,7 @@ test("home, all categories, filtered lists and missing-page views render", () =>
   assert.ok(home.includes('href="/claimed-solved"'));
   assert.ok(home.includes('href="/lean-verified"'));
   assert.ok(home.includes('See open sharp problems'));
-  assert.ok(home.includes('aria-label="See all 99 improved problems"'));
+  assert.ok(home.includes('aria-label="See all 100 improved problems"'));
   assert.ok(home.includes('aria-label="See all 37 claimed solved problems"'));
   assert.ok(home.includes('href="https://quantumlectures.org/en"'));
   assert.ok(home.includes('href="https://learnthermo.org/"'));

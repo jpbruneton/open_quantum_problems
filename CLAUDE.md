@@ -9,7 +9,7 @@ Before starting any literature update, catalogue change or site change:
    - `gh pr list --state open`
    - `gh issue list --state open`
 3. Read each one (`gh pr view N`, `gh pr diff N`, `gh issue view N`), check the sources it cites, and **discuss it with the maintainer first**. Summarize what it does, what is wrong or missing, and what you recommend. Do not merge, close or comment on GitHub before the maintainer agrees.
-4. Only then start the requested update. Record accepted contributions in the dated report under `docs/reviews/`, and thank contributors in a short GitHub comment that explains any edits made on merge.
+4. Only then start the requested update. Record accepted contributions in the dated report under `docs/reviews/`, and thank contributors in a short GitHub comment that explains any edits made on merge. Credit each accepted issue author (maintainer, 27 November 2026) with a `Co-authored-by: <login> <ID+login@users.noreply.github.com>` trailer on the integrating commit (ID from `gh api users/<login> --jq .id`) and an entry in the Contributors list of `README.md`; use the login alone when no real name is given.
 
 ## Working conventions
 

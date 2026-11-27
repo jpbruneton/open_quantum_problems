@@ -80,6 +80,10 @@ h1.title {
 .gh-link.gh-blue, .gh-link.about-link { border-color: var(--accent); color: var(--accent); }
 .gh-link.gh-blue:hover, .gh-link.about-link:hover { background: var(--accent); color: var(--bg); }
 .review-link, .about-link { margin-left: 8px; }
+.monitoring-since {
+  margin-left: 14px; color: var(--muted);
+  font-family: var(--mono); font-size: 12px; letter-spacing: .04em;
+}
 .powered-by {
   margin: 0 0 0 auto; color: var(--text);
   font-size: 14px; font-weight: 600;
